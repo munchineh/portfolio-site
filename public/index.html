@@ -54,8 +54,8 @@
   .meta .h { font-size: 12px; color: var(--muted); }
 
   /* "What came of it" stats */
-  .stats { display: grid; gap: 6px; }
-  .stat { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline; font-size: 14px; }
+  .stats { display: grid; grid-template-columns: max-content 1fr; gap: 10px 14px; }
+  .stat { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; font-size: 14px; }
   .stat b { color: var(--accent); font-family: var(--display); font-weight: 800; font-stretch: 75%; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
   .stat > span { color: var(--muted); }
 
@@ -299,6 +299,8 @@
   .fchip { font-size: 13px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); color: var(--ink); cursor: pointer;
     display: inline-flex; align-items: center; gap: 6px; transition: border-color .2s, background .2s, color .2s; }
   .fchip:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .fchip.static { cursor: default; }
+  .fchip.static:hover { border-color: var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
   .fchip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
   .fchip[aria-pressed="true"]::after { content: "×"; font-size: 14px; line-height: 1; }
   .facts .also { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
@@ -379,7 +381,7 @@
       <div class="facts">
                 <dl>
           <div class="exp"><div><dt>Experience</dt><dd><b class="yrs">6+ years</b>Across agency, in-house teams and my own e-commerce product</dd></div></div>
-          <div><dt>Industries</dt><dd class="chips" role="group" aria-label="Filter case studies by industry"><button class="fchip" data-f="Fintech">Fintech</button><button class="fchip" data-f="Logistics">Logistics</button><button class="fchip" data-f="E-commerce">E-commerce</button><button class="fchip" data-f="Construction tech">Construction tech</button></dd><dd class="also">Also mobility and advertising</dd></div>
+          <div><dt>Industries</dt><dd class="chips" role="group" aria-label="Filter case studies by industry"><button class="fchip" data-f="Fintech">Fintech</button><button class="fchip" data-f="Logistics">Logistics</button><button class="fchip" data-f="E-commerce">E-commerce</button><button class="fchip" data-f="Construction tech">Construction tech</button><span class="fchip static">Mobility</span><span class="fchip static">Advertising</span></dd></div>
           <div><dt>Skills</dt><dd class="chips" role="group" aria-label="Filter case studies by skill"><button class="fchip" data-f="UI design">UI design</button><button class="fchip" data-f="Conversation design">Conversation design</button><button class="fchip" data-f="Content design">Content design</button><button class="fchip" data-f="Localization">Localization</button></dd></div>
           <div><dt>Languages</dt><dd class="langs">English<br>Chinese<br>Korean<br>German</dd></div>
         </dl>
@@ -506,7 +508,7 @@
               <p class="desc">My own Shopify store, with a sizing tool that helps people buy free-size clothing online with confidence.</p>
               <div class="tags"><span class="tag">EVN Archive</span><span class="tag">E-commerce UX</span><span class="tag">Shopify</span><span class="tag">Content design</span></div>
               <div class="m-media" data-slot="0"></div>
-              <div class="stats"><div class="stat"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week</span></div><div class="stat"><b data-n="1st">1st</b><span>free-size sales in two months</span></div></div>
+              <div class="stats"><div class="stat"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week</span></div><div class="stat"><b data-n="400%+">400%+</b><span>increase in free-size sales</span></div></div>
             </div></div>
           </a>
           <a class="go" href="evn.html" aria-label="Open the EVN Archive case"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a>

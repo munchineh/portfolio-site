@@ -188,8 +188,13 @@ body.menu-open .menu .secondary { transition-delay: .34s; }
   .name { font-size: 16px; padding: 0 16px; }
 }
 @media (max-width: 640px) {
-  :root { --mw: calc(100vw - 48px); }
-  body.menu-open .menu { height: calc(100svh - 48px); }
+  /* Open menu spans edge to edge with the page panels (12px from each side) */
+  :root { --mw: calc(100vw - 24px); }
+  .menu { transition: height .42s var(--ease), width .42s var(--ease) .07s, right .42s var(--ease) .07s, border-radius .3s; }
+  .toggle { transition: right .42s var(--ease) .07s; }
+  body.menu-open .menu { height: calc(100svh - 48px); right: -12px; }
+  body.menu-open .menu .toggle { right: 12px; }
+  body.menu-closing .menu, body.menu-closing .menu .toggle { right: 0; }
   .menu .link .t { font-size: 40px; }
   .stack { display: none; }
   .menu .cases { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
