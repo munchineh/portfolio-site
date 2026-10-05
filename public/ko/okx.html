@@ -239,6 +239,20 @@
   /* ---------- Simple Buy screens, animated over the original exports ---------- */
   .okp { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
   .okp img { box-shadow: none !important; border-radius: 0 !important; }
+  /* Orbit screens: small, quiet motion on the real exports */
+  .orb { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .orb img { box-shadow: none !important; border-radius: 0 !important; }
+  .orb-st { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; pointer-events: none; }
+  .orb-st > * { position: absolute; }
+  .orb-sp { background-repeat: no-repeat; background-size: 600px 1299px; }
+  .orb-chk { transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; transform: scale(.4); opacity: 0; border-radius: 50%; }
+  .orb-chk.on { transform: scale(1); opacity: 1; }
+  .orb-btn { left: 346px; top: 1156px; width: 180px; height: 52px; background: #bbff2e; display: grid; place-items: center; font: 600 29px/1 Inter, -apple-system, "Helvetica Neue", Arial, sans-serif; color: #000; letter-spacing: -.01em; }
+  .orb-spark { left: 222px; top: 508px; width: 162px; height: 56px; background: #131313; transform-origin: 100% 50%; }
+  .orb-spark.run { transform: scaleX(0); transition: transform 1.6s cubic-bezier(.4,0,.2,1); }
+  .orb-hide { left: 0; top: 626px; width: 600px; height: 673px; background: #050505; }
+  .orb-sheet { left: 0; top: 626px; width: 600px; height: 673px; transform: translateY(100%); }
+  .orb-sheet.run { transform: translateY(0); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
   .okst { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; overflow: hidden; }
   .okst > div { position: absolute; }
   .okbg { inset: 0; background: #000 0 0 / 600px 1299px no-repeat; }
@@ -564,13 +578,13 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <header class="sh"><span class="no">2.1</span><h2>믿을 만한 사람, 한눈에</h2></header>
 <div class="sb">
 <p class="big-p">크립토 피드에선 누구나 전문가처럼 말하죠.</p>
-<p>Orbit에서 가장 어려운 부분은, 지난주에 가장 크게 베팅한 사람에게 상을 주지 않으면서도 누구 말을 들을 만한지 구분하게 돕는 거였어요. 저는 온보딩, 피드, 그리고 두 가지 버전의 프로필을 맡았어요. 글을 올리고 그룹을 만들고 거래를 공유할 수 있는 Orbiter, 그리고 그 밖의 모든 사용자요.</p>
-<p>Orbiter 프로필은 OKX에서 실제로 거래한 기록을 가져와 맨 앞에 보여줘요. 업그레이드는 할 수 있게 되는 일을 중심으로 안내해서, 초대받는 느낌이 들게 했어요.</p>
+<p>Orbiter는 우리의 핵심 인플루언서예요. 고액 고객을 찾아 그들을 중심으로 소셜 네트워크와 커뮤니티를 만들고, 그들의 게시물, 그룹, 공유한 거래가 좋은 UGC처럼 참여를 이끌게 하는 게 목표였어요. 저는 온보딩, 피드, 그리고 두 가지 버전의 프로필을 맡았어요. 글을 올리고 그룹을 만들고 거래를 공유할 수 있는 Orbiter, 그리고 그 밖의 모든 사용자요.</p>
+<p>Orbiter 프로필은 OKX에서 실제로 거래한 기록을 가져와 맨 앞에 보여줘요. 업그레이드는 힘을 얻는 느낌이 들도록 디자인했어요. 거래 수수료 수익부터 타이틀이 주는 위상까지, 혜택을 먼저 보여주죠. 초대 뒤에는 최소 거래량과 자산 잔고 같은 엄격한 조건이 있어서, 모든 Orbiter의 신뢰도가 지켜져요.</p>
 <div class="phones four">
-<figure><img alt="온보딩 화면: 인기 Orbiter 팔로우하기, 두 명 선택됨" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/><figcaption><b>온보딩</b>팔로우할 만한 사람부터.</figcaption></figure>
+<figure><div class="orb" data-o="follow"><img alt="온보딩 화면: 인기 Orbiter 팔로우하기, 두 명 선택됨" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/></div><figcaption><b>온보딩</b>팔로우할 만한 사람부터.</figcaption></figure>
 <figure><img alt="게시물마다 다루는 코인이 태그된 Orbit 피드" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>피드</b>게시물마다 다루는 코인이 붙어요.</figcaption></figure>
-<figure><img alt="배지, 리드 트레이드 손익(PnL), 그룹 채팅이 보이는 Orbiter 프로필" height="1299" loading="lazy" src="../assets/orbit-profile.jpg" width="600"/><figcaption><b>Orbiter 프로필</b>거래 기록이 먼저, 소개는 그다음.</figcaption></figure>
-<figure><img alt="Orbiter가 할 수 있는 일을 정리한 Orbiter 업그레이드 시트" height="1299" loading="lazy" src="../assets/orbit-upgrade.jpg" width="600"/><figcaption><b>업그레이드</b>할 수 있는 일을 세 줄로.</figcaption></figure>
+<figure><div class="orb" data-o="profile"><img alt="배지, 리드 트레이드 손익(PnL), 그룹 채팅이 보이는 Orbiter 프로필" height="1299" loading="lazy" src="../assets/orbit-profile.jpg" width="600"/></div><figcaption><b>Orbiter 프로필</b>거래 기록이 먼저, 소개는 그다음.</figcaption></figure>
+<figure><div class="orb" data-o="upgrade"><img alt="Orbiter가 할 수 있는 일을 정리한 Orbiter 업그레이드 시트" height="1299" loading="lazy" src="../assets/orbit-upgrade.jpg" width="600"/></div><figcaption><b>업그레이드</b>할 수 있는 일을 세 줄로.</figcaption></figure>
 </div>
 <div class="result"><b>일간 활성 사용자 약 200% 증가.</b><p>출시 후 3개월 동안, 제가 OKX를 떠나기 전에 측정한 수치예요.</p></div>
 </div>
@@ -596,9 +610,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <section class="panel sec">
 <header class="sh"><span class="no">3.2</span><h2>올해의 하이라이트, 그 주인공은 나</h2></header>
 <div class="sb">
-<p class="big-p">콘셉트 하나로 스토리, 톤, 번역을 한데 묶었어요.</p>
+<p class="big-p">우주라는 하나의 내러티브로 스토리, 톤, 브랜드를 한데 묶었어요.</p>
 <p>Rewind는 한 해를 세 파트짜리 플레이리스트로 바꿔요. 내 자산, 내가 거래한 방식, 그리고 마지막으로 트레이더 페르소나. 이 한 줄 덕분에 법무팀과 마케팅팀은 일찍 승인할 수 있었고, 모든 라이터와 번역가가 같은 브리프로 일할 수 있었어요.</p>
-<p>톤은 우주 메타포에 담았어요. 좋은 해는 "우주급"이에요. 힘든 해도 똑같이 중요해요. 2024년에 손실을 본 사람이 많았으니까요. 그런 분들에게는 "다음 이륙을 준비하고 있을 뿐이에요"라고 말해요. 솔직하면서도 아픈 곳을 찌르지 않는 말이죠.</p>
+<p>모든 문장이 그 세계 안에 있어요. 좋은 해는 "우주급"이에요. 힘든 해도 똑같이 중요해요. 2024년에 손실을 본 사람이 많았으니까요. 그런 분들에게는 "다음 이륙을 준비하고 있을 뿐이에요"라고 말해요. 솔직하면서도 아픈 곳을 찌르지 않는 말이죠.</p>
+<p>모든 화면과 언어에서 테마를 일관되게 지킨 덕분에, 복잡한 데이터가 하나의 이야기가 됐고 브랜드도 더 단단해졌어요.</p>
 <div class="phones">
 <figure><img alt="파트 1/3: 오프닝 트랙으로 되감아 볼까요" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>오프닝</b>플레이리스트처럼, 파트 1/3.</figcaption></figure>
 <figure><img alt="올해 수익은 그야말로 우주급이었어요. 수익 21,887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>좋은 해</b>"말 그대로 천문학적이네요."</figcaption></figure>
@@ -607,12 +622,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3</span><h2>자랑하고 싶어지는 공유 카드</h2></header>
+<header class="sh"><span class="no">3.3</span><h2>공유하고 싶어지게</h2></header>
 <div class="sb">
-<p class="big-p">거래 스타일은 보여주고, 잔고는 빼요.</p>
-<p>마지막에는 Crypto Comet이나 Market Maestro 같은 페르소나가 나와요. 희귀도 태그와 함께, 왜 그 페르소나를 받았는지 한 줄로 알려주죠. 숫자가 없으니 올리기도 편해요. 문구는 중국어, 아랍어, 러시아어를 포함한 여러 언어로 나갔고, 오른쪽에서 왼쪽으로 쓰는 언어와 훨씬 긴 단어에서도 문제없이 작동해야 했어요.</p>
+<p class="big-p">여정이 끝나는 곳에서, Rewind의 여행이 시작돼요.</p>
+<p>마지막에는 Crypto Comet이나 Market Maestro 같은 페르소나가 나와요. 희귀도 태그와 함께, 왜 그 페르소나를 받았는지 한 줄로 알려주죠. 거래 스타일은 보여주고 잔고는 빼서, 부담 없이 올릴 수 있어요. 탭 한 번이면 Telegram, WhatsApp, X로 공유되고, QR 코드는 보는 사람을 자기만의 Rewind로 초대해요. 공유 하나하나가 다른 누군가의 다음 걸음이 돼요.</p>
 <div class="phones two">
-<figure><img alt="Crypto Rewind 공유하기: 샘플 사용자 Jamie는 Rare 태그가 붙은 Crypto Comet" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/><figcaption><b>페르소나 카드</b>타이틀과 이유, 숫자는 없이.</figcaption></figure>
+<figure><img alt="Crypto Rewind 공유하기: 샘플 사용자 Jamie는 Rare 태그가 붙은 Crypto Comet" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/><figcaption><b>공유 시트</b>올리고 싶은 페르소나, 내 Rewind로 이어지는 QR 코드.</figcaption></figure>
 <div class="card" style="align-self:start">
 <span class="tile-k">세 파트로 보는 Rewind</span>
 <ol class="layers" style="margin-top:0">
@@ -623,7 +638,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </div>
 <div class="card" style="padding:0">
-<div class="label" style="border-bottom:1px solid var(--rule)"><span>목표 대비 실적, 달성률 기준</span><span>Amplitude · 2025년 2월 28일</span></div>
+<div class="label" style="border-bottom:1px solid var(--rule)"><span>목표 대비 실적</span><span>Amplitude · 2025년 2월 28일</span></div>
 <div class="gva" id="gva">
 <div class="gva-row"><b>클릭 수<small>326만 vs 목표 150만</small></b><div aria-label="클릭 수: 목표 150만 대비 326만, 목표의 217%" class="track" data-g="1.5" data-u="M" data-v="3.26" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
 <div class="gva-row"><b>완주한 여정<small>122만 vs 목표 80만</small></b><div aria-label="완주한 여정: 목표 80만 대비 122만, 목표의 153%" class="track" data-g="0.8" data-u="M" data-v="1.22" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
@@ -632,7 +647,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 <p class="gva-note"><i></i>목표선. 모든 목표는 전년도 실적에 사용자 증가분을 반영해 정했어요.</p>
 </div>
-<p>OKX를 떠나기 전 2025년 에디션 작업에도 참여했는데, 이 에디션은 이후 Red Dot 어워드를 받았어요.</p>
+<p>OKX를 떠나기 전 2025년 에디션 작업에도 참여했는데, 이 에디션은 2026년 Red Dot 디자인 어워드를 받았어요.</p>
 </div>
 </section>
 <!-- ============ Next ============ -->
@@ -640,7 +655,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div class="panel c-cta action-card">
 <div class="label"><span>연락처</span><span>어디서든 일할 수 있어요</span></div>
 <div class="inner">
-<h2>AI 프로덕트를 만들고 있나요? 사람의 온기가 느껴지도록 함께 만들어요.</h2>
+<h2>AI 어시스턴트를 만들고 있나요? 말투부터 함께 디자인해요.</h2>
 <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">인사 건네기</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">이력서 받아 가기 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
 </div>
 </div>
@@ -817,6 +832,39 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   if (!still) new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting && !manual && !timer) { root.classList.add('auto'); timer = setInterval(() => show((cur + 1) % tabs.length), 6000); }
     if (!e.isIntersecting) stop(); }), { threshold: .5 }).observe(root);
+})();
+</script>
+<script>
+/* Orbit: checks tick on, the PnL line draws in, the upgrade sheet rises. Plays while on screen. */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mk = (p, cls, css = {}) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css); p.appendChild(d); return d; };
+  const spr = (p, cls, file, x, y, w, h, l = x, t = y) => mk(p, 'orb-sp ' + cls, { left: l + 'px', top: t + 'px', width: w + 'px', height: h + 'px', backgroundImage: `url(../assets/${file})`, backgroundPosition: `-${x}px -${y}px` });
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.querySelectorAll('.orb').forEach(box => {
+    const k = box.dataset.o, st = mk(box, 'orb-st');
+    st.setAttribute('aria-hidden', 'true');
+    new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 600})`).observe(box);
+    let play, reset;
+    if (k === 'follow') {
+      const rows = [439, 609].map(y => { spr(st, '', 'orbit-follow.jpg', 526, 264, 32, 32, 526, y - 3); return spr(st, 'orb-chk', 'orbit-follow.jpg', 526, y - 1, 32, 32); });
+      const btn = mk(st, 'orb-btn'); btn.textContent = 'Follow';
+      reset = () => { rows.forEach(r => r.classList.remove('on')); btn.textContent = 'Follow'; };
+      play = async (ok) => { await wait(700); if (!ok()) return; rows[0].classList.add('on'); btn.textContent = 'Follow (1)';
+        await wait(650); if (!ok()) return; rows[1].classList.add('on'); btn.textContent = 'Follow (2)'; await wait(4200); };
+    } else if (k === 'profile') {
+      const c = mk(st, 'orb-spark');
+      reset = () => { c.classList.remove('run'); };
+      play = async (ok) => { await wait(500); if (!ok()) return; c.classList.add('run'); await wait(5200); };
+    } else if (k === 'upgrade') {
+      mk(st, 'orb-hide'); const sh = spr(st, 'orb-sheet', 'orbit-upgrade.jpg', 0, 626, 600, 673);
+      reset = () => { sh.classList.remove('run'); };
+      play = async (ok) => { await wait(600); if (!ok()) return; sh.classList.add('run'); await wait(5000); };
+    }
+    let run = 0;
+    const loop = async () => { const me = ++run, ok = () => me === run; while (ok()) { reset(); void st.offsetWidth; await wait(60); await play(ok); } };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) loop(); else { run++; reset(); } }), { threshold: .4 }).observe(box);
+  });
 })();
 </script>
 </body>

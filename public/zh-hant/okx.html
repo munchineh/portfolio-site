@@ -239,6 +239,20 @@
   /* ---------- Simple Buy screens, animated over the original exports ---------- */
   .okp { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
   .okp img { box-shadow: none !important; border-radius: 0 !important; }
+  /* Orbit screens: small, quiet motion on the real exports */
+  .orb { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .orb img { box-shadow: none !important; border-radius: 0 !important; }
+  .orb-st { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; pointer-events: none; }
+  .orb-st > * { position: absolute; }
+  .orb-sp { background-repeat: no-repeat; background-size: 600px 1299px; }
+  .orb-chk { transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; transform: scale(.4); opacity: 0; border-radius: 50%; }
+  .orb-chk.on { transform: scale(1); opacity: 1; }
+  .orb-btn { left: 346px; top: 1156px; width: 180px; height: 52px; background: #bbff2e; display: grid; place-items: center; font: 600 29px/1 Inter, -apple-system, "Helvetica Neue", Arial, sans-serif; color: #000; letter-spacing: -.01em; }
+  .orb-spark { left: 222px; top: 508px; width: 162px; height: 56px; background: #131313; transform-origin: 100% 50%; }
+  .orb-spark.run { transform: scaleX(0); transition: transform 1.6s cubic-bezier(.4,0,.2,1); }
+  .orb-hide { left: 0; top: 626px; width: 600px; height: 673px; background: #050505; }
+  .orb-sheet { left: 0; top: 626px; width: 600px; height: 673px; transform: translateY(100%); }
+  .orb-sheet.run { transform: translateY(0); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
   .okst { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; overflow: hidden; }
   .okst > div { position: absolute; }
   .okbg { inset: 0; background: #000 0 0 / 600px 1299px no-repeat; }
@@ -564,13 +578,13 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <header class="sh"><span class="no">2.1</span><h2>誰有實力，一看便知</h2></header>
 <div class="sb">
 <p class="big-p">在幣圈動態牆上，人人都像專家。</p>
-<p>Orbit 最難的地方，是幫大家分辨誰的話值得聽，又不能獎勵上週賭最大的那個人。我負責新手引導、動態牆，以及兩種版本的個人檔案：一種給能發文、建立群組、分享交易的 Orbiter，另一種給其他所有人。</p>
-<p>Orbiter 的個人檔案把交易紀錄放在最前面，資料直接來自他們在 OKX 上的實際操作。升級的說明則聚焦在你能做些什麼，讀起來更像一份邀請。</p>
+<p>Orbiter 是我們的關鍵意見領袖。構想是找出高價值客戶，圍繞他們建立社交網絡與社群，讓他們的貼文、群組和分享的交易，像優質的使用者生成內容（UGC）一樣帶動互動。我負責新手引導、動態牆，以及兩種版本的個人檔案：一種給能發文、建立群組、分享交易的 Orbiter，另一種給其他所有人。</p>
+<p>Orbiter 的個人檔案把交易紀錄放在最前面，資料直接來自他們在 OKX 上的實際操作。升級流程的設計，是要讓人感覺被賦予力量，所以先講好處：從交易佣金，到稱號帶來的身分地位。邀請的背後也有硬性門檻，例如最低交易量和資產餘額，確保每位 Orbiter 都值得信賴。</p>
 <div class="phones four">
-<figure><img alt="新手引導畫面：追蹤熱門 Orbiter，已選取兩位" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/><figcaption><b>新手引導</b>從值得追蹤的人開始。</figcaption></figure>
+<figure><div class="orb" data-o="follow"><img alt="新手引導畫面：追蹤熱門 Orbiter，已選取兩位" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/></div><figcaption><b>新手引導</b>從值得追蹤的人開始。</figcaption></figure>
 <figure><img alt="Orbit 動態牆，每則貼文都標上討論的幣種" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>動態牆</b>每則貼文都標上討論的幣種。</figcaption></figure>
-<figure><img alt="Orbiter 的個人檔案，顯示徽章、帶單損益與群組聊天" height="1299" loading="lazy" src="../assets/orbit-profile.jpg" width="600"/><figcaption><b>Orbiter 個人檔案</b>交易紀錄優先，自我介紹其次。</figcaption></figure>
-<figure><img alt="「升級為 Orbiter」面板，列出 Orbiter 能做的事" height="1299" loading="lazy" src="../assets/orbit-upgrade.jpg" width="600"/><figcaption><b>升級</b>你能做什麼，三行說完。</figcaption></figure>
+<figure><div class="orb" data-o="profile"><img alt="Orbiter 的個人檔案，顯示徽章、帶單損益與群組聊天" height="1299" loading="lazy" src="../assets/orbit-profile.jpg" width="600"/></div><figcaption><b>Orbiter 個人檔案</b>交易紀錄優先，自我介紹其次。</figcaption></figure>
+<figure><div class="orb" data-o="upgrade"><img alt="「升級為 Orbiter」面板，列出 Orbiter 能做的事" height="1299" loading="lazy" src="../assets/orbit-upgrade.jpg" width="600"/></div><figcaption><b>升級</b>你能做什麼，三行說完。</figcaption></figure>
 </div>
 <div class="result"><b>日活躍使用者成長約 200%。</b><p>統計期間為上線後三個月，也就是我離開 OKX 之前。</p></div>
 </div>
@@ -596,9 +610,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <section class="panel sec">
 <header class="sh"><span class="no">3.2</span><h2>重播精彩，主角是你</h2></header>
 <div class="sb">
-<p class="big-p">一個概念，串起故事、語氣與翻譯。</p>
+<p class="big-p">一個太空敘事，把故事、語氣和品牌串在一起。</p>
 <p>Rewind 把一年變成一份三段式的播放清單：你的資產、你的交易方式，最後是你的交易者人設。這條主軸讓法務和行銷能提早拍板，也讓每位文案和譯者都拿到同一份簡報。</p>
-<p>語氣建立在太空的比喻上。好的一年是「好到飛出地球」。不好的一年同樣重要，因為 2024 年有不少人賠了錢。他們看到的是「你只是在為下一次起飛做準備」，誠實，但不往傷口上撒鹽。</p>
+<p>每一句話都活在這個世界裡。好的一年是「好到飛出地球」。不好的一年同樣重要，因為 2024 年有不少人賠了錢。他們看到的是「你只是在為下一次起飛做準備」，誠實，但不往傷口上撒鹽。</p>
+<p>讓主題在每個畫面、每種語言中保持一致，才把大量複雜的數據串成同一個故事，品牌也因此更加鮮明。</p>
 <div class="phones">
 <figure><img alt="第 1 段（共 3 段）：倒帶回到你的開場曲" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>開場</b>第 1 段（共 3 段），就像播放清單。</figcaption></figure>
 <figure><img alt="你的收益好到飛出地球。獲利 21,887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>好的一年</b>「這成績，簡直是天文數字。」</figcaption></figure>
@@ -607,12 +622,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3</span><h2>想曬，也敢曬</h2></header>
+<header class="sh"><span class="no">3.3</span><h2>為分享而生</h2></header>
 <div class="sb">
-<p class="big-p">只曬交易風格，餘額免談。</p>
-<p>每個人最後都會拿到一個人設，例如 Crypto Comet 或 Market Maestro，附上稀有度標籤，以及一句說明為什麼拿到它。上面沒有任何數字，所以很好分享。文案以多種語言推出，包括中文、阿拉伯文和俄文，還得應付由右至左的排版，以及長得多的單字。</p>
+<p class="big-p">旅程的終點，正是 Rewind 啟程的地方。</p>
+<p>每個人最後都會拿到一個人設，例如 Crypto Comet 或 Market Maestro，附上稀有度標籤，以及一句說明為什麼拿到它。它讚揚你的交易風格，餘額則一個字都不露，所以很好分享。點一下就能傳到 Telegram、WhatsApp 或 X，而 QR Code 會邀請每個看到的人，也來玩自己的 Rewind。每一次分享，都成了另一個人的下一步。</p>
 <div class="phones two">
-<figure><img alt="分享你的 Crypto Rewind：範例使用者 Jamie 是 Crypto Comet，附 Rare 標籤" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/><figcaption><b>人設卡片</b>一個稱號、一個理由，沒有數字。</figcaption></figure>
+<figure><img alt="分享你的 Crypto Rewind：範例使用者 Jamie 是 Crypto Comet，附 Rare 標籤" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/><figcaption><b>分享面板</b>一個能分享的人設，加上一個邀你也來玩的 QR Code。</figcaption></figure>
 <div class="card" style="align-self:start">
 <span class="tile-k">Rewind 三部曲</span>
 <ol class="layers" style="margin-top:0">
@@ -623,7 +638,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </div>
 <div class="card" style="padding:0">
-<div class="label" style="border-bottom:1px solid var(--rule)"><span>目標與實際，以目標達成率呈現</span><span>Amplitude · 2025 年 2 月 28 日</span></div>
+<div class="label" style="border-bottom:1px solid var(--rule)"><span>實際 vs 目標</span><span>Amplitude · 2025 年 2 月 28 日</span></div>
 <div class="gva" id="gva">
 <div class="gva-row"><b>點擊次數<small>326 萬 vs 目標 150 萬</small></b><div aria-label="點擊次數：326 萬，目標 150 萬，達成率 217%" class="track" data-g="1.5" data-u="M" data-v="3.26" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
 <div class="gva-row"><b>完整看完<small>122 萬 vs 目標 80 萬</small></b><div aria-label="完整看完：122 萬，目標 80 萬，達成率 153%" class="track" data-g="0.8" data-u="M" data-v="1.22" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
@@ -632,7 +647,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 <p class="gva-note"><i></i>目標線。每個目標都以前一年為基準，並依使用者成長調整。</p>
 </div>
-<p>離開 OKX 前，我也參與了 2025 年版，後來它拿下了 Red Dot 設計獎。</p>
+<p>離開 OKX 前，我也參與了 2025 年版，後來它在 2026 年拿下了 Red Dot 設計獎。</p>
 </div>
 </section>
 <!-- ============ Next ============ -->
@@ -640,7 +655,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div class="panel c-cta action-card">
 <div class="label"><span>聯絡</span><span>歡迎各地的工作機會</span></div>
 <div class="inner">
-<h2>在做 AI 產品嗎？一起讓它更有人味</h2>
+<h2>在做 AI 助理？一起設計它的說話方式</h2>
 <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">打聲招呼</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">帶走一份履歷 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
 </div>
 </div>
@@ -817,6 +832,39 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   if (!still) new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting && !manual && !timer) { root.classList.add('auto'); timer = setInterval(() => show((cur + 1) % tabs.length), 6000); }
     if (!e.isIntersecting) stop(); }), { threshold: .5 }).observe(root);
+})();
+</script>
+<script>
+/* Orbit: checks tick on, the PnL line draws in, the upgrade sheet rises. Plays while on screen. */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mk = (p, cls, css = {}) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css); p.appendChild(d); return d; };
+  const spr = (p, cls, file, x, y, w, h, l = x, t = y) => mk(p, 'orb-sp ' + cls, { left: l + 'px', top: t + 'px', width: w + 'px', height: h + 'px', backgroundImage: `url(../assets/${file})`, backgroundPosition: `-${x}px -${y}px` });
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.querySelectorAll('.orb').forEach(box => {
+    const k = box.dataset.o, st = mk(box, 'orb-st');
+    st.setAttribute('aria-hidden', 'true');
+    new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 600})`).observe(box);
+    let play, reset;
+    if (k === 'follow') {
+      const rows = [439, 609].map(y => { spr(st, '', 'orbit-follow.jpg', 526, 264, 32, 32, 526, y - 3); return spr(st, 'orb-chk', 'orbit-follow.jpg', 526, y - 1, 32, 32); });
+      const btn = mk(st, 'orb-btn'); btn.textContent = 'Follow';
+      reset = () => { rows.forEach(r => r.classList.remove('on')); btn.textContent = 'Follow'; };
+      play = async (ok) => { await wait(700); if (!ok()) return; rows[0].classList.add('on'); btn.textContent = 'Follow (1)';
+        await wait(650); if (!ok()) return; rows[1].classList.add('on'); btn.textContent = 'Follow (2)'; await wait(4200); };
+    } else if (k === 'profile') {
+      const c = mk(st, 'orb-spark');
+      reset = () => { c.classList.remove('run'); };
+      play = async (ok) => { await wait(500); if (!ok()) return; c.classList.add('run'); await wait(5200); };
+    } else if (k === 'upgrade') {
+      mk(st, 'orb-hide'); const sh = spr(st, 'orb-sheet', 'orbit-upgrade.jpg', 0, 626, 600, 673);
+      reset = () => { sh.classList.remove('run'); };
+      play = async (ok) => { await wait(600); if (!ok()) return; sh.classList.add('run'); await wait(5000); };
+    }
+    let run = 0;
+    const loop = async () => { const me = ++run, ok = () => me === run; while (ok()) { reset(); void st.offsetWidth; await wait(60); await play(ok); } };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) loop(); else { run++; reset(); } }), { threshold: .4 }).observe(box);
+  });
 })();
 </script>
 </body>

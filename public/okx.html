@@ -238,6 +238,20 @@
   /* ---------- Simple Buy screens, animated over the original exports ---------- */
   .okp { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
   .okp img { box-shadow: none !important; border-radius: 0 !important; }
+  /* Orbit screens: small, quiet motion on the real exports */
+  .orb { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .orb img { box-shadow: none !important; border-radius: 0 !important; }
+  .orb-st { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; pointer-events: none; }
+  .orb-st > * { position: absolute; }
+  .orb-sp { background-repeat: no-repeat; background-size: 600px 1299px; }
+  .orb-chk { transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; transform: scale(.4); opacity: 0; border-radius: 50%; }
+  .orb-chk.on { transform: scale(1); opacity: 1; }
+  .orb-btn { left: 346px; top: 1156px; width: 180px; height: 52px; background: #bbff2e; display: grid; place-items: center; font: 600 29px/1 Inter, -apple-system, "Helvetica Neue", Arial, sans-serif; color: #000; letter-spacing: -.01em; }
+  .orb-spark { left: 222px; top: 508px; width: 162px; height: 56px; background: #131313; transform-origin: 100% 50%; }
+  .orb-spark.run { transform: scaleX(0); transition: transform 1.6s cubic-bezier(.4,0,.2,1); }
+  .orb-hide { left: 0; top: 626px; width: 600px; height: 673px; background: #050505; }
+  .orb-sheet { left: 0; top: 626px; width: 600px; height: 673px; transform: translateY(100%); }
+  .orb-sheet.run { transform: translateY(0); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
   .okst { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; overflow: hidden; }
   .okst > div { position: absolute; }
   .okbg { inset: 0; background: #000 0 0 / 600px 1299px no-repeat; }
@@ -584,13 +598,13 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">2.1</span><h2>Credibility you can see</h2></header>
     <div class="sb">
       <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
-      <p>The hard part of Orbit was helping people tell who's worth listening to, without rewarding whoever took the biggest gamble last week. I worked on onboarding, the feed and the two versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.</p>
-      <p>An Orbiter's profile puts their track record up front, pulled from what they actually did on OKX. Upgrading is framed around what you'll be able to do, so it feels like an invitation.</p>
+      <p>Orbiters are our key influencers. The idea was to find high-value customers and build social networks and communities around them, so their posts, groups and shared trades drive engagement the way great UGC does. I worked on onboarding, the feed and both versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.</p>
+      <p>An Orbiter's profile puts their track record up front, pulled from what they actually did on OKX. Upgrading is designed to feel empowering, leading with the benefits, from commission on trades to the standing that comes with the title. Behind the invitation sit hard requirements, like a minimum trading volume and asset balance, which keep every Orbiter credible.</p>
       <div class="phones four">
-        <figure><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
+        <figure><div class="orb" data-o="follow"><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"></div><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
         <figure><img src="assets/orbit-feed.jpg" alt="The Orbit feed with posts tagged to the coins they discuss" width="600" height="1299" loading="lazy"><figcaption><b>The feed</b>Posts carry the coin they're about.</figcaption></figure>
-        <figure><img src="assets/orbit-profile.jpg" alt="An Orbiter's profile showing badges, lead trade PnL and group chats" width="600" height="1299" loading="lazy"><figcaption><b>Orbiter profile</b>Track record first, bio second.</figcaption></figure>
-        <figure><img src="assets/orbit-upgrade.jpg" alt="Upgrade to Orbiter sheet listing what Orbiters can do" width="600" height="1299" loading="lazy"><figcaption><b>Upgrading</b>What you can do, in three lines.</figcaption></figure>
+        <figure><div class="orb" data-o="profile"><img src="assets/orbit-profile.jpg" alt="An Orbiter's profile showing badges, lead trade PnL and group chats" width="600" height="1299" loading="lazy"></div><figcaption><b>Orbiter profile</b>Track record first, bio second.</figcaption></figure>
+        <figure><div class="orb" data-o="upgrade"><img src="assets/orbit-upgrade.jpg" alt="Upgrade to Orbiter sheet listing what Orbiters can do" width="600" height="1299" loading="lazy"></div><figcaption><b>Upgrading</b>What you can do, in three lines.</figcaption></figure>
       </div>
       <div class="result"><b>Daily active users grew about 200%.</b><p>Measured in the three months after launch, before I left OKX.</p></div>
     </div>
@@ -619,9 +633,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   <section class="panel sec">
     <header class="sh"><span class="no">3.2</span><h2>Playing back your highlights, and highlighting you</h2></header>
     <div class="sb">
-      <p class="big-p">One concept kept the story, the tone and the translations together.</p>
+      <p class="big-p">One space narrative tied the story, the tone and the brand together.</p>
       <p>Rewind turns the year into a playlist in three parts: your assets, how you traded, and a trader persona at the end. The line gave Legal and Marketing something to sign off early, and gave every writer and translator the same brief.</p>
-      <p>The tone lives in space metaphors. Good years are "out of this world". Bad years matter just as much, because plenty of people lost money in 2024. They get "You're only getting ready for your next takeoff", which is honest without rubbing it in.</p>
+      <p>Every line lives in that world. Good years are "out of this world". Bad years matter just as much, because plenty of people lost money in 2024. They get "You're only getting ready for your next takeoff", which is honest without rubbing it in.</p>
+      <p>Keeping the theme consistent across every screen and language is what turned a lot of complex data into one story, and it made the brand feel stronger for it.</p>
       <div class="phones">
         <figure><img src="assets/cr-open.jpg" alt="Part 1 of 3: Let's rewind back to your opening track" width="600" height="1299" loading="lazy"><figcaption><b>The opening</b>Part 1 of 3, like a playlist.</figcaption></figure>
         <figure><img src="assets/cr-earn.jpg" alt="Your earnings were out of this world. A profit of 21,887 USDT" width="600" height="1299" loading="lazy"><figcaption><b>A good year</b>"Talk about astronomical."</figcaption></figure>
@@ -631,12 +646,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">3.3</span><h2>Something people actually wanted to share</h2></header>
+    <header class="sh"><span class="no">3.3</span><h2>Built to be shared</h2></header>
     <div class="sb">
-      <p class="big-p">The share card celebrates how you trade and leaves your balances off.</p>
-      <p>Each person ends on a persona, like Crypto Comet or Market Maestro, with a rarity tag and a line about why they earned it. With no numbers on it, it's easy to post. The copy shipped in multiple languages, including Chinese, Arabic and Russian, where it also had to work right to left and with much longer words.</p>
+      <p class="big-p">The end of the journey is where Rewind starts to travel.</p>
+      <p>Each person ends on a persona, like Crypto Comet or Market Maestro, with a rarity tag and a line about why they earned it. It celebrates how you trade and leaves your balances off, so it's easy to post. One tap sends it to Telegram, WhatsApp or X, and the QR code invites whoever sees it to play their own Rewind. Every share becomes someone else's next step.</p>
       <div class="phones two">
-        <figure><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"><figcaption><b>The persona card</b>A title and a reason, no numbers.</figcaption></figure>
+        <figure><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"><figcaption><b>The share sheet</b>A persona to post, and a QR code to play your own.</figcaption></figure>
         <div class="card" style="align-self:start">
           <span class="tile-k">Rewind in three parts</span>
           <ol class="layers" style="margin-top:0">
@@ -647,7 +662,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
         </div>
       </div>
       <div class="card" style="padding:0">
-        <div class="label" style="border-bottom:1px solid var(--rule)"><span>Goal vs actual, as a share of goal</span><span>Amplitude · 28 Feb 2025</span></div>
+        <div class="label" style="border-bottom:1px solid var(--rule)"><span>Actual vs goal</span><span>Amplitude · 28 Feb 2025</span></div>
         <div class="gva" id="gva">
           <div class="gva-row"><b>Click-throughs<small>3.26M vs 1.5M goal</small></b><div class="track" tabindex="0" data-v="3.26" data-g="1.5" data-u="M" aria-label="Click-throughs: 3.26 million against a goal of 1.5 million, 217% of goal"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
           <div class="gva-row"><b>Completed journeys<small>1.22M vs 800k goal</small></b><div class="track" tabindex="0" data-v="1.22" data-g="0.8" data-u="M" aria-label="Completed journeys: 1.22 million against a goal of 800 thousand, 153% of goal"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
@@ -656,7 +671,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
         </div>
         <p class="gva-note"><i></i>Goal line. Every goal was set against the year before, adjusted for user growth.</p>
       </div>
-      <p>I also worked on the 2025 edition before I left OKX, and it went on to win a Red Dot award.</p>
+      <p>I also worked on the 2025 edition before I left OKX, which went on to win the Red Dot design award in 2026.</p>
     </div>
   </section>
 
@@ -665,7 +680,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <div class="panel c-cta action-card">
       <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
       <div class="inner">
-        <h2>Designing an AI product? Let's make it feel human.</h2>
+        <h2>Building an AI assistant? Let's design how it talks.</h2>
         <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
       </div>
     </div>
@@ -844,6 +859,39 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   if (!still) new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting && !manual && !timer) { root.classList.add('auto'); timer = setInterval(() => show((cur + 1) % tabs.length), 6000); }
     if (!e.isIntersecting) stop(); }), { threshold: .5 }).observe(root);
+})();
+</script>
+<script>
+/* Orbit: checks tick on, the PnL line draws in, the upgrade sheet rises. Plays while on screen. */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mk = (p, cls, css = {}) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css); p.appendChild(d); return d; };
+  const spr = (p, cls, file, x, y, w, h, l = x, t = y) => mk(p, 'orb-sp ' + cls, { left: l + 'px', top: t + 'px', width: w + 'px', height: h + 'px', backgroundImage: `url(assets/${file})`, backgroundPosition: `-${x}px -${y}px` });
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.querySelectorAll('.orb').forEach(box => {
+    const k = box.dataset.o, st = mk(box, 'orb-st');
+    st.setAttribute('aria-hidden', 'true');
+    new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 600})`).observe(box);
+    let play, reset;
+    if (k === 'follow') {
+      const rows = [439, 609].map(y => { spr(st, '', 'orbit-follow.jpg', 526, 264, 32, 32, 526, y - 3); return spr(st, 'orb-chk', 'orbit-follow.jpg', 526, y - 1, 32, 32); });
+      const btn = mk(st, 'orb-btn'); btn.textContent = 'Follow';
+      reset = () => { rows.forEach(r => r.classList.remove('on')); btn.textContent = 'Follow'; };
+      play = async (ok) => { await wait(700); if (!ok()) return; rows[0].classList.add('on'); btn.textContent = 'Follow (1)';
+        await wait(650); if (!ok()) return; rows[1].classList.add('on'); btn.textContent = 'Follow (2)'; await wait(4200); };
+    } else if (k === 'profile') {
+      const c = mk(st, 'orb-spark');
+      reset = () => { c.classList.remove('run'); };
+      play = async (ok) => { await wait(500); if (!ok()) return; c.classList.add('run'); await wait(5200); };
+    } else if (k === 'upgrade') {
+      mk(st, 'orb-hide'); const sh = spr(st, 'orb-sheet', 'orbit-upgrade.jpg', 0, 626, 600, 673);
+      reset = () => { sh.classList.remove('run'); };
+      play = async (ok) => { await wait(600); if (!ok()) return; sh.classList.add('run'); await wait(5000); };
+    }
+    let run = 0;
+    const loop = async () => { const me = ++run, ok = () => me === run; while (ok()) { reset(); void st.offsetWidth; await wait(60); await play(ok); } };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) loop(); else { run++; reset(); } }), { threshold: .4 }).observe(box);
+  });
 })();
 </script>
 </body>
