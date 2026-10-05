@@ -80,10 +80,20 @@
 })();
 
 /* Rolling numbers: each digit spins through a column of 0–9 and lands on its value, like an odometer. */
+/* A plus sign sits on the baseline; lift it so it centres on the numerals */
+window.liftPlus = (el) => {
+  const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [];
+  while (walk.nextNode()) if (walk.currentNode.nodeValue.includes('+') && !walk.currentNode.parentElement.classList.contains('plus')) nodes.push(walk.currentNode);
+  nodes.forEach(n => { const frag = document.createDocumentFragment();
+    n.nodeValue.split(/(\+)/).forEach(part => { if (!part) return; if (part === '+') { const s = document.createElement('span'); s.className = 'plus'; s.textContent = '+'; frag.appendChild(s); } else frag.appendChild(document.createTextNode(part)); });
+    n.replaceWith(frag); });
+};
+document.querySelectorAll('[data-n], .yrs').forEach(el => window.liftPlus(el));
+
 window.rollNumber = (el) => {
   const text = el.dataset.n || el.textContent.trim();
   el.dataset.n = text;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = text; return; }
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = text; window.liftPlus(el); return; }
   el.setAttribute('aria-label', text);
   el.innerHTML = '';
   el.classList.add('roll');
@@ -104,7 +114,7 @@ window.rollNumber = (el) => {
       }));
       d++;
     } else {
-      const s = document.createElement('span'); s.className = 'roll-ch'; s.setAttribute('aria-hidden', 'true'); s.textContent = ch; el.appendChild(s);
+      const s = document.createElement('span'); s.className = 'roll-ch' + (ch === '+' ? ' plus' : ''); s.setAttribute('aria-hidden', 'true'); s.textContent = ch; el.appendChild(s);
     }
   });
 };

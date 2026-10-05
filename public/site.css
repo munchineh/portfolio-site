@@ -209,8 +209,10 @@ body.menu-open .menu .secondary { transition-delay: .34s; }
 button, input { font-weight: inherit; }
 
 /* Rolling numbers */
-.roll { display: inline-flex; align-items: flex-start; line-height: 1em; height: 1em; overflow: hidden; font-variant-numeric: tabular-nums; vertical-align: top; }
-.roll-col { display: inline-block; height: 1em; overflow: hidden; }
+/* Clip only vertically, so wide condensed numerals never lose their edges */
+.roll { display: inline-flex; align-items: flex-start; line-height: 1em; height: 1em; overflow-x: visible; overflow-y: clip; font-variant-numeric: tabular-nums; vertical-align: top; }
+.roll-col { display: inline-block; height: 1em; overflow-x: visible; overflow-y: clip; }
+.plus { display: inline-block; transform: translateY(-.07em); }
 .roll-strip { display: flex; flex-direction: column; will-change: transform; }
 .roll-strip span, .roll-ch { display: block; height: 1em; line-height: 1em; }
 
