@@ -84,6 +84,8 @@
   .shots figure.tall { aspect-ratio: 4 / 3.4; }
   .shots figure.tall img { height: 100%; object-fit: cover; object-position: top center; }
   .shots figure.picks img { object-position: left top; }
+  .shots figure.zoom { background: #fff; display: flex; justify-content: center; }
+  .shots figure.zoom img { width: auto !important; max-width: 100%; height: auto; max-height: 440px; }
   .shots figure.stage { background: #fff; display: flex; justify-content: center; padding: 12px 0; }
   .shots figure.stage img { width: auto !important; max-width: 100%; height: auto; max-height: 520px; }
   .shots img.crop-pdp { aspect-ratio: 1180 / 520; object-fit: cover; object-position: 50% 62%; }
@@ -303,11 +305,11 @@
           <div><b>Share as much or as little as you like</b><p>Height and weight are enough for a first recommendation. Shoppers who want a closer match can pick their build or add body measurements, in metric or imperial. It's saved, so they only do it once.</p></div>
         </li>
         <li class="wide">
-          <figure><img src="assets/evn-collection.jpg" alt="The shop filtered to pieces recommended for you" width="2476" height="952" loading="lazy"></figure>
+          <figure class="zoom"><img src="assets/evn-collection-z.jpg" alt="The shop filtered to pieces recommended for you, with a Clear link" width="1060" height="500" loading="lazy"></figure>
           <div><b>A shop that fits you</b><p>Once a shopper has a fit profile, the shop can narrow down to pieces recommended for them. One tap clears it, so browsing everything is never more than a click away.</p></div>
         </li>
         <li class="wide">
-          <figure class="stage"><img src="assets/evn-pdp-fit.jpg" alt="The Aura Windbreaker details, with the How it'll fit you section above Add to cart" width="810" height="510" loading="lazy"></figure>
+          <figure class="zoom"><img src="assets/evn-pdp-z.jpg" alt="The Aura Windbreaker product page, with How it'll fit you under the size" width="740" height="650" loading="lazy"></figure>
           <div><b>An answer on every product</b><p>Each product page says how that piece will fit, right under the size, in plain words like "This is your recommended size". Shoppers can edit their details from there if something looks off.</p></div>
         </li>
       </ol>
@@ -318,8 +320,8 @@
   <section class="panel sec" id="nudge">
     <header class="sh"><span class="no">04</span><h2>Moving people a step at a time</h2></header>
     <div class="sb">
-      <p class="big-p">A sizing tool on its own doesn't sell a jacket. People need a few small reasons to say yes, in the places they already are.</p>
-      <p>Social judgment theory helped me frame this. People judge a new idea against what they already believe, their anchor. A message that lands close to it gets considered, and one that lands too far away gets brushed off. For free size, the anchor was usually "that won't fit me". So instead of one big push, I ran three things together, each a short step from where shoppers already were.</p>
+      <p class="big-p">People say yes in small steps.</p>
+      <p>Social judgment theory explains why. People weigh a new idea against what they already believe, and tune out anything too far from it. For free size, that belief was "it won't fit me". So I met shoppers with three small steps across the places they already were.</p>
       <div class="anchor" id="anchor">
         <ol class="an-steps">
           <li data-p="38"><span class="tile-k">Social media</span><b>Show how free size works</b><p>Short videos on how free-size pieces use techniques like pleats, drawcords and dropped shoulders to fit a range of body types.</p></li>
