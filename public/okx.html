@@ -233,6 +233,35 @@
     .layers li b { grid-row: 1; } .layers li span { grid-row: 2; }
     .demo .canvas { padding-top: 60px; }
   }
+
+  /* ---------- Simple Buy screens, animated over the original exports ---------- */
+  .okp { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .okp img { box-shadow: none !important; border-radius: 0 !important; }
+  .okst { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; overflow: hidden; }
+  .okst > div { position: absolute; }
+  .okbg { inset: 0; background: #000 0 0 / 600px 1299px no-repeat; }
+  .okamt { left: 0; top: 296px; width: 378px; height: 108px; display: flex; justify-content: flex-end; }
+  .okamt .okg { flex: none; height: 108px; }
+  .okamt.ph { opacity: .66; }
+  .okcur { left: 380px; top: 295px; width: 2px; height: 111px; background: #c3e25c; animation: okblink 1.05s steps(1) infinite; }
+  @keyframes okblink { 50% { opacity: 0; } }
+  .okfade { opacity: 0; transition: opacity .35s ease; }
+  .okfade.in { opacity: 1; }
+  .oktag { transform: translateY(8px) scale(.94); transform-origin: 85% 100%; transition: opacity .3s ease, transform .45s cubic-bezier(.3,1.5,.5,1); }
+  .oktag.in { transform: none; }
+  .okflash { width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; background: rgba(255,255,255,.16); opacity: 0; }
+  .okflash.go { animation: okflash .45s ease-out; }
+  @keyframes okflash { 0% { opacity: 1; transform: scale(.6); } 100% { opacity: 0; transform: scale(1); } }
+  .oktap { width: 86px; height: 86px; margin: -43px 0 0 -43px; border-radius: 50%; background: rgba(255,255,255,.28); border: 3px solid rgba(255,255,255,.55);
+    box-shadow: 0 6px 18px rgba(0,0,0,.35); opacity: 0; left: 300px; top: 1300px; transition: left .34s cubic-bezier(.4,0,.2,1), top .34s cubic-bezier(.4,0,.2,1), opacity .25s, transform .12s; }
+  .oktap.on { opacity: 1; }
+  .oktap.down { transform: scale(.8); background: rgba(255,255,255,.4); }
+  .okpress { border-radius: 40px; background: rgba(0,0,0,.22); opacity: 0; transition: opacity .2s; }
+  .okpress.go { opacity: 1; }
+  .okscrim { inset: 0; background: rgba(0,0,0,.57); opacity: 0; transition: opacity .35s ease; }
+  .okscrim.in { opacity: 1; }
+  .oksheet { border-radius: 26px 26px 0 0; transform: translateY(100%); transition: transform .5s cubic-bezier(.22,.8,.2,1); }
+  .oksheet.in { transform: none; }
 </style>
 </head>
 <body>
@@ -335,10 +364,10 @@
     <div class="sb">
       <p class="big-p">The assistant doesn't wait in a corner of the app to be found.</p>
       <p>It shows up once an order is large enough for the better rate to matter, at roughly fifty thousand dollars. Nobody gets offered a premium service on a fifty dollar trade. The sheet also says upfront that it only speaks English and Simplified Chinese, which is much easier to hear at the door than halfway through a trade.</p>
-      <div class="phones">
-        <figure><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
-        <figure><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
-        <figure><img src="assets/okx-sheet.jpg" alt="A sheet titled Get a better price via chat, with a Start chat button" width="600" height="1299" loading="lazy"><figcaption><b>The handover</b>What happens next, and which languages it speaks.</figcaption></figure>
+      <div class="phones" id="okPhones">
+        <figure><div class="okp" data-k="1"><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"></div><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
+        <figure><div class="okp" data-k="2"><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"></div><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
+        <figure><div class="okp" data-k="3"><img src="assets/okx-sheet.jpg" alt="A sheet titled Get a better price via chat, with a Start chat button" width="600" height="1299" loading="lazy"></div><figcaption><b>The handover</b>What happens next, and which languages it speaks.</figcaption></figure>
       </div>
     </div>
   </section>
@@ -586,6 +615,80 @@
   final();
   once(demo, play, .5);
   document.getElementById('replay').addEventListener('click', play);
+})();
+</script>
+<script>
+/* Simple Buy screens: typed on the number pad, then the large-order offer and the handover sheet */
+(() => {
+  const row = document.getElementById('okPhones'); if (!row) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const W = 600, H = 1299, A = 'assets/';
+  const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
+  const sprite = (p, cls, img, x, y, w, h, left = x, top = y) => el(p, cls, { left: left + 'px', top: top + 'px', width: w + 'px', height: h + 'px', backgroundImage: `url(${A}${img})`, backgroundPosition: `-${x}px -${y}px`, backgroundSize: `${W}px ${H}px` });
+  const KEY = { '5': [300, 998], '0': [300, 1173] }, BTN = [240, 802];
+  const GLYPH = { '5': [90, 52], ',': [196, 16], '0': [322, 56] };
+  const phones = [...row.querySelectorAll('.okp')].map(box => {
+    const k = box.dataset.k, st = el(box, 'okst');
+    new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / W})`).observe(box);
+    el(st, 'okbg', { backgroundImage: `url(${A}${k === '3' ? 'okx-50k.jpg' : 'okx-base.jpg'})` });
+    const p = { k, st };
+    if (k !== '3') {
+      p.amt = el(st, 'okamt'); el(st, 'okcur');
+      p.conv = sprite(st, 'okfade', k === '1' ? 'okx-500.jpg' : 'okx-50k.jpg', 360, 413, 215, 37);
+    }
+    if (k === '2') {
+      p.top = sprite(st, 'okfade', 'okx-50k.jpg', 274, 86, 40, 38);
+      p.tag = sprite(st, 'okfade oktag', 'okx-50k.jpg', 256, 238, 310, 50);
+      p.btn = sprite(st, 'okfade', 'okx-50k.jpg', 28, 756, 546, 94);
+    }
+    if (k === '3') {
+      p.press = el(st, 'okpress', { left: '39px', top: '764px', width: '407px', height: '77px' });
+      p.scrim = el(st, 'okscrim');
+      p.sheet = sprite(st, 'oksheet', 'okx-sheet.jpg', 0, 709, 600, 590);
+    }
+    p.flash = el(st, 'okflash'); p.tap = el(st, 'oktap');
+    return p;
+  });
+  const type = (p, s) => { p.amt.replaceChildren(); const txt = s || '0';
+    for (const c of txt) { const [x, w] = GLYPH[c]; const g = sprite(p.amt, 'okg', 'okx-50k.jpg', x, 296, w, 108, 0, 0); g.style.position = 'relative'; }
+    p.amt.classList.toggle('ph', !s); };
+  const reset = () => phones.forEach(p => {
+    if (p.amt) { type(p, ''); p.conv.classList.remove('in'); }
+    if (p.k === '2') [p.top, p.tag, p.btn].forEach(x => x.classList.remove('in'));
+    if (p.k === '3') { p.scrim.classList.remove('in'); p.sheet.classList.remove('in'); }
+    p.tap.className = 'oktap';
+  });
+  let run = 0, timers = [];
+  const wait = ms => new Promise(r => timers.push(setTimeout(r, ms)));
+  const press = async (p, [x, y], me, flash = true) => {
+    const t = p.tap; t.style.left = x + 'px'; t.style.top = y + 'px'; t.classList.add('on');
+    await wait(380); if (me !== run) return false;
+    t.classList.add('down');
+    if (flash) { const f = p.flash; f.style.left = x + 'px'; f.style.top = y + 'px'; f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); }
+    await wait(140); t.classList.remove('down'); return me === run;
+  };
+  const typeOut = async (p, steps, me) => {
+    const t = p.tap; t.style.transition = 'none'; t.style.left = '300px'; t.style.top = '1300px'; void t.offsetWidth; t.style.transition = '';
+    for (const [key, shown] of steps) { if (!(await press(p, KEY[key], me))) return false; type(p, shown); await wait(260); if (me !== run) return false; }
+    p.tap.classList.remove('on'); return true;
+  };
+  const cycle = async () => {
+    const me = ++run; reset(); await wait(700); if (me !== run) return;
+    const [p1, p2, p3] = phones;
+    if (!(await typeOut(p1, [['5', '5'], ['0', '50'], ['0', '500']], me))) return;
+    p1.conv.classList.add('in'); await wait(800); if (me !== run) return;
+    if (!(await typeOut(p2, [['5', '5'], ['0', '50'], ['0', '500'], ['0', '5,000'], ['0', '50,000']], me))) return;
+    await wait(250); p2.conv.classList.add('in'); p2.top.classList.add('in'); p2.tag.classList.add('in');
+    await wait(350); p2.btn.classList.add('in'); await wait(1100); if (me !== run) return;
+    const t = p3.tap; t.style.transition = 'none'; t.style.left = BTN[0] + 'px'; t.style.top = '1300px'; void t.offsetWidth; t.style.transition = '';
+    if (!(await press(p3, BTN, me, false))) return;
+    p3.press.classList.add('go'); setTimeout(() => p3.press.classList.remove('go'), 260);
+    await wait(200); p3.tap.classList.remove('on'); p3.scrim.classList.add('in'); p3.sheet.classList.add('in');
+    await wait(3600); if (me === run) cycle();
+  };
+  const stop = () => { run++; timers.forEach(clearTimeout); timers = []; };
+  reset();
+  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? (stop(), cycle()) : (stop(), reset())), { threshold: .45 }).observe(row);
 })();
 </script>
 </body>
