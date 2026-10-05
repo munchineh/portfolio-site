@@ -118,3 +118,23 @@ window.rollNumber = (el) => {
     }
   });
 };
+
+/* Theme switch: light, dark or match the system (the default). Saved per visitor. */
+(() => {
+  const root = document.documentElement, groups = document.querySelectorAll('.theme');
+  let pick = 'system'; try { pick = localStorage.getItem('theme') || 'system'; } catch (e) {}
+  const order = ['light', 'dark', 'system'];
+  const apply = t => {
+    pick = t;
+    if (t === 'system') delete root.dataset.theme; else root.dataset.theme = t;
+    try { t === 'system' ? localStorage.removeItem('theme') : localStorage.setItem('theme', t); } catch (e) {}
+    groups.forEach(g => { g.style.setProperty('--i', order.indexOf(t));
+      g.querySelectorAll('button').forEach(b => { const on = b.dataset.t === t; b.setAttribute('aria-checked', on); b.tabIndex = on ? 0 : -1; }); });
+  };
+  groups.forEach(g => {
+    g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => apply(b.dataset.t)));
+    g.addEventListener('keydown', e => { const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!k) return;
+      e.preventDefault(); const n = order[(order.indexOf(pick) + k + 3) % 3]; apply(n); g.querySelector(`[data-t="${n}"]`).focus(); });
+  });
+  apply(pick);
+})();
