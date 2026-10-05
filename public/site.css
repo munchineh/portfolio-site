@@ -327,3 +327,5 @@ body.menu-open .menu .foot { transition-delay: .34s; }
   :root:is(:lang(ko), :lang(zh)) .c-head h1 { font-size: clamp(30px, 8.6vw, 42px); }
   :root:is(:lang(ko), :lang(zh)) .menu .link .t { font-size: 36px; }
 }
+/* Chinese headlines break at punctuation, so phrases like 用心 never split across lines */
+:root:lang(zh) :is(h1, h2, h3) { word-break: keep-all; overflow-wrap: break-word; line-break: strict; }
