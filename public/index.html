@@ -307,7 +307,8 @@
   .fchip[aria-pressed="true"]::after { content: "×"; font-size: 14px; line-height: 1; }
   .facts .also { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
   .facts .langs { font-size: 15px; line-height: 1.6; display: grid; }
-  .facts .langs i { font-style: italic; font-weight: 300; color: var(--muted); opacity: .75; margin-left: 6px; padding-right: .15em; }
+  .facts .langs i { font-style: normal; font-weight: 300; color: var(--muted); opacity: .8; margin-left: 8px; }
+  .facts .langs i::before { content: "•"; margin-right: 8px; opacity: .7; }
   .index .tag { transition: border-color .2s, color .2s, background .2s; }
   .index .tag:hover { border-color: var(--accent); color: var(--ink); }
   .index li.out { display: none; }
