@@ -96,6 +96,24 @@
   .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
   .tile b, .grid6 b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
   .tile p, .grid6 p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+
+  /* ---------- Anchor: three touchpoints nudging the shopper along ---------- */
+  .anchor { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 16px; }
+  .an-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+  .an-steps li { padding: 14px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 55%, transparent); transition: border-color .4s, background .4s, opacity .4s; }
+  .an-steps b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .an-steps p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .anchor.play .an-steps li { opacity: .45; }
+  .anchor.play .an-steps li.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+  .an-track { position: relative; height: 34px; margin-top: 6px; }
+  .an-zones { position: absolute; left: 0; right: 0; top: 13px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+  .an-zones i { height: 8px; border-radius: 2px; background: var(--rule); font-style: normal; font-size: 0; }
+  .an-zones i:last-child { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+  .an-dot { position: absolute; top: 17px; left: var(--p, 8%); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--ink); border: 3px solid var(--ground); box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .7s var(--ease); }
+  .an-ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); margin-top: -8px; }
+  .an-ends span:last-child { color: var(--ink); font-weight: 500; text-align: right; }
+  .an-note { font-size: 12px; color: var(--muted); }
+  @media (max-width: 900px) { .an-steps { grid-template-columns: 1fr; } }
   .result { border-left: 3px solid var(--accent); }
   .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
   .result p { font-size: 14px; color: var(--muted); }
@@ -297,13 +315,24 @@
 
   <!-- ============ 04 ============ -->
   <section class="panel sec" id="nudge">
-    <header class="sh"><span class="no">04</span><h2>Making it easier to say yes</h2></header>
+    <header class="sh"><span class="no">04</span><h2>Moving people a step at a time</h2></header>
     <div class="sb">
-      <p class="big-p">The sizing tool answers "will it fit". Two smaller moves helped with "is it worth a try".</p>
-      <div class="pair">
-        <div class="tile"><span class="tile-k">20% off</span><b>A lower first step</b><p>A temporary discount on free-size pieces, to take some of the risk out of trying one.</p></div>
-        <div class="tile"><span class="tile-k">Short video</span><b>Proof on a real body</b><p>Quick breakdowns of how each piece moves and sits, filmed by me, on me.</p></div>
+      <p class="big-p">A sizing tool on its own doesn't sell a jacket. People need a few small reasons to say yes, in the places they already are.</p>
+      <p>Social judgment theory helped me frame this. People judge a new idea against what they already believe, their anchor. A message that lands close to it gets considered, and one that lands too far away gets brushed off. For free size, the anchor was usually "that won't fit me". So instead of one big push, I ran three things together, each a short step from where shoppers already were.</p>
+      <div class="anchor" id="anchor">
+        <ol class="an-steps">
+          <li data-p="38"><span class="tile-k">Short video</span><b>See it on a real body</b><p>A TikTok series of 30 to 40 second breakdowns, filmed by me, on me. Each one shows the measurements, how the piece moves and how it sits.</p></li>
+          <li data-p="66"><span class="tile-k">20% off</span><b>Make trying it cheaper</b><p>A limited discount on every free-size piece, shown on the homepage and in the announcement bar, so a first try felt lower risk.</p></li>
+          <li data-p="92"><span class="tile-k">Sizing tool</span><b>Know it'll fit</b><p>The fit read on every product page answers the last question before the button.</p></li>
+        </ol>
+        <div class="an-track" aria-hidden="true">
+          <div class="an-zones"><i>Brushed off</i><i>Maybe</i><i>Worth a try</i></div>
+          <span class="an-dot" id="anDot"></span>
+        </div>
+        <div class="an-ends"><span>"Free size won't fit me"</span><span>"I'll try one"</span></div>
+        <p class="an-note">An illustration of the idea. Each touchpoint moves the shopper's anchor a little.</p>
       </div>
+      <p>This applies well beyond clothing. A good product solution rarely lives on one screen. The feature does the heavy lifting, but the content and offers around it, on the product and off it, are what bring people close enough to use it.</p>
       <div class="result">
         <b>Four free-size sales in the first week, the first in two months.</b>
       </div>
@@ -356,6 +385,19 @@
 
   /* Results roll in once the hero loads */
   setTimeout(() => document.querySelectorAll('.c-results b[data-n], .callouts b').forEach(b => window.rollNumber(b)), 450);
+
+  /* Anchor: light each touchpoint in turn and step the dot along */
+  const an = document.getElementById('anchor');
+  if (an) {
+    const steps = [...an.querySelectorAll('.an-steps li')], dot = document.getElementById('anDot');
+    const finish = () => { an.classList.remove('play'); dot.style.setProperty('--p', '92%'); };
+    if (still.matches) finish();
+    else new IntersectionObserver((es, ob) => es.forEach(e => { if (!e.isIntersecting) return; ob.disconnect();
+      an.classList.add('play'); dot.style.setProperty('--p', '8%');
+      steps.forEach((s, i) => setTimeout(() => { steps.forEach(x => x.classList.remove('on')); s.classList.add('on'); dot.style.setProperty('--p', s.dataset.p + '%'); }, 500 + i * 1300));
+      setTimeout(() => { steps.forEach(x => x.classList.remove('on')); an.classList.remove('play'); }, 500 + steps.length * 1300 + 600);
+    }), { threshold: .5 }).observe(an);
+  }
 
   /* Fit engine demo: a simplified take on the real engine for one free-size jacket.
      The garment has a fixed amount of room; bigger bodies use more of it. */
