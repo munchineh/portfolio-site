@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
   /* ---------- Case hero ---------- */
@@ -124,6 +124,26 @@
     .rl-step { grid-row: auto !important; grid-column: 1 !important; height: auto; padding: 10px 12px; }
     .rl-step::after { content: attr(data-lane); margin-left: auto; font-size: 11px; color: var(--muted); }
   }
+
+  .shot.bare img { background: none; box-shadow: none; border-radius: 0; }
+  .nvc { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -26px rgba(0,0,0,.45); }
+  .shot .nvc img { border-radius: 0; box-shadow: none; }
+  .nvc .mask { position: absolute; left: 20.4%; width: 15.6%; background: #fcfcfc; transition: top .7s cubic-bezier(.22,.8,.2,1); }
+
+  /* ---------- HTML email templates, rebuilt as live HTML so they stay sharp ---------- */
+  .emails .em-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .em { background: #efefef; border-radius: 12px; padding: 18px 20px 16px; color: #333; font-family: Arial, "Helvetica Neue", sans-serif; display: grid; gap: 14px; align-content: start; }
+  .em-logo { display: inline-flex; align-items: center; gap: 1px; font: 700 20px/1 "Montserrat", Arial, sans-serif; color: #1d1d1b; letter-spacing: -.01em; }
+  .em-logo svg { width: 15px; height: 20px; margin-right: 2px; }
+  .em-logo b { color: #c52033; font-weight: 700; }
+  .em-card { background: #fff; padding: 22px 22px 24px; display: grid; gap: 11px; align-content: start; font-size: 13px; line-height: 1.5; color: #444; }
+  .em-card h4 { font: 700 19px/1.25 "Montserrat", Arial, sans-serif; color: #2b2b2b; margin-bottom: 6px; }
+  .em-box { background: #2f2f2f; color: #fff; border-radius: 3px; padding: 14px 18px; display: grid; gap: 2px; justify-self: start; }
+  .em-box b { font-weight: 700; }
+  .em-btn { justify-self: start; margin-top: 6px; background: #b51f31; color: #fff; font: 700 13px/1 "Montserrat", Arial, sans-serif; padding: 12px 18px; border-radius: 3px; }
+  .em-foot { font-size: 11px; line-height: 1.5; color: #555; padding: 0 2px; }
+  .em-foot b { color: #333; }
+  @media (max-width: 760px) { .emails .em-row { grid-template-columns: 1fr; } }
   .result { border-left: 3px solid var(--accent); }
   .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
   .result p { font-size: 14px; color: var(--muted); }
@@ -404,7 +424,7 @@
   .nv .hd b { font-size: 17px; font-weight: 600; }
   .nv .hd span { font-size: 11px; color: #6b7280; }
   .nv .chips { display: flex; gap: 6px; }
-  .nv .chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; padding: 5px 8px; font-size: 11px; font-weight: 600; }
+  .nv .chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; padding: 5px 8px; font-size: 11px; font-weight: 600; color: #1f2329; height: auto; border: 0; }
   .nv .chip.total { background: #1f2329; color: #fff; }
   .nv .chip.act { color: #c8102e; }
   .nv .chip em { font-style: normal; background: #e8eaee; color: #1f2329; border-radius: 4px; padding: 1px 6px; font-variant-numeric: tabular-nums; transition: background .3s; }
@@ -506,7 +526,7 @@
     <header class="sh"><span class="no">01</span><h2>Five handovers, three teams</h2></header>
     <div class="sb">
       <p class="big-p">A bit of information went missing at every handover.</p>
-      <p>Merchants raised an issue, support agents logged it, resolution teams investigated it, and the answer travelled back the same way. What merchants told us was interesting. The original problem was rarely the painful part. Not knowing whether anyone was working on it was. And once a case was closed, there was no way to disagree without raising a new one and explaining everything again.</p>
+      <p>When a merchant raised an issue, a support agent logged it, the right resolution team investigated, and the answer made its way back along the same chain. In interviews, merchants told us the hardest part was often not knowing whether anyone was working on their case at all. And once a case was closed, the only way to dispute the outcome was to raise a new one and explain everything again.</p>
       <div class="relay" id="relay">
         <div class="rl-grid">
           <span class="rl-lane" style="grid-row:1">Merchant</span>
@@ -550,7 +570,7 @@
     <header class="sh"><span class="no">03</span><h2>Issues live where orders live</h2></header>
     <div class="sb">
       <p class="big-p">The place you book a pickup is now the place you chase it.</p>
-      <p>Raising an issue used to mean hunting the website for a phone number, then wondering if it had landed. So I built service recovery into the parcel portal merchants already used. The form collects order IDs, issue type and proof of value in the same order agents already filled them in on their side, which saved everyone a lot of re-typing. Delayed pickups and deliveries now open cases automatically.</p>
+      <p>Raising an issue used to mean searching the website for a phone number, then hoping it had been received. So I built service recovery into the parcel portal merchants already used to manage their orders. The form asks for order IDs, issue type and proof of value in the same order agents enter them on their side, which cut out a lot of back and forth. Delayed pickups and deliveries now open cases automatically.</p>
       <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
         <span class="demo-tag">Live component</span>
         <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
@@ -569,7 +589,7 @@
 
         <button class="replay" type="button">Replay</button>
       </div>
-      <figure class="shot"><img src="assets/nv-case.jpg" alt="A case details page with a status timeline, claim details and an email thread with the support agent" width="1344" height="756" loading="lazy"><figcaption><b>Status that means something.</b> A damaged parcel shows claim steps and a way to dispute the amount. A delayed pickup doesn't need them.</figcaption></figure>
+      <figure class="shot"><div class="nvc" id="nvc"><img src="assets/nv-case.jpg" alt="A case details page with a status timeline, claim details and an email thread with the support agent" width="2400" height="1500" loading="lazy"></div><figcaption><b>Fields that change with the case.</b> Each issue type has its own status steps and details. A damaged parcel shows claim details and a way to dispute the amount, while a delayed pickup only shows what's relevant to it.</figcaption></figure>
     </div>
   </section>
 
@@ -577,14 +597,19 @@
     <header class="sh"><span class="no">04</span><h2>A bad score reopens the case</h2></header>
     <div class="sb">
       <p class="big-p">The survey stopped being just a measurement and became a way back in.</p>
-      <p>Customer Effort Score surveys used to go out by cold call and email. Tedious for everyone, and hardly anyone replied. So the survey moved into the portal, next to the case it's about, and into new email templates written per issue type. A low score now reopens the conversation and offers other ways to resolve it.</p>
+      <p>Customer Effort Score surveys used to go out by cold call and email, which was tedious for everyone and got very few replies. I moved the survey into the portal, right next to the case it's about, and into new HTML email templates designed for each issue type. A low score now reopens the conversation and suggests other ways to resolve it.</p>
       <div class="trio">
-        <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only mail, no way to reply with a score.</p></div>
-        <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>In the portal and in every email, one tap to rate.</p></div>
-        <div class="tile"><span class="tile-k">And</span><b>A low score reopens it</b><p>Merchants get a say in the outcome, without starting over.</p></div>
+        <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only emails, with no way to leave a score.</p></div>
+        <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>One tap to rate, from the portal or any email.</p></div>
+        <div class="tile"><span class="tile-k">Closing the loop</span><b>A low score reopens it</b><p>Merchants can question an outcome without starting over.</p></div>
       </div>
-      <figure class="shot"><img src="assets/nv-emails.jpg" alt="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button" width="1144" height="642" loading="lazy"><figcaption><b>Emails per issue type.</b> Unglamorous, and where a lot of the response rate problem got solved.</figcaption></figure>
-      <div class="result"><b>Both halves were designed.</b><p>Support agents worked in a Salesforce-based CRM, and I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
+      <figure class="shot emails">
+        <div class="em-row" role="img" aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button">
+          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
+          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
+        </div>
+        <figcaption><b>HTML emails for each issue type.</b> I designed a template for every case type, each with a one-tap rating button. It was unglamorous work, and it did a lot to lift response rates.</figcaption></figure>
+      <div class="result"><b>Designing both sides of the service.</b><p>Support agents worked in a Salesforce-based CRM, so I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
     </div>
   </section>
 
@@ -592,7 +617,7 @@
     <header class="sh"><span class="no">+</span><h2>Also at Ninja Van: Akira</h2></header>
     <div class="sb">
       <p class="big-p">The case for a design system, in numbers.</p>
-      <p>Akira was Ninja Van's design system initiative. I worked on the documentation and on getting content standards into the component library itself, which is the least glamorous route to consistency and the one that holds.</p>
+      <p>Akira was Ninja Van's design system initiative. I worked on the documentation and on building content standards into the component library itself. It's a quiet way to keep a product consistent, and it lasts.</p>
       <div class="callouts">
         <div><b data-n="27">27</b><span>active products across the portfolio</span></div>
         <div><b data-n="70%">70%</b><span>of implementation on locally customised components</span></div>
@@ -604,8 +629,7 @@
     <div class="panel c-cta action-card">
       <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
       <div class="inner">
-        <h2>Untangling a process across teams?</h2>
-        <p class="cta-p">I'd love to hear what you're working on.</p>
+        <h2>Untangling a process across teams? Let's map it out together.</h2>
         <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="#">Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
       </div>
     </div>
@@ -643,6 +667,19 @@
   /* Bars grow when seen */
   document.querySelectorAll('.bars').forEach(bx => { const go = () => bx.querySelectorAll('.tr').forEach(t => { const w = t.dataset.w + '%'; t.querySelector('span').style.width = w; t.querySelector('b').style.left = w; });
     still.matches ? go() : once(bx, go, .5); });
+  /* Case details: the status timeline fills in, step by step */
+  const nvc = document.getElementById('nvc');
+  if (nvc && !still.matches) {
+    const m = document.createElement('div'); m.className = 'mask'; nvc.appendChild(m);
+    const H = 1500, pct = y => (y / H * 100) + '%';
+    const stops = [425, 575, 830];            // just below step 1, step 2, step 3 (in image pixels)
+    m.style.top = pct(stops[0]); m.style.height = pct(835 - stops[0] + 0);
+    let tm = [];
+    const run = () => { tm.forEach(clearTimeout); tm = []; m.style.transition = 'none'; m.style.top = pct(stops[0]); m.style.height = pct(835 - stops[0]); void m.offsetWidth; m.style.transition = '';
+      tm.push(setTimeout(() => { m.style.top = pct(stops[1]); m.style.height = pct(835 - stops[1]); }, 700));
+      tm.push(setTimeout(() => { m.style.top = pct(stops[2]); m.style.height = pct(835 - stops[2]); }, 1700)); };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) run(); }), { threshold: .5 }).observe(nvc);
+  }
   /* Relay: the case moves between teams; one detail drops at each handover */
   const relay = document.getElementById('relay');
   if (relay) {

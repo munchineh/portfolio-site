@@ -271,3 +271,9 @@ h1, h2, h3, .big-p { text-wrap: balance; }
 .theme button:focus-visible { outline: 1px solid rgba(255,255,255,.5); outline-offset: 1px; }
 .theme .thumb { position: absolute; top: 2px; left: 2px; width: 28px; height: 26px; border-radius: 999px; background: #e9f3ec; transform: translateX(calc(var(--i, 2) * 32px)); transition: transform .35s var(--ease); }
 body.menu-open .menu .foot { transition-delay: .34s; }
+
+/* Closing row: the next-case card keeps its own height; buttons sit under the headline */
+.c-next { align-items: start; }
+.c-nextcase { grid-template-rows: auto auto !important; align-self: start; }
+.c-cta.action-card .inner { grid-template-columns: 1fr; }
+.c-cta.action-card .btns { justify-self: start; }
