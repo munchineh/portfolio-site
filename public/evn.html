@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>E-commerce, end to end · Mancini Tan</title>
+<title>Helping shoppers find their fit · Mancini Tan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
@@ -18,7 +18,8 @@
   .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
   .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
   .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
-  .c-head h1 .line { display: block; overflow: hidden; white-space: nowrap; }
+  .c-head { min-width: 0; }
+  .c-head h1 .line { display: block; overflow: hidden; }
   .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
   .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
   @keyframes rise { to { transform: none; } }
@@ -212,8 +213,8 @@
         <span class="chip ghost">E-commerce</span>
       </div>
       <h1>
-        <span class="line"><span>E-commerce,</span></span>
-        <span class="line"><span>end to end</span></span>
+        <span class="line"><span>Helping shoppers</span></span>
+        <span class="line"><span>find their fit</span></span>
       </h1>
       <p class="lede">EVN Archive is a Shopify store for independent Korean menswear, which I design and run. This case covers the sizing tool I built to help people buy free-size clothing online with confidence.</p>
       <dl class="meta">
