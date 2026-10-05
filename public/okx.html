@@ -262,6 +262,76 @@
   .okscrim.in { opacity: 1; }
   .oksheet { border-radius: 26px 26px 0 0; transform: translateY(100%); transition: transform .38s cubic-bezier(.22,.8,.2,1); }
   .oksheet.in { transform: none; }
+
+  /* ---------- Prompt inspector ---------- */
+  .pi { display: grid; grid-template-columns: 210px minmax(0, 1fr); margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .pi-tabs { position: relative; display: grid; align-content: start; gap: 2px; padding: 10px; border-right: 1px solid var(--rule); }
+  .pi-tabs button { position: relative; z-index: 1; display: flex; gap: 10px; align-items: center; text-align: left; font: inherit; font-size: 14px; color: var(--muted);
+    background: none; border: 0; border-radius: 10px; padding: 11px 12px; cursor: pointer; transition: color .25s; }
+  .pi-tabs button span { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 500; }
+  .pi-tabs button[aria-selected="true"] { color: var(--on-accent); font-weight: 500; }
+  .pi-tabs button[aria-selected="true"] span { color: var(--on-accent); opacity: .8; }
+  .pi-tabs button:hover:not([aria-selected="true"]) { color: var(--ink); }
+  .pi-tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pi-bar { position: absolute; left: 0; top: 0; width: var(--w, 0); height: var(--h, 0); transform: translate(var(--x, 0), var(--y, 0)); border-radius: 10px; background: var(--accent);
+    transition: transform .4s var(--ease), width .4s var(--ease), height .4s var(--ease); overflow: hidden; }
+  .pi.auto .pi-bar::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--on-accent); opacity: .5; transform-origin: 0 50%; animation: pifill 6s linear infinite; }
+  @keyframes pifill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .pi-panels { padding: 20px 22px 22px; min-height: 360px; }
+  .pi-p { display: grid; gap: 14px; align-content: start; }
+  .pi-p.in { animation: piin .45s var(--ease); }
+  @keyframes piin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .pi-q { font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; }
+  .pi-code { margin: 0; white-space: pre-wrap; font: 13px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--ink); background: color-mix(in srgb, var(--ground) 70%, transparent);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 16px; }
+  .pi-code b { color: var(--accent); font-weight: 600; }
+  .pi-why { font-size: 15px; line-height: 1.55; color: var(--muted); max-width: 60ch; }
+  .pi-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pi-tags span { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+  .pi-shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .pi-shots > div { display: grid; gap: 6px; align-content: start; padding: 12px; border-radius: 10px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 70%, transparent); }
+  .pi-shots small { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .pi-shots p { font-size: 13px; line-height: 1.45; padding: 8px 10px; border-radius: 12px; }
+  .pi-shots .u { justify-self: end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 4px; max-width: 92%; }
+  .pi-shots .a { background: color-mix(in srgb, var(--panel) 90%, transparent); border: 1px solid var(--rule); border-bottom-left-radius: 4px; }
+  @media (max-width: 900px) {
+    .pi { grid-template-columns: 1fr; }
+    .pi-tabs { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--rule); scrollbar-width: none; }
+    .pi-tabs button { flex: none; white-space: nowrap; padding: 9px 12px; }
+    .pi-panels { padding: 16px; min-height: 0; }
+    .pi-shots { grid-template-columns: 1fr; }
+    .pi-code { font-size: 12px; }
+  }
+
+  .pi-p[hidden] { display: none; }
+
+  /* ---------- Chapter banners: dark, numbered, with room above, so a new chapter is obvious ---------- */
+  .chapter { --cb: #0e1310; --ct: #f1f5f1; --cm: rgba(241,245,241,.66);
+    background: var(--cb); border-color: var(--cb); color: var(--ct); margin-top: 44px; padding: 34px 28px 32px; min-height: 280px; align-items: end; }
+  .jump + .chapter { margin-top: 0; }
+  .chapter::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 90% at 100% 0%, rgba(200,255,61,.16), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(111,214,164,.12), transparent 60%); }
+  .chapter > * { position: relative; }
+  .chapter .ck { color: var(--cm); align-self: stretch; align-content: space-between; }
+  .chapter .ck b { color: #c8ff3d; font-size: 14px; }
+  .chapter .ch-no { font-family: var(--display); font-weight: 900; font-stretch: 68%; font-size: clamp(96px, 11vw, 168px); line-height: .8; color: transparent;
+    -webkit-text-stroke: 1.5px rgba(200,255,61,.7); letter-spacing: -0.02em; margin-bottom: auto; }
+  .chapter h2 { color: var(--ct); }
+  .chapter p { color: var(--cm); }
+  .sh .no { min-width: 30px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chapter { --cb: #141c17; border-color: rgba(241,245,241,.1); } }
+  :root[data-theme="dark"] .chapter { --cb: #141c17; border-color: rgba(241,245,241,.1); }
+  @media (max-width: 900px) {
+    .chapter { margin-top: 28px; padding: 24px 18px; min-height: 0; }
+    .chapter .ck { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+    .chapter .ch-no { width: 100%; font-size: 84px; margin-bottom: 8px; }
+  }
+
+  /* ---------- Closing row: compact action card and next case ---------- */
+  .c-cta .inner { padding: 20px 20px 18px; gap: 16px; }
+  .c-cta h2 { font-size: clamp(34px, 3.3vw, 52px); max-width: 22ch; line-height: .92; }
+  .c-cta .cta-p { margin-top: -4px; }
+  .c-nextcase .inner { padding: 18px 20px; }
 </style>
 </head>
 <body>
@@ -345,13 +415,13 @@
 
   <!-- ============ Chapter 1 ============ -->
   <section class="panel chapter" id="assistant">
-    <div class="ck"><b>Chapter 1 of 3</b><span>Conversation design · Prompt design</span></div>
+    <div class="ck"><span class="ch-no" aria-hidden="true">01</span><b>Chapter 1 of 3</b><span>AI conversation design · Prompt design</span></div>
     <h2>An assistant that trades in chat</h2>
     <p>A live agent service for big orders, rebuilt so an AI could run it for everyone.</p>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">01</span><h2>A great service that couldn't scale</h2></header>
+    <header class="sh"><span class="no">1.1</span><h2>A great service that couldn't scale</h2></header>
     <div class="sb">
       <p class="big-p">Big orders were paying a worse rate than they needed to.</p>
       <p>A lot of people use Simple Buy because it locks in a quote within seconds, even though the rate is worse than a regular spot trade. On small amounts, nobody notices. On large ones, it gets expensive.</p>
@@ -360,7 +430,7 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>It appears at fifty thousand</h2></header>
+    <header class="sh"><span class="no">1.2</span><h2>It appears at fifty thousand</h2></header>
     <div class="sb">
       <p class="big-p">The assistant doesn't wait in a corner of the app to be found.</p>
       <p>It shows up once an order is large enough for the better rate to matter, at roughly fifty thousand dollars. Nobody gets offered a premium service on a fifty dollar trade. The sheet also says upfront that it only speaks English and Simplified Chinese, which is much easier to hear at the door than halfway through a trade.</p>
@@ -373,25 +443,74 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">03</span><h2>Five layers, one voice</h2></header>
+    <header class="sh"><span class="no">1.3</span><h2>Designing the system prompt</h2></header>
     <div class="sb">
-      <p class="big-p">Brief a chatbot with adjectives and it improvises. Improvising with someone's money is how you lose them.</p>
-      <p>So I wrote the prompt in five layers, each answering a different question. My favourite is the currency rule. If someone types "$50k", the assistant has to ask whether that's USD, SGD or USDT. Guessing is an expensive way to be helpful.</p>
-      <ol class="layers">
-        <li><span class="n">01</span><b>Who it is</b><span>A senior trading consultant. Reassuring, natural, never alarmist.</span></li>
-        <li><span class="n">02</span><b>How it adapts</b><span>Plain English by default, trading vernacular once the user uses it first.</span></li>
-        <li><span class="n">03</span><b>What it must never do</b><span>Skip confirming the pair, assume a currency, or frame anything other than as better pricing.</span></li>
-        <li><span class="n">04</span><b>When someone's stressed</b><span>Drop the jargon, ask for the order ID, skip the empty apology.</span></li>
-        <li><span class="n">05</span><b>What good looks like</b><span>Three worked conversations: a beginner, an advanced trader and someone upset.</span></li>
-      </ol>
+      <p class="big-p">When it's someone's money, the bot doesn't get to improvise.</p>
+      <p>I designed the system prompt that runs the assistant. A hallucinated rate, a vague phrase or a misread intent could cost someone thousands, so I built the prompt in five layers. Each one answers a different question, from who the assistant is to the guardrails it can't cross and the few-shot examples it learns from.</p>
+      <div class="pi" id="pi">
+        <div class="pi-tabs" role="tablist" aria-label="Prompt layers">
+          <button role="tab" id="pt1" aria-controls="pp1" aria-selected="true"><span>01</span>Persona</button>
+          <button role="tab" id="pt2" aria-controls="pp2" aria-selected="false" tabindex="-1"><span>02</span>Adaptive tone</button>
+          <button role="tab" id="pt3" aria-controls="pp3" aria-selected="false" tabindex="-1"><span>03</span>Guardrails</button>
+          <button role="tab" id="pt4" aria-controls="pp4" aria-selected="false" tabindex="-1"><span>04</span>Edge cases</button>
+          <button role="tab" id="pt5" aria-controls="pp5" aria-selected="false" tabindex="-1"><span>05</span>Few-shot examples</button>
+          <i class="pi-bar" aria-hidden="true"></i>
+        </div>
+        <div class="pi-panels">
+          <div class="pi-p" role="tabpanel" id="pp1" aria-labelledby="pt1">
+            <p class="pi-q">Who is it, and what is it for?</p>
+            <pre class="pi-code"><b>Role:</b> Senior trading consultant
+<b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
+<b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
+            <p class="pi-why">Without a persona, a model falls back to a generic assistant voice. That sounds unsure at exactly the moment someone is moving a lot of money.</p>
+            <div class="pi-tags"><span>Persona</span><span>Tone of voice</span></div>
+          </div>
+          <div class="pi-p" role="tabpanel" id="pp2" aria-labelledby="pt2" hidden>
+            <p class="pi-q">How should it talk to this person?</p>
+            <pre class="pi-code"><b>Default state</b> (start of chat, simple language)
+Plain English. "Shall I lock in a preferential rate for you now?"
+
+<b>Expert state</b> (user says "bps", "fill or kill")
+Switch to trading vernacular. Treat them as a peer.</pre>
+            <p class="pi-why">The assistant mirrors the user's own vocabulary. Beginners don't get buried in jargon, and experienced traders don't get talked down to.</p>
+            <div class="pi-tags"><span>Mirroring</span><span>Register switching</span></div>
+          </div>
+          <div class="pi-p" role="tabpanel" id="pp3" aria-labelledby="pt3" hidden>
+            <p class="pi-q">What must it always, and never, do?</p>
+            <pre class="pi-code"><b>1.</b> Confirm both sides of the pair before quoting.
+<b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
+<b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
+<b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
+            <p class="pi-why">This is the safety layer. It keeps the assistant inside what the product can actually execute, and stops a confident guess from turning into a costly trade.</p>
+            <div class="pi-tags"><span>Guardrails</span><span>Intent disambiguation</span><span>Slot filling</span></div>
+          </div>
+          <div class="pi-p" role="tabpanel" id="pp4" aria-labelledby="pt4" hidden>
+            <p class="pi-q">What happens off the happy path?</p>
+            <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
+<b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
+            <p class="pi-why">Models are weakest with emotion. This override changes the assistant's whole register in a service recovery moment, so it helps first and sounds polished second.</p>
+            <div class="pi-tags"><span>Edge cases</span><span>Fallback behaviour</span></div>
+          </div>
+          <div class="pi-p" role="tabpanel" id="pp5" aria-labelledby="pt5" hidden>
+            <p class="pi-q">What does good look like?</p>
+            <div class="pi-shots">
+              <div><small>Beginner</small><p class="u">I want to buy $50,000 of Solana.</p><p class="a">I can certainly help. Since this is a substantial amount, I'll secure a preferential rate. Is that $50,000 in USD, SGD or USDT?</p></div>
+              <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
+              <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
+            </div>
+            <p class="pi-why">Few-shot examples give the model ground truth to copy before it meets a real user. One per persona, so every layer above has a worked example.</p>
+            <div class="pi-tags"><span>Few-shot prompting</span><span>Calibration</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>Scripted where it counts</h2></header>
+    <header class="sh"><span class="no">1.4</span><h2>A human touch where it counts</h2></header>
     <div class="sb">
-      <p class="big-p">Some things should never be generated.</p>
-      <p>The opening message, the line confirming what you want to do and the order card are fixed. The card looks exactly like order cards everywhere else in the app, so the moment before a big transaction feels familiar. The AI handles everything after that: changes of mind, questions, the same thing explained another way.</p>
+      <p class="big-p">Good conversation design is a mix. AI for speed, and a human hand on the moments that need care.</p>
+      <p>Like the rest of UX, the craft is in knowing which is which. I mapped every touchpoint in the chat. The welcome message, the line confirming what you want to do and the order card are hand-written, because that's where people need reassurance before a large trade. The card also matches order cards everywhere else in the app, so it feels familiar. The model handles everything after that: changes of mind, follow-up questions, the same thing explained another way. The assistant stays fast and flexible, and the moments that build trust stay human, intuitive and empathetic.</p>
       <div class="demo" id="demo">
         <span class="demo-tag">Live component</span>
         <div class="scene okx" aria-label="The assistant confirms the order, then a quote card arrives with a countdown">
@@ -417,17 +536,17 @@
         <button class="replay" id="replay" type="button">Replay</button>
       </div>
       <div class="pair">
-        <div class="tile"><span class="tile-k">Fixed</span><b>Set in advance</b><p>The system message, the intro that confirms intent, and the order card.</p></div>
-        <div class="tile"><span class="tile-k">Generated</span><b>Written live</b><p>Everything after the user replies. Changes of mind, clarifications, the odd tangent.</p></div>
+        <div class="tile"><span class="tile-k">Human touch</span><b>Where trust is built</b><p>The welcome, the intent check and the order card. Written and reviewed by a person.</p></div>
+        <div class="tile"><span class="tile-k">AI-generated</span><b>Where flexibility helps</b><p>Follow-ups, changes of mind and clarifications. Quick to respond, and still inside the guardrails.</p></div>
       </div>
     </div>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">05</span><h2>Then I tried to break it</h2></header>
+    <header class="sh"><span class="no">1.5</span><h2>Then I tried to break it</h2></header>
     <div class="sb">
-      <p class="big-p">Testing ran two ways, and the adversarial half taught me more.</p>
-      <p>Benchmarking put a standard set of questions through the prompt to check it still sounded like itself. Adversarial testing was me trying to talk it into limit orders or vague trades, to see whether the guardrails were real or just politely worded. Three rounds of fixes came out of it.</p>
+      <p class="big-p">Testing ran two ways, and the red-teaming taught me more.</p>
+      <p>I benchmarked the prompt against a standard set of queries, checking every answer against the content guidelines and the conversation structure. Then I red-teamed it, trying to talk it into limit orders and vague trades to see whether the guardrails held. Three rounds of prompt iteration came out of it.</p>
       <div class="tbl-wrap">
         <table class="tests">
           <thead><tr><th scope="col">What I saw</th><th scope="col">What changed</th><th scope="col">Result</th></tr></thead>
@@ -447,13 +566,13 @@
 
   <!-- ============ Chapter 2 ============ -->
   <section class="panel chapter" id="orbit">
-    <div class="ck"><b>Chapter 2 of 3</b><span>Content design · Social</span></div>
+    <div class="ck"><span class="ch-no" aria-hidden="true">02</span><b>Chapter 2 of 3</b><span>Content design · Social</span></div>
     <h2>Orbit</h2>
     <p>A social layer inside the OKX app, where traders post, follow each other and share their trades.</p>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">06</span><h2>Credibility you can see</h2></header>
+    <header class="sh"><span class="no">2.1</span><h2>Credibility you can see</h2></header>
     <div class="sb">
       <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
       <p>The hard part of Orbit was helping people tell who's worth listening to, without rewarding whoever took the biggest gamble last week. I worked on onboarding, the feed and the two versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.</p>
@@ -470,13 +589,13 @@
 
   <!-- ============ Chapter 3 ============ -->
   <section class="panel chapter" id="rewind">
-    <div class="ck"><b>Chapter 3 of 3</b><span>Content strategy · Dynamic content · Localization</span></div>
+    <div class="ck"><span class="ch-no" aria-hidden="true">03</span><b>Chapter 3 of 3</b><span>Content strategy · Dynamic content · Localization</span></div>
     <h2>Crypto Rewind</h2>
     <p>OKX's 2024 year in review. Your year of trading, played back in three parts.</p>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">07</span><h2>What last year taught us</h2></header>
+    <header class="sh"><span class="no">3.1</span><h2>What last year taught us</h2></header>
     <div class="sb">
       <p class="big-p">People liked seeing their own data. They just didn't finish, and they didn't share.</p>
       <p>I audited the 2022 and 2023 campaigns, went through user feedback and spoke to the designers and PMs who ran them. Three problems kept coming up.</p>
@@ -489,7 +608,7 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">08</span><h2>Playing back your highlights, and highlighting you</h2></header>
+    <header class="sh"><span class="no">3.2</span><h2>Playing back your highlights, and highlighting you</h2></header>
     <div class="sb">
       <p class="big-p">One concept kept the story, the tone and the translations together.</p>
       <p>Rewind turns the year into a playlist in three parts: your assets, how you traded, and a trader persona at the end. The line gave Legal and Marketing something to sign off early, and gave every writer and translator the same brief.</p>
@@ -503,7 +622,7 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">09</span><h2>Something people actually wanted to share</h2></header>
+    <header class="sh"><span class="no">3.3</span><h2>Something people actually wanted to share</h2></header>
     <div class="sb">
       <p class="big-p">The share card shows who you are as a trader, not what's in your wallet.</p>
       <p>Each person ends on a persona, like Crypto Comet or Market Maestro, with a rarity tag and a line about why they earned it. There are no balances on it, so it's easy to post. The copy shipped in multiple languages, including Chinese, Arabic and Russian, where it also had to work right to left and with much longer words.</p>
@@ -537,7 +656,7 @@
     <div class="panel c-cta action-card">
       <div class="label"><span>Let's talk</span><span>Singapore · Seoul · anywhere</span></div>
       <div class="inner">
-        <h2>Need words and flows that work together?</h2>
+        <h2>Designing an AI product? Let's talk.</h2>
         <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="#">Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
         <p class="cta-p">mancini.tan@gmail.com</p>
       </div>
@@ -689,6 +808,34 @@
   const stop = () => { run++; timers.forEach(clearTimeout); timers = []; };
   reset();
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? (stop(), cycle()) : (stop(), reset())), { threshold: .45 }).observe(row);
+})();
+</script>
+<script>
+/* Prompt layers: tabs that step through on their own until someone takes over */
+(() => {
+  const root = document.getElementById('pi'); if (!root) return;
+  const tabs = [...root.querySelectorAll('[role=tab]')], panels = [...root.querySelectorAll('[role=tabpanel]')], bar = root.querySelector('.pi-bar');
+  let cur = 0, timer = null, manual = false;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const place = () => { const t = tabs[cur]; bar.style.setProperty('--x', t.offsetLeft + 'px'); bar.style.setProperty('--y', t.offsetTop + 'px');
+    bar.style.setProperty('--w', t.offsetWidth + 'px'); bar.style.setProperty('--h', t.offsetHeight + 'px'); };
+  const show = (i, focus) => { cur = i;
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    panels.forEach((p, k) => { p.hidden = k !== i; if (k === i) { p.classList.remove('in'); void p.offsetWidth; p.classList.add('in'); } });
+    place(); const strip = tabs[i].parentElement;
+    if (strip.scrollWidth > strip.clientWidth) strip.scrollTo({ left: tabs[i].offsetLeft - 10, behavior: still ? 'auto' : 'smooth' });
+    if (focus) tabs[i].focus({ preventScroll: true }); };
+  const stop = () => { clearInterval(timer); timer = null; root.classList.remove('auto'); };
+  const take = i => { manual = true; stop(); show(i, true); };
+  tabs.forEach((t, i) => { t.addEventListener('click', () => take(i));
+    t.addEventListener('keydown', e => { const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (k) { e.preventDefault(); take((cur + k + tabs.length) % tabs.length); }
+      if (e.key === 'Home') { e.preventDefault(); take(0); } if (e.key === 'End') { e.preventDefault(); take(tabs.length - 1); } }); });
+  new ResizeObserver(place).observe(root);
+  show(0);
+  if (!still) new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !manual && !timer) { root.classList.add('auto'); timer = setInterval(() => show((cur + 1) % tabs.length), 6000); }
+    if (!e.isIntersecting) stop(); }), { threshold: .5 }).observe(root);
 })();
 </script>
 </body>
