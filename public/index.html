@@ -36,6 +36,7 @@
   .glance .facts dl > div:last-child { border-right: 0; }
   .facts dt { font-size: 12px; color: var(--muted); }
   .facts dd { font-size: 15px; line-height: 1.4; }
+  .facts .yrs { display: flex !important; align-items: center; gap: .22em; }
   .facts .yrs { text-transform: uppercase; white-space: nowrap; display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 44px; line-height: .9; color: var(--accent); margin-bottom: 4px; }
   .facts .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .facts .chips span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
@@ -380,7 +381,7 @@
   <section class="panel glance" aria-label="At a glance">
       <div class="facts">
                 <dl>
-          <div class="exp"><div><dt>Experience</dt><dd><b class="yrs">6+ years</b>Across agency, in-house teams and my own e-commerce product</dd></div></div>
+          <div class="exp"><div><dt>Experience</dt><dd><b class="yrs"><span class="yn" data-n="6+">6+</span> years</b>Across agency, in-house teams and my own e-commerce product</dd></div></div>
           <div><dt>Industries</dt><dd class="chips" role="group" aria-label="Filter case studies by industry"><button class="fchip" data-f="Fintech">Fintech</button><button class="fchip" data-f="Logistics">Logistics</button><button class="fchip" data-f="E-commerce">E-commerce</button><button class="fchip" data-f="Construction tech">Construction tech</button><span class="fchip static">Mobility</span><span class="fchip static">Advertising</span></dd></div>
           <div><dt>Skills</dt><dd class="chips" role="group" aria-label="Filter case studies by skill"><button class="fchip" data-f="UI design">UI design</button><button class="fchip" data-f="Conversation design">Conversation design</button><button class="fchip" data-f="Content design">Content design</button><button class="fchip" data-f="Localization">Localization</button></dd></div>
           <div><dt>Languages</dt><dd class="langs">English<br>Chinese<br>Korean<br>German</dd></div>
@@ -730,6 +731,9 @@
 
   /* "What came of it" numbers count up when a case comes into focus */
   const countUp = root => root.querySelectorAll('b[data-n]').forEach(b => window.rollNumber(b));
+  /* Years of experience roll in the first time they're seen; the word stays put */
+  const yn = document.querySelector('.yrs .yn');
+  if (yn) new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { ob.disconnect(); setTimeout(() => window.rollNumber(yn), 250); } }), { threshold: .6 }).observe(yn);
 
   let active = -1;
   const setActive = (i) => {
