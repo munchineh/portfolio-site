@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Designing complex forms · Mancini Tan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; white-space: nowrap; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; }
+  .c-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 6.4; object-fit: cover; object-position: 50% 12%; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 24px 20px 20px; display: grid; gap: 22px; }
+  .c-cta .cta-p { color: var(--muted); font-size: 15px; max-width: 46ch; margin-top: -8px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 68px); line-height: .9; max-width: 14ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .c-nextcase img { width: 72px; height: 72px; border-radius: 10px; object-fit: cover; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+
+  /* ---------- Section bodies ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .card, .tile, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .result p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Chapter jump + chapter banners ---------- */
+  .jump { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px; }
+  .jump a { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 6px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); font-size: 14px; transition: border-color .25s, background .25s; }
+  .jump a:hover, .jump a:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+  .jump a span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 500; background: var(--accent); color: var(--on-accent); }
+  .chapter { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 28px; align-items: end; scroll-margin-top: 90px; }
+  .chapter .ck { grid-column: 1 / 5; font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+  .chapter .ck b { font-weight: 500; color: var(--accent); }
+  .chapter h2 { grid-column: 5 / 13; font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(40px, 5.4vw, 88px); line-height: .88; letter-spacing: -0.01em; }
+  .chapter p { grid-column: 5 / 13; margin-top: 14px; font-size: 16px; line-height: 1.5; color: var(--muted); max-width: 56ch; }
+
+  /* ---------- Phone screens ---------- */
+  .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+  .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .phones img { display: block; width: 100%; height: auto; border-radius: 22px; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .phones figcaption { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .phones.four { --n: 4; }
+  .phones.two { --n: 2; max-width: 560px; }
+
+  /* ---------- Prompt layers ---------- */
+  .layers { list-style: none; display: grid; gap: 6px; margin-top: 8px; }
+  .layers li { display: grid; grid-template-columns: 40px 170px 1fr; gap: 14px; align-items: baseline; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .layers .n { font-size: 12px; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .layers b { font-weight: 500; font-size: 15px; }
+  .layers span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+
+  /* ---------- Live chat demo ---------- */
+  .demo { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); aspect-ratio: 16 / 9; margin-top: 8px; }
+  .demo .scene { position: absolute; inset: 0; }
+  .demo .canvas { position: absolute; left: 50%; top: 50%; width: 560px; height: 373px; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: center; }
+  .demo-tag { position: absolute; left: 12px; top: 12px; z-index: 2; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: #c8ff3d; color: #000; }
+  .replay { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid #333; background: #111; color: #fff; font: inherit; font-size: 12px; cursor: pointer; }
+  .replay:hover, .replay:focus-visible { border-color: #c8ff3d; outline: none; }
+
+  /* ---------- Test table ---------- */
+  .tbl-wrap { overflow-x: auto; margin-top: 8px; border: 1px solid var(--rule); border-radius: 12px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  table.tests { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; }
+  .tests th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  .tests td { padding: 14px 16px; vertical-align: top; line-height: 1.45; border-bottom: 1px solid var(--rule); color: var(--muted); }
+  .tests tr:last-child td { border-bottom: 0; }
+  .tests td:first-child { color: var(--ink); }
+  .tests td:last-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
+  .callouts > div { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Goal vs actual (indexed to goal = 100%) ---------- */
+  .gva { display: grid; gap: 18px; padding: 20px 18px 16px; }
+  .gva-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; }
+  .gva-row > b { font-weight: 500; font-size: 14px; }
+  .gva-row > b small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .track { position: relative; height: 30px; outline: none; }
+  .track .bar { position: absolute; left: 0; top: 7px; height: 16px; width: 0; border-radius: 0 4px 4px 0; background: var(--accent); transition: width 1.1s var(--ease); }
+  .track .goal { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); left: calc(100% / 2.5); border-radius: 1px; }
+  .track .val { position: absolute; top: 5px; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; transition: left 1.1s var(--ease); }
+  .track:hover .bar, .track:focus-visible .bar { filter: brightness(1.15); }
+  .axis { display: grid; grid-template-columns: 150px 1fr; gap: 14px; font-size: 12px; color: var(--muted); }
+  .axis div { position: relative; height: 16px; border-top: 1px solid var(--rule); }
+  .axis span { position: absolute; top: 4px; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+  .axis span:first-child { transform: none; }
+  .gva-note { font-size: 12px; color: var(--muted); padding: 0 18px 16px; }
+  .gva-note i { display: inline-block; width: 2px; height: 11px; background: var(--ink); vertical-align: -1px; margin-right: 6px; }
+  .tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--ground); font-size: 12px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; max-width: 220px; opacity: 0; transition: opacity .15s; }
+  .tip.on { opacity: 1; }
+
+  /* ---------- Chapter results strip ---------- */
+  .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+  .strip > div { border-top: 1px solid var(--rule); padding-top: 12px; }
+  .strip b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(40px, 4vw, 56px); line-height: .9; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .strip > div > span { font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .chapter { padding: 22px 18px; }
+    .chapter .ck, .chapter h2, .chapter p { grid-column: 1 / -1; }
+    .chapter h2 { margin-top: 10px; }
+    .pair, .trio { grid-template-columns: 1fr; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+    /* screens scroll sideways inside their own row instead of stacking into a very tall column */
+    .phones, .phones.four, .phones.two { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; max-width: none; }
+    .phones figure { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
+    .layers li { grid-template-columns: 32px 1fr; }
+    .layers li span { grid-column: 2; }
+    .demo { aspect-ratio: 17 / 22; }
+    .demo .canvas { width: 340px; height: 440px; grid-template-columns: 1fr; gap: 16px; align-content: center; padding: 0 20px; }
+  }
+  @media (max-width: 520px) {
+    .callouts, .strip { grid-template-columns: 1fr; }
+    .gva-row, .axis { grid-template-columns: 1fr; gap: 6px; }
+    .axis > span { display: none; }
+  }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .nlogo.dark { background: #323838; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; border-radius: 0; }
+  .meta { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .c-head h1 { font-size: clamp(48px, 7.2vw, 116px); }
+  .phones.two { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); max-width: none; }
+  @media (max-width: 900px) { .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .c-head { min-width: 0; }
+  @media (max-width: 900px) {
+    .c-head h1 .line { white-space: normal; }
+    .c-results .big b { font-size: clamp(44px, 12vw, 72px); }
+    .layers li { grid-template-columns: 30px minmax(0, 1fr); gap: 2px 10px; }
+    .layers li .n { grid-row: 1 / span 2; }
+    .layers li b, .layers li span { grid-column: 2; }
+    .demo { aspect-ratio: 17 / 24; }
+    .demo .canvas { height: 480px; padding: 44px 20px 24px; }
+    .phones.two { display: grid; grid-template-columns: 1fr; }
+    .phones.two figure { max-width: 260px; }
+  }
+  @media (max-width: 900px) {
+    .layers li .n { grid-column: 1; grid-row: 1 / span 2; }
+    .layers li b { grid-row: 1; } .layers li span { grid-row: 2; }
+    .demo .canvas { padding-top: 60px; }
+  }
+  /* ---------- Shared case-page pieces ---------- */
+  .c-media { margin: 0; overflow: hidden; }
+  .c-media img { display: block; width: 100%; height: auto; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+  .shot { margin: 8px 0 0; display: grid; gap: 10px; }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -26px rgba(0,0,0,.45); background: #fff; }
+  .shot figcaption { font-size: 13px; color: var(--muted); }
+  .shot figcaption b { color: var(--ink); font-weight: 500; }
+  .shots2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .demo.live { aspect-ratio: var(--ar, 16 / 9); background: #000; }
+  .demo.live .canvas { width: var(--cw); height: var(--ch); }
+  .phones.flat img { border-radius: 16px; background: #fff; }
+  .flow { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 8px; counter-reset: f; }
+  .flow li { position: relative; padding: 12px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); font-size: 13px; line-height: 1.35; display: grid; gap: 6px; align-content: start; transition: border-color .4s, background .4s; }
+  .flow li small { font-size: 11px; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
+  .flow li.lit { border-color: var(--accent); background: var(--accent-soft); }
+  .flow li i { position: absolute; right: -9px; top: 50%; width: 12px; height: 12px; margin-top: -6px; z-index: 1; color: var(--muted); font-style: normal; font-size: 12px; line-height: 12px; }
+  .bars { display: grid; gap: 12px; padding: 18px; }
+  .bars .br { display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; font-size: 14px; }
+  .bars .br small { display: block; color: var(--muted); font-size: 12px; }
+  .bars .tr { position: relative; height: 26px; }
+  .bars .tr span { position: absolute; left: 0; top: 5px; height: 16px; width: 0; border-radius: 0 4px 4px 0; background: var(--accent); transition: width 1s var(--ease); }
+  .bars .tr b { position: absolute; top: 3px; font-weight: 500; font-size: 13px; padding-left: 8px; font-variant-numeric: tabular-nums; transition: left 1s var(--ease); left: 0; }
+  @media (max-width: 900px) {
+    .shots2 { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; }
+    .flow li i { display: none; }
+    .demo.live { aspect-ratio: var(--ar-m, var(--ar, 16 / 9)); }
+  }
+  @media (max-width: 520px) { .bars .br { grid-template-columns: 1fr; gap: 4px; } }
+  .canvas { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: center; }
+  .demo { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); margin-top: 8px; }
+  .demo .scene { position: absolute; inset: 0; }
+  .demo-tag { position: absolute; left: 12px; top: 12px; z-index: 2; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+  .replay { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--ground); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
+  .replay:hover, .replay:focus-visible { border-color: var(--accent); outline: none; }
+  .tbl-wrap { overflow-x: auto; margin-top: 8px; border: 1px solid var(--rule); border-radius: 12px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  table.map { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; }
+  .map th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  .map td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--muted); line-height: 1.4; vertical-align: top; }
+  .map td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .map tr:last-child td { border-bottom: 0; }
+  .c-media img { aspect-ratio: auto; object-fit: initial; }
+  .c-head h1 .line { white-space: normal; }
+  .demo.live .demo-tag { top: auto; bottom: 12px; }
+  /* ---------- Live component: Buildlr, rebuilt from the original 1512px screen ---------- */
+  .bl { background: #323838; font-family: "Poppins", "Archivo", sans-serif; }
+  .bl .canvas { width: 1512px; height: 1090px; position: absolute; color: #212525; }
+  .bl .canvas * { box-sizing: border-box; }
+  .bl .bl-a, .bl .bl-rfi > span, .bl .bl-field, .bl .bl-addrfi, .bl .bl-btn, .bl .bl-filter, .bl .bl-tsearch { position: absolute; }
+  .bl .crumb, .bl .tab, .bl .lbl, .bl .lblk, .bl .bl-row, .bl .bl-tt, .bl .bl-tm, .bl .bl-tp, .bl .bl-btn, .bl .bl-filter, .bl .bl-meta, .bl .bl-rfih, .bl .bl-quick, .bl .bl-addrfi, .bl .bl-me b {
+    font-family: "Clash Display", "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0; }
+  .bl .pp, .bl .pr { font-family: "Poppins", "Archivo", sans-serif; font-weight: 500; font-size: 12px; }
+  .bl .pr { font-weight: 400; font-size: 14px; letter-spacing: -.01em; }
+  .bl .grey { color: #8c8c8c; } .bl .dk { color: #212525; }
+  .bl .sep { font-family: "Clash Display", sans-serif; font-weight: 300; font-size: 24px; color: #d9d9d9; line-height: 1; }
+  /* chrome */
+  .bl .bl-top { position: absolute; inset: 0 0 auto 0; height: 72px; background: #323838; display: flex; align-items: center; padding: 0 24px; gap: 30px; }
+  .bl .bl-logo { font-family: "Clash Display", sans-serif; font-weight: 600; font-size: 28px; color: #c8b9a6; width: 20px; }
+  .bl .bl-search { display: flex; align-items: center; gap: 12px; color: #758484; font-size: 14px; }
+  .bl .bl-me { margin-left: auto; display: grid; text-align: right; line-height: 1.25; }
+  .bl .bl-me b { color: #e8f4f4; font-size: 12px; } .bl .bl-me i { font-style: normal; color: #758484; font-size: 12px; }
+  .bl .bl-av { width: 40px; height: 40px; border-radius: 4px; background: linear-gradient(160deg, #cfc6ba, #8d8378); border: 2px solid #e8f4f4; }
+  .bl .bl-bell { display: grid; }
+  .bl .bl-rail { position: absolute; left: 0; top: 72px; width: 64px; height: 1018px; background: #323838; }
+  .bl .bl-ri { position: absolute; left: 8px; width: 48px; height: 48px; display: grid; place-items: center; color: #e8f4f4; border-radius: 4px; }
+  .bl .bl-ri.act { background: #3f4747; }
+  .bl .bl-head { position: absolute; left: 64px; top: 75px; width: 1432px; height: 74px; background: #fff; }
+  .bl .bl-head .bl-a { transform: translate(-64px, -75px); }
+  .bl .crumb { font-size: 14px; color: #758484; } .bl .crumb.cur { color: #212525; }
+  .bl .bl-meta { position: absolute; right: 26px; top: 16px; height: 42px; border: 1px solid #d9d9d9; border-radius: 21px; padding: 0 18px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #8c8c8c; }
+  .bl .bl-meta em { font-style: normal; font-weight: 300; font-size: 22px; color: #d9d9d9; }
+  /* left menu (flows, so tiers can open) */
+  .bl .bl-menu { position: absolute; left: 64px; top: 149px; width: 280px; height: 941px; background: #fff; border-right: 1px solid #eaeaea; overflow: hidden; }
+  .bl .bl-row { height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 0 24px; font-size: 12px; color: #212525; background: #fff; }
+  .bl .bl-row svg { flex: none; }
+  .bl .bl-row.tasks { background: #323838; color: #fff; }
+  .bl .bl-row[data-l="1"] { padding-left: 36px; background: #f3f4f6; }
+  .bl .bl-row.bath { background: #d9d9d9; }
+  .bl .bl-row[data-l="2"] { padding-left: 48px; }
+  .bl .bl-row.param span { display: flex; gap: 10px; align-items: center; padding-left: 26px; color: #8c8c8c; }
+  .bl .bl-row.param { border-bottom: 1px solid #f3f4f6; margin: 0 8px; padding-left: 40px; }
+  .bl .bl-row.grey { color: #8c8c8c; }
+  .bl .bl-row[data-l="3"] { padding-left: 72px; }
+  .bl .bl-row.faint { color: #d9d9d9; }
+  .bl .bl-row.addroom { color: #8c8c8c; } .bl .bl-row .plus { font-size: 18px; color: #8c8c8c; font-family: "Poppins", sans-serif; font-weight: 300; }
+  .bl .bl-grp { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .45s var(--ease); position: relative; }
+  .bl .bl-grp > * { min-height: 0; }
+  .bl .bl-grp { overflow: hidden; }
+  .bl .bl-grp.shut { grid-template-rows: 0fr; }
+  .bl .bl-grp { display: block; max-height: 800px; transition: max-height .5s var(--ease); }
+  .bl .bl-grp.shut { max-height: 0; }
+  .bl .bl-line { position: absolute; left: 60px; top: 0; height: 100px; border-left: 1.5px solid #212525; }
+  .bl .bl-row[data-l="3"]::before { content: ""; position: absolute; left: 60px; width: 7px; border-top: 1.5px solid #212525; }
+  .bl .bl-row[data-l="3"] { position: relative; }
+  .bl .bl-row[data-l="3"]::after { content: ""; position: absolute; left: 64px; width: 4px; height: 4px; background: currentColor; }
+  .bl .bl-row.pick { transition: color .3s; color: #212525; }
+  .bl .bl-row.chev-flip svg { transform: rotate(180deg); }
+  .bl .bl-row svg { transition: transform .35s var(--ease); }
+  /* main */
+  .bl .bl-main { position: absolute; left: 0; top: 0; width: 1512px; height: 1090px; pointer-events: none; }
+  .bl .bl-main::before { content: ""; position: absolute; left: 344px; top: 149px; width: 1152px; height: 941px; background: #f3f4f6; }
+  .bl .tab { font-size: 12px; color: #8c8c8c; } .bl .tab.cur { color: #212525; }
+  .bl .bl-filter { left: 1048px; top: 157px; width: 96px; height: 32px; border: 1px solid #d9d9d9; background: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; }
+  .bl .bl-tsearch { left: 1152px; top: 157px; width: 320px; height: 32px; background: #fff; display: flex; align-items: center; gap: 12px; padding: 0 16px; font-size: 12px; color: #8c8c8c; }
+  .bl .lbl { font-size: 12px; color: #8c8c8c; }
+  .bl .lbl.dk { color: #212525; }
+  .bl .bl-task { position: absolute; left: 352px; top: 229px; width: 1120px; height: 92px; background: #323838; }
+  .bl .bl-sw { position: absolute; width: 36px; height: 20px; border-radius: 10px; background: #d9d9d9; transition: background .3s; }
+  .bl .bl-sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .3s var(--ease); box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .bl .bl-sw.on::after { transform: translateX(16px); }
+  .bl .bl-sw.green { left: 16px; top: 16px; width: 40px; height: 24px; border-radius: 4px; }
+  .bl .bl-sw.green::after { width: 16px; height: 18px; border-radius: 3px; top: 3px; }
+  .bl .bl-sw.green.on { background: #4caf6a; }
+  .bl .bl-sw.tan { position: static; flex: none; }
+  .bl .bl-sw.tan.on { background: #b9a898; }
+  .bl .bl-tt { position: absolute; left: 72px; top: 20px; color: #fff; font-size: 12px; }
+  .bl .bl-tm { position: absolute; left: 272px; top: 20px; color: #fff; font-size: 10px; } .bl .bl-tm i { font-style: normal; color: #758484; margin: 0 4px 0 12px; }
+  .bl .bl-ticons { position: absolute; right: 16px; top: 16px; display: flex; gap: 14px; }
+  .bl .bl-tp { position: absolute; top: 52px; height: 28px; border-radius: 14px; background: #3f4747; padding: 0 16px; display: flex; align-items: center; gap: 10px; font-size: 10px; color: #758484; opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s var(--ease); }
+  .bl .bl-tp.in { opacity: 1; transform: none; }
+  .bl .bl-tp.p1 { left: 16px; } .bl .bl-tp.p2 { left: 245px; }
+  .bl .bl-tp i, .bl .bl-tp u { font-style: normal; text-decoration: none; } .bl .bl-tp u { color: #fff; } .bl .bl-tp b { font-weight: 500; color: #b9a898; } .bl .bl-tp em { font-style: normal; color: #5b6464; }
+  .bl .bl-body { position: absolute; left: 352px; top: 321px; width: 1120px; height: 769px; background: #fff; }
+  .bl .bl-field { height: 29px; background: #f3f4f6; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .bl .bl-field i { font-style: normal; color: #d9d9d9; font-size: 14px; }
+  .bl .bl-field .ph { color: #d9d9d9; }
+  .bl .bl-rfi { position: absolute; left: 368px; top: 435px; width: 405px; height: 358px; border: 1px solid #eaeaea; border-radius: 4px; background: #fff; opacity: 0; transform: translateY(10px); transition: opacity .45s, transform .45s var(--ease); }
+  .bl .bl-rfi.in, .bl .bl-addrfi.in { opacity: 1; transform: none; }
+  .bl .bl-rfi > span:not(.bl-field) { left: 16px; }
+  .bl .bl-rfih { height: 32px; background: #f3f4f6; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 12px; }
+  .bl .lblk { font-size: 12px; color: #212525; }
+  .bl .bl-desc { top: 238px; width: 373px; height: 56px; background: #f3f4f6; border-radius: 4px; padding: 9px 13px; font-size: 12px; line-height: 18px; }
+  .bl .bl-quick { top: 310px; height: 32px; padding: 0 16px; background: #212525; color: #fff; display: flex; align-items: center; font-size: 12px; }
+  .bl .bl-addrfi { left: 781px; top: 435px; height: 32px; padding: 0 18px; border: 1px solid #d9d9d9; display: flex; align-items: center; font-size: 12px; background: #fff; opacity: 0; transition: opacity .45s .15s; }
+  .bl .bl-subrow { position: absolute; left: 368px; width: 672px; display: flex; align-items: center; gap: 10px; }
+  .bl .bl-subrow em { font-style: normal; color: #212525; font-size: 12px; }
+  .bl .bl-subrow .rule { flex: 1; border-top: 1px solid #eaeaea; margin-left: 14px; }
+  .bl .bl-box { width: 16px; height: 16px; border: 1px solid #d9d9d9; border-radius: 3px; position: relative; transition: background .25s, border-color .25s; }
+  .bl .bl-box.on { background: #212525; border-color: #212525; }
+  .bl .bl-box.on::after { content: ""; position: absolute; left: 4.5px; top: 1px; width: 4px; height: 8px; border: solid #fff; border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+  .bl .bl-sum { position: absolute; left: 1064px; top: 337px; width: 392px; height: 680px; border: 1px solid #eaeaea; border-radius: 4px; padding: 14px 16px; display: flex; flex-direction: column; }
+  .bl .bl-ln { display: grid; grid-template-columns: 1fr 42px 46px; height: 18px; font-size: 12px; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+  .bl .bl-ln span:first-child { text-align: left; }
+  .bl .bl-ln.l { color: #d9d9d9; } .bl .bl-ln.gap { margin-top: 26px; }
+  .bl .bl-ln[data-c] { opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s var(--ease); }
+  .bl .bl-ln[data-c].in { opacity: 1; transform: none; }
+  .bl .bl-tot { margin-top: auto; border-top: 1px solid #eaeaea; padding-top: 16px; }
+  .bl .bl-ln.g { color: #8c8c8c; } .bl .bl-ln.t { font-weight: 700; } .bl .bl-ln.t span:first-child { color: #8c8c8c; }
+  .bl .bl-btn { top: 1041px; height: 32px; padding: 0 16px; border: 1px solid #d9d9d9; background: #fff; display: flex; align-items: center; font-size: 12px; }
+  .bl .bl-btn.red { color: #ff3e3e; border-color: #ff3e3e; } .bl .bl-btn.org { color: #ff9f22; border-color: #ffd29a; }
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="page">
+  <header class="top">
+    <a class="name" href="index.html">Mancini Tan</a>
+    <div class="top-right">
+      <a class="pill" href="mailto:mancini.tan@gmail.com">Email me</a>
+      <div class="menu-slot">
+        <div class="menu" id="menu">
+          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
+          <nav id="menunav" aria-label="Main">
+            <div class="links">
+              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Neuron Mobility</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Orbit · OKX</a><a href="okx.html#rewind">Crypto Rewind · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">E-commerce, end to end · EVN Archive</a></div></div></div></div></div>
+              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+            <div class="secondary item">
+              <span class="h">Elsewhere</span>
+              <a href="#">Résumé</a><a href="#">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stack" id="stack" aria-hidden="true">
+    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="neuron.html"><div><b>Neuron Mobility</b><span>Operator app · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Orbit</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Crypto Rewind</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="ecom" href="evn.html"><div><b>E-commerce, end to end</b><span>EVN Archive · E-commerce UX</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
+  </div>
+
+
+  <section class="c-hero">
+    <div class="panel c-head">
+      <div class="crumbs">
+        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
+        <span class="chip">Buildlr</span>
+        <span class="chip ghost">Construction tech</span>
+      </div>
+      <h1>
+        <span class="line"><span>Designing</span></span>
+        <span class="line"><span>complex forms</span></span>
+      </h1>
+      <p class="lede">A pre-construction platform for the German market, built from zero for a client in Oslo. At the centre of it is one very deep quote form, designed for an estimator at a desk and rebuilt for a worker with one hand free.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Founding designer, freelance</dd></div>
+        <div><dt>Timeline</dt><dd>Jun 2025 to Feb 2026</dd></div>
+        <div><dt>Client</dt><dd>Buildlr, Oslo</dd></div>
+        <div><dt>Scope</dt><dd>Complex forms, IA, desktop and mobile, design system</dd></div>
+      </dl>
+    </div>
+    <aside class="panel c-results">
+      <div class="label"><span>What came of it</span><span>Shipped solo</span></div>
+      <div class="c-results-in">
+        <div class="big"><b data-n="167">167</b><span>components across 25 sets, built alongside the screens</span></div>
+        <div class="big"><b data-n="2">2</b><span>products, back office and field app, in light and dark</span></div>
+        <p class="note">Five tiers of information in a single quote form.</p>
+      </div>
+    </aside>
+  </section>
+
+  <figure class="panel c-media">
+    <img src="assets/bl-rows.jpg" alt="The Tasks step of a new quote, with the room and phase tree on the left and a long list of task rows" width="1288" height="872">
+    <figcaption>The Tasks step of a new quote. Rooms and phases on the left, tasks as rows you switch on.</figcaption>
+  </figure>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">01</span><h2>A quote is really a tree</h2></header>
+    <div class="sb">
+      <p class="big-p">Room, category, phase, task, sub-task. Five tiers, and every leaf has its own quantities and prices.</p>
+      <p>Bathroom, Floor, Construction, Install flooring, Parquet. The estimator needs all five tiers on one page or they lose their place. Then the same quote has to reach the worker laying that parquet, on a phone, outdoors, who wants exactly one task at a time. Same data, two very different readers.</p>
+      <p>Buildlr had a founder, a market and no product yet. So all of it was designed from zero, in a language I don't speak, for a client whose working day never overlapped with mine.</p>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">02</span><h2>Five tiers on one page</h2></header>
+    <div class="sb">
+      <p class="big-p">The tree lives in the left rail, so you always know which room and phase you're in.</p>
+      <p>Tasks are rows you switch on with a toggle. Open one and its sub-tasks unfold inside it, each with its own parameters, while the cost panel on the right recalculates as you go. Only one task opens at a time. That rule kept the page readable at forty rows deep, and it took a few rounds to accept it as a feature.</p>
+      <div class="demo live" id="blDemo" data-focus="344,215,760,720" style="--ar: 1512 / 1090; --ar-m: 760 / 720; --cw: 1512px; --ch: 1090px; background:#323838">
+        <span class="demo-tag">Live component</span>
+        <div class="scene bl" data-scene="bl" aria-label="Buildlr new quote: the task tree opens tier by tier and the quote adds up">
+          <div class="canvas">
+            <div class="bl-top">
+              <span class="bl-logo">b</span>
+              <span class="bl-search"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e8f4f4" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a project, client or employee</span>
+              <span class="bl-me"><b>Mancini Tan</b><i>Account Manager</i></span>
+              <span class="bl-av"></span>
+              <span class="bl-bell"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20h4"/></svg></span>
+            </div>
+            <div class="bl-rail"><span class="bl-ri" style="top:95px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg></span><span class="bl-ri" style="top:158px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><span class="bl-ri act" style="top:208px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></span><span class="bl-ri" style="top:258px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6"/></svg></span><span class="bl-ri" style="top:300px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6"/></svg></span><span class="bl-ri" style="top:360px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h7l2 2h9v10H3z"/></svg></span><span class="bl-ri" style="top:410px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="1"/><path d="m4 16 5-5 4 4 3-3 4 4"/></svg></span><span class="bl-ri" style="top:470px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 20c0-2-1-4-3-4"/></svg></span><span class="bl-ri" style="top:520px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span class="bl-ri" style="top:568px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M16 7c0-2-2-3-4-3s-4 1-4 3 2 3 4 3 4 1 4 3-2 3-4 3-4-1-4-3"/></svg></span></div>
+            <div class="bl-head">
+              <span class="bl-a crumb" style="left:88px;top:104px;">Home</span><span class="bl-a sep" style="left:138px;top:97px;">|</span><span class="bl-a crumb" style="left:151px;top:104px;">Quotations</span><span class="bl-a sep" style="left:252px;top:97px;">|</span><span class="bl-a crumb cur" style="left:265px;top:104px;">New quote</span>
+              <span class="bl-meta"><span>PRJ-2025-011</span><em>|</em><span>Klaus Müller</span><em>|</em><span>Bathroom remodeling</span><em>|</em><span>€24.500,00</span></span>
+            </div>
+            <div class="bl-menu"><div class="bl-row top" data-l="0"><span>General info</span></div><div class="bl-row top" data-l="0"><span>Materials</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row tasks" data-l="0"><span>Tasks</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="tasks"><div class="bl-row g1" data-l="1"><span>General</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1" data-l="1"><span>Surface layer</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1 bath" data-l="1"><span>Bathroom</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="bath"><div class="bl-row param" data-l="2"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#8c8c8c" stroke-width="1.6"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Parameters</span></div><div class="bl-row grey" data-l="2"><span>Demolition</span></div><div class="bl-row grey" data-l="2"><span>Ceiling</span></div><div class="bl-row grey" data-l="2"><span>Walls</span></div><div class="bl-row grey" data-l="2"><span>Floor</span></div><div class="bl-grp" data-g="floor"><span class="bl-line"></span><div class="bl-row faint" data-l="3"><span>Construction</span></div><div class="bl-row faint" data-l="3"><span>Surface finish</span></div><div class="bl-row pick" data-l="3"><span>Baseboard</span></div></div><div class="bl-row " data-l="2"><span>Furnishing</span></div></div><div class="bl-row g1" data-l="1"><span>Laundry room</span></div><div class="bl-row g1 addroom" data-l="1"><span>Add room</span><span class="plus">+</span></div></div><div class="bl-row top" data-l="0"><span>Add-ons</span></div><div class="bl-row top" data-l="0"><span>Disclosures</span></div><div class="bl-row top" data-l="0"><span>Summary</span></div></div>
+            <div class="bl-main">
+              <span class="bl-a tab" style="left:368px;top:166px;">Tasks</span><span class="bl-a sep" style="left:421px;top:158px;">|</span><span class="bl-a tab" style="left:438px;top:166px;">Bathroom</span><span class="bl-a sep" style="left:521px;top:158px;">|</span><span class="bl-a tab" style="left:538px;top:166px;">Floor</span><span class="bl-a sep" style="left:591px;top:158px;">|</span><span class="bl-a tab cur" style="left:608px;top:166px;">Electrical</span>
+              <span class="bl-filter">Filter <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></span>
+              <span class="bl-tsearch"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a task or sub-task</span>
+              <span class="bl-a lbl" style="left:368px;top:206px;">Construction</span><span class="bl-a pp grey" style="left:472px;top:204px;">(€1.460,00)</span>
+              <div class="bl-task">
+                <span class="bl-sw green" id="blMain"></span>
+                <span class="bl-tt">Install flooring</span>
+                <span class="bl-tm"><i>Area</i> 20 m² <i>Glue type</i> Fast-dry</span>
+                <span class="bl-ticons"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M4 5h16v11H9l-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M7 4h10v16l-5-4-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
+                <span class="bl-tp p1"><i>Parquet</i><em>|</em><b>✓ Extra prep work</b></span>
+                <span class="bl-tp p2"><i>Vinyl</i><em>|</em><i>Thickness</i> <u>2 mm</u></span>
+              </div>
+              <div class="bl-body"></div>
+              <span class="bl-a lbl" style="left:368px;top:337px;">General</span><span class="bl-a pp grey" style="left:368px;top:368px;">Area</span>
+              <span class="bl-field" style="left:368px;top:390px;width:160px"><span id="blArea">0</span><i>m²</i></span>
+              <div class="bl-rfi" id="blRfi">
+                <div class="bl-rfih"><span>Suggested RFI</span><span>✕</span></div>
+                <span class="pp grey" style="top:48px">Request name</span>
+                <span class="lblk" style="top:74px">Choose flooring color</span>
+                <span class="pp grey" style="top:98px">Deadline</span>
+                <span class="bl-field" style="left:16px;top:120px;width:373px"><span class="pr">2025-12-25</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+                <span class="pp grey" style="top:157px">Color choice</span>
+                <span class="bl-field" style="left:16px;top:179px;width:373px"><span class="pr ph">Client to select color</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
+                <span class="pp grey" style="top:216px">Description</span>
+                <span class="bl-desc">Please confirm your preferred flooring color so we can price the installation and materials.</span>
+                <span class="bl-quick">+&nbsp; Quick add</span>
+              </div>
+              <span class="bl-addrfi" id="blAddRfi">+&nbsp; Add new RFI</span>
+              <div class="bl-subrow" style="top:818px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Parquet</span><span class="rule"></span></div>
+              <div class="bl-subrow" style="top:861px"><span class="bl-box"></span><span class="pr" style="font-size:14px;color:#000">Extra prep work</span></div>
+              <div class="bl-subrow" style="top:917px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Vinyl</span><span class="rule"></span></div>
+              <span class="bl-a pp dk" style="left:368px;top:958px;">Thickness</span>
+              <span class="bl-field" style="left:368px;top:980px;width:160px"><span id="blThick">20</span><i>mm</i></span>
+              <div class="bl-sum">
+                <div class="bl-ln b" data-c="p"><span>Parquet</span><span>€</span><span>100,00</span></div>
+                <div class="bl-ln l" data-c="p"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln l" data-c="p"><span>Material costs</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln b gap" data-c="v"><span>Vinyl</span><span>€</span><span>100,00</span></div>
+                <div class="bl-ln l" data-c="v"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln l" data-c="v"><span>Material costs</span><span>€</span><span>50,00</span></div>
+                <div class="bl-tot">
+                  <div class="bl-ln g"><span>Projected cost</span><span>€</span><span id="blProj">0,00</span></div>
+                  <div class="bl-ln g"><span>VAT (19%)</span><span>€</span><span id="blVat">0,00</span></div>
+                  <div class="bl-ln t"><span>Total</span><span>€</span><span id="blTot">0,00</span></div>
+                </div>
+              </div>
+              <span class="bl-btn red" style="left:368px">Clear all</span>
+              <span class="bl-btn org" style="left:1147px">Save as add-on</span>
+              <span class="bl-btn" style="left:1290px">Remove from quote</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="replay" type="button">Replay</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">03</span><h2>The question lives in the form</h2></header>
+    <div class="sb">
+      <p class="big-p">Estimators kept getting stuck on things only the client could answer.</p>
+      <p>Which colour. Which finish. The old habit was to leave the line blank and chase it by email. So the request for information became part of the task. When a task needs a client decision, a suggested RFI appears right there, question pre-written and deadline attached, and the client answers it on their phone. The blank line stays visible until it's filled.</p>
+      <figure class="shot"><img src="assets/bl-rfi.jpg" alt="A suggested RFI inside the Install flooring task, asking the client to choose a flooring colour by a deadline" width="1368" height="760" loading="lazy"><figcaption><b>Drafted where the gap is.</b> Once sent, every RFI is tracked on its own page with the thread attached.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">04</span><h2>Same tree, one thumb</h2></header>
+    <div class="sb">
+      <p class="big-p">The field app reads the same quote, one worker at a time.</p>
+      <p>Rooms became filter chips along the top. Categories became accordions. Each task is a card, parameters are label and value rows, and sub-tasks sit one indent in, just like on desktop, so the hierarchy survives the move. Anything still waiting on the client is flagged in red inside the card, because nobody should find that out on a ladder. Once a task is running, everything collapses to three headers and a timer.</p>
+      <div class="phones flat">
+        <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="594" height="1008" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
+        <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="594" height="1008" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
+        <figure><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">05</span><h2>How each tier travelled</h2></header>
+    <div class="sb">
+      <p class="big-p">On desktop, one page, always in context. On mobile, one task, always in reach.</p>
+      <div class="tbl-wrap">
+        <table class="map">
+          <thead><tr><th scope="col">Tier</th><th scope="col">Desktop</th><th scope="col">Mobile</th></tr></thead>
+          <tbody>
+            <tr><td>Room</td><td>Left rail, always visible</td><td>Filter chips along the top</td></tr>
+            <tr><td>Category and phase</td><td>Rail children, collapsible</td><td>Accordion sections</td></tr>
+            <tr><td>Task</td><td>Row with a toggle, one open at a time</td><td>Card with a status line</td></tr>
+            <tr><td>Sub-task</td><td>Section inside the open task</td><td>Indented block inside the card</td></tr>
+            <tr><td>Parameters</td><td>Inline inputs with units</td><td>Label and value rows</td></tr>
+            <tr><td>Client decision</td><td>Suggested RFI, pre-written</td><td>Red "client to provide" block</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="result"><b>Everything ran async, on top of the design system.</b><p>Seoul and Oslo share no working hours. The library has no token layer yet, since it was built for speed with a two-person team. Tokens are the first thing I'd add with more runway.</p></div>
+    </div>
+  </section>
+
+  <section class="c-next">
+    <div class="panel c-cta">
+      <div class="label"><span>Let's talk</span><span>Singapore · Seoul · anywhere</span></div>
+      <div class="inner">
+        <h2>Got a form that keeps growing tiers?</h2>
+        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="#">Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
+        <p class="cta-p">mancini.tan@gmail.com</p>
+      </div>
+    </div>
+    <a class="panel c-nextcase" href="ninjavan.html" aria-label="Next case: Service recovery at scale">
+      <div class="label"><span>Next case</span><span>04</span></div>
+      <div class="inner">
+        <span class="nlogo"><img src="assets/logo-nv.svg" alt="" width="40" height="40"></span>
+        <div><h3>Service recovery at scale</h3><p>Ninja Van · Logistics</p></div>
+        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+  </section>
+
+  <footer><span>Mancini Tan · Portfolio 2026</span><span>Designed and assembled with Claude and the Figma MCP</span></footer>
+</div>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const wait = (ms, bag) => new Promise(r => bag.push(setTimeout(r, ms)));
+  const once = (el, fn, t = .4) => new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { ob.disconnect(); fn(); } }), { threshold: t }).observe(el);
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber(b)), 450);
+  document.querySelectorAll('.callouts, .strip').forEach(c => once(c, () => c.querySelectorAll('b[data-n]').forEach(b => window.rollNumber(b))));
+  /* Scale each fixed-size component canvas to its box */
+  /* On phones, a canvas with data-focus zooms into its most important region instead of shrinking the whole screen */
+  const narrow = matchMedia('(max-width: 900px)');
+  document.querySelectorAll('.demo.live').forEach(d => { const c = d.querySelector('.canvas');
+    const fit = () => { const w = d.clientWidth, h = d.clientHeight;
+      if (narrow.matches && d.dataset.focus) { const [fx, fy, fw, fh] = d.dataset.focus.split(',').map(Number), s = Math.min(w / fw, h / fh);
+        c.style.transformOrigin = '0 0'; c.style.left = '0'; c.style.top = '0';
+        c.style.transform = `translate(${(w - fw * s) / 2 - fx * s}px, ${(h - fh * s) / 2 - fy * s}px) scale(${s})`; }
+      else { c.style.transform = c.style.left = c.style.top = c.style.transformOrigin = ''; c.style.setProperty('--s', Math.min(w / c.offsetWidth, h / c.offsetHeight)); } };
+    new ResizeObserver(fit).observe(d); narrow.addEventListener('change', fit); });
+  /* Bars grow when seen */
+  document.querySelectorAll('.bars').forEach(bx => { const go = () => bx.querySelectorAll('.tr').forEach(t => { const w = t.dataset.w + '%'; t.querySelector('span').style.width = w; t.querySelector('b').style.left = w; });
+    still.matches ? go() : once(bx, go, .5); });
+  /* Flow steps light up in order */
+  document.querySelectorAll('.flow').forEach(fl => { const li = [...fl.children]; if (still.matches) return;
+    once(fl, () => li.forEach((l, i) => setTimeout(() => { l.classList.add('lit'); setTimeout(() => l.classList.remove('lit'), 900); }, i * 450)), .6); });
+  const live = (id, player) => { const d = document.getElementById(id); player.stop(); once(d, player.play, .45);
+    const r = d.querySelector('.replay'); if (r) r.addEventListener('click', player.play); };
+  const bl = (() => {
+    const root = document.querySelector('.bl');
+    const g = k => root.querySelector(`.bl-grp[data-g="${k}"]`);
+    const grps = { tasks: g('tasks'), bath: g('bath'), floor: g('floor') };
+    const rowTasks = root.querySelector('.bl-row.tasks'), rowBath = root.querySelector('.bl-row.bath'), rowFloor = [...root.querySelectorAll('.bl-row')].find(r => r.textContent.trim() === 'Floor');
+    const pick = root.querySelector('.bl-row.pick');
+    const main = document.getElementById('blMain'), area = document.getElementById('blArea');
+    const pills = [...root.querySelectorAll('.bl-tp')], rfi = document.getElementById('blRfi'), addRfi = document.getElementById('blAddRfi');
+    const subs = [...root.querySelectorAll('.bl-subrow .bl-sw, .bl-subrow .bl-box')];
+    const lnP = [...root.querySelectorAll('.bl-ln[data-c="p"]')], lnV = [...root.querySelectorAll('.bl-ln[data-c="v"]')];
+    const proj = document.getElementById('blProj'), vat = document.getElementById('blVat'), tot = document.getElementById('blTot');
+    let bag = [], run = 0;
+    const fmt = v => v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const money = (p) => { proj.textContent = fmt(p); vat.textContent = fmt(p * .19); tot.textContent = fmt(p * 1.19); };
+    const set = open => {
+      Object.values(grps).forEach(x => x.classList.toggle('shut', !open));
+      [rowTasks, rowBath].forEach(r => r.classList.toggle('chev-flip', !open));
+      pick.style.color = open ? '#212525' : '#d9d9d9';
+      main.classList.toggle('on', open); pills.forEach(p => p.classList.toggle('in', open));
+      rfi.classList.toggle('in', open); addRfi.classList.toggle('in', open);
+      subs.forEach(x => x.classList.toggle('on', open)); [...lnP, ...lnV].forEach(x => x.classList.toggle('in', open));
+      area.textContent = open ? '20' : '0'; money(open ? 500 : 0);
+    };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; set(true); };
+    const count = (to, ms, f) => new Promise(res => { const t0 = performance.now(), me = run;
+      const step = t => { if (me !== run) return res(); const k = Math.min((t - t0) / ms, 1); f(to * (1 - Math.pow(1 - k, 3))); k < 1 ? requestAnimationFrame(step) : res(); };
+      requestAnimationFrame(step); });
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run, ok = () => me === run;
+      set(false); await wait(450, bag); if (!ok()) return;
+      // tier 1 → 2 → 3
+      rowTasks.classList.remove('chev-flip'); grps.tasks.classList.remove('shut'); await wait(550, bag); if (!ok()) return;
+      rowBath.classList.remove('chev-flip'); grps.bath.classList.remove('shut'); await wait(600, bag); if (!ok()) return;
+      grps.floor.classList.remove('shut'); await wait(450, bag); if (!ok()) return;
+      pick.style.color = '#212525'; await wait(400, bag); if (!ok()) return;
+      // the task
+      main.classList.add('on'); await wait(300, bag); if (!ok()) return;
+      await count(20, 500, v => area.textContent = Math.round(v)); if (!ok()) return;
+      rfi.classList.add('in'); addRfi.classList.add('in'); await wait(700, bag); if (!ok()) return;
+      // sub-tasks and the quote
+      subs[0].classList.add('on'); pills[0].classList.add('in'); lnP.forEach(x => x.classList.add('in'));
+      await count(200, 450, money); if (!ok()) return;
+      await wait(250, bag); if (!ok()) return; subs[1].classList.add('on'); await wait(350, bag); if (!ok()) return;
+      subs[2].classList.add('on'); pills[1].classList.add('in'); lnV.forEach(x => x.classList.add('in'));
+      await count(300, 500, v => money(200 + v));
+    };
+    return { play, stop };
+  })();
+
+  live('blDemo', bl);
+})();
+</script>
+</body>
+</html>

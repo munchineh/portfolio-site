@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>E-commerce, end to end · Mancini Tan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; white-space: nowrap; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; }
+  .c-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 6.4; object-fit: cover; object-position: 50% 12%; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Fit engine demo ---------- */
+  .demo { margin-top: 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--g1) 55%, transparent), color-mix(in srgb, var(--g2) 45%, transparent)); }
+  .demo-in { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; padding: 24px; align-items: center; }
+  .controls { display: grid; gap: 18px; }
+  .demo-tag { justify-self: start; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+  .controls label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; }
+  .controls output { float: right; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 400; }
+  .controls input[type=range] { width: 100%; accent-color: var(--accent); }
+  .demo-note { font-size: 12px; color: var(--muted); }
+  /* the card mirrors the real product page type: condensed caps, black and white */
+  .evn-card { background: #fff; color: #111; border-radius: 10px; padding: 20px; display: grid; gap: 10px; font-family: "Archivo", sans-serif; box-shadow: 0 20px 40px -24px rgba(0,0,0,.35); }
+  .evn-title { font-weight: 700; font-stretch: 62%; text-transform: uppercase; font-size: 26px; line-height: 1; }
+  .evn-price { font-stretch: 70%; font-size: 14px; color: #555; }
+  .evn-fit { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+  .evn-fit b { font-stretch: 70%; font-weight: 700; font-size: 15px; }
+  .evn-fit > span { font-stretch: 75%; font-size: 14px; color: #333; }
+  .scale { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 6px; height: 8px; }
+  .scale .z { border-radius: 2px; background: #e8e8e8; }
+  .scale .z.rec { background: #cfe8da; }
+  .scale .dot { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #111; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .5s var(--ease); }
+  .scale-labels { display: flex; justify-content: space-between; font-stretch: 75%; font-size: 12px; color: #777; }
+  .read { justify-self: start; margin-top: 4px; font-stretch: 75%; font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: #111; color: #fff; transition: background .3s; }
+  .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
+
+  /* ---------- Touchpoints ---------- */
+  .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
+  .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
+  .shots li.wide { grid-column: 1 / -1; }
+  .shots figure { margin: 0; background: #fff; border-bottom: 1px solid var(--rule); overflow: hidden; }
+  .shots figure img { display: block; width: 100%; height: auto; }
+  .shots figure.tall { aspect-ratio: 4 / 3.4; }
+  .shots figure.tall img { height: 100%; object-fit: cover; object-position: top center; }
+  .shots figure.picks img { object-position: left top; }
+  .shots img.crop-pdp { aspect-ratio: 1180 / 520; object-fit: cover; object-position: 50% 62%; }
+  .shots li > div { padding: 14px 16px 16px; }
+  .shots b { font-weight: 500; font-size: 15px; }
+  .shots b::before { content: counter(s, decimal-leading-zero); font-size: 12px; color: var(--accent); margin-right: 8px; font-weight: 500; }
+  .shots p { font-size: 14px; color: var(--muted); margin-top: 4px; max-width: 48ch; }
+
+  /* ---------- Nudge + rest ---------- */
+  .pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b, .grid6 b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p, .grid6 p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .result p { font-size: 14px; color: var(--muted); }
+  .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 24px 20px 20px; display: grid; gap: 22px; }
+  .c-cta .cta-p { color: var(--muted); font-size: 15px; max-width: 46ch; margin-top: -8px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 68px); line-height: .9; max-width: 14ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .c-nextcase img { width: 72px; height: 72px; border-radius: 10px; object-fit: cover; }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; border-radius: 0; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; min-height: auto; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .c-media img { aspect-ratio: 4 / 3; object-position: 30% 20%; }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .demo-in { grid-template-columns: 1fr; padding: 18px; }
+    .shots, .pair { grid-template-columns: 1fr; }
+    .grid6 { grid-template-columns: 1fr 1fr; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .grid6, .callouts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="page">
+  <header class="top">
+    <a class="name" href="index.html">Mancini Tan</a>
+    <div class="top-right">
+      <a class="pill" href="mailto:mancini.tan@gmail.com">Email me</a>
+      <div class="menu-slot">
+        <div class="menu" id="menu">
+          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
+          <nav id="menunav" aria-label="Main">
+            <div class="links">
+              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Neuron Mobility</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Orbit · OKX</a><a href="okx.html#rewind">Crypto Rewind · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">E-commerce, end to end · EVN Archive</a></div></div></div></div></div>
+              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+            <div class="secondary item">
+              <span class="h">Elsewhere</span>
+              <a href="#">Résumé</a><a href="#">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stack" id="stack" aria-hidden="true">
+    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="neuron.html"><div><b>Neuron Mobility</b><span>Operator app · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Orbit</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Crypto Rewind</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="ecom" href="evn.html"><div><b>E-commerce, end to end</b><span>EVN Archive · E-commerce UX</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
+  </div>
+
+
+  <!-- ============ Case hero ============ -->
+  <section class="c-hero">
+    <div class="panel c-head">
+      <div class="crumbs">
+        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
+        <span class="chip">EVN Archive</span>
+        <span class="chip ghost">E-commerce</span>
+      </div>
+      <h1>
+        <span class="line"><span>E-commerce,</span></span>
+        <span class="line"><span>end to end</span></span>
+      </h1>
+      <p class="lede">EVN Archive is a Shopify store for independent Korean menswear, which I design and run. This case covers the sizing tool I built to help people buy free-size clothing online with confidence.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Designer and founder. UX, UI, content and front-end</dd></div>
+        <div><dt>Timeline</dt><dd>May 2026 to now</dd></div>
+        <div><dt>Platform</dt><dd>Shopify, custom theme code</dd></div>
+        <div><dt>Team</dt><dd>Just me</dd></div>
+      </dl>
+    </div>
+    <aside class="panel c-results">
+      <div class="label"><span>What came of it</span><span>Sept 2026</span></div>
+      <div class="c-results-in">
+        <div class="big"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week</span></div>
+        <div class="big"><b data-n="1st">1st</b><span>free-size sales in two months</span></div>
+        <p class="note">A discount ran the same week, so I hold it loosely.</p>
+      </div>
+    </aside>
+  </section>
+
+  <figure class="panel c-media">
+    <img src="assets/evn.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the How it'll fit you section under the size" width="1180" height="787">
+    <figcaption>The product page, with a fit read under every size.</figcaption>
+  </figure>
+
+  <!-- ============ 01 ============ -->
+  <section class="panel sec" id="problem">
+    <header class="sh"><span class="no">01</span><h2>Plenty of visits, very few carts</h2></header>
+    <div class="sb">
+      <p class="big-p">Free size pieces are some of the strongest designs in the archive. They were also the ones nobody bought.</p>
+      <p>Three free-size jackets had hundreds of visits between them, and almost nobody added one to cart. Buying clothes online already asks for some trust. Free size asks for more, because there's no size chart to lean on. People couldn't picture how a piece would sit on them, so they left.</p>
+      <div class="callouts">
+        <div><b>2</b><span>months without a free-size sale</span></div>
+        <div><b>3</b><span>jackets with real traffic and no cart adds to speak of</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section class="panel sec" id="engine">
+    <header class="sh"><span class="no">02</span><h2>A sizing tool that reads the garment</h2></header>
+    <div class="sb">
+      <p class="big-p">You tell it your height and weight. It tells you how each piece will fit you.</p>
+      <p>The sizing tool compares your numbers with each garment's own measurements and returns a fit read: snug, recommended or relaxed. Build and body measurements are optional, for people who want it exact.</p>
+      <p>It reads the Size &amp; Fit copy that's already on every product page, so there's no separate database to keep in sync. A new product works the day it goes live, as long as its measurements are written properly.</p>
+
+      <div class="demo" id="demo" aria-label="Simplified demo of the sizing tool">
+        <div class="demo-in">
+          <div class="controls">
+            <span class="demo-tag">Try it</span>
+            <label>Height <output id="hOut">160 cm</output>
+              <input type="range" id="h" min="150" max="200" value="160" aria-label="Height in centimetres">
+            </label>
+            <label>Weight <output id="wOut">55 kg</output>
+              <input type="range" id="w" min="45" max="110" value="55" aria-label="Weight in kilograms">
+            </label>
+            <p class="demo-note">A simplified version of the sizing tool, using one free-size jacket.</p>
+          </div>
+          <div class="evn-card">
+            <div class="evn-title">Aura Windbreaker</div>
+            <div class="evn-price">Size · Free</div>
+            <div class="evn-fit">
+              <b>How it'll fit you</b>
+              <span id="fitLine">This is your recommended size.</span>
+              <div class="scale" aria-hidden="true">
+                <i class="z"></i><i class="z"></i><i class="z rec"></i><i class="z"></i><i class="z"></i>
+                <span class="dot" id="dot"></span>
+              </div>
+              <div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
+              <span class="read" id="fitRead">Relaxed fit</span>
+            </div>
+            <div class="evn-btn">Add to cart</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section class="panel sec" id="touchpoints">
+    <header class="sh"><span class="no">03</span><h2>One recommendation, everywhere you shop</h2></header>
+    <div class="sb">
+      <p class="big-p">The sizing tool shows up at four points, so the answer follows you from the homepage to checkout.</p>
+      <ol class="shots">
+        <li class="wide">
+          <figure><img src="assets/evn-home.jpg" alt="The Free Size Edit on the EVN Archive homepage" width="1568" height="445" loading="lazy"></figure>
+          <div><b>Homepage</b><p>The Free Size Edit sits near the top, with a prompt to find your fit.</p></div>
+        </li>
+        <li>
+          <figure class="tall"><img src="assets/evn-finder.jpg" alt="The Find your fit pop-up asking for height, weight and build" width="1100" height="1040" loading="lazy"></figure>
+          <div><b>Find your fit</b><p>Height and weight are enough to start. Build and measurements refine it.</p></div>
+        </li>
+        <li>
+          <figure class="tall picks"><img src="assets/evn-collection.jpg" alt="The shop filtered to pieces recommended for you" width="1568" height="582" loading="lazy"></figure>
+          <div><b>Your picks</b><p>The shop filters down to pieces recommended for you, and you can clear it anytime.</p></div>
+        </li>
+        <li class="wide">
+          <figure><img src="assets/evn.jpg" alt="The product page with the How it'll fit you section" width="1180" height="787" loading="lazy" class="crop-pdp"></figure>
+          <div><b>Product page</b><p>Every product shows how it'll fit you, right above the button.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="nudge">
+    <header class="sh"><span class="no">04</span><h2>Making it easier to say yes</h2></header>
+    <div class="sb">
+      <p class="big-p">The sizing tool answers "will it fit". Two smaller moves helped with "is it worth a try".</p>
+      <div class="pair">
+        <div class="tile"><span class="tile-k">20% off</span><b>A lower first step</b><p>A temporary discount on free-size pieces, to take some of the risk out of trying one.</p></div>
+        <div class="tile"><span class="tile-k">Short video</span><b>Proof on a real body</b><p>Quick breakdowns of how each piece moves and sits, filmed by me, on me.</p></div>
+      </div>
+      <div class="result">
+        <b>Four free-size sales in the first week, the first in two months.</b>
+        <p>The discount ran the same week, so I hold the result loosely.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section class="panel sec" id="rest">
+    <header class="sh"><span class="no">05</span><h2>Beyond the sizing tool</h2></header>
+    <div class="sb">
+      <p class="big-p">Running my own store means owning the whole experience. Here's the rest of it.</p>
+      <div class="grid6">
+        <div><b>Information architecture</b><p>Categories and filters shaped around how people actually shop for clothes.</p></div>
+        <div><b>Clear pricing</b><p>A small set of price tiers per garment type, so prices are easy to read at a glance.</p></div>
+        <div><b>Content design</b><p>Product copy for the whole catalogue, plus search titles and descriptions.</p></div>
+        <div><b>Localisation</b><p>Storefront copy for Korea written fresh for local customers.</p></div>
+        <div><b>Customer insight</b><p>I answer every message myself, from sizing questions to shipping updates. It doubles as ongoing research.</p></div>
+        <div><b>Design and front-end</b><p>A heavily customised Shopify theme. Every change is staged and reviewed before it goes live.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Next ============ -->
+  <section class="c-next">
+    <div class="panel c-cta">
+      <div class="label"><span>Let's talk</span><span>Singapore · Seoul · anywhere</span></div>
+      <div class="inner">
+        <h2>Got a checkout that needs this kind of care?</h2>
+        <p class="cta-p">I'd love to hear what you're working on. Tell me where people get stuck and we'll figure it out from there.</p>
+        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="#">Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
+      </div>
+    </div>
+    <a class="panel c-nextcase" href="okx.html" aria-label="Next case: Making crypto social">
+      <div class="label"><span>Next case</span><span>02</span></div>
+      <div class="inner">
+        <span class="nlogo"><img src="assets/logo-okx.svg" alt="" width="40" height="40"></span>
+        <div><h3>Making crypto social</h3><p>OKX · Fintech</p></div>
+        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+  </section>
+
+  <footer><span>Mancini Tan · Portfolio 2026</span><span>Designed and assembled with Claude and the Figma MCP</span></footer>
+</div>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Results roll in once the hero loads */
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n], .callouts b').forEach(b => window.rollNumber(b)), 450);
+
+  /* Fit engine demo: a simplified take on the real engine for one free-size jacket.
+     The garment has a fixed amount of room; bigger bodies use more of it. */
+  const h = document.getElementById('h'), w = document.getElementById('w');
+  const hOut = document.getElementById('hOut'), wOut = document.getElementById('wOut');
+  const dot = document.getElementById('dot'), read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const zones = [
+    { max: -9, label: 'Too small', line: 'This will likely feel tight on you.' },
+    { max: -3, label: 'Snug fit', line: 'It will sit close, with little room to layer.' },
+    { max: 3, label: 'Recommended', line: 'This is your recommended size.' },
+    { max: 10, label: 'Relaxed fit', line: 'It will drape with room to spare, as intended.' },
+    { max: Infinity, label: 'Very roomy', line: 'Expect a very oversized look on you.' },
+  ];
+  const update = () => {
+    const H = +h.value, W = +w.value;
+    hOut.textContent = H + ' cm'; wOut.textContent = W + ' kg';
+    const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
+    const z = zones.find(z => room <= z.max);
+    const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
+    dot.style.left = pos + '%';
+    read.textContent = z.label; line.textContent = z.line;
+    read.style.background = z.label === 'Recommended' ? 'var(--accent)' : '#111';
+  };
+  h.addEventListener('input', update); w.addEventListener('input', update);
+  update();
+
+  // When the demo first scrolls into view, glide the sliders to a typical shopper
+  const demo = document.getElementById('demo');
+  let played = false;
+  new IntersectionObserver((es, ob) => es.forEach(e => {
+    if (!e.isIntersecting || played) return; played = true; ob.disconnect();
+    if (still.matches) { h.value = 175; w.value = 68; update(); return; }
+    const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
+    const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = 1 - Math.pow(1 - k, 3);
+      h.value = Math.round(from[0] + (to[0] - from[0]) * e2); w.value = Math.round(from[1] + (to[1] - from[1]) * e2); update();
+      if (k < 1) requestAnimationFrame(step); };
+    setTimeout(() => requestAnimationFrame(step), 300);
+  }), { threshold: 0.5 }).observe(demo);
+})();
+</script>
+</body>
+</html>
