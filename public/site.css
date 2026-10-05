@@ -277,3 +277,29 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 .c-nextcase { grid-template-rows: auto auto !important; align-self: start; }
 .c-cta.action-card .inner { grid-template-columns: 1fr; }
 .c-cta.action-card .btns { justify-self: start; }
+
+/* ---------- Liquid glass: brighter rim light, a soft sheen and stronger colour pull-through ---------- */
+:root { --gl-hi: rgba(255,255,255,.75); --gl-side: rgba(255,255,255,.28); --gl-lo: rgba(255,255,255,.14); --gl-sheen: rgba(255,255,255,.26); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --gl-hi: rgba(255,255,255,.2); --gl-side: rgba(255,255,255,.08); --gl-lo: rgba(255,255,255,.04); --gl-sheen: rgba(255,255,255,.05); } }
+:root[data-theme="dark"] { --gl-hi: rgba(255,255,255,.2); --gl-side: rgba(255,255,255,.08); --gl-lo: rgba(255,255,255,.04); --gl-sheen: rgba(255,255,255,.05); }
+.panel, .name, .pill {
+  background-image: linear-gradient(140deg, var(--gl-sheen) 0%, transparent 38%, transparent 70%, color-mix(in srgb, var(--gl-sheen) 50%, transparent) 100%);
+  box-shadow: inset 0 1px 0 var(--gl-hi), inset 1px 0 0 var(--gl-side), inset -1px 0 0 var(--gl-lo), inset 0 -1px 0 var(--gl-lo), 0 12px 32px -22px rgba(0,0,0,.4);
+  backdrop-filter: blur(22px) saturate(1.9) brightness(1.04); -webkit-backdrop-filter: blur(22px) saturate(1.9) brightness(1.04);
+}
+.action-card { box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 1px 0 0 rgba(255,255,255,.1), 0 24px 48px -28px rgba(15,60,40,.55); }
+/* Small controls also bend what's behind them. Browsers that can't do this keep the frosted version above. */
+.name, .pill { backdrop-filter: url(#lg-refract) blur(4px) saturate(1.9) brightness(1.05); }
+.menu, .scard { backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 1px 0 0 rgba(255,255,255,.06), 0 16px 40px -20px rgba(0,0,0,.5); }
+body:not(.menu-open) .menu { backdrop-filter: url(#lg-refract) blur(3px) saturate(1.6); }
+.theme { box-shadow: inset 0 1px 0 rgba(255,255,255,.18); }
+.theme .thumb { box-shadow: inset 0 1px 0 #fff, 0 2px 6px rgba(0,0,0,.25); }
+
+/* Bigger theme buttons for thumbs */
+@media (max-width: 640px) {
+  .theme { grid-template-columns: repeat(3, 44px); height: 44px; }
+  .theme button { width: 44px; height: 42px; }
+  .theme button svg { width: 18px; height: 18px; }
+  .theme .thumb { width: 40px; height: 38px; transform: translateX(calc(var(--i, 2) * 44px)); }
+}

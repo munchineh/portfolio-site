@@ -138,3 +138,15 @@ window.rollNumber = (el) => {
   });
   apply(pick);
 })();
+
+/* Liquid glass: a gentle displacement map that small glass controls refract through (Chromium only) */
+(() => {
+  const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('width', '0'); svg.setAttribute('height', '0'); svg.setAttribute('aria-hidden', 'true');
+  svg.style.position = 'absolute';
+  svg.innerHTML = '<filter id="lg-refract" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">'
+    + '<feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="4" result="n"/>'
+    + '<feGaussianBlur in="n" stdDeviation="2" result="nb"/>'
+    + '<feDisplacementMap in="SourceGraphic" in2="nb" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter>';
+  document.body.appendChild(svg);
+})();
