@@ -106,6 +106,24 @@
   .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
   .phones.four { --n: 4; }
   .phones.two { --n: 2; max-width: 560px; }
+  /* Working screen: the timer runs on the real export */
+  .tmr { position: relative; border-radius: 22px; overflow: hidden; }
+  .tm-st { position: absolute; left: 0; top: 0; width: 594px; height: 1008px; transform-origin: 0 0; pointer-events: none; }
+  .tm-st svg { position: absolute; inset: 0; width: 594px; height: 1008px; overflow: visible; }
+  .tm-st rect { fill: none; stroke-width: 11.5; }
+  .tm-base { stroke: #bba897; stroke-width: 13.5; }
+  .tm-run { stroke: #d9d9d9; stroke-dasharray: 68 932; stroke-dashoffset: -170; animation: tmRun 8s linear infinite; }
+  @keyframes tmRun { to { stroke-dashoffset: -1170; } }
+  .tm-cover { position: absolute; background: #212526; }
+  .tm-t { position: absolute; left: 212px; top: 942px; width: 155px; transform: translateY(-50%); font: 500 34px/1 "Clash Display", "Archivo", sans-serif; color: #bba897; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
+  .tm-btn { position: absolute; left: 418px; top: 922px; width: 104px; height: 40px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
+    font: 500 22px/1 "Clash Display", "Archivo", sans-serif; color: #fff; letter-spacing: .01em; background: #212526; border-radius: 8px; }
+  .tm-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .tm-pulse { position: absolute; left: 25px; top: 891px; width: 102px; height: 102px; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,63,62,.45); animation: tmPulse 1.6s ease-out infinite; }
+  @keyframes tmPulse { to { box-shadow: 0 0 0 18px rgba(255,63,62,0); } }
+  .tmr.paused .tm-run, .tmr.paused .tm-pulse { animation-play-state: paused; }
+  .tmr.paused .tm-pulse { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) { .tm-run, .tm-pulse { animation: none; } }
 
   /* ---------- Prompt layers ---------- */
   .layers { list-style: none; display: grid; gap: 6px; margin-top: 8px; }
@@ -638,7 +656,7 @@
 <div class="phones flat">
 <figure><img alt="行動版規格分頁，包含房間標籤、「Flooring and tiling」摺疊選單，以及附參數的任務卡片" height="1008" loading="lazy" src="../assets/bl-m-specs.jpg" width="594"/><figcaption><b>規格</b>房間是標籤，任務是卡片。</figcaption></figure>
 <figure><img alt="任務詳情，包含參數、四張現場照片，以及工人留下的筆記" height="1008" loading="lazy" src="../assets/bl-m-media.jpg" width="594"/><figcaption><b>任務詳情</b>來自現場的照片與筆記。</figcaption></figure>
-<figure><img alt="收合成三個標題的任務，附運作中的計時器與暫停按鈕" height="1008" loading="lazy" src="../assets/bl-m-timer.jpg" width="594"/><figcaption><b>進行中</b>三個標題，一個計時器。</figcaption></figure>
+<figure><div class="tmr" id="blTimer"><img alt="收合成三個標題的任務，附運作中的計時器與暫停按鈕" height="1008" loading="lazy" src="../assets/bl-m-timer.jpg" width="594"/><div class="tm-st" translate="no"><svg aria-hidden="true" viewbox="0 0 594 1008"><rect class="tm-base" height="139" pathlength="1000" rx="69.5" width="404" x="158.5" y="872.5"></rect><rect class="tm-run" height="139" pathlength="1000" rx="69.5" width="404" x="158.5" y="872.5"></rect></svg><span aria-hidden="true" class="tm-pulse"></span><span aria-hidden="true" class="tm-cover" style="left:200px;top:914px;width:184px;height:56px"></span><b aria-hidden="true" class="tm-t">00:00:15</b><button aria-label="Pause the timer" class="tm-btn" type="button">PAUSE</button></div></div><figcaption><b>進行中</b>三個標題，一個計時器。</figcaption></figure>
 </div>
 </div>
 </section>
@@ -758,6 +776,27 @@
   })();
 
   live('blDemo', bl);
+})();
+</script>
+<script>
+/* Buildlr field app: the task timer keeps running, and PAUSE works */
+(() => {
+  const box = document.getElementById('blTimer'); if (!box) return;
+  const st = box.querySelector('.tm-st'), t = box.querySelector('.tm-t'), btn = box.querySelector('.tm-btn');
+  new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 594})`).observe(box);
+  const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${155 / w})`; };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+  let sec = 15, timer = null, paused = false;
+  const pad = n => String(n).padStart(2, '0');
+  const show = () => { t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`; };
+  const run = () => { clearInterval(timer); timer = setInterval(() => { sec++; show(); }, 1000); };
+  btn.addEventListener('click', () => {
+    paused = !paused; box.classList.toggle('paused', paused);
+    btn.textContent = paused ? 'RESUME' : 'PAUSE'; btn.setAttribute('aria-label', paused ? 'Resume the timer' : 'Pause the timer');
+    paused ? clearInterval(timer) : run();
+  });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !paused) run(); else clearInterval(timer); }), { threshold: .3 }).observe(box);
 })();
 </script>
 </body>

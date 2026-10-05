@@ -105,6 +105,24 @@
   .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
   .phones.four { --n: 4; }
   .phones.two { --n: 2; max-width: 560px; }
+  /* Working screen: the timer runs on the real export */
+  .tmr { position: relative; border-radius: 22px; overflow: hidden; }
+  .tm-st { position: absolute; left: 0; top: 0; width: 594px; height: 1008px; transform-origin: 0 0; pointer-events: none; }
+  .tm-st svg { position: absolute; inset: 0; width: 594px; height: 1008px; overflow: visible; }
+  .tm-st rect { fill: none; stroke-width: 11.5; }
+  .tm-base { stroke: #bba897; stroke-width: 13.5; }
+  .tm-run { stroke: #d9d9d9; stroke-dasharray: 68 932; stroke-dashoffset: -170; animation: tmRun 8s linear infinite; }
+  @keyframes tmRun { to { stroke-dashoffset: -1170; } }
+  .tm-cover { position: absolute; background: #212526; }
+  .tm-t { position: absolute; left: 212px; top: 942px; width: 155px; transform: translateY(-50%); font: 500 34px/1 "Clash Display", "Archivo", sans-serif; color: #bba897; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
+  .tm-btn { position: absolute; left: 418px; top: 922px; width: 104px; height: 40px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
+    font: 500 22px/1 "Clash Display", "Archivo", sans-serif; color: #fff; letter-spacing: .01em; background: #212526; border-radius: 8px; }
+  .tm-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .tm-pulse { position: absolute; left: 25px; top: 891px; width: 102px; height: 102px; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,63,62,.45); animation: tmPulse 1.6s ease-out infinite; }
+  @keyframes tmPulse { to { box-shadow: 0 0 0 18px rgba(255,63,62,0); } }
+  .tmr.paused .tm-run, .tmr.paused .tm-pulse { animation-play-state: paused; }
+  .tmr.paused .tm-pulse { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) { .tm-run, .tm-pulse { animation: none; } }
 
   /* ---------- Prompt layers ---------- */
   .layers { list-style: none; display: grid; gap: 6px; margin-top: 8px; }
@@ -653,7 +671,7 @@
       <div class="phones flat">
         <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="594" height="1008" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
         <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="594" height="1008" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
-        <figure><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
+        <figure><div class="tmr" id="blTimer"><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><div class="tm-st" translate="no"><svg viewBox="0 0 594 1008" aria-hidden="true"><rect class="tm-base" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/><rect class="tm-run" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/></svg><span class="tm-pulse" aria-hidden="true"></span><span class="tm-cover" style="left:200px;top:914px;width:184px;height:56px" aria-hidden="true"></span><b class="tm-t" aria-hidden="true">00:00:15</b><button class="tm-btn" type="button" aria-label="Pause the timer">PAUSE</button></div></div><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
       </div>
     </div>
   </section>
@@ -777,6 +795,27 @@
   })();
 
   live('blDemo', bl);
+})();
+</script>
+<script>
+/* Buildlr field app: the task timer keeps running, and PAUSE works */
+(() => {
+  const box = document.getElementById('blTimer'); if (!box) return;
+  const st = box.querySelector('.tm-st'), t = box.querySelector('.tm-t'), btn = box.querySelector('.tm-btn');
+  new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 594})`).observe(box);
+  const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${155 / w})`; };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+  let sec = 15, timer = null, paused = false;
+  const pad = n => String(n).padStart(2, '0');
+  const show = () => { t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`; };
+  const run = () => { clearInterval(timer); timer = setInterval(() => { sec++; show(); }, 1000); };
+  btn.addEventListener('click', () => {
+    paused = !paused; box.classList.toggle('paused', paused);
+    btn.textContent = paused ? 'RESUME' : 'PAUSE'; btn.setAttribute('aria-label', paused ? 'Resume the timer' : 'Pause the timer');
+    paused ? clearInterval(timer) : run();
+  });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !paused) run(); else clearInterval(timer); }), { threshold: .3 }).observe(box);
 })();
 </script>
 </body>
