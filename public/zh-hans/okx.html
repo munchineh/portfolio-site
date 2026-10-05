@@ -1,14 +1,15 @@
-<!doctype html>
-<html lang="en" data-palette="sage">
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="zh-Hans">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Making crypto social · Mancini Tan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>让加密货币社交起来 · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
 <style>
   /* ---------- Case hero ---------- */
   .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -336,6 +337,7 @@
 
   .chapter p b { color: var(--ct); font-weight: 600; }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/okx.html">
 <link rel="alternate" hreflang="de" href="https://mancinitan.com/de/okx.html">
 <link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/okx.html">
@@ -344,346 +346,317 @@
 <link rel="alternate" hreflang="x-default" href="https://mancinitan.com/okx.html">
 </head>
 <body>
-
 <div class="scrim" id="scrim"></div>
-
 <div class="page">
-  <header class="top">
-    <a class="name" href="index.html">Mancini Tan</a>
-    <div class="top-right">
-      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
-      <div class="menu-slot">
-        <div class="menu" id="menu">
-          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
-          <nav id="menunav" aria-label="Main">
-            <div class="links">
-              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
-              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-            <div class="foot item"><div class="secondary">
-              <span class="h">Elsewhere</span>
-              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
-            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/okx.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/okx.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/okx.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/okx.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/okx.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="stack" id="stack" aria-hidden="true">
-    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
-    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
-  </div>
-
-
-  <!-- ============ Case hero ============ -->
-  <section class="c-hero">
-    <div class="panel c-head">
-      <div class="crumbs">
-        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
-        <span class="chip">OKX</span>
-        <span class="chip ghost">Fintech</span>
-      </div>
-      <h1>
-        <span class="line"><span>Making crypto</span></span>
-        <span class="line"><span>social</span></span>
-      </h1>
-      <p class="lede">Crypto is still young, and part of making it feel normal is making it social. Three products from my time at OKX: an assistant that trades with you in chat, Orbit, a social layer for traders, and Crypto Rewind, a year in review you play back like a playlist.</p>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Senior content designer. Content and conversation design</dd></div>
-        <div><dt>Timeline</dt><dd>Mar 2024 to Dec 2025</dd></div>
-        <div><dt>Worked in</dt><dd>English and Mandarin</dd></div>
-        <div><dt>Scope</dt><dd>Conversation, social, dynamic content</dd></div>
-      </dl>
-    </div>
-    <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>3 products</span></div>
-      <div class="c-results-in">
-        <div class="big"><b data-n="3.26M">3.26M</b><span>Crypto Rewind click-throughs, against a 1.5M goal</span></div>
-        <div class="big"><b data-n="200%">200%</b><span>growth in Orbit's daily active users</span></div>
-        <p class="note">Crypto Rewind figures from Amplitude, as of 28 Feb 2025.</p>
-      </div>
-    </aside>
-  </section>
-
-  <nav class="panel jump" aria-label="Chapters">
-    <a href="#assistant"><span>1</span>AI trading assistant</a>
-    <a href="#orbit"><span>2</span>Making trading social</a>
-    <a href="#rewind"><span>3</span>Personalized content</a>
-  </nav>
-
-  <!-- ============ Chapter 1 ============ -->
-  <section class="panel chapter" id="assistant">
-    <div class="ck"><span class="ch-no" aria-hidden="true">01</span><b>Chapter 1 of 3</b><span>AI conversation design · Prompt design</span></div>
-    <h2>An assistant that trades in chat</h2>
-    <p>A live agent service for big orders, rebuilt so an AI could run it for everyone.</p>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.1</span><h2>A great service that couldn't scale</h2></header>
-    <div class="sb">
-      <p class="big-p">Big orders were paying a worse rate than they needed to.</p>
-      <p>A lot of people use Simple Buy because it locks in a quote within seconds, even though the rate is worse than a regular spot trade. On small amounts, nobody notices. On large ones, it gets expensive.</p>
-      <p>For some users we already handled this with live agents, who offered a better rate over chat. There were only so many agents, though, and a global rollout needed something that could give the same personal treatment at a scale a human team can't.</p>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.2</span><h2>It appears at fifty thousand</h2></header>
-    <div class="sb">
-      <p class="big-p">The assistant doesn't wait in a corner of the app to be found.</p>
-      <p>It shows up once an order is large enough for the better rate to matter, at roughly fifty thousand dollars. Nobody gets offered a premium service on a fifty dollar trade. The sheet also says upfront that it only speaks English and Simplified Chinese, which is much easier to hear at the door than halfway through a trade.</p>
-      <div class="phones" id="okPhones">
-        <figure><div class="okp" data-k="1"><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"></div><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
-        <figure><div class="okp" data-k="2"><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"></div><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
-        <figure><div class="okp" data-k="3"><img src="assets/okx-sheet.jpg" alt="A sheet titled Get a better price via chat, with a Start chat button" width="600" height="1299" loading="lazy"></div><figcaption><b>The handover</b>What happens next, and which languages it speaks.</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.3</span><h2>Designing the system prompt</h2></header>
-    <div class="sb">
-      <p class="big-p">When it's someone's money, the bot doesn't get to improvise.</p>
-      <p>I designed the system prompt that runs the assistant. A hallucinated rate, a vague phrase or a misread intent could cost someone thousands, so I built the prompt in five layers. Each one answers a different question, from who the assistant is to the guardrails it can't cross and the few-shot examples it learns from.</p>
-      <div class="pi" id="pi">
-        <div class="pi-tabs" role="tablist" aria-label="Prompt layers">
-          <button role="tab" id="pt1" aria-controls="pp1" aria-selected="true"><span>01</span>Persona</button>
-          <button role="tab" id="pt2" aria-controls="pp2" aria-selected="false" tabindex="-1"><span>02</span>Adaptive tone</button>
-          <button role="tab" id="pt3" aria-controls="pp3" aria-selected="false" tabindex="-1"><span>03</span>Guardrails</button>
-          <button role="tab" id="pt4" aria-controls="pp4" aria-selected="false" tabindex="-1"><span>04</span>Edge cases</button>
-          <button role="tab" id="pt5" aria-controls="pp5" aria-selected="false" tabindex="-1"><span>05</span>Few-shot examples</button>
-          <i class="pi-bar" aria-hidden="true"></i>
-        </div>
-        <div class="pi-panels">
-          <div class="pi-p" role="tabpanel" id="pp1" aria-labelledby="pt1">
-            <p class="pi-q">Who is it, and what is it for?</p>
-            <pre class="pi-code"><b>Role:</b> Senior trading consultant
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">发邮件给我</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="打开菜单" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="主导航" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">首页</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">产品设计 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">设计复杂表单 · Buildlr</a><a href="ninjavan.html">规模化服务补救 · Ninja Van</a><a href="neuron.html">一线团队的内部工具 · Neuron</a></div></div><button class="cat" data-cat="content">内容与对话设计 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 交易助手 · OKX</a><a href="okx.html#orbit">让交易社交起来 · OKX</a><a href="okx.html#rewind">千人千面的内容 · OKX</a></div></div><button class="cat" data-cat="ecom">电商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">帮顾客找到合身的那件 · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">关于</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">联系</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+</div>
+<div class="foot item"><div class="secondary"><span class="h">其他渠道</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">简历</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">邮箱</a></div><div aria-label="颜色主题" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="浅色" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="深色" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="跟随系统" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="语言" translate="no"><a href="/okx.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/okx.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/okx.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/okx.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文" aria-current="true">简体</a><a href="/zh-hant/okx.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">产品设计</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>设计复杂表单</b><span>Buildlr · 建筑科技</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>规模化服务补救</b><span>Ninja Van · 物流</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>一线团队的内部工具</b><span>Neuron · 微出行</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>设计 AI 交易助手</b><span>OKX · 金融科技</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>让交易社交起来</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>千人千面的内容</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>帮顾客找到合身的那件</b><span>EVN Archive · 尺码工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>全部作品</span><span>→</span></a>
+</div>
+<!-- ============ Case hero ============ -->
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>全部作品</a>
+<span class="chip">OKX</span>
+<span class="chip ghost">金融科技</span></div>
+<h1><span class="line"><span>让加密货币</span></span>
+<span class="line"><span>社交起来</span></span></h1>
+<p class="lede">加密货币还很年轻，想让它融入日常，就得让它社交起来。这里是我在 OKX 做的三个产品：一个在聊天里陪你交易的助手；Orbit，交易者的社交空间；还有 Crypto Rewind，一份像歌单一样回放的年度回顾。</p>
+<dl class="meta">
+<div><dt>角色</dt><dd>高级内容设计师。负责内容与对话设计</dd></div>
+<div><dt>时间</dt><dd>2024 年 3 月至 2025 年 12 月</dd></div>
+<div><dt>工作语言</dt><dd>英文和中文</dd></div>
+<div><dt>负责范围</dt><dd>对话、社交、动态内容</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>成果</span><span>3 款产品</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="3.26M">3.26M</b><span>Crypto Rewind 点击量，目标是 150 万</span></div>
+<div class="big"><b data-n="200%">200%</b><span>Orbit 日活跃用户增长</span></div>
+<p class="note">Crypto Rewind 数据来自 Amplitude，截至 2025 年 2 月 28 日。</p>
+</div>
+</aside>
+</section>
+<nav aria-label="章节" class="panel jump"><a href="#assistant"><span>1</span>AI 交易助手</a>
+<a href="#orbit"><span>2</span>让交易社交起来</a>
+<a href="#rewind"><span>3</span>个性化内容</a></nav>
+<!-- ============ Chapter 1 ============ -->
+<section class="panel chapter" id="assistant">
+<div class="ck"><span aria-hidden="true" class="ch-no">01</span><b>第 1 章，共 3 章</b><span>AI 对话设计 · 提示词设计</span></div>
+<h2>聊着天，就把单下了</h2>
+<p>原本只服务大额订单的真人客服，被我们重做成 AI，让每个人都能用上。</p>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">1.1</span><h2>好服务，却没法规模化</h2></header>
+<div class="sb">
+<p class="big-p">大额订单，一直拿着本不该那么差的价格。</p>
+<p>很多人用 Simple Buy，是因为它几秒钟就能锁定报价，哪怕价格比普通现货交易差一些。金额小的时候，没人在意；金额一大，代价就高了。</p>
+<p>对一部分用户，我们早就安排了真人客服，在聊天中提供更优的价格。但客服人数有限，而要推向全球，就需要一种方式，用真人团队做不到的规模，提供同样贴心的专属服务。</p>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">1.2</span><h2>订单到五万，它才登场</h2></header>
+<div class="sb">
+<p class="big-p">这个助手不会躲在应用的某个角落，等着被人发现。</p>
+<p>订单大到更优价格真正有意义时，也就是五万美元左右，它才会出现。谁也不会在一笔五十美元的交易上被推荐高端服务。弹窗还会提前说明，它只支持英文和简体中文。这种事在门口就听到，总比交易做到一半才知道要好接受得多。</p>
+<div class="phones" id="okPhones">
+<figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>一切照旧。</figcaption></figure>
+<figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50,000 USD</b>提供更优价格，并显示大额订单报价按钮。</figcaption></figure>
+<figure><div class="okp" data-k="3"><img alt="A sheet titled Get a better price via chat, with a Start chat button" height="1299" loading="lazy" src="../assets/okx-sheet.jpg" width="600"/></div><figcaption><b>交接</b>接下来会发生什么，以及支持哪些语言。</figcaption></figure>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">1.3</span><h2>设计系统提示词</h2></header>
+<div class="sb">
+<p class="big-p">事关别人的钱，机器人可不能即兴发挥。</p>
+<p>运行这个助手的系统提示词由我设计。一个幻觉出来的价格、一句含糊的话、一次误判的意图，都可能让用户损失几千块。所以我把提示词分成五层来搭。每一层回答一个不同的问题，从助手是谁，到它不能越过的护栏，再到它用来学习的少样本示例。</p>
+<div class="pi" id="pi">
+<div aria-label="提示词分层" class="pi-tabs" role="tablist">
+<button aria-controls="pp1" aria-selected="true" id="pt1" role="tab"><span>01</span>人设</button>
+<button aria-controls="pp2" aria-selected="false" id="pt2" role="tab" tabindex="-1"><span>02</span>自适应语气</button>
+<button aria-controls="pp3" aria-selected="false" id="pt3" role="tab" tabindex="-1"><span>03</span>护栏</button>
+<button aria-controls="pp4" aria-selected="false" id="pt4" role="tab" tabindex="-1"><span>04</span>边界情况</button>
+<button aria-controls="pp5" aria-selected="false" id="pt5" role="tab" tabindex="-1"><span>05</span>少样本示例</button>
+<i aria-hidden="true" class="pi-bar"></i>
+</div>
+<div class="pi-panels">
+<div aria-labelledby="pt1" class="pi-p" id="pp1" role="tabpanel">
+<p class="pi-q">它是谁？用来做什么？</p>
+<pre class="pi-code"><b>Role:</b> Senior trading consultant
 <b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
 <b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
-            <p class="pi-why">Without a persona, a model falls back to a generic assistant voice. That sounds unsure at exactly the moment someone is moving a lot of money.</p>
-            <div class="pi-tags"><span>Persona</span><span>Tone of voice</span></div>
-          </div>
-          <div class="pi-p" role="tabpanel" id="pp2" aria-labelledby="pt2" hidden>
-            <p class="pi-q">How should it talk to this person?</p>
-            <pre class="pi-code"><b>Default state</b> (start of chat, simple language)
+<p class="pi-why">没有人设，模型就会退回千篇一律的通用助手腔。偏偏在别人要动一大笔钱的时候，这种语气听起来最没底气。</p>
+<div class="pi-tags"><span>人设</span><span>语气语调</span></div>
+</div>
+<div aria-labelledby="pt2" class="pi-p" hidden="" id="pp2" role="tabpanel">
+<p class="pi-q">该怎么跟这个人说话？</p>
+<pre class="pi-code"><b>Default state</b> (start of chat, simple language)
 Plain English. "Shall I lock in a preferential rate for you now?"
 
 <b>Expert state</b> (user says "bps", "fill or kill")
 Switch to trading vernacular. Treat them as a peer.</pre>
-            <p class="pi-why">The assistant mirrors the user's own vocabulary. Beginners don't get buried in jargon, and experienced traders don't get talked down to.</p>
-            <div class="pi-tags"><span>Mirroring</span><span>Register switching</span></div>
-          </div>
-          <div class="pi-p" role="tabpanel" id="pp3" aria-labelledby="pt3" hidden>
-            <p class="pi-q">What must it always, and never, do?</p>
-            <pre class="pi-code"><b>1.</b> Confirm both sides of the pair before quoting.
+<p class="pi-why">助手会沿用用户自己的说法。新手不会被术语淹没，老手也不会被当成小白。</p>
+<div class="pi-tags"><span>措辞镜像</span><span>语域切换</span></div>
+</div>
+<div aria-labelledby="pt3" class="pi-p" hidden="" id="pp3" role="tabpanel">
+<p class="pi-q">什么必须做，什么绝对不能做？</p>
+<pre class="pi-code"><b>1.</b> Confirm both sides of the pair before quoting.
 <b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
 <b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
 <b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
-            <p class="pi-why">This is the safety layer. It keeps the assistant inside what the product can actually execute, and stops a confident guess from turning into a costly trade.</p>
-            <div class="pi-tags"><span>Guardrails</span><span>Intent disambiguation</span><span>Slot filling</span></div>
-          </div>
-          <div class="pi-p" role="tabpanel" id="pp4" aria-labelledby="pt4" hidden>
-            <p class="pi-q">What happens off the happy path?</p>
-            <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
+<p class="pi-why">这是安全层。它把助手限定在产品真正能执行的范围内，也防止一次自信的猜测变成一笔代价高昂的交易。</p>
+<div class="pi-tags"><span>护栏</span><span>意图消歧</span><span>槽位填充</span></div>
+</div>
+<div aria-labelledby="pt4" class="pi-p" hidden="" id="pp4" role="tabpanel">
+<p class="pi-q">偏离主流程时怎么办？</p>
+<pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
 <b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
-            <p class="pi-why">Models are weakest with emotion. This override changes the assistant's whole register in a service recovery moment, so it helps first and sounds polished second.</p>
-            <div class="pi-tags"><span>Edge cases</span><span>Fallback behaviour</span></div>
-          </div>
-          <div class="pi-p" role="tabpanel" id="pp5" aria-labelledby="pt5" hidden>
-            <p class="pi-q">What does good look like?</p>
-            <div class="pi-shots">
-              <div><small>Beginner</small><p class="u">I want to buy $50,000 of Solana.</p><p class="a">I can certainly help. Since this is a substantial amount, I'll secure a preferential rate. Is that $50,000 in USD, SGD or USDT?</p></div>
-              <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
-              <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
-            </div>
-            <p class="pi-why">Few-shot examples give the model ground truth to copy before it meets a real user. One per persona, so every layer above has a worked example.</p>
-            <div class="pi-tags"><span>Few-shot prompting</span><span>Calibration</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.4</span><h2>A human touch where it counts</h2></header>
-    <div class="sb">
-      <p class="big-p">Good conversation design is a mix. AI for speed, and a human hand on the moments that need care.</p>
-      <p>Like the rest of UX, the craft is in knowing which is which. I mapped every touchpoint in the chat. The welcome message, the line confirming what you want to do and the order card are hand-written, because that's where people need reassurance before a large trade. The card also matches order cards everywhere else in the app, so it feels familiar. The model handles everything after that: changes of mind, follow-up questions, the same thing explained another way. The assistant stays fast and flexible, and the moments that build trust stay human, intuitive and empathetic.</p>
-      <div class="demo" id="demo">
-        <span class="demo-tag">Live component</span>
-        <div class="scene okx" aria-label="The assistant confirms the order, then a quote card arrives with a countdown">
-          <div class="canvas">
-            <div>
-              <div class="who"><i></i>OKX assistant</div>
-              <div class="bubble" id="okxMsg"></div>
-            </div>
-            <div class="quote" id="okxQuote">
-              <div class="qicon">₮</div>
-              <div class="qt">Buy S$100,000 of USDT</div>
-              <div class="qs">USDT price S$1.31</div>
-              <dl>
-                <div><dt>Quote ID</dt><dd id="okxId">…590703</dd></div>
-                <div><dt>Receive</dt><dd>76,335.88 USDT</dd></div>
-                <div><dt>Fee</dt><dd>$0</dd></div>
-                <div><dt>Pay with</dt><dd>SGD balance</dd></div>
-              </dl>
-              <div class="qbtn" id="okxBtn">Buy USDT (5s)</div>
-            </div>
-          </div>
-        </div>
-        <button class="replay" id="replay" type="button">Replay</button>
-      </div>
-      <div class="pair">
-        <div class="tile"><span class="tile-k">Human touch</span><b>Where trust is built</b><p>The welcome, the intent check and the order card. Written and reviewed by a person.</p></div>
-        <div class="tile"><span class="tile-k">AI-generated</span><b>Where flexibility helps</b><p>Follow-ups, changes of mind and clarifications. Quick to respond, and still inside the guardrails.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.5</span><h2>Then I tried to break it</h2></header>
-    <div class="sb">
-      <p class="big-p">Testing ran two ways, and the red-teaming taught me more.</p>
-      <p>I benchmarked the prompt against a standard set of queries, checking every answer against the content guidelines and the conversation structure. Then I red-teamed it, trying to talk it into limit orders and vague trades to see whether the guardrails held. Three rounds of prompt iteration came out of it.</p>
-      <div class="tbl-wrap">
-        <table class="tests">
-          <thead><tr><th scope="col">What I saw</th><th scope="col">What changed</th><th scope="col">Result</th></tr></thead>
-          <tbody>
-            <tr><td>It kept calling large orders "massive", which makes people nervous.</td><td>Alarmist adjectives banned. It now mirrors the user's own register.</td><td>Consistent persona</td></tr>
-            <tr><td>Vague amounts slipped through. "$50k", no currency.</td><td>The no-assumptions rule became a hard stop: USD, SGD or USDT?</td><td>Always asks</td></tr>
-            <tr><td>It offered order types we hadn't built, like limit orders.</td><td>What it can execute is hard-coded. Anything else gets a polite redirect to a quote.</td><td>Market orders only</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callouts">
-        <div><b data-n="100%">100%</b><span>persona consistency through benchmarking, high-value requests included</span></div>
-        <div><b data-n="100%">100%</b><span>of generic amounts triggered the currency question</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Chapter 2 ============ -->
-  <section class="panel chapter" id="orbit">
-    <div class="ck"><span class="ch-no" aria-hidden="true">02</span><b>Chapter 2 of 3</b><span>Content design · Social</span></div>
-    <h2>Making trading social</h2>
-    <p>Part of making crypto feel normal is making it social, so OKX wanted traders talking to each other inside the app. That became <b>Orbit</b>, a space to post, follow other traders and share trades.</p>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">2.1</span><h2>Credibility you can see</h2></header>
-    <div class="sb">
-      <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
-      <p>The hard part of Orbit was helping people tell who's worth listening to, without rewarding whoever took the biggest gamble last week. I worked on onboarding, the feed and the two versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.</p>
-      <p>An Orbiter's profile puts their track record up front, pulled from what they actually did on OKX. Upgrading is framed around what you'll be able to do, so it feels like an invitation.</p>
-      <div class="phones four">
-        <figure><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
-        <figure><img src="assets/orbit-feed.jpg" alt="The Orbit feed with posts tagged to the coins they discuss" width="600" height="1299" loading="lazy"><figcaption><b>The feed</b>Posts carry the coin they're about.</figcaption></figure>
-        <figure><img src="assets/orbit-profile.jpg" alt="An Orbiter's profile showing badges, lead trade PnL and group chats" width="600" height="1299" loading="lazy"><figcaption><b>Orbiter profile</b>Track record first, bio second.</figcaption></figure>
-        <figure><img src="assets/orbit-upgrade.jpg" alt="Upgrade to Orbiter sheet listing what Orbiters can do" width="600" height="1299" loading="lazy"><figcaption><b>Upgrading</b>What you can do, in three lines.</figcaption></figure>
-      </div>
-      <div class="result"><b>Daily active users grew about 200%.</b><p>Measured in the three months after launch, before I left OKX.</p></div>
-    </div>
-  </section>
-
-  <!-- ============ Chapter 3 ============ -->
-  <section class="panel chapter" id="rewind">
-    <div class="ck"><span class="ch-no" aria-hidden="true">03</span><b>Chapter 3 of 3</b><span>Content strategy · Dynamic content · Localization</span></div>
-    <h2>Personalized content at scale</h2>
-    <p>Every year end, OKX runs a growth campaign that looks back on each user's year of trading. In 2024 it was <b>Crypto Rewind</b>, your year played back in three parts.</p>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">3.1</span><h2>What last year taught us</h2></header>
-    <div class="sb">
-      <p class="big-p">People liked seeing their own data. They just didn't finish, and they didn't share.</p>
-      <p>I audited the 2022 and 2023 campaigns, went through user feedback and spoke to the designers and PMs who ran them. Three problems kept coming up.</p>
-      <div class="trio">
-        <div class="tile"><span class="tile-k">Drop-off</span><b>Too many numbers</b><p>Page after page of figures got repetitive, and people left halfway.</p></div>
-        <div class="tile"><span class="tile-k">Sharing</span><b>Too personal</b><p>Many didn't want their trading performance on social media.</p></div>
-        <div class="tile"><span class="tile-k">Process</span><b>Late changes</b><p>Legal and Marketing feedback landed late, so copy churned until launch.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">3.2</span><h2>Playing back your highlights, and highlighting you</h2></header>
-    <div class="sb">
-      <p class="big-p">One concept kept the story, the tone and the translations together.</p>
-      <p>Rewind turns the year into a playlist in three parts: your assets, how you traded, and a trader persona at the end. The line gave Legal and Marketing something to sign off early, and gave every writer and translator the same brief.</p>
-      <p>The tone lives in space metaphors. Good years are "out of this world". Bad years matter just as much, because plenty of people lost money in 2024. They get "You're only getting ready for your next takeoff", which is honest without rubbing it in.</p>
-      <div class="phones">
-        <figure><img src="assets/cr-open.jpg" alt="Part 1 of 3: Let's rewind back to your opening track" width="600" height="1299" loading="lazy"><figcaption><b>The opening</b>Part 1 of 3, like a playlist.</figcaption></figure>
-        <figure><img src="assets/cr-earn.jpg" alt="Your earnings were out of this world. A profit of 21,887 USDT" width="600" height="1299" loading="lazy"><figcaption><b>A good year</b>"Talk about astronomical."</figcaption></figure>
-        <figure><img src="assets/cr-loss.jpg" alt="This year was all about laying your foundations, with a negative profit" width="600" height="1299" loading="lazy"><figcaption><b>A hard year</b>Same layout, kinder framing.</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">3.3</span><h2>Something people actually wanted to share</h2></header>
-    <div class="sb">
-      <p class="big-p">The share card celebrates how you trade and leaves your balances off.</p>
-      <p>Each person ends on a persona, like Crypto Comet or Market Maestro, with a rarity tag and a line about why they earned it. With no numbers on it, it's easy to post. The copy shipped in multiple languages, including Chinese, Arabic and Russian, where it also had to work right to left and with much longer words.</p>
-      <div class="phones two">
-        <figure><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"><figcaption><b>The persona card</b>A title and a reason, no numbers.</figcaption></figure>
-        <div class="card" style="align-self:start">
-          <span class="tile-k">Rewind in three parts</span>
-          <ol class="layers" style="margin-top:0">
-            <li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>Assets overview</b></li>
-            <li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>How you traded</b></li>
-            <li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>Your trader persona</b></li>
-          </ol>
-        </div>
-      </div>
-      <div class="card" style="padding:0">
-        <div class="label" style="border-bottom:1px solid var(--rule)"><span>Goal vs actual, as a share of goal</span><span>Amplitude · 28 Feb 2025</span></div>
-        <div class="gva" id="gva">
-          <div class="gva-row"><b>Click-throughs<small>3.26M vs 1.5M goal</small></b><div class="track" tabindex="0" data-v="3.26" data-g="1.5" data-u="M" aria-label="Click-throughs: 3.26 million against a goal of 1.5 million, 217% of goal"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
-          <div class="gva-row"><b>Completed journeys<small>1.22M vs 800k goal</small></b><div class="track" tabindex="0" data-v="1.22" data-g="0.8" data-u="M" aria-label="Completed journeys: 1.22 million against a goal of 800 thousand, 153% of goal"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
-          <div class="gva-row"><b>Shares<small>117k vs 50k goal</small></b><div class="track" tabindex="0" data-v="117" data-g="50" data-u="k" aria-label="Shares: 117 thousand against a goal of 50 thousand, 234% of goal"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
-          <div class="axis"><i></i><div><span style="left:0">0%</span><span style="left:40%">100% (goal)</span><span style="left:80%">200%</span></div></div>
-        </div>
-        <p class="gva-note"><i></i>Goal line. Every goal was set against the year before, adjusted for user growth.</p>
-      </div>
-      <p>I also worked on the 2025 edition before I left OKX, and it went on to win a Red Dot award.</p>
-    </div>
-  </section>
-
-  <!-- ============ Next ============ -->
-  <section class="c-next">
-    <div class="panel c-cta action-card">
-      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
-      <div class="inner">
-        <h2>Designing an AI product? Let's make it feel human.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
-      </div>
-    </div>
-    <a class="panel c-nextcase" href="buildlr.html" aria-label="Next case: Designing complex forms">
-      <div class="label"><span>Next case</span><span>03</span></div>
-      <div class="inner">
-        <span class="nlogo dark"><img src="assets/logo-buildlr.svg" alt="" width="40" height="40"></span>
-        <div><h3>Designing complex forms</h3><p>Buildlr · Construction tech</p></div>
-        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+<p class="pi-why">模型最不擅长应对情绪。在需要服务补救的时刻，这条覆盖规则会彻底切换助手的语域：先把忙帮上，再谈措辞体面。</p>
+<div class="pi-tags"><span>边界情况</span><span>兜底行为</span></div>
+</div>
+<div aria-labelledby="pt5" class="pi-p" hidden="" id="pp5" role="tabpanel">
+<p class="pi-q">好的回答长什么样？</p>
+<div class="pi-shots">
+<div><small>Beginner</small><p class="u">I want to buy $50,000 of Solana.</p><p class="a">I can certainly help. Since this is a substantial amount, I'll secure a preferential rate. Is that $50,000 in USD, SGD or USDT?</p></div>
+<div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
+<div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
+</div>
+<p class="pi-why">少样本示例让模型在见到真实用户之前，先有标准答案可以照着学。每个人设配一个，上面的每一层都有现成的范例。</p>
+<div class="pi-tags"><span>少样本提示</span><span>校准</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">1.4</span><h2>人情味，用在关键处</h2></header>
+<div class="sb">
+<p class="big-p">好的对话设计讲究搭配。AI 负责速度，需要用心的时刻交给人来把关。</p>
+<p>和 UX 的其他部分一样，功夫在于分清哪里该交给谁。我梳理了聊天中的每一个触点。欢迎语、确认你想做什么的那句话，还有订单卡片，都是手写的，因为在大额交易之前，人们最需要在这些地方吃下定心丸。这张卡片也和应用里其他地方的订单卡片保持一致，看着更熟悉。之后的一切交给模型：改主意、追问、换个说法再解释一遍。助手因此又快又灵活，而建立信任的那些时刻，依然有人的温度，直观又体贴。</p>
+<div class="demo" id="demo">
+<span class="demo-tag">实时组件</span>
+<div aria-label="The assistant confirms the order, then a quote card arrives with a countdown" class="scene okx">
+<div class="canvas">
+<div>
+<div class="who"><i></i>OKX assistant</div>
+<div class="bubble" id="okxMsg"></div>
+</div>
+<div class="quote" id="okxQuote">
+<div class="qicon">₮</div>
+<div class="qt">Buy S$100,000 of USDT</div>
+<div class="qs">USDT price S$1.31</div>
+<dl>
+<div><dt>Quote ID</dt><dd id="okxId">…590703</dd></div>
+<div><dt>Receive</dt><dd>76,335.88 USDT</dd></div>
+<div><dt>Fee</dt><dd>$0</dd></div>
+<div><dt>Pay with</dt><dd>SGD balance</dd></div>
+</dl>
+<div class="qbtn" id="okxBtn">Buy USDT (5s)</div>
+</div>
+</div>
+</div>
+<button class="replay" id="replay" type="button">重新播放</button>
+</div>
+<div class="pair">
+<div class="tile"><span class="tile-k">人工打磨</span><b>建立信任的地方</b><p>欢迎语、意图确认和订单卡片。由真人撰写和审核。</p></div>
+<div class="tile"><span class="tile-k">AI 生成</span><b>需要灵活的地方</b><p>追问、改主意和澄清。响应迅速，依然守在护栏之内。</p></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">1.5</span><h2>然后，我想办法把它搞崩</h2></header>
+<div class="sb">
+<p class="big-p">测试分两路进行，红队测试让我学到的更多。</p>
+<p>我先用一组标准问题对提示词做基准测试，逐条对照内容规范和对话结构检查回答。然后做红队测试，想方设法诱导它下限价单、接受含糊的交易，看护栏能不能守住。前后一共迭代了三轮提示词。</p>
+<div class="tbl-wrap">
+<table class="tests">
+<thead><tr><th scope="col">我发现的问题</th><th scope="col">我做的调整</th><th scope="col">结果</th></tr></thead>
+<tbody>
+<tr><td>它总把大额订单说成“巨额”，让人心里发慌。</td><td>禁用制造焦虑的形容词。现在它会沿用用户自己的说法。</td><td>人设始终如一</td></tr>
+<tr><td>含糊的金额会被放过。比如“$50k”，没写币种。</td><td>“不做假设”规则升级为硬性拦截：USD、SGD 还是 USDT？</td><td>一定会问清楚</td></tr>
+<tr><td>它会推荐我们还没做的订单类型，比如限价单。</td><td>能执行什么，直接写死。其他请求一律礼貌地引导回报价。</td><td>仅支持市价单</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callouts">
+<div><b data-n="100%">100%</b><span>基准测试中人设保持一致，高价值请求也不例外</span></div>
+<div><b data-n="100%">100%</b><span>的模糊金额都触发了币种追问</span></div>
+</div>
+</div>
+</section>
+<!-- ============ Chapter 2 ============ -->
+<section class="panel chapter" id="orbit">
+<div class="ck"><span aria-hidden="true" class="ch-no">02</span><b>第 2 章，共 3 章</b><span>内容设计 · 社交</span></div>
+<h2>让交易社交起来</h2>
+<p>想让加密货币融入日常，离不开社交。所以 OKX 希望交易者能在应用里互相交流。这就有了 <b>Orbit</b>：一个可以发帖、关注其他交易者、分享交易的空间。</p>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">2.1</span><h2>看得见的可信度</h2></header>
+<div class="sb">
+<p class="big-p">在加密货币的信息流里，人人听起来都像专家。</p>
+<p>Orbit 最难的地方，是帮人分辨谁值得听，同时又不能奖励上周赌得最大的那个人。我负责新手引导、信息流，以及两个版本的个人主页：一个给 Orbiter，他们可以发帖、建群、分享交易；另一个给其他所有人。</p>
+<p>Orbiter 的主页把交易战绩放在最前面，数据来自他们在 OKX 上的真实操作。升级文案围绕“你将能做什么”来写，读起来更像一份邀请。</p>
+<div class="phones four">
+<figure><img alt="新手引导页：关注热门 Orbiter，已选中两位" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/><figcaption><b>新手引导</b>先从值得关注的人开始。</figcaption></figure>
+<figure><img alt="Orbit 信息流，每条帖子都标注了所聊的币种" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>信息流</b>每条帖子都带上所聊的币种。</figcaption></figure>
+<figure><img alt="Orbiter 的个人主页，展示徽章、带单盈亏和群聊" height="1299" loading="lazy" src="../assets/orbit-profile.jpg" width="600"/><figcaption><b>Orbiter 主页</b>先看战绩，再看简介。</figcaption></figure>
+<figure><img alt="升级为 Orbiter 的弹窗，列出 Orbiter 能做的事" height="1299" loading="lazy" src="../assets/orbit-upgrade.jpg" width="600"/><figcaption><b>升级</b>能做什么，三行说清。</figcaption></figure>
+</div>
+<div class="result"><b>日活跃用户增长约 200%。</b><p>统计周期为上线后三个月，那时我还没离开 OKX。</p></div>
+</div>
+</section>
+<!-- ============ Chapter 3 ============ -->
+<section class="panel chapter" id="rewind">
+<div class="ck"><span aria-hidden="true" class="ch-no">03</span><b>第 3 章，共 3 章</b><span>内容策略 · 动态内容 · 本地化</span></div>
+<h2>千人千面的内容</h2>
+<p>每到年底，OKX 都会做一场增长活动，回顾每位用户这一年的交易。2024 年的活动叫 <b>Crypto Rewind</b>，把你的一年分成三段回放。</p>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">3.1</span><h2>去年教会我们的事</h2></header>
+<div class="sb">
+<p class="big-p">大家喜欢看自己的数据，只是没看完，也没分享。</p>
+<p>我复盘了 2022 和 2023 年的活动，梳理了用户反馈，也和当时负责的设计师、产品经理聊过。有三个问题反复出现。</p>
+<div class="trio">
+<div class="tile"><span class="tile-k">中途流失</span><b>数字太多</b><p>一页接一页的数据看得人发腻，很多人看到一半就走了。</p></div>
+<div class="tile"><span class="tile-k">分享</span><b>太私人</b><p>很多人不想把自己的交易表现晒到社交媒体上。</p></div>
+<div class="tile"><span class="tile-k">流程</span><b>临时改动</b><p>法务和市场的反馈来得太晚，文案一直改到上线前。</p></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">3.2</span><h2>回放你的高光，也让你成为高光</h2></header>
+<div class="sb">
+<p class="big-p">一个概念，把故事、语气和翻译串在一起。</p>
+<p>Rewind 把一年变成一张三段式歌单：你的资产、你的交易方式，最后是你的交易者人设。这条主线让法务和市场能早早签字确认，也让每一位文案和译者拿到同一份创作简报。</p>
+<p>语气藏在太空隐喻里。好年景是“收益飞出天际”。不好的年景同样重要，因为 2024 年有不少人亏了钱。他们看到的是“你只是在为下一次起飞做准备”，说的是实话，也不往伤口上撒盐。</p>
+<div class="phones">
+<figure><img alt="第 1 段，共 3 段：一起倒带，回到你的开场曲" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>开场</b>第 1 段，共 3 段，像一张歌单。</figcaption></figure>
+<figure><img alt="你的收益飞出天际。盈利 21,887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>好的一年</b>“简直是天文数字。”</figcaption></figure>
+<figure><img alt="这一年，你都在打基础，收益为负" height="1299" loading="lazy" src="../assets/cr-loss.jpg" width="600"/><figcaption><b>难熬的一年</b>同样的版式，更温柔的说法。</figcaption></figure>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">3.3</span><h2>让人真心想分享</h2></header>
+<div class="sb">
+<p class="big-p">分享卡片展示的是你的交易风格，余额一概不提。</p>
+<p>每个人最后都会得到一个人设，比如 Crypto Comet 或 Market Maestro，附带稀有度标签和一句获得理由。上面没有任何数字，发出去毫无压力。文案上线了多种语言，包括中文、阿拉伯语和俄语，还要适配从右到左的排版和长得多的单词。</p>
+<div class="phones two">
+<figure><img alt="分享你的 Crypto Rewind：示例用户 Jamie 是一颗 Crypto Comet，带有 Rare 标签" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/><figcaption><b>人设卡片</b>一个称号，一个理由，没有数字。</figcaption></figure>
+<div class="card" style="align-self:start">
+<span class="tile-k">Rewind 的三个部分</span>
+<ol class="layers" style="margin-top:0">
+<li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>资产总览</b></li>
+<li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>你的交易方式</b></li>
+<li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>你的交易者人设</b></li>
+</ol>
+</div>
+</div>
+<div class="card" style="padding:0">
+<div class="label" style="border-bottom:1px solid var(--rule)"><span>实际与目标对比，按目标达成率计</span><span>Amplitude · 2025 年 2 月 28 日</span></div>
+<div class="gva" id="gva">
+<div class="gva-row"><b>点击量<small>326 万，目标 150 万</small></b><div aria-label="点击量：326 万，目标 150 万，达成 217%" class="track" data-g="1.5" data-u="M" data-v="3.26" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
+<div class="gva-row"><b>完整看完<small>122 万，目标 80 万</small></b><div aria-label="完整看完：122 万，目标 80 万，达成 153%" class="track" data-g="0.8" data-u="M" data-v="1.22" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
+<div class="gva-row"><b>分享次数<small>11.7 万，目标 5 万</small></b><div aria-label="分享次数：11.7 万，目标 5 万，达成 234%" class="track" data-g="50" data-u="k" data-v="117" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
+<div class="axis"><i></i><div><span style="left:0">0%</span><span style="left:40%">100%（目标）</span><span style="left:80%">200%</span></div></div>
+</div>
+<p class="gva-note"><i></i>目标线。每个目标都以前一年为基准，并按用户增长做了调整。</p>
+</div>
+<p>离开 OKX 之前，我也参与了 2025 年版，它后来拿下了 Red Dot 设计奖。</p>
+</div>
+</section>
+<!-- ============ Next ============ -->
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>联系</span><span>工作地点不限，欢迎来聊</span></div>
+<div class="inner">
+<h2>在做 AI 产品？一起让它更有人情味。</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">打个招呼</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">顺手拿份简历 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="下一个案例：设计复杂表单" class="panel c-nextcase" href="buildlr.html">
+<div class="label"><span>下一个案例</span><span>03</span></div>
+<div class="inner">
+<span class="nlogo dark"><img alt="" height="40" src="../assets/logo-buildlr.svg" width="40"/></span>
+<div><h3>设计复杂表单</h3><p>Buildlr · 建筑科技</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · 作品集 2026</span></footer>
 </div>
 <div class="tip" id="tip" role="tooltip"></div>
-
-<script src="site.js"></script>
+<script src="../site.js"></script>
 <script>
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');
@@ -749,7 +722,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 (() => {
   const row = document.getElementById('okPhones'); if (!row) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const W = 600, H = 1299, A = 'assets/';
+  const W = 600, H = 1299, A = '../assets/';
   const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
   const sprite = (p, cls, img, x, y, w, h, left = x, top = y) => el(p, cls, { left: left + 'px', top: top + 'px', width: w + 'px', height: h + 'px', backgroundImage: `url(${A}${img})`, backgroundPosition: `-${x}px -${y}px`, backgroundSize: `${W}px ${H}px` });
   const KEY = { '5': [300, 998], '0': [300, 1173] }, BTN = [240, 802];

@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en" data-palette="sage">
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Shift plans that stick · Mancini Tan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>Schichtpläne, die halten · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
 <style>
   /* ---------- Case hero ---------- */
   .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -355,7 +356,7 @@
   .c-head h1 .line { white-space: normal; }
   .demo.live .demo-tag { top: auto; bottom: 12px; }
   /* ---------- Live component: Neuron Control Centre, assigned tasks panel rebuilt over the real map ---------- */
-  .nr .canvas { width: 1200px; height: 750px; background: url(assets/neuron-map.jpg) 0 0 / 1200px 750px no-repeat; font-family: "Poppins", "Archivo", sans-serif; color: #2b2d33; }
+  .nr .canvas { width: 1200px; height: 750px; background: url(../assets/neuron-map.jpg) 0 0 / 1200px 750px no-repeat; font-family: "Poppins", "Archivo", sans-serif; color: #2b2d33; }
   .nr .pnl { position: absolute; left: 833px; top: 0; width: 360px; height: 742px; background: #fff; padding: 20px 20px 0 20px; overflow: hidden; }
   .nr .pt { display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 600; }
   .nr .pt i { display: inline-flex; gap: 18px; font-style: normal; font-size: 16px; color: #43444a; }
@@ -397,159 +398,140 @@
 <link rel="alternate" hreflang="x-default" href="https://mancinitan.com/neuron.html">
 </head>
 <body>
-
 <div class="scrim" id="scrim"></div>
-
 <div class="page">
-  <header class="top">
-    <a class="name" href="index.html">Mancini Tan</a>
-    <div class="top-right">
-      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
-      <div class="menu-slot">
-        <div class="menu" id="menu">
-          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
-          <nav id="menunav" aria-label="Main">
-            <div class="links">
-              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
-              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-            <div class="foot item"><div class="secondary">
-              <span class="h">Elsewhere</span>
-              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
-            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/neuron.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/neuron.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/neuron.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/neuron.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/neuron.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="stack" id="stack" aria-hidden="true">
-    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
-    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
-  </div>
-
-
-  <section class="c-hero">
-    <div class="panel c-head">
-      <div class="crumbs">
-        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
-        <span class="chip">Neuron Mobility</span>
-        <span class="chip ghost">Micromobility</span>
-      </div>
-      <h1>
-        <span class="line"><span>Shift plans</span></span>
-        <span class="line"><span>that stick</span></span>
-      </h1>
-      <p class="lede">Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.</p>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Senior product designer</dd></div>
-        <div><dt>Timeline</dt><dd>2023</dd></div>
-        <div><dt>Company</dt><dd>Neuron Mobility</dd></div>
-        <div><dt>Scope</dt><dd>Internal tools, research, IA, web and mobile</dd></div>
-      </dl>
-    </div>
-    <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>Operations</span></div>
-      <div class="c-results-in">
-        <div class="big"><b data-n="60%">60%</b><span>faster page loads on average, after the merge</span></div>
-        <div class="big"><b data-n="5–10%">5–10%</b><span>more actions per operator, per hour</span></div>
-        <p class="note">Both figures are approximate.</p>
-      </div>
-    </aside>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">01</span><h2>The plan lived in Slack</h2></header>
-    <div class="sb">
-      <p class="big-p">Managers could make a good plan. They just couldn't tell if anyone followed it.</p>
-      <p>Rebalancing means moving vehicles from quiet areas to busy ones, and swapping batteries and pulling broken ones along the way. Managers planned shifts in a web dashboard, operators worked from a mobile app, and everything in between happened over Slack messages. Performance was measured by operators reporting their own counts.</p>
-      <div class="pair">
-        <div class="tile"><span class="tile-k">Operators</span><b>A crowded app</b><p>The mobile app mirrored the dashboard feature for feature, so it was dense with no clear next step.</p></div>
-        <div class="tile"><span class="tile-k">Managers</span><b>No way to check</b><p>Tasks went out by message, and there was no record of which ones got done.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Out on shift in Melbourne and Perth</h2></header>
-    <div class="sb">
-      <p class="big-p">I needed to see how operators decide what to do next, on the street.</p>
-      <p>I interviewed operations managers remotely across countries and cities of different sizes, then shadowed ground operators on shift in Melbourne and Perth. Watching them juggle a plan against what they found on the ground shaped almost every decision that followed.</p>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">03</span><h2>Tasks you can assign, and see done</h2></header>
-    <div class="sb">
-      <p class="big-p">A manager assigns a task on the map, and it lands in that operator's list.</p>
-      <p>Each task says what to do and where: battery swap, pick up or deploy, the vehicle, its battery and the nearest station, plus who assigned it and when. Operators filter by task type, and closed tasks move out of the way. Because assignments are now recorded, managers finally get a real measure of a shift: how many assigned tasks got done.</p>
-      <div class="demo live" id="nrDemo" data-focus="833,0,360,742" style="--ar: 1200 / 750; --ar-m: 360 / 600; --cw: 1200px; --ch: 750px; background:#fbf8ef">
-        <span class="demo-tag">Live component</span>
-        <div class="scene nr" aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list">
-          <div class="canvas">
-            <span class="pin" id="nrPin"></span>
-            <div class="pnl">
-              <div class="pt">Assigned tasks <i><span>⟳</span><span>—</span></i></div>
-              <div class="lb">Ground operator ⓘ</div>
-              <div class="sel"><span>Mancini Tan</span><span>⌄</span></div>
-              <div class="tabs"><span class="on">Open</span><span>Closed</span></div>
-              <div class="fil" id="nrFil"><span class="on">All</span><span>Retrieve</span><span>Deploy</span><span>Battery swap</span></div>
-              <div class="bd"><b class="o" id="nrOpen">6 OPEN TASKS</b><b class="r">3 RETRIEVED</b></div>
-              <div class="list" id="nrList"></div>
-            </div>
-          </div>
-        </div>
-
-        <button class="replay" type="button">Replay</button>
-      </div>
-      <div class="callouts">
-        <div><b data-n="~100%">~100%</b><span>less Slack for shift planning and task updates</span></div>
-        <div><b data-n="1">1</b><span>new shift metric: task adherence, assigned tasks completed</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>Two platforms, one stack</h2></header>
-    <div class="sb">
-      <p class="big-p">Two web tools had grown into each other.</p>
-      <p>Dashboard ran on Angular and handled operations. Tech House was built by the backend team for themselves on React, then gradually handed to ops. That left duplicated data, overlapping features, and developers maintaining two front ends. I audited both, sat with the teams using them to learn why each page existed, and rebuilt the information architecture around what was really different.</p>
-      <p>We merged onto React with a component library built on Ant Design and adjusted to Neuron's look, so components stayed cheap to build without looking borrowed. The migration finished ahead of schedule, and several tools became simple enough to hand from developers to city teams.</p>
-    </div>
-  </section>
-
-  <section class="c-next">
-    <div class="panel c-cta action-card">
-      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
-      <div class="inner">
-        <h2>Building tools for people on the ground? Let's make them work in the field.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
-      </div>
-    </div>
-    <a class="panel c-nextcase" href="evn.html" aria-label="Next case: Helping shoppers find their fit">
-      <div class="label"><span>Next case</span><span>01</span></div>
-      <div class="inner">
-        <span class="nlogo"><img src="assets/logo-evn.svg" alt="" width="40" height="40"></span>
-        <div><h3>Helping shoppers find their fit</h3><p>EVN Archive · Sizing tool</p></div>
-        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">E-Mail schreiben</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="Menü öffnen" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="Hauptnavigation" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">Start</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">Projekte</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Produktdesign <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Komplexe Formulare gestalten · Buildlr</a><a href="ninjavan.html">Service Recovery im großen Stil · Ninja Van</a><a href="neuron.html">Interne Tools für Außenteams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">KI-Trading-Assistent · OKX</a><a href="okx.html#orbit">Trading wird sozial · OKX</a><a href="okx.html#rewind">Personalisierter Content im großen Stil · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Die richtige Passform finden · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">Über mich</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Kontakt</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
-
-<script src="site.js"></script>
+<div class="foot item"><div class="secondary"><span class="h">Anderswo</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">Lebenslauf</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">E-Mail</a></div><div aria-label="Farbschema" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="Hell" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="Dunkel" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="Wie System" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="Sprache" translate="no"><a href="/neuron.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/neuron.html" hreflang="de" lang="de" data-l="de" title="Deutsch" aria-current="true">DE</a><a href="/ko/neuron.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/neuron.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/neuron.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">Produktdesign</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>Komplexe Formulare gestalten</b><span>Buildlr · Construction Tech</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service Recovery im großen Stil</b><span>Ninja Van · Logistik</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>Interne Tools für Außenteams</b><span>Neuron · Mikromobilität</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Einen KI-Trading-Assistenten gestalten</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Trading wird sozial</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalisierter Content im großen Stil</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>Die richtige Passform finden</b><span>EVN Archive · Größenberater</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>Alle Projekte</span><span>→</span></a>
+</div>
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>Alle Projekte</a>
+<span class="chip">Neuron Mobility</span>
+<span class="chip ghost">Mikromobilität</span></div>
+<h1><span class="line"><span>Schichtpläne,</span></span>
+<span class="line"><span>die halten</span></span></h1>
+<p class="lede">Neuron betreibt geteilte E-Scooter und E-Bikes in Australien und darüber hinaus. Manager planen, wo die Fahrzeuge stehen sollen, und Operator vor Ort bringen sie dorthin. Ich habe neu gestaltet, wie diese beiden Seiten zusammenarbeiten, und danach geholfen, zwei interne Plattformen zu einer zusammenzuführen.</p>
+<dl class="meta">
+<div><dt>Rolle</dt><dd>Senior Product Designer</dd></div>
+<div><dt>Zeitraum</dt><dd>2023</dd></div>
+<div><dt>Unternehmen</dt><dd>Neuron Mobility</dd></div>
+<div><dt>Schwerpunkte</dt><dd>Interne Tools, Research, IA, Web und Mobile</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>Was dabei herauskam</span><span>Operations</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="60%">60%</b><span>schnellere Ladezeiten im Schnitt, nach der Zusammenführung</span></div>
+<div class="big"><b data-n="5–10%">5–10%</b><span>mehr Aktionen pro Operator und Stunde</span></div>
+<p class="note">Beide Zahlen sind Näherungswerte.</p>
+</div>
+</aside>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">01</span><h2>Der Plan lebte in Slack</h2></header>
+<div class="sb">
+<p class="big-p">Manager konnten gute Pläne machen. Sie wussten nur nicht, ob sich jemand daran hielt.</p>
+<p>Rebalancing heißt, Fahrzeuge aus ruhigen in belebte Gegenden zu bringen und unterwegs Akkus zu tauschen und defekte Fahrzeuge einzusammeln. Manager planten Schichten in einem Web-Dashboard, Operator arbeiteten mit einer mobilen App, und alles dazwischen lief über Slack-Nachrichten. Gemessen wurde die Leistung anhand von Zahlen, die die Operator selbst meldeten.</p>
+<div class="pair">
+<div class="tile"><span class="tile-k">Operator</span><b>Eine überladene App</b><p>Die mobile App bildete das Dashboard Funktion für Funktion ab. Entsprechend voll war sie, und ein klarer nächster Schritt fehlte.</p></div>
+<div class="tile"><span class="tile-k">Manager</span><b>Keine Kontrolle</b><p>Aufgaben gingen per Nachricht raus, und niemand konnte nachvollziehen, welche davon erledigt wurden.</p></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">02</span><h2>Mit auf Schicht in Melbourne und Perth</h2></header>
+<div class="sb">
+<p class="big-p">Ich musste sehen, wie Operator auf der Straße entscheiden, was als Nächstes dran ist.</p>
+<p>Ich habe Operations-Manager remote interviewt, in Ländern und Städten ganz unterschiedlicher Größe, und dann Operator in Melbourne und Perth auf ihren Schichten begleitet. Zu sehen, wie sie einen Plan mit dem abgleichen, was sie draußen tatsächlich vorfinden, hat fast jede spätere Entscheidung geprägt.</p>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">03</span><h2>Aufgaben zuweisen und erledigt sehen</h2></header>
+<div class="sb">
+<p class="big-p">Ein Manager weist eine Aufgabe auf der Karte zu, und sie landet direkt in der Liste des jeweiligen Operators.</p>
+<p>Jede Aufgabe sagt, was zu tun ist und wo: Akkutausch, Abholen oder Aufstellen, dazu das Fahrzeug, sein Akkustand und die nächste Station, und wer die Aufgabe wann zugewiesen hat. Operator filtern nach Aufgabentyp, und erledigte Aufgaben verschwinden aus dem Blickfeld. Weil Zuweisungen jetzt erfasst werden, haben Manager endlich eine echte Kennzahl für eine Schicht: wie viele zugewiesene Aufgaben erledigt wurden.</p>
+<div class="demo live" data-focus="833,0,360,742" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 360 / 600; --cw: 1200px; --ch: 750px; background:#fbf8ef">
+<span class="demo-tag">Live-Komponente</span>
+<div aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list" class="scene nr">
+<div class="canvas">
+<span class="pin" id="nrPin"></span>
+<div class="pnl">
+<div class="pt">Assigned tasks <i><span>⟳</span><span>—</span></i></div>
+<div class="lb">Ground operator ⓘ</div>
+<div class="sel"><span>Mancini Tan</span><span>⌄</span></div>
+<div class="tabs"><span class="on">Open</span><span>Closed</span></div>
+<div class="fil" id="nrFil"><span class="on">All</span><span>Retrieve</span><span>Deploy</span><span>Battery swap</span></div>
+<div class="bd"><b class="o" id="nrOpen">6 OPEN TASKS</b><b class="r">3 RETRIEVED</b></div>
+<div class="list" id="nrList"></div>
+</div>
+</div>
+</div>
+<button class="replay" type="button">Erneut abspielen</button>
+</div>
+<div class="callouts">
+<div><b data-n="~100%">~100%</b><span>weniger Slack für Schichtplanung und Aufgaben-Updates</span></div>
+<div><b data-n="1">1</b><span>neue Schicht-Kennzahl: Aufgabentreue, also erledigte zugewiesene Aufgaben</span></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">04</span><h2>Zwei Plattformen, ein Stack</h2></header>
+<div class="sb">
+<p class="big-p">Zwei Web-Tools waren ineinander gewachsen.</p>
+<p>Dashboard lief auf Angular und deckte das operative Geschäft ab. Tech House hatte das Backend-Team mit React für sich selbst gebaut und nach und nach an Ops übergeben. Das Ergebnis: doppelte Daten, überlappende Features und Entwickler, die zwei Frontends pflegten. Ich habe beide auditiert, mich zu den Teams gesetzt, die damit arbeiteten, um zu verstehen, warum es jede Seite gab, und die Informationsarchitektur rund um das neu aufgebaut, was sich wirklich unterschied.</p>
+<p>Wir haben alles auf React zusammengeführt, mit einer Komponentenbibliothek auf Basis von Ant Design, angepasst an den Look von Neuron. So blieben Komponenten günstig in der Umsetzung, ohne geliehen auszusehen. Die Migration war früher fertig als geplant, und mehrere Tools wurden so einfach, dass die Entwickler sie an die City-Teams übergeben konnten.</p>
+</div>
+</section>
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>Kontakt</span><span>Offen für Jobs weltweit</span></div>
+<div class="inner">
+<h2>Tools für Menschen vor Ort? Machen wir sie fit für die Praxis.</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Hallo sagen</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">Lebenslauf mitnehmen <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="Nächstes Projekt: Die richtige Passform finden" class="panel c-nextcase" href="evn.html">
+<div class="label"><span>Nächstes Projekt</span><span>01</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-evn.svg" width="40"/></span>
+<div><h3>Die richtige Passform finden</h3><p>EVN Archive · Größenberater</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+<script src="../site.js"></script>
 <script>
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');

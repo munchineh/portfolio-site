@@ -1,11 +1,15 @@
 {
   "name": "portfolio-site",
   "compatibility_date": "2026-10-01",
+  // Small Worker in front of the static files: picks a language on first visit
+  "main": "src/worker.js",
   // The site lives on mancinitan.com; keep the workers.dev address and preview links switched off
   "workers_dev": false,
   "preview_urls": false,
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   }
 }

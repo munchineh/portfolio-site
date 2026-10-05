@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>幫顧客找到合身的那件 · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head { min-width: 0; }
+  .c-head h1 .line { display: block; overflow: hidden; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; }
+  .c-media { background: #fff; }
+  .c-media img { display: block; width: 100%; height: auto; max-height: 620px; object-fit: contain; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Fit engine demo ---------- */
+  .demo { margin-top: 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--g1) 55%, transparent), color-mix(in srgb, var(--g2) 45%, transparent)); }
+  .demo-in { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; padding: 24px; align-items: center; }
+  .controls { display: grid; gap: 18px; }
+  .demo-tag { justify-self: start; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+  .controls label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; }
+  .controls output { float: right; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 400; }
+  .controls input[type=range] { width: 100%; accent-color: var(--accent); }
+  .demo-note { font-size: 12px; color: var(--muted); }
+  /* the card mirrors the real product page type: condensed caps, black and white */
+  .evn-card { background: #fff; color: #111; border-radius: 10px; padding: 20px; display: grid; gap: 10px; font-family: "Archivo", sans-serif; box-shadow: 0 20px 40px -24px rgba(0,0,0,.35); }
+  .evn-title { font-weight: 700; font-stretch: 62%; text-transform: uppercase; font-size: 26px; line-height: 1; }
+  .evn-price { font-stretch: 70%; font-size: 14px; color: #555; }
+  .evn-fit { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+  .evn-fit b { font-stretch: 75%; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: .01em; }
+  .evn-fit > span { font-stretch: 75%; font-size: 14px; color: #333; }
+  .scale { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 6px; height: 8px; }
+  .scale .z { border-radius: 2px; background: #fff; box-shadow: inset 0 0 0 1px #dcdcdc; }
+  .scale .z.mid { background: #d3e8dc; box-shadow: none; }
+  .scale .z.rec { background: #1d6a4c; box-shadow: none; }
+  .scale .dot { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #111; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .5s var(--ease); }
+  .scale-labels { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-stretch: 75%; font-size: 12px; color: #777; }
+  .scale-labels span:nth-child(1) { grid-column: 2; } .scale-labels span:nth-child(2) { grid-column: 3; } .scale-labels span:nth-child(3) { grid-column: 4; }
+  .evn-fit > span.fit-line { font-size: 13px; color: #888; }
+  .evn-fit > span.fit-est { font-size: 13px; color: #555; }
+  .evn-fit > span.read, .read { justify-self: start; margin-top: 4px; font-stretch: 75%; font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: #111; color: #fff; transition: background .3s; }
+  .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
+
+  /* ---------- Touchpoints ---------- */
+  .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
+  .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
+  .shots li.wide { grid-column: 1 / -1; }
+  .shots figure { margin: 0; background: #fff; border-bottom: 1px solid var(--rule); overflow: hidden; }
+  .shots figure img { display: block; width: 100%; height: auto; }
+  .shots figure.tall { aspect-ratio: 4 / 3.4; }
+  .shots figure.tall img { height: 100%; object-fit: cover; object-position: top center; }
+  .shots figure.picks img { object-position: left top; }
+  .shots figure.zoom { background: #fff; display: flex; justify-content: center; }
+  .shots figure.zoom img { width: auto !important; max-width: 100%; height: auto; max-height: 440px; }
+  .shots figure.stage { background: #fff; display: flex; justify-content: center; padding: 12px 0; }
+  .shots figure.stage img { width: auto !important; max-width: 100%; height: auto; max-height: 520px; }
+  .shots img.crop-pdp { aspect-ratio: 1180 / 520; object-fit: cover; object-position: 50% 62%; }
+  .shots li > div { padding: 14px 16px 16px; }
+  .shots b { font-weight: 500; font-size: 15px; }
+  .shots b::before { content: counter(s, decimal-leading-zero); font-size: 12px; color: var(--accent); margin-right: 8px; font-weight: 500; }
+  .shots p { font-size: 14px; color: var(--muted); margin-top: 4px; max-width: 48ch; }
+
+  /* ---------- Nudge + rest ---------- */
+  .pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b, .grid6 b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p, .grid6 p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+
+  /* ---------- Anchor: three touchpoints nudging the shopper along ---------- */
+  .anchor { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 16px; }
+  .an-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+  .an-steps li { padding: 14px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 55%, transparent); transition: border-color .4s, background .4s, opacity .4s; }
+  .an-steps b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .an-steps p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .anchor.play .an-steps li { opacity: .45; }
+  .anchor.play .an-steps li.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+  .an-track { position: relative; height: 34px; margin-top: 6px; }
+  .an-zones { position: absolute; left: 0; right: 0; top: 13px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+  .an-zones i { height: 8px; border-radius: 2px; background: var(--rule); font-style: normal; font-size: 0; }
+  .an-zones i:last-child { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+  .an-dot { position: absolute; top: 17px; left: var(--p, 8%); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--ink); border: 3px solid var(--ground); box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .7s var(--ease); }
+  .an-ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); margin-top: -8px; }
+  .an-ends span:last-child { color: var(--ink); font-weight: 500; text-align: right; }
+  .an-note { font-size: 12px; color: var(--muted); }
+  @media (max-width: 900px) { .an-steps { grid-template-columns: 1fr; } }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .result p { font-size: 14px; color: var(--muted); }
+  .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 20px 20px 18px; display: grid; gap: 16px; }
+  .c-cta .cta-p { color: var(--muted); font-size: 15px; max-width: 46ch; margin-top: -8px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(34px, 3.3vw, 52px); line-height: .92; max-width: 22ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 18px 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .c-nextcase img { width: 72px; height: 72px; border-radius: 10px; object-fit: cover; }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; border-radius: 0; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; min-height: auto; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .c-media img { max-height: none; }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .demo-in { grid-template-columns: 1fr; padding: 18px; }
+    .shots, .pair { grid-template-columns: 1fr; }
+    .grid6 { grid-template-columns: 1fr 1fr; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .grid6, .callouts { grid-template-columns: 1fr; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="en" href="https://mancinitan.com/evn.html">
+<link rel="alternate" hreflang="de" href="https://mancinitan.com/de/evn.html">
+<link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/evn.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://mancinitan.com/zh-hans/evn.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://mancinitan.com/zh-hant/evn.html">
+<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/evn.html">
+</head>
+<body>
+<div class="scrim" id="scrim"></div>
+<div class="page">
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">寫信給我</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="開啟選單" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="主選單" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">首頁</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">產品設計 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">設計複雜表單 · Buildlr</a><a href="ninjavan.html">規模化的服務補救 · Ninja Van</a><a href="neuron.html">為外勤團隊打造的內部工具 · Neuron</a></div></div><button class="cat" data-cat="content">內容與對話設計 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 交易助理 · OKX</a><a href="okx.html#orbit">讓交易也能社交 · OKX</a><a href="okx.html#rewind">千人千面的個人化內容 · OKX</a></div></div><button class="cat" data-cat="ecom">電商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">幫顧客找到合身的那件 · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">關於</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">聯絡</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+</div>
+<div class="foot item"><div class="secondary"><span class="h">其他管道</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">履歷</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a></div><div aria-label="色彩主題" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="淺色" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="深色" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="跟隨系統" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="語言" translate="no"><a href="/evn.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/evn.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/evn.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/evn.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/evn.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文" aria-current="true">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">產品設計</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>設計複雜表單</b><span>Buildlr · 營建科技</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>規模化的服務補救</b><span>Ninja Van · 物流</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>為外勤團隊打造的內部工具</b><span>Neuron · 微型移動</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>設計 AI 交易助理</b><span>OKX · 金融科技</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>讓交易也能社交</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>千人千面的個人化內容</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>幫顧客找到合身的那件</b><span>EVN Archive · 尺寸推薦工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>所有作品</span><span>→</span></a>
+</div>
+<!-- ============ Case hero ============ -->
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>所有作品</a>
+<span class="chip">EVN Archive</span>
+<span class="chip ghost">電商</span></div>
+<h1><span class="line"><span>幫顧客</span></span>
+<span class="line"><span>找到合身的那件</span></span></h1>
+<p class="lede">EVN Archive 是一家販售韓國獨立男裝品牌的 Shopify 商店，由我一手設計與經營。這個案例要聊的，是我打造的尺寸推薦工具，讓大家在網路上買 Free Size 的衣服也能安心下單。</p>
+<dl class="meta">
+<div><dt>角色</dt><dd>設計師兼創辦人。負責 UX、UI、內容與前端</dd></div>
+<div><dt>期間</dt><dd>2026 年 5 月至今</dd></div>
+<div><dt>平台</dt><dd>Shopify，自訂佈景主題程式碼</dd></div>
+<div><dt>團隊</dt><dd>就我一個</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>成果</span><span>2026 年 9 月</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="4">4</b><span>筆 Free Size 訂單，就在尺寸推薦工具上線第一週</span></div>
+<div class="big"><b data-n="400%+">400%+</b><span>Free Size 銷量成長</span></div>
+</div>
+</aside>
+</section>
+<figure class="panel c-media">
+<img alt="evn-archive.com 上 Aura Windbreaker 的商品頁，尺寸下方是「How it'll fit you」區塊" height="850" src="../assets/evn-pdp.jpg" width="1560"/>
+<figcaption>商品頁面，每個尺寸下方都標出合身度。</figcaption>
+</figure>
+<!-- ============ 01 ============ -->
+<section class="panel sec" id="problem">
+<header class="sh"><span class="no">01</span><h2>逛的人多，買的人少</h2></header>
+<div class="sb">
+<p class="big-p">Free Size 單品是店裡設計最出色的一批，卻也是賣得最差的一批。</p>
+<p>三件 Free Size 外套加起來有好幾百次瀏覽，卻幾乎沒人加入購物車。網購衣服本來就需要一點信任，Free Size 需要的更多，因為沒有尺寸表可以參考。大家想像不出衣服穿在自己身上的樣子，於是就離開了。</p>
+<div class="callouts">
+<div><b>2</b><span>個月沒賣出任何一件 Free Size 單品</span></div>
+<div><b>3</b><span>件外套流量不小，加入購物車的卻少得可憐</span></div>
+</div>
+</div>
+</section>
+<!-- ============ 02 ============ -->
+<section class="panel sec" id="engine">
+<header class="sh"><span class="no">02</span><h2>讀得懂衣服的尺寸推薦工具</h2></header>
+<div class="sb">
+<p class="big-p">你告訴它身高體重，它告訴你每一件穿起來合不合身。</p>
+<p>工具會拿你的數字，和每件衣服的實際尺寸比對，給出合身度：貼身、推薦尺寸或寬鬆。體型和身體尺寸可以選填，留給想要更精準的人。</p>
+<p>它直接讀取每個商品頁上原有的 Size &amp; Fit 文案，不需要另外維護一個資料庫。只要尺寸寫得正確，新商品上架當天就能用。</p>
+<div aria-label="尺寸推薦工具簡化示範" class="demo" id="demo">
+<div class="demo-in">
+<div class="controls">
+<span class="demo-tag">試試看</span>
+<label>Height <output id="hOut">160 cm</output>
+<input aria-label="身高（公分）" id="h" max="200" min="150" type="range" value="160"/>
+</label>
+<label>Weight <output id="wOut">55 kg</output>
+<input aria-label="體重（公斤）" id="w" max="110" min="45" type="range" value="55"/>
+</label>
+<p class="demo-note">尺寸推薦工具的簡化版，以一件 Free Size 外套示範。</p>
+</div>
+<div class="evn-card">
+<div class="evn-title">Aura Windbreaker</div>
+<div class="evn-price">Size · Free</div>
+<div class="evn-fit">
+<b>How it'll fit you</b>
+<div aria-hidden="true" class="scale">
+<i class="z"></i><i class="z mid"></i><i class="z rec"></i><i class="z mid"></i><i class="z"></i>
+<span class="dot" id="dot"></span>
+</div>
+<div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
+<span class="read" id="fitRead">Relaxed fit</span>
+<span class="fit-line" id="fitLine">This is your recommended size.</span>
+<span class="fit-est">Estimated given your measurements. <u>Edit</u></span>
+</div>
+<div class="evn-btn">Add to cart</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ 03 ============ -->
+<section class="panel sec" id="touchpoints">
+<header class="sh"><span class="no">03</span><h2>一個建議，陪你逛遍全站</h2></header>
+<div class="sb">
+<p class="big-p">尺寸推薦工具出現在四個地方，從首頁到結帳，答案一路跟著你。</p>
+<ol class="shots">
+<li class="wide">
+<figure><img alt="EVN Archive 首頁上的 Free Size Edit 專區" height="879" loading="lazy" src="../assets/evn-home.jpg" width="2258"/></figure>
+<div><b>從顧客進站的地方開始</b><p>Free Size Edit 專區就放在首頁上方，正下方是「找到你的合身尺寸」的提示。顧客還沒點開任何商品，就能先拿到建議。</p></div>
+</li>
+<li class="wide">
+<figure class="stage"><img alt="「Find your fit」彈出視窗，詢問身高、體重與體型" height="1064" loading="lazy" src="../assets/evn-finder.jpg" width="1129"/></figure>
+<div><b>想填多少，你決定</b><p>有身高體重，就能給出第一個建議。想要更精準的顧客，可以選擇體型或加上身體尺寸，公制英制都行。資料會儲存起來，填一次就好。</p></div>
+</li>
+<li class="wide">
+<figure class="zoom"><img alt="商店篩選出推薦給你的單品，旁邊附有 Clear 連結" height="550" loading="lazy" src="../assets/evn-collection-z.jpg" width="1120"/></figure>
+<div><b>一間合你身的店</b><p>顧客建立合身檔案後，商店就能只顯示推薦給他的單品。點一下就能清除，想看全部商品，永遠只差一步。</p></div>
+</li>
+<li class="wide">
+<figure class="zoom"><img alt="Aura Windbreaker 商品頁，尺寸下方是「How it'll fit you」" height="830" loading="lazy" src="../assets/evn-pdp-z.jpg" width="1210"/></figure>
+<div><b>每件商品都有答案</b><p>每個商品頁都會在尺寸正下方，用白話告訴你這件穿起來如何，例如「這是你的推薦尺寸」。如果覺得哪裡怪怪的，顧客也能直接在那裡修改資料。</p></div>
+</li>
+</ol>
+</div>
+</section>
+<!-- ============ 04 ============ -->
+<section class="panel sec" id="nudge">
+<header class="sh"><span class="no">04</span><h2>一次推進一小步</h2></header>
+<div class="sb">
+<p class="big-p">人們是一小步、一小步點頭的。</p>
+<p>社會判斷理論（Social judgment theory）解釋了原因：人會拿新想法和既有的看法比較，差太遠的就直接忽略。對 Free Size 來說，那個既有看法就是「我穿一定不合身」。所以我在顧客本來就會出現的地方，安排了三個小步驟，一步步接住他們。</p>
+<div class="anchor" id="anchor">
+<ol class="an-steps">
+<li data-p="38"><span class="tile-k">社群媒體</span><b>讓人看懂 Free Size</b><p>用短影片說明 Free Size 單品如何透過打褶、抽繩、落肩等設計，適應各種不同的體型。</p></li>
+<li data-p="66"><span class="tile-k">8 折</span><b>讓第一件更好入手</b><p>所有 Free Size 單品限時優惠，首頁和公告列都看得到，讓第一次嘗試沒那麼冒險。</p></li>
+<li data-p="92"><span class="tile-k">尺寸推薦工具</span><b>確定會合身</b><p>每個商品頁都有合身度提示，加入購物車前就能放心。</p></li>
+</ol>
+<div aria-hidden="true" class="an-track">
+<div class="an-zones"><i>直接略過</i><i>也許吧</i><i>值得一試</i></div>
+<span class="an-dot" id="anDot"></span>
+</div>
+<div class="an-ends"><span>「Free Size 我穿一定不合身」</span><span>「那就試一件吧」</span></div>
+<p class="an-note">概念示意圖。每個接觸點，都讓顧客的心理定錨移動一點點。</p>
+</div>
+<p>這個道理不只適用於服飾。好的產品解法，很少只存在於單一畫面。功能扛起了重任，但真正把人帶到功能面前的，是它周圍的內容和優惠，不論在產品內還是產品外。</p>
+<div class="result"><b>Free Size 銷量成長超過 400%，光是第一週就賣出四件。</b></div>
+</div>
+</section>
+<!-- ============ 05 ============ -->
+<section class="panel sec" id="rest">
+<header class="sh"><span class="no">05</span><h2>尺寸推薦工具之外</h2></header>
+<div class="sb">
+<p class="big-p">經營自己的店，代表整個體驗都由我負責。以下是其他的部分。</p>
+<div class="grid6">
+<div><b>資訊架構</b><p>依照大家實際買衣服的習慣，規劃分類與篩選。</p></div>
+<div><b>清楚的定價</b><p>每種服裝類型只有少數幾個價格級距，價格一眼就看懂。</p></div>
+<div><b>內容設計</b><p>整個商品目錄的文案，還有搜尋引擎用的標題與描述。</p></div>
+<div><b>在地化</b><p>韓國版商店文案，專為當地顧客重新撰寫。</p></div>
+<div><b>顧客洞察</b><p>從尺寸問題到出貨進度，每則訊息都由我親自回覆。這同時也是一種持續進行的使用者研究。</p></div>
+<div><b>設計與前端</b><p>大幅客製化的 Shopify 佈景主題。每次改動都先在測試環境檢查過，才正式上線。</p></div>
+</div>
+</div>
+</section>
+<!-- ============ Next ============ -->
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>聯絡</span><span>歡迎各地的工作機會</span></div>
+<div class="inner">
+<h2>你的結帳流程也需要這樣用心照顧嗎？一起讓顧客更容易點頭吧。</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">打聲招呼</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">帶走一份履歷 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="下一個案例：讓加密貨幣更好聊" class="panel c-nextcase" href="okx.html">
+<div class="label"><span>下一個案例</span><span>02</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-okx.svg" width="40"/></span>
+<div><h3>讓加密貨幣更好聊</h3><p>OKX · 金融科技</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · 2026 作品集</span></footer>
+</div>
+<script src="../site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Results roll in once the hero loads */
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n], .callouts b').forEach(b => window.rollNumber(b)), 450);
+
+  /* Anchor: light each touchpoint in turn and step the dot along */
+  const an = document.getElementById('anchor');
+  if (an) {
+    const steps = [...an.querySelectorAll('.an-steps li')], dot = document.getElementById('anDot');
+    const finish = () => { an.classList.remove('play'); dot.style.setProperty('--p', '92%'); };
+    if (still.matches) finish();
+    else new IntersectionObserver((es, ob) => es.forEach(e => { if (!e.isIntersecting) return; ob.disconnect();
+      an.classList.add('play'); dot.style.setProperty('--p', '8%');
+      steps.forEach((s, i) => setTimeout(() => { steps.forEach(x => x.classList.remove('on')); s.classList.add('on'); dot.style.setProperty('--p', s.dataset.p + '%'); }, 500 + i * 1300));
+      setTimeout(() => { steps.forEach(x => x.classList.remove('on')); an.classList.remove('play'); }, 500 + steps.length * 1300 + 600);
+    }), { threshold: .5 }).observe(an);
+  }
+
+  /* Fit engine demo: a simplified take on the real engine for one free-size jacket.
+     The garment has a fixed amount of room; bigger bodies use more of it. */
+  const h = document.getElementById('h'), w = document.getElementById('w');
+  const hOut = document.getElementById('hOut'), wOut = document.getElementById('wOut');
+  const dot = document.getElementById('dot'), read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const zones = [
+    { max: -9, label: 'Too small', line: 'This will likely feel tight on you.' },
+    { max: -3, label: 'Snug fit', line: 'It will sit close, with little room to layer.' },
+    { max: 3, label: 'Recommended', line: 'This is your recommended size.' },
+    { max: 10, label: 'Relaxed fit', line: 'It will drape with room to spare, as intended.' },
+    { max: Infinity, label: 'Very roomy', line: 'Expect a very oversized look on you.' },
+  ];
+  const update = () => {
+    const H = +h.value, W = +w.value;
+    hOut.textContent = H + ' cm'; wOut.textContent = W + ' kg';
+    const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
+    const z = zones.find(z => room <= z.max);
+    const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
+    dot.style.left = pos + '%';
+    read.textContent = z.label; line.textContent = z.line;
+    read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
+  };
+  h.addEventListener('input', update); w.addEventListener('input', update);
+  update();
+
+  // When the demo first scrolls into view, glide the sliders to a typical shopper
+  const demo = document.getElementById('demo');
+  let played = false;
+  new IntersectionObserver((es, ob) => es.forEach(e => {
+    if (!e.isIntersecting || played) return; played = true; ob.disconnect();
+    if (still.matches) { h.value = 175; w.value = 68; update(); return; }
+    const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
+    const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = 1 - Math.pow(1 - k, 3);
+      h.value = Math.round(from[0] + (to[0] - from[0]) * e2); w.value = Math.round(from[1] + (to[1] - from[1]) * e2); update();
+      if (k < 1) requestAnimationFrame(step); };
+    setTimeout(() => requestAnimationFrame(step), 300);
+  }), { threshold: 0.5 }).observe(demo);
+})();
+</script>
+</body>
+</html>

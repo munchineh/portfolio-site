@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en" data-palette="sage">
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Shift plans that stick · Mancini Tan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>落實到底的排班計畫 · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
 <style>
   /* ---------- Case hero ---------- */
   .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -355,7 +356,7 @@
   .c-head h1 .line { white-space: normal; }
   .demo.live .demo-tag { top: auto; bottom: 12px; }
   /* ---------- Live component: Neuron Control Centre, assigned tasks panel rebuilt over the real map ---------- */
-  .nr .canvas { width: 1200px; height: 750px; background: url(assets/neuron-map.jpg) 0 0 / 1200px 750px no-repeat; font-family: "Poppins", "Archivo", sans-serif; color: #2b2d33; }
+  .nr .canvas { width: 1200px; height: 750px; background: url(../assets/neuron-map.jpg) 0 0 / 1200px 750px no-repeat; font-family: "Poppins", "Archivo", sans-serif; color: #2b2d33; }
   .nr .pnl { position: absolute; left: 833px; top: 0; width: 360px; height: 742px; background: #fff; padding: 20px 20px 0 20px; overflow: hidden; }
   .nr .pt { display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 600; }
   .nr .pt i { display: inline-flex; gap: 18px; font-style: normal; font-size: 16px; color: #43444a; }
@@ -389,6 +390,7 @@
   .nr .pin.go { animation: ping 1.2s var(--ease) 2; }
   @keyframes ping { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.6); } }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/neuron.html">
 <link rel="alternate" hreflang="de" href="https://mancinitan.com/de/neuron.html">
 <link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/neuron.html">
@@ -397,159 +399,140 @@
 <link rel="alternate" hreflang="x-default" href="https://mancinitan.com/neuron.html">
 </head>
 <body>
-
 <div class="scrim" id="scrim"></div>
-
 <div class="page">
-  <header class="top">
-    <a class="name" href="index.html">Mancini Tan</a>
-    <div class="top-right">
-      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
-      <div class="menu-slot">
-        <div class="menu" id="menu">
-          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
-          <nav id="menunav" aria-label="Main">
-            <div class="links">
-              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
-              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-            <div class="foot item"><div class="secondary">
-              <span class="h">Elsewhere</span>
-              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
-            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/neuron.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/neuron.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/neuron.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/neuron.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/neuron.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="stack" id="stack" aria-hidden="true">
-    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
-    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
-  </div>
-
-
-  <section class="c-hero">
-    <div class="panel c-head">
-      <div class="crumbs">
-        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
-        <span class="chip">Neuron Mobility</span>
-        <span class="chip ghost">Micromobility</span>
-      </div>
-      <h1>
-        <span class="line"><span>Shift plans</span></span>
-        <span class="line"><span>that stick</span></span>
-      </h1>
-      <p class="lede">Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.</p>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Senior product designer</dd></div>
-        <div><dt>Timeline</dt><dd>2023</dd></div>
-        <div><dt>Company</dt><dd>Neuron Mobility</dd></div>
-        <div><dt>Scope</dt><dd>Internal tools, research, IA, web and mobile</dd></div>
-      </dl>
-    </div>
-    <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>Operations</span></div>
-      <div class="c-results-in">
-        <div class="big"><b data-n="60%">60%</b><span>faster page loads on average, after the merge</span></div>
-        <div class="big"><b data-n="5–10%">5–10%</b><span>more actions per operator, per hour</span></div>
-        <p class="note">Both figures are approximate.</p>
-      </div>
-    </aside>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">01</span><h2>The plan lived in Slack</h2></header>
-    <div class="sb">
-      <p class="big-p">Managers could make a good plan. They just couldn't tell if anyone followed it.</p>
-      <p>Rebalancing means moving vehicles from quiet areas to busy ones, and swapping batteries and pulling broken ones along the way. Managers planned shifts in a web dashboard, operators worked from a mobile app, and everything in between happened over Slack messages. Performance was measured by operators reporting their own counts.</p>
-      <div class="pair">
-        <div class="tile"><span class="tile-k">Operators</span><b>A crowded app</b><p>The mobile app mirrored the dashboard feature for feature, so it was dense with no clear next step.</p></div>
-        <div class="tile"><span class="tile-k">Managers</span><b>No way to check</b><p>Tasks went out by message, and there was no record of which ones got done.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Out on shift in Melbourne and Perth</h2></header>
-    <div class="sb">
-      <p class="big-p">I needed to see how operators decide what to do next, on the street.</p>
-      <p>I interviewed operations managers remotely across countries and cities of different sizes, then shadowed ground operators on shift in Melbourne and Perth. Watching them juggle a plan against what they found on the ground shaped almost every decision that followed.</p>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">03</span><h2>Tasks you can assign, and see done</h2></header>
-    <div class="sb">
-      <p class="big-p">A manager assigns a task on the map, and it lands in that operator's list.</p>
-      <p>Each task says what to do and where: battery swap, pick up or deploy, the vehicle, its battery and the nearest station, plus who assigned it and when. Operators filter by task type, and closed tasks move out of the way. Because assignments are now recorded, managers finally get a real measure of a shift: how many assigned tasks got done.</p>
-      <div class="demo live" id="nrDemo" data-focus="833,0,360,742" style="--ar: 1200 / 750; --ar-m: 360 / 600; --cw: 1200px; --ch: 750px; background:#fbf8ef">
-        <span class="demo-tag">Live component</span>
-        <div class="scene nr" aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list">
-          <div class="canvas">
-            <span class="pin" id="nrPin"></span>
-            <div class="pnl">
-              <div class="pt">Assigned tasks <i><span>⟳</span><span>—</span></i></div>
-              <div class="lb">Ground operator ⓘ</div>
-              <div class="sel"><span>Mancini Tan</span><span>⌄</span></div>
-              <div class="tabs"><span class="on">Open</span><span>Closed</span></div>
-              <div class="fil" id="nrFil"><span class="on">All</span><span>Retrieve</span><span>Deploy</span><span>Battery swap</span></div>
-              <div class="bd"><b class="o" id="nrOpen">6 OPEN TASKS</b><b class="r">3 RETRIEVED</b></div>
-              <div class="list" id="nrList"></div>
-            </div>
-          </div>
-        </div>
-
-        <button class="replay" type="button">Replay</button>
-      </div>
-      <div class="callouts">
-        <div><b data-n="~100%">~100%</b><span>less Slack for shift planning and task updates</span></div>
-        <div><b data-n="1">1</b><span>new shift metric: task adherence, assigned tasks completed</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>Two platforms, one stack</h2></header>
-    <div class="sb">
-      <p class="big-p">Two web tools had grown into each other.</p>
-      <p>Dashboard ran on Angular and handled operations. Tech House was built by the backend team for themselves on React, then gradually handed to ops. That left duplicated data, overlapping features, and developers maintaining two front ends. I audited both, sat with the teams using them to learn why each page existed, and rebuilt the information architecture around what was really different.</p>
-      <p>We merged onto React with a component library built on Ant Design and adjusted to Neuron's look, so components stayed cheap to build without looking borrowed. The migration finished ahead of schedule, and several tools became simple enough to hand from developers to city teams.</p>
-    </div>
-  </section>
-
-  <section class="c-next">
-    <div class="panel c-cta action-card">
-      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
-      <div class="inner">
-        <h2>Building tools for people on the ground? Let's make them work in the field.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
-      </div>
-    </div>
-    <a class="panel c-nextcase" href="evn.html" aria-label="Next case: Helping shoppers find their fit">
-      <div class="label"><span>Next case</span><span>01</span></div>
-      <div class="inner">
-        <span class="nlogo"><img src="assets/logo-evn.svg" alt="" width="40" height="40"></span>
-        <div><h3>Helping shoppers find their fit</h3><p>EVN Archive · Sizing tool</p></div>
-        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">寫信給我</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="開啟選單" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="主選單" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">首頁</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">產品設計 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">設計複雜表單 · Buildlr</a><a href="ninjavan.html">規模化的服務補救 · Ninja Van</a><a href="neuron.html">為外勤團隊打造的內部工具 · Neuron</a></div></div><button class="cat" data-cat="content">內容與對話設計 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 交易助理 · OKX</a><a href="okx.html#orbit">讓交易也能社交 · OKX</a><a href="okx.html#rewind">千人千面的個人化內容 · OKX</a></div></div><button class="cat" data-cat="ecom">電商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">幫顧客找到合身的那件 · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">關於</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">聯絡</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
-
-<script src="site.js"></script>
+<div class="foot item"><div class="secondary"><span class="h">其他管道</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">履歷</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a></div><div aria-label="色彩主題" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="淺色" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="深色" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="跟隨系統" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="語言" translate="no"><a href="/neuron.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/neuron.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/neuron.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/neuron.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/neuron.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文" aria-current="true">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">產品設計</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>設計複雜表單</b><span>Buildlr · 營建科技</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>規模化的服務補救</b><span>Ninja Van · 物流</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>為外勤團隊打造的內部工具</b><span>Neuron · 微型移動</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>設計 AI 交易助理</b><span>OKX · 金融科技</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>讓交易也能社交</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>千人千面的個人化內容</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>幫顧客找到合身的那件</b><span>EVN Archive · 尺寸推薦工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>所有作品</span><span>→</span></a>
+</div>
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>所有作品</a>
+<span class="chip">Neuron Mobility</span>
+<span class="chip ghost">微型移動</span></div>
+<h1><span class="line"><span>落實到底的</span></span>
+<span class="line"><span>排班計畫</span></span></h1>
+<p class="lede">Neuron 在澳洲及其他地區經營共享電動滑板車與電動自行車。經理負責規劃車輛該去哪裡，地面營運人員負責把車移過去。我重新設計了這兩方的協作方式，接著協助把兩個內部平台合而為一。</p>
+<dl class="meta">
+<div><dt>角色</dt><dd>資深產品設計師</dd></div>
+<div><dt>期間</dt><dd>2023</dd></div>
+<div><dt>公司</dt><dd>Neuron Mobility</dd></div>
+<div><dt>工作範疇</dt><dd>內部工具、研究、資訊架構、網頁與行動裝置</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>成果</span><span>營運</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="60%">60%</b><span>整併後，頁面平均載入速度提升</span></div>
+<div class="big"><b data-n="5–10%">5–10%</b><span>每位營運人員每小時的作業量增加</span></div>
+<p class="note">兩項數據皆為概估。</p>
+</div>
+</aside>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">01</span><h2>計畫，只活在 Slack 裡</h2></header>
+<div class="sb">
+<p class="big-p">經理能做出好計畫，只是沒辦法知道有沒有人照著做。</p>
+<p>車輛調度，指的是把車從冷清的區域移到熱鬧的地方，途中順便換電池、回收故障車。經理在網頁儀表板上排班，營運人員用手機 App 工作，中間的一切都靠 Slack 訊息往來。績效則由營運人員自行回報數量來衡量。</p>
+<div class="pair">
+<div class="tile"><span class="tile-k">營運人員</span><b>擠滿功能的 App</b><p>手機 App 把儀表板的功能一項不漏地照搬過來，畫面擁擠，也看不出下一步該做什麼。</p></div>
+<div class="tile"><span class="tile-k">經理</span><b>無從確認</b><p>任務靠訊息派發，哪些完成了，完全沒有紀錄。</p></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">02</span><h2>跟著值班，走進墨爾本和伯斯</h2></header>
+<div class="sb">
+<p class="big-p">我需要親眼看看，營運人員在街頭是怎麼決定下一步的。</p>
+<p>我先遠端訪談了不同國家、不同規模城市的營運經理，再到墨爾本和伯斯跟著地面營運人員一起值班。看他們在計畫和現場狀況之間來回取捨，幾乎影響了之後的每一個決策。</p>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">03</span><h2>派得出去，也看得到完成的任務</h2></header>
+<div class="sb">
+<p class="big-p">經理在地圖上指派任務，任務就會出現在那位營運人員的清單裡。</p>
+<p>每個任務都寫明要做什麼、在哪裡做：換電池、回收或投放，哪一台車、電量多少、最近的站點在哪，以及是誰在什麼時候指派的。營運人員可以依任務類型篩選，已完成的任務會自動移到一旁。因為指派紀錄都留了下來，經理終於能真正衡量一個班次的成果：指派的任務完成了多少。</p>
+<div class="demo live" data-focus="833,0,360,742" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 360 / 600; --cw: 1200px; --ch: 750px; background:#fbf8ef">
+<span class="demo-tag">互動元件</span>
+<div aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list" class="scene nr">
+<div class="canvas">
+<span class="pin" id="nrPin"></span>
+<div class="pnl">
+<div class="pt">Assigned tasks <i><span>⟳</span><span>—</span></i></div>
+<div class="lb">Ground operator ⓘ</div>
+<div class="sel"><span>Mancini Tan</span><span>⌄</span></div>
+<div class="tabs"><span class="on">Open</span><span>Closed</span></div>
+<div class="fil" id="nrFil"><span class="on">All</span><span>Retrieve</span><span>Deploy</span><span>Battery swap</span></div>
+<div class="bd"><b class="o" id="nrOpen">6 OPEN TASKS</b><b class="r">3 RETRIEVED</b></div>
+<div class="list" id="nrList"></div>
+</div>
+</div>
+</div>
+<button class="replay" type="button">重播</button>
+</div>
+<div class="callouts">
+<div><b data-n="~100%">~100%</b><span>排班與任務更新的 Slack 訊息減少</span></div>
+<div><b data-n="1">1</b><span>個全新的班次指標：任務執行率，也就是指派任務的完成數</span></div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">04</span><h2>兩個平台，一套技術架構</h2></header>
+<div class="sb">
+<p class="big-p">兩個網頁工具，早已長得盤根錯節。</p>
+<p>Dashboard 以 Angular 開發，負責營運。Tech House 則是後端團隊用 React 為自己打造的工具，後來才逐漸交給營運團隊使用。結果就是資料重複、功能重疊，工程師還得維護兩套前端。我盤點了兩個平台，和實際使用的團隊坐在一起，了解每個頁面存在的原因，再圍繞兩者真正的差異，重建資訊架構。</p>
+<p>我們統一改用 React，搭配以 Ant Design 為基礎、調整成 Neuron 風格的元件庫，讓元件開發成本低，看起來卻不像借來的。遷移比預定時程提早完成，好幾個工具也變得夠簡單，可以從工程師手上交給各城市團隊。</p>
+</div>
+</section>
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>聯絡</span><span>歡迎各地的工作機會</span></div>
+<div class="inner">
+<h2>正在為第一線人員打造工具嗎？一起讓它在現場真正派上用場吧。</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">打聲招呼</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">帶走一份履歷 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="下一個案例：幫顧客找到合身的那件" class="panel c-nextcase" href="evn.html">
+<div class="label"><span>下一個案例</span><span>01</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-evn.svg" width="40"/></span>
+<div><h3>幫顧客找到合身的那件</h3><p>EVN Archive · 尺寸推薦工具</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · 2026 作品集</span></footer>
+</div>
+<script src="../site.js"></script>
 <script>
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');

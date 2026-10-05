@@ -1,16 +1,17 @@
-<!doctype html>
-<html lang="en" data-palette="sage">
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Designing complex forms · Mancini Tan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,500,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>設計複雜表單 · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,500,600&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
 <style>
   /* ---------- Case hero ---------- */
   .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -462,6 +463,7 @@
   .bl .bl-btn { top: 1041px; height: 32px; padding: 0 16px; border: 1px solid #d9d9d9; background: #fff; display: flex; align-items: center; font-size: 12px; }
   .bl .bl-btn.red { color: #ff3e3e; border-color: #ff3e3e; } .bl .bl-btn.org { color: #ff9f22; border-color: #ffd29a; }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/buildlr.html">
 <link rel="alternate" hreflang="de" href="https://mancinitan.com/de/buildlr.html">
 <link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/buildlr.html">
@@ -470,237 +472,216 @@
 <link rel="alternate" hreflang="x-default" href="https://mancinitan.com/buildlr.html">
 </head>
 <body>
-
 <div class="scrim" id="scrim"></div>
-
 <div class="page">
-  <header class="top">
-    <a class="name" href="index.html">Mancini Tan</a>
-    <div class="top-right">
-      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
-      <div class="menu-slot">
-        <div class="menu" id="menu">
-          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
-          <nav id="menunav" aria-label="Main">
-            <div class="links">
-              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
-              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-            <div class="foot item"><div class="secondary">
-              <span class="h">Elsewhere</span>
-              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
-            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/buildlr.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/buildlr.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/buildlr.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/buildlr.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/buildlr.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="stack" id="stack" aria-hidden="true">
-    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
-    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
-  </div>
-
-
-  <section class="c-hero">
-    <div class="panel c-head">
-      <div class="crumbs">
-        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
-        <span class="chip">Buildlr</span>
-        <span class="chip ghost">Construction tech</span>
-      </div>
-      <h1>
-        <span class="line"><span>Designing</span></span>
-        <span class="line"><span>complex forms</span></span>
-      </h1>
-      <p class="lede">A pre-construction platform for the German market, built from zero for a client in Oslo. One very deep quote form sits at the centre of it, made for consultants on a tablet beside their client and contractors on a phone with one hand free.</p>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Founding designer, freelance</dd></div>
-        <div><dt>Timeline</dt><dd>Jun 2025 to Feb 2026</dd></div>
-        <div><dt>Client</dt><dd>Buildlr, Oslo</dd></div>
-        <div><dt>Scope</dt><dd>Complex forms, IA, tablet, desktop and mobile, design system</dd></div>
-      </dl>
-    </div>
-    <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>Shipped solo</span></div>
-      <div class="c-results-in">
-        <div class="big"><b data-n="350+">350+</b><span>screens designed from zero in eight months</span></div>
-        <div class="big"><b data-n="167">167</b><span>components across 25 sets, in light and dark</span></div>
-        <p class="note">One designer, from discovery to launch.</p>
-      </div>
-    </aside>
-  </section>
-
-  <figure class="panel c-media">
-    <img src="assets/bl-rows.jpg" alt="The Tasks step of a new quote, with the room and phase tree on the left and a long list of task rows" width="2400" height="1623">
-    <figcaption>The Tasks step of a new quote. Rooms and phases on the left, tasks as rows you switch on.</figcaption>
-  </figure>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">01</span><h2>One quote, two very different days</h2></header>
-    <div class="sb">
-      <p class="big-p">Buildlr takes a building job from the first client visit to the last task on site.</p>
-      <p>Consultants sit down with homeowners, usually with a tablet, and build the quote room by room as they talk. Once it's signed, contractors pick up that same quote on their phones to see what's next and log their hours. Every quote runs five tiers deep, from project to room, section, category, task and sub-task, and each carries its own quantities and prices.</p>
-      <p>So the real job was keeping that much detail manageable in a client's living room and on a building site, without designing two different products.</p>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Only the tier you need</h2></header>
-    <div class="sb">
-      <p class="big-p">Progressive disclosure keeps a five-tier quote from turning into a wall of numbers.</p>
-      <p>The tree lives in the left rail, so consultants always know which room and phase they're in. Tasks are rows you switch on with a toggle. Open one and its sub-tasks unfold inside it, each with its own parameters, while the cost panel recalculates as you go. Only one task opens at a time, which keeps the page readable at forty rows deep, even with a client looking over your shoulder.</p>
-      <div class="demo live" id="blDemo" data-focus="344,215,760,720" style="--ar: 1512 / 1090; --ar-m: 760 / 720; --cw: 1512px; --ch: 1090px; background:#323838">
-        <span class="demo-tag">Live component</span>
-        <div class="scene bl" data-scene="bl" aria-label="Buildlr new quote: the task tree opens tier by tier and the quote adds up">
-          <div class="canvas">
-            <div class="bl-top">
-              <span class="bl-logo">b</span>
-              <span class="bl-search"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e8f4f4" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a project, client or employee</span>
-              <span class="bl-me"><b>Mancini Tan</b><i>Account Manager</i></span>
-              <span class="bl-av"></span>
-              <span class="bl-bell"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20h4"/></svg></span>
-            </div>
-            <div class="bl-rail"><span class="bl-ri" style="top:95px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg></span><span class="bl-ri" style="top:158px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><span class="bl-ri act" style="top:208px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></span><span class="bl-ri" style="top:258px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6"/></svg></span><span class="bl-ri" style="top:300px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6"/></svg></span><span class="bl-ri" style="top:360px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h7l2 2h9v10H3z"/></svg></span><span class="bl-ri" style="top:410px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="1"/><path d="m4 16 5-5 4 4 3-3 4 4"/></svg></span><span class="bl-ri" style="top:470px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 20c0-2-1-4-3-4"/></svg></span><span class="bl-ri" style="top:520px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span class="bl-ri" style="top:568px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M16 7c0-2-2-3-4-3s-4 1-4 3 2 3 4 3 4 1 4 3-2 3-4 3-4-1-4-3"/></svg></span></div>
-            <div class="bl-head">
-              <span class="bl-a crumb" style="left:88px;top:104px;">Home</span><span class="bl-a sep" style="left:138px;top:97px;">|</span><span class="bl-a crumb" style="left:151px;top:104px;">Quotations</span><span class="bl-a sep" style="left:252px;top:97px;">|</span><span class="bl-a crumb cur" style="left:265px;top:104px;">New quote</span>
-              <span class="bl-meta"><span>PRJ-2025-011</span><em>|</em><span>Klaus Müller</span><em>|</em><span>Bathroom remodeling</span><em>|</em><span>€24.500,00</span></span>
-            </div>
-            <div class="bl-menu"><div class="bl-row top" data-l="0"><span>General info</span></div><div class="bl-row top" data-l="0"><span>Materials</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row tasks" data-l="0"><span>Tasks</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="tasks"><div class="bl-row g1" data-l="1"><span>General</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1" data-l="1"><span>Surface layer</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1 bath" data-l="1"><span>Bathroom</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="bath"><div class="bl-row param" data-l="2"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#8c8c8c" stroke-width="1.6"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Parameters</span></div><div class="bl-row grey" data-l="2"><span>Demolition</span></div><div class="bl-row grey" data-l="2"><span>Ceiling</span></div><div class="bl-row grey" data-l="2"><span>Walls</span></div><div class="bl-row grey" data-l="2"><span>Floor</span></div><div class="bl-grp" data-g="floor"><span class="bl-line"></span><div class="bl-row faint" data-l="3"><span>Construction</span></div><div class="bl-row faint" data-l="3"><span>Surface finish</span></div><div class="bl-row pick" data-l="3"><span>Baseboard</span></div></div><div class="bl-row " data-l="2"><span>Furnishing</span></div></div><div class="bl-row g1" data-l="1"><span>Laundry room</span></div><div class="bl-row g1 addroom" data-l="1"><span>Add room</span><span class="plus">+</span></div></div><div class="bl-row top" data-l="0"><span>Add-ons</span></div><div class="bl-row top" data-l="0"><span>Disclosures</span></div><div class="bl-row top" data-l="0"><span>Summary</span></div></div>
-            <div class="bl-main">
-              <span class="bl-a tab" style="left:368px;top:166px;">Tasks</span><span class="bl-a sep" style="left:421px;top:158px;">|</span><span class="bl-a tab" style="left:438px;top:166px;">Bathroom</span><span class="bl-a sep" style="left:521px;top:158px;">|</span><span class="bl-a tab" style="left:538px;top:166px;">Floor</span><span class="bl-a sep" style="left:591px;top:158px;">|</span><span class="bl-a tab cur" style="left:608px;top:166px;">Electrical</span>
-              <span class="bl-filter">Filter <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></span>
-              <span class="bl-tsearch"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a task or sub-task</span>
-              <span class="bl-a lbl" style="left:368px;top:206px;">Construction</span><span class="bl-a pp grey" style="left:472px;top:204px;">(€1.460,00)</span>
-              <div class="bl-task">
-                <span class="bl-sw green" id="blMain"></span>
-                <span class="bl-tt">Install flooring</span>
-                <span class="bl-tm"><i>Area</i> 20 m² <i>Glue type</i> Fast-dry</span>
-                <span class="bl-ticons"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M4 5h16v11H9l-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M7 4h10v16l-5-4-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
-                <span class="bl-tp p1"><i>Parquet</i><em>|</em><b>✓ Extra prep work</b></span>
-                <span class="bl-tp p2"><i>Vinyl</i><em>|</em><i>Thickness</i> <u>2 mm</u></span>
-              </div>
-              <div class="bl-body"></div>
-              <span class="bl-a lbl" style="left:368px;top:337px;">General</span><span class="bl-a pp grey" style="left:368px;top:368px;">Area</span>
-              <span class="bl-field" style="left:368px;top:390px;width:160px"><span id="blArea">0</span><i>m²</i></span>
-              <div class="bl-rfi" id="blRfi">
-                <div class="bl-rfih"><span>Suggested RFI</span><span>✕</span></div>
-                <span class="pp grey" style="top:48px">Request name</span>
-                <span class="lblk" style="top:74px">Choose flooring color</span>
-                <span class="pp grey" style="top:98px">Deadline</span>
-                <span class="bl-field" style="left:16px;top:120px;width:373px"><span class="pr">2025-12-25</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
-                <span class="pp grey" style="top:157px">Color choice</span>
-                <span class="bl-field" style="left:16px;top:179px;width:373px"><span class="pr ph">Client to select color</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
-                <span class="pp grey" style="top:216px">Description</span>
-                <span class="bl-desc">Please confirm your preferred flooring color so we can price the installation and materials.</span>
-                <span class="bl-quick">+&nbsp; Quick add</span>
-              </div>
-              <span class="bl-addrfi" id="blAddRfi">+&nbsp; Add new RFI</span>
-              <div class="bl-subrow" style="top:818px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Parquet</span><span class="rule"></span></div>
-              <div class="bl-subrow" style="top:861px"><span class="bl-box"></span><span class="pr" style="font-size:14px;color:#000">Extra prep work</span></div>
-              <div class="bl-subrow" style="top:917px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Vinyl</span><span class="rule"></span></div>
-              <span class="bl-a pp dk" style="left:368px;top:958px;">Thickness</span>
-              <span class="bl-field" style="left:368px;top:980px;width:160px"><span id="blThick">20</span><i>mm</i></span>
-              <div class="bl-sum">
-                <div class="bl-ln b" data-c="p"><span>Parquet</span><span>€</span><span>100,00</span></div>
-                <div class="bl-ln l" data-c="p"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
-                <div class="bl-ln l" data-c="p"><span>Material costs</span><span>€</span><span>50,00</span></div>
-                <div class="bl-ln b gap" data-c="v"><span>Vinyl</span><span>€</span><span>100,00</span></div>
-                <div class="bl-ln l" data-c="v"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
-                <div class="bl-ln l" data-c="v"><span>Material costs</span><span>€</span><span>50,00</span></div>
-                <div class="bl-tot">
-                  <div class="bl-ln g"><span>Projected cost</span><span>€</span><span id="blProj">0,00</span></div>
-                  <div class="bl-ln g"><span>VAT (19%)</span><span>€</span><span id="blVat">0,00</span></div>
-                  <div class="bl-ln t"><span>Total</span><span>€</span><span id="blTot">0,00</span></div>
-                </div>
-              </div>
-              <span class="bl-btn red" style="left:368px">Clear all</span>
-              <span class="bl-btn org" style="left:1147px">Save as add-on</span>
-              <span class="bl-btn" style="left:1290px">Remove from quote</span>
-            </div>
-          </div>
-        </div>
-
-        <button class="replay" type="button">Replay</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">03</span><h2>The question lives in the form</h2></header>
-    <div class="sb">
-      <p class="big-p">Consultants kept getting stuck on things only the client could answer.</p>
-      <p>Questions like which colour or which finish often held up a quote, and the habit was to leave the line blank and follow up by email. So the request for information (RFI) became part of the task itself. When a task needs a client decision, a suggested RFI appears right there with the question written and a deadline attached, and the client can answer it from their phone. The line stays flagged until it's answered.</p>
-      <figure class="shot"><img src="assets/bl-rfi.jpg" alt="A suggested RFI inside the Install flooring task, asking the client to choose a flooring colour by a deadline" width="2400" height="1623" loading="lazy"><figcaption><b>Drafted where the gap is.</b> Once sent, every RFI is tracked on its own page with the thread attached.</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>Same tree, one thumb</h2></header>
-    <div class="sb">
-      <p class="big-p">The field app reads the same quote, one contractor at a time.</p>
-      <p>Rooms became filter chips along the top. Categories became accordions. Each task is a card, parameters are label and value rows, and sub-tasks sit one indent in, just like on desktop, so the hierarchy survives the move. Anything still waiting on the client is flagged in red inside the card, because nobody should find that out on a ladder. Once a task is running, everything collapses to three headers and a timer.</p>
-      <div class="phones flat">
-        <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="594" height="1008" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
-        <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="594" height="1008" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
-        <figure><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">05</span><h2>How each tier travelled</h2></header>
-    <div class="sb">
-      <p class="big-p">On a tablet, one page, always in context. On a phone, one task, always in reach.</p>
-      <div class="tbl-wrap">
-        <table class="map">
-          <thead><tr><th scope="col">Tier</th><th scope="col">Tablet and desktop</th><th scope="col">Phone</th></tr></thead>
-          <tbody>
-            <tr><td>Room</td><td>Left rail, always visible</td><td>Filter chips along the top</td></tr>
-            <tr><td>Category and phase</td><td>Rail children, collapsible</td><td>Accordion sections</td></tr>
-            <tr><td>Task</td><td>Row with a toggle, one open at a time</td><td>Card with a status line</td></tr>
-            <tr><td>Sub-task</td><td>Section inside the open task</td><td>Indented block inside the card</td></tr>
-            <tr><td>Parameters</td><td>Inline inputs with units</td><td>Label and value rows</td></tr>
-            <tr><td>Client decision</td><td>Suggested RFI, pre-written</td><td>Red "client to provide" block</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="result"><b>Everything ran async, on top of the design system.</b><p>Seoul and Oslo share no working hours. The library has no token layer yet, since it was built for speed with a two-person team. Tokens are the first thing I'd add with more runway.</p></div>
-    </div>
-  </section>
-
-  <section class="c-next">
-    <div class="panel c-cta action-card">
-      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
-      <div class="inner">
-        <h2>Got a form that keeps growing tiers? Let's make it feel simple.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
-      </div>
-    </div>
-    <a class="panel c-nextcase" href="ninjavan.html" aria-label="Next case: Service recovery at scale">
-      <div class="label"><span>Next case</span><span>04</span></div>
-      <div class="inner">
-        <span class="nlogo"><img src="assets/logo-nv.svg" alt="" width="40" height="40"></span>
-        <div><h3>Service recovery at scale</h3><p>Ninja Van · Logistics</p></div>
-        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">寫信給我</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="開啟選單" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="主選單" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">首頁</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">產品設計 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">設計複雜表單 · Buildlr</a><a href="ninjavan.html">規模化的服務補救 · Ninja Van</a><a href="neuron.html">為外勤團隊打造的內部工具 · Neuron</a></div></div><button class="cat" data-cat="content">內容與對話設計 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 交易助理 · OKX</a><a href="okx.html#orbit">讓交易也能社交 · OKX</a><a href="okx.html#rewind">千人千面的個人化內容 · OKX</a></div></div><button class="cat" data-cat="ecom">電商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">幫顧客找到合身的那件 · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">關於</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">聯絡</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
-
-<script src="site.js"></script>
+<div class="foot item"><div class="secondary"><span class="h">其他管道</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">履歷</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a></div><div aria-label="色彩主題" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="淺色" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="深色" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="跟隨系統" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="語言" translate="no"><a href="/buildlr.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/buildlr.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/buildlr.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/buildlr.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/buildlr.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文" aria-current="true">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">產品設計</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>設計複雜表單</b><span>Buildlr · 營建科技</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>規模化的服務補救</b><span>Ninja Van · 物流</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>為外勤團隊打造的內部工具</b><span>Neuron · 微型移動</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>設計 AI 交易助理</b><span>OKX · 金融科技</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>讓交易也能社交</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>千人千面的個人化內容</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>幫顧客找到合身的那件</b><span>EVN Archive · 尺寸推薦工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>所有作品</span><span>→</span></a>
+</div>
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>所有作品</a>
+<span class="chip">Buildlr</span>
+<span class="chip ghost">營建科技</span></div>
+<h1><span class="line"><span>設計</span></span>
+<span class="line"><span>複雜表單</span></span></h1>
+<p class="lede">一個為德國市場打造的施工前期平台，從零開始為奧斯陸的客戶建置。核心是一份層級非常深的報價表單，讓顧問坐在客戶身旁用平板操作，也讓施工師傅單手拿著手機就能使用。</p>
+<dl class="meta">
+<div><dt>角色</dt><dd>創始設計師（自由接案）</dd></div>
+<div><dt>期間</dt><dd>2025 年 6 月至 2026 年 2 月</dd></div>
+<div><dt>客戶</dt><dd>Buildlr，奧斯陸</dd></div>
+<div><dt>工作範疇</dt><dd>複雜表單、資訊架構、平板、桌面與行動裝置、設計系統</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>成果</span><span>一人完成上線</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="350+">350+</b><span>個畫面，八個月內從零設計完成</span></div>
+<div class="big"><b data-n="167">167</b><span>個元件，分屬 25 組，皆支援淺色與深色</span></div>
+<p class="note">一位設計師，從探索到上線。</p>
+</div>
+</aside>
+</section>
+<figure class="panel c-media">
+<img alt="新報價的「Tasks」步驟，左側是房間與階段的樹狀結構，旁邊是一長串任務列" height="1623" src="../assets/bl-rows.jpg" width="2400"/>
+<figcaption>新報價的「Tasks」步驟。左邊是房間與階段，任務則是一列列可以開啟的項目。</figcaption>
+</figure>
+<section class="panel sec">
+<header class="sh"><span class="no">01</span><h2>同一份報價，兩種截然不同的工作日</h2></header>
+<div class="sb">
+<p class="big-p">Buildlr 陪著一項工程，從第一次拜訪客戶，一路走到工地的最後一項任務。</p>
+<p>顧問會和屋主坐下來，通常拿著平板，邊聊邊一個房間一個房間建立報價。簽約之後，施工師傅會在手機上打開同一份報價，查看下一步要做什麼，並登記工時。每份報價都深達五層，從專案到房間、區塊、類別、任務和子任務，每一層都有自己的數量和價格。</p>
+<p>所以真正的挑戰，是讓這麼多細節不管在客戶家的客廳，還是在工地現場，都一樣好掌握，又不必做成兩個不同的產品。</p>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">02</span><h2>只顯示你需要的那一層</h2></header>
+<div class="sb">
+<p class="big-p">漸進式揭露，讓五層的報價不會變成一堵數字牆。</p>
+<p>樹狀結構放在左側欄，讓顧問隨時知道自己在哪個房間、哪個階段。任務是一列列用開關啟用的項目。打開一個，子任務就在裡面展開，各自帶著參數，費用面板也會隨之重新計算。一次只能展開一個任務，即使到了四十列的深度，頁面依然好讀，就算客戶在旁邊盯著看也一樣。</p>
+<div class="demo live" data-focus="344,215,760,720" id="blDemo" style="--ar: 1512 / 1090; --ar-m: 760 / 720; --cw: 1512px; --ch: 1090px; background:#323838">
+<span class="demo-tag">互動元件</span>
+<div aria-label="Buildlr new quote: the task tree opens tier by tier and the quote adds up" class="scene bl" data-scene="bl">
+<div class="canvas">
+<div class="bl-top">
+<span class="bl-logo">b</span>
+<span class="bl-search"><svg fill="none" height="22" stroke="#e8f4f4" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg>Search for a project, client or employee</span>
+<span class="bl-me"><b>Mancini Tan</b><i>Account Manager</i></span>
+<span class="bl-av"></span>
+<span class="bl-bell"><svg fill="none" height="20" stroke="#e8f4f4" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20h4"></path></svg></span>
+</div>
+<div class="bl-rail"><span class="bl-ri" style="top:95px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><path d="M3 11 12 4l9 7v9H3z"></path></svg></span><span class="bl-ri" style="top:158px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><rect height="15" rx="2" width="16" x="4" y="5"></rect><path d="M4 10h16M9 3v4M15 3v4"></path></svg></span><span class="bl-ri act" style="top:208px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><rect height="18" rx="1" width="12" x="6" y="3"></rect><path d="M9 7h6M9 11h6M9 15h3"></path></svg></span><span class="bl-ri" style="top:258px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><path d="M6 3h9l3 3v15H6z"></path><path d="M9 10h6M9 14h6"></path></svg></span><span class="bl-ri" style="top:300px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><rect height="16" rx="1" width="14" x="5" y="4"></rect><path d="M9 9h6M9 13h6"></path></svg></span><span class="bl-ri" style="top:360px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><path d="M3 7h7l2 2h9v10H3z"></path></svg></span><span class="bl-ri" style="top:410px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><rect height="14" rx="1" width="16" x="4" y="5"></rect><path d="m4 16 5-5 4 4 3-3 4 4"></path></svg></span><span class="bl-ri" style="top:470px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 20c0-2-1-4-3-4"></path></svg></span><span class="bl-ri" style="top:520px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg></span><span class="bl-ri" style="top:568px"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="22"><path d="M12 3v18M16 7c0-2-2-3-4-3s-4 1-4 3 2 3 4 3 4 1 4 3-2 3-4 3-4-1-4-3"></path></svg></span></div>
+<div class="bl-head">
+<span class="bl-a crumb" style="left:88px;top:104px;">Home</span><span class="bl-a sep" style="left:138px;top:97px;">|</span><span class="bl-a crumb" style="left:151px;top:104px;">Quotations</span><span class="bl-a sep" style="left:252px;top:97px;">|</span><span class="bl-a crumb cur" style="left:265px;top:104px;">New quote</span>
+<span class="bl-meta"><span>PRJ-2025-011</span><em>|</em><span>Klaus Müller</span><em>|</em><span>Bathroom remodeling</span><em>|</em><span>€24.500,00</span></span>
+</div>
+<div class="bl-menu"><div class="bl-row top" data-l="0"><span>General info</span></div><div class="bl-row top" data-l="0"><span>Materials</span><svg fill="none" height="18" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 9 6 6 6-6"></path></svg></div><div class="bl-row tasks" data-l="0"><span>Tasks</span><svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 15 6-6 6 6"></path></svg></div><div class="bl-grp" data-g="tasks"><div class="bl-row g1" data-l="1"><span>General</span><svg fill="none" height="18" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 9 6 6 6-6"></path></svg></div><div class="bl-row g1" data-l="1"><span>Surface layer</span><svg fill="none" height="18" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 9 6 6 6-6"></path></svg></div><div class="bl-row g1 bath" data-l="1"><span>Bathroom</span><svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 15 6-6 6 6"></path></svg></div><div class="bl-grp" data-g="bath"><div class="bl-row param" data-l="2"><span><svg fill="none" height="16" stroke="#8c8c8c" stroke-width="1.6" viewbox="0 0 24 24" width="16"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg>Parameters</span></div><div class="bl-row grey" data-l="2"><span>Demolition</span></div><div class="bl-row grey" data-l="2"><span>Ceiling</span></div><div class="bl-row grey" data-l="2"><span>Walls</span></div><div class="bl-row grey" data-l="2"><span>Floor</span></div><div class="bl-grp" data-g="floor"><span class="bl-line"></span><div class="bl-row faint" data-l="3"><span>Construction</span></div><div class="bl-row faint" data-l="3"><span>Surface finish</span></div><div class="bl-row pick" data-l="3"><span>Baseboard</span></div></div><div class="bl-row" data-l="2"><span>Furnishing</span></div></div><div class="bl-row g1" data-l="1"><span>Laundry room</span></div><div class="bl-row g1 addroom" data-l="1"><span>Add room</span><span class="plus">+</span></div></div><div class="bl-row top" data-l="0"><span>Add-ons</span></div><div class="bl-row top" data-l="0"><span>Disclosures</span></div><div class="bl-row top" data-l="0"><span>Summary</span></div></div>
+<div class="bl-main">
+<span class="bl-a tab" style="left:368px;top:166px;">Tasks</span><span class="bl-a sep" style="left:421px;top:158px;">|</span><span class="bl-a tab" style="left:438px;top:166px;">Bathroom</span><span class="bl-a sep" style="left:521px;top:158px;">|</span><span class="bl-a tab" style="left:538px;top:166px;">Floor</span><span class="bl-a sep" style="left:591px;top:158px;">|</span><span class="bl-a tab cur" style="left:608px;top:166px;">Electrical</span>
+<span class="bl-filter">Filter <svg fill="none" height="16" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="16"><path d="M4 5h16l-6 7v6l-4 2v-8z"></path></svg></span>
+<span class="bl-tsearch"><svg fill="none" height="16" stroke="#212525" stroke-width="1.8" viewbox="0 0 24 24" width="16"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg>Search for a task or sub-task</span>
+<span class="bl-a lbl" style="left:368px;top:206px;">Construction</span><span class="bl-a pp grey" style="left:472px;top:204px;">(€1.460,00)</span>
+<div class="bl-task">
+<span class="bl-sw green" id="blMain"></span>
+<span class="bl-tt">Install flooring</span>
+<span class="bl-tm"><i>Area</i> 20 m² <i>Glue type</i> Fast-dry</span>
+<span class="bl-ticons"><svg fill="none" height="18" stroke="#e8f4f4" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="M4 5h16v11H9l-5 4z"></path></svg><svg fill="none" height="18" stroke="#e8f4f4" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="M7 4h10v16l-5-4-5 4z"></path></svg><svg fill="none" height="18" stroke="#e8f4f4" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="m6 9 6 6 6-6"></path></svg></span>
+<span class="bl-tp p1"><i>Parquet</i><em>|</em><b>✓ Extra prep work</b></span>
+<span class="bl-tp p2"><i>Vinyl</i><em>|</em><i>Thickness</i> <u>2 mm</u></span>
+</div>
+<div class="bl-body"></div>
+<span class="bl-a lbl" style="left:368px;top:337px;">General</span><span class="bl-a pp grey" style="left:368px;top:368px;">Area</span>
+<span class="bl-field" style="left:368px;top:390px;width:160px"><span id="blArea">0</span><i>m²</i></span>
+<div class="bl-rfi" id="blRfi">
+<div class="bl-rfih"><span>Suggested RFI</span><span>✕</span></div>
+<span class="pp grey" style="top:48px">Request name</span>
+<span class="lblk" style="top:74px">Choose flooring color</span>
+<span class="pp grey" style="top:98px">Deadline</span>
+<span class="bl-field" style="left:16px;top:120px;width:373px"><span class="pr">2025-12-25</span><svg fill="none" height="16" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="16"><rect height="15" rx="2" width="16" x="4" y="5"></rect><path d="M4 10h16M9 3v4M15 3v4"></path></svg></span>
+<span class="pp grey" style="top:157px">Color choice</span>
+<span class="bl-field" style="left:16px;top:179px;width:373px"><span class="pr ph">Client to select color</span><svg fill="none" height="16" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="16"><path d="m6 9 6 6 6-6"></path></svg></span>
+<span class="pp grey" style="top:216px">Description</span>
+<span class="bl-desc">Please confirm your preferred flooring color so we can price the installation and materials.</span>
+<span class="bl-quick">+  Quick add</span>
+</div>
+<span class="bl-addrfi" id="blAddRfi">+  Add new RFI</span>
+<div class="bl-subrow" style="top:818px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Parquet</span><span class="rule"></span></div>
+<div class="bl-subrow" style="top:861px"><span class="bl-box"></span><span class="pr" style="font-size:14px;color:#000">Extra prep work</span></div>
+<div class="bl-subrow" style="top:917px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Vinyl</span><span class="rule"></span></div>
+<span class="bl-a pp dk" style="left:368px;top:958px;">Thickness</span>
+<span class="bl-field" style="left:368px;top:980px;width:160px"><span id="blThick">20</span><i>mm</i></span>
+<div class="bl-sum">
+<div class="bl-ln b" data-c="p"><span>Parquet</span><span>€</span><span>100,00</span></div>
+<div class="bl-ln l" data-c="p"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+<div class="bl-ln l" data-c="p"><span>Material costs</span><span>€</span><span>50,00</span></div>
+<div class="bl-ln b gap" data-c="v"><span>Vinyl</span><span>€</span><span>100,00</span></div>
+<div class="bl-ln l" data-c="v"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+<div class="bl-ln l" data-c="v"><span>Material costs</span><span>€</span><span>50,00</span></div>
+<div class="bl-tot">
+<div class="bl-ln g"><span>Projected cost</span><span>€</span><span id="blProj">0,00</span></div>
+<div class="bl-ln g"><span>VAT (19%)</span><span>€</span><span id="blVat">0,00</span></div>
+<div class="bl-ln t"><span>Total</span><span>€</span><span id="blTot">0,00</span></div>
+</div>
+</div>
+<span class="bl-btn red" style="left:368px">Clear all</span>
+<span class="bl-btn org" style="left:1147px">Save as add-on</span>
+<span class="bl-btn" style="left:1290px">Remove from quote</span>
+</div>
+</div>
+</div>
+<button class="replay" type="button">重播</button>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">03</span><h2>問題，就寫在表單裡</h2></header>
+<div class="sb">
+<p class="big-p">顧問常常卡在只有客戶才能回答的問題上。</p>
+<p>像是要哪個顏色、哪種表面處理，這類問題常常讓報價卡關，習慣做法是先空著，再寄 Email 追問。所以資訊請求（RFI）直接成了任務的一部分。當任務需要客戶決定時，建議的 RFI 會就地出現，問題已經寫好、期限也附上了，客戶用手機就能回覆。在得到回覆之前，那一列會一直保持標記。</p>
+<figure class="shot"><img alt="「Install flooring」任務中的建議 RFI，請客戶在期限前選定地板顏色" height="1623" loading="lazy" src="../assets/bl-rfi.jpg" width="2400"/><figcaption><b>哪裡有缺口，就在哪裡起草。</b>送出之後，每份 RFI 都會在專屬頁面追蹤，往來訊息也一併保留。</figcaption></figure>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">04</span><h2>同一棵樹，一根拇指搞定</h2></header>
+<div class="sb">
+<p class="big-p">現場 App 讀的是同一份報價，一次服務一位師傅。</p>
+<p>房間變成頂部的篩選標籤，類別變成摺疊選單。每個任務是一張卡片，參數以「標籤與數值」的列呈現，子任務則縮排一層，和桌面版一樣，讓層級結構完整保留下來。還在等客戶回覆的項目，會在卡片裡用紅色標出，畢竟沒有人應該站在梯子上才發現這件事。任務開始進行後，一切都會收合成三個標題和一個計時器。</p>
+<div class="phones flat">
+<figure><img alt="行動版規格分頁，包含房間標籤、「Flooring and tiling」摺疊選單，以及附參數的任務卡片" height="1008" loading="lazy" src="../assets/bl-m-specs.jpg" width="594"/><figcaption><b>規格</b>房間是標籤，任務是卡片。</figcaption></figure>
+<figure><img alt="任務詳情，包含參數、四張現場照片，以及工人留下的筆記" height="1008" loading="lazy" src="../assets/bl-m-media.jpg" width="594"/><figcaption><b>任務詳情</b>來自現場的照片與筆記。</figcaption></figure>
+<figure><img alt="收合成三個標題的任務，附運作中的計時器與暫停按鈕" height="1008" loading="lazy" src="../assets/bl-m-timer.jpg" width="594"/><figcaption><b>進行中</b>三個標題，一個計時器。</figcaption></figure>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">05</span><h2>每一層，如何從桌面走到手機</h2></header>
+<div class="sb">
+<p class="big-p">平板上：一個頁面，脈絡始終都在。手機上：一個任務，伸手就能完成。</p>
+<div class="tbl-wrap">
+<table class="map">
+<thead><tr><th scope="col">層級</th><th scope="col">平板與桌面版</th><th scope="col">手機</th></tr></thead>
+<tbody>
+<tr><td>房間</td><td>左側欄，始終可見</td><td>頂部的篩選標籤</td></tr>
+<tr><td>類別與階段</td><td>側欄子項目，可收合</td><td>摺疊區塊</td></tr>
+<tr><td>任務</td><td>附開關的列，一次只開一個</td><td>附狀態列的卡片</td></tr>
+<tr><td>子任務</td><td>展開任務內的區塊</td><td>卡片內的縮排區塊</td></tr>
+<tr><td>參數</td><td>附單位的行內輸入框</td><td>標籤與數值列</td></tr>
+<tr><td>客戶決策</td><td>預先寫好的建議 RFI</td><td>紅色「待客戶提供」區塊</td></tr>
+</tbody>
+</table>
+</div>
+<div class="result"><b>一切都以非同步進行，同時還要建置設計系統。</b><p>首爾和奧斯陸的上班時間完全沒有交集。元件庫目前還沒有 Token 層，因為兩人團隊必須以速度為優先。如果時間更充裕，Token 會是我第一個加上的東西。</p></div>
+</div>
+</section>
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>聯絡</span><span>歡迎各地的工作機會</span></div>
+<div class="inner">
+<h2>你的表單也越長越多層嗎？一起讓它變簡單吧。</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">打聲招呼</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">帶走一份履歷 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="下一個案例：規模化的服務補救" class="panel c-nextcase" href="ninjavan.html">
+<div class="label"><span>下一個案例</span><span>04</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-nv.svg" width="40"/></span>
+<div><h3>規模化的服務補救</h3><p>Ninja Van · 物流</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · 2026 作品集</span></footer>
+</div>
+<script src="../site.js"></script>
 <script>
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');

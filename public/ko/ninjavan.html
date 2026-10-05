@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en" data-palette="sage">
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Service recovery at scale · Mancini Tan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>대규모 서비스 리커버리 · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
 <style>
   /* ---------- Case hero ---------- */
   .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -87,8 +88,8 @@
   .nvp > img { display: block; width: 100%; height: auto; }
   .nvp .st { position: absolute; left: 0; top: 0; width: 2000px; height: 1250px; transform-origin: 0 0; }
   .nvp .st > div { position: absolute; }
-  .nvp .bg { inset: 0; background: url(assets/nv-base.jpg) 0 0 / 2000px 1250px no-repeat; }
-  .nvp .row { left: 378px; width: 1578px; height: 58px; background-image: url(assets/nv-issues.jpg); background-size: 2000px 1250px;
+  .nvp .bg { inset: 0; background: url(../assets/nv-base.jpg) 0 0 / 2000px 1250px no-repeat; }
+  .nvp .row { left: 378px; width: 1578px; height: 58px; background-image: url(../assets/nv-issues.jpg); background-size: 2000px 1250px;
     transition: top .55s cubic-bezier(.22,.8,.2,1), opacity .4s, clip-path .55s cubic-bezier(.22,.8,.2,1); }
   .nvp .row.pre { opacity: 0; clip-path: inset(0 0 100% 0); }
   .nvp .row.fresh::after { content: ""; position: absolute; inset: 0; background: rgba(200,255,61,.22); animation: nvfresh 1.4s ease-out forwards; }
@@ -444,6 +445,7 @@
 
   /* ---------- About / CTA ---------- */
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/ninjavan.html">
 <link rel="alternate" hreflang="de" href="https://mancinitan.com/de/ninjavan.html">
 <link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/ninjavan.html">
@@ -452,207 +454,184 @@
 <link rel="alternate" hreflang="x-default" href="https://mancinitan.com/ninjavan.html">
 </head>
 <body>
-
 <div class="scrim" id="scrim"></div>
-
 <div class="page">
-  <header class="top">
-    <a class="name" href="index.html">Mancini Tan</a>
-    <div class="top-right">
-      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
-      <div class="menu-slot">
-        <div class="menu" id="menu">
-          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
-          <nav id="menunav" aria-label="Main">
-            <div class="links">
-              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex forms · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; conversation design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
-              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-            <div class="foot item"><div class="secondary">
-              <span class="h">Elsewhere</span>
-              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
-            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/ninjavan.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/ninjavan.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/ninjavan.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/ninjavan.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/ninjavan.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="stack" id="stack" aria-hidden="true">
-    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex forms</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
-    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
-    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
-  </div>
-
-
-  <section class="c-hero">
-    <div class="panel c-head">
-      <div class="crumbs">
-        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
-        <span class="chip">Ninja Van</span>
-        <span class="chip ghost">Logistics</span>
-      </div>
-      <h1>
-        <span class="line"><span>Service recovery</span></span>
-        <span class="line"><span>at scale</span></span>
-      </h1>
-      <p class="lede">When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.</p>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Product designer II</dd></div>
-        <div><dt>Timeline</dt><dd>2022</dd></div>
-        <div><dt>Company</dt><dd>Ninja Van</dd></div>
-        <div><dt>Scope</dt><dd>Service design, research, UI</dd></div>
-      </dl>
-    </div>
-    <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>Service design</span></div>
-      <div class="c-results-in">
-        <div class="big"><b data-n="70%">70%</b><span>of case logging automated for delayed pickups and deliveries</span></div>
-        <div class="big"><b data-n="66%">66%</b><span>less time to identify a parcel as missing</span></div>
-        <p class="note">Both figures are approximate.</p>
-      </div>
-    </aside>
-  </section>
-
-  <figure class="panel c-media">
-    <div class="nvp" id="nvp"><img src="assets/nv-issues.jpg" alt="The Ninja Van shipper portal showing open issues, filtered by status" width="2000" height="1250"></div>
-    <figcaption>Every open case in one place, sorted by what needs the merchant to act.</figcaption>
-  </figure>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">01</span><h2>Five handovers, three teams</h2></header>
-    <div class="sb">
-      <p class="big-p">A bit of information went missing at every handover.</p>
-      <p>When a merchant raised an issue, a support agent logged it, the right resolution team investigated, and the answer made its way back along the same chain. In interviews, merchants told us the hardest part was often not knowing whether anyone was working on their case at all. And once a case was closed, the only way to dispute the outcome was to raise a new one and explain everything again.</p>
-      <div class="relay" id="relay">
-        <div class="rl-grid">
-          <span class="rl-lane" style="grid-row:1">Merchant</span>
-          <span class="rl-lane" style="grid-row:2">Support agent</span>
-          <span class="rl-lane" style="grid-row:3">Resolution team</span>
-          <div class="rl-step" data-s="0" data-lane="Merchant" style="grid-row:1;grid-column:2"><b>1</b>Raises the issue</div>
-          <div class="rl-step" data-s="1" data-lane="Support agent" style="grid-row:2;grid-column:3"><b>2</b>Logs it in the CRM</div>
-          <div class="rl-step" data-s="2" data-lane="Resolution team" style="grid-row:3;grid-column:4"><b>3</b>Investigates</div>
-          <div class="rl-step" data-s="3" data-lane="Support agent" style="grid-row:2;grid-column:5"><b>4</b>Gets the outcome</div>
-          <div class="rl-step" data-s="4" data-lane="Merchant" style="grid-row:1;grid-column:6"><b>5</b>Hears back</div>
-          <svg class="rl-path" aria-hidden="true"><path class="base"/><path class="run"/></svg>
-          <span class="rl-dot" aria-hidden="true"></span>
-        </div>
-        <div class="rl-msg">
-          <span class="rl-k">What the merchant said</span>
-          <span class="rl-chip">Parcel NV…3940</span><span class="rl-chip">Box arrived wet and torn</span><span class="rl-chip">Photos attached</span><span class="rl-chip">Wants a refund</span>
-        </div>
-        <p class="rl-heard"><span class="rl-k">What the merchant heard back</span>"Your case is under investigation."</p>
-      </div>
-      <p class="an-note">An illustration of the handovers we mapped. Four handovers, and a little gets lost at each one.</p>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Mapping the whole ecosystem</h2></header>
-    <div class="sb">
-      <p class="big-p">Service recovery touches three groups, each with their own touchpoints. Fixing one in isolation just moves the problem.</p>
-      <p>So I looked at it from every side. I interviewed merchants, support agents and resolution teams across Southeast Asia, alongside a usability survey for agents and a Customer Effort Score survey for merchants. Then I weighed how often each theme came up against case volumes and response times, to find the changes that would help the whole system most.</p>
-      <div class="card" style="padding:0">
-        <div class="label" style="border-bottom:1px solid var(--rule)"><span>Who I interviewed</span><span>59 people · SEA</span></div>
-        <div class="bars">
-          <div class="br"><span>Support agents<small>SUS survey + interviews</small></span><div class="tr" data-w="80"><span></span><b>24</b></div></div>
-          <div class="br"><span>Merchants<small>CES survey + interviews</small></span><div class="tr" data-w="60"><span></span><b>18</b></div></div>
-          <div class="br"><span>Resolution teams<small>Finance, warehouse, drivers</small></span><div class="tr" data-w="56.7"><span></span><b>17</b></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">03</span><h2>Issues live where orders live</h2></header>
-    <div class="sb">
-      <p class="big-p">The place you book a pickup is now the place you chase it.</p>
-      <p>Raising an issue used to mean searching the website for a phone number, then hoping it had been received. So I built service recovery into the parcel portal merchants already used to manage their orders. The form asks for order IDs, issue type and proof of value in the same order agents enter them on their side, which cut out a lot of back and forth. Delayed pickups and deliveries now open cases automatically.</p>
-      <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
-        <span class="demo-tag">Live component</span>
-        <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
-          <div class="canvas">
-            <div class="hd"><b>Open issues</b><span>Shipper portal</span></div>
-            <div class="chips">
-              <span class="chip total">All issues <em id="nvAll">0</em></span>
-              <span class="chip act">For your action <em id="nvAct">0</em></span>
-              <span class="chip">Under investigation <em id="nvInv">0</em></span>
-            </div>
-            <div class="table" id="nvTable">
-              <div class="row th"><span>Title</span><span>Issue type</span><span>Status</span></div>
-            </div>
-          </div>
-        </div>
-
-        <button class="replay" type="button">Replay</button>
-      </div>
-      <figure class="shot"><div class="nvc" id="nvc"><img src="assets/nv-case.jpg" alt="A case details page with a status timeline, claim details and an email thread with the support agent" width="2400" height="1500" loading="lazy"></div><figcaption><b>Fields that change with the case.</b> Each issue type has its own status steps and details. A damaged parcel shows claim details and a way to dispute the amount, while a delayed pickup only shows what's relevant to it.</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>A bad score reopens the case</h2></header>
-    <div class="sb">
-      <p class="big-p">The survey stopped being just a measurement and became a way back in.</p>
-      <p>Customer Effort Score surveys used to go out by cold call and email, which was tedious for everyone and got very few replies. I moved the survey into the portal, right next to the case it's about, and into new HTML email templates designed for each issue type. A low score now reopens the conversation and suggests other ways to resolve it.</p>
-      <div class="trio">
-        <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only emails, with no way to leave a score.</p></div>
-        <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>One tap to rate, from the portal or any email.</p></div>
-        <div class="tile"><span class="tile-k">Closing the loop</span><b>A low score reopens it</b><p>Merchants can question an outcome without starting over.</p></div>
-      </div>
-      <figure class="shot emails">
-        <div class="em-row" role="img" aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button">
-          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
-          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
-        </div>
-        <figcaption><b>HTML emails for each issue type.</b> I designed a template for every case type, each with a one-tap rating button. It was unglamorous work, and it did a lot to lift response rates.</figcaption></figure>
-      <div class="result"><b>Designing both sides of the service.</b><p>Support agents worked in a Salesforce-based CRM, so I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
-    </div>
-  </section>
-
-  <section class="panel sec">
-    <header class="sh"><span class="no">+</span><h2>Also at Ninja Van: Akira</h2></header>
-    <div class="sb">
-      <p class="big-p">The case for a design system, in numbers.</p>
-      <p>Akira was Ninja Van's design system initiative. I worked on the documentation and on building content standards into the component library itself. It's a quiet way to keep a product consistent, and it lasts.</p>
-      <div class="callouts">
-        <div><b data-n="27">27</b><span>active products across the portfolio</span></div>
-        <div><b data-n="70%">70%</b><span>of implementation on locally customised components</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="c-next">
-    <div class="panel c-cta action-card">
-      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
-      <div class="inner">
-        <h2>Untangling a process across teams? Let's map it out together.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
-      </div>
-    </div>
-    <a class="panel c-nextcase" href="neuron.html" aria-label="Next case: Shift plans that stick">
-      <div class="label"><span>Next case</span><span>05</span></div>
-      <div class="inner">
-        <span class="nlogo"><img src="assets/logo-neuron.svg" alt="" width="40" height="40"></span>
-        <div><h3>Shift plans that stick</h3><p>Neuron Mobility · Micromobility</p></div>
-        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+<header class="top">
+<a class="name" href="index.html">Mancini Tan</a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">이메일 보내기</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="메뉴 열기" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="메인" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">홈</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">작업</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">프로덕트 디자인 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">복잡한 폼 디자인 · Buildlr</a><a href="ninjavan.html">대규모 서비스 리커버리 · Ninja Van</a><a href="neuron.html">현장 팀을 위한 내부 툴 · Neuron</a></div></div><button class="cat" data-cat="content">콘텐츠·대화형 디자인 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 트레이딩 어시스턴트 · OKX</a><a href="okx.html#orbit">트레이딩에 소셜을 더하다 · OKX</a><a href="okx.html#rewind">대규모 개인화 콘텐츠 · OKX</a></div></div><button class="cat" data-cat="ecom">이커머스 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">딱 맞는 핏 찾아주기 · EVN Archive</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">소개</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">연락처</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
-
-<script src="site.js"></script>
+<div class="foot item"><div class="secondary"><span class="h">다른 채널</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">이력서</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">이메일</a></div><div aria-label="색상 테마" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="라이트" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="다크" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="시스템 설정" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="언어" translate="no"><a href="/ninjavan.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/ninjavan.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/ninjavan.html" hreflang="ko" lang="ko" data-l="ko" title="한국어" aria-current="true">한국어</a><a href="/zh-hans/ninjavan.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/ninjavan.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">프로덕트 디자인</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>복잡한 폼 디자인</b><span>Buildlr · 건설 테크</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>대규모 서비스 리커버리</b><span>Ninja Van · 물류</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>현장 팀을 위한 내부 툴</b><span>Neuron · 마이크로모빌리티</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>AI 트레이딩 어시스턴트 디자인</b><span>OKX · 핀테크</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>트레이딩에 소셜을 더하다</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>대규모 개인화 콘텐츠</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>딱 맞는 핏 찾아주기</b><span>EVN Archive · 사이즈 추천 툴</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>전체 작업</span><span>→</span></a>
+</div>
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>전체 작업</a>
+<span class="chip">Ninja Van</span>
+<span class="chip ghost">물류</span></div>
+<h1><span class="line"><span>대규모</span></span>
+<span class="line"><span>서비스 리커버리</span></span></h1>
+<p class="lede">택배에 문제가 생기면 세 팀이 움직이지만, 정작 셀러는 아무 소식도 듣지 못할 때가 많아요. 동남아시아 전역에서 이 과정이 실제로 어떻게 돌아가는지 리서치한 뒤, 셀러를 위한 셀프서비스 포털과 그 뒤에서 상담원이 쓰는 툴을 디자인했어요.</p>
+<dl class="meta">
+<div><dt>역할</dt><dd>프로덕트 디자이너 II</dd></div>
+<div><dt>기간</dt><dd>2022</dd></div>
+<div><dt>회사</dt><dd>Ninja Van</dd></div>
+<div><dt>범위</dt><dd>서비스 디자인, 리서치, UI</dd></div>
+</dl>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>결과</span><span>서비스 디자인</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="70%">70%</b><span>지연된 픽업·배송의 케이스 접수 자동화 비율</span></div>
+<div class="big"><b data-n="66%">66%</b><span>택배 분실 확인까지 걸리는 시간 단축</span></div>
+<p class="note">두 수치 모두 대략적인 값이에요.</p>
+</div>
+</aside>
+</section>
+<figure class="panel c-media">
+<div class="nvp" id="nvp"><img alt="The Ninja Van shipper portal showing open issues, filtered by status" height="1250" src="../assets/nv-issues.jpg" width="2000"/></div>
+<figcaption>진행 중인 모든 케이스를 한곳에. 셀러가 먼저 조치해야 할 순서대로 정렬돼요.</figcaption>
+</figure>
+<section class="panel sec">
+<header class="sh"><span class="no">01</span><h2>핸드오버는 다섯 번, 팀은 셋</h2></header>
+<div class="sb">
+<p class="big-p">핸드오버를 거칠 때마다 정보가 조금씩 사라졌어요.</p>
+<p>셀러가 문제를 제기하면 상담원이 접수하고, 담당 해결팀이 조사한 뒤, 같은 경로를 거슬러 답이 돌아갔어요. 인터뷰에서 셀러들은 누가 내 케이스를 맡고 있기는 한지조차 모르는 게 가장 힘들다고 했어요. 게다가 케이스가 종료되면, 결과에 이의를 제기하는 방법은 새 케이스를 열고 처음부터 다시 설명하는 것뿐이었어요.</p>
+<div class="relay" id="relay">
+<div class="rl-grid">
+<span class="rl-lane" style="grid-row:1">셀러</span>
+<span class="rl-lane" style="grid-row:2">상담원</span>
+<span class="rl-lane" style="grid-row:3">해결팀</span>
+<div class="rl-step" data-lane="Merchant" data-s="0" style="grid-row:1;grid-column:2"><b>1</b>문제 제기</div>
+<div class="rl-step" data-lane="Support agent" data-s="1" style="grid-row:2;grid-column:3"><b>2</b>CRM에 접수</div>
+<div class="rl-step" data-lane="Resolution team" data-s="2" style="grid-row:3;grid-column:4"><b>3</b>조사</div>
+<div class="rl-step" data-lane="Support agent" data-s="3" style="grid-row:2;grid-column:5"><b>4</b>결과 확인</div>
+<div class="rl-step" data-lane="Merchant" data-s="4" style="grid-row:1;grid-column:6"><b>5</b>셀러에게 회신</div>
+<svg aria-hidden="true" class="rl-path"><path class="base"></path><path class="run"></path></svg>
+<span aria-hidden="true" class="rl-dot"></span>
+</div>
+<div class="rl-msg"><span class="rl-k">셀러가 한 말</span>
+<span class="rl-chip">택배 NV…3940</span><span class="rl-chip">상자가 젖고 찢어진 채 도착</span><span class="rl-chip">사진 첨부</span><span class="rl-chip">환불 원함</span></div>
+<p class="rl-heard"><span class="rl-k">셀러가 들은 답</span>"고객님의 케이스를 조사 중입니다."</p>
+</div>
+<p class="an-note">저희가 매핑한 핸드오버를 그림으로 표현해봤어요. 핸드오버는 네 번, 그때마다 조금씩 사라져요.</p>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">02</span><h2>생태계 전체를 매핑하기</h2></header>
+<div class="sb">
+<p class="big-p">서비스 리커버리에는 세 그룹이 얽혀 있고, 각자 접점이 따로 있어요. 하나만 따로 고치면 문제가 자리만 옮겨갈 뿐이에요.</p>
+<p>그래서 모든 방향에서 살펴봤어요. 동남아시아 전역의 셀러, 상담원, 해결팀을 인터뷰하고, 상담원 대상 사용성 설문과 셀러 대상 고객 노력 점수(CES) 설문도 함께 진행했어요. 그다음 각 주제가 얼마나 자주 나왔는지를 케이스 양, 응답 시간과 함께 따져서, 시스템 전체에 가장 도움이 될 변화를 찾았어요.</p>
+<div class="card" style="padding:0">
+<div class="label" style="border-bottom:1px solid var(--rule)"><span>인터뷰 대상</span><span>59명 · 동남아시아</span></div>
+<div class="bars">
+<div class="br"><span>상담원<small>SUS 설문 + 인터뷰</small></span><div class="tr" data-w="80"><span></span><b>24</b></div></div>
+<div class="br"><span>셀러<small>CES 설문 + 인터뷰</small></span><div class="tr" data-w="60"><span></span><b>18</b></div></div>
+<div class="br"><span>해결팀<small>재무, 창고, 배송 기사</small></span><div class="tr" data-w="56.7"><span></span><b>17</b></div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">03</span><h2>문제는 주문이 있는 곳에서</h2></header>
+<div class="sb">
+<p class="big-p">픽업을 예약하던 곳에서 이제 문제도 챙겨요.</p>
+<p>예전에는 문제를 제기하려면 웹사이트에서 전화번호를 찾고, 접수가 됐기를 바라는 수밖에 없었어요. 그래서 셀러가 이미 주문 관리에 쓰던 택배 포털 안에 서비스 리커버리를 넣었어요. 폼은 주문 ID, 문제 유형, 물품 가액 증빙을 상담원이 입력하는 순서 그대로 물어봐서, 주고받는 일이 크게 줄었어요. 지연된 픽업과 배송은 이제 케이스가 자동으로 열려요.</p>
+<div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
+<span class="demo-tag">라이브 컴포넌트</span>
+<div aria-label="Ninja Van shipper portal with issues opening automatically" class="scene nv" data-scene="nv">
+<div class="canvas">
+<div class="hd"><b>Open issues</b><span>Shipper portal</span></div>
+<div class="chips">
+<span class="chip total">All issues <em id="nvAll">0</em></span>
+<span class="chip act">For your action <em id="nvAct">0</em></span>
+<span class="chip">Under investigation <em id="nvInv">0</em></span>
+</div>
+<div class="table" id="nvTable">
+<div class="row th"><span>Title</span><span>Issue type</span><span>Status</span></div>
+</div>
+</div>
+</div>
+<button class="replay" type="button">다시 재생</button>
+</div>
+<figure class="shot"><div class="nvc" id="nvc"><img alt="A case details page with a status timeline, claim details and an email thread with the support agent" height="1500" loading="lazy" src="../assets/nv-case.jpg" width="2400"/></div><figcaption><b>케이스에 따라 바뀌는 필드.</b> 문제 유형마다 상태 단계와 세부 정보가 따로 있어요. 파손된 택배는 보상 청구 내역과 금액에 이의를 제기하는 방법을 보여주고, 지연된 픽업은 거기에 필요한 정보만 보여줘요.</figcaption></figure>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">04</span><h2>낮은 점수는 케이스를 다시 열어요</h2></header>
+<div class="sb">
+<p class="big-p">설문은 측정 도구를 넘어, 다시 들어오는 문이 됐어요.</p>
+<p>예전에는 고객 노력 점수 설문을 콜드콜과 이메일로 보냈는데, 모두에게 번거롭고 응답도 거의 없었어요. 그래서 설문을 포털 안, 해당 케이스 바로 옆으로 옮기고, 문제 유형별로 디자인한 새 HTML 이메일 템플릿에도 넣었어요. 이제 낮은 점수가 들어오면 대화가 다시 열리고, 다른 해결 방법을 제안해요.</p>
+<div class="trio">
+<div class="tile"><span class="tile-k">이전</span><b>콜드콜과 이메일</b><p>점수를 남길 방법이 없는 평범한 텍스트 이메일.</p></div>
+<div class="tile"><span class="tile-k">이후</span><b>케이스 바로 옆에서</b><p>포털이나 어떤 이메일에서든 탭 한 번으로 평가.</p></div>
+<div class="tile"><span class="tile-k">루프 닫기</span><b>낮은 점수가 케이스를 다시 열어요</b><p>셀러는 처음부터 다시 시작하지 않고도 결과에 이의를 제기할 수 있어요.</p></div>
+</div>
+<figure class="shot emails">
+<div aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button" class="em-row" role="img">
+<div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
+<div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
+</div>
+<figcaption><b>문제 유형별 HTML 이메일.</b> 케이스 유형마다, 탭 한 번으로 평가하는 버튼이 들어간 템플릿을 디자인했어요. 화려하진 않은 일이었지만, 응답률을 끌어올리는 데 큰 몫을 했어요.</figcaption></figure>
+<div class="result"><b>서비스의 양쪽을 모두 디자인하기.</b><p>상담원들은 Salesforce 기반 CRM에서 일했기 때문에, 케이스를 접수하고 관리하는 화면도 디자인했어요. 서비스 리커버리는 양쪽을 다 챙겨야 제대로 돌아가니까요.</p></div>
+</div>
+</section>
+<section class="panel sec">
+<header class="sh"><span class="no">+</span><h2>Ninja Van에서 한 일 하나 더: Akira</h2></header>
+<div class="sb">
+<p class="big-p">디자인 시스템이 필요한 이유, 숫자로.</p>
+<p>Akira는 Ninja Van의 디자인 시스템 이니셔티브였어요. 저는 문서화와, 콘텐츠 기준을 컴포넌트 라이브러리 자체에 녹이는 일을 맡았어요. 조용하지만 오래가는 방식으로 제품의 일관성을 지켜줘요.</p>
+<div class="callouts">
+<div><b data-n="27">27</b><span>포트폴리오 전반에서 운영 중인 프로덕트</span></div>
+<div><b data-n="70%">70%</b><span>각자 커스터마이즈한 컴포넌트로 구현된 비율</span></div>
+</div>
+</div>
+</section>
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>연락처</span><span>어디서든 일할 수 있어요</span></div>
+<div class="inner">
+<h2>여러 팀에 걸친 프로세스를 풀고 있나요? 함께 지도부터 그려봐요.</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">인사 건네기</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">이력서 받아 가기 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="다음 사례: 실제로 지켜지는 근무 계획" class="panel c-nextcase" href="neuron.html">
+<div class="label"><span>다음 사례</span><span>05</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-neuron.svg" width="40"/></span>
+<div><h3>실제로 지켜지는 근무 계획</h3><p>Neuron Mobility · 마이크로모빌리티</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · 포트폴리오 2026</span></footer>
+</div>
+<script src="../site.js"></script>
 <script>
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');

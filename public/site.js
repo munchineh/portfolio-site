@@ -139,3 +139,9 @@ window.rollNumber = (el) => {
   apply(pick);
 })();
 
+
+/* Remember a manual language choice so the server stops guessing */
+document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('click', e => {
+  document.cookie = `lang=${a.dataset.l}; path=/; max-age=31536000; SameSite=Lax`;
+  if (location.hash) { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }
+}));
