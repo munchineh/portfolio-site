@@ -241,3 +241,9 @@ button, input { font-weight: inherit; }
   .top .pill { padding: 0 12px; font-size: 13px; }
   .name { padding: 0 12px; font-size: 15px; }
 }
+
+/* Case-page copy: use the column, and never leave a single word on its own line */
+p, li, dd, figcaption { text-wrap: pretty; }
+h1, h2, h3, .big-p { text-wrap: balance; }
+.sec .sb > p { max-width: 72ch; }
+.sec .sb > p.big-p { max-width: 40ch; }
