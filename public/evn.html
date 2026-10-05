@@ -67,13 +67,17 @@
   .evn-title { font-weight: 700; font-stretch: 62%; text-transform: uppercase; font-size: 26px; line-height: 1; }
   .evn-price { font-stretch: 70%; font-size: 14px; color: #555; }
   .evn-fit { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
-  .evn-fit b { font-stretch: 70%; font-weight: 700; font-size: 15px; }
+  .evn-fit b { font-stretch: 75%; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: .01em; }
   .evn-fit > span { font-stretch: 75%; font-size: 14px; color: #333; }
   .scale { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 6px; height: 8px; }
-  .scale .z { border-radius: 2px; background: #e8e8e8; }
-  .scale .z.rec { background: #cfe8da; }
+  .scale .z { border-radius: 2px; background: #fff; box-shadow: inset 0 0 0 1px #dcdcdc; }
+  .scale .z.mid { background: #d3e8dc; box-shadow: none; }
+  .scale .z.rec { background: #1d6a4c; box-shadow: none; }
   .scale .dot { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #111; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .5s var(--ease); }
-  .scale-labels { display: flex; justify-content: space-between; font-stretch: 75%; font-size: 12px; color: #777; }
+  .scale-labels { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-stretch: 75%; font-size: 12px; color: #777; }
+  .scale-labels span:nth-child(1) { grid-column: 2; } .scale-labels span:nth-child(2) { grid-column: 3; } .scale-labels span:nth-child(3) { grid-column: 4; }
+  .evn-fit > span.fit-line { font-size: 13px; color: #888; }
+  .evn-fit > span.fit-est { font-size: 13px; color: #555; }
   .evn-fit > span.read, .read { justify-self: start; margin-top: 4px; font-stretch: 75%; font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: #111; color: #fff; transition: background .3s; }
   .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
 
@@ -184,7 +188,7 @@
             </div>
             <div class="foot item"><div class="secondary">
               <span class="h">Elsewhere</span>
-              <a href="#">Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
             </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div></div>
           </nav>
         </div>
@@ -235,7 +239,7 @@
   </section>
 
   <figure class="panel c-media">
-    <img src="assets/evn-pdp.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the How it'll fit you section under the size" width="1530" height="700">
+    <img src="assets/evn-pdp.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the How it'll fit you section under the size" width="1560" height="850">
     <figcaption>The product page, with a fit read under every size.</figcaption>
   </figure>
 
@@ -277,13 +281,14 @@
             <div class="evn-price">Size · Free</div>
             <div class="evn-fit">
               <b>How it'll fit you</b>
-              <span id="fitLine">This is your recommended size.</span>
               <div class="scale" aria-hidden="true">
-                <i class="z"></i><i class="z"></i><i class="z rec"></i><i class="z"></i><i class="z"></i>
+                <i class="z"></i><i class="z mid"></i><i class="z rec"></i><i class="z mid"></i><i class="z"></i>
                 <span class="dot" id="dot"></span>
               </div>
               <div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
               <span class="read" id="fitRead">Relaxed fit</span>
+              <span id="fitLine" class="fit-line">This is your recommended size.</span>
+              <span class="fit-est">Estimated given your measurements. <u>Edit</u></span>
             </div>
             <div class="evn-btn">Add to cart</div>
           </div>
@@ -307,11 +312,11 @@
           <div><b>Share as much or as little as you like</b><p>Height and weight are enough for a first recommendation. Shoppers who want a closer match can pick their build or add body measurements, in metric or imperial. It's saved, so they only do it once.</p></div>
         </li>
         <li class="wide">
-          <figure class="zoom"><img src="assets/evn-collection-z.jpg" alt="The shop filtered to pieces recommended for you, with a Clear link" width="1060" height="500" loading="lazy"></figure>
+          <figure class="zoom"><img src="assets/evn-collection-z.jpg" alt="The shop filtered to pieces recommended for you, with a Clear link" width="1120" height="550" loading="lazy"></figure>
           <div><b>A shop that fits you</b><p>Once a shopper has a fit profile, the shop can narrow down to pieces recommended for them. One tap clears it, so browsing everything is never more than a click away.</p></div>
         </li>
         <li class="wide">
-          <figure class="zoom"><img src="assets/evn-pdp-z.jpg" alt="The Aura Windbreaker product page, with How it'll fit you under the size" width="740" height="650" loading="lazy"></figure>
+          <figure class="zoom"><img src="assets/evn-pdp-z.jpg" alt="The Aura Windbreaker product page, with How it'll fit you under the size" width="1210" height="830" loading="lazy"></figure>
           <div><b>An answer on every product</b><p>Each product page says how that piece will fit, right under the size, in plain words like "This is your recommended size". Shoppers can edit their details from there if something looks off.</p></div>
         </li>
       </ol>
@@ -366,7 +371,7 @@
       <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
       <div class="inner">
         <h2>Got a checkout that needs this kind of care? Let's make it easier to say yes.</h2>
-        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="#">Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
+        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
       </div>
     </div>
     <a class="panel c-nextcase" href="okx.html" aria-label="Next case: Making crypto social">
@@ -379,7 +384,7 @@
     </a>
   </section>
 
-  <footer><span>Mancini Tan · Portfolio 2026</span><span>I built this site with Claude and the Figma MCP, straight from my design files.</span></footer>
+  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
 </div>
 
 <script src="site.js"></script>
@@ -423,7 +428,7 @@
     const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
     dot.style.left = pos + '%';
     read.textContent = z.label; line.textContent = z.line;
-    read.style.background = z.label === 'Recommended' ? 'var(--accent)' : '#111';
+    read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
   };
   h.addEventListener('input', update); w.addEventListener('input', update);
   update();
