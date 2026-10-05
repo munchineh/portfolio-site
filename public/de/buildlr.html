@@ -374,6 +374,62 @@
   .c-media img { aspect-ratio: auto; object-fit: initial; }
   .c-head h1 .line { white-space: normal; }
   .demo.live .demo-tag { top: auto; bottom: 12px; }
+  /* ---------- Live component: Buildlr on a phone, rebuilt from the 402px responsive frame ---------- */
+  @media (max-width: 900px) { #blDemo { display: none; } }
+  @media (min-width: 901px) { #blDemoM { display: none; } }
+  .blm .canvas { width: 402px; height: 1080px; position: absolute; background: #f3f4f6; color: #212525; font-family: "Poppins", "Archivo", sans-serif; overflow: hidden; }
+  .blm .canvas * { box-sizing: border-box; }
+  .blm .cd { font-family: "Clash Display", "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0; }
+  .blm .m-a { position: absolute; }
+  .blm .m-head { left: 0; top: 0; width: 402px; height: 56px; background: #fff; }
+  .blm .m-head .ham { left: 16px; top: 16px; }
+  .blm .m-head .pipe { left: 66px; top: 10px; font-family: "Clash Display", sans-serif; font-weight: 300; font-size: 24px; color: #d9d9d9; }
+  .blm .m-head .ttl { left: 89px; top: 18px; font-size: 16px; }
+  .blm .m-head .av { left: 342px; top: 12px; width: 32px; height: 32px; border-radius: 4px; background: linear-gradient(160deg, #cfc6ba, #8d8378); border: 1.5px solid #566161; }
+  .blm .m-crumb { left: 16px; top: 72px; width: 370px; height: 40px; background: #fff; border: 1px solid #d9d9d9; border-radius: 100px; display: flex; align-items: center; padding: 0 16px; gap: 12px; font-size: 12px; color: #8c8c8c; }
+  .blm .m-crumb > span { opacity: 0; transform: translateX(-6px); transition: opacity .35s, transform .35s var(--ease); white-space: nowrap; }
+  .blm .m-crumb > span.in { opacity: 1; transform: none; }
+  .blm .m-crumb > span.cur { color: #212525; }
+  .blm .m-crumb > i { width: 1px; height: 18px; background: #d9d9d9; opacity: 0; transition: opacity .35s; }
+  .blm .m-crumb > i.in { opacity: 1; }
+  .blm .m-crumb .menu-i { margin-left: auto; opacity: 1; transform: none; color: #212525; }
+  .blm .m-sec { left: 16px; top: 137px; font-size: 12px; color: #8c8c8c; }
+  .blm .m-sec em { font-style: normal; font-family: "Poppins", sans-serif; text-transform: none; margin-left: 6px; }
+  .blm .m-rows { left: 0; top: 160px; width: 402px; }
+  .blm .m-row { height: 48px; background: #fff; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; padding: 0 16px; gap: 16px; font-size: 14px; color: #212525; transition: background .35s, color .35s; }
+  .blm .m-row .kb { margin-left: auto; color: currentColor; }
+  .blm .m-row.on { background: #323838; color: #fff; }
+  .blm .m-sw { position: relative; flex: none; width: 40px; height: 24px; border-radius: 4px; background: #d9d9d9; transition: background .3s; }
+  .blm .m-sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 18px; border-radius: 3px; background: #fff; transition: transform .3s var(--ease); box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .blm .m-row.on .m-sw { background: #4caf6a; } .blm .m-row.on .m-sw::after { transform: translateX(18px); }
+  .blm .m-panel { background: #fff; max-height: 0; overflow: hidden; transition: max-height .6s var(--ease); }
+  .blm .m-panel.open { max-height: 660px; }
+  .blm .m-in { position: relative; height: 650px; }
+  .blm .m-lbl { font-size: 14px; font-weight: 500; color: #8c8c8c; }
+  .blm .m-fld { height: 40px; border-radius: 4px; background: #f3f4f6; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 14px; letter-spacing: -.01em; color: #212525; }
+  .blm .m-fld .u { color: #d9d9d9; } .blm .m-fld.ph { color: #d9d9d9; }
+  .blm .m-rfi { left: 16px; top: 180px; width: 370px; height: 60px; border: 1px solid #eaeaea; border-radius: 4px; padding: 10px 12px; opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .4s var(--ease); }
+  .blm .m-rfi.in { opacity: 1; transform: none; }
+  .blm .m-rfi b { display: flex; justify-content: space-between; font-size: 12px; font-weight: 500; }
+  .blm .m-rfi span { display: block; margin-top: 6px; font-size: 13px; color: #8c8c8c; letter-spacing: -.01em; }
+  .blm .m-rfi span strong { color: #212525; font-weight: 400; }
+  .blm .m-hd { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #8c8c8c; }
+  .blm .m-hd::after { content: ""; flex: 1; height: 1px; background: #eaeaea; margin-right: 28px; }
+  .blm .m-sub { left: 16px; width: 370px; display: grid; grid-template-columns: 24px 1fr; column-gap: 16px; row-gap: 8px; color: #d9d9d9; transition: color .3s; }
+  .blm .m-sub .bx { width: 24px; height: 24px; border-radius: 6px; border: 1px solid #eaeaea; background: #fff; display: grid; place-items: center; transition: background .3s, border-color .3s; }
+  .blm .m-sub .bx svg { opacity: 0; transform: scale(.5); transition: opacity .25s, transform .3s var(--ease); }
+  .blm .m-sub.on { color: #212525; } .blm .m-sub.on .bx { background: #323838; border-color: #323838; } .blm .m-sub.on .bx svg { opacity: 1; transform: none; }
+  .blm .m-sub .nm { font-size: 14px; line-height: 24px; }
+  .blm .m-sub .pr { grid-column: 2; font-size: 12px; line-height: 1.1; }
+  .blm .m-sub .pr i { font-style: normal; color: #eaeaea; transition: color .3s; margin-right: 6px; }
+  .blm .m-sub.on .pr i { color: #d9d9d9; }
+  .blm .m-cost { left: 0; top: 798px; width: 402px; padding: 16px; background: #fff; }
+  .blm .m-ln { display: flex; justify-content: space-between; font-size: 14px; letter-spacing: -.01em; line-height: 24px; color: #212525; }
+  .blm .m-ln.dim { color: #d9d9d9; }
+  .blm .m-ln.add { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .4s var(--ease), opacity .4s; }
+  .blm .m-ln.add.in { max-height: 24px; opacity: 1; }
+  .blm .m-ln b { font-weight: 600; }
+  .blm .m-rule { height: 1px; background: #eaeaea; margin: 10px 0; }
   /* ---------- Live component: Buildlr, rebuilt from the original 1512px screen ---------- */
   .bl { background: #323838; font-family: "Poppins", "Archivo", sans-serif; }
   .bl .canvas { width: 1512px; height: 1090px; position: absolute; color: #212525; }
@@ -637,6 +693,39 @@
 </div>
 <button class="replay" type="button">Erneut abspielen</button>
 </div>
+<div class="demo live" id="blDemoM" style="--ar: 402 / 1080; --ar-m: 402 / 1080; --cw: 402px; --ch: 1080px; background:#f3f4f6">
+<span class="demo-tag">Live-Komponente</span>
+<div aria-label="Buildlr new quote on a phone: the path opens tier by tier, the task switches on and the quote adds up" class="scene blm">
+<div class="canvas">
+<div class="m-a m-head"><svg class="m-a ham" fill="none" height="24" stroke="#212525" stroke-width="1.6" viewbox="0 0 24 24" width="24"><path d="M4 9h16M4 15h16"></path></svg><span class="m-a pipe">|</span><span class="m-a ttl cd">Quotations</span><span class="m-a av"></span></div>
+<div class="m-a m-crumb cd"><span>Tasks</span><i></i><span>Bathroom</span><i></i><span class="cur">Floor</span><span class="menu-i"><svg fill="none" height="20" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="M4 8h16M4 12h16M4 16h16"></path></svg></span></div>
+<div class="m-a m-sec cd">Construction<em>(€1.460,00)</em></div>
+<div class="m-a m-rows"><div class="m-row cd"><i class="m-sw"></i><span>Remove old flooring</span><svg class="kb" fill="currentColor" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="3" r="1.4"></circle><circle cx="8" cy="8" r="1.4"></circle><circle cx="8" cy="13" r="1.4"></circle></svg></div><div class="m-row cd"><i class="m-sw"></i><span>Level the subfloor</span><svg class="kb" fill="currentColor" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="3" r="1.4"></circle><circle cx="8" cy="8" r="1.4"></circle><circle cx="8" cy="13" r="1.4"></circle></svg></div><div class="m-row cd"><i class="m-sw"></i><span>Install underlay</span><svg class="kb" fill="currentColor" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="3" r="1.4"></circle><circle cx="8" cy="8" r="1.4"></circle><circle cx="8" cy="13" r="1.4"></circle></svg></div><div class="m-row cd" id="blmTask"><i class="m-sw"></i><span>Install flooring</span><svg class="kb" fill="currentColor" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="3" r="1.4"></circle><circle cx="8" cy="8" r="1.4"></circle><circle cx="8" cy="13" r="1.4"></circle></svg></div>
+<div class="m-panel" id="blmPanel"><div class="m-in">
+<span class="m-a m-lbl" style="left:16px;top:16px">Area</span><span class="m-a m-lbl" style="left:192px;top:16px">Glue type</span>
+<div class="m-a m-fld" style="left:16px;top:41px;width:160px"><span id="blmArea">0</span><span class="u">m²</span></div>
+<div class="m-a m-fld" style="left:192px;top:41px;width:194px"><span>Fast-dry</span><svg fill="none" height="16" stroke="#212525" stroke-width="1.4" viewbox="0 0 16 16" width="16"><path d="m4 6 4 4 4-4"></path></svg></div>
+<span class="m-a m-lbl" style="left:16px;top:98px">Color choice</span>
+<div class="m-a m-fld ph" style="left:16px;top:123px;width:370px"><span>Client to select color</span><svg fill="none" height="16" stroke="#d9d9d9" stroke-width="1.4" viewbox="0 0 16 16" width="16"><path d="m4 6 4 4 4-4"></path></svg></div>
+<div class="m-a m-rfi" id="blmRfi"><b class="cd"><span>Suggested RFI</span><span>✕</span></b><span><strong>Choose flooring color</strong> · Deadline 2025-12-25</span></div>
+<div class="m-a m-hd cd" style="left:16px;top:262px;width:386px">Additional settings<svg fill="none" height="16" stroke="#212525" stroke-width="1.4" viewbox="0 0 16 16" width="16"><path d="m4 10 4-4 4 4"></path></svg></div>
+<div class="m-a m-sub cd" data-s="0" style="top:296px"><span class="bx"><svg fill="none" height="14" stroke="#fff" stroke-width="2" viewbox="0 0 16 16" width="14"><path d="M3.5 8.5 6.5 11.5 12.5 4.5"></path></svg></span><span class="nm">Sub-task | Parquet</span><span class="pr"><i>Extra prep work</i>Yes</span></div>
+<div class="m-a m-sub cd" data-s="1" style="top:376px"><span class="bx"><svg fill="none" height="14" stroke="#fff" stroke-width="2" viewbox="0 0 16 16" width="14"><path d="M3.5 8.5 6.5 11.5 12.5 4.5"></path></svg></span><span class="nm">Sub-task | Vinyl</span><span class="pr"><i>Thickness</i>2 mm</span></div>
+<div class="m-a m-hd cd" style="left:16px;top:456px;width:386px">Cost breakdown<svg fill="none" height="16" stroke="#212525" stroke-width="1.4" viewbox="0 0 16 16" width="16"><path d="m4 10 4-4 4 4"></path></svg></div>
+<div class="m-a" style="left:16px;top:488px;width:370px">
+<div class="m-ln add" data-c="0"><span>Parquet</span><span>€ 200,00</span></div>
+<div class="m-ln add" data-c="1"><span>Vinyl</span><span>€ 300,00</span></div>
+<div class="m-rule"></div>
+<div class="m-ln dim"><span>Projected cost</span><span>€ <span id="blmProj">0,00</span></span></div>
+<div class="m-ln dim"><span>VAT (19%)</span><span>€ <span id="blmVat">0,00</span></span></div>
+<div class="m-ln"><b>Total</b><b>€ <span id="blmTot">0,00</span></b></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<button class="replay" type="button">Erneut abspielen</button>
+</div>
 </div>
 </section>
 <section class="panel sec">
@@ -683,7 +772,7 @@
 <div class="panel c-cta action-card">
 <div class="label"><span>Kontakt</span><span>Offen für Jobs weltweit</span></div>
 <div class="inner">
-<h2>Ein Formular, das immer mehr Ebenen bekommt? Machen wir es wieder einfach.</h2>
+<h2>Komplexe Operations-Tools? Machen wir sie einfach.</h2>
 <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Hallo sagen</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">Lebenslauf mitnehmen <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
 </div>
 </div>
@@ -774,7 +863,42 @@
     return { play, stop };
   })();
 
+  const blm = (() => {
+    const root = document.getElementById('blDemoM'); if (!root) return { play() {}, stop() {} };
+    const crumbs = [...root.querySelectorAll('.m-crumb > span:not(.menu-i), .m-crumb > i')];
+    const task = document.getElementById('blmTask'), panel = document.getElementById('blmPanel'), area = document.getElementById('blmArea'), rfi = document.getElementById('blmRfi');
+    const subs = [...root.querySelectorAll('.m-sub')], lines = [...root.querySelectorAll('.m-ln.add')];
+    const proj = document.getElementById('blmProj'), vat = document.getElementById('blmVat'), tot = document.getElementById('blmTot');
+    let bag = [], run = 0;
+    const fmt = v => v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const money = p => { proj.textContent = fmt(p); vat.textContent = fmt(p * .19); tot.textContent = fmt(p * 1.19); };
+    const set = on => { crumbs.forEach(c => c.classList.toggle('in', on)); task.classList.toggle('on', on); panel.classList.toggle('open', on); rfi.classList.toggle('in', on);
+      subs.forEach(x => x.classList.toggle('on', on)); lines.forEach(x => x.classList.toggle('in', on)); area.textContent = on ? '20' : '0'; money(on ? 500 : 0); };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; set(true); };
+    const count = (to, ms, f) => new Promise(res => { const t0 = performance.now(), me = run;
+      const step = t => { if (me !== run) return res(); const k = Math.min((t - t0) / ms, 1); f(to * (1 - Math.pow(1 - k, 3))); k < 1 ? requestAnimationFrame(step) : res(); };
+      requestAnimationFrame(step); });
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run, ok = () => me === run;
+      set(false); await wait(450, bag); if (!ok()) return;
+      // tier 1 → 2 → 3, same rhythm as the desktop tree
+      for (let i = 0; i < crumbs.length; i++) { crumbs[i].classList.add('in'); await wait(i % 2 ? 150 : 420, bag); if (!ok()) return; }
+      await wait(250, bag); if (!ok()) return;
+      // the task
+      task.classList.add('on'); panel.classList.add('open'); await wait(450, bag); if (!ok()) return;
+      await count(20, 500, v => area.textContent = Math.round(v)); if (!ok()) return;
+      rfi.classList.add('in'); await wait(700, bag); if (!ok()) return;
+      // sub-tasks and the quote
+      subs[0].classList.add('on'); lines[0].classList.add('in'); await count(200, 450, money); if (!ok()) return;
+      await wait(450, bag); if (!ok()) return;
+      subs[1].classList.add('on'); lines[1].classList.add('in'); await count(300, 500, v => money(200 + v));
+    };
+    return { play, stop };
+  })();
+
   live('blDemo', bl);
+  live('blDemoM', blm);
 })();
 </script>
 <script>
