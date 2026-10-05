@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
   /* ---------- Case hero ---------- */
@@ -80,6 +81,22 @@
   .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
   .pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
   .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+
+  /* ---------- Shipper portal hero: cases arrive in the real screen, newest on top ---------- */
+  .nvp { position: relative; overflow: hidden; background: #fff; }
+  .nvp > img { display: block; width: 100%; height: auto; }
+  .nvp .st { position: absolute; left: 0; top: 0; width: 2000px; height: 1250px; transform-origin: 0 0; }
+  .nvp .st > div { position: absolute; }
+  .nvp .bg { inset: 0; background: url(assets/nv-base.jpg) 0 0 / 2000px 1250px no-repeat; }
+  .nvp .row { left: 378px; width: 1578px; height: 58px; background-image: url(assets/nv-issues.jpg); background-size: 2000px 1250px;
+    transition: top .55s cubic-bezier(.22,.8,.2,1), opacity .4s, clip-path .55s cubic-bezier(.22,.8,.2,1); }
+  .nvp .row.pre { opacity: 0; clip-path: inset(0 0 100% 0); }
+  .nvp .row.fresh::after { content: ""; position: absolute; inset: 0; background: rgba(200,255,61,.22); animation: nvfresh 1.4s ease-out forwards; }
+  @keyframes nvfresh { to { opacity: 0; } }
+  .nvp .cnt { top: 212px; height: 42px; display: grid; place-items: center; font: 600 17px/1 "Noto Sans", "Open Sans", sans-serif; font-variant-numeric: tabular-nums; }
+  .nvp .cnt b { font-weight: 600; transition: transform .25s; }
+  .nvp .cnt b.bump { animation: nvbump .45s ease-out; }
+  @keyframes nvbump { 40% { transform: scale(1.35); } }
   .result { border-left: 3px solid var(--accent); }
   .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
   .result p { font-size: 14px; color: var(--muted); }
@@ -454,7 +471,7 @@
   </section>
 
   <figure class="panel c-media">
-    <img src="assets/nv-issues.jpg" alt="The Ninja Van shipper portal showing open issues, filtered by status" width="2000" height="1250">
+    <div class="nvp" id="nvp"><img src="assets/nv-issues.jpg" alt="The Ninja Van shipper portal showing open issues, filtered by status" width="2000" height="1250"></div>
     <figcaption>Every open case in one place, sorted by what needs the merchant to act.</figcaption>
   </figure>
 
@@ -638,6 +655,36 @@
     return { play, stop };
   })();
 
+  /* Shipper portal: the six real cases arrive oldest first, each new one landing on top */
+  const nvp = document.getElementById('nvp');
+  if (nvp && !still.matches) {
+    const st = document.createElement('div'); st.className = 'st'; nvp.appendChild(st);
+    nvp.querySelector('img').style.visibility = 'hidden';
+    const fit = () => st.style.transform = `scale(${nvp.clientWidth / 2000})`; new ResizeObserver(fit).observe(nvp); fit();
+    const bg = document.createElement('div'); bg.className = 'bg'; st.appendChild(bg);
+    const slots = [414, 472, 530, 589, 647, 705];
+    const status = ['act', 'pend', 'ui', 'cl', 'ui', 'ui'];
+    const boxes = { all: [523, 51, '#fff'], act: [790, 53, '#c8102e'], pend: [1061, 52, '#444'], ui: [1370, 52, '#444'], cl: [1661, 52, '#444'] };
+    const cnt = {}; Object.entries(boxes).forEach(([k, [x, w, c]]) => { const d = document.createElement('div'); d.className = 'cnt'; Object.assign(d.style, { left: x + 'px', width: w + 'px', color: c });
+      d.innerHTML = '<b></b>'; st.appendChild(d); cnt[k] = d.firstChild; });
+    const rows = slots.map((y, k) => { const r = document.createElement('div'); r.className = 'row pre'; r.style.top = slots[0] + 'px';
+      r.style.backgroundPosition = `-378px -${y}px`; st.appendChild(r); return r; });
+    let timers = [], n = {};
+    const set = (k, v, bump) => { n[k] = v; cnt[k].textContent = v; if (bump) { cnt[k].classList.remove('bump'); void cnt[k].offsetWidth; cnt[k].classList.add('bump'); } };
+    const reset = () => { timers.forEach(clearTimeout); timers = []; rows.forEach(r => { r.classList.add('pre'); r.classList.remove('fresh'); r.style.top = slots[0] + 'px'; });
+      set('all', 2); ['act', 'pend', 'ui', 'cl'].forEach(k => set(k, 0)); };
+    const at = (ms, f) => timers.push(setTimeout(f, ms));
+    const play = () => { reset(); let t = 600;
+      for (let k = 5; k >= 0; k--) { at(t, () => {
+          for (let j = k + 1; j <= 5; j++) rows[j].style.top = slots[j - k] + 'px';
+          const r = rows[k]; r.style.top = slots[0] + 'px'; r.classList.remove('pre'); r.classList.add('fresh');
+          set('all', n.all + 1, true); set(status[k], n[status[k]] + 1, true);
+          if (k === 0) for (let j = 0; j <= 5; j++) rows[j].style.top = slots[j] + 'px'; });
+        t += 850; }
+      at(t + 4200, play); };
+    reset();
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : reset()), { threshold: .4 }).observe(nvp);
+  }
   live('nvDemo', nv);
 })();
 </script>
