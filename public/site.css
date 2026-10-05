@@ -237,3 +237,7 @@ button, input { font-weight: inherit; }
   .c-cta.action-card .inner { grid-template-columns: 1fr; }
   .c-cta.action-card .btns { justify-self: start; flex-wrap: wrap; }
 }
+@media (max-width: 380px) {
+  .top .pill { padding: 0 12px; font-size: 13px; }
+  .name { padding: 0 12px; font-size: 15px; }
+}
