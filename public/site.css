@@ -208,3 +208,17 @@ button, input { font-weight: inherit; }
 .roll-col { display: inline-block; height: 1em; overflow: hidden; }
 .roll-strip { display: flex; flex-direction: column; will-change: transform; }
 .roll-strip span, .roll-ch { display: block; height: 1em; line-height: 1em; }
+
+/* ---------- Action card: the one deep-green card on each page that asks for a next step ---------- */
+.action-card { --ac-bg: #1d6a4c; --ac-ink: #f2f8f3; --ac-muted: rgba(242,248,243,.74); --ac-rule: rgba(242,248,243,.2);
+  background: var(--ac-bg); border-color: var(--ac-bg); color: var(--ac-ink); box-shadow: 0 24px 48px -28px rgba(15,60,40,.55); }
+.action-card .label { border-bottom-color: var(--ac-rule); color: var(--ac-ink); }
+.action-card .label span:last-child, .action-card p, .action-card .mail, .action-card .cta-p { color: var(--ac-muted) !important; }
+.action-card h2 { color: var(--ac-ink); }
+.action-card .btn { color: var(--ac-ink); border-color: rgba(242,248,243,.4); background: transparent; }
+.action-card .btn:hover { background: rgba(242,248,243,.12); border-color: var(--ac-ink); color: var(--ac-ink); }
+.action-card .btn.primary { background: var(--ac-ink); color: var(--ac-bg); border-color: var(--ac-ink); }
+.action-card .btn.primary:hover { background: #fff; color: var(--ac-bg); filter: none; }
+.action-card :focus-visible { outline: 2px solid var(--ac-ink); outline-offset: 3px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .action-card { --ac-bg: #17573e; box-shadow: none; } }
+:root[data-theme="dark"] .action-card { --ac-bg: #17573e; box-shadow: none; }
