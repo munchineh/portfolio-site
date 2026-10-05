@@ -224,7 +224,7 @@ button, input { font-weight: inherit; }
 .roll-col { display: inline-block; height: 1em; overflow-x: visible; overflow-y: clip; }
 .plus { display: inline-block; transform: translateY(-.07em); }
 .roll-strip { display: flex; flex-direction: column; will-change: transform; }
-.roll-strip span, .roll-ch { display: block; height: 1em; line-height: 1em; }
+.roll-strip span { display: block; height: 1em; line-height: 1em; }
 
 /* ---------- Action card: the one deep-green card on each page that asks for a next step ---------- */
 .action-card { --ac-bg: #1d6a4c; --ac-ink: #f2f8f3; --ac-muted: rgba(242,248,243,.74); --ac-rule: rgba(242,248,243,.2);
@@ -329,3 +329,7 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 }
 /* Chinese headlines break at punctuation, so phrases like 用心 never split across lines */
 :root:lang(zh) :is(h1, h2, h3) { word-break: keep-all; overflow-wrap: break-word; line-break: strict; }
+/* Rolling numbers: symbols sit on the same line as the digits, even when the number is a block */
+.roll-ch { display: inline-block; height: 1em; line-height: 1em; }
+/* Stats: label sits right under its number, and side-by-side stats start at the same height */
+.c-results .big { align-content: start; gap: 6px; }
