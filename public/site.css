@@ -222,3 +222,13 @@ button, input { font-weight: inherit; }
 .action-card :focus-visible { outline: 2px solid var(--ac-ink); outline-offset: 3px; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .action-card { --ac-bg: #17573e; box-shadow: none; } }
 :root[data-theme="dark"] .action-card { --ac-bg: #17573e; box-shadow: none; }
+
+/* Case-page action card: headline across the full width, then the note on the left and buttons on the right */
+.c-cta.action-card .inner { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 18px 24px; }
+.c-cta.action-card h2 { grid-column: 1 / -1; max-width: none; }
+.c-cta.action-card .cta-p { margin: 0; max-width: 44ch; }
+.c-cta.action-card .btns { justify-self: end; flex-wrap: nowrap; }
+@media (max-width: 900px) {
+  .c-cta.action-card .inner { grid-template-columns: 1fr; }
+  .c-cta.action-card .btns { justify-self: start; flex-wrap: wrap; }
+}
