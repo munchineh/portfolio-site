@@ -97,6 +97,33 @@
   .nvp .cnt b { font-weight: 600; transition: transform .25s; }
   .nvp .cnt b.bump { animation: nvbump .45s ease-out; }
   @keyframes nvbump { 40% { transform: scale(1.35); } }
+
+  /* ---------- Relay: who holds the case at each step, and what survives the handovers ---------- */
+  .relay { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 16px; }
+  .rl-grid { position: relative; display: grid; grid-template-columns: 116px repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(3, 54px); column-gap: 10px; row-gap: 8px; align-items: center; }
+  .rl-lane { grid-column: 1; font-size: 12px; color: var(--muted); align-self: center; padding-right: 8px; border-right: 1px solid var(--rule); height: 100%; display: flex; align-items: center; }
+  .rl-step { position: relative; z-index: 2; display: flex; gap: 10px; align-items: center; height: 46px; padding: 0 12px; border-radius: 10px; font-size: 14px; line-height: 1.2;
+    border: 1px solid var(--rule); background: var(--ground); transition: border-color .4s, background .4s, color .4s; }
+  .rl-step b { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 500; background: var(--rule); color: var(--ink); transition: background .4s, color .4s; }
+  .rl-step.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--ground)); }
+  .rl-step.on b { background: var(--accent); color: var(--on-accent); }
+  .rl-path { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
+  .rl-path path { fill: none; stroke-width: 1.5; }
+  .rl-path .base { stroke: var(--rule); stroke-dasharray: 3 4; }
+  .rl-path .run { stroke: var(--accent); }
+  .rl-dot { position: absolute; z-index: 3; left: 0; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); opacity: 0; transition: opacity .3s; }
+  .rl-msg, .rl-heard { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .rl-k { width: 100%; font-size: 12px; color: var(--muted); }
+  .rl-chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); transition: opacity .5s, background .5s, text-decoration-color .5s; text-decoration: line-through transparent; }
+  .rl-chip.lost { opacity: .4; background: transparent; box-shadow: inset 0 0 0 1px var(--rule); text-decoration-color: currentColor; }
+  .rl-heard { font-size: 15px; opacity: .25; transition: opacity .5s; }
+  .relay.done .rl-heard, .relay.static .rl-heard { opacity: 1; }
+  @media (max-width: 760px) {
+    .rl-grid { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 6px; }
+    .rl-lane, .rl-path, .rl-dot { display: none; }
+    .rl-step { grid-row: auto !important; grid-column: 1 !important; height: auto; padding: 10px 12px; }
+    .rl-step::after { content: attr(data-lane); margin-left: auto; font-size: 11px; color: var(--muted); }
+  }
   .result { border-left: 3px solid var(--accent); }
   .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
   .result p { font-size: 14px; color: var(--muted); }
@@ -480,21 +507,34 @@
     <div class="sb">
       <p class="big-p">A bit of information went missing at every handover.</p>
       <p>Merchants raised an issue, support agents logged it, resolution teams investigated it, and the answer travelled back the same way. What merchants told us was interesting. The original problem was rarely the painful part. Not knowing whether anyone was working on it was. And once a case was closed, there was no way to disagree without raising a new one and explaining everything again.</p>
-      <ol class="flow">
-        <li><small>Merchant</small>Contacts Ninja Van<i>→</i></li>
-        <li><small>Support agent</small>Logs the issue in the CRM<i>→</i></li>
-        <li><small>Resolution team</small>Receives the escalation<i>→</i></li>
-        <li><small>Resolution team</small>Investigates and relays back<i>→</i></li>
-        <li><small>Support agent</small>Updates the merchant</li>
-      </ol>
+      <div class="relay" id="relay">
+        <div class="rl-grid">
+          <span class="rl-lane" style="grid-row:1">Merchant</span>
+          <span class="rl-lane" style="grid-row:2">Support agent</span>
+          <span class="rl-lane" style="grid-row:3">Resolution team</span>
+          <div class="rl-step" data-s="0" data-lane="Merchant" style="grid-row:1;grid-column:2"><b>1</b>Raises the issue</div>
+          <div class="rl-step" data-s="1" data-lane="Support agent" style="grid-row:2;grid-column:3"><b>2</b>Logs it in the CRM</div>
+          <div class="rl-step" data-s="2" data-lane="Resolution team" style="grid-row:3;grid-column:4"><b>3</b>Investigates</div>
+          <div class="rl-step" data-s="3" data-lane="Support agent" style="grid-row:2;grid-column:5"><b>4</b>Gets the outcome</div>
+          <div class="rl-step" data-s="4" data-lane="Merchant" style="grid-row:1;grid-column:6"><b>5</b>Hears back</div>
+          <svg class="rl-path" aria-hidden="true"><path class="base"/><path class="run"/></svg>
+          <span class="rl-dot" aria-hidden="true"></span>
+        </div>
+        <div class="rl-msg">
+          <span class="rl-k">What the merchant said</span>
+          <span class="rl-chip">Parcel NV…3940</span><span class="rl-chip">Box arrived wet and torn</span><span class="rl-chip">Photos attached</span><span class="rl-chip">Wants a refund</span>
+        </div>
+        <p class="rl-heard"><span class="rl-k">What the merchant heard back</span>"Your case is under investigation."</p>
+      </div>
+      <p class="an-note">An illustration of the handovers we mapped. Four handovers, and a little gets lost at each one.</p>
     </div>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Talking to all three groups first</h2></header>
+    <header class="sh"><span class="no">02</span><h2>Mapping the whole ecosystem</h2></header>
     <div class="sb">
-      <p class="big-p">Different issues fail in different ways, so one group's view was never going to be enough.</p>
-      <p>I ran remote interviews with each group across Southeast Asia, alongside a usability survey for support agents and a Customer Effort Score survey for merchants. For merchants, I spoke to people who'd raised an issue in the past month and scored us both well and badly. Then I weighed how often each theme came up against case volumes and response times, to decide what to fix first.</p>
+      <p class="big-p">Service recovery touches three groups, each with their own touchpoints. Fixing one in isolation just moves the problem.</p>
+      <p>So I looked at it from every side. I interviewed merchants, support agents and resolution teams across Southeast Asia, alongside a usability survey for agents and a Customer Effort Score survey for merchants. Then I weighed how often each theme came up against case volumes and response times, to find the changes that would help the whole system most.</p>
       <div class="card" style="padding:0">
         <div class="label" style="border-bottom:1px solid var(--rule)"><span>Who I interviewed</span><span>59 people · SEA</span></div>
         <div class="bars">
@@ -603,6 +643,37 @@
   /* Bars grow when seen */
   document.querySelectorAll('.bars').forEach(bx => { const go = () => bx.querySelectorAll('.tr').forEach(t => { const w = t.dataset.w + '%'; t.querySelector('span').style.width = w; t.querySelector('b').style.left = w; });
     still.matches ? go() : once(bx, go, .5); });
+  /* Relay: the case moves between teams; one detail drops at each handover */
+  const relay = document.getElementById('relay');
+  if (relay) {
+    const grid = relay.querySelector('.rl-grid'), steps = [...relay.querySelectorAll('.rl-step')], chips = [...relay.querySelectorAll('.rl-chip')];
+    const base = relay.querySelector('.rl-path .base'), runP = relay.querySelector('.rl-path .run'), dot = relay.querySelector('.rl-dot');
+    let pts = [], len = 0, segs = [];
+    const layout = () => { const g = grid.getBoundingClientRect();
+      pts = steps.map(s => { const r = s.getBoundingClientRect(); return [r.left - g.left + r.width / 2, r.top - g.top + r.height / 2]; });
+      const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+      base.setAttribute('d', d); runP.setAttribute('d', d); len = runP.getTotalLength() || 0;
+      segs = pts.slice(1).map((p, i) => Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]));
+      runP.style.strokeDasharray = len; };
+    const at = upto => segs.slice(0, upto).reduce((a, b) => a + b, 0);
+    let timers = [];
+    const finish = () => { relay.classList.add('static'); steps.forEach(s => s.classList.add('on')); chips.forEach(c => c.classList.add('lost')); runP.style.strokeDashoffset = 0; };
+    const reset = () => { timers.forEach(clearTimeout); timers = []; relay.classList.remove('done');
+      steps.forEach(s => s.classList.remove('on')); chips.forEach(c => c.classList.remove('lost'));
+      runP.style.transition = 'none'; runP.style.strokeDashoffset = len; dot.style.opacity = 0; };
+    const moveDot = i => { if (!pts[i]) return; dot.style.transform = `translate(${pts[i][0]}px, ${pts[i][1]}px)`; };
+    const play = () => { layout(); reset(); dot.style.transition = 'none'; moveDot(0); void dot.offsetWidth;
+      dot.style.transition = 'transform .8s cubic-bezier(.4,0,.2,1), opacity .3s'; let t = 300;
+      timers.push(setTimeout(() => { steps[0].classList.add('on'); dot.style.opacity = 1; }, t));
+      for (let i = 1; i < steps.length; i++) { t += 1200;
+        timers.push(setTimeout(() => { runP.style.transition = 'stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)'; runP.style.strokeDashoffset = len - at(i); moveDot(i);
+          chips[i - 1] && chips[i - 1].classList.add('lost'); }, t));
+        timers.push(setTimeout(() => steps[i].classList.add('on'), t + 650)); }
+      timers.push(setTimeout(() => { relay.classList.add('done'); dot.style.opacity = 0; }, t + 900)); };
+    new ResizeObserver(() => { layout(); if (relay.classList.contains('static')) runP.style.strokeDashoffset = 0; }).observe(grid);
+    if (still.matches || matchMedia('(max-width: 760px)').matches && false) { layout(); finish(); }
+    else new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : reset()), { threshold: .5 }).observe(relay);
+  }
   /* Flow steps light up in order */
   document.querySelectorAll('.flow').forEach(fl => { const li = [...fl.children]; if (still.matches) return;
     once(fl, () => li.forEach((l, i) => setTimeout(() => { l.classList.add('lit'); setTimeout(() => l.classList.remove('lit'), 900); }, i * 450)), .6); });
