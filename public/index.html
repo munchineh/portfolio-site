@@ -305,7 +305,8 @@
   .fchip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
   .fchip[aria-pressed="true"]::after { content: "×"; font-size: 14px; line-height: 1; }
   .facts .also { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
-  .facts .langs { font-size: 15px; line-height: 1.6; }
+  .facts .langs { font-size: 15px; line-height: 1.6; display: grid; }
+  .facts .langs i { font-style: italic; font-weight: 300; color: var(--muted); opacity: .75; margin-left: 6px; }
   .index .tag { transition: border-color .2s, color .2s, background .2s; }
   .index .tag:hover { border-color: var(--accent); color: var(--ink); }
   .index li.out { display: none; }
@@ -384,7 +385,7 @@
           <div class="exp"><div><dt>Experience</dt><dd><b class="yrs"><span class="yn" data-n="6+">6+</span> years</b>Across agency, in-house teams and my own e-commerce product</dd></div></div>
           <div><dt>Industries</dt><dd class="chips" role="group" aria-label="Filter case studies by industry"><button class="fchip" data-f="Fintech">Fintech</button><button class="fchip" data-f="Logistics">Logistics</button><button class="fchip" data-f="E-commerce">E-commerce</button><button class="fchip" data-f="Construction tech">Construction tech</button><span class="fchip static">Mobility</span><span class="fchip static">Advertising</span></dd></div>
           <div><dt>Skills</dt><dd class="chips" role="group" aria-label="Filter case studies by skill"><button class="fchip" data-f="UI design">UI design</button><button class="fchip" data-f="Conversation design">Conversation design</button><button class="fchip" data-f="Content design">Content design</button><button class="fchip" data-f="Localization">Localization</button></dd></div>
-          <div><dt>Languages</dt><dd class="langs">English<br>Chinese<br>Korean<br>German</dd></div>
+          <div><dt>Languages</dt><dd class="langs"><span>English <i>Native</i></span><span>Chinese <i>Proficient</i></span><span>Korean <i>Intermediate</i></span><span>German <i>Intermediate</i></span></dd></div>
         </dl>
       </div>
   </section>
