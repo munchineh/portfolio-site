@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Designing complex operational tools · Mancini Tan</title>
+<title>Simplifying operational tools · Mancini Tan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
@@ -102,9 +102,9 @@
   .tm-st { position: absolute; left: 0; top: 0; width: 594px; height: 1008px; transform-origin: 0 0; pointer-events: none; }
   .tm-st svg { position: absolute; inset: 0; width: 594px; height: 1008px; overflow: visible; }
   .tm-st rect { fill: none; stroke-width: 11.5; }
-  .tm-base { stroke: #bba897; stroke-width: 13.5; }
-  .tm-run { stroke: #d9d9d9; stroke-dasharray: 68 932; stroke-dashoffset: -170; animation: tmRun 8s linear infinite; }
-  @keyframes tmRun { to { stroke-dashoffset: -1170; } }
+  /* activity ring: a grey track that fills clockwise from the top as the task runs toward an hour */
+  .tm-base { stroke: #d9d9d9; stroke-width: 13.5; }
+  .tm-run { stroke: #bba897; stroke-width: 13.5; stroke-dasharray: 0 1000; stroke-dashoffset: -137; transition: stroke-dasharray 1s linear; }
   .tm-cover { position: absolute; background: #212526; }
   .tm-t { position: absolute; left: 212px; top: 942px; width: 155px; transform: translateY(-50%); font: 500 34px/1 "Clash Display", "Archivo", sans-serif; color: #bba897; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
   .tm-btn { position: absolute; left: 418px; top: 922px; width: 104px; height: 40px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
@@ -549,7 +549,7 @@
             <div class="links">
               <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
               <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Designing complex operational tools · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
               <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
               <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
             </div>
@@ -565,7 +565,7 @@
 
   <div class="stack" id="stack" aria-hidden="true">
     <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
-    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Designing complex operational tools</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Simplifying operational tools</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
     <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
     <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
     <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
@@ -584,7 +584,7 @@
         <span class="chip ghost">Construction tech</span>
       </div>
       <h1>
-        <span class="line"><span>Designing complex</span></span>
+        <span class="line"><span>Simplifying</span></span>
         <span class="line"><span>operational tools</span></span>
       </h1>
       <p class="lede">A pre-construction SaaS for the German market, built from zero, covering quotes, task management, Gantt scheduling and more. One of its key designs is a very deep quote form, made for consultants on a tablet beside their client and contractors on a phone with one hand free.</p>
@@ -750,7 +750,7 @@
       <div class="phones flat">
         <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="594" height="1008" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
         <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="594" height="1008" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
-        <figure><div class="tmr" id="blTimer"><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><div class="tm-st" translate="no"><svg viewBox="0 0 594 1008" aria-hidden="true"><rect class="tm-base" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/><rect class="tm-run" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/></svg><span class="tm-pulse" aria-hidden="true"></span><span class="tm-cover" style="left:200px;top:914px;width:184px;height:56px" aria-hidden="true"></span><b class="tm-t" aria-hidden="true">00:00:15</b><button class="tm-btn" type="button" aria-label="Pause the timer">PAUSE</button></div></div><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
+        <figure><div class="tmr" id="blTimer"><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><div class="tm-st" translate="no"><svg viewBox="0 0 594 1008" aria-hidden="true"><rect class="tm-base" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/><rect class="tm-run" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/></svg><span class="tm-pulse" aria-hidden="true"></span><span class="tm-cover" style="left:200px;top:914px;width:184px;height:56px" aria-hidden="true"></span><b class="tm-t" aria-hidden="true">00:21:15</b><button class="tm-btn" type="button" aria-label="Pause the timer">PAUSE</button></div></div><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
       </div>
     </div>
   </section>
@@ -919,9 +919,13 @@
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 594})`).observe(box);
   const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${155 / w})`; };
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
-  let sec = 15, timer = null, paused = false;
+  // starts part-way into an hour so the ring has something to show; it keeps filling one second at a time
+  let sec = 21 * 60 + 15, timer = null, paused = false;
+  const ring = box.querySelector('.tm-run');
   const pad = n => String(n).padStart(2, '0');
-  const show = () => { t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`; };
+  const show = () => { t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`;
+    const f = Math.min(sec / 3600, 1) * 1000; ring.style.strokeDasharray = `${f} ${1000 - f}`; };
+  show();
   const run = () => { clearInterval(timer); timer = setInterval(() => { sec++; show(); }, 1000); };
   btn.addEventListener('click', () => {
     paused = !paused; box.classList.toggle('paused', paused);
