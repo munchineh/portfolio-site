@@ -491,7 +491,7 @@
       <div class="label"><span>What came of it</span><span>Operations</span></div>
       <div class="c-results-in">
         <div class="big"><b data-n="60%">60%</b><span>faster page loads on average, after the merge</span></div>
-        <div class="big"><b data-n="5–10%">5–10%</b><span>more actions per operator, per hour</span></div>
+        <div class="big"><b data-n="10%">10%</b><span>more actions per operator, per hour</span></div>
         <p class="note">Both figures are approximate.</p>
       </div>
     </aside>
@@ -625,6 +625,7 @@
       { tags: [['bs', 'Battery swap']], d: '330m', id: '100017', ty: 'N4 Scooter', bat: '0%', st: 'Anticorrosion Technology', at: '01:48:22', xy: [640, 432] },
       { tags: [['bs', 'Battery swap'], ['pu', 'Pick up']], d: '220m', id: '100017', ty: 'N4 Scooter', bat: '88%', st: 'Anticorrosion Technology', at: '01:48:22', xy: [420, 253] },
       { tags: [['pu', 'Pick up']], d: '250m', id: '100231', ty: 'N4 Scooter', bat: '64%', st: 'Flagstaff Gardens', at: '01:46:10', xy: [530, 373] },
+      { tags: [['dp', 'Deploy']], d: '410m', id: '100342', ty: 'N4 Scooter', bat: '100%', st: 'Queen Victoria Market', at: '01:44:05', xy: [470, 300] },
     ];
     const mk = c => { const el = document.createElement('div'); el.className = 'card';
       el.innerHTML = `<div class="ch"><span>${c.tags.map(([k, t]) => `<b class="tg ${k}">${t.toUpperCase()}</b>`).join('')}</span><span class="ds">⌖ ${c.d}</span></div>
@@ -637,7 +638,7 @@
     const stop = () => { run++; bag.forEach(clearTimeout); bag = []; final(); };
     const play = async () => {
       stop(); if (still.matches) return;
-      const me = run; list.innerHTML = ''; open.textContent = '3 OPEN TASKS';
+      const me = run; list.innerHTML = ''; open.textContent = '2 OPEN TASKS';
       await wait(600, bag);
       for (let i = cards.length - 1; i >= 0; i--) {
         if (me !== run) return;
