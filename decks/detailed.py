@@ -17,9 +17,9 @@ about(d, 'about', "I design things people don't have to think about.",
        ('Skills', 'UI design, conversation design, content design, localization'),
        ('Languages', 'English (native), Chinese (proficient), Korean (intermediate), German (intermediate)')])
 three_cards(d, 'what-i-do', 'What I do', 'Three ways I work',
-            [('Content and conversation design', 'UX writing, microcopy and AI chat flows, designed alongside the interface so every screen reads as clearly as it looks.'),
-             ('Making hard things feel easy', 'I make fintech and ops products feel less difficult, from crypto trading apps to internal dashboards for support and field teams, so anyone feels comfortable using them.'),
-             ('End to end, zero to launch', 'Founding designer at start-ups, and founder of my own e-commerce store, EVN Archive. Research, UX, UI and design systems, all the way to launch and beyond.')])
+            [('Content and conversation design', 'I write the words and design the conversations, from microcopy to AI chat flows, so every screen speaks as clearly as it looks.'),
+             ('Making hard things feel easy', 'Crypto trading apps, support dashboards, field tools. I make fintech and ops products simple enough that anyone can jump in with confidence.'),
+             ('End to end, zero to launch', 'I've been the founding designer at start-ups and built my own store, EVN Archive, from scratch. I take products from first research to launch, and keep making them better.')])
 contents(d, 'contents', [
     ('01', 'Helping shoppers find their fit', 'EVN Archive', 'E-commerce, UX, front-end'),
     ('02', 'An assistant that trades in chat', 'OKX', 'AI conversation design'),
