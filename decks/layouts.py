@@ -8,14 +8,14 @@ def cover(d, sid, title, sub, small, portrait, notes=None):
              f'<img src="{portrait}" alt="Portrait of Mancini Tan" style="position:absolute;right:128px;top:160px;width:560px;height:760px;object-fit:cover;border-radius:28px">'
              f'<div style="position:absolute;left:128px;top:160px;width:1000px;display:flex;flex-direction:column;gap:36px">'
              f'{eyebrow(small, True)}'
-             f'<h1 style="font-family:{DISP};font-size:200px;font-weight:700;line-height:0.92;text-transform:uppercase;color:{ON_DARK};letter-spacing:-2px">{e(title)}</h1>'
+             f'<h1 style="font-family:{DISP};font-size:200px;{DSTYLE};line-height:0.92;text-transform:uppercase;color:{ON_DARK};letter-spacing:-2px">{e(title)}</h1>'
              f'<p style="font-size:44px;line-height:1.25;color:{ON_DARK_BODY};width:900px">{e(sub)}</p></div>')
     d.add(sid, inner, bg=DARK, color=ON_DARK, notes=notes, dark=True, footer=False, layout='display:flex', pad='128px')
 
 def about(d, sid, head, body, facts, notes=None):
     cards = ''.join(tile(k, None, v) for k, v in facts)
     inner = (f'{eyebrow("About")}'
-             f'<h2 style="font-family:{DISP};font-size:104px;font-weight:700;line-height:0.98;text-transform:uppercase;color:{INK};width:1500px">{e(head)}</h2>'
+             f'<h2 style="font-family:{DISP};font-size:104px;{DSTYLE};line-height:0.98;text-transform:uppercase;color:{INK};width:1500px">{e(head)}</h2>'
              f'{para(body, size=32)}'
              f'<div style="display:flex;flex-direction:row;gap:24px">{cards}</div>')
     d.add(sid, inner, notes=notes)
@@ -41,7 +41,7 @@ def case_title(d, sid, no, title, lede, meta, stats, visual, note=None, notes=No
     nt = f'<p style="font-size:24px;color:{MUTED}">{e(note)}</p>' if note else ''
     left = (f'<div style="width:1080px;display:flex;flex-direction:column;gap:22px">'
             f'{eyebrow(no)}'
-            f'<h1 style="font-family:{DISP};font-size:96px;font-weight:700;line-height:0.95;text-transform:uppercase;color:{INK};letter-spacing:-1px">{e(title)}</h1>'
+            f'<h1 style="font-family:{DISP};font-size:96px;{DSTYLE};line-height:0.95;text-transform:uppercase;color:{INK};letter-spacing:-1px">{e(title)}</h1>'
             f'<p style="font-size:{lede_size}px;line-height:1.42;color:{BODY}">{e(lede)}</p>'
             f'<div style="display:flex;flex-direction:row;gap:24px;border-top:1px solid {RULE};padding:16px 0 0 0">{metas}</div>'
             f'<div style="display:flex;flex-direction:row;gap:40px">{sts}</div>{nt}</div>')
@@ -50,8 +50,8 @@ def case_title(d, sid, no, title, lede, meta, stats, visual, note=None, notes=No
 
 def chapter(d, sid, no, title, intro, tags, notes=None):
     tg = ''.join(f'<p style="font-size:24px;color:{ON_DARK};background:#24432F;padding:10px 22px;border-radius:999px">{e(t)}</p>' for t in tags)
-    inner = (f'<p style="font-family:{DISP};font-size:220px;font-weight:700;line-height:0.9;color:#2F5E44">{e(no)}</p>'
-             f'<h1 style="font-family:{DISP};font-size:112px;font-weight:700;line-height:0.95;text-transform:uppercase;color:{ON_DARK};width:1500px">{e(title)}</h1>'
+    inner = (f'<p style="font-family:{DISP};font-size:220px;{DSTYLE};line-height:0.9;color:#2F5E44">{e(no)}</p>'
+             f'<h1 style="font-family:{DISP};font-size:112px;{DSTYLE};line-height:0.95;text-transform:uppercase;color:{ON_DARK};width:1500px">{e(title)}</h1>'
              f'<p style="font-size:36px;line-height:1.4;color:{ON_DARK_BODY};width:1300px">{e(intro)}</p>'
              f'<div style="display:flex;flex-direction:row;gap:16px">{tg}</div>')
     d.add(sid, inner, bg=DARK, color=ON_DARK, dark=True, notes=notes, layout='display:flex;flex-direction:column;justify-content:center;gap:28px')
@@ -81,7 +81,7 @@ def tiles_slide(d, sid, blocks, tiles, notes=None, bg=LIGHT, text_w=1300):
 
 def big_statement(d, sid, text, sub=None, notes=None):
     s = f'<p style="font-size:32px;line-height:1.45;color:{ON_DARK_BODY};width:1300px">{e(sub)}</p>' if sub else ''
-    inner = (f'<p style="font-family:{DISP};font-size:96px;font-weight:700;line-height:1.02;color:{ON_DARK};width:1560px">{e(text)}</p>{s}')
+    inner = (f'<p style="font-family:{DISP};font-size:96px;{DSTYLE};line-height:1.02;color:{ON_DARK};width:1560px">{e(text)}</p>{s}')
     d.add(sid, inner, bg=ACCENT, color=ON_DARK, dark=True, notes=notes, layout='display:flex;flex-direction:column;justify-content:center;gap:40px')
 
 def table_slide(d, sid, blocks, head, rows, widths, notes=None, size=26):
@@ -99,7 +99,7 @@ def stats_slide(d, sid, eb, head, stats, note=None, notes=None, dark=True):
 
 def closing(d, sid, head, lines_, notes=None):
     ls = ''.join(f'<p style="font-size:36px;color:{ON_DARK_BODY}">{e(x)}</p>' for x in lines_)
-    inner = (f'<h1 style="font-family:{DISP};font-size:120px;font-weight:700;line-height:0.95;text-transform:uppercase;color:{ON_DARK};width:1660px">{e(head)}</h1>'
+    inner = (f'<h1 style="font-family:{DISP};font-size:120px;{DSTYLE};line-height:0.95;text-transform:uppercase;color:{ON_DARK};width:1660px">{e(head)}</h1>'
              f'<div style="display:flex;flex-direction:column;gap:12px">{ls}</div>')
     d.add(sid, inner, bg=f'radial-gradient(circle at 80% 20%, #2B6E4C, {DARK} 60%)', color=ON_DARK, dark=True, notes=notes,
           layout='display:flex;flex-direction:column;justify-content:center;gap:56px', footer=False, pad='128px')

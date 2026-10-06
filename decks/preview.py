@@ -10,13 +10,8 @@ only = sys.argv[3].split(',') if len(sys.argv) > 3 else None
 amap = DETAILED if which == 'detailed' else PRESENT
 rev = {v: f'/home/claude/portfolio-site/public/assets/{k}.jpg' for k, v in amap.items()}
 F = '/tmp/claude-0/-home-claude-portfolio-site/c6dd3ada-264e-5647-a533-99a859b02f2c/scratchpad/chk/node_modules/@fontsource'
-css = ''
-for w in (300, 400, 500, 600, 700):
-    p = f'{F}/archivo/files/archivo-latin-{w}-normal.woff2'
-    if os.path.exists(p): css += f"@font-face{{font-family:'Archivo';font-weight:{w};src:url(file://{p})}}"
-for w in (500, 600, 700):
-    p = f'{F}/archivo-narrow/files/archivo-narrow-latin-{w}-normal.woff2'
-    if os.path.exists(p): css += f"@font-face{{font-family:'Archivo Narrow';font-weight:{w};src:url(file://{p})}}"
+VF = '/tmp/claude-0/-home-claude-portfolio-site/c6dd3ada-264e-5647-a533-99a859b02f2c/scratchpad/chk/node_modules/@fontsource-variable/archivo/files'
+css = ''.join(f"@font-face{{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:62% 125%;src:url(file://{VF}/archivo-{s}-wdth-normal.woff2)}}" for s in ('latin', 'latin-ext'))
 idx = json.load(open(f'{root}/project/deck.json'))
 order = [s for s in idx['order'] if not only or s in only]
 out = f'{root}/_preview'; os.makedirs(out, exist_ok=True)

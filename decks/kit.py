@@ -1,15 +1,16 @@
 """Shared slide kit for the two portfolio decks (detailed + presenting). Writes project/deck.json and
 project/slides/<id>.html under a root folder. Both decks use the same look as mancinitan.com (Sage palette,
-Archivo + Archivo Narrow)."""
+Archivo variable, width axis: display type is weight 900 at 68% width, like the site)."""
 import json, os, html, math, datetime
 
 INK = '#14281E'; BODY = '#3E4C44'; MUTED = '#5F6E65'; ACCENT = '#1F6B4A'
 LIGHT = '#F4F6EF'; MINT = '#E3EEE3'; CARD = '#FBFCF8'; RULE = '#D3DDD2'
 DARK = '#12251B'; ON_DARK = '#EEF4EE'; ON_DARK_BODY = '#BCD0C2'; BUTTER = '#F2EAC4'
-BODYF = "'Archivo', Arial, sans-serif"; DISP = "'Archivo Narrow', 'Arial Narrow', Arial, sans-serif"
+BODYF = "'Archivo', Arial, sans-serif"; DISP = "'Archivo', 'Arial Narrow', Arial, sans-serif"
+DSTYLE = 'font-weight:900;font-stretch:68%'   # site: .c-head h1, .chapter h2
+NSTYLE = 'font-weight:900;font-stretch:70%;font-variant-numeric:tabular-nums'   # site: .c-results .big b
 FACES = {
-    'archivo': {'family': 'Archivo', 'href': 'https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&display=swap'},
-    'archivo-narrow': {'family': 'Archivo Narrow', 'href': 'https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&display=swap'},
+    'archivo': {'family': 'Archivo', 'href': 'https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap'},
 }
 
 def e(t):
@@ -65,7 +66,7 @@ def eyebrow(t, dark=False):
 
 def h2(t, dark=False, size=64):
     c = ON_DARK if dark else INK
-    return f'<h2 style="font-family:{BODYF};font-size:{size}px;font-weight:600;line-height:1.1;color:{c}">{e(t)}</h2>'
+    return f'<h2 style="font-family:{BODYF};font-size:{size}px;font-weight:500;line-height:1.12;letter-spacing:-0.015em;color:{c}">{e(t)}</h2>'
 
 def statement(t, dark=False, size=40):
     c = ON_DARK if dark else ACCENT
@@ -153,5 +154,5 @@ def stat(num, label, dark=False, size=112, width=None, small=False):
     w = f'width:{width}px;' if width else 'flex:1;'
     ls = 24 if small else 28
     return (f'<div style="{w}display:flex;flex-direction:column;gap:8px">'
-            f'<p style="font-family:{DISP};font-size:{size}px;font-weight:700;line-height:1;color:{nc};letter-spacing:-1px">{e(num)}</p>'
+            f'<p style="font-family:{DISP};font-size:{size}px;{NSTYLE};line-height:0.9;color:{nc}">{e(num)}</p>'
             f'<p style="font-size:{ls}px;line-height:1.35;color:{lc}">{e(label)}</p></div>')
