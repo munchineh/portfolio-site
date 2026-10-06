@@ -30,3 +30,24 @@ PRESENT = {
  'nv-issues': '/_blob/c9e0290d87ddac080a95535b6cc431b0', 'nv-base': '/_blob/e116948bcb66d81b1604fe6996cf33d5',
  'neuron-map': '/_blob/45286e6e88f52a6d7f1c49768bb799ee', 'evn-pdp': '/_blob/a615bfbec50c25b8b5e871b4f2463e4b',
 }
+
+# Slide media made for the decks (decks/media/<key>.jpg): tight crops and frames captured from the site's live demos
+PRESENT.update({
+ 'm-evn-demo': '/_blob/c280a257225b5fbe23d9a4f3d4c81ccc', 'm-okx-chat': '/_blob/7ea6d1a980a119734b6ea01d5ea35651',
+ 'm-nv-issues': '/_blob/ca43260ce2bafacff3c60b2cf5dbeeef', 'm-nv-relay': '/_blob/d66fcbda06acbf0c664d09787ccb2fa2',
+ 'm-nr-live': '/_blob/5f0b5dc55b152bdef22f1d0116ba58ab', 'm-bl-rfi': '/_blob/9212ce3c9d4c602a5346125022ddc1ff',
+ 'm-evn-t-home': '/_blob/f249a1a1a0d5cd98b2c8ec41ad5ab381', 'm-evn-t-finder': '/_blob/cf71599a848dfa80183765c037388249',
+ 'm-evn-t-coll': '/_blob/ef79e3e125197158f9b8923526373c8c', 'm-evn-t-pdp': '/_blob/f4533ed078694a345b65b3236b5d1915',
+ 'm-h-evn': '/_blob/c52c29bd23c0aa08eac609476c3edbe3', 'm-h-bl': '/_blob/84d24b19c3251ad4b3ce814f2738874c',
+ 'm-h-nv': '/_blob/cafef4a4c6192972ac24c987d664a155', 'm-h-nr': '/_blob/445b4af6d0c4ec200d346705975ba670',
+ 'm-evn-card': '/_blob/c501055e077a9bd64460bee88bd17357', 'm-okx-chat-v': '/_blob/864861ac577d613a0f41338970fe5dc2', 'm-evn-home3': '/_blob/bdfd66bb2b571f256512f9941ba4b12f',
+})
+
+def aspect(key):
+    """width / height of an asset, read from the local copy."""
+    import os
+    from PIL import Image
+    here = '/home/claude/portfolio-site/decks'
+    p = f'{here}/media/{key}.jpg' if key.startswith('m-') else f'{here}/../public/assets/{key}.jpg'
+    w, h = Image.open(p).size
+    return w / h

@@ -8,7 +8,7 @@ from PIL import Image
 root, which = sys.argv[1], sys.argv[2]
 only = sys.argv[3].split(',') if len(sys.argv) > 3 else None
 amap = DETAILED if which == 'detailed' else PRESENT
-rev = {v: f'/home/claude/portfolio-site/public/assets/{k}.jpg' for k, v in amap.items()}
+rev = {v: (f'/home/claude/portfolio-site/decks/media/{k}.jpg' if k.startswith('m-') else f'/home/claude/portfolio-site/public/assets/{k}.jpg') for k, v in amap.items()}
 F = '/tmp/claude-0/-home-claude-portfolio-site/c6dd3ada-264e-5647-a533-99a859b02f2c/scratchpad/chk/node_modules/@fontsource'
 VF = '/tmp/claude-0/-home-claude-portfolio-site/c6dd3ada-264e-5647-a533-99a859b02f2c/scratchpad/chk/node_modules/@fontsource-variable/archivo/files'
 css = "@font-face{font-family:'Archivo Condensed';font-weight:900;src:url(file:///tmp/claude-0/-home-claude-portfolio-site/c6dd3ada-264e-5647-a533-99a859b02f2c/scratchpad/fonts/ArchivoCondensed-Black.woff2)}" + ''.join(f"@font-face{{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:62% 125%;src:url(file://{VF}/archivo-{s}-wdth-normal.woff2)}}" for s in ('latin', 'latin-ext'))
