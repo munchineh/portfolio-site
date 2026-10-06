@@ -382,3 +382,15 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 .tmr img, .okp img, .orb img { box-shadow: none !important; }
 .demo { border: 0 !important; }
 .shots li { border: 0 !important; }
+/* Rolling numbers: digits and symbols share one line box, so % and + sit level with the digits even inside block-level stats */
+.roll > .roll-col, .roll > .roll-ch { vertical-align: top; }
+.is-off, .is-off *, .is-off *::before, .is-off *::after { animation-play-state: paused !important; }
+.callouts b.roll { display: flex; align-items: flex-start; }
+/* Carousel dots for sideways screen rows (mobile) */
+.pager { display: flex; justify-content: center; gap: 2px; margin-top: 10px; }
+.pager[hidden] { display: none; }
+.pager button { display: grid; place-items: center; padding: 8px 3px; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.pager button::before { content: ""; width: 6px; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); transition: width .45s var(--spring, ease), background-color .25s; }
+.pager button.on::before { width: 20px; background-color: var(--accent); }
+.phones { scrollbar-width: none; }
+.phones::-webkit-scrollbar { display: none; }

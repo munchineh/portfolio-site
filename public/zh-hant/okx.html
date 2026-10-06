@@ -39,17 +39,10 @@
   .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
 
   /* ---------- Sections ---------- */
-  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
-  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
-  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
   .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
   .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
-  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
-  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
   .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
   .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
-  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
-  .callouts > div > span { font-size: 14px; color: var(--muted); }
 
   /* ---------- CTA + next case ---------- */
   .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -440,8 +433,8 @@
 <section class="panel sec">
 <header class="sh"><span class="no">1.2</span><h2>大單上門，專人接待</h2></header>
 <div class="sb">
-<p class="big-p">一筆五萬美元的訂單，既有滑價風險，也代表一位高價值客戶。</p>
-<p>金額這麼大，成交前價格就可能變動，而下單的人也值得比即時報價更好的待遇。所以大額訂單會享有專人服務與優惠價格。這項服務由大中華區一支專屬客服團隊一手建立，正是這群真實的人，定下了「貼心」該有的標準。為了把服務帶向國際，AI 助理與他們並肩合作：只要訂單金額一跨過門檻，每個市場都能享有同樣的待遇，而團隊則能專心處理真正需要人親自回應的對話。面板也會先講清楚，它支援英文和簡體中文。這種事在門口聽到，總比交易到一半才發現好得多。</p>
+<p class="big-p">大額交易，值得尊榮服務。難的是，把它規模化。</p>
+<p>五萬美元以上的訂單有滑價風險，成交前價格就可能變動；下單的通常也是高價值客戶，值得比即時報價更好的待遇。所以大額訂單會享有專人服務與優惠價格。這項服務由大中華區一支專屬客服團隊一手建立，正是這群真實的人，定下了「貼心」該有的標準。為了把服務帶向國際，AI 助理與他們並肩合作：只要訂單金額一跨過門檻，每個市場都能享有同樣的待遇，而團隊則能專心處理真正需要人親自回應的對話。</p>
 <div class="phones" id="okPhones">
 <figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>一切照舊。</figcaption></figure>
 <figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50,000 USD</b>提供更好的價格，並出現大額訂單報價按鈕。</figcaption></figure>

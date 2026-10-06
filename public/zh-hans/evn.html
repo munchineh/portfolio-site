@@ -74,7 +74,10 @@
   .scale .z { border-radius: 2px; background: #fff; box-shadow: inset 0 0 0 1px #dcdcdc; }
   .scale .z.mid { background: #d3e8dc; box-shadow: none; }
   .scale .z.rec { background: #1d6a4c; box-shadow: none; }
-  .scale .dot { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #111; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: left .5s var(--ease); }
+  /* the dot rides a full-width track moved with transform, so it glides on the GPU instead of re-laying out every frame */
+  .scale .dot { position: absolute; inset: 0; pointer-events: none; transform: translateX(var(--x, 50%)); transition: transform .3s var(--ease); will-change: transform; }
+  .scale .dot::before { content: ""; position: absolute; top: 50%; left: 0; width: 16px; height: 16px; margin: -8px 0 0 -8px; box-sizing: border-box; border-radius: 50%; background: #111; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+  .scale .dot.glide { transition: none; }
   .scale-labels { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-stretch: 75%; font-size: 12px; color: #777; }
   .scale-labels span:nth-child(1) { grid-column: 2; } .scale-labels span:nth-child(2) { grid-column: 3; } .scale-labels span:nth-child(3) { grid-column: 4; }
   .evn-fit > span.fit-line { font-size: 13px; color: #888; }
@@ -262,10 +265,10 @@
 <div class="controls">
 <span class="demo-tag">试一试</span>
 <label>Height <output id="hOut">160 cm</output>
-<input aria-label="身高（厘米）" id="h" max="200" min="150" type="range" value="160"/>
+<input aria-label="身高（厘米）" id="h" max="200" min="150" step="any" type="range" value="160"/>
 </label>
 <label>Weight <output id="wOut">55 kg</output>
-<input aria-label="体重（公斤）" id="w" max="110" min="45" type="range" value="55"/>
+<input aria-label="体重（公斤）" id="w" max="110" min="45" step="any" type="range" value="55"/>
 </label>
 <p class="demo-note">尺码工具的简化版，以一件均码夹克为例。</p>
 </div>
@@ -407,12 +410,12 @@
   ];
   const update = () => {
     const H = +h.value, W = +w.value;
-    hOut.textContent = H + ' cm'; wOut.textContent = W + ' kg';
+    hOut.textContent = Math.round(H) + ' cm'; wOut.textContent = Math.round(W) + ' kg';
     const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
     const z = zones.find(z => room <= z.max);
     const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
-    dot.style.left = pos + '%';
-    read.textContent = z.label; line.textContent = z.line;
+    dot.style.setProperty('--x', pos + '%');
+    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; }
     read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
   };
   h.addEventListener('input', update); w.addEventListener('input', update);
@@ -425,9 +428,11 @@
     if (!e.isIntersecting || played) return; played = true; ob.disconnect();
     if (still.matches) { h.value = 175; w.value = 68; update(); return; }
     const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
-    const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = 1 - Math.pow(1 - k, 3);
-      h.value = Math.round(from[0] + (to[0] - from[0]) * e2); w.value = Math.round(from[1] + (to[1] - from[1]) * e2); update();
-      if (k < 1) requestAnimationFrame(step); };
+    // unrounded values every frame, and no CSS transition on the dot while JS drives it, so nothing steps or lags
+    dot.classList.add('glide');
+    const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      h.value = from[0] + (to[0] - from[0]) * e2; w.value = from[1] + (to[1] - from[1]) * e2; update();
+      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); dot.classList.remove('glide'); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
 })();

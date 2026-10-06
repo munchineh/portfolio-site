@@ -39,17 +39,10 @@
   .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
 
   /* ---------- Sections ---------- */
-  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
-  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
-  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
   .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
   .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
-  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
-  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
   .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
   .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
-  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
-  .callouts > div > span { font-size: 14px; color: var(--muted); }
 
   /* ---------- CTA + next case ---------- */
   .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
@@ -440,8 +433,8 @@
 <section class="panel sec">
 <header class="sh"><span class="no">1.2</span><h2>大额交易，专属礼遇</h2></header>
 <div class="sb">
-<p class="big-p">五万美元一单，有滑点风险，更是高价值客户。</p>
-<p>订单到了这个量级，价格可能在成交前就已变动，下单的人也值得比即时报价更用心的服务。所以大额订单享有专属服务和优惠价格。这项服务由大中华区的一支专属客服团队打造，正是这些真人，定下了“专属感”应有的标准。为了把它推向全球，AI 助手与他们并肩工作：订单一旦跨过门槛，每个市场都能享受到同样的待遇，团队则专注于那些需要真人出面的对话。弹窗还会提前说明，它支持英文和简体中文。这种事在门口就听到，总比交易做到一半才知道要好接受得多。</p>
+<p class="big-p">大额交易，值得尊享服务。难的是，规模化地给到每个人。</p>
+<p>五万美元以上的订单有滑点风险，价格可能在成交前就已变动；下单的通常也是高价值客户，值得比即时报价更用心的服务。所以大额订单享有专属服务和优惠价格。这项服务由大中华区的一支专属客服团队打造，正是这些真人，定下了“专属感”应有的标准。为了把它推向全球，AI 助手与他们并肩工作：订单一旦跨过门槛，每个市场都能享受到同样的待遇，团队则专注于那些需要真人出面的对话。</p>
 <div class="phones" id="okPhones">
 <figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>一切照旧。</figcaption></figure>
 <figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50,000 USD</b>提供更优价格，并显示大额订单报价按钮。</figcaption></figure>

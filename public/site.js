@@ -140,6 +140,45 @@ window.rollNumber = (el) => {
 })();
 
 
+/* Sideways rows of screens: dots under the row show how many screens there are and which one you're on */
+(() => {
+  document.querySelectorAll('.phones').forEach(row => {
+    const items = [...row.children];
+    if (items.length < 2) return;
+    const pager = document.createElement('div');
+    pager.className = 'pager'; pager.setAttribute('aria-hidden', 'true');
+    const dots = items.map((it, i) => {
+      const d = document.createElement('button');
+      d.type = 'button'; d.tabIndex = -1;
+      d.addEventListener('click', () => row.scrollTo({ left: it.offsetLeft - row.offsetLeft - (parseFloat(getComputedStyle(row).paddingLeft) || 0), behavior: 'smooth' }));
+      pager.appendChild(d); return d;
+    });
+    row.after(pager);
+    let cur = -1, raf = 0;
+    const sync = () => {
+      raf = 0;
+      pager.hidden = row.scrollWidth <= row.clientWidth + 2;
+      if (pager.hidden) return;
+      const x = row.scrollLeft, max = row.scrollWidth - row.clientWidth;
+      // the last screens can't snap to the left edge, so reaching the end lights the last dot
+      let i = x >= max - 4 ? items.length - 1 : 0;
+      if (i === 0) { let best = Infinity; items.forEach((it, k) => { const dx = Math.abs(it.offsetLeft - items[0].offsetLeft - x); if (dx < best) { best = dx; i = k; } }); }
+      if (i !== cur) { dots.forEach((d, k) => d.classList.toggle('on', k === i)); cur = i; }
+    };
+    row.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(() => { cur = -1; sync(); }).observe(row);
+    sync();
+  });
+})();
+
+/* Pause looping animations (timer ring, pulses, cursors, demo loops) while they're off screen */
+(() => {
+  const els = document.querySelectorAll('.demo, .tmr, .okp, .orb, .scene, .pi, .nvp, .relay');
+  if (!els.length || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-off', !e.isIntersecting)), { rootMargin: '120px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+
 /* Remember a manual language choice so the server stops guessing */
 document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('click', e => {
   document.cookie = `lang=${a.dataset.l}; path=/; max-age=31536000; SameSite=Lax`;
