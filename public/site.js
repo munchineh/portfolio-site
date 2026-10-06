@@ -164,8 +164,10 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   const fit = () => { if (home) { el.style.width = ''; return; } el.style.width = (label.getBoundingClientRect().width + (el.classList.contains('typing') ? 4 : 0) + pad() * 2).toFixed(1) + 'px'; };
   const show = n => { shown = n; label.textContent = NAME.slice(0, n).join(''); fit(); };
   const typing = on => { clearTimeout(idle); el.classList.toggle('typing', on); if (!on) fit(); };
+  let target = false;
   const go = async h => {
-    if (h === home && !run) return; const me = ++run, ok = () => me === run;
+    // keep going if we're already heading there, so continuous scrolling doesn't keep restarting it
+    if (h === target && (run || h === home)) return; target = h; const me = ++run, ok = () => me === run;
     if (still.matches) { home = h; el.classList.toggle('home', h); el.classList.toggle('typing', !h); show(h ? 0 : NAME.length); run = 0; return; }
     if (h) {
       typing(true);
@@ -184,6 +186,22 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   update();
   if (onHome) { let tk = 0; addEventListener('scroll', () => { if (tk) return; tk = requestAnimationFrame(() => { tk = 0; update(); }); }, { passive: true }); }
   else setTimeout(() => { settled = true; update(); }, 1400);
+  // On the home page the button scrolls back to the top, then the page settles with a small springy bounce
+  if (onHome) el.addEventListener('click', e => {
+    e.preventDefault();
+    const parts = [...document.body.children].filter(n => n.matches('header.top, section, footer'));
+    const bounce = () => { if (still.matches) return; parts.forEach(n => n.animate(
+      [{ transform: 'translateY(0)' }, { transform: 'translateY(16px)', offset: .3 }, { transform: 'translateY(-4px)', offset: .62 }, { transform: 'translateY(1px)', offset: .84 }, { transform: 'translateY(0)' }],
+      { duration: 560, easing: 'cubic-bezier(.3,.7,.4,1)' })); };
+    const y0 = scrollY; if (y0 <= 0) { bounce(); return; }
+    if (still.matches) { scrollTo({ top: 0, behavior: 'instant' }); return; }
+    const dur = Math.min(900, 380 + y0 * 0.12), t0 = performance.now(); let stop = false;
+    const cancel = () => { stop = true; }; addEventListener('wheel', cancel, { once: true, passive: true }); addEventListener('touchstart', cancel, { once: true, passive: true });
+    const ease = x => 1 - Math.pow(1 - x, 3);
+    const frame = now => { if (stop) return; const k = Math.min(1, (now - t0) / dur); scrollTo({ top: y0 * (1 - ease(k)), behavior: 'instant' });
+      if (k < 1) requestAnimationFrame(frame); else { removeEventListener('wheel', cancel); removeEventListener('touchstart', cancel); bounce(); } };
+    requestAnimationFrame(frame);
+  });
   el.addEventListener('mouseenter', () => { if (canHover.matches) { hover = true; update(); } });
   el.addEventListener('mouseleave', () => { hover = false; update(); });
   el.addEventListener('focus', () => { if (el.matches(':focus-visible')) { focus = true; update(); } });
