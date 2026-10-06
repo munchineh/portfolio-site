@@ -140,6 +140,16 @@ window.rollNumber = (el) => {
 })();
 
 
+/* Mobile menu: each case in the Work accordion becomes a tappable card, reusing the desktop card's logo, title and industry */
+(() => {
+  const cards = new Map([...document.querySelectorAll('#stack .scard')].map(c => [c.getAttribute('href'), c]));
+  document.querySelectorAll('.menu .cases a').forEach(a => {
+    const c = cards.get(a.getAttribute('href')); if (!c) return;
+    a.classList.add('mcard');
+    a.innerHTML = c.innerHTML;
+  });
+})();
+
 /* Sideways rows of screens: dots under the row show how many screens there are and which one you're on */
 (() => {
   document.querySelectorAll('.phones').forEach(row => {
