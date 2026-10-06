@@ -365,3 +365,9 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 }
 .name:not(.home) .nm-h { opacity: 0; transition: opacity .15s .1s, transform .45s var(--ease); }
 .name.home .nm-h { opacity: 1; }
+
+/* Vector name: the SVG name morphs into the house; width is driven by the same spring in JS */
+.name.nm-vec { padding: 0; width: auto; transition: background .25s; }
+.name.nm-vec .nm-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.name.nm-vec .nm-h { display: none; }
+.name .nm-v { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); fill: currentColor; overflow: visible; will-change: transform; }
