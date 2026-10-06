@@ -629,7 +629,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p class="big-p">旅程的終點，正是 Rewind 啟程的地方。</p>
 <p>Rewind 本來就是為你一個人而做，而最後那張人格卡，讓它變得值得分享。每段旅程都以一種交易者類型作結，例如 Crypto Comet 或 Market Maestro，附上稀有度標籤，再加一句你為何當之無愧。它慶祝的是你的交易方式，不會顯示結餘，所以可以放心分享，和朋友比較也很好玩。一鍵就能分享到 Telegram、WhatsApp 或 X，看到的人掃描 QR code，就能進入 App 玩自己那一份。每一次分享都帶來新用戶，也讓大家回來看看朋友抽到甚麼類型，活動完結之後，社群仍然有話題。</p>
 <div class="phones two">
-<figure><div class="crs" id="crShare"><img alt="分享你的 Crypto Rewind：範例使用者 Jamie 是 Crypto Comet，附 Rare 標籤" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>為分享而生</b>值得曬的人格卡，加一個邀請朋友一起玩的 QR code。</figcaption></figure>
+<figure><div class="crs" data-prev="cr-persona.jpg" id="crShare"><img alt="分享你的 Crypto Rewind：範例使用者 Jamie 是 Crypto Comet，附 Rare 標籤" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>為分享而生</b>值得曬的人格卡，加一個邀請朋友一起玩的 QR code。</figcaption></figure>
 <div class="card" style="align-self:start">
 <span class="tile-k">Rewind 三部曲</span>
 <ol class="layers" style="margin-top:0">
@@ -809,19 +809,19 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 })();
 </script>
 <script>
-/* Rewind share: from the persona screen, tap share, the sheet slides up, hold, then play again */
+/* Rewind share: from the persona reveal, tap "Share to receive a gift", the sheet slides up, hold, then play again */
 (() => {
   // plays only once the real screen that comes before the sheet is in place (data-prev on the box)
   const box = document.getElementById('crShare'); if (!box || !box.dataset.prev) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const W = 600, H = 1301, A = '../assets/', SHEET = 186, SHARE = [467, 113];
+  const W = 600, H = 1301, A = '../assets/', SHEET = 186, SHARE = [300, 1085];
   const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
   const st = el(box, 'okst');
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / W})`).observe(box);
   el(st, 'okbg', { backgroundImage: `url(${A}${box.dataset.prev})` });
+  const press = el(st, 'okpress', { left: '38px', top: '1046px', width: '524px', height: '77px' });
   const scrim = el(st, 'okscrim');
   const sheet = el(st, 'oksheet', { left: 0, top: SHEET + 'px', width: W + 'px', height: (H - SHEET) + 'px', backgroundImage: `url(${A}cr-share.jpg)`, backgroundPosition: `0 -${SHEET}px` });
-  const flash = el(st, 'okflash', { left: SHARE[0] + 'px', top: SHARE[1] + 'px' });
   const tap = el(st, 'oktap', { left: SHARE[0] + 'px', top: SHARE[1] + 'px', transition: 'opacity .18s, transform .08s' });
   let run = 0, timers = [];
   const wait = ms => new Promise(r => timers.push(setTimeout(r, ms)));
@@ -829,7 +829,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   const cycle = async () => {
     const me = ++run; reset(); await wait(1400); if (me !== run) return;
     tap.classList.add('on'); await wait(220); if (me !== run) return;
-    tap.classList.add('down'); flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go');
+    tap.classList.add('down'); press.classList.add('go'); setTimeout(() => press.classList.remove('go'), 260);
     await wait(100); tap.classList.remove('down'); await wait(120); tap.classList.remove('on');
     scrim.classList.add('in'); sheet.classList.add('in');
     await wait(3600); if (me !== run) return;

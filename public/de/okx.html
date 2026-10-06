@@ -628,7 +628,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p class="big-p">Am Ende der Journey geht Rewind erst richtig auf Reisen.</p>
 <p>Rewind ist von Grund auf persönlich, und die Persona am Ende macht es sozial. Jede Reise endet mit einem Tradertyp wie Crypto Comet oder Market Maestro, mit Seltenheits-Tag und einer Zeile dazu, warum man ihn bekommen hat. Sie feiert, wie man tradet, und lässt die Kontostände weg. So lässt sie sich unbedenklich posten und macht Spaß im Vergleich mit Freunden. Ein Tipp schickt sie an Telegram, WhatsApp oder X, und der QR-Code holt alle, die sie sehen, in die App, um ihr eigenes Rewind zu spielen. Jedes Teilen bringt neue Leute herein, holt andere zurück, um zu sehen, wo ihre Freunde gelandet sind, und gibt der Community lange nach der Kampagne noch Gesprächsstoff.</p>
 <div class="phones two">
-<figure><div class="crs" id="crShare"><img alt="Crypto Rewind teilen: Ein Beispielprofil, Jamie, ist ein Crypto Comet mit dem Tag „Rare“" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>Gemacht zum Teilen</b>Eine Persona, die man gern postet, und ein QR-Code, der Freunde einlädt, ihr eigenes zu spielen.</figcaption></figure>
+<figure><div class="crs" data-prev="cr-persona.jpg" id="crShare"><img alt="Crypto Rewind teilen: Ein Beispielprofil, Jamie, ist ein Crypto Comet mit dem Tag „Rare“" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>Gemacht zum Teilen</b>Eine Persona, die man gern postet, und ein QR-Code, der Freunde einlädt, ihr eigenes zu spielen.</figcaption></figure>
 <div class="card" style="align-self:start">
 <span class="tile-k">Rewind in drei Teilen</span>
 <ol class="layers" style="margin-top:0">
@@ -808,19 +808,19 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 })();
 </script>
 <script>
-/* Rewind share: from the persona screen, tap share, the sheet slides up, hold, then play again */
+/* Rewind share: from the persona reveal, tap "Share to receive a gift", the sheet slides up, hold, then play again */
 (() => {
   // plays only once the real screen that comes before the sheet is in place (data-prev on the box)
   const box = document.getElementById('crShare'); if (!box || !box.dataset.prev) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const W = 600, H = 1301, A = '../assets/', SHEET = 186, SHARE = [467, 113];
+  const W = 600, H = 1301, A = '../assets/', SHEET = 186, SHARE = [300, 1085];
   const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
   const st = el(box, 'okst');
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / W})`).observe(box);
   el(st, 'okbg', { backgroundImage: `url(${A}${box.dataset.prev})` });
+  const press = el(st, 'okpress', { left: '38px', top: '1046px', width: '524px', height: '77px' });
   const scrim = el(st, 'okscrim');
   const sheet = el(st, 'oksheet', { left: 0, top: SHEET + 'px', width: W + 'px', height: (H - SHEET) + 'px', backgroundImage: `url(${A}cr-share.jpg)`, backgroundPosition: `0 -${SHEET}px` });
-  const flash = el(st, 'okflash', { left: SHARE[0] + 'px', top: SHARE[1] + 'px' });
   const tap = el(st, 'oktap', { left: SHARE[0] + 'px', top: SHARE[1] + 'px', transition: 'opacity .18s, transform .08s' });
   let run = 0, timers = [];
   const wait = ms => new Promise(r => timers.push(setTimeout(r, ms)));
@@ -828,7 +828,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   const cycle = async () => {
     const me = ++run; reset(); await wait(1400); if (me !== run) return;
     tap.classList.add('on'); await wait(220); if (me !== run) return;
-    tap.classList.add('down'); flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go');
+    tap.classList.add('down'); press.classList.add('go'); setTimeout(() => press.classList.remove('go'), 260);
     await wait(100); tap.classList.remove('down'); await wait(120); tap.classList.remove('on');
     scrim.classList.add('in'); sheet.classList.add('in');
     await wait(3600); if (me !== run) return;

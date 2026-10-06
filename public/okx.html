@@ -653,7 +653,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
       <p class="big-p">The end of the journey is where Rewind starts to travel.</p>
       <p>Rewind is personal by design, and the persona at the end is what makes it social. Each journey ends on a trader type, like Crypto Comet or Market Maestro, with a rarity tag and a line about why you earned it. It celebrates how you trade and leaves your balances off, so it's safe to post and fun to compare with friends. One tap sends it to Telegram, WhatsApp or X, and the QR code brings whoever sees it into the app to play their own. Each share pulls someone new in, brings people back to see where their friends landed, and gives the community something to talk about long after the campaign.</p>
       <div class="phones two">
-        <figure><div class="crs" id="crShare"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>Built for shareability</b>A persona worth posting, and a QR code that invites friends to play their own.</figcaption></figure>
+        <figure><div class="crs" id="crShare" data-prev="cr-persona.jpg"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>Built for shareability</b>A persona worth posting, and a QR code that invites friends to play their own.</figcaption></figure>
         <div class="card" style="align-self:start">
           <span class="tile-k">Rewind in three parts</span>
           <ol class="layers" style="margin-top:0">
@@ -836,19 +836,19 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 })();
 </script>
 <script>
-/* Rewind share: from the persona screen, tap share, the sheet slides up, hold, then play again */
+/* Rewind share: from the persona reveal, tap "Share to receive a gift", the sheet slides up, hold, then play again */
 (() => {
   // plays only once the real screen that comes before the sheet is in place (data-prev on the box)
   const box = document.getElementById('crShare'); if (!box || !box.dataset.prev) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const W = 600, H = 1301, A = 'assets/', SHEET = 186, SHARE = [467, 113];
+  const W = 600, H = 1301, A = 'assets/', SHEET = 186, SHARE = [300, 1085];
   const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
   const st = el(box, 'okst');
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / W})`).observe(box);
   el(st, 'okbg', { backgroundImage: `url(${A}${box.dataset.prev})` });
+  const press = el(st, 'okpress', { left: '38px', top: '1046px', width: '524px', height: '77px' });
   const scrim = el(st, 'okscrim');
   const sheet = el(st, 'oksheet', { left: 0, top: SHEET + 'px', width: W + 'px', height: (H - SHEET) + 'px', backgroundImage: `url(${A}cr-share.jpg)`, backgroundPosition: `0 -${SHEET}px` });
-  const flash = el(st, 'okflash', { left: SHARE[0] + 'px', top: SHARE[1] + 'px' });
   const tap = el(st, 'oktap', { left: SHARE[0] + 'px', top: SHARE[1] + 'px', transition: 'opacity .18s, transform .08s' });
   let run = 0, timers = [];
   const wait = ms => new Promise(r => timers.push(setTimeout(r, ms)));
@@ -856,7 +856,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   const cycle = async () => {
     const me = ++run; reset(); await wait(1400); if (me !== run) return;
     tap.classList.add('on'); await wait(220); if (me !== run) return;
-    tap.classList.add('down'); flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go');
+    tap.classList.add('down'); press.classList.add('go'); setTimeout(() => press.classList.remove('go'), 260);
     await wait(100); tap.classList.remove('down'); await wait(120); tap.classList.remove('on');
     scrim.classList.add('in'); sheet.classList.add('in');
     await wait(3600); if (me !== run) return;
