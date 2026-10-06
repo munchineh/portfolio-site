@@ -154,8 +154,20 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   const onHome = !!document.querySelector('.hero-head');
   const canHover = matchMedia('(hover: hover) and (pointer: fine)');
   let settled = onHome, hover = false, focus = false;
-  const measure = () => { const was = el.classList.contains('home'); el.style.transition = 'none'; el.classList.remove('home'); el.style.width = 'auto';
-    const w = el.offsetWidth; el.style.width = ''; el.style.setProperty('--nm-w', w + 'px'); el.classList.toggle('home', was); el.offsetWidth; el.style.transition = ''; };
+  // Split the name into letters so each one can be pulled into the house and spring back out
+  const label = el.querySelector('.nm-t');
+  if (label && !label.querySelector('.ch')) { const txt = label.textContent; label.textContent = '';
+    [...txt].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.setAttribute('aria-hidden', 'true'); label.appendChild(s); });
+    label.setAttribute('aria-label', txt); }
+  const chars = label ? [...label.querySelectorAll('.ch')] : [];
+  const measure = () => { const was = el.classList.contains('home'); el.style.transition = 'none'; chars.forEach(c => c.style.transition = 'none');
+    el.classList.remove('home'); el.style.width = 'auto';
+    const w = el.offsetWidth, box = el.getBoundingClientRect(), mid = box.left + box.width / 2, n = chars.length, c0 = (n - 1) / 2;
+    chars.forEach((c, i) => { const r = c.getBoundingClientRect(); const dx = mid - (r.left + r.width / 2);
+      c.style.setProperty('--dx', dx.toFixed(1) + 'px'); c.style.setProperty('--rot', ((i - c0) * 9).toFixed(0) + 'deg');
+      c.style.setProperty('--k', Math.abs(i - c0).toFixed(1)); c.style.setProperty('--o', (c0 - Math.abs(i - c0)).toFixed(1)); });
+    el.style.width = ''; el.style.setProperty('--nm-w', w + 'px'); el.classList.toggle('home', was); el.offsetWidth;
+    el.style.transition = ''; chars.forEach(c => c.style.transition = ''); };
   const update = () => { const want = onHome ? scrollY > 40 : settled; el.classList.toggle('home', want && !hover && !focus); };
   measure(); update();
   if (document.fonts) document.fonts.ready.then(() => { measure(); update(); });
