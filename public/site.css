@@ -337,8 +337,8 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 /* ---------- Name pill ⇄ Home: backspace ---------- */
 .name { position: relative; overflow: hidden; padding: 0 1.1em; justify-content: flex-start; white-space: nowrap; transition: width .08s ease-out, background .25s; }
 .name.home { width: 44px; padding: 0; transition: width .24s cubic-bezier(.3, 1.4, .5, 1), background .25s; }
-.name .nm-t { display: inline-block; }
-.name .nm-c { display: inline-block; width: 2px; height: 1em; margin-left: 2px; border-radius: 1px; background: currentColor; opacity: 0; transform: translateY(-.04em); }
+.name .nm-t { display: inline-block; flex: none; }
+.name .nm-c { display: inline-block; flex: none; width: 2px; height: 1em; margin-left: 2px; border-radius: 1px; background: currentColor; opacity: 0; transform: translateY(-.04em); }
 .name.typing .nm-c { opacity: 1; animation: nmBlink 1s steps(1) infinite; }
 @keyframes nmBlink { 50% { opacity: 0; } }
 .name.home .nm-t, .name.home .nm-c { display: none; }
