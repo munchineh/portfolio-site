@@ -102,22 +102,14 @@
   .tmr { position: relative; border-radius: 22px; overflow: hidden; }
   .tm-st { position: absolute; left: 0; top: 0; width: 752px; height: 1672px; transform-origin: 0 0; pointer-events: none; }
   .tm-st svg { position: absolute; inset: 0; width: 752px; height: 1672px; overflow: visible; }
-  .tm-st rect { fill: none; stroke-width: 17; }
-  /* activity ring: grey fills the tan track clockwise from the top as the task runs toward an hour, as in the Figma design */
-  .tm-base { stroke: #b9a898; }
-  .tm-run { stroke: #d9d9d9; stroke-dasharray: 0 1000; stroke-dashoffset: -137; transition: stroke-dasharray 1s linear; }
+  .tm-st rect { fill: none; stroke-width: 16.5; }
+  /* activity ring: a grey track that fills in bronze, clockwise from the top, as the task runs toward an hour (sped up here) */
+  .tm-base { stroke: #d9d9d9; }
+  .tm-run { stroke: #b9a898; stroke-dasharray: 0 1000; stroke-dashoffset: -137; }
   .tm-cover { position: absolute; background: #212525; }
   .tm-t { position: absolute; left: 266px; top: 1334px; width: 200px; transform: translateY(-50%); font: 500 44px/1 "Clash Display", "Archivo", sans-serif; color: #b9a898; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
-  .tm-btn { position: absolute; left: 532px; top: 1308px; width: 128px; height: 52px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
-    font: 500 30px/1 "Clash Display", "Archivo", sans-serif; color: #fff; letter-spacing: .01em; background: #212525; border-radius: 8px; }
-  .tm-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .tm-pulse { position: absolute; left: 33px; top: 1270px; width: 128px; height: 128px; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,63,62,.45); animation: tmPulse 1.6s ease-out infinite; }
   @keyframes tmPulse { to { box-shadow: 0 0 0 18px rgba(255,63,62,0); } }
-  .tmr.paused .tm-run, .tmr.paused .tm-pulse { animation-play-state: paused; }
-  .tmr.paused .tm-pulse { opacity: 0; }
-  /* paused, as in the design: the ring goes grey and the time dims */
-  .tmr.paused .tm-base { stroke: #d9d9d9; }
-  .tmr.paused .tm-t { color: #3c4141; }
   @media (prefers-reduced-motion: reduce) { .tm-run, .tm-pulse { animation: none; } }
 
   /* ---------- Prompt layers ---------- */
@@ -737,7 +729,7 @@
 <div class="phones flat">
 <figure><img alt="Mobiler Specs-Tab mit Raum-Chips, einem Akkordeon für Boden- und Fliesenarbeiten und einer Aufgabenkarte mit Parametern" height="2086" loading="lazy" src="../assets/bl-m-specs.jpg" width="752"/><figcaption><b>Specs</b>Räume als Chips, Aufgaben als Karten.</figcaption></figure>
 <figure><img alt="Aufgabendetails mit Parametern, vier Fotos von der Baustelle und einer Notiz aus dem Team vor Ort" height="2086" loading="lazy" src="../assets/bl-m-media.jpg" width="752"/><figcaption><b>Aufgabendetails</b>Fotos und Notizen von der Baustelle.</figcaption></figure>
-<figure><div class="tmr" id="blTimer"><img alt="Die Aufgabe, zusammengeklappt auf drei Überschriften, mit laufendem Timer und Pause-Button" height="1672" loading="lazy" src="../assets/bl-m-timer.jpg" width="752"/><div class="tm-st" translate="no"><svg aria-hidden="true" viewbox="0 0 752 1672"><rect class="tm-base" height="176" pathlength="1000" rx="88" width="510" x="202" y="1246"></rect><rect class="tm-run" height="176" pathlength="1000" rx="88" width="510" x="202" y="1246"></rect></svg><span aria-hidden="true" class="tm-pulse"></span><span aria-hidden="true" class="tm-cover" style="left:256px;top:1294px;width:232px;height:80px"></span><b aria-hidden="true" class="tm-t">00:21:15</b><button aria-label="Pause the timer" class="tm-btn" type="button">PAUSE</button></div></div><figcaption><b>In Arbeit</b>Drei Überschriften und ein Timer.</figcaption></figure>
+<figure><div class="tmr" id="blTimer"><img alt="Die Aufgabe, zusammengeklappt auf drei Überschriften, mit laufendem Timer und Pause-Button" height="1672" loading="lazy" src="../assets/bl-m-timer.jpg" width="752"/><div class="tm-st" translate="no"><svg aria-hidden="true" viewbox="0 0 752 1672"><rect class="tm-base" height="178" pathlength="1000" rx="89" width="512" x="201" y="1245"></rect><rect class="tm-run" height="178" pathlength="1000" rx="89" width="512" x="201" y="1245"></rect></svg><span aria-hidden="true" class="tm-pulse"></span><span aria-hidden="true" class="tm-cover" style="left:256px;top:1294px;width:232px;height:80px"></span><b aria-hidden="true" class="tm-t">00:00:00</b></div></div><figcaption><b>In Arbeit</b>Drei Überschriften und ein Timer.</figcaption></figure>
 </div>
 </div>
 </section>
@@ -895,28 +887,25 @@
 })();
 </script>
 <script>
-/* Buildlr field app: the task timer keeps running, and PAUSE works */
+/* Buildlr field app: the task timer, sped up so an hour passes in about ten seconds and the ring visibly fills */
 (() => {
   const box = document.getElementById('blTimer'); if (!box) return;
-  const st = box.querySelector('.tm-st'), t = box.querySelector('.tm-t'), btn = box.querySelector('.tm-btn');
+  const st = box.querySelector('.tm-st'), t = box.querySelector('.tm-t'), ring = box.querySelector('.tm-run');
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 752})`).observe(box);
   const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${200 / w})`; };
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
-  // starts part-way into an hour so the ring has something to show; it keeps filling one second at a time
-  let sec = 21 * 60 + 15, timer = null, paused = false;
-  const ring = box.querySelector('.tm-run');
   const pad = n => String(n).padStart(2, '0');
-  const show = () => { t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`;
-    const f = Math.min(sec / 3600, 1) * 1000; ring.style.strokeDasharray = `${f} ${1000 - f}`; };
-  show();
-  const run = () => { clearInterval(timer); timer = setInterval(() => { sec++; show(); }, 1000); };
-  btn.addEventListener('click', () => {
-    paused = !paused; box.classList.toggle('paused', paused);
-    btn.textContent = paused ? 'RESUME' : 'PAUSE'; btn.setAttribute('aria-label', paused ? 'Resume the timer' : 'Pause the timer');
-    paused ? clearInterval(timer) : run();
-  });
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !paused) run(); else clearInterval(timer); }), { threshold: .3 }).observe(box);
+  const show = sec => { sec = Math.min(Math.floor(sec), 3600);
+    t.textContent = `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`;
+    const f = sec / 3600 * 1000; ring.style.strokeDasharray = `${f} ${1000 - f}`; };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { show(21 * 60 + 15); return; }
+  const HOUR = 10000, HOLD = 1600; // ms for a full hour, then a short pause on a full ring
+  let raf = 0, t0 = 0;
+  const tick = now => { if (!t0) t0 = now; const e = now - t0;
+    if (e < HOUR) show(e / HOUR * 3600); else { show(3600); if (e > HOUR + HOLD) t0 = now; }
+    raf = requestAnimationFrame(tick); };
+  show(0);
+  new IntersectionObserver(es => es.forEach(e => { cancelAnimationFrame(raf); if (e.isIntersecting) { t0 = 0; raf = requestAnimationFrame(tick); } }), { threshold: .3 }).observe(box);
 })();
 </script>
 </body>
