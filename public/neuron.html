@@ -387,6 +387,35 @@
   .nr .ft strong { display: block; color: #2b2d33; font-size: 9px; letter-spacing: 0; margin-top: 2px; }
   .nr .pin { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 2px solid #f06d2e; opacity: 0; }
   .nr .pin.go { animation: ping 1.2s var(--ease) 2; }
+  /* Neuron demo on phones: a full preview, then a sheet to explore it properly */
+  .nr .fil span { cursor: pointer; }
+  .nr .card { cursor: pointer; }
+  .nr .empty { font-size: 12px; color: #8b8d94; padding: 24px 4px; text-align: center; }
+  .xp { display: none; }
+  @media (max-width: 900px) {
+    #nrDemo .replay { display: none; }
+    #nrDemo { cursor: pointer; }
+    .xp { display: inline-flex; align-items: center; gap: 6px; position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; border: 0; background: #111; color: #fff; font: inherit; font-size: 12px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+  }
+  .xs[hidden] { display: none; }
+  .xs { position: fixed; inset: 0; z-index: 1000; }
+  .xs-scrim { position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .3s; }
+  .xs-sheet { position: absolute; left: 0; right: 0; bottom: 0; height: min(92svh, 860px); background: #fbf8ef; color: #2b2d33; border-radius: 20px 20px 0 0; display: grid; grid-template-rows: auto auto auto 1fr; transform: translateY(100%); transition: transform .4s cubic-bezier(.2,.8,.2,1); padding-bottom: env(safe-area-inset-bottom); }
+  .xs.open .xs-scrim { opacity: 1; } .xs.open .xs-sheet { transform: none; }
+  .xs-handle { width: 36px; height: 4px; border-radius: 2px; background: #d6d3cb; margin: 8px auto 0; }
+  .xs-top { display: flex; align-items: center; gap: 10px; padding: 10px 14px 6px 18px; font-family: "Poppins", "Archivo", sans-serif; }
+  .xs-top b { font-size: 15px; font-weight: 600; margin-right: auto; }
+  .xs-seg { display: inline-flex; background: #efece4; border-radius: 999px; padding: 3px; }
+  .xs-seg button { border: 0; background: none; font: 500 13px/1 "Poppins", "Archivo", sans-serif; color: #6b6d74; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+  .xs-seg button[aria-selected="true"] { background: #fff; color: #2b2d33; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  .xs-x { width: 40px; height: 40px; border: 0; border-radius: 50%; background: #efece4; color: #2b2d33; display: grid; place-items: center; cursor: pointer; }
+  .xs-hint { margin: 0; padding: 0 18px 10px; font: 12px/1.4 "Poppins", "Archivo", sans-serif; color: #8b8d94; }
+  .xs-body { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+  .xs-pan { position: relative; }
+  .xs-pan::before, .xs-pan::after { content: ""; position: absolute; top: 0; width: 1px; height: 1px; scroll-snap-align: start; }
+  .xs-pan::before { left: var(--snap-map, 0); } .xs-pan::after { left: var(--snap-tasks, 0); }
+  .xs-pan .scene { position: absolute; left: 0; top: 0; }
+  .xs-pan .canvas { left: 0 !important; top: 0 !important; transform-origin: 0 0 !important; }
   @keyframes ping { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.6); } }
 </style>
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/neuron.html">
@@ -481,7 +510,7 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">02</span><h2>Out on shift in Melbourne and Perth</h2></header>
+    <header class="sh"><span class="no">02</span><h2>Remote interviews, then shadowing in the field</h2></header>
     <div class="sb">
       <p class="big-p">I needed to see how operators decide what to do next, on the street.</p>
       <p>I interviewed operations managers remotely across countries and cities of different sizes, then shadowed ground operators on shift in Melbourne and Perth. Watching them juggle a plan against what they found on the ground shaped almost every decision that followed.</p>
@@ -493,7 +522,7 @@
     <div class="sb">
       <p class="big-p">A manager assigns a task on the map, and it lands in that operator's list.</p>
       <p>Each task says what to do and where: battery swap, pick up or deploy, the vehicle, its battery and the nearest station, plus who assigned it and when. Operators filter by task type, and closed tasks move out of the way. Because assignments are now recorded, managers finally get a real measure of a shift: how many assigned tasks got done.</p>
-      <div class="demo live" id="nrDemo" data-focus="833,0,360,742" style="--ar: 1200 / 750; --ar-m: 360 / 600; --cw: 1200px; --ch: 750px; background:#fbf8ef">
+      <div class="demo live" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 1200 / 750; --cw: 1200px; --ch: 750px; background:#fbf8ef">
         <span class="demo-tag">Live component</span>
         <div class="scene nr" aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list">
           <div class="canvas">
@@ -511,10 +540,24 @@
         </div>
 
         <button class="replay" type="button">Replay</button>
+        <button class="xp" type="button" aria-haspopup="dialog"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9"/></svg><span>Tap to explore</span></button>
+      </div>
+      <div class="xs" id="nrSheet" role="dialog" aria-modal="true" aria-labelledby="nrSheetT" hidden>
+        <div class="xs-scrim" data-close></div>
+        <div class="xs-sheet">
+          <div class="xs-handle" aria-hidden="true"></div>
+          <div class="xs-top">
+            <b id="nrSheetT">Control Centre</b>
+            <div class="xs-seg" role="tablist"><button type="button" role="tab" data-go="map">Map</button><button type="button" role="tab" data-go="tasks" aria-selected="true">Tasks</button></div>
+            <button class="xs-x" type="button" data-close aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
+          </div>
+          <p class="xs-hint">Tap a filter or a task. Swipe sideways for the map.</p>
+          <div class="xs-body"><div class="xs-pan"></div></div>
+        </div>
       </div>
       <div class="callouts">
-        <div><b data-n="~100%">~100%</b><span>less Slack for shift planning and task updates</span></div>
-        <div><b data-n="1">1</b><span>new shift metric: task adherence, assigned tasks completed</span></div>
+        <div><b data-n="90%+">90%+</b><span>less reliance on Slack for task updates and completion</span></div>
+        <div><b data-n="10%">10%</b><span>more efficient field operations, with task adherence tracked for the first time</span></div>
       </div>
     </div>
   </section>
@@ -532,7 +575,7 @@
     <div class="panel c-cta action-card">
       <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
       <div class="inner">
-        <h2>Building tools for people on the ground? Let's make them work in the field.</h2>
+        <h2>Building tools for teams on the move? Let's make them effortless to use.</h2>
         <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
       </div>
     </div>
@@ -566,7 +609,7 @@
         c.style.transformOrigin = '0 0'; c.style.left = '0'; c.style.top = '0';
         c.style.transform = `translate(${(w - fw * s) / 2 - fx * s}px, ${(h - fh * s) / 2 - fy * s}px) scale(${s})`; }
       else { c.style.transform = c.style.left = c.style.top = c.style.transformOrigin = ''; c.style.setProperty('--s', Math.min(w / c.offsetWidth, h / c.offsetHeight)); } };
-    new ResizeObserver(fit).observe(d); narrow.addEventListener('change', fit); });
+    d._fit = fit; new ResizeObserver(fit).observe(d); narrow.addEventListener('change', fit); });
   /* Bars grow when seen */
   document.querySelectorAll('.bars').forEach(bx => { const go = () => bx.querySelectorAll('.tr').forEach(t => { const w = t.dataset.w + '%'; t.querySelector('span').style.width = w; t.querySelector('b').style.left = w; });
     still.matches ? go() : once(bx, go, .5); });
@@ -607,10 +650,45 @@
         await wait(1100, bag);
       }
     };
-    return { play, stop };
+    // Filters and cards respond to taps, on desktop and in the sheet
+    const fil = [...document.querySelectorAll('#nrFil span')], KEY = ['', 'pu', 'dp', 'bs'];
+    const ping = xy => { pin.style.left = xy[0] + 'px'; pin.style.top = xy[1] + 'px'; pin.classList.remove('go'); pin.offsetWidth; pin.classList.add('go'); };
+    const filter = i => { stop(); fil.forEach((f, j) => f.classList.toggle('on', j === i)); const k = KEY[i];
+      const shown = cards.filter(c => !k || c.tags.some(t => t[0] === k)); list.innerHTML = '';
+      shown.forEach(c => { const el = mk(c); el.addEventListener('click', e => { e.stopPropagation(); ping(c.xy); }); list.appendChild(el); });
+      if (!shown.length) { const e = document.createElement('p'); e.className = 'empty'; e.textContent = 'No tasks of this type right now.'; list.appendChild(e); }
+      if (shown[0]) ping(shown[0].xy); };
+    fil.forEach((f, i) => f.addEventListener('click', e => { e.stopPropagation(); filter(i); }));
+    list.addEventListener('click', e => { const el = e.target.closest('.card'); if (!el) return; e.stopPropagation(); const i = [...list.children].indexOf(el); const c = cards[i]; if (c) ping(c.xy); });
+    const reset = () => fil.forEach((f, j) => f.classList.toggle('on', j === 0));
+    return { play: async () => { reset(); await play(); }, stop };
   })();
 
   live('nrDemo', nr);
+
+  /* On phones, the preview opens into a sheet: the real canvas at a readable size, panned between map and tasks */
+  (() => {
+    const demo = document.getElementById('nrDemo'), sheet = document.getElementById('nrSheet'); if (!demo || !sheet) return;
+    document.body.appendChild(sheet);
+    const scene = demo.querySelector('.scene'), canvas = scene.querySelector('.canvas'), body = sheet.querySelector('.xs-body'), pan = sheet.querySelector('.xs-pan');
+    const seg = [...sheet.querySelectorAll('.xs-seg button')];
+    let s = 1, last = null;
+    const spots = () => ({ map: Math.max(0, 530 * s - body.clientWidth / 2), tasks: Math.max(0, 1193 * s - body.clientWidth) });
+    const mark = k => seg.forEach(b => b.setAttribute('aria-selected', String(b.dataset.go === k)));
+    const go = (k, smooth = true) => { body.scrollTo({ left: spots()[k], behavior: smooth ? 'smooth' : 'auto' }); mark(k); };
+    const layout = () => { s = body.clientHeight / 750; pan.style.width = 1200 * s + 'px'; pan.style.height = 750 * s + 'px';
+      canvas.style.transform = `scale(${s})`; const sp = spots(); pan.style.setProperty('--snap-map', sp.map + 'px'); pan.style.setProperty('--snap-tasks', sp.tasks + 'px'); };
+    const open = () => { last = document.activeElement; sheet.hidden = false; pan.appendChild(scene); document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => { layout(); go('tasks', false); sheet.classList.add('open'); nr.play(); sheet.querySelector('.xs-x').focus(); }); };
+    const close = () => { sheet.classList.remove('open'); document.body.style.overflow = '';
+      setTimeout(() => { sheet.hidden = true; demo.insertBefore(scene, demo.querySelector('.replay')); canvas.style.transform = ''; demo._fit && demo._fit(); last && last.focus && last.focus(); }, 380); };
+    demo.addEventListener('click', e => { if (!narrow.matches || e.target.closest('.replay')) return; open(); });
+    sheet.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
+    seg.forEach(b => b.addEventListener('click', () => go(b.dataset.go)));
+    body.addEventListener('scroll', () => { const sp = spots(); mark(body.scrollLeft > (sp.map + sp.tasks) / 2 ? 'tasks' : 'map'); }, { passive: true });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) close(); });
+    addEventListener('resize', () => { if (!sheet.hidden) layout(); });
+  })();
 })();
 </script>
 </body>
