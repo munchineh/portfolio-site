@@ -165,7 +165,7 @@ d.add('bl-mobile', f'{eyebrow("Mobile")}{h2("Same tree, one thumb")}' +
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
 case_title(d, 'nv-title', 'Case 06 · Logistics', 'Service recovery at scale',
            'I researched how service recovery worked across Southeast Asia, then designed a self-serve portal for merchants and the Salesforce CRM tools agents use behind it.',
-           [('Role', 'Product designer II'), ('Timeline', '2021 to 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
+           [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
            [('60%', 'faster case resolution'), ('70%', 'of case logging automated for delays')],
            wide(A['nv-case'], 'A case in the merchant portal', 560, 350),
            notes="At Ninja Van I worked on service recovery, what happens when a parcel goes wrong. Three teams get involved, and the merchant often hears nothing. I researched the whole chain, then designed a self-serve portal for merchants and the Salesforce CRM screens agents use behind it. Overall it cut resolution time by about 60%, and it automated about 70% of case logging for delayed pickups and deliveries.")
@@ -191,7 +191,7 @@ numbers('nv-results', 'Results', 'Faster recovery, one design language',
 d.section('neuron', 'Neuron: tasks managers can track, 90%+ less Slack, and two platforms merged.', 'Neuron')
 case_title(d, 'nr-title', 'Case 07 · Mobility', 'Shift plans that stick',
            'Neuron runs shared e-scooters and e-bikes across Australia and beyond. I redesigned how managers and ground operators work together, then merged two internal platforms into one.',
-           [('Role', 'Senior product designer'), ('Timeline', '2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA')],
+           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA')],
            [('90%+', 'less reliance on Slack for task updates'), ('10%', 'more efficient field operations')],
            wide(A['neuron-map'], 'Assigning tasks on the map', 560, 350),
            notes="At Neuron, which runs shared e-scooters and e-bikes across Australia and beyond, I worked on the internal tools for operations. Managers planned shifts in a web dashboard, operators worked from a dense mobile app, and everything in between ran over Slack, so nobody could tell which tasks got done. Our dev team was in Wuhan, so PRDs and dev collaboration happened in Chinese.")

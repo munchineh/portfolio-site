@@ -188,7 +188,7 @@ big_statement(d, 'bl-async', 'Everything ran async, on top of the design system.
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
 case_title(d, 'nv-title', 'Case 06 · Logistics', 'Service recovery at scale',
            'When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.',
-           [('Role', 'Product designer II'), ('Timeline', '2022'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
+           [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
            [('70%', 'of case logging automated for delayed pickups and deliveries'), ('66%', 'less time to identify a parcel as missing')],
            wide(A['nv-case'], 'A case in the merchant portal', 560, 350), note='Both figures are approximate.')
 d.add('nv-handover', f'{eyebrow("01")}{h2("Five handovers, three teams")}{statement("A bit of information went missing at every handover.")}'
@@ -222,7 +222,7 @@ stats_slide(d, 'nv-akira', 'Also at Ninja Van: Akira', 'The case for a design sy
 d.section('neuron', 'Neuron: shift plans managers can track, and two internal platforms merged into one.', 'Neuron')
 case_title(d, 'nr-title', 'Case 07 · Mobility', 'Shift plans that stick',
            'Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.',
-           [('Role', 'Senior product designer'), ('Timeline', '2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA, web and mobile')],
+           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA, web and mobile')],
            [('60%', 'faster page loads on average, after the merge'), ('10%', 'more actions per operator, per hour')],
            wide(A['neuron-map'], 'The task map with assigned tasks', 560, 350), note='Both figures are approximate.')
 tiles_slide(d, 'nr-slack', [('eyebrow', '01'), ('h2', 'The plan lived in Slack'), ('st', "Managers could make a good plan. They just couldn't tell if anyone followed it."),
