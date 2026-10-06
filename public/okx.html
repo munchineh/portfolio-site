@@ -418,7 +418,7 @@
         <span class="line"><span>Making crypto</span></span>
         <span class="line"><span>social</span></span>
       </h1>
-      <p class="lede">Crypto is still young, and part of making it feel normal is making it social. Three products from my time at OKX: an assistant that trades with you in chat, Orbit, a social layer for traders, and Crypto Rewind, a year in review you play back like a playlist.</p>
+      <p class="lede">Three products that made crypto more social: an AI assistant that trades in chat, Orbit, a social layer for traders, and Crypto Rewind, a personalised year in review.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Senior content designer. Content and conversation design</dd></div>
         <div><dt>Timeline</dt><dd>Mar 2024 to Dec 2025</dd></div>
@@ -453,8 +453,8 @@
     <header class="sh"><span class="no">1.1</span><h2>A great service that couldn't scale</h2></header>
     <div class="sb">
       <p class="big-p">Big orders were paying a worse rate than they needed to.</p>
-      <p>A lot of people use Simple Buy because it locks in a quote within seconds, even though the rate is worse than a regular spot trade. On small amounts, nobody notices. On large ones, it gets expensive.</p>
-      <p>For some users we already handled this with live agents, who offered a better rate over chat. It worked beautifully, but a small team can only be in so many markets at once.</p>
+      <p>Simple Buy locks in a quote in seconds, but at a worse rate than spot. On large orders, that gets expensive.</p>
+      <p>Live agents already offered some users a better rate over chat. It worked beautifully, but a small team can only be in so many markets at once.</p>
     </div>
   </section>
 
@@ -462,7 +462,7 @@
     <header class="sh"><span class="no">1.2</span><h2>A personal desk for big trades</h2></header>
     <div class="sb">
       <p class="big-p">Big trades deserve white-glove service. The challenge was offering it at scale.</p>
-      <p>Orders of fifty thousand dollars and up carry a slippage risk, since the price can move before the trade fills, and they usually come from high-value customers who deserve more than an instant quote. So big orders get a personal service with a preferential rate. That service was built by a dedicated team of agents in Greater China, real people who set the standard for how personal it should feel. To take it international, the AI assistant works alongside them, so the same treatment reaches every market the moment an order crosses the threshold, and the team stays on the conversations that need a human.</p>
+      <p>Orders over 50,000 USD carry slippage risk and usually come from high-value customers, so they get a personal service with a preferential rate. The AI assistant takes that service, set by our agents in Greater China, to every market, while the team stays on the conversations that need a human.</p>
       <div class="phones" id="okPhones">
         <figure><div class="okp" data-k="1"><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"></div><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
         <figure><div class="okp" data-k="2"><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"></div><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
@@ -475,7 +475,7 @@
     <header class="sh"><span class="no">1.3</span><h2>Designing the system prompt</h2></header>
     <div class="sb">
       <p class="big-p">When it's someone's money, the bot doesn't get to improvise.</p>
-      <p>I designed the system prompt that runs the assistant. A hallucinated rate, a vague phrase or a misread intent could cost someone thousands, so I built the prompt in five layers. Each one answers a different question, from who the assistant is to the guardrails it can't cross and the few-shot examples it learns from.</p>
+      <p>I designed the system prompt in five layers, from persona to guardrails to few-shot examples. With people's money at stake, a hallucinated rate or a misread intent isn't an option.</p>
       <div class="pi" id="pi">
         <div class="pi-tabs" role="tablist" aria-label="Prompt layers">
           <button role="tab" id="pt1" aria-controls="pp1" aria-selected="true"><span>01</span>Persona</button>
@@ -539,7 +539,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">1.4</span><h2>A human touch where it counts</h2></header>
     <div class="sb">
       <p class="big-p">Good conversation design is a mix. AI for speed, and a human hand on the moments that need care.</p>
-      <p>Like the rest of UX, the craft is in knowing which is which. I mapped every touchpoint in the chat. The welcome message, the line confirming what you want to do and the order card are hand-written, because that's where people need reassurance before a large trade. The card also matches order cards everywhere else in the app, so it feels familiar. The model handles everything after that: changes of mind, follow-up questions, the same thing explained another way. The assistant stays fast and flexible, and the moments that build trust stay human, intuitive and empathetic.</p>
+      <p>I mapped every touchpoint. The welcome, the intent check and the order card are hand-written for reassurance before a large trade, and the model handles follow-ups and changes of mind inside the guardrails.</p>
       <div class="demo" id="demo">
         <span class="demo-tag">Live component</span>
         <div class="scene okx" aria-label="The assistant confirms the order, then a quote card arrives with a countdown">
@@ -575,7 +575,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">1.5</span><h2>Then I tried to break it</h2></header>
     <div class="sb">
       <p class="big-p">Testing ran two ways, and the red-teaming taught me more.</p>
-      <p>I benchmarked the prompt against a standard set of queries, checking every answer against the content guidelines and the conversation structure. Then I red-teamed it, trying to talk it into limit orders and vague trades to see whether the guardrails held. Three rounds of prompt iteration came out of it.</p>
+      <p>I benchmarked the prompt against a standard query set, then red-teamed it to test the guardrails. Three rounds of prompt iteration came out of it.</p>
       <div class="tbl-wrap">
         <table class="tests">
           <thead><tr><th scope="col">What I saw</th><th scope="col">What changed</th><th scope="col">Result</th></tr></thead>
@@ -597,15 +597,15 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   <section class="panel chapter" id="orbit">
     <div class="ck"><span class="ch-no" aria-hidden="true">02</span><b>Chapter 2 of 3</b><span>Content design · Social</span></div>
     <h2>Making trading social</h2>
-    <p>Part of making crypto feel normal is making it social, so OKX wanted traders talking to each other inside the app. That became <b>Orbit</b>, a space to post, follow other traders and share trades.</p>
+    <p>OKX wanted traders talking to each other inside the app. That became <b>Orbit</b>, a space to post, follow traders and share trades.</p>
   </section>
 
   <section class="panel sec">
     <header class="sh"><span class="no">2.1</span><h2>Credibility you can see</h2></header>
     <div class="sb">
       <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
-      <p>Orbiters are our key influencers. The idea was to find high-value customers and build social networks and communities around them, so their posts, groups and shared trades drive engagement the way great UGC does. I worked on onboarding, the feed and both versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.</p>
-      <p>An Orbiter's profile puts their track record up front, pulled from what they actually did on OKX. Upgrading is designed to feel empowering, leading with the benefits, from commission on trades to the standing that comes with the title. Behind the invitation sit hard requirements, like a minimum trading volume and asset balance, which keep every Orbiter credible.</p>
+      <p>Orbiters are our key influencers: high-value customers whose posts, groups and shared trades drive engagement. I designed onboarding, the feed and both profile types.</p>
+      <p>Orbiter profiles lead with a real OKX track record, and upgrading leads with benefits like trade commission. Minimum trading volume and asset balance keep every Orbiter credible.</p>
       <div class="phones four">
         <figure><div class="orb" data-o="follow"><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"></div><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
         <figure><img src="assets/orbit-feed.jpg" alt="The Orbit feed with posts tagged to the coins they discuss" width="600" height="1299" loading="lazy"><figcaption><b>The feed</b>Posts carry the coin they're about.</figcaption></figure>
@@ -627,7 +627,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">3.1</span><h2>What last year taught us</h2></header>
     <div class="sb">
       <p class="big-p">People liked seeing their own data. They just didn't finish, and they didn't share.</p>
-      <p>I audited the 2022 and 2023 campaigns, went through user feedback and spoke to the designers and PMs who ran them. Three problems kept coming up.</p>
+      <p>I audited the 2022 and 2023 campaigns and user feedback, and interviewed the teams behind them. Three problems kept coming up.</p>
       <div class="trio">
         <div class="tile"><span class="tile-k">Drop-off</span><b>Too many numbers</b><p>Page after page of figures got repetitive, and people left halfway.</p></div>
         <div class="tile"><span class="tile-k">Sharing</span><b>Too personal</b><p>Many didn't want their trading performance on social media.</p></div>
@@ -640,9 +640,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">3.2</span><h2>Playing back your highlights, and highlighting you</h2></header>
     <div class="sb">
       <p class="big-p">One space narrative tied the story, the tone and the brand together.</p>
-      <p>Rewind turns the year into a playlist in three parts: your assets, how you traded, and a trader persona at the end. The line gave Legal and Marketing something to sign off early, and gave every writer and translator the same brief.</p>
-      <p>Every line lives in that world. Good years are "out of this world". Bad years matter just as much, because plenty of people lost money in 2024. They get "You're only getting ready for your next takeoff", which is honest without rubbing it in.</p>
-      <p>Keeping the theme consistent across every screen and language is what turned a lot of complex data into one story, and it made the brand feel stronger for it.</p>
+      <p>Rewind plays your year back like a playlist: assets, trading, then a trader persona. One brief aligned Legal, Marketing, writers and translators early.</p>
+      <p>Good years are "out of this world". Hard years get "You're only getting ready for your next takeoff", honest without rubbing it in.</p>
+      <p>One consistent space theme across every screen and language turned complex data into one story, and made the brand stronger for it.</p>
       <div class="phones">
         <figure><img src="assets/cr-open.jpg" alt="Part 1 of 3: Let's rewind back to your opening track" width="600" height="1299" loading="lazy"><figcaption><b>The opening</b>Part 1 of 3, like a playlist.</figcaption></figure>
         <figure><img src="assets/cr-earn.jpg" alt="Your earnings were out of this world. A profit of 21,887 USDT" width="600" height="1299" loading="lazy"><figcaption><b>A good year</b>"Talk about astronomical."</figcaption></figure>
@@ -655,7 +655,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">3.3</span><h2>Personal, then social</h2></header>
     <div class="sb">
       <p class="big-p">The end of the journey is where Rewind starts to travel.</p>
-      <p>Rewind is personal by design, and the persona at the end is what makes it social. Each journey ends on a trader type, like Crypto Comet or Market Maestro, with a rarity tag and a line about why you earned it. It celebrates how you trade and leaves your balances off, so it's safe to post and fun to compare with friends. One tap sends it to Telegram, WhatsApp or X, and the QR code brings whoever sees it into the app to play their own. Each share pulls someone new in, brings people back to see where their friends landed, and gives the community something to talk about long after the campaign. It paid off: shares came in at 117K, more than double the 50K goal.</p>
+      <p>The persona at the end makes Rewind social: a trader type with a rarity tag and no balances, so it's safe to post. One tap shares to Telegram, WhatsApp or X, and a QR code invites friends to play their own. Shares hit 117K, more than double the 50K goal.</p>
       <div class="phones two">
         <figure><div class="crs" id="crShare" data-prev="cr-persona.jpg"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>Built for shareability</b>A persona worth posting, a gift for sharing it, and a QR code that invites friends to play their own.</figcaption></figure>
         <div class="card" style="align-self:start">

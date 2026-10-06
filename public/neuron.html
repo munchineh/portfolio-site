@@ -469,7 +469,7 @@
         <span class="line"><span>Shift plans</span></span>
         <span class="line"><span>that stick</span></span>
       </h1>
-      <p class="lede">Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.</p>
+      <p class="lede">Neuron runs shared e-scooters and e-bikes across Australia and beyond. I redesigned how managers and ground operators work together, then merged two internal platforms into one.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Senior product designer</dd></div>
         <div><dt>Timeline</dt><dd>2023</dd></div>
@@ -491,7 +491,7 @@
     <header class="sh"><span class="no">01</span><h2>The plan lived in Slack</h2></header>
     <div class="sb">
       <p class="big-p">Managers could make a good plan. They just couldn't tell if anyone followed it.</p>
-      <p>Rebalancing means moving vehicles from quiet areas to busy ones, and swapping batteries and pulling broken ones along the way. Managers planned shifts in a web dashboard, operators worked from a mobile app, and everything in between happened over Slack messages. Performance was measured by operators reporting their own counts.</p>
+      <p>Managers planned rebalancing shifts in a web dashboard, operators worked from a dense mobile app, and everything in between ran over Slack. Nobody could tell which tasks got done.</p>
       <div class="pair">
         <div class="tile"><span class="tile-k">Operators</span><b>A crowded app</b><p>The mobile app mirrored the dashboard feature for feature, so it was dense with no clear next step.</p></div>
         <div class="tile"><span class="tile-k">Managers</span><b>No way to check</b><p>Tasks went out by message, and there was no record of which ones got done.</p></div>
@@ -503,7 +503,7 @@
     <header class="sh"><span class="no">02</span><h2>Remote interviews, then shadowing in the field</h2></header>
     <div class="sb">
       <p class="big-p">I needed to see how operators decide what to do next, on the street.</p>
-      <p>I interviewed operations managers remotely across countries and cities of different sizes, then shadowed ground operators on shift in Melbourne and Perth. Watching them juggle a plan against what they found on the ground shaped almost every decision that followed.</p>
+      <p>I interviewed operations managers remotely across markets, then shadowed ground operators on shift in Melbourne and Perth.</p>
     </div>
   </section>
 
@@ -511,7 +511,7 @@
     <header class="sh"><span class="no">03</span><h2>Tasks you can assign, and see done</h2></header>
     <div class="sb">
       <p class="big-p">A manager assigns a task on the map, and it lands in that operator's list.</p>
-      <p>Each task says what to do and where: battery swap, pick up or deploy, the vehicle, its battery and the nearest station, plus who assigned it and when. Operators filter by task type, and closed tasks move out of the way. Because assignments are now recorded, managers finally get a real measure of a shift: how many assigned tasks got done.</p>
+      <p>Each task shows the action, vehicle, battery and nearest station, plus who assigned it. Recorded assignments gave managers their first real measure of a shift.</p>
       <div class="demo live" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 1200 / 750; --cw: 1200px; --ch: 750px; background:#fbf8ef">
         <span class="demo-tag">Live component</span>
         <div class="scene nr" aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list">
@@ -556,8 +556,8 @@
     <header class="sh"><span class="no">04</span><h2>Two platforms, one stack</h2></header>
     <div class="sb">
       <p class="big-p">Two web tools had grown into each other.</p>
-      <p>Dashboard ran on Angular and handled operations. Tech House was built by the backend team for themselves on React, then gradually handed to ops. That left duplicated data, overlapping features, and developers maintaining two front ends. I audited both, sat with the teams using them to learn why each page existed, and rebuilt the information architecture around what was really different.</p>
-      <p>We merged onto React with a component library built on Ant Design and adjusted to Neuron's look, so components stayed cheap to build without looking borrowed. The migration finished ahead of schedule, and several tools became simple enough to hand from developers to city teams.</p>
+      <p>Dashboard (Angular) and Tech House (React) had grown into each other, with duplicated data and two front ends to maintain. I audited both with the teams using them and rebuilt the information architecture.</p>
+      <p>We merged onto React with an Ant Design-based component library styled for Neuron. The migration finished ahead of schedule, and several tools moved from developers to city teams.</p>
     </div>
   </section>
 

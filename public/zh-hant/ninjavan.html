@@ -486,7 +486,7 @@
 <span class="chip ghost">物流</span></div>
 <h1><span class="line"><span>問題件，</span></span>
 <span class="line"><span>件件有回音</span></span></h1>
-<p class="lede">包裹一出狀況，就會牽動三個團隊，而商家通常什麼消息都收不到。我研究了這條鏈在東南亞實際上如何運作，接著為商家設計了自助服務入口，也設計了背後客服人員使用的工具。</p>
+<p class="lede">包裹一出問題，三個團隊都會捲入，商家卻常常得不到回音。我在東南亞研究了這條流程，再為商家設計自助入口，也設計了客服背後的 CRM 工具。</p>
 <dl class="meta">
 <div><dt>角色</dt><dd>產品設計師 II</dd></div>
 <div><dt>期間</dt><dd>2022</dd></div>
@@ -511,7 +511,7 @@
 <header class="sh"><span class="no">01</span><h2>五次交接，三個團隊</h2></header>
 <div class="sb">
 <p class="big-p">每經一手，資訊就少一截。</p>
-<p>商家提出問題後，由客服人員登記，再交給對應的處理團隊調查，答案再沿著同一條鏈傳回去。訪談中，商家告訴我們，最難受的往往是根本不知道有沒有人在處理自己的案件。而案件一旦結案，想對結果提出異議，唯一的方法就是重新開一張案件，把來龍去脈再講一遍。</p>
+<p>商家的問題在客服和處理團隊之間流轉，每交接一次就漏一點資訊。商家很少知道有沒有人在跟進，想對結果提出異議還得從頭再來。</p>
 <div class="relay" id="relay">
 <div class="rl-grid">
 <span class="rl-lane" style="grid-row:1">商家</span>
@@ -536,7 +536,7 @@
 <header class="sh"><span class="no">02</span><h2>先看全貌，再動手</h2></header>
 <div class="sb">
 <p class="big-p">三方各有各的體驗和痛點，只修一處，問題只會搬家。</p>
-<p>所以我從每個角度切入。我訪談了東南亞各地的商家、客服人員和處理團隊，同時對客服人員進行易用性問卷，對商家進行顧客費力度（CES）問卷。接著，我把每個主題出現的頻率，對照案件量與回應時間來衡量，找出對整個系統幫助最大的改變。</p>
+<p>我訪談了東南亞 59 位商家、客服和處理人員，並輔以客服可用性（SUS）問卷和商家費力度（CES）問卷，再依案件量和回應時間排出優先順序。</p>
 <div class="card" style="padding:0">
 <div class="label" style="border-bottom:1px solid var(--rule)"><span>受訪對象</span><span>59 人 · 東南亞</span></div>
 <div class="bars">
@@ -551,7 +551,7 @@
 <header class="sh"><span class="no">03</span><h2>訂單在哪，問題就在哪解決</h2></header>
 <div class="sb">
 <p class="big-p">在哪預約取件，就在哪追進度。</p>
-<p>以前要回報問題，得先在網站上找電話號碼，然後祈禱對方有收到。所以我把服務補救直接整合進商家原本就用來管理訂單的包裹入口網站。表單詢問訂單編號、問題類型和價值證明的順序，和客服人員在後台輸入的順序一致，省去大量來回溝通。延遲取件與配送，現在都會自動建立案件。</p>
+<p>現在商家直接在常用的包裹入口提交問題，欄位順序和客服輸入一致。延遲取件和派送會自動開案，相關案件登記 70% 自動化。</p>
 <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
 <span class="demo-tag">互動元件</span>
 <div aria-label="Ninja Van shipper portal with issues opening automatically" class="scene nv" data-scene="nv">
@@ -575,8 +575,8 @@
 <section class="panel sec">
 <header class="sh"><span class="no">04</span><h2>給個低分，案件重開</h2></header>
 <div class="sb">
-<p class="big-p">問卷不只打分數，也是重新溝通的入口。</p>
-<p>顧客費力度問卷過去是靠電話訪問和 Email 發送，大家都覺得麻煩，回覆也很少。我把問卷搬進入口網站，就放在對應的案件旁邊，也放進為每種問題類型設計的全新 HTML Email 範本。現在只要分數偏低，就會重新開啟對話，並提供其他解決方式。</p>
+<p class="big-p">問卷成了閉環的一環。</p>
+<p>費力度問卷從電話回訪搬進了入口和全新的品牌 HTML 電郵，在案件旁一按就能評分。低分還能讓用戶重新開啟案件，體驗更圓滿。</p>
 <div class="trio">
 <div class="tile"><span class="tile-k">改版前</span><b>電話加 Email</b><p>制式的純文字 Email，沒辦法直接評分。</p></div>
 <div class="tile"><span class="tile-k">改版後</span><b>就在案件旁</b><p>在入口網站或任何一封 Email 裡，點一下就能評分。</p></div>
@@ -587,15 +587,15 @@
 <div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
 <div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
 </div>
-<figcaption><b>從純文字，到品牌 Email。</b>以前的進度通知只有純文字。現在每種案件類型都有專屬的品牌範本，一看就知道是 Ninja Van 寄來的，值得信任；結尾再附上一鍵評分，讓每一封通知都能收集回饋，也讓服務補救的旅程持續下去。</figcaption></figure>
-<div class="result"><b>服務兩端，一起設計。</b><p>客服人員使用的是以 Salesforce 為基礎的 CRM，所以我也設計了他們登記與管理案件的畫面。服務補救要成功，兩端都得照顧到。</p></div>
+<figcaption><b>從純文字到品牌電郵。</b>每種案件都有專屬品牌範本，結尾一按評分，讓補救流程延續下去。</figcaption></figure>
+<div class="result"><b>服務兩端，一起設計。</b><p>我也設計了客服用來登記和管理案件的 Salesforce CRM 介面。服務補救要兩邊都照顧好才行得通。</p></div>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">+</span><h2>同場加映：Akira</h2></header>
 <div class="sb">
 <p class="big-p">設計系統有多重要，用數字說話。</p>
-<p>Akira 是 Ninja Van 的設計系統計畫。我負責撰寫文件，並把內容規範直接建進元件庫裡。這是一種低調的方式，讓產品保持一致，而且效果持久。</p>
+<p>Akira 是 Ninja Van 的設計系統專案。我負責文件，並把內容規範寫進元件庫。</p>
 <div class="callouts">
 <div><b data-n="27">27</b><span>個產品同時運作中</span></div>
 <div><b data-n="70%">70%</b><span>的實作使用各自在地客製的元件</span></div>

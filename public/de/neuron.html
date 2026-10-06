@@ -459,7 +459,7 @@
 <span class="chip ghost">Mikromobilität</span></div>
 <h1><span class="line"><span>Schichtpläne,</span></span>
 <span class="line"><span>die halten</span></span></h1>
-<p class="lede">Neuron betreibt geteilte E-Scooter und E-Bikes in Australien und darüber hinaus. Manager planen, wo die Fahrzeuge stehen sollen, und Operator vor Ort bringen sie dorthin. Ich habe neu gestaltet, wie diese beiden Seiten zusammenarbeiten, und danach geholfen, zwei interne Plattformen zu einer zusammenzuführen.</p>
+<p class="lede">Neuron betreibt Sharing-E-Scooter und -E-Bikes in Australien und darüber hinaus. Ich habe die Zusammenarbeit von Managern und Außenteams neu gestaltet und dann zwei interne Plattformen zu einer zusammengeführt.</p>
 <dl class="meta">
 <div><dt>Rolle</dt><dd>Senior Product Designer</dd></div>
 <div><dt>Zeitraum</dt><dd>2023</dd></div>
@@ -480,7 +480,7 @@
 <header class="sh"><span class="no">01</span><h2>Der Plan lebte in Slack</h2></header>
 <div class="sb">
 <p class="big-p">Manager konnten gute Pläne machen. Sie wussten nur nicht, ob sich jemand daran hielt.</p>
-<p>Rebalancing heißt, Fahrzeuge aus ruhigen in belebte Gegenden zu bringen und unterwegs Akkus zu tauschen und defekte Fahrzeuge einzusammeln. Manager planten Schichten in einem Web-Dashboard, Operator arbeiteten mit einer mobilen App, und alles dazwischen lief über Slack-Nachrichten. Gemessen wurde die Leistung anhand von Zahlen, die die Operator selbst meldeten.</p>
+<p>Manager planten Schichten im Web-Dashboard, Außenteams arbeiteten mit einer überladenen App, und alles dazwischen lief über Slack. Niemand wusste, welche Aufgaben erledigt wurden.</p>
 <div class="pair">
 <div class="tile"><span class="tile-k">Operator</span><b>Eine überladene App</b><p>Die mobile App bildete das Dashboard Funktion für Funktion ab. Entsprechend voll war sie, und ein klarer nächster Schritt fehlte.</p></div>
 <div class="tile"><span class="tile-k">Manager</span><b>Keine Kontrolle</b><p>Aufgaben gingen per Nachricht raus, und niemand konnte nachvollziehen, welche davon erledigt wurden.</p></div>
@@ -491,14 +491,14 @@
 <header class="sh"><span class="no">02</span><h2>Remote-Interviews, dann Shadowing vor Ort</h2></header>
 <div class="sb">
 <p class="big-p">Ich musste sehen, wie Operator auf der Straße entscheiden, was als Nächstes dran ist.</p>
-<p>Ich habe Operations-Manager remote interviewt, in Ländern und Städten ganz unterschiedlicher Größe, und dann Operator in Melbourne und Perth auf ihren Schichten begleitet. Zu sehen, wie sie einen Plan mit dem abgleichen, was sie draußen tatsächlich vorfinden, hat fast jede spätere Entscheidung geprägt.</p>
+<p>Ich habe Ops-Manager in verschiedenen Märkten remote interviewt und dann Außenteams in Melbourne und Perth bei der Schicht begleitet.</p>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">03</span><h2>Aufgaben zuweisen und erledigt sehen</h2></header>
 <div class="sb">
 <p class="big-p">Ein Manager weist eine Aufgabe auf der Karte zu, und sie landet direkt in der Liste des jeweiligen Operators.</p>
-<p>Jede Aufgabe sagt, was zu tun ist und wo: Akkutausch, Abholen oder Aufstellen, dazu das Fahrzeug, sein Akkustand und die nächste Station, und wer die Aufgabe wann zugewiesen hat. Operator filtern nach Aufgabentyp, und erledigte Aufgaben verschwinden aus dem Blickfeld. Weil Zuweisungen jetzt erfasst werden, haben Manager endlich eine echte Kennzahl für eine Schicht: wie viele zugewiesene Aufgaben erledigt wurden.</p>
+<p>Jede Aufgabe zeigt Aktion, Fahrzeug, Akku und nächste Station, dazu, wer sie zugewiesen hat. Erfasste Zuweisungen gaben Managern erstmals ein echtes Maß für eine Schicht.</p>
 <div class="demo live" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 1200 / 750; --cw: 1200px; --ch: 750px; background:#fbf8ef">
 <span class="demo-tag">Live-Komponente</span>
 <div aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list" class="scene nr">
@@ -541,8 +541,8 @@
 <header class="sh"><span class="no">04</span><h2>Zwei Plattformen, ein Stack</h2></header>
 <div class="sb">
 <p class="big-p">Zwei Web-Tools waren ineinander gewachsen.</p>
-<p>Dashboard lief auf Angular und deckte das operative Geschäft ab. Tech House hatte das Backend-Team mit React für sich selbst gebaut und nach und nach an Ops übergeben. Das Ergebnis: doppelte Daten, überlappende Features und Entwickler, die zwei Frontends pflegten. Ich habe beide auditiert, mich zu den Teams gesetzt, die damit arbeiteten, um zu verstehen, warum es jede Seite gab, und die Informationsarchitektur rund um das neu aufgebaut, was sich wirklich unterschied.</p>
-<p>Wir haben alles auf React zusammengeführt, mit einer Komponentenbibliothek auf Basis von Ant Design, angepasst an den Look von Neuron. So blieben Komponenten günstig in der Umsetzung, ohne geliehen auszusehen. Die Migration war früher fertig als geplant, und mehrere Tools wurden so einfach, dass die Entwickler sie an die City-Teams übergeben konnten.</p>
+<p>Dashboard (Angular) und Tech House (React) waren ineinander gewachsen, mit doppelten Daten und zwei Frontends. Ich habe beide mit den Teams geprüft, die sie nutzen, und die Informationsarchitektur neu aufgebaut.</p>
+<p>Wir sind auf React umgezogen, mit einer Komponentenbibliothek auf Ant-Design-Basis im Neuron-Look. Die Migration war früher fertig als geplant, und mehrere Tools gingen von Entwicklern an die Stadtteams.</p>
 </div>
 </section>
 <section class="c-next">

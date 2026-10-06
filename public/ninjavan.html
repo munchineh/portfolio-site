@@ -495,7 +495,7 @@
         <span class="line"><span>Service recovery</span></span>
         <span class="line"><span>at scale</span></span>
       </h1>
-      <p class="lede">When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.</p>
+      <p class="lede">When a parcel goes wrong, three teams get involved and the merchant often hears nothing. I researched that chain across Southeast Asia, then designed a self-serve portal for merchants and the CRM tools agents use behind it.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Product designer II</dd></div>
         <div><dt>Timeline</dt><dd>2022</dd></div>
@@ -522,7 +522,7 @@
     <header class="sh"><span class="no">01</span><h2>Five handovers, three teams</h2></header>
     <div class="sb">
       <p class="big-p">A bit of information went missing at every handover.</p>
-      <p>When a merchant raised an issue, a support agent logged it, the right resolution team investigated, and the answer made its way back along the same chain. In interviews, merchants told us the hardest part was often not knowing whether anyone was working on their case at all. And once a case was closed, the only way to dispute the outcome was to raise a new one and explain everything again.</p>
+      <p>A merchant's issue passed through support and resolution teams, losing detail at every handover. Merchants rarely knew if anyone was on their case, and disputing an outcome meant starting over.</p>
       <div class="relay" id="relay">
         <div class="rl-grid">
           <span class="rl-lane" style="grid-row:1">Merchant</span>
@@ -550,7 +550,7 @@
     <header class="sh"><span class="no">02</span><h2>Mapping the whole ecosystem</h2></header>
     <div class="sb">
       <p class="big-p">Service recovery touches three groups, each with their own experience and pain points. Fixing one in isolation just moves the problem.</p>
-      <p>So I looked at it from every side. I interviewed merchants, support agents and resolution teams across Southeast Asia, alongside a usability survey for agents and a Customer Effort Score survey for merchants. Then I weighed how often each theme came up against case volumes and response times, to find the changes that would help the whole system most.</p>
+      <p>I interviewed 59 merchants, agents and resolution staff across Southeast Asia, backed by an agent usability (SUS) survey and a merchant Customer Effort Score (CES) survey. Then I prioritised themes by case volume and response time.</p>
       <div class="card" style="padding:0">
         <div class="label" style="border-bottom:1px solid var(--rule)"><span>Who I interviewed</span><span>59 people · SEA</span></div>
         <div class="bars">
@@ -566,7 +566,7 @@
     <header class="sh"><span class="no">03</span><h2>Issues live where orders live</h2></header>
     <div class="sb">
       <p class="big-p">The place you book a pickup is now the place you chase it.</p>
-      <p>Raising an issue used to mean searching the website for a phone number, then hoping it had been received. So I built service recovery into the parcel portal merchants already used to manage their orders. The form asks for order IDs, issue type and proof of value in the same order agents enter them on their side, which cut out a lot of back and forth. Delayed pickups and deliveries now open cases automatically.</p>
+      <p>Issues are now raised in the parcel portal merchants already use, with fields in the same order agents need them. Delayed pickups and deliveries open cases automatically, covering 70% of case logging for those issues.</p>
       <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
         <span class="demo-tag">Live component</span>
         <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
@@ -592,8 +592,8 @@
   <section class="panel sec">
     <header class="sh"><span class="no">04</span><h2>A bad score reopens the case</h2></header>
     <div class="sb">
-      <p class="big-p">The survey stopped being just a measurement and became a way back in.</p>
-      <p>Customer Effort Score surveys used to go out by cold call and email, which was tedious for everyone and got very few replies. I moved the survey into the portal, right next to the case it's about, and into new HTML email templates designed for each issue type. A low score now reopens the conversation and suggests other ways to resolve it.</p>
+      <p class="big-p">The survey became a way to close the loop.</p>
+      <p>Customer Effort Score surveys moved from cold calls into the portal and new branded HTML emails, one tap from each case. Low scores also allowed users to reopen the case for a more satisfying user journey.</p>
       <div class="trio">
         <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only emails, with no way to leave a score.</p></div>
         <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>One tap to rate, from the portal or any email.</p></div>
@@ -604,8 +604,8 @@
           <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
           <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
         </div>
-        <figcaption><b>From plain text to on-brand emails.</b> Updates used to be text-only. Each case type now has its own branded template that feels clearly, legitimately Ninja Van, and ends with a one-tap rating, so every update collects feedback and keeps the recovery journey going.</figcaption></figure>
-      <div class="result"><b>Designing both sides of the service.</b><p>Support agents worked in a Salesforce-based CRM, so I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
+        <figcaption><b>From plain text to on-brand emails.</b> Each case type gets its own branded template, ending in a one-tap rating that keeps the recovery journey going.</figcaption></figure>
+      <div class="result"><b>Designing both sides of the service.</b><p>I also designed the Salesforce CRM screens agents used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
     </div>
   </section>
 
@@ -613,7 +613,7 @@
     <header class="sh"><span class="no">+</span><h2>Also at Ninja Van: Akira</h2></header>
     <div class="sb">
       <p class="big-p">The case for a design system, in numbers.</p>
-      <p>Akira was Ninja Van's design system initiative. I worked on the documentation and on building content standards into the component library itself. It's a quiet way to keep a product consistent, and it lasts.</p>
+      <p>Akira was Ninja Van's design system initiative. I worked on documentation and built content standards into the component library.</p>
       <div class="callouts">
         <div><b data-n="27">27</b><span>active products across the portfolio</span></div>
         <div><b data-n="70%">70%</b><span>of implementation on locally customised components</span></div>

@@ -460,7 +460,7 @@
 <span class="chip ghost">微型移動</span></div>
 <h1><span class="line"><span>班表排好，</span></span>
 <span class="line"><span>現場做到</span></span></h1>
-<p class="lede">Neuron 在澳洲及其他地區經營共享電動滑板車與電動自行車。經理負責規劃車輛該去哪裡，地面營運人員負責把車移過去。我重新設計了這兩方的協作方式，接著協助把兩個內部平台合而為一。</p>
+<p class="lede">Neuron 在澳洲等地營運共享電動滑板車和電動單車。我重新設計了管理者與地勤的協作方式，又把兩個內部平台合而為一。</p>
 <dl class="meta">
 <div><dt>角色</dt><dd>資深產品設計師</dd></div>
 <div><dt>期間</dt><dd>2023</dd></div>
@@ -481,7 +481,7 @@
 <header class="sh"><span class="no">01</span><h2>計畫，只活在 Slack 裡</h2></header>
 <div class="sb">
 <p class="big-p">計畫做得好，有沒有人照做，卻無從得知。</p>
-<p>車輛調度，指的是把車從冷清的區域移到熱鬧的地方，途中順便換電池、回收故障車。經理在網頁儀表板上排班，營運人員用手機 App 工作，中間的一切都靠 Slack 訊息往來。績效則由營運人員自行回報數量來衡量。</p>
+<p>管理者在網頁後台排班，地勤用一個資訊過載的 App 工作，中間全靠 Slack。沒人知道哪些任務真的完成了。</p>
 <div class="pair">
 <div class="tile"><span class="tile-k">營運人員</span><b>功能塞爆</b><p>手機 App 把儀表板的功能一項不漏地照搬過來，畫面擁擠，也看不出下一步該做什麼。</p></div>
 <div class="tile"><span class="tile-k">經理</span><b>做了沒，不知道</b><p>任務靠訊息派發，哪些完成了，完全沒有紀錄。</p></div>
@@ -492,14 +492,14 @@
 <header class="sh"><span class="no">02</span><h2>先遠端訪談，再到現場跟班</h2></header>
 <div class="sb">
 <p class="big-p">親眼看營運人員在街頭，怎麼決定下一步。</p>
-<p>我先遠端訪談了不同國家、不同規模城市的營運經理，再到墨爾本和伯斯跟著地面營運人員一起值班。看他們在計畫和現場狀況之間來回取捨，幾乎影響了之後的每一個決策。</p>
+<p>我遠端訪談了各市場的營運經理，再到墨爾本和珀斯跟隨地勤出勤。</p>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">03</span><h2>派得出，看得到</h2></header>
 <div class="sb">
 <p class="big-p">地圖上一指派，任務直達營運人員清單。</p>
-<p>每個任務都寫明要做什麼、在哪裡做：換電池、回收或投放，哪一台車、電量多少、最近的站點在哪，以及是誰在什麼時候指派的。營運人員可以依任務類型篩選，已完成的任務會自動移到一旁。因為指派紀錄都留了下來，經理終於能真正衡量一個班次的成果：指派的任務完成了多少。</p>
+<p>每個任務都寫明動作、車輛、電量、最近站點，以及由誰指派。指派有了紀錄，管理者第一次能真正衡量一個班次。</p>
 <div class="demo live" id="nrDemo" style="--ar: 1200 / 750; --ar-m: 1200 / 750; --cw: 1200px; --ch: 750px; background:#fbf8ef">
 <span class="demo-tag">互動元件</span>
 <div aria-label="Neuron Control Centre: new tasks arrive in a ground operator's assigned list" class="scene nr">
@@ -542,8 +542,8 @@
 <header class="sh"><span class="no">04</span><h2>兩個平台，合而為一</h2></header>
 <div class="sb">
 <p class="big-p">兩套網頁工具，早已長在一起。</p>
-<p>Dashboard 以 Angular 開發，負責營運。Tech House 則是後端團隊用 React 為自己打造的工具，後來才逐漸交給營運團隊使用。結果就是資料重複、功能重疊，工程師還得維護兩套前端。我盤點了兩個平台，和實際使用的團隊坐在一起，了解每個頁面存在的原因，再圍繞兩者真正的差異，重建資訊架構。</p>
-<p>我們統一改用 React，搭配以 Ant Design 為基礎、調整成 Neuron 風格的元件庫，讓元件開發成本低，看起來卻不像借來的。遷移比預定時程提早完成，好幾個工具也變得夠簡單，可以從工程師手上交給各城市團隊。</p>
+<p>Dashboard（Angular）和 Tech House（React）功能互相重疊，資料重複，前端要維護兩套。我和使用團隊一起梳理兩邊，重建了資訊架構。</p>
+<p>我們統一到 React，用基於 Ant Design、依 Neuron 風格調整的元件庫。遷移提前完成，好幾個工具也從開發交到了城市團隊手上。</p>
 </div>
 </section>
 <section class="c-next">
