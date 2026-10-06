@@ -377,7 +377,7 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 .sec .sh { align-items: center; }
 .sec .sh .no { margin-top: 0; }
 /* Images and demos: no hairline frames, just the soft drop shadow */
-.phones img, .okp, .orb, .shot img, .nvc { box-shadow: 0 18px 36px -24px rgba(0,0,0,.45) !important; }
+.phones img, .okp, .orb, .crs, .shot img, .nvc { box-shadow: 0 18px 36px -24px rgba(0,0,0,.45) !important; }
 .tmr { box-shadow: 0 18px 36px -24px rgba(0,0,0,.45); }
 .tmr img, .okp img, .orb img { box-shadow: none !important; }
 .demo { border: 0 !important; }
