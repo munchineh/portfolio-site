@@ -18,8 +18,8 @@ about(d, 'about', "I design things people don't have to think about.",
        ('Languages', 'English (native), Chinese (proficient), Korean (intermediate), German (intermediate)')])
 three_cards(d, 'what-i-do', 'What I do', 'Three ways I work',
             [('Content and conversation design', 'UX writing, microcopy and AI chat flows, designed alongside the interface so every screen reads as clearly as it looks.'),
-             ('Product design', 'I design the products that keep money and operations moving, from trading apps to internal dashboards for support and field teams, and make them easy to pick up without training.'),
-             ('E-commerce, end to end', 'Founding designer at start-ups, and founder of my own e-commerce store, EVN Archive. Research, UX, UI and design systems, all the way to launch and beyond.')])
+             ('Making hard things feel easy', 'I design the products that keep money and operations moving, from trading apps to internal dashboards for support and field teams, and make them easy to pick up without training.'),
+             ('End to end, zero to launch', 'Founding designer at start-ups, and founder of my own e-commerce store, EVN Archive. Research, UX, UI and design systems, all the way to launch and beyond.')])
 contents(d, 'contents', [
     ('01', 'Helping shoppers find their fit', 'EVN Archive', 'E-commerce, UX, front-end'),
     ('02', 'An assistant that trades in chat', 'OKX', 'AI conversation design'),
