@@ -648,7 +648,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div class="gva" id="gva">
 <div class="gva-row"><b>点击量<small>326 万，目标 150 万</small></b><div aria-label="点击量：326 万，目标 150 万，达成 217%" class="track" data-g="1.5" data-u="M" data-v="3.26" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
 <div class="gva-row"><b>完整看完<small>122 万，目标 80 万</small></b><div aria-label="完整看完：122 万，目标 80 万，达成 153%" class="track" data-g="0.8" data-u="M" data-v="1.22" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
-<div class="gva-row"><b>分享次数<small>11.7 万，目标 5 万</small></b><div aria-label="分享次数：11.7 万，目标 5 万，达成 234%" class="track" data-g="50" data-u="k" data-v="117" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
+<div class="gva-row"><b>分享次数<small>11.7 万，目标 5 万</small></b><div aria-label="分享次数：11.7 万，目标 5 万，达成 234%" class="track" data-g="50" data-u="K" data-v="117" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
 <div class="axis"><i></i><div><span style="left:0">0%</span><span style="left:40%">100%（目标）</span><span style="left:80%">200%</span></div></div>
 </div>
 <p class="gva-note"><i></i>目标线。每个目标都以前一年为基准，并按用户增长做了调整。</p>
@@ -696,7 +696,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   if (still.matches) grow(); else once(document.getElementById('gva'), grow, .5);
   const tip = document.getElementById('tip');
   const show = (t, x, y) => { const d = t.dataset, r = Math.round(+d.v / +d.g * 100);
-    tip.innerHTML = `<b>${t.closest('.gva-row').querySelector('b').firstChild.textContent}</b><br>Actual ${d.v}${d.u} · Goal ${d.g < 1 ? d.g * 1000 + 'k' : d.g + d.u}<br>${r}% of goal`;
+    tip.innerHTML = `<b>${t.closest('.gva-row').querySelector('b').firstChild.textContent}</b><br>Actual ${d.v}${d.u} · Goal ${d.g < 1 ? d.g * 1000 + 'K' : d.g + d.u}<br>${r}% of goal`;
     tip.style.left = Math.min(x + 14, innerWidth - 230) + 'px'; tip.style.top = (y + 14) + 'px'; tip.classList.add('on'); };
   tracks.forEach(t => {
     t.addEventListener('pointermove', e => show(t, e.clientX, e.clientY));

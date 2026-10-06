@@ -648,7 +648,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div class="gva" id="gva">
 <div class="gva-row"><b>클릭 수<small>326만 vs 목표 150만</small></b><div aria-label="클릭 수: 목표 150만 대비 326만, 목표의 217%" class="track" data-g="1.5" data-u="M" data-v="3.26" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">217%</span></div></div>
 <div class="gva-row"><b>완주한 여정<small>122만 vs 목표 80만</small></b><div aria-label="완주한 여정: 목표 80만 대비 122만, 목표의 153%" class="track" data-g="0.8" data-u="M" data-v="1.22" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">153%</span></div></div>
-<div class="gva-row"><b>공유 수<small>11.7만 vs 목표 5만</small></b><div aria-label="공유 수: 목표 5만 대비 11.7만, 목표의 234%" class="track" data-g="50" data-u="k" data-v="117" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
+<div class="gva-row"><b>공유 수<small>11.7만 vs 목표 5만</small></b><div aria-label="공유 수: 목표 5만 대비 11.7만, 목표의 234%" class="track" data-g="50" data-u="K" data-v="117" tabindex="0"><span class="goal"></span><span class="bar"></span><span class="val">234%</span></div></div>
 <div class="axis"><i></i><div><span style="left:0">0%</span><span style="left:40%">100% (목표)</span><span style="left:80%">200%</span></div></div>
 </div>
 <p class="gva-note"><i></i>목표선. 모든 목표는 전년도 실적에 사용자 증가분을 반영해 정했어요.</p>
@@ -696,7 +696,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   if (still.matches) grow(); else once(document.getElementById('gva'), grow, .5);
   const tip = document.getElementById('tip');
   const show = (t, x, y) => { const d = t.dataset, r = Math.round(+d.v / +d.g * 100);
-    tip.innerHTML = `<b>${t.closest('.gva-row').querySelector('b').firstChild.textContent}</b><br>Actual ${d.v}${d.u} · Goal ${d.g < 1 ? d.g * 1000 + 'k' : d.g + d.u}<br>${r}% of goal`;
+    tip.innerHTML = `<b>${t.closest('.gva-row').querySelector('b').firstChild.textContent}</b><br>Actual ${d.v}${d.u} · Goal ${d.g < 1 ? d.g * 1000 + 'K' : d.g + d.u}<br>${r}% of goal`;
     tip.style.left = Math.min(x + 14, innerWidth - 230) + 'px'; tip.style.top = (y + 14) + 'px'; tip.classList.add('on'); };
   tracks.forEach(t => {
     t.addEventListener('pointermove', e => show(t, e.clientX, e.clientY));
