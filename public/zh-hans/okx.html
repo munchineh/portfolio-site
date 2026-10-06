@@ -222,6 +222,7 @@
     .demo .canvas { height: 480px; padding: 44px 20px 24px; }
     .phones.two { display: grid; grid-template-columns: 1fr; }
     .phones.two figure { max-width: 260px; width: 100%; justify-self: center; }
+    .phones.two figcaption { text-align: center; }
   }
   @media (max-width: 900px) {
     .layers li .n { grid-column: 1; grid-row: 1 / span 2; }
@@ -623,12 +624,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3</span><h2>为分享而生</h2></header>
+<header class="sh"><span class="no">3.3</span><h2>从专属，到共享</h2></header>
 <div class="sb">
 <p class="big-p">旅程的终点，正是 Rewind 传播的起点。</p>
-<p>每个人最后都会得到一个人设，比如 Crypto Comet 或 Market Maestro，附带稀有度标签和一句获得理由。它展示的是你的交易风格，余额一概不提，发出去毫无压力。一键就能分享到 Telegram、WhatsApp 或 X，看到的人扫一下二维码，就能玩一遍自己的 Rewind。每一次分享，都是别人的下一步。</p>
+<p>Rewind 生来就是专属于你的，而结尾的人格卡，让它变得可以分享。每段旅程都以一种交易者类型收尾，比如 Crypto Comet 或 Market Maestro，附上稀有度标签，和一句你为什么配得上它。它庆祝的是你怎么交易，不显示余额，所以晒得放心，和朋友比也有意思。一键分享到 Telegram、WhatsApp 或 X，看到的人扫码就能进 App 玩自己的那份。每一次分享都带来新用户，也让大家回来看看朋友抽到了什么，活动结束后，社区里还有话可聊。</p>
 <div class="phones two">
-<figure><div class="crs" id="crShare"><img alt="分享你的 Crypto Rewind：示例用户 Jamie 是一颗 Crypto Comet，带有 Rare 标签" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>分享页</b>人设拿去晒，扫码玩自己的。</figcaption></figure>
+<figure><div class="crs" id="crShare"><img alt="分享你的 Crypto Rewind：示例用户 Jamie 是一颗 Crypto Comet，带有 Rare 标签" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>为分享而生</b>值得晒的人格卡，加一个邀请朋友也来玩的二维码。</figcaption></figure>
 <div class="card" style="align-self:start">
 <span class="tile-k">Rewind 的三个部分</span>
 <ol class="layers" style="margin-top:0">
@@ -810,13 +811,14 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <script>
 /* Rewind share: from the persona screen, tap share, the sheet slides up, hold, then play again */
 (() => {
-  const box = document.getElementById('crShare'); if (!box) return;
+  // plays only once the real screen that comes before the sheet is in place (data-prev on the box)
+  const box = document.getElementById('crShare'); if (!box || !box.dataset.prev) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const W = 600, H = 1301, A = '../assets/', SHEET = 186, SHARE = [467, 113];
   const el = (p, cls, css) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css || {}); p.appendChild(d); return d; };
   const st = el(box, 'okst');
   new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / W})`).observe(box);
-  el(st, 'okbg', { backgroundImage: `url(${A}cr-persona.jpg)` });
+  el(st, 'okbg', { backgroundImage: `url(${A}${box.dataset.prev})` });
   const scrim = el(st, 'okscrim');
   const sheet = el(st, 'oksheet', { left: 0, top: SHEET + 'px', width: W + 'px', height: (H - SHEET) + 'px', backgroundImage: `url(${A}cr-share.jpg)`, backgroundPosition: `0 -${SHEET}px` });
   const flash = el(st, 'okflash', { left: SHARE[0] + 'px', top: SHARE[1] + 'px' });
