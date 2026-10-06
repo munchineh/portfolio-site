@@ -99,21 +99,24 @@
   .phones.two { --n: 2; max-width: 560px; }
   /* Working screen: the timer runs on the real export */
   .tmr { position: relative; border-radius: 22px; overflow: hidden; }
-  .tm-st { position: absolute; left: 0; top: 0; width: 594px; height: 1008px; transform-origin: 0 0; pointer-events: none; }
-  .tm-st svg { position: absolute; inset: 0; width: 594px; height: 1008px; overflow: visible; }
-  .tm-st rect { fill: none; stroke-width: 11.5; }
-  /* activity ring: a grey track that fills clockwise from the top as the task runs toward an hour */
-  .tm-base { stroke: #d9d9d9; stroke-width: 13.5; }
-  .tm-run { stroke: #bba897; stroke-width: 13.5; stroke-dasharray: 0 1000; stroke-dashoffset: -137; transition: stroke-dasharray 1s linear; }
-  .tm-cover { position: absolute; background: #212526; }
-  .tm-t { position: absolute; left: 212px; top: 942px; width: 155px; transform: translateY(-50%); font: 500 34px/1 "Clash Display", "Archivo", sans-serif; color: #bba897; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
-  .tm-btn { position: absolute; left: 418px; top: 922px; width: 104px; height: 40px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
-    font: 500 22px/1 "Clash Display", "Archivo", sans-serif; color: #fff; letter-spacing: .01em; background: #212526; border-radius: 8px; }
+  .tm-st { position: absolute; left: 0; top: 0; width: 752px; height: 1672px; transform-origin: 0 0; pointer-events: none; }
+  .tm-st svg { position: absolute; inset: 0; width: 752px; height: 1672px; overflow: visible; }
+  .tm-st rect { fill: none; stroke-width: 17; }
+  /* activity ring: grey fills the tan track clockwise from the top as the task runs toward an hour, as in the Figma design */
+  .tm-base { stroke: #b9a898; }
+  .tm-run { stroke: #d9d9d9; stroke-dasharray: 0 1000; stroke-dashoffset: -137; transition: stroke-dasharray 1s linear; }
+  .tm-cover { position: absolute; background: #212525; }
+  .tm-t { position: absolute; left: 266px; top: 1334px; width: 200px; transform: translateY(-50%); font: 500 44px/1 "Clash Display", "Archivo", sans-serif; color: #b9a898; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 0 50%; }
+  .tm-btn { position: absolute; left: 532px; top: 1308px; width: 128px; height: 52px; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
+    font: 500 30px/1 "Clash Display", "Archivo", sans-serif; color: #fff; letter-spacing: .01em; background: #212525; border-radius: 8px; }
   .tm-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-  .tm-pulse { position: absolute; left: 25px; top: 891px; width: 102px; height: 102px; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,63,62,.45); animation: tmPulse 1.6s ease-out infinite; }
+  .tm-pulse { position: absolute; left: 33px; top: 1270px; width: 128px; height: 128px; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,63,62,.45); animation: tmPulse 1.6s ease-out infinite; }
   @keyframes tmPulse { to { box-shadow: 0 0 0 18px rgba(255,63,62,0); } }
   .tmr.paused .tm-run, .tmr.paused .tm-pulse { animation-play-state: paused; }
   .tmr.paused .tm-pulse { opacity: 0; }
+  /* paused, as in the design: the ring goes grey and the time dims */
+  .tmr.paused .tm-base { stroke: #d9d9d9; }
+  .tmr.paused .tm-t { color: #3c4141; }
   @media (prefers-reduced-motion: reduce) { .tm-run, .tm-pulse { animation: none; } }
 
   /* ---------- Prompt layers ---------- */
@@ -748,9 +751,9 @@
       <p class="big-p">The field app reads the same quote, one contractor at a time.</p>
       <p>Rooms became filter chips along the top. Categories became accordions. Each task is a card, parameters are label and value rows, and sub-tasks sit one indent in, just like on desktop, so the hierarchy survives the move. Anything still waiting on the client is flagged in red inside the card, because nobody should find that out on a ladder. Once a task is running, everything collapses to three headers and a timer.</p>
       <div class="phones flat">
-        <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="594" height="1008" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
-        <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="594" height="1008" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
-        <figure><div class="tmr" id="blTimer"><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="594" height="1008" loading="lazy"><div class="tm-st" translate="no"><svg viewBox="0 0 594 1008" aria-hidden="true"><rect class="tm-base" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/><rect class="tm-run" x="158.5" y="872.5" width="404" height="139" rx="69.5" pathLength="1000"/></svg><span class="tm-pulse" aria-hidden="true"></span><span class="tm-cover" style="left:200px;top:914px;width:184px;height:56px" aria-hidden="true"></span><b class="tm-t" aria-hidden="true">00:21:15</b><button class="tm-btn" type="button" aria-label="Pause the timer">PAUSE</button></div></div><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
+        <figure><img src="assets/bl-m-specs.jpg" alt="Mobile specs tab with room chips, a Flooring and tiling accordion and a task card with parameters" width="752" height="2086" loading="lazy"><figcaption><b>Specs</b>Rooms as chips, tasks as cards.</figcaption></figure>
+        <figure><img src="assets/bl-m-media.jpg" alt="Task detail with parameters, four site photos and a note from the worker" width="752" height="2086" loading="lazy"><figcaption><b>Task detail</b>Photos and notes from site.</figcaption></figure>
+        <figure><div class="tmr" id="blTimer"><img src="assets/bl-m-timer.jpg" alt="The task collapsed to three headers with a running timer and a pause button" width="752" height="1672" loading="lazy"><div class="tm-st" translate="no"><svg viewBox="0 0 752 1672" aria-hidden="true"><rect class="tm-base" x="202" y="1246" width="510" height="176" rx="88" pathLength="1000"/><rect class="tm-run" x="202" y="1246" width="510" height="176" rx="88" pathLength="1000"/></svg><span class="tm-pulse" aria-hidden="true"></span><span class="tm-cover" style="left:256px;top:1294px;width:232px;height:80px" aria-hidden="true"></span><b class="tm-t" aria-hidden="true">00:21:15</b><button class="tm-btn" type="button" aria-label="Pause the timer">PAUSE</button></div></div><figcaption><b>Working</b>Three headers and a timer.</figcaption></figure>
       </div>
     </div>
   </section>
@@ -916,8 +919,8 @@
 (() => {
   const box = document.getElementById('blTimer'); if (!box) return;
   const st = box.querySelector('.tm-st'), t = box.querySelector('.tm-t'), btn = box.querySelector('.tm-btn');
-  new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 594})`).observe(box);
-  const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${155 / w})`; };
+  new ResizeObserver(() => st.style.transform = `scale(${box.clientWidth / 752})`).observe(box);
+  const fit = () => { t.style.transform = 'translateY(-50%)'; const w = t.scrollWidth; if (w) t.style.transform = `translateY(-50%) scaleX(${200 / w})`; };
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
   // starts part-way into an hour so the ring has something to show; it keeps filling one second at a time
   let sec = 21 * 60 + 15, timer = null, paused = false;
