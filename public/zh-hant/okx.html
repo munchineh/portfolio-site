@@ -221,8 +221,11 @@
     .demo { aspect-ratio: 17 / 24; }
     .demo .canvas { height: 480px; padding: 44px 20px 24px; }
     .phones.two { display: grid; grid-template-columns: 1fr; }
-    .phones.two figure { max-width: 260px; width: 100%; justify-self: center; }
-    .phones.two figcaption { text-align: center; }
+    /* phone stays 260px wide; the caption can run wider so it sits on two lines, with room above and below */
+    .phones.two { gap: 40px; }
+    .phones.two figure { max-width: none; width: 100%; justify-self: center; justify-items: center; gap: 22px; }
+    .phones.two figure .crs { width: 100%; max-width: 260px; }
+    .phones.two figcaption { text-align: center; max-width: 380px; text-wrap: balance; }
   }
   @media (max-width: 900px) {
     .layers li .n { grid-column: 1; grid-row: 1 / span 2; }
