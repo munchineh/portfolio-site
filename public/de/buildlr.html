@@ -572,7 +572,7 @@
 <span class="chip ghost">Construction Tech</span></div>
 <h1><span class="line"><span>Operative Tools</span></span>
 <span class="line"><span>vereinfachen</span></span></h1>
-<p class="lede">Eine SaaS für die Bauvorbereitung auf dem deutschen Markt, von null aufgebaut, mit Angeboten, Aufgabenmanagement, Gantt-Planung und mehr. Eines der wichtigsten Designs darin ist ein sehr tiefes Angebotsformular, gemacht für die Beratung per Tablet beim Kundentermin und für die Crew vor Ort, die am Handy nur eine Hand frei hat.</p>
+<p class="lede">Eine SaaS für die Bauvorbereitung auf dem deutschen Markt, von null aufgebaut: Angebote, Aufgabenmanagement und Gantt-Planung. Gestaltet für die Beratung am Tablet und die Crew am Handy.</p>
 <dl class="meta">
 <div><dt>Rolle</dt><dd>Founding Designer, freiberuflich</dd></div>
 <div><dt>Zeitraum</dt><dd>Juni 2025 bis Feb. 2026</dd></div>
@@ -597,15 +597,14 @@
 <header class="sh"><span class="no">01</span><h2>Ein Angebot, zwei ganz verschiedene Arbeitstage</h2></header>
 <div class="sb">
 <p class="big-p">Buildlr begleitet einen Bauauftrag vom ersten Kundenbesuch bis zur letzten Aufgabe auf der Baustelle.</p>
-<p>Das Beratungsteam setzt sich mit der Bauherrschaft zusammen, meist mit einem Tablet, und baut das Angebot im Gespräch Raum für Raum auf. Ist es unterschrieben, öffnen die Handwerksbetriebe dasselbe Angebot auf dem Handy, sehen, was als Nächstes ansteht, und erfassen ihre Stunden. Jedes Angebot geht fünf Ebenen tief, vom Projekt über Raum, Abschnitt, Kategorie und Aufgabe bis zur Unteraufgabe, und jede Ebene hat eigene Mengen und Preise.</p>
-<p>Die eigentliche Aufgabe war also, so viele Details im Wohnzimmer der Kunden und auf der Baustelle beherrschbar zu halten, ohne zwei verschiedene Produkte zu gestalten.</p>
+<p>Jedes Angebot ist fünf Ebenen tief, vom Projekt bis zur Unteraufgabe. Die Aufgabe: all das am Tablet im Wohnzimmer der Kundschaft und am Handy auf der Baustelle überschaubar halten, mit einem einzigen Design-System.</p>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">02</span><h2>Nur die Ebene, die man braucht</h2></header>
 <div class="sb">
 <p class="big-p">Progressive Disclosure verhindert, dass ein Angebot mit fünf Ebenen zur Zahlenwand wird.</p>
-<p>Der Baum sitzt in der linken Leiste, so weiß das Beratungsteam immer, in welchem Raum und welchem Abschnitt es gerade ist. Aufgaben sind Zeilen, die man per Toggle einschaltet. Öffnet man eine, klappen ihre Unteraufgaben darin auf, jede mit eigenen Parametern, während das Kostenpanel laufend mitrechnet. Es ist immer nur eine Aufgabe offen. So bleibt die Seite auch bei vierzig Zeilen lesbar, selbst wenn der Kunde über die Schulter schaut.</p>
+<p>Ein fester Strukturbaum gibt Orientierung, Aufgaben werden als Zeilen zugeschaltet, und die Preise rechnen live mit. Es ist immer nur eine Aufgabe offen, so bleibt die Seite auch bei vierzig Zeilen lesbar.</p>
 <div class="demo live" data-focus="344,215,760,720" id="blDemo" style="--ar: 1512 / 1090; --ar-m: 760 / 720; --cw: 1512px; --ch: 1090px; background:#323838">
 <span class="demo-tag">Live-Komponente</span>
 <div aria-label="Buildlr new quote: the task tree opens tier by tier and the quote adds up" class="scene bl" data-scene="bl">
@@ -716,16 +715,16 @@
 <section class="panel sec">
 <header class="sh"><span class="no">03</span><h2>Die Frage steckt im Formular</h2></header>
 <div class="sb">
-<p class="big-p">Die Beratung blieb immer wieder an Fragen hängen, die nur der Kunde beantworten konnte.</p>
-<p>Fragen wie welche Farbe oder welche Oberfläche hielten ein Angebot oft auf, und üblich war, die Zeile leer zu lassen und per E-Mail nachzuhaken. Also wurde die Rückfrage, der Request for Information (RFI), Teil der Aufgabe selbst. Braucht eine Aufgabe eine Entscheidung des Kunden, erscheint genau dort ein vorgeschlagenes RFI mit fertig formulierter Frage und Frist, und der Kunde kann es vom Handy aus beantworten. Die Zeile bleibt markiert, bis die Antwort da ist.</p>
+<p class="big-p">Die Beratung blieb immer wieder an Details hängen, die nur die Kundschaft klären konnte.</p>
+<p>Deshalb sitzen Rückfragen (RFIs) direkt in der Aufgabe. Eine vorformulierte Frage mit Frist geht direkt aufs Handy der Kundschaft, und die Zeile bleibt markiert, bis die Antwort da ist.</p>
 <figure class="shot"><img alt="Ein vorgeschlagenes RFI in der Aufgabe „Bodenbelag verlegen“, das den Kunden bittet, bis zu einer Frist eine Farbe für den Boden auszuwählen" height="1623" loading="lazy" src="../assets/bl-rfi.jpg" width="2400"/><figcaption><b>Formuliert, wo die Lücke ist.</b> Nach dem Versand wird jedes RFI auf einer eigenen Seite verfolgt, samt Verlauf.</figcaption></figure>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">04</span><h2>Gleicher Baum, ein Daumen</h2></header>
 <div class="sb">
-<p class="big-p">Die Field-App zeigt dasselbe Angebot, zugeschnitten auf die jeweilige Crew.</p>
-<p>Räume wurden zu Filter-Chips am oberen Rand. Kategorien wurden zu Akkordeons. Jede Aufgabe ist eine Karte, Parameter sind Zeilen aus Label und Wert, und Unteraufgaben sitzen eine Ebene eingerückt, genau wie am Desktop. So übersteht die Hierarchie den Wechsel. Alles, was noch auf den Kunden wartet, ist in der Karte rot markiert, denn das sollte niemand erst auf der Leiter erfahren. Sobald eine Aufgabe läuft, klappt alles auf drei Überschriften und einen Timer zusammen.</p>
+<p class="big-p">Die mobile App liest dasselbe Angebot, eine Person aus der Crew nach der anderen.</p>
+<p>Räume wurden zu Chips, Kategorien zu Akkordeons und Aufgaben zu Karten, so bleibt die Hierarchie vom Desktop erhalten. Offene Punkte der Kundschaft sind rot markiert, und eine laufende Aufgabe schrumpft aufs Wesentliche.</p>
 <div class="phones flat">
 <figure><img alt="Mobiler Specs-Tab mit Raum-Chips, einem Akkordeon für Boden- und Fliesenarbeiten und einer Aufgabenkarte mit Parametern" height="1672" loading="lazy" src="../assets/bl-m-specs.jpg" width="752"/><figcaption><b>Hierarchie, durch die man navigiert</b>Tabs, Chips und Karten greifen ineinander, damit komplexe Spezifikationen geordnet und schnell auffindbar bleiben.</figcaption></figure>
 <figure><img alt="Aufgabendetails mit Parametern, vier Fotos von der Baustelle und einer Notiz aus dem Team vor Ort" height="1672" loading="lazy" src="../assets/bl-m-media.jpg" width="752"/><figcaption><b>Schnell erfassen, schneller handeln</b>Details lassen sich auf dem kleinen Bildschirm rasch überfliegen, und ein großer Button hält den nächsten Schritt in Daumenreichweite.</figcaption></figure>
@@ -750,7 +749,7 @@
 </tbody>
 </table>
 </div>
-<div class="result"><b>Alles lief asynchron, das Design-System inklusive.</b><p>Seoul und Europa haben kaum gemeinsame Arbeitszeiten. Die Library hat noch keine Token-Ebene, weil sie mit einem Zwei-Personen-Team auf Tempo gebaut wurde. Tokens wären das Erste, was ich mit mehr Spielraum ergänzen würde.</p></div>
+<div class="result"><b>Alles lief asynchron, das Design-System inklusive.</b><p>Asynchron gestaltet zwischen Seoul und Europa, mit einem Zwei-Personen-Team. Mit mehr Zeit kämen als Nächstes Design-Tokens dazu.</p></div>
 </div>
 </section>
 <section class="c-next">
