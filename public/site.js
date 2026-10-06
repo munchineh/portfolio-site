@@ -12,6 +12,7 @@
 
   const showCat = (cat) => {
     if (cat === current) return;
+    const switching = !!current && !!cat;   // moving from one category straight to another
     current = cat;
     cats.forEach(c => c.classList.toggle('hot', c.dataset.cat === cat));
     if (narrow.matches) {
@@ -22,8 +23,11 @@
     const r = menu.getBoundingClientRect();
     stack.style.right = `${innerWidth - r.left + 12}px`;
     stack.style.width = `${Math.min(340, r.left - 24)}px`;
-    // collapse everything, then unfold the chosen category's cards one after another
-    [...cards, all].forEach(el => { el.classList.remove('on'); el.style.transitionDelay = '0ms'; });
+    // collapse the cards, then unfold the chosen category's cards one after another.
+    // When switching straight between categories, All work stays open and glides to its new spot
+    // instead of folding away and unfolding again, which read as a stutter.
+    const allTop = all.getBoundingClientRect().top;
+    (switching ? cards : [...cards, all]).forEach(el => { el.classList.remove('on'); el.style.transitionDelay = '0ms'; });
     stack.classList.toggle('on', !!cat);
     if (!cat) return;
     const btn = cats.find(c => c.dataset.cat === cat);
@@ -31,8 +35,19 @@
     const mine = cards.filter(c => c.dataset.cat === cat);
     grpCount.textContent = mine.length;
     cards.forEach(c => c.hidden = c.dataset.cat !== cat);
+    if (switching) {
+      const dy = allTop - all.getBoundingClientRect().top;
+      if (dy) {
+        all.style.transition = 'none';
+        all.style.transform = `translateY(${dy}px)`;
+        all.offsetHeight;   // apply the offset before animating it away
+        all.style.transition = 'transform .45s var(--ease)';
+        all.style.transform = '';
+        clearTimeout(all._t); all._t = setTimeout(() => { all.style.transition = ''; }, 500);
+      }
+    }
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      [...mine, all].forEach((el, i) => { el.style.transitionDelay = `${i * 70}ms`; el.classList.add('on'); });
+      (switching ? mine : [...mine, all]).forEach((el, i) => { el.style.transitionDelay = `${i * 70}ms`; el.classList.add('on'); });
     }));
   };
   const setAcc = (open) => {
