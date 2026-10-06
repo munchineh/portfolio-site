@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Service recovery at scale · Mancini Tan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; white-space: nowrap; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; }
+  .c-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 6.4; object-fit: cover; object-position: 50% 12%; }
+
+  /* ---------- Sections ---------- */
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .grid6 > div, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 24px 20px 20px; display: grid; gap: 22px; }
+  .c-cta .cta-p { color: var(--muted); font-size: 15px; max-width: 46ch; margin-top: -8px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 68px); line-height: .9; max-width: 14ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .c-nextcase img { width: 72px; height: 72px; border-radius: 10px; object-fit: cover; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+
+  /* ---------- Section bodies ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .card, .tile, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+
+  /* ---------- Shipper portal hero: cases arrive in the real screen, newest on top ---------- */
+  .nvp { position: relative; overflow: hidden; background: #fff; }
+  .nvp > img { display: block; width: 100%; height: auto; }
+  .nvp .st { position: absolute; left: 0; top: 0; width: 2000px; height: 1250px; transform-origin: 0 0; }
+  .nvp .st > div { position: absolute; }
+  .nvp .bg { inset: 0; background: url(assets/nv-base.jpg) 0 0 / 2000px 1250px no-repeat; }
+  .nvp .row { left: 378px; width: 1578px; height: 58px; background-image: url(assets/nv-issues.jpg); background-size: 2000px 1250px;
+    transition: top .55s cubic-bezier(.22,.8,.2,1), opacity .4s, clip-path .55s cubic-bezier(.22,.8,.2,1); }
+  .nvp .row.pre { opacity: 0; clip-path: inset(0 0 100% 0); }
+  .nvp .row.fresh::after { content: ""; position: absolute; inset: 0; background: rgba(200,255,61,.22); animation: nvfresh 1.4s ease-out forwards; }
+  @keyframes nvfresh { to { opacity: 0; } }
+  .nvp .cnt { top: 212px; height: 42px; display: grid; place-items: center; font: 600 17px/1 "Noto Sans", "Open Sans", sans-serif; font-variant-numeric: tabular-nums; }
+  .nvp .cnt b { font-weight: 600; transition: transform .25s; }
+  .nvp .cnt b.bump { animation: nvbump .45s ease-out; }
+  @keyframes nvbump { 40% { transform: scale(1.35); } }
+
+  /* ---------- Relay: who holds the case at each step, and what survives the handovers ---------- */
+  .relay { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 16px; }
+  .rl-grid { position: relative; display: grid; grid-template-columns: 116px repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(3, 54px); column-gap: 10px; row-gap: 8px; align-items: center; }
+  .rl-lane { grid-column: 1; font-size: 12px; color: var(--muted); align-self: center; padding-right: 8px; border-right: 1px solid var(--rule); height: 100%; display: flex; align-items: center; }
+  .rl-step { position: relative; z-index: 2; display: flex; gap: 10px; align-items: center; height: 46px; padding: 0 12px; border-radius: 10px; font-size: 14px; line-height: 1.2;
+    border: 1px solid var(--rule); background: var(--ground); transition: border-color .4s, background .4s, color .4s; }
+  .rl-step b { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 500; background: var(--rule); color: var(--ink); transition: background .4s, color .4s; }
+  .rl-step.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--ground)); }
+  .rl-step.on b { background: var(--accent); color: var(--on-accent); }
+  .rl-path { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
+  .rl-path path { fill: none; stroke-width: 1.5; }
+  .rl-path .base { stroke: var(--rule); stroke-dasharray: 3 4; }
+  .rl-path .run { stroke: var(--accent); }
+  .rl-dot { position: absolute; z-index: 3; left: 0; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); opacity: 0; transition: opacity .3s; }
+  .rl-msg, .rl-heard { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .rl-k { width: 100%; font-size: 12px; color: var(--muted); }
+  .rl-chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); transition: opacity .5s, background .5s, text-decoration-color .5s; text-decoration: line-through transparent; }
+  .rl-chip.lost { opacity: .4; background: transparent; box-shadow: inset 0 0 0 1px var(--rule); text-decoration-color: currentColor; }
+  .rl-heard { font-size: 15px; opacity: .25; transition: opacity .5s; }
+  .relay.done .rl-heard, .relay.static .rl-heard { opacity: 1; }
+  @media (max-width: 760px) {
+    .rl-grid { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 6px; }
+    .rl-lane, .rl-path, .rl-dot { display: none; }
+    .rl-step { grid-row: auto !important; grid-column: 1 !important; height: auto; padding: 10px 12px; }
+    .rl-step::after { content: attr(data-lane); margin-left: auto; font-size: 11px; color: var(--muted); }
+  }
+
+  .shot.bare img { background: none; box-shadow: none; border-radius: 0; }
+  .nvc { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -26px rgba(0,0,0,.45); }
+  .shot .nvc img { border-radius: 0; box-shadow: none; }
+  .nvc .mask { position: absolute; left: 20.4%; width: 15.6%; background: #fcfcfc; transition: top .7s cubic-bezier(.22,.8,.2,1); }
+
+  /* ---------- HTML email templates, rebuilt as live HTML so they stay sharp ---------- */
+  .emails .em-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .em { background: #efefef; border-radius: 12px; padding: 18px 20px 16px; color: #333; font-family: Arial, "Helvetica Neue", sans-serif; display: grid; gap: 14px; align-content: start; }
+  .em-logo { display: inline-flex; align-items: center; gap: 1px; font: 700 20px/1 "Montserrat", Arial, sans-serif; color: #1d1d1b; letter-spacing: -.01em; }
+  .em-logo svg { width: 15px; height: 20px; margin-right: 2px; }
+  .em-logo b { color: #c52033; font-weight: 700; }
+  .em-card { background: #fff; padding: 22px 22px 24px; display: grid; gap: 11px; align-content: start; font-size: 13px; line-height: 1.5; color: #444; }
+  .em-card h4 { font: 700 19px/1.25 "Montserrat", Arial, sans-serif; color: #2b2b2b; margin-bottom: 6px; }
+  .em-box { background: #2f2f2f; color: #fff; border-radius: 3px; padding: 14px 18px; display: grid; gap: 2px; justify-self: start; }
+  .em-box b { font-weight: 700; }
+  .em-btn { justify-self: start; margin-top: 6px; background: #b51f31; color: #fff; font: 700 13px/1 "Montserrat", Arial, sans-serif; padding: 12px 18px; border-radius: 3px; }
+  .em-foot { font-size: 11px; line-height: 1.5; color: #555; padding: 0 2px; }
+  .em-foot b { color: #333; }
+  @media (max-width: 760px) { .emails .em-row { grid-template-columns: 1fr; } }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .result p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Chapter jump + chapter banners ---------- */
+  .jump { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px; }
+  .jump a { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 6px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); font-size: 14px; transition: border-color .25s, background .25s; }
+  .jump a:hover, .jump a:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+  .jump a span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 500; background: var(--accent); color: var(--on-accent); }
+  .chapter { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 28px; align-items: end; scroll-margin-top: 90px; }
+  .chapter .ck { grid-column: 1 / 5; font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+  .chapter .ck b { font-weight: 500; color: var(--accent); }
+  .chapter h2 { grid-column: 5 / 13; font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(40px, 5.4vw, 88px); line-height: .88; letter-spacing: -0.01em; }
+  .chapter p { grid-column: 5 / 13; margin-top: 14px; font-size: 16px; line-height: 1.5; color: var(--muted); max-width: 56ch; }
+
+  /* ---------- Phone screens ---------- */
+  .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+  .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .phones img { display: block; width: 100%; height: auto; border-radius: 22px; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .phones figcaption { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .phones.four { --n: 4; }
+  .phones.two { --n: 2; max-width: 560px; }
+
+  /* ---------- Prompt layers ---------- */
+  .layers { list-style: none; display: grid; gap: 6px; margin-top: 8px; }
+  .layers li { display: grid; grid-template-columns: 40px 170px 1fr; gap: 14px; align-items: baseline; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .layers .n { font-size: 12px; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .layers b { font-weight: 500; font-size: 15px; }
+  .layers span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+
+  /* ---------- Live chat demo ---------- */
+  .demo { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); aspect-ratio: 16 / 9; margin-top: 8px; }
+  .demo .canvas { position: absolute; left: 50%; top: 50%; width: 560px; height: 373px; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: center; }
+  .demo-tag { position: absolute; left: 12px; top: 12px; z-index: 2; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: #c8ff3d; color: #000; }
+  .replay { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid #333; background: #111; color: #fff; font: inherit; font-size: 12px; cursor: pointer; }
+  .replay:hover, .replay:focus-visible { border-color: #c8ff3d; outline: none; }
+
+  /* ---------- Test table ---------- */
+  table.tests { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; }
+  .tests th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  .tests td { padding: 14px 16px; vertical-align: top; line-height: 1.45; border-bottom: 1px solid var(--rule); color: var(--muted); }
+  .tests tr:last-child td { border-bottom: 0; }
+  .tests td:first-child { color: var(--ink); }
+  .tests td:last-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
+  .callouts > div { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Goal vs actual (indexed to goal = 100%) ---------- */
+  .gva { display: grid; gap: 18px; padding: 20px 18px 16px; }
+  .gva-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; }
+  .gva-row > b { font-weight: 500; font-size: 14px; }
+  .gva-row > b small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .track { position: relative; height: 30px; outline: none; }
+  .track .bar { position: absolute; left: 0; top: 7px; height: 16px; width: 0; border-radius: 0 4px 4px 0; background: var(--accent); transition: width 1.1s var(--ease); }
+  .track .goal { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); left: calc(100% / 2.5); border-radius: 1px; }
+  .track .val { position: absolute; top: 5px; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; transition: left 1.1s var(--ease); }
+  .track:hover .bar, .track:focus-visible .bar { filter: brightness(1.15); }
+  .axis { display: grid; grid-template-columns: 150px 1fr; gap: 14px; font-size: 12px; color: var(--muted); }
+  .axis div { position: relative; height: 16px; border-top: 1px solid var(--rule); }
+  .axis span { position: absolute; top: 4px; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+  .axis span:first-child { transform: none; }
+  .gva-note { font-size: 12px; color: var(--muted); padding: 0 18px 16px; }
+  .gva-note i { display: inline-block; width: 2px; height: 11px; background: var(--ink); vertical-align: -1px; margin-right: 6px; }
+  .tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--ground); font-size: 12px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; max-width: 220px; opacity: 0; transition: opacity .15s; }
+  .tip.on { opacity: 1; }
+
+  /* ---------- Chapter results strip ---------- */
+  .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+  .strip > div { border-top: 1px solid var(--rule); padding-top: 12px; }
+  .strip b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(40px, 4vw, 56px); line-height: .9; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .strip > div > span { font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .chapter { padding: 22px 18px; }
+    .chapter .ck, .chapter h2, .chapter p { grid-column: 1 / -1; }
+    .chapter h2 { margin-top: 10px; }
+    .pair, .trio { grid-template-columns: 1fr; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+    /* screens scroll sideways inside their own row instead of stacking into a very tall column */
+    .phones, .phones.four, .phones.two { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; max-width: none; }
+    .phones figure { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
+    .layers li { grid-template-columns: 32px 1fr; }
+    .layers li span { grid-column: 2; }
+    .demo { aspect-ratio: 17 / 22; }
+    .demo .canvas { width: 340px; height: 440px; grid-template-columns: 1fr; gap: 16px; align-content: center; padding: 0 20px; }
+  }
+  @media (max-width: 520px) {
+    .callouts, .strip { grid-template-columns: 1fr; }
+    .gva-row, .axis { grid-template-columns: 1fr; gap: 6px; }
+    .axis > span { display: none; }
+  }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .nlogo.dark { background: #323838; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; border-radius: 0; }
+  .meta { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .c-head h1 { font-size: clamp(48px, 7.2vw, 116px); }
+  .phones.two { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); max-width: none; }
+  @media (max-width: 900px) { .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .c-head { min-width: 0; }
+  @media (max-width: 900px) {
+    .c-head h1 .line { white-space: normal; }
+    .c-results .big b { font-size: clamp(44px, 12vw, 72px); }
+    .layers li { grid-template-columns: 30px minmax(0, 1fr); gap: 2px 10px; }
+    .layers li .n { grid-row: 1 / span 2; }
+    .layers li b, .layers li span { grid-column: 2; }
+    .demo { aspect-ratio: 17 / 24; }
+    .demo .canvas { height: 480px; padding: 44px 20px 24px; }
+    .phones.two { display: grid; grid-template-columns: 1fr; }
+    .phones.two figure { max-width: 260px; }
+  }
+  @media (max-width: 900px) {
+    .layers li .n { grid-column: 1; grid-row: 1 / span 2; }
+    .layers li b { grid-row: 1; } .layers li span { grid-row: 2; }
+    .demo .canvas { padding-top: 60px; }
+  }
+
+  /* ---------- Simple Buy screens, animated over the original exports ---------- */
+  .okp { position: relative; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .okp img { box-shadow: none !important; border-radius: 0 !important; }
+  .okst { position: absolute; left: 0; top: 0; width: 600px; height: 1299px; transform-origin: 0 0; overflow: hidden; }
+  .okst > div { position: absolute; }
+  .okbg { inset: 0; background: #000 0 0 / 600px 1299px no-repeat; }
+  .okamt { left: 0; top: 296px; width: 378px; height: 108px; display: flex; justify-content: flex-end; }
+  .okamt .okg { flex: none; height: 108px; }
+  .okamt.ph { opacity: .66; }
+  .okcur { left: 380px; top: 295px; width: 2px; height: 111px; background: #c3e25c; animation: okblink 1.05s steps(1) infinite; }
+  @keyframes okblink { 50% { opacity: 0; } }
+  .okfade { opacity: 0; transition: opacity .35s ease; }
+  .okfade.in { opacity: 1; }
+  .oktag { transform: translateY(8px) scale(.94); transform-origin: 85% 100%; transition: opacity .3s ease, transform .45s cubic-bezier(.3,1.5,.5,1); }
+  .oktag.in { transform: none; }
+  .okflash { width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; background: rgba(255,255,255,.16); opacity: 0; }
+  .okflash.go { animation: okflash .3s ease-out; }
+  @keyframes okflash { 0% { opacity: 1; transform: scale(.6); } 100% { opacity: 0; transform: scale(1); } }
+  .oktap { width: 86px; height: 86px; margin: -43px 0 0 -43px; border-radius: 50%; background: rgba(160,160,160,.42);
+    opacity: 0; left: 300px; top: 1300px; transition: left .18s cubic-bezier(.4,0,.2,1), top .18s cubic-bezier(.4,0,.2,1), opacity .18s, transform .08s; }
+  .oktap.on { opacity: 1; }
+  .oktap.down { transform: scale(.82); background: rgba(170,170,170,.55); }
+  .okpress { border-radius: 40px; background: rgba(0,0,0,.22); opacity: 0; transition: opacity .2s; }
+  .okpress.go { opacity: 1; }
+  .okscrim { inset: 0; background: rgba(0,0,0,.57); opacity: 0; transition: opacity .25s ease; }
+  .okscrim.in { opacity: 1; }
+  .oksheet { border-radius: 26px 26px 0 0; transform: translateY(100%); transition: transform .38s cubic-bezier(.22,.8,.2,1); }
+  .oksheet.in { transform: none; }
+
+  /* ---------- Prompt inspector ---------- */
+  .pi { display: grid; grid-template-columns: 210px minmax(0, 1fr); margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .pi-tabs { position: relative; display: grid; align-content: start; gap: 2px; padding: 10px; border-right: 1px solid var(--rule); }
+  .pi-tabs button { position: relative; z-index: 1; display: flex; gap: 10px; align-items: center; text-align: left; font: inherit; font-size: 14px; color: var(--muted);
+    background: none; border: 0; border-radius: 10px; padding: 11px 12px; cursor: pointer; transition: color .25s; }
+  .pi-tabs button span { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 500; }
+  .pi-tabs button[aria-selected="true"] { color: var(--on-accent); font-weight: 500; }
+  .pi-tabs button[aria-selected="true"] span { color: var(--on-accent); opacity: .8; }
+  .pi-tabs button:hover:not([aria-selected="true"]) { color: var(--ink); }
+  .pi-tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pi-bar { position: absolute; left: 0; top: 0; width: var(--w, 0); height: var(--h, 0); transform: translate(var(--x, 0), var(--y, 0)); border-radius: 10px; background: var(--accent);
+    transition: transform .4s var(--ease), width .4s var(--ease), height .4s var(--ease); overflow: hidden; }
+  .pi.auto .pi-bar::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--on-accent); opacity: .5; transform-origin: 0 50%; animation: pifill 6s linear infinite; }
+  @keyframes pifill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .pi-panels { padding: 20px 22px 22px; min-height: 360px; }
+  .pi-p { display: grid; gap: 14px; align-content: start; }
+  .pi-p.in { animation: piin .45s var(--ease); }
+  @keyframes piin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .pi-q { font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; }
+  .pi-code { margin: 0; white-space: pre-wrap; font: 13px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--ink); background: color-mix(in srgb, var(--ground) 70%, transparent);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 16px; }
+  .pi-code b { color: var(--accent); font-weight: 600; }
+  .pi-why { font-size: 15px; line-height: 1.55; color: var(--muted); max-width: 60ch; }
+  .pi-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pi-tags span { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+  .pi-shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .pi-shots > div { display: grid; gap: 6px; align-content: start; padding: 12px; border-radius: 10px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 70%, transparent); }
+  .pi-shots small { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .pi-shots p { font-size: 13px; line-height: 1.45; padding: 8px 10px; border-radius: 12px; }
+  .pi-shots .u { justify-self: end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 4px; max-width: 92%; }
+  .pi-shots .a { background: color-mix(in srgb, var(--panel) 90%, transparent); border: 1px solid var(--rule); border-bottom-left-radius: 4px; }
+  @media (max-width: 900px) {
+    .pi { grid-template-columns: 1fr; }
+    .pi-tabs { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--rule); scrollbar-width: none; }
+    .pi-tabs button { flex: none; white-space: nowrap; padding: 9px 12px; }
+    .pi-panels { padding: 16px; min-height: 0; }
+    .pi-shots { grid-template-columns: 1fr; }
+    .pi-code { font-size: 12px; }
+  }
+
+  .pi-p[hidden] { display: none; }
+
+  /* ---------- Chapter banners: dark, numbered, with room above, so a new chapter is obvious ---------- */
+  .chapter { --cb: #0e1310; --ct: #f1f5f1; --cm: rgba(241,245,241,.66);
+    background: var(--cb); border-color: var(--cb); color: var(--ct); margin-top: 44px; padding: 34px 28px 32px; min-height: 280px; align-items: end; }
+  .jump + .chapter { margin-top: 0; }
+  .chapter::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 90% at 100% 0%, rgba(200,255,61,.16), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(111,214,164,.12), transparent 60%); }
+  .chapter > * { position: relative; }
+  .chapter .ck { color: var(--cm); align-self: stretch; align-content: space-between; }
+  .chapter .ck b { color: #c8ff3d; font-size: 14px; }
+  .chapter .ch-no { font-family: var(--display); font-weight: 900; font-stretch: 68%; font-size: clamp(96px, 11vw, 168px); line-height: .8; color: transparent;
+    -webkit-text-stroke: 1.5px rgba(200,255,61,.7); letter-spacing: -0.02em; margin-bottom: auto; }
+  .chapter h2 { color: var(--ct); }
+  .chapter p { color: var(--cm); }
+  .sh .no { min-width: 30px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chapter { --cb: #141c17; border-color: rgba(241,245,241,.1); } }
+  :root[data-theme="dark"] .chapter { --cb: #141c17; border-color: rgba(241,245,241,.1); }
+  @media (max-width: 900px) {
+    .chapter { margin-top: 28px; padding: 24px 18px; min-height: 0; }
+    .chapter .ck { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+    .chapter .ch-no { width: 100%; font-size: 84px; margin-bottom: 8px; }
+  }
+
+  /* ---------- Closing row: compact action card and next case ---------- */
+  .c-cta .inner { padding: 20px 20px 18px; gap: 16px; }
+  .c-cta h2 { font-size: clamp(34px, 3.3vw, 52px); max-width: 22ch; line-height: .92; }
+  .c-cta .cta-p { margin-top: -4px; }
+  .c-nextcase .inner { padding: 18px 20px; }
+  /* ---------- Shared case-page pieces ---------- */
+  .c-media { margin: 0; overflow: hidden; }
+  .c-media img { display: block; width: 100%; height: auto; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+  .shot { margin: 8px 0 0; display: grid; gap: 10px; }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -26px rgba(0,0,0,.45); background: #fff; }
+  .shot figcaption { font-size: 13px; color: var(--muted); }
+  .shot figcaption b { color: var(--ink); font-weight: 500; }
+  .shots2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .demo.live { aspect-ratio: var(--ar, 16 / 9); background: #000; }
+  .demo.live .canvas { width: var(--cw); height: var(--ch); }
+  .phones.flat img { border-radius: 16px; background: #fff; }
+  .flow { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 8px; counter-reset: f; }
+  .flow li { position: relative; padding: 12px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); font-size: 13px; line-height: 1.35; display: grid; gap: 6px; align-content: start; transition: border-color .4s, background .4s; }
+  .flow li small { font-size: 11px; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
+  .flow li.lit { border-color: var(--accent); background: var(--accent-soft); }
+  .flow li i { position: absolute; right: -9px; top: 50%; width: 12px; height: 12px; margin-top: -6px; z-index: 1; color: var(--muted); font-style: normal; font-size: 12px; line-height: 12px; }
+  .bars { display: grid; gap: 12px; padding: 18px; }
+  .bars .br { display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; font-size: 14px; }
+  .bars .br small { display: block; color: var(--muted); font-size: 12px; }
+  .bars .tr { position: relative; height: 26px; }
+  .bars .tr span { position: absolute; left: 0; top: 5px; height: 16px; width: 0; border-radius: 0 4px 4px 0; background: var(--accent); transition: width 1s var(--ease); }
+  .bars .tr b { position: absolute; top: 3px; font-weight: 500; font-size: 13px; padding-left: 8px; font-variant-numeric: tabular-nums; transition: left 1s var(--ease); left: 0; }
+  @media (max-width: 900px) {
+    .shots2 { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; }
+    .flow li i { display: none; }
+    .demo.live { aspect-ratio: var(--ar-m, var(--ar, 16 / 9)); }
+  }
+  @media (max-width: 520px) { .bars .br { grid-template-columns: 1fr; gap: 4px; } }
+  .canvas { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: center; }
+  .demo { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); margin-top: 8px; }
+  .demo .scene { position: absolute; inset: 0; }
+  .demo-tag { position: absolute; left: 12px; top: 12px; z-index: 2; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+  .replay { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--ground); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
+  .replay:hover, .replay:focus-visible { border-color: var(--accent); outline: none; }
+  .tbl-wrap { overflow-x: auto; margin-top: 8px; border: 1px solid var(--rule); border-radius: 12px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  table.map { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; }
+  .map th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  .map td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--muted); line-height: 1.4; vertical-align: top; }
+  .map td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .map tr:last-child td { border-bottom: 0; }
+  .c-media img { aspect-ratio: auto; object-fit: initial; }
+  .c-head h1 .line { white-space: normal; }
+  .demo.live .demo-tag { top: auto; bottom: 12px; }
+  /* ---------- Live component: Ninja Van cases opening themselves ---------- */
+  .nv { background: #f3f5f8; color: #1f2329; font-family: var(--text); }
+  .nv .canvas { padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .nv .hd { display: flex; justify-content: space-between; align-items: baseline; }
+  .nv .hd b { font-size: 17px; font-weight: 600; }
+  .nv .hd span { font-size: 11px; color: #6b7280; }
+  .nv .chips { display: flex; gap: 6px; }
+  .nv .chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; padding: 5px 8px; font-size: 11px; font-weight: 600; color: #1f2329; height: auto; border: 0; }
+  .nv .chip.total { background: #1f2329; color: #fff; }
+  .nv .chip.act { color: #c8102e; }
+  .nv .chip em { font-style: normal; background: #e8eaee; color: #1f2329; border-radius: 4px; padding: 1px 6px; font-variant-numeric: tabular-nums; transition: background .3s; }
+  .nv .chip.total em { background: #4b5058; color: #fff; }
+  .nv .chip.act em { background: #fde8eb; }
+  .nv .chip em.bump { background: #c8ff3d; color: #1f2329; }
+  .nv .table { background: #fff; border-radius: 8px; overflow: hidden; flex: 1; font-size: 11px; }
+  .nv .row { display: grid; grid-template-columns: 1.15fr 1.15fr 1.4fr; gap: 10px; padding: 0 14px; white-space: nowrap; height: 0; opacity: 0; align-items: center; border-bottom: 1px solid #eef0f3;
+    transition: height .45s var(--ease), opacity .35s, background 1.2s; overflow: hidden; }
+  .nv .row.th { height: 30px; opacity: 1; background: #f7f8fa; color: #6b7280; font-weight: 600; }
+  .nv .row.in { height: 36px; opacity: 1; }
+  .nv .row.fresh { background: #f4ffd6; }
+  .nv .row.red { color: #c8102e; }
+  .nv .row > span { overflow: hidden; text-overflow: ellipsis; }
+  .nv .row .s { display: flex; align-items: center; gap: 6px; }
+  .nv .auto { font-size: 9px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; padding: 2px 5px; background: #1f2329; color: #fff; }
+
+  /* ---------- About / CTA ---------- */
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="page">
+  <header class="top">
+    <a class="name" href="index.html" aria-label="Home"><span class="nm-t">Mancini Tan</span><svg class="nm-h" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="10" aria-hidden="true"><path d="M12 4 20.2 10.6v9.8h-5.6v-5.8H9.4v5.8H3.8v-9.8z"/></svg></a>
+    <div class="top-right">
+      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
+      <div class="menu-slot">
+        <div class="menu" id="menu">
+          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
+          <nav id="menunav" aria-label="Main">
+            <div class="links">
+              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
+              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+            <div class="foot item"><div class="secondary">
+              <span class="h">Elsewhere</span>
+              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stack" id="stack" aria-hidden="true">
+    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Simplifying operational tools</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
+  </div>
+
+
+  <section class="c-hero">
+    <div class="panel c-head">
+      <div class="crumbs">
+        <a class="chip back" href="index.html#work"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
+        <span class="chip">Ninja Van</span>
+        <span class="chip ghost">Logistics</span>
+      </div>
+      <h1>
+        <span class="line"><span>Service recovery</span></span>
+        <span class="line"><span>at scale</span></span>
+      </h1>
+      <p class="lede">When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product designer II</dd></div>
+        <div><dt>Timeline</dt><dd>2022</dd></div>
+        <div><dt>Company</dt><dd>Ninja Van</dd></div>
+        <div><dt>Scope</dt><dd>Service design, research, UI</dd></div>
+      </dl>
+    </div>
+    <aside class="panel c-results">
+      <div class="label"><span>What came of it</span><span>Service design</span></div>
+      <div class="c-results-in">
+        <div class="big"><b data-n="70%">70%</b><span>of case logging automated for delayed pickups and deliveries</span></div>
+        <div class="big"><b data-n="66%">66%</b><span>less time to identify a parcel as missing</span></div>
+        <p class="note">Both figures are approximate.</p>
+      </div>
+    </aside>
+  </section>
+
+  <figure class="panel c-media">
+    <div class="nvp" id="nvp"><img src="assets/nv-issues.jpg" alt="The Ninja Van shipper portal showing open issues, filtered by status" width="2000" height="1250"></div>
+    <figcaption>Every open case in one place, sorted by what needs the merchant to act.</figcaption>
+  </figure>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">01</span><h2>Five handovers, three teams</h2></header>
+    <div class="sb">
+      <p class="big-p">A bit of information went missing at every handover.</p>
+      <p>When a merchant raised an issue, a support agent logged it, the right resolution team investigated, and the answer made its way back along the same chain. In interviews, merchants told us the hardest part was often not knowing whether anyone was working on their case at all. And once a case was closed, the only way to dispute the outcome was to raise a new one and explain everything again.</p>
+      <div class="relay" id="relay">
+        <div class="rl-grid">
+          <span class="rl-lane" style="grid-row:1">Merchant</span>
+          <span class="rl-lane" style="grid-row:2">Support agent</span>
+          <span class="rl-lane" style="grid-row:3">Resolution team</span>
+          <div class="rl-step" data-s="0" data-lane="Merchant" style="grid-row:1;grid-column:2"><b>1</b>Raises the issue</div>
+          <div class="rl-step" data-s="1" data-lane="Support agent" style="grid-row:2;grid-column:3"><b>2</b>Logs it in the CRM</div>
+          <div class="rl-step" data-s="2" data-lane="Resolution team" style="grid-row:3;grid-column:4"><b>3</b>Investigates</div>
+          <div class="rl-step" data-s="3" data-lane="Support agent" style="grid-row:2;grid-column:5"><b>4</b>Gets the outcome</div>
+          <div class="rl-step" data-s="4" data-lane="Merchant" style="grid-row:1;grid-column:6"><b>5</b>Hears back</div>
+          <svg class="rl-path" aria-hidden="true"><path class="base"/><path class="run"/></svg>
+          <span class="rl-dot" aria-hidden="true"></span>
+        </div>
+        <div class="rl-msg">
+          <span class="rl-k">What the merchant said</span>
+          <span class="rl-chip">Parcel NV…3940</span><span class="rl-chip">Box arrived wet and torn</span><span class="rl-chip">Photos attached</span><span class="rl-chip">Wants a refund</span>
+        </div>
+        <p class="rl-heard"><span class="rl-k">What the merchant heard back</span>"Your case is under investigation."</p>
+      </div>
+      <p class="an-note">An illustration of the handovers we mapped. Four handovers, and a little gets lost at each one.</p>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">02</span><h2>Mapping the whole ecosystem</h2></header>
+    <div class="sb">
+      <p class="big-p">Service recovery touches three groups, each with their own experience and pain points. Fixing one in isolation just moves the problem.</p>
+      <p>So I looked at it from every side. I interviewed merchants, support agents and resolution teams across Southeast Asia, alongside a usability survey for agents and a Customer Effort Score survey for merchants. Then I weighed how often each theme came up against case volumes and response times, to find the changes that would help the whole system most.</p>
+      <div class="card" style="padding:0">
+        <div class="label" style="border-bottom:1px solid var(--rule)"><span>Who I interviewed</span><span>59 people · SEA</span></div>
+        <div class="bars">
+          <div class="br"><span>Support agents<small>SUS survey + interviews</small></span><div class="tr" data-w="80"><span></span><b>24</b></div></div>
+          <div class="br"><span>Merchants<small>CES survey + interviews</small></span><div class="tr" data-w="60"><span></span><b>18</b></div></div>
+          <div class="br"><span>Resolution teams<small>Finance, warehouse, drivers</small></span><div class="tr" data-w="56.7"><span></span><b>17</b></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">03</span><h2>Issues live where orders live</h2></header>
+    <div class="sb">
+      <p class="big-p">The place you book a pickup is now the place you chase it.</p>
+      <p>Raising an issue used to mean searching the website for a phone number, then hoping it had been received. So I built service recovery into the parcel portal merchants already used to manage their orders. The form asks for order IDs, issue type and proof of value in the same order agents enter them on their side, which cut out a lot of back and forth. Delayed pickups and deliveries now open cases automatically.</p>
+      <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
+        <span class="demo-tag">Live component</span>
+        <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
+          <div class="canvas">
+            <div class="hd"><b>Open issues</b><span>Shipper portal</span></div>
+            <div class="chips">
+              <span class="chip total">All issues <em id="nvAll">0</em></span>
+              <span class="chip act">For your action <em id="nvAct">0</em></span>
+              <span class="chip">Under investigation <em id="nvInv">0</em></span>
+            </div>
+            <div class="table" id="nvTable">
+              <div class="row th"><span>Title</span><span>Issue type</span><span>Status</span></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="replay" type="button">Replay</button>
+      </div>
+      <figure class="shot"><div class="nvc" id="nvc"><img src="assets/nv-case.jpg" alt="A case details page with a status timeline, claim details and an email thread with the support agent" width="2400" height="1500" loading="lazy"></div><figcaption><b>Fields that change with the case.</b> Each issue type has its own status steps and details. A damaged parcel shows claim details and a way to dispute the amount, while a delayed pickup only shows what's relevant to it.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">04</span><h2>A bad score reopens the case</h2></header>
+    <div class="sb">
+      <p class="big-p">The survey stopped being just a measurement and became a way back in.</p>
+      <p>Customer Effort Score surveys used to go out by cold call and email, which was tedious for everyone and got very few replies. I moved the survey into the portal, right next to the case it's about, and into new HTML email templates designed for each issue type. A low score now reopens the conversation and suggests other ways to resolve it.</p>
+      <div class="trio">
+        <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only emails, with no way to leave a score.</p></div>
+        <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>One tap to rate, from the portal or any email.</p></div>
+        <div class="tile"><span class="tile-k">Closing the loop</span><b>A low score reopens it</b><p>Merchants can question an outcome without starting over.</p></div>
+      </div>
+      <figure class="shot emails">
+        <div class="em-row" role="img" aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button">
+          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
+          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
+        </div>
+        <figcaption><b>From plain text to on-brand emails.</b> Updates used to be text-only. Each case type now has its own branded template that feels clearly, legitimately Ninja Van, and ends with a one-tap rating, so every update collects feedback and keeps the recovery journey going.</figcaption></figure>
+      <div class="result"><b>Designing both sides of the service.</b><p>Support agents worked in a Salesforce-based CRM, so I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
+    </div>
+  </section>
+
+  <section class="panel sec">
+    <header class="sh"><span class="no">+</span><h2>Also at Ninja Van: Akira</h2></header>
+    <div class="sb">
+      <p class="big-p">The case for a design system, in numbers.</p>
+      <p>Akira was Ninja Van's design system initiative. I worked on the documentation and on building content standards into the component library itself. It's a quiet way to keep a product consistent, and it lasts.</p>
+      <div class="callouts">
+        <div><b data-n="27">27</b><span>active products across the portfolio</span></div>
+        <div><b data-n="70%">70%</b><span>of implementation on locally customised components</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="c-next">
+    <div class="panel c-cta action-card">
+      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
+      <div class="inner">
+        <h2>Untangling a process across teams? Let's map it out together.</h2>
+        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
+      </div>
+    </div>
+    <a class="panel c-nextcase" href="neuron.html" aria-label="Next case: Shift plans that stick">
+      <div class="label"><span>Next case</span><span>05</span></div>
+      <div class="inner">
+        <span class="nlogo"><img src="assets/logo-neuron.svg" alt="" width="40" height="40"></span>
+        <div><h3>Shift plans that stick</h3><p>Neuron Mobility · Micromobility</p></div>
+        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+  </section>
+
+  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const wait = (ms, bag) => new Promise(r => bag.push(setTimeout(r, ms)));
+  const once = (el, fn, t = .4) => new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { ob.disconnect(); fn(); } }), { threshold: t }).observe(el);
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber(b)), 450);
+  document.querySelectorAll('.callouts, .strip').forEach(c => once(c, () => c.querySelectorAll('b[data-n]').forEach(b => window.rollNumber(b))));
+  /* Scale each fixed-size component canvas to its box */
+  /* On phones, a canvas with data-focus zooms into its most important region instead of shrinking the whole screen */
+  const narrow = matchMedia('(max-width: 900px)');
+  document.querySelectorAll('.demo.live').forEach(d => { const c = d.querySelector('.canvas');
+    const fit = () => { const w = d.clientWidth, h = d.clientHeight;
+      if (narrow.matches && d.dataset.focus) { const [fx, fy, fw, fh] = d.dataset.focus.split(',').map(Number), s = Math.min(w / fw, h / fh);
+        c.style.transformOrigin = '0 0'; c.style.left = '0'; c.style.top = '0';
+        c.style.transform = `translate(${(w - fw * s) / 2 - fx * s}px, ${(h - fh * s) / 2 - fy * s}px) scale(${s})`; }
+      else { c.style.transform = c.style.left = c.style.top = c.style.transformOrigin = ''; c.style.setProperty('--s', Math.min(w / c.offsetWidth, h / c.offsetHeight)); } };
+    new ResizeObserver(fit).observe(d); narrow.addEventListener('change', fit); });
+  /* Bars grow when seen */
+  document.querySelectorAll('.bars').forEach(bx => { const go = () => bx.querySelectorAll('.tr').forEach(t => { const w = t.dataset.w + '%'; t.querySelector('span').style.width = w; t.querySelector('b').style.left = w; });
+    still.matches ? go() : once(bx, go, .5); });
+  /* Case details: the status timeline fills in, step by step */
+  const nvc = document.getElementById('nvc');
+  if (nvc && !still.matches) {
+    const m = document.createElement('div'); m.className = 'mask'; nvc.appendChild(m);
+    const H = 1500, pct = y => (y / H * 100) + '%';
+    const stops = [425, 575, 830];            // just below step 1, step 2, step 3 (in image pixels)
+    m.style.top = pct(stops[0]); m.style.height = pct(835 - stops[0] + 0);
+    let tm = [];
+    const run = () => { tm.forEach(clearTimeout); tm = []; m.style.transition = 'none'; m.style.top = pct(stops[0]); m.style.height = pct(835 - stops[0]); void m.offsetWidth; m.style.transition = '';
+      tm.push(setTimeout(() => { m.style.top = pct(stops[1]); m.style.height = pct(835 - stops[1]); }, 700));
+      tm.push(setTimeout(() => { m.style.top = pct(stops[2]); m.style.height = pct(835 - stops[2]); }, 1700)); };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) run(); }), { threshold: .5 }).observe(nvc);
+  }
+  /* Relay: the case moves between teams; one detail drops at each handover */
+  const relay = document.getElementById('relay');
+  if (relay) {
+    const grid = relay.querySelector('.rl-grid'), steps = [...relay.querySelectorAll('.rl-step')], chips = [...relay.querySelectorAll('.rl-chip')];
+    const base = relay.querySelector('.rl-path .base'), runP = relay.querySelector('.rl-path .run'), dot = relay.querySelector('.rl-dot');
+    let pts = [], len = 0, segs = [];
+    const layout = () => { const g = grid.getBoundingClientRect();
+      pts = steps.map(s => { const r = s.getBoundingClientRect(); return [r.left - g.left + r.width / 2, r.top - g.top + r.height / 2]; });
+      const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+      base.setAttribute('d', d); runP.setAttribute('d', d); len = runP.getTotalLength() || 0;
+      segs = pts.slice(1).map((p, i) => Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]));
+      runP.style.strokeDasharray = len; };
+    const at = upto => segs.slice(0, upto).reduce((a, b) => a + b, 0);
+    let timers = [];
+    const finish = () => { relay.classList.add('static'); steps.forEach(s => s.classList.add('on')); chips.forEach(c => c.classList.add('lost')); runP.style.strokeDashoffset = 0; };
+    const reset = () => { timers.forEach(clearTimeout); timers = []; relay.classList.remove('done');
+      steps.forEach(s => s.classList.remove('on')); chips.forEach(c => c.classList.remove('lost'));
+      runP.style.transition = 'none'; runP.style.strokeDashoffset = len; dot.style.opacity = 0; };
+    const moveDot = i => { if (!pts[i]) return; dot.style.transform = `translate(${pts[i][0]}px, ${pts[i][1]}px)`; };
+    const play = () => { layout(); reset(); dot.style.transition = 'none'; moveDot(0); void dot.offsetWidth;
+      dot.style.transition = 'transform .8s cubic-bezier(.4,0,.2,1), opacity .3s'; let t = 300;
+      timers.push(setTimeout(() => { steps[0].classList.add('on'); dot.style.opacity = 1; }, t));
+      for (let i = 1; i < steps.length; i++) { t += 1200;
+        timers.push(setTimeout(() => { runP.style.transition = 'stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)'; runP.style.strokeDashoffset = len - at(i); moveDot(i);
+          chips[i - 1] && chips[i - 1].classList.add('lost'); }, t));
+        timers.push(setTimeout(() => steps[i].classList.add('on'), t + 650)); }
+      timers.push(setTimeout(() => { relay.classList.add('done'); dot.style.opacity = 0; }, t + 900)); };
+    new ResizeObserver(() => { layout(); if (relay.classList.contains('static')) runP.style.strokeDashoffset = 0; }).observe(grid);
+    if (still.matches || matchMedia('(max-width: 760px)').matches && false) { layout(); finish(); }
+    else new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : reset()), { threshold: .5 }).observe(relay);
+  }
+  /* Flow steps light up in order */
+  document.querySelectorAll('.flow').forEach(fl => { const li = [...fl.children]; if (still.matches) return;
+    once(fl, () => li.forEach((l, i) => setTimeout(() => { l.classList.add('lit'); setTimeout(() => l.classList.remove('lit'), 900); }, i * 450)), .6); });
+  const live = (id, player) => { const d = document.getElementById(id); player.stop(); once(d, player.play, .45);
+    const r = d.querySelector('.replay'); if (r) r.addEventListener('click', player.play); };
+  /* Ninja Van: cases open themselves, newest on top */
+  const nv = (() => {
+    const data = [
+      ['Driver was rude durin…', 'Rude behaviour', 'Under investigation', false],
+      ['Driver ignored the instr…', "Didn't follow instructions", 'Under investigation', true],
+      ['Customer said cup w…', 'Content damaged', 'Claims processing', false],
+      ['Item has been missi…', 'Missing', 'Under investigation', true],
+      ['Item leaked', 'Content damaged', 'Pending review', true],
+      ['Box was wet and torn', 'Packaging damaged', 'For your action', true],
+    ];
+    const table = document.getElementById('nvTable'), head = table.firstElementChild;
+    const cAll = document.getElementById('nvAll'), cAct = document.getElementById('nvAct'), cInv = document.getElementById('nvInv');
+    let bag = [], run = 0;
+    const mk = ([t, ty, st, auto]) => {
+      const r = document.createElement('div');
+      r.className = 'row' + (st === 'For your action' ? ' red' : '');
+      r.innerHTML = `<span>${t}</span><span>${ty}</span><span class="s">${st}${auto ? '<span class="auto">AUTO</span>' : ''}</span>`;
+      return r;
+    };
+    const counts = n => {
+      const shown = data.slice(0, n);
+      cAll.textContent = n;
+      cAct.textContent = shown.filter(d => d[2] === 'For your action').length;
+      cInv.textContent = shown.filter(d => d[2] === 'Under investigation').length;
+    };
+    const clear = () => { [...table.querySelectorAll('.row:not(.th)')].forEach(r => r.remove()); };
+    const final = () => { clear(); data.forEach(d => { const r = mk(d); r.classList.add('in'); head.after(r); }); counts(data.length); };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; final(); };
+    const bump = el => { el.classList.add('bump'); bag.push(setTimeout(() => el.classList.remove('bump'), 500)); };
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run; clear(); counts(0);
+      await wait(400, bag);
+      for (let i = 0; i < data.length; i++) {
+        if (me !== run) return;
+        const r = mk(data[i]); r.classList.add('fresh'); head.after(r);
+        r.offsetWidth; r.classList.add('in');
+        counts(i + 1); bump(cAll);
+        if (data[i][2] === 'For your action') bump(cAct);
+        if (data[i][2] === 'Under investigation') bump(cInv);
+        bag.push(setTimeout(() => r.classList.remove('fresh'), 1200));
+        await wait(650, bag);
+      }
+    };
+    return { play, stop };
+  })();
+
+  /* Shipper portal: the six real cases arrive oldest first, each new one landing on top */
+  const nvp = document.getElementById('nvp');
+  if (nvp && !still.matches) {
+    const st = document.createElement('div'); st.className = 'st'; nvp.appendChild(st);
+    nvp.querySelector('img').style.visibility = 'hidden';
+    const fit = () => st.style.transform = `scale(${nvp.clientWidth / 2000})`; new ResizeObserver(fit).observe(nvp); fit();
+    const bg = document.createElement('div'); bg.className = 'bg'; st.appendChild(bg);
+    const slots = [414, 472, 530, 589, 647, 705];
+    const status = ['act', 'pend', 'ui', 'cl', 'ui', 'ui'];
+    const boxes = { all: [523, 51, '#fff'], act: [790, 53, '#c8102e'], pend: [1061, 52, '#444'], ui: [1370, 52, '#444'], cl: [1661, 52, '#444'] };
+    const cnt = {}; Object.entries(boxes).forEach(([k, [x, w, c]]) => { const d = document.createElement('div'); d.className = 'cnt'; Object.assign(d.style, { left: x + 'px', width: w + 'px', color: c });
+      d.innerHTML = '<b></b>'; st.appendChild(d); cnt[k] = d.firstChild; });
+    const rows = slots.map((y, k) => { const r = document.createElement('div'); r.className = 'row pre'; r.style.top = slots[0] + 'px';
+      r.style.backgroundPosition = `-378px -${y}px`; st.appendChild(r); return r; });
+    let timers = [], n = {};
+    const set = (k, v, bump) => { n[k] = v; cnt[k].textContent = v; if (bump) { cnt[k].classList.remove('bump'); void cnt[k].offsetWidth; cnt[k].classList.add('bump'); } };
+    const reset = () => { timers.forEach(clearTimeout); timers = []; rows.forEach(r => { r.classList.add('pre'); r.classList.remove('fresh'); r.style.top = slots[0] + 'px'; });
+      set('all', 2); ['act', 'pend', 'ui', 'cl'].forEach(k => set(k, 0)); };
+    const at = (ms, f) => timers.push(setTimeout(f, ms));
+    const play = () => { reset(); let t = 600;
+      for (let k = 5; k >= 0; k--) { at(t, () => {
+          for (let j = k + 1; j <= 5; j++) rows[j].style.top = slots[j - k] + 'px';
+          const r = rows[k]; r.style.top = slots[0] + 'px'; r.classList.remove('pre'); r.classList.add('fresh');
+          set('all', n.all + 1, true); set(status[k], n[status[k]] + 1, true);
+          if (k === 0) for (let j = 0; j <= 5; j++) rows[j].style.top = slots[j] + 'px'; });
+        t += 850; }
+      at(t + 4200, play); };
+    reset();
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : reset()), { threshold: .4 }).observe(nvp);
+  }
+  live('nvDemo', nv);
+})();
+</script>
+</body>
+</html>

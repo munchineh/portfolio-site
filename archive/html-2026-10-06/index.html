@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Mancini Tan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .hero-head { grid-column: 1 / 10; display: flex; flex-direction: column; justify-content: flex-start; padding: 28px; margin-top: -86px; padding-top: 118px; }
+  .hero-head h1 {
+    font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase;
+    font-size: clamp(56px, 9.4vw, 150px); line-height: .86; letter-spacing: -0.015em;
+  }
+  .hero-head h1 .line { display: block; overflow: hidden; }
+  .hero-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .hero-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  .hero-head h1 .line:nth-child(3) span { animation-delay: .16s; }
+  .hero-head h1 .line:nth-child(4) span { animation-delay: .24s; }
+  @keyframes rise { to { transform: none; } }
+  .hero-sub { margin-top: auto; padding-top: 28px; display: flex; gap: 24px; justify-content: space-between; align-items: end; flex-wrap: wrap; }
+  .hero-sub p { max-width: 36ch; color: var(--muted); font-size: 18px; line-height: 1.4; }
+  .hero-side { grid-column: 10 / 13; margin-top: 86px; align-self: start; display: grid; gap: 10px; padding: 10px; }
+  .hero-side .portrait { border-radius: 10px; overflow: hidden; }
+  .side-btns { display: grid; gap: 8px; }
+  .side-btns .btn { justify-content: space-between; width: 100%; }
+  .portrait { aspect-ratio: 3 / 4; background: var(--soft); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .glance .facts dl { display: grid; grid-template-columns: 1fr 1.4fr 1.3fr 1fr; }
+  .glance .facts dl > div { display: grid; gap: 10px; align-content: start; padding: 18px 20px 20px; border-right: 1px solid var(--rule); }
+  .glance .facts dl > div:last-child { border-right: 0; }
+  .facts dt { font-size: 12px; color: var(--muted); }
+  .facts dd { font-size: 15px; line-height: 1.4; }
+  .facts .yrs { display: flex !important; align-items: center; gap: .22em; }
+  .facts .yrs { text-transform: uppercase; white-space: nowrap; display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 44px; line-height: .9; color: var(--accent); margin-bottom: 4px; }
+  .facts .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .facts .chips span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .status { display: inline-flex; align-items: center; gap: 8px; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fbf6a; box-shadow: 0 0 0 3px rgba(63,191,106,.18); }
+
+  /* ---------- Work index (scroll highlight) ---------- */
+  .work { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: start; }
+  .preview { grid-column: 1 / 6; position: sticky; top: 96px; }
+  .stage { aspect-ratio: 3 / 2; position: relative; overflow: hidden; background: var(--soft); border-bottom: 1px solid var(--rule); }
+  .scene { position: absolute; inset: 0; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform .8s var(--ease); overflow: hidden; }
+  .scene.on { opacity: 1; transform: none; }
+  .scene > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .canvas { position: absolute; left: 50%; top: 50%; width: 560px; height: 373px; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: center; }
+  .preview .meta { padding: 16px; display: grid; gap: 10px; min-height: 132px; align-content: start; }
+  .meta .h { font-size: 12px; color: var(--muted); }
+
+  /* "What came of it" stats */
+  .stats { display: grid; grid-template-columns: max-content 1fr; gap: 10px 14px; }
+  .stat { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; font-size: 14px; }
+  .stat b { color: var(--accent); font-family: var(--display); font-weight: 800; font-stretch: 75%; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat > span { color: var(--muted); }
+
+  .index { grid-column: 6 / 13; }
+  .index ol { list-style: none; padding: 8px 28px 140px; }
+  .index li { display: grid; grid-template-columns: 44px 1fr auto; gap: 18px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+  .index li:last-child { border-bottom: 0; }
+  .index .no { font-size: 13px; font-weight: 500; border: 1px solid var(--rule); border-radius: 8px; height: 30px; display: grid; place-items: center; color: var(--muted); margin-top: calc((var(--tfs) * .88 - 30px) / 2); transition: all .35s; }
+  .index { --tfs: clamp(40px, 5vw, 80px); }
+  .index h3 {
+    font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase;
+    font-size: var(--tfs); line-height: .88; letter-spacing: -0.01em; color: var(--quiet); transition: color .35s var(--ease);
+  }
+  .index .more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+  .index .more > div { overflow: hidden; }
+  .index .desc { margin-top: 14px; font-size: 16px; line-height: 1.45; max-width: 44ch; color: var(--ink); }
+  .index .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+  .tag { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .tag:first-child { background: var(--accent-soft); color: var(--ink); border-color: transparent; }
+  .index .m-media, .index .stats { display: none; }
+  .index .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; margin-top: 4px; opacity: 0; transition: opacity .35s, background .25s, color .25s; }
+  .index .go svg { width: 16px; height: 16px; }
+  .index li.on h3 { color: var(--ink); }
+  .index li.on .no { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .index li.on .more { grid-template-rows: 1fr; }
+  .index li.on .go { opacity: 1; }
+  .index li a:hover ~ .go, .index .go:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  /* ---------- Live component: OKX quote in chat ---------- */
+  .okx { background: #000; color: #fff; font-family: var(--text); }
+  .okx .canvas { display: grid; grid-template-columns: 230px 250px; gap: 28px; align-content: center; justify-content: center; }
+  .okx .who { font-size: 11px; color: #8b8b8b; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .okx .who i { width: 18px; height: 18px; border-radius: 50%; background: #fff; display: inline-block; }
+  .okx .bubble { background: #1f1f1f; border-radius: 16px 16px 16px 4px; padding: 12px 14px; font-size: 14px; line-height: 1.45; min-height: 44px; }
+  .okx .dots { display: inline-flex; gap: 4px; padding: 4px 0; }
+  .okx .dots i { width: 6px; height: 6px; border-radius: 50%; background: #8b8b8b; animation: blink 1s infinite; }
+  .okx .dots i:nth-child(2) { animation-delay: .15s; } .okx .dots i:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
+  .okx .quote { align-self: center; background: #161616; border: 1px solid #262626; border-radius: 16px; padding: 16px; text-align: center;
+    opacity: 0; transform: translateY(40px); transition: opacity .5s var(--ease), transform .6s var(--ease); }
+  .okx .quote.in { opacity: 1; transform: none; }
+  .okx .qicon { width: 30px; height: 30px; border-radius: 50%; background: #26a17b; margin: 0 auto 8px; display: grid; place-items: center; font-weight: 700; font-size: 16px; }
+  .okx .qt { font-size: 17px; font-weight: 500; }
+  .okx .qs { font-size: 12px; color: #bdbdbd; margin: 2px 0 12px; }
+  .okx dl { display: grid; gap: 7px; font-size: 12px; text-align: left; }
+  .okx dl div { display: flex; justify-content: space-between; opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s var(--ease); }
+  .okx .quote.in dl div { opacity: 1; transform: none; }
+  .okx .quote.in dl div:nth-child(1) { transition-delay: .25s; } .okx .quote.in dl div:nth-child(2) { transition-delay: .32s; }
+  .okx .quote.in dl div:nth-child(3) { transition-delay: .39s; } .okx .quote.in dl div:nth-child(4) { transition-delay: .46s; }
+  .okx dt { color: #8b8b8b; } .okx dd { text-align: right; }
+  .okx .qbtn { margin-top: 14px; height: 36px; border-radius: 999px; background: #c8ff3d; color: #000; font-size: 13px; font-weight: 600; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .okx .qbtn::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--t, 0%); background: rgba(0,0,0,.12); transition: width 1s linear; }
+
+  /* ---------- Live component: Buildlr, rebuilt from the original 1512px screen ---------- */
+  .bl { background: #323838; font-family: "Poppins", "Archivo", sans-serif; }
+  .bl .canvas { width: 1512px; height: 1090px; position: absolute; color: #212525; }
+  .bl .canvas * { box-sizing: border-box; }
+  .bl .bl-a, .bl .bl-rfi > span, .bl .bl-field, .bl .bl-addrfi, .bl .bl-btn, .bl .bl-filter, .bl .bl-tsearch { position: absolute; }
+  .bl .crumb, .bl .tab, .bl .lbl, .bl .lblk, .bl .bl-row, .bl .bl-tt, .bl .bl-tm, .bl .bl-tp, .bl .bl-btn, .bl .bl-filter, .bl .bl-meta, .bl .bl-rfih, .bl .bl-quick, .bl .bl-addrfi, .bl .bl-me b {
+    font-family: "Clash Display", "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0; }
+  .bl .pp, .bl .pr { font-family: "Poppins", "Archivo", sans-serif; font-weight: 500; font-size: 12px; }
+  .bl .pr { font-weight: 400; font-size: 14px; letter-spacing: -.01em; }
+  .bl .grey { color: #8c8c8c; } .bl .dk { color: #212525; }
+  .bl .sep { font-family: "Clash Display", sans-serif; font-weight: 300; font-size: 24px; color: #d9d9d9; line-height: 1; }
+  /* chrome */
+  .bl .bl-top { position: absolute; inset: 0 0 auto 0; height: 72px; background: #323838; display: flex; align-items: center; padding: 0 24px; gap: 30px; }
+  .bl .bl-logo { font-family: "Clash Display", sans-serif; font-weight: 600; font-size: 28px; color: #c8b9a6; width: 20px; }
+  .bl .bl-search { display: flex; align-items: center; gap: 12px; color: #758484; font-size: 14px; }
+  .bl .bl-me { margin-left: auto; display: grid; text-align: right; line-height: 1.25; }
+  .bl .bl-me b { color: #e8f4f4; font-size: 12px; } .bl .bl-me i { font-style: normal; color: #758484; font-size: 12px; }
+  .bl .bl-av { width: 40px; height: 40px; border-radius: 4px; background: linear-gradient(160deg, #cfc6ba, #8d8378); border: 2px solid #e8f4f4; }
+  .bl .bl-bell { display: grid; }
+  .bl .bl-rail { position: absolute; left: 0; top: 72px; width: 64px; height: 1018px; background: #323838; }
+  .bl .bl-ri { position: absolute; left: 8px; width: 48px; height: 48px; display: grid; place-items: center; color: #e8f4f4; border-radius: 4px; }
+  .bl .bl-ri.act { background: #3f4747; }
+  .bl .bl-head { position: absolute; left: 64px; top: 75px; width: 1432px; height: 74px; background: #fff; }
+  .bl .bl-head .bl-a { transform: translate(-64px, -75px); }
+  .bl .crumb { font-size: 14px; color: #758484; } .bl .crumb.cur { color: #212525; }
+  .bl .bl-meta { position: absolute; right: 26px; top: 16px; height: 42px; border: 1px solid #d9d9d9; border-radius: 21px; padding: 0 18px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #8c8c8c; }
+  .bl .bl-meta em { font-style: normal; font-weight: 300; font-size: 22px; color: #d9d9d9; }
+  /* left menu (flows, so tiers can open) */
+  .bl .bl-menu { position: absolute; left: 64px; top: 149px; width: 280px; height: 941px; background: #fff; border-right: 1px solid #eaeaea; overflow: hidden; }
+  .bl .bl-row { height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 0 24px; font-size: 12px; color: #212525; background: #fff; }
+  .bl .bl-row svg { flex: none; }
+  .bl .bl-row.tasks { background: #323838; color: #fff; }
+  .bl .bl-row[data-l="1"] { padding-left: 36px; background: #f3f4f6; }
+  .bl .bl-row.bath { background: #d9d9d9; }
+  .bl .bl-row[data-l="2"] { padding-left: 48px; }
+  .bl .bl-row.param span { display: flex; gap: 10px; align-items: center; padding-left: 26px; color: #8c8c8c; }
+  .bl .bl-row.param { border-bottom: 1px solid #f3f4f6; margin: 0 8px; padding-left: 40px; }
+  .bl .bl-row.grey { color: #8c8c8c; }
+  .bl .bl-row[data-l="3"] { padding-left: 72px; }
+  .bl .bl-row.faint { color: #d9d9d9; }
+  .bl .bl-row.addroom { color: #8c8c8c; } .bl .bl-row .plus { font-size: 18px; color: #8c8c8c; font-family: "Poppins", sans-serif; font-weight: 300; }
+  .bl .bl-grp { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .45s var(--ease); position: relative; }
+  .bl .bl-grp > * { min-height: 0; }
+  .bl .bl-grp { overflow: hidden; }
+  .bl .bl-grp.shut { grid-template-rows: 0fr; }
+  .bl .bl-grp { display: block; max-height: 800px; transition: max-height .5s var(--ease); }
+  .bl .bl-grp.shut { max-height: 0; }
+  .bl .bl-line { position: absolute; left: 60px; top: 0; height: 100px; border-left: 1.5px solid #212525; }
+  .bl .bl-row[data-l="3"]::before { content: ""; position: absolute; left: 60px; width: 7px; border-top: 1.5px solid #212525; }
+  .bl .bl-row[data-l="3"] { position: relative; }
+  .bl .bl-row[data-l="3"]::after { content: ""; position: absolute; left: 64px; width: 4px; height: 4px; background: currentColor; }
+  .bl .bl-row.pick { transition: color .3s; color: #212525; }
+  .bl .bl-row.chev-flip svg { transform: rotate(180deg); }
+  .bl .bl-row svg { transition: transform .35s var(--ease); }
+  /* main */
+  .bl .bl-main { position: absolute; left: 0; top: 0; width: 1512px; height: 1090px; pointer-events: none; }
+  .bl .bl-main::before { content: ""; position: absolute; left: 344px; top: 149px; width: 1152px; height: 941px; background: #f3f4f6; }
+  .bl .tab { font-size: 12px; color: #8c8c8c; } .bl .tab.cur { color: #212525; }
+  .bl .bl-filter { left: 1048px; top: 157px; width: 96px; height: 32px; border: 1px solid #d9d9d9; background: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; }
+  .bl .bl-tsearch { left: 1152px; top: 157px; width: 320px; height: 32px; background: #fff; display: flex; align-items: center; gap: 12px; padding: 0 16px; font-size: 12px; color: #8c8c8c; }
+  .bl .lbl { font-size: 12px; color: #8c8c8c; }
+  .bl .lbl.dk { color: #212525; }
+  .bl .bl-task { position: absolute; left: 352px; top: 229px; width: 1120px; height: 92px; background: #323838; }
+  .bl .bl-sw { position: absolute; width: 36px; height: 20px; border-radius: 10px; background: #d9d9d9; transition: background .3s; }
+  .bl .bl-sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .3s var(--ease); box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .bl .bl-sw.on::after { transform: translateX(16px); }
+  .bl .bl-sw.green { left: 16px; top: 16px; width: 40px; height: 24px; border-radius: 4px; }
+  .bl .bl-sw.green::after { width: 16px; height: 18px; border-radius: 3px; top: 3px; }
+  .bl .bl-sw.green.on { background: #4caf6a; }
+  .bl .bl-sw.tan { position: static; flex: none; }
+  .bl .bl-sw.tan.on { background: #b9a898; }
+  .bl .bl-tt { position: absolute; left: 72px; top: 20px; color: #fff; font-size: 12px; }
+  .bl .bl-tm { position: absolute; left: 272px; top: 20px; color: #fff; font-size: 10px; } .bl .bl-tm i { font-style: normal; color: #758484; margin: 0 4px 0 12px; }
+  .bl .bl-ticons { position: absolute; right: 16px; top: 16px; display: flex; gap: 14px; }
+  .bl .bl-tp { position: absolute; top: 52px; height: 28px; border-radius: 14px; background: #3f4747; padding: 0 16px; display: flex; align-items: center; gap: 10px; font-size: 10px; color: #758484; opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s var(--ease); }
+  .bl .bl-tp.in { opacity: 1; transform: none; }
+  .bl .bl-tp.p1 { left: 16px; } .bl .bl-tp.p2 { left: 245px; }
+  .bl .bl-tp i, .bl .bl-tp u { font-style: normal; text-decoration: none; } .bl .bl-tp u { color: #fff; } .bl .bl-tp b { font-weight: 500; color: #b9a898; } .bl .bl-tp em { font-style: normal; color: #5b6464; }
+  .bl .bl-body { position: absolute; left: 352px; top: 321px; width: 1120px; height: 769px; background: #fff; }
+  .bl .bl-field { height: 29px; background: #f3f4f6; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .bl .bl-field i { font-style: normal; color: #d9d9d9; font-size: 14px; }
+  .bl .bl-field .ph { color: #d9d9d9; }
+  .bl .bl-rfi { position: absolute; left: 368px; top: 435px; width: 405px; height: 358px; border: 1px solid #eaeaea; border-radius: 4px; background: #fff; opacity: 0; transform: translateY(10px); transition: opacity .45s, transform .45s var(--ease); }
+  .bl .bl-rfi.in, .bl .bl-addrfi.in { opacity: 1; transform: none; }
+  .bl .bl-rfi > span:not(.bl-field) { left: 16px; }
+  .bl .bl-rfih { height: 32px; background: #f3f4f6; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 12px; }
+  .bl .lblk { font-size: 12px; color: #212525; }
+  .bl .bl-desc { top: 238px; width: 373px; height: 56px; background: #f3f4f6; border-radius: 4px; padding: 9px 13px; font-size: 12px; line-height: 18px; }
+  .bl .bl-quick { top: 310px; height: 32px; padding: 0 16px; background: #212525; color: #fff; display: flex; align-items: center; font-size: 12px; }
+  .bl .bl-addrfi { left: 781px; top: 435px; height: 32px; padding: 0 18px; border: 1px solid #d9d9d9; display: flex; align-items: center; font-size: 12px; background: #fff; opacity: 0; transition: opacity .45s .15s; }
+  .bl .bl-subrow { position: absolute; left: 368px; width: 672px; display: flex; align-items: center; gap: 10px; }
+  .bl .bl-subrow em { font-style: normal; color: #212525; font-size: 12px; }
+  .bl .bl-subrow .rule { flex: 1; border-top: 1px solid #eaeaea; margin-left: 14px; }
+  .bl .bl-box { width: 16px; height: 16px; border: 1px solid #d9d9d9; border-radius: 3px; position: relative; transition: background .25s, border-color .25s; }
+  .bl .bl-box.on { background: #212525; border-color: #212525; }
+  .bl .bl-box.on::after { content: ""; position: absolute; left: 4.5px; top: 1px; width: 4px; height: 8px; border: solid #fff; border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+  .bl .bl-sum { position: absolute; left: 1064px; top: 337px; width: 392px; height: 680px; border: 1px solid #eaeaea; border-radius: 4px; padding: 14px 16px; display: flex; flex-direction: column; }
+  .bl .bl-ln { display: grid; grid-template-columns: 1fr 42px 46px; height: 18px; font-size: 12px; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+  .bl .bl-ln span:first-child { text-align: left; }
+  .bl .bl-ln.l { color: #d9d9d9; } .bl .bl-ln.gap { margin-top: 26px; }
+  .bl .bl-ln[data-c] { opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s var(--ease); }
+  .bl .bl-ln[data-c].in { opacity: 1; transform: none; }
+  .bl .bl-tot { margin-top: auto; border-top: 1px solid #eaeaea; padding-top: 16px; }
+  .bl .bl-ln.g { color: #8c8c8c; } .bl .bl-ln.t { font-weight: 700; } .bl .bl-ln.t span:first-child { color: #8c8c8c; }
+  .bl .bl-btn { top: 1041px; height: 32px; padding: 0 16px; border: 1px solid #d9d9d9; background: #fff; display: flex; align-items: center; font-size: 12px; }
+  .bl .bl-btn.red { color: #ff3e3e; border-color: #ff3e3e; } .bl .bl-btn.org { color: #ff9f22; border-color: #ffd29a; }
+  /* ---------- Live component: Ninja Van cases opening themselves ---------- */
+  .nv { background: #f3f5f8; color: #1f2329; font-family: var(--text); }
+  .nv .canvas { padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .nv .hd { display: flex; justify-content: space-between; align-items: baseline; }
+  .nv .hd b { font-size: 17px; font-weight: 600; }
+  .nv .hd span { font-size: 11px; color: #6b7280; }
+  .nv .chips { display: flex; gap: 6px; }
+  .nv .chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; padding: 5px 8px; font-size: 11px; font-weight: 600; }
+  .nv .chip.total { background: #1f2329; color: #fff; }
+  .nv .chip.act { color: #c8102e; }
+  .nv .chip em { font-style: normal; background: #e8eaee; color: #1f2329; border-radius: 4px; padding: 1px 6px; font-variant-numeric: tabular-nums; transition: background .3s; }
+  .nv .chip.total em { background: #4b5058; color: #fff; }
+  .nv .chip.act em { background: #fde8eb; }
+  .nv .chip em.bump { background: #c8ff3d; color: #1f2329; }
+  .nv .table { background: #fff; border-radius: 8px; overflow: hidden; flex: 1; font-size: 11px; }
+  .nv .row { display: grid; grid-template-columns: 1.15fr 1.15fr 1.4fr; gap: 10px; padding: 0 14px; white-space: nowrap; height: 0; opacity: 0; align-items: center; border-bottom: 1px solid #eef0f3;
+    transition: height .45s var(--ease), opacity .35s, background 1.2s; overflow: hidden; }
+  .nv .row.th { height: 30px; opacity: 1; background: #f7f8fa; color: #6b7280; font-weight: 600; }
+  .nv .row.in { height: 36px; opacity: 1; }
+  .nv .row.fresh { background: #f4ffd6; }
+  .nv .row.red { color: #c8102e; }
+  .nv .row > span { overflow: hidden; text-overflow: ellipsis; }
+  .nv .row .s { display: flex; align-items: center; gap: 6px; }
+  .nv .auto { font-size: 9px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; padding: 2px 5px; background: #1f2329; color: #fff; }
+
+  /* ---------- About / CTA ---------- */
+  .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .about .blurb { grid-column: 1 / 9; padding: 28px; display: grid; gap: 40px; }
+  .about .blurb > p { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; letter-spacing: -0.01em; max-width: 30ch; }
+  .strengths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .strengths b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 6px; }
+  .strengths p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .about .cta { grid-column: 9 / 13; display: grid; grid-template-rows: auto 1fr; }
+  .about .cta .inner { padding: 20px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  .about .cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(34px, 3.2vw, 52px); line-height: .92; }
+  .about .cta p { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .about .cta .mail { font-size: 13px; color: var(--muted); }
+  @media (max-width: 900px) {
+    .hero-head { grid-column: 1 / -1; min-height: auto; padding: 96px 18px 20px; margin-top: -78px; }
+    .hero-side { grid-column: 1 / -1; margin-top: 0; grid-template-columns: 150px 1fr; align-items: stretch; gap: 14px; }
+    .hero-side .portrait { aspect-ratio: auto; height: 100%; min-height: 170px; }
+    .side-btns { align-content: center; }
+    .glance .facts dl { grid-template-columns: 1fr 1fr; }
+    .glance .facts dl > div:nth-child(2) { border-right: 0; }
+    .glance .facts dl > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .portrait { aspect-ratio: 3 / 4; }
+    .preview { display: none; }
+    .index { grid-column: 1 / -1; }
+    .index ol { padding: 4px 18px 18px; }
+    .index li { grid-template-columns: 34px 1fr; gap: 12px; }
+    .index { --tfs: clamp(34px, 9vw, 52px); }
+    .index .go { display: none; }
+    .index .m-media { display: block; position: relative; aspect-ratio: 3 / 2; border-radius: 10px; overflow: hidden; margin-top: 16px; background: var(--soft); }
+    .index .m-media .scene { opacity: 1; transform: none; }
+    .index .stats { display: grid; margin-top: 16px; }
+    .index .m-media:has(.okx), .index .m-media:has(.nv) { aspect-ratio: 17 / 22; }
+    .m-media .canvas:not(.bl .canvas) { width: 340px; height: 440px; }
+    .m-media .bl .canvas { width: 1512px; height: 1090px; }
+    .m-media .okx .canvas { grid-template-columns: 1fr; gap: 16px; align-content: center; padding: 0 20px; }
+    .m-media .okx .bubble { font-size: 15px; }
+    .m-media .nv .canvas { padding: 20px 16px; }
+    .m-media .nv .chips { flex-wrap: wrap; }
+    .m-media .nv .row { grid-template-columns: 1fr 1.35fr; gap: 8px; padding: 0 12px; }
+    .m-media .nv .row > span:nth-child(2) { display: none; }
+    .index .more { grid-template-rows: 1fr; }
+    .index li { grid-template-columns: 34px 1fr; }
+    .strengths { grid-template-columns: 1fr; gap: 18px; }
+    .about .blurb, .about .cta { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .hero-side { grid-template-columns: 112px 1fr; }
+    .glance .facts dl { grid-template-columns: 1fr; }
+    .glance .facts dl > div { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .glance .facts dl > div:last-child { border-bottom: 0; }
+  }
+
+  .glance .facts .exp > div { display: grid; gap: 10px; }
+  @media (max-width: 900px) {
+  }
+
+  /* Filter chips (top strip) behave like buttons; case tags are labels */
+  .fchip { font-size: 13px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); color: var(--ink); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; transition: border-color .2s, background .2s, color .2s; }
+  .fchip:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .fchip.static { cursor: default; }
+  .fchip.static:hover { border-color: var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .fchip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .fchip[aria-pressed="true"]::after { content: "×"; font-size: 14px; line-height: 1; }
+  .facts .also { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .facts .langs { font-size: 15px; line-height: 1.6; display: grid; }
+  .facts .langs i { font-style: normal; font-weight: 300; color: var(--muted); opacity: .8; margin-left: 8px; }
+  .facts .langs i::before { content: "•"; margin-right: 8px; opacity: .7; }
+  .index .tag { transition: border-color .2s, color .2s, background .2s; }
+  .index .tag:hover { border-color: var(--accent); color: var(--ink); }
+  .index li.out { display: none; }
+  #wkStatus button { margin-left: 8px; color: var(--accent); text-decoration: underline; text-underline-offset: 2px; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+
+<div class="scrim" id="scrim"></div>
+
+<div class="page">
+  <header class="top">
+    <a class="name" href="index.html" aria-label="Home"><span class="nm-t">Mancini Tan</span><svg class="nm-h" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="10" aria-hidden="true"><path d="M12 4 20.2 10.6v9.8h-5.6v-5.8H9.4v5.8H3.8v-9.8z"/></svg></a>
+    <div class="top-right">
+      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
+      <div class="menu-slot">
+        <div class="menu" id="menu">
+          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
+          <nav id="menunav" aria-label="Main">
+            <div class="links">
+              <a class="link item current" href="index.html" aria-current="page"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service recovery at scale · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
+              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+            <div class="foot item"><div class="secondary">
+              <span class="h">Elsewhere</span>
+              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stack" id="stack" aria-hidden="true">
+    <div class="grp"><span id="grpName">Product Design</span><span id="grpCount">3</span></div>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Simplifying operational tools</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service recovery at scale</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
+  </div>
+
+  <section class="hero">
+    <div class="panel hero-head">
+      <h1>
+        <span class="line"><span>I design things</span></span>
+        <span class="line"><span>people don't</span></span>
+        <span class="line"><span>have to think</span></span>
+        <span class="line"><span>about.</span></span>
+      </h1>
+      <div class="hero-sub">
+        <p>Product, content and conversation design. I also run my own menswear store, EVN Archive, and design every part of it.</p>
+
+      </div>
+    </div>
+    <aside class="panel hero-side">
+      <div class="portrait"><img src="assets/portrait.jpg" alt="Mancini Tan" width="532" height="714"></div>
+        <div class="btns side-btns">
+          <a class="btn" href="#work">Selected work <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+          <a class="btn" href="Mancini_Tan_Resume.pdf" download>Download résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a>
+          <a class="btn primary" href="mailto:mancini.tan@gmail.com">Send an email</a>
+        </div>
+    </aside>
+  </section>
+
+  <section class="panel glance" aria-label="At a glance">
+      <div class="facts">
+                <dl>
+          <div class="exp"><div><dt>Experience</dt><dd><b class="yrs"><span class="yn" data-n="5+">5+</span> years</b>Across agency, in-house teams and my own e-commerce product</dd></div></div>
+          <div><dt>Industries</dt><dd class="chips" role="group" aria-label="Filter case studies by industry"><button class="fchip" data-f="Fintech">Fintech</button><button class="fchip" data-f="Logistics">Logistics</button><button class="fchip" data-f="E-commerce">E-commerce</button><button class="fchip" data-f="Construction tech">Construction tech</button><span class="fchip static">Mobility</span><span class="fchip static">Advertising</span></dd></div>
+          <div><dt>Skills</dt><dd class="chips" role="group" aria-label="Filter case studies by skill"><button class="fchip" data-f="UI design">UI design</button><button class="fchip" data-f="Conversation design">Conversation design</button><button class="fchip" data-f="Content design">Content design</button><button class="fchip" data-f="Localization">Localization</button></dd></div>
+          <div><dt>Languages</dt><dd class="langs"><span>English <i>Native</i></span><span>Chinese <i>Proficient</i></span><span>Korean <i>Intermediate</i></span><span>German <i>Intermediate</i></span></dd></div>
+        </dl>
+      </div>
+  </section>
+
+  <section class="work" id="work">
+    <aside class="panel preview">
+      <div class="label"><span id="pvCat">E-commerce</span><span id="pvNo">01</span></div>
+      <div class="stage" id="stage">
+        <div class="scene" data-scene="img"><img src="assets/evn.jpg" alt="EVN Archive product page with the fit banner under the size" width="1180" height="787"></div>
+        <div class="scene okx" data-scene="okx" aria-label="OKX assistant returning a quote in chat">
+          <div class="canvas">
+            <div>
+              <div class="who"><i></i>OKX assistant</div>
+              <div class="bubble" id="okxMsg"></div>
+            </div>
+            <div class="quote" id="okxQuote">
+              <div class="qicon">₮</div>
+              <div class="qt">Buy S$100,000 of USDT</div>
+              <div class="qs">USDT price S$1.31</div>
+              <dl>
+                <div><dt>Quote ID</dt><dd id="okxId">…590703</dd></div>
+                <div><dt>Receive</dt><dd>76,335.88 USDT</dd></div>
+                <div><dt>Fee</dt><dd>$0</dd></div>
+                <div><dt>Pay with</dt><dd>SGD balance</dd></div>
+              </dl>
+              <div class="qbtn" id="okxBtn">Buy USDT (5s)</div>
+            </div>
+          </div>
+        </div>
+        <div class="scene bl" data-scene="bl" aria-label="Buildlr new quote: the task tree opens tier by tier and the quote adds up">
+          <div class="canvas">
+            <div class="bl-top">
+              <span class="bl-logo">b</span>
+              <span class="bl-search"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e8f4f4" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a project, client or employee</span>
+              <span class="bl-me"><b>Mancini Tan</b><i>Account Manager</i></span>
+              <span class="bl-av"></span>
+              <span class="bl-bell"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20h4"/></svg></span>
+            </div>
+            <div class="bl-rail"><span class="bl-ri" style="top:95px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg></span><span class="bl-ri" style="top:158px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><span class="bl-ri act" style="top:208px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></span><span class="bl-ri" style="top:258px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6"/></svg></span><span class="bl-ri" style="top:300px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6"/></svg></span><span class="bl-ri" style="top:360px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h7l2 2h9v10H3z"/></svg></span><span class="bl-ri" style="top:410px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="1"/><path d="m4 16 5-5 4 4 3-3 4 4"/></svg></span><span class="bl-ri" style="top:470px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 20c0-2-1-4-3-4"/></svg></span><span class="bl-ri" style="top:520px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span class="bl-ri" style="top:568px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M16 7c0-2-2-3-4-3s-4 1-4 3 2 3 4 3 4 1 4 3-2 3-4 3-4-1-4-3"/></svg></span></div>
+            <div class="bl-head">
+              <span class="bl-a crumb" style="left:88px;top:104px;">Home</span><span class="bl-a sep" style="left:138px;top:97px;">|</span><span class="bl-a crumb" style="left:151px;top:104px;">Quotations</span><span class="bl-a sep" style="left:252px;top:97px;">|</span><span class="bl-a crumb cur" style="left:265px;top:104px;">New quote</span>
+              <span class="bl-meta"><span>PRJ-2025-011</span><em>|</em><span>Klaus Müller</span><em>|</em><span>Bathroom remodeling</span><em>|</em><span>€24.500,00</span></span>
+            </div>
+            <div class="bl-menu"><div class="bl-row top" data-l="0"><span>General info</span></div><div class="bl-row top" data-l="0"><span>Materials</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row tasks" data-l="0"><span>Tasks</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="tasks"><div class="bl-row g1" data-l="1"><span>General</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1" data-l="1"><span>Surface layer</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></div><div class="bl-row g1 bath" data-l="1"><span>Bathroom</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 15 6-6 6 6"/></svg></div><div class="bl-grp" data-g="bath"><div class="bl-row param" data-l="2"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#8c8c8c" stroke-width="1.6"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Parameters</span></div><div class="bl-row grey" data-l="2"><span>Demolition</span></div><div class="bl-row grey" data-l="2"><span>Ceiling</span></div><div class="bl-row grey" data-l="2"><span>Walls</span></div><div class="bl-row grey" data-l="2"><span>Floor</span></div><div class="bl-grp" data-g="floor"><span class="bl-line"></span><div class="bl-row faint" data-l="3"><span>Construction</span></div><div class="bl-row faint" data-l="3"><span>Surface finish</span></div><div class="bl-row pick" data-l="3"><span>Baseboard</span></div></div><div class="bl-row " data-l="2"><span>Furnishing</span></div></div><div class="bl-row g1" data-l="1"><span>Laundry room</span></div><div class="bl-row g1 addroom" data-l="1"><span>Add room</span><span class="plus">+</span></div></div><div class="bl-row top" data-l="0"><span>Add-ons</span></div><div class="bl-row top" data-l="0"><span>Disclosures</span></div><div class="bl-row top" data-l="0"><span>Summary</span></div></div>
+            <div class="bl-main">
+              <span class="bl-a tab" style="left:368px;top:166px;">Tasks</span><span class="bl-a sep" style="left:421px;top:158px;">|</span><span class="bl-a tab" style="left:438px;top:166px;">Bathroom</span><span class="bl-a sep" style="left:521px;top:158px;">|</span><span class="bl-a tab" style="left:538px;top:166px;">Floor</span><span class="bl-a sep" style="left:591px;top:158px;">|</span><span class="bl-a tab cur" style="left:608px;top:166px;">Electrical</span>
+              <span class="bl-filter">Filter <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></span>
+              <span class="bl-tsearch"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Search for a task or sub-task</span>
+              <span class="bl-a lbl" style="left:368px;top:206px;">Construction</span><span class="bl-a pp grey" style="left:472px;top:204px;">(€1.460,00)</span>
+              <div class="bl-task">
+                <span class="bl-sw green" id="blMain"></span>
+                <span class="bl-tt">Install flooring</span>
+                <span class="bl-tm"><i>Area</i> 20 m² <i>Glue type</i> Fast-dry</span>
+                <span class="bl-ticons"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M4 5h16v11H9l-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="M7 4h10v16l-5-4-5 4z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e8f4f4" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
+                <span class="bl-tp p1"><i>Parquet</i><em>|</em><b>✓ Extra prep work</b></span>
+                <span class="bl-tp p2"><i>Vinyl</i><em>|</em><i>Thickness</i> <u>2 mm</u></span>
+              </div>
+              <div class="bl-body"></div>
+              <span class="bl-a lbl" style="left:368px;top:337px;">General</span><span class="bl-a pp grey" style="left:368px;top:368px;">Area</span>
+              <span class="bl-field" style="left:368px;top:390px;width:160px"><span id="blArea">0</span><i>m²</i></span>
+              <div class="bl-rfi" id="blRfi">
+                <div class="bl-rfih"><span>Suggested RFI</span><span>✕</span></div>
+                <span class="pp grey" style="top:48px">Request name</span>
+                <span class="lblk" style="top:74px">Choose flooring color</span>
+                <span class="pp grey" style="top:98px">Deadline</span>
+                <span class="bl-field" style="left:16px;top:120px;width:373px"><span class="pr">2025-12-25</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+                <span class="pp grey" style="top:157px">Color choice</span>
+                <span class="bl-field" style="left:16px;top:179px;width:373px"><span class="pr ph">Client to select color</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#212525" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></span>
+                <span class="pp grey" style="top:216px">Description</span>
+                <span class="bl-desc">Please confirm your preferred flooring color so we can price the installation and materials.</span>
+                <span class="bl-quick">+&nbsp; Quick add</span>
+              </div>
+              <span class="bl-addrfi" id="blAddRfi">+&nbsp; Add new RFI</span>
+              <div class="bl-subrow" style="top:818px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Parquet</span><span class="rule"></span></div>
+              <div class="bl-subrow" style="top:861px"><span class="bl-box"></span><span class="pr" style="font-size:14px;color:#000">Extra prep work</span></div>
+              <div class="bl-subrow" style="top:917px"><span class="bl-sw tan"></span><span class="lbl dk">Sub-task</span><em>|</em><span class="lbl dk">Vinyl</span><span class="rule"></span></div>
+              <span class="bl-a pp dk" style="left:368px;top:958px;">Thickness</span>
+              <span class="bl-field" style="left:368px;top:980px;width:160px"><span id="blThick">20</span><i>mm</i></span>
+              <div class="bl-sum">
+                <div class="bl-ln b" data-c="p"><span>Parquet</span><span>€</span><span>100,00</span></div>
+                <div class="bl-ln l" data-c="p"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln l" data-c="p"><span>Material costs</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln b gap" data-c="v"><span>Vinyl</span><span>€</span><span>100,00</span></div>
+                <div class="bl-ln l" data-c="v"><span>Labour (2 hrs)</span><span>€</span><span>50,00</span></div>
+                <div class="bl-ln l" data-c="v"><span>Material costs</span><span>€</span><span>50,00</span></div>
+                <div class="bl-tot">
+                  <div class="bl-ln g"><span>Projected cost</span><span>€</span><span id="blProj">0,00</span></div>
+                  <div class="bl-ln g"><span>VAT (19%)</span><span>€</span><span id="blVat">0,00</span></div>
+                  <div class="bl-ln t"><span>Total</span><span>€</span><span id="blTot">0,00</span></div>
+                </div>
+              </div>
+              <span class="bl-btn red" style="left:368px">Clear all</span>
+              <span class="bl-btn org" style="left:1147px">Save as add-on</span>
+              <span class="bl-btn" style="left:1290px">Remove from quote</span>
+            </div>
+          </div>
+        </div>
+        <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
+          <div class="canvas">
+            <div class="hd"><b>Open issues</b><span>Shipper portal</span></div>
+            <div class="chips">
+              <span class="chip total">All issues <em id="nvAll">0</em></span>
+              <span class="chip act">For your action <em id="nvAct">0</em></span>
+              <span class="chip">Under investigation <em id="nvInv">0</em></span>
+            </div>
+            <div class="table" id="nvTable">
+              <div class="row th"><span>Title</span><span>Issue type</span><span>Status</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="meta"><span class="h">What came of it</span><div id="pvStats"></div></div>
+    </aside>
+
+    <div class="panel index">
+      <div class="label"><span>Selected work</span><span id="wkStatus">Four cases · 2023–2026</span></div>
+      <ol>
+        <li data-cat="E-commerce" data-f="E-commerce|UI design|Content design">
+          <span class="no">01</span>
+          <a href="evn.html"><h3>Helping shoppers find their fit</h3>
+            <div class="more"><div>
+              <p class="desc">My own Shopify store, with a sizing tool that helps people buy free-size clothing online with confidence.</p>
+              <div class="tags"><span class="tag">EVN Archive</span><span class="tag">E-commerce UX</span><span class="tag">Shopify</span><span class="tag">Content design</span></div>
+              <div class="m-media" data-slot="0"></div>
+              <div class="stats"><div class="stat"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week</span></div><div class="stat"><b data-n="400%+">400%+</b><span>increase in free-size sales</span></div></div>
+            </div></div>
+          </a>
+          <a class="go" href="evn.html" aria-label="Open the EVN Archive case"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </li>
+        <li data-cat="Content & conversation design" data-f="Fintech|Conversation design|Content design|Localization">
+          <span class="no">02</span>
+          <a href="okx.html"><h3>Making crypto social</h3>
+            <div class="more"><div>
+              <p class="desc">An assistant that trades in chat, a social layer for traders, and a year in review in the style of Spotify Wrapped.</p>
+              <div class="tags"><span class="tag">OKX</span><span class="tag">Conversation design</span><span class="tag">Social & dynamic content</span></div>
+              <div class="m-media" data-slot="1"></div>
+              <div class="stats"><div class="stat"><b data-n="200%">200%</b><span>DAU growth on Orbit</span></div><div class="stat"><b data-n="3.26M">3.26M</b><span>click-throughs on Crypto Rewind</span></div><div class="stat"><b data-n="117k">117k</b><span>Crypto Rewind shares, against a 50k goal</span></div></div>
+            </div></div>
+          </a>
+          <a class="go" href="okx.html" aria-label="Open the OKX case"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </li>
+        <li data-cat="Product design" data-f="Construction tech|UI design">
+          <span class="no">03</span>
+          <a href="buildlr.html"><h3>Simplifying operational tools</h3>
+            <div class="more"><div>
+              <p class="desc">A quote form five tiers deep, designed for estimators at a desk and workers on site.</p>
+              <div class="tags"><span class="tag">Buildlr</span><span class="tag">Product design</span><span class="tag">Operational tools</span><span class="tag">Design systems</span></div>
+              <div class="m-media" data-slot="2"></div>
+              <div class="stats"><div class="stat"><b data-n="167">167</b><span>components across 25 sets</span></div><div class="stat"><b data-n="2">2</b><span>products on one system, light and dark</span></div></div>
+            </div></div>
+          </a>
+          <a class="go" href="buildlr.html" aria-label="Open the Buildlr case"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </li>
+        <li data-cat="Product design" data-f="Logistics|UI design">
+          <span class="no">04</span>
+          <a href="ninjavan.html"><h3>Service recovery at scale</h3>
+            <div class="more"><div>
+              <p class="desc">Research with 59 merchants, agents and resolution staff, then a self-serve portal that takes an issue from report to resolution.</p>
+              <div class="tags"><span class="tag">Ninja Van</span><span class="tag">Service design</span><span class="tag">Research</span><span class="tag">Logistics</span></div>
+              <div class="m-media" data-slot="3"></div>
+              <div class="stats"><div class="stat"><b data-n="70%">70%</b><span>of cases now open automatically</span></div><div class="stat"><b data-n="66%">66%</b><span>faster to find a missing parcel</span></div></div>
+            </div></div>
+          </a>
+          <a class="go" href="ninjavan.html" aria-label="Open the Ninja Van case"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="panel blurb">
+      <p>I'm Mancini, and I make complicated products easy to use. Five years across fintech, logistics and e-commerce. Singaporean, based in Seoul, and open to roles anywhere.</p>
+      <div class="strengths">
+        <div><b>Content and conversation design</b><p>UX writing, microcopy and AI chat flows, designed alongside the interface so every screen reads as clearly as it looks.</p></div>
+        <div><b>Fintech, enterprise and operational tools</b><p>I design the products that keep money and operations moving, from trading apps to internal dashboards for support and field teams, and make them easy to pick up without training.</p></div>
+        <div><b>End to end, zero to launch</b><p>Founding designer at start-ups, and founder of my own e-commerce store, EVN Archive. Research, UX, UI and design systems, all the way to launch and beyond.</p></div>
+      </div>
+    </div>
+    <div class="panel cta action-card">
+      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
+      <div class="inner">
+        <div>
+          <h2>Think less, not thoughtless. Let's make better products together.</h2>
+        </div>
+        <div>
+          <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  /* ---------- Work index ---------- */
+  const rows = [...document.querySelectorAll('.index li')];
+  const stage = document.getElementById('stage'), scenes = [...stage.children];
+  const slots = [...document.querySelectorAll('.m-media')];
+  const pvCat = document.getElementById('pvCat'), pvNo = document.getElementById('pvNo'), pvStats = document.getElementById('pvStats');
+  const mobile = matchMedia('(max-width: 900px)');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const wait = (ms, bag) => new Promise(r => bag.push(setTimeout(r, ms)));
+
+  // Scale the fixed-size component canvases to whatever box they sit in
+  const ro = new ResizeObserver(es => es.forEach(e => { const c = e.target.querySelector('.canvas'); if (c) c.style.setProperty('--s', Math.min(e.contentRect.width / c.offsetWidth, e.contentRect.height / c.offsetHeight)); }));
+  scenes.forEach(sc => ro.observe(sc));
+
+  // On phones each case carries its own media inline; on desktop they share the sticky stage
+  const placeScenes = () => scenes.forEach((sc, i) => (mobile.matches ? slots[i] : stage).appendChild(sc));
+
+  /* OKX: the assistant replies, then the quote card arrives and counts down */
+  const okx = (() => {
+    const msg = "I see you'd like to get a new quote for your order of S$100,000 of USDT. Here is the updated quote for your order.";
+    const bubble = document.getElementById('okxMsg'), quote = document.getElementById('okxQuote'),
+          btn = document.getElementById('okxBtn'), qid = document.getElementById('okxId');
+    let bag = [], run = 0;
+    const final = () => { bubble.textContent = msg; quote.classList.add('in'); btn.textContent = 'Buy USDT (5s)'; btn.style.setProperty('--t', '0%'); };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; final(); };
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run;
+      quote.style.transition = 'none'; quote.classList.remove('in'); quote.offsetWidth; quote.style.transition = '';
+      bubble.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>';
+      await wait(800, bag); if (me !== run) return;
+      bubble.textContent = '';
+      for (const w of msg.split(' ')) { bubble.textContent += (bubble.textContent ? ' ' : '') + w; await wait(45, bag); if (me !== run) return; }
+      await wait(250, bag); if (me !== run) return;
+      quote.classList.add('in');
+      await wait(700, bag);
+      while (me === run) {
+        for (let t = 5; t > 0; t--) { btn.textContent = `Buy USDT (${t}s)`; btn.style.setProperty('--t', `${(5 - t) * 20}%`); await wait(1000, bag); if (me !== run) return; }
+        btn.textContent = 'Refreshing quote…'; btn.style.setProperty('--t', '100%');
+        await wait(900, bag); if (me !== run) return;
+        qid.textContent = '…' + String(Math.floor(100000 + Math.random() * 899999));
+        btn.style.transition = 'none'; btn.style.setProperty('--t', '0%'); btn.offsetWidth; btn.style.transition = '';
+      }
+    };
+    return { play, stop };
+  })();
+
+  /* Ninja Van: cases open themselves, newest on top */
+  const nv = (() => {
+    const data = [
+      ['Driver was rude durin…', 'Rude behaviour', 'Under investigation', false],
+      ['Driver ignored the instr…', "Didn't follow instructions", 'Under investigation', true],
+      ['Customer said cup w…', 'Content damaged', 'Claims processing', false],
+      ['Item has been missi…', 'Missing', 'Under investigation', true],
+      ['Item leaked', 'Content damaged', 'Pending review', true],
+      ['Box was wet and torn', 'Packaging damaged', 'For your action', true],
+    ];
+    const table = document.getElementById('nvTable'), head = table.firstElementChild;
+    const cAll = document.getElementById('nvAll'), cAct = document.getElementById('nvAct'), cInv = document.getElementById('nvInv');
+    let bag = [], run = 0;
+    const mk = ([t, ty, st, auto]) => {
+      const r = document.createElement('div');
+      r.className = 'row' + (st === 'For your action' ? ' red' : '');
+      r.innerHTML = `<span>${t}</span><span>${ty}</span><span class="s">${st}${auto ? '<span class="auto">AUTO</span>' : ''}</span>`;
+      return r;
+    };
+    const counts = n => {
+      const shown = data.slice(0, n);
+      cAll.textContent = n;
+      cAct.textContent = shown.filter(d => d[2] === 'For your action').length;
+      cInv.textContent = shown.filter(d => d[2] === 'Under investigation').length;
+    };
+    const clear = () => { [...table.querySelectorAll('.row:not(.th)')].forEach(r => r.remove()); };
+    const final = () => { clear(); data.forEach(d => { const r = mk(d); r.classList.add('in'); head.after(r); }); counts(data.length); };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; final(); };
+    const bump = el => { el.classList.add('bump'); bag.push(setTimeout(() => el.classList.remove('bump'), 500)); };
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run; clear(); counts(0);
+      await wait(400, bag);
+      for (let i = 0; i < data.length; i++) {
+        if (me !== run) return;
+        const r = mk(data[i]); r.classList.add('fresh'); head.after(r);
+        r.offsetWidth; r.classList.add('in');
+        counts(i + 1); bump(cAll);
+        if (data[i][2] === 'For your action') bump(cAct);
+        if (data[i][2] === 'Under investigation') bump(cInv);
+        bag.push(setTimeout(() => r.classList.remove('fresh'), 1200));
+        await wait(650, bag);
+      }
+    };
+    return { play, stop };
+  })();
+
+  /* Buildlr: the task tree opens tier by tier, the flooring task switches on, an RFI is suggested and the quote adds up */
+  const bl = (() => {
+    const root = document.querySelector('.bl');
+    const g = k => root.querySelector(`.bl-grp[data-g="${k}"]`);
+    const grps = { tasks: g('tasks'), bath: g('bath'), floor: g('floor') };
+    const rowTasks = root.querySelector('.bl-row.tasks'), rowBath = root.querySelector('.bl-row.bath'), rowFloor = [...root.querySelectorAll('.bl-row')].find(r => r.textContent.trim() === 'Floor');
+    const pick = root.querySelector('.bl-row.pick');
+    const main = document.getElementById('blMain'), area = document.getElementById('blArea');
+    const pills = [...root.querySelectorAll('.bl-tp')], rfi = document.getElementById('blRfi'), addRfi = document.getElementById('blAddRfi');
+    const subs = [...root.querySelectorAll('.bl-subrow .bl-sw, .bl-subrow .bl-box')];
+    const lnP = [...root.querySelectorAll('.bl-ln[data-c="p"]')], lnV = [...root.querySelectorAll('.bl-ln[data-c="v"]')];
+    const proj = document.getElementById('blProj'), vat = document.getElementById('blVat'), tot = document.getElementById('blTot');
+    let bag = [], run = 0;
+    const fmt = v => v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const money = (p) => { proj.textContent = fmt(p); vat.textContent = fmt(p * .19); tot.textContent = fmt(p * 1.19); };
+    const set = open => {
+      Object.values(grps).forEach(x => x.classList.toggle('shut', !open));
+      [rowTasks, rowBath].forEach(r => r.classList.toggle('chev-flip', !open));
+      pick.style.color = open ? '#212525' : '#d9d9d9';
+      main.classList.toggle('on', open); pills.forEach(p => p.classList.toggle('in', open));
+      rfi.classList.toggle('in', open); addRfi.classList.toggle('in', open);
+      subs.forEach(x => x.classList.toggle('on', open)); [...lnP, ...lnV].forEach(x => x.classList.toggle('in', open));
+      area.textContent = open ? '20' : '0'; money(open ? 500 : 0);
+    };
+    const stop = () => { run++; bag.forEach(clearTimeout); bag = []; set(true); };
+    const count = (to, ms, f) => new Promise(res => { const t0 = performance.now(), me = run;
+      const step = t => { if (me !== run) return res(); const k = Math.min((t - t0) / ms, 1); f(to * (1 - Math.pow(1 - k, 3))); k < 1 ? requestAnimationFrame(step) : res(); };
+      requestAnimationFrame(step); });
+    const play = async () => {
+      stop(); if (still.matches) return;
+      const me = run, ok = () => me === run;
+      set(false); await wait(450, bag); if (!ok()) return;
+      // tier 1 → 2 → 3
+      rowTasks.classList.remove('chev-flip'); grps.tasks.classList.remove('shut'); await wait(550, bag); if (!ok()) return;
+      rowBath.classList.remove('chev-flip'); grps.bath.classList.remove('shut'); await wait(600, bag); if (!ok()) return;
+      grps.floor.classList.remove('shut'); await wait(450, bag); if (!ok()) return;
+      pick.style.color = '#212525'; await wait(400, bag); if (!ok()) return;
+      // the task
+      main.classList.add('on'); await wait(300, bag); if (!ok()) return;
+      await count(20, 500, v => area.textContent = Math.round(v)); if (!ok()) return;
+      rfi.classList.add('in'); addRfi.classList.add('in'); await wait(700, bag); if (!ok()) return;
+      // sub-tasks and the quote
+      subs[0].classList.add('on'); pills[0].classList.add('in'); lnP.forEach(x => x.classList.add('in'));
+      await count(200, 450, money); if (!ok()) return;
+      await wait(250, bag); if (!ok()) return; subs[1].classList.add('on'); await wait(350, bag); if (!ok()) return;
+      subs[2].classList.add('on'); pills[1].classList.add('in'); lnV.forEach(x => x.classList.add('in'));
+      await count(300, 500, v => money(200 + v));
+    };
+    return { play, stop };
+  })();
+  const players = { okx, nv, bl };
+
+  /* "What came of it" numbers count up when a case comes into focus */
+  const countUp = root => root.querySelectorAll('b[data-n]').forEach(b => window.rollNumber(b));
+  /* Years of experience roll in the first time they're seen; the word stays put */
+  const yn = document.querySelector('.yrs .yn');
+  // Rolls each time the experience strip comes into view
+  if (yn) new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setTimeout(() => window.rollNumber(yn), 150); }), { threshold: .3 }).observe(yn);
+
+  let active = -1;
+  const setActive = (i) => {
+    if (i === active) return;
+    active = i;
+    rows.forEach((r, j) => r.classList.toggle('on', j === i));
+    scenes.forEach((sc, j) => sc.classList.toggle('on', j === i));
+    const r = rows[i];
+    pvCat.textContent = r.dataset.cat; pvNo.textContent = String(i + 1).padStart(2, '0');
+    Object.entries(players).forEach(([k, pl]) => (scenes[i].dataset.scene === k ? pl.play() : pl.stop()));
+    if (mobile.matches) countUp(r.querySelector('.stats'));
+    else { pvStats.innerHTML = r.querySelector('.stats').outerHTML; countUp(pvStats); }
+  };
+  const pick = () => {
+    const mid = innerHeight * 0.5;
+    let best = 0, bestD = Infinity;
+    rows.forEach((r, i) => { if (r.classList.contains('out')) return; const b = r.getBoundingClientRect(); const d = Math.abs((b.top + b.bottom) / 2 - mid); if (d < bestD) { bestD = d; best = i; } });
+    setActive(best);
+  };
+  rows.forEach((r, i) => r.addEventListener('mouseenter', () => { if (!mobile.matches) setActive(i); }));
+  addEventListener('scroll', pick, { passive: true });
+  addEventListener('resize', pick);
+  mobile.addEventListener('change', () => { placeScenes(); active = -1; pick(); });
+
+  /* Top strip chips filter the case list */
+  const fchips = [...document.querySelectorAll('.fchip')], status = document.getElementById('wkStatus');
+  let filt = null;
+  const applyFilter = f => {
+    filt = f;
+    fchips.forEach(c => c.setAttribute('aria-pressed', c.dataset.f === f));
+    let n = 0;
+    rows.forEach(r => { const hit = !f || r.dataset.f.split('|').includes(f); r.classList.toggle('out', !hit); if (hit) n++; });
+    const lab = f && fchips.find(c => c.dataset.f === f).textContent;
+    status.innerHTML = f ? `${n} of 4 cases · ${lab}<button type="button" id="wkClear">Clear</button>` : 'Four cases · 2023–2026';
+    if (f) { document.getElementById('wkClear').onclick = () => applyFilter(null); document.getElementById('work').scrollIntoView({ behavior: still.matches ? 'auto' : 'smooth' }); }
+    active = -1; setTimeout(pick, 50);
+  };
+  fchips.forEach(c => c.addEventListener('click', () => applyFilter(filt === c.dataset.f ? null : c.dataset.f)));
+  placeScenes(); okx.stop(); nv.stop(); bl.stop(); pick();
+
+})();
+</script>
+</body>
+</html>
