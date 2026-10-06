@@ -24,12 +24,12 @@ d.section('intro', 'Who I am and how I work.', '')
 cover(d, 'cover', 'Mancini Tan', 'Product, content and conversation design', 'Portfolio · 2026', A['portrait'],
       notes="Hi everyone, thank you so much for having me today. I'm Mancini. I'm a product designer with a strong content and conversation design background, and I'll walk you through a few projects that show how I work. I'll keep each one short, and I'm very happy to go deeper on anything that's useful for the role.")
 about(d, 'about', "I design things people don't have to think about.",
-      "Five years across fintech, logistics and e-commerce. Singaporean, based in Seoul, open to roles anywhere.",
+      "5+ years across fintech, logistics and e-commerce. Singaporean, based in Seoul, open to roles anywhere.",
       [('Experience', '5+ years: DBS, Ninja Van, Neuron, OKX, Buildlr, plus my own store'),
        ('Industries', 'Fintech, logistics, e-commerce, construction tech, mobility'),
        ('Skills', 'UI design, conversation design, content design, localization'),
        ('Languages', 'English (native), Chinese (proficient), Korean and German (intermediate)')],
-      notes="A quick bit about me. I've spent about five years designing across banking at DBS, logistics at Ninja Van, micromobility at Neuron and crypto at OKX, and more recently as a founding designer at Buildlr. I also run my own menswear store, EVN Archive. The thread running through all of it is taking something complicated and making it easy to use. I work in English and Chinese every day, and at OKX and Neuron a lot of my collaboration with product and engineering happened in Mandarin.")
+      notes="A quick bit about me. I've spent over five years designing across banking at DBS, logistics at Ninja Van, micromobility at Neuron and crypto at OKX, and more recently as a founding designer at Buildlr. I also run my own menswear store, EVN Archive. The thread running through all of it is taking something complicated and making it easy to use. I work in English and Chinese every day, and at OKX and Neuron a lot of my collaboration with product and engineering happened in Mandarin.")
 contents(d, 'contents', [
     ('01', 'Helping shoppers find their fit', 'EVN Archive', 'E-commerce, end to end'),
     ('02', 'An assistant that trades in chat', 'OKX', 'AI conversation design'),

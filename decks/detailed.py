@@ -11,7 +11,7 @@ d = Deck(ROOT, 'Mancini Tan · Case studies (detailed)', 'Mancini Tan · Case st
 d.section('intro', 'Who I am, what I do and the cases inside.', '')
 cover(d, 'cover', 'Mancini Tan', 'Product, content and conversation design. Case studies from fintech, logistics, construction tech, mobility and my own e-commerce store.', 'Portfolio · Detailed edition · 2026', A['portrait'])
 about(d, 'about', "I design things people don't have to think about.",
-      "I'm Mancini, and I make complicated products easy to use. Five years across fintech, logistics and e-commerce. Singaporean, based in Seoul, and open to roles anywhere.",
+      "I'm Mancini, and I make complicated products easy to use. 5+ years across fintech, logistics and e-commerce. Singaporean, based in Seoul, and open to roles anywhere.",
       [('Experience', '5+ years across agency, in-house teams and my own e-commerce product'),
        ('Industries', 'Fintech, logistics, e-commerce, construction tech, mobility, advertising'),
        ('Skills', 'UI design, conversation design, content design, localization'),
