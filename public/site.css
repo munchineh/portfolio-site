@@ -371,3 +371,5 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 @media (prefers-reduced-motion: reduce) {
   .menu, body.menu-open .menu, .menu .item, .toggle i, .theme .thumb, .scard, .all { transition-duration: .01s !important; transition-delay: 0s !important; }
 }
+/* Section titles on phones: fill the line instead of balancing, so short titles don't leave a gap on the right */
+@media (max-width: 640px) { .sec .sh h2, .sec .sb > p.big-p { text-wrap: pretty; } }
