@@ -6,6 +6,14 @@ from assets import PRESENT as A
 ROOT = sys.argv[1]
 d = Deck(ROOT, 'Mancini Tan · Interview presentation', 'Mancini Tan')
 
+# Jargon notes go under each slide's script (speaker notes only, never on the slide)
+from terms import notes_block
+_add = d.add
+def _add_with_terms(sid, inner, **kw):
+    if kw.get('notes'): kw['notes'] += notes_block(sid)
+    _add(sid, inner, **kw)
+d.add = _add_with_terms
+
 def bullets(items, size=30):
     lis = ''.join(f'<li>{e(x)}</li>' for x in items)
     return f'<ul style="font-size:{size}px;line-height:1.5;color:{BODY};display:flex;flex-direction:column;gap:10px">{lis}</ul>'
