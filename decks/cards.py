@@ -63,7 +63,7 @@ def media_slide(d, sid, eb, title, items, visual, vis_w, notes, gap=56, head_siz
           notes=notes, pad=PAD, layout='display:flex;flex-direction:column')
 
 
-def case_hero(d, sid, no, title, lede, meta, stats, hero_html, notes):
+def case_hero(d, sid, no, title, lede, meta, stats, hero_html, notes, note=None):
     metas = ''.join(f'<div style="display:flex;flex-direction:column;gap:4px;flex:1"><p style="font-size:24px;color:{MUTED}">{e(k)}</p>'
                     f'<p style="font-size:26px;font-weight:400;color:{INK};line-height:1.3">{e(v)}</p></div>' for k, v in meta)
     sts = ''.join(stat(n, l, size=88, small=False) for n, l in stats)
@@ -72,7 +72,8 @@ def case_hero(d, sid, no, title, lede, meta, stats, hero_html, notes):
             f'<h1 style="font-family:{DISP};font-size:104px;{DSTYLE};line-height:0.92;text-transform:uppercase;color:{INK}">{e(title)}</h1>'
             f'<p style="font-size:28px;font-weight:400;line-height:1.4;color:{BODY}">{e(lede)}</p>'
             f'<div style="display:flex;flex-direction:row;gap:24px;border-top:1px solid {RULE};padding:18px 0 0 0">{metas}</div>'
-            f'<div style="display:flex;flex-direction:row;gap:40px">{sts}</div></div>')
+            f'<div style="display:flex;flex-direction:row;gap:40px">{sts}</div>'
+            + (f'<p style="font-size:24px;color:{MUTED}">{e(note)}</p>' if note else '') + '</div>')
     d.add(sid, f'<div style="display:flex;flex-direction:row;gap:64px;align-items:center;height:{CH}px">{left}{hero_html}</div>',
           bg=f'linear-gradient(135deg, {MINT} 0%, {LIGHT} 55%, {BUTTER} 100%)', notes=notes, pad=PAD, layout='display:flex;flex-direction:column')
 
@@ -97,3 +98,33 @@ def big_numbers(d, sid, eb, title, stats, note, notes, visual=None, vis_w=0):
             f'<div style="display:flex;flex-direction:row;gap:56px;align-items:flex-start">{sts}</div>{nt}</div>')
     inner = f'<div style="display:flex;flex-direction:row;gap:64px;align-items:center;height:{CH}px">{left}{visual or ""}</div>'
     d.add(sid, inner, bg=DARK, color=ON_DARK, dark=True, notes=notes, pad=PAD, layout='display:flex;flex-direction:column')
+
+
+def tiles_grid(d, sid, blocks, tiles, cols=3, text_w=1500, limit=330):
+    """Header text, then tiles (label, title, text) in a grid: the detailed deck's version of a table."""
+    b2, _ = fit_blocks(blocks, text_w, limit)
+    grid = ''.join(tile(*t) for t in tiles)
+    d.add(sid, f'{text_col(b2, text_w)}<div style="display:grid;grid-template-columns:repeat({cols}, 1fr);gap:20px">{grid}</div>')
+
+
+def number_cards(groups, num_size=88):
+    """(number, title, detail) rows with a big accent number, for counts like research participants."""
+    return ''.join(
+        f'<div style="display:flex;flex-direction:row;gap:24px;align-items:center;background:{CARD};border:1px solid {RULE};border-radius:20px;padding:20px 28px">'
+        f'<p style="font-family:{DISP};font-size:{num_size}px;{NSTYLE};line-height:0.9;color:{ACCENT};width:{int(num_size * 1.25)}px">{e(n)}</p>'
+        f'<div style="flex:1;display:flex;flex-direction:column;gap:4px"><p style="font-size:32px;font-weight:600;color:{INK}">{e(g)}</p>'
+        f'<p style="font-size:26px;font-weight:400;color:{BODY}">{e(m)}</p></div></div>' for n, g, m in groups)
+
+
+def rows_slide(d, sid, blocks, rows, text_w=560, gap=56):
+    """Header text on the left, (label, title, text) rows on the right: a table, set as containers."""
+    rw = CW - text_w - gap
+    b2, _ = fit_blocks(blocks, text_w, CH)
+    rws = ''.join(
+        f'<div style="display:flex;flex-direction:row;gap:24px;align-items:flex-start;background:{CARD};border:1px solid {RULE};border-radius:18px;padding:18px 24px">'
+        f'<div style="width:300px;display:flex;flex-direction:column;gap:4px">'
+        f'<p style="font-size:24px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:{ACCENT}">{e(l)}</p>'
+        f'<p style="font-size:26px;font-weight:600;line-height:1.25;color:{INK}">{e(t)}</p></div>'
+        f'<p style="flex:1;font-size:24px;font-weight:400;line-height:1.4;color:{BODY}">{e(x)}</p></div>' for l, t, x in rows)
+    d.add(sid, f'<div style="display:flex;flex-direction:row;gap:{gap}px;align-items:center;height:{CH}px">{text_col(b2, text_w)}'
+          f'<div style="width:{rw}px;display:flex;flex-direction:column;gap:12px">{rws}</div></div>', pad=PAD, layout='display:flex;flex-direction:column')

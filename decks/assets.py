@@ -43,6 +43,17 @@ PRESENT.update({
  'm-evn-card': '/_blob/c501055e077a9bd64460bee88bd17357', 'm-okx-chat-v': '/_blob/864861ac577d613a0f41338970fe5dc2', 'm-evn-home3': '/_blob/bdfd66bb2b571f256512f9941ba4b12f',
 })
 
+DETAILED.update({
+ 'm-bl-rfi': '/_blob/401244f4c88c8d9d2e293271a07fe5f6', 'm-bl-rows': '/_blob/bc77bb8faa43a27649a1ea4cee27a2ed',
+ 'm-evn-t-home': '/_blob/0b92867d63a899e26f1cb8a5202c3117', 'm-evn-t-finder': '/_blob/d9afcd179f9630a03af07430d292e124',
+ 'm-evn-t-coll': '/_blob/3cdd8acf7907d2416efa995f36f8d797', 'm-evn-t-pdp': '/_blob/41651875a7d4a19927007a262a3536ea',
+ 'm-h-evn': '/_blob/4f4333b3e57f3b15e69b7d3fc02b914b', 'm-h-bl': '/_blob/fd4f523cc21244667c4fe84fe4b21572',
+ 'm-h-nv': '/_blob/4bada2b857a0e5045de2c5cc2afb918b', 'm-h-nr': '/_blob/f0f1d723ed600cd2df73aa421aeadb9e',
+ 'm-nr-live': '/_blob/bf0f28d04d61f74c0b07d0ce77ac64ce', 'm-nv-issues': '/_blob/35efb501e0f9b129c4a5d2c5eebf3aa6',
+ 'm-nv-relay': '/_blob/bc0cecb81cdc3e0a793cb8ca62c355f6', 'm-okx-chat-v': '/_blob/2d40dfeedc811528bb0358c8b3390234',
+ 'm-evn-card': '/_blob/5d4017c0097b6acecba385fc65822f5c',
+})
+
 def aspect(key):
     """width / height of an asset, read from the local copy."""
     import os

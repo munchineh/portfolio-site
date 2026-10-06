@@ -89,6 +89,13 @@ def statement(t, dark=False, size=40):
     c = ON_DARK if dark else ACCENT
     return f'<p style="font-size:{size}px;font-weight:500;line-height:1.25;color:{c}">{e(t)}</p>'
 
+def callout(t, dark=False, size=36):
+    """The key line of a slide, in a soft container so it reads first."""
+    if dark:
+        return statement(t, dark, size)
+    return (f'<div style="background:{MINT};border-radius:20px;padding:22px 30px">'
+            f'<p style="font-size:{size}px;font-weight:500;line-height:1.3;color:{ACCENT}">{e(t)}</p></div>')
+
 def para(t, dark=False, size=28):
     c = ON_DARK_BODY if dark else BODY
     return f'<p style="font-size:{size}px;font-weight:300;line-height:1.5;color:{c}">{e(t)}</p>'
@@ -127,8 +134,8 @@ def text_height(blocks, width):
         if kind == 'eyebrow': H += 34
         elif kind == 'h2': H += lines(t, 64, width, 0.52) * 64 * 1.1
         elif kind == 'h2s': H += lines(t, 56, width, 0.52) * 56 * 1.1
-        elif kind == 'st': H += lines(t, 40, width, 0.5) * 40 * 1.25
-        elif kind == 'st34': H += lines(t, 34, width, 0.5) * 34 * 1.25
+        elif kind == 'st': H += lines(t, 36, width - 60, 0.5) * 36 * 1.3 + 48
+        elif kind == 'st34': H += lines(t, 32, width - 60, 0.5) * 32 * 1.3 + 48
         elif kind == 'p': H += lines(t, 28, width, 0.5) * 28 * 1.5
         elif kind == 'p26': H += lines(t, 26, width, 0.5) * 26 * 1.5
         elif kind == 'p24': H += lines(t, 24, width, 0.5) * 24 * 1.5
@@ -141,8 +148,8 @@ def text_col(blocks, width, dark=False):
         if kind == 'eyebrow': out.append(eyebrow(t, dark))
         elif kind == 'h2': out.append(h2(t, dark))
         elif kind == 'h2s': out.append(h2(t, dark, 56))
-        elif kind == 'st': out.append(statement(t, dark))
-        elif kind == 'st34': out.append(statement(t, dark, 34))
+        elif kind == 'st': out.append(callout(t, dark))
+        elif kind == 'st34': out.append(callout(t, dark, 34))
         elif kind == 'p': out.append(para(t, dark))
         elif kind == 'p26': out.append(para(t, dark, 26))
         elif kind == 'p24': out.append(para(t, dark, 24))
