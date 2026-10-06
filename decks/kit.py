@@ -1,17 +1,28 @@
 """Shared slide kit for the two portfolio decks (detailed + presenting). Writes project/deck.json and
 project/slides/<id>.html under a root folder. Both decks use the same look as mancinitan.com (Sage palette,
-Archivo variable, width axis: display type is weight 900 at 68% width, like the site)."""
+Archivo for text, and Archivo at weight 900 and 68% width for display, like the site)."""
 import json, os, html, math, datetime
 
 INK = '#14281E'; BODY = '#3E4C44'; MUTED = '#5F6E65'; ACCENT = '#1F6B4A'
 LIGHT = '#F4F6EF'; MINT = '#E3EEE3'; CARD = '#FBFCF8'; RULE = '#D3DDD2'
 DARK = '#12251B'; ON_DARK = '#EEF4EE'; ON_DARK_BODY = '#BCD0C2'; BUTTER = '#F2EAC4'
-BODYF = "'Archivo', Arial, sans-serif"; DISP = "'Archivo', 'Arial Narrow', Arial, sans-serif"
-DSTYLE = 'font-weight:900;font-stretch:68%'   # site: .c-head h1, .chapter h2
-NSTYLE = 'font-weight:900;font-stretch:70%;font-variant-numeric:tabular-nums'   # site: .c-results .big b
+BODYF = "'Archivo', Arial, sans-serif"; DISP = "'Archivo Condensed', 'Arial Narrow', Arial, sans-serif"
+# Slides drops font-stretch, so the site's display cut (Archivo, weight 900, 68% width) ships as its own static
+# font file: fonts/ArchivoCondensed-Black.woff2, made with fontTools from the variable Archivo and uploaded per deck.
+DSTYLE = 'font-weight:900'
+NSTYLE = 'font-weight:900;font-variant-numeric:tabular-nums'
+CONDENSED_SRC = {'detailed': '/_blob/b675ce494d818dd5d2cf1c0b3c37a3a3', 'present': '/_blob/ef1df9f06bc4d06caf1d76cff71a0d41'}
 FACES = {
     'archivo': {'family': 'Archivo', 'href': 'https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap'},
 }
+
+def light_text(h):
+    """Body text on the site is Archivo 300: give every p/ul/ol that doesn't set a weight font-weight:300."""
+    import re
+    def fix(m):
+        style = m.group(2)
+        return m.group(0) if 'font-weight' in style else f'<{m.group(1)} style="font-weight:300;{style}"'
+    return re.sub(r'<(p|ul|ol) style="([^"]*)"', fix, h)
 
 def e(t):
     """Escape plain text; keep <b> and <br> written as [[b]]…[[/b]] markers."""
@@ -29,7 +40,8 @@ def lines(text, size, width, k=0.5):
     return out
 
 class Deck:
-    def __init__(self, root, title, footer_name):
+    def __init__(self, root, title, footer_name, condensed_src=None):
+        self.condensed_src = condensed_src
         self.root = root; self.title = title; self.order = []; self.sections = {}; self.files = {}
         self.footer_name = footer_name; self.cur_label = ''
         os.makedirs(os.path.join(root, 'project', 'slides'), exist_ok=True)
@@ -53,9 +65,10 @@ class Deck:
     def write(self):
         idx = {'v': 4, 'createdOnFiles': {'v': 1, 'at': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')},
                'lists': 'css', 'title': self.title, 'order': self.order, 'sections': self.sections, 'cover': self.order[0],
-               'faces': FACES, 'designSystems': []}
+               'faces': {**FACES, **({'archivo-condensed': {'family': 'Archivo Condensed', 'src': self.condensed_src}} if self.condensed_src else {})}, 'designSystems': []}
         json.dump(idx, open(os.path.join(self.root, 'project', 'deck.json'), 'w'), ensure_ascii=False, indent=1)
         for sid, h in self.files.items():
+            h = light_text(h)
             open(os.path.join(self.root, 'project', 'slides', f'{sid}.html'), 'w').write(h)
         return len(self.order)
 
@@ -74,7 +87,7 @@ def statement(t, dark=False, size=40):
 
 def para(t, dark=False, size=28):
     c = ON_DARK_BODY if dark else BODY
-    return f'<p style="font-size:{size}px;font-weight:400;line-height:1.5;color:{c}">{e(t)}</p>'
+    return f'<p style="font-size:{size}px;font-weight:300;line-height:1.5;color:{c}">{e(t)}</p>'
 
 def img(src, alt, w, h, fit='contain', radius=20, bg=None, shadow=True):
     b = f'background:{bg};' if bg else ''

@@ -4,7 +4,7 @@ from layouts import *
 from assets import PRESENT as A
 
 ROOT = sys.argv[1]
-d = Deck(ROOT, 'Mancini Tan · Interview presentation', 'Mancini Tan')
+d = Deck(ROOT, 'Mancini Tan · Interview presentation', 'Mancini Tan', condensed_src=CONDENSED_SRC['present'])
 
 # Jargon notes go under each slide's script (speaker notes only, never on the slide)
 from terms import notes_block

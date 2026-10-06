@@ -5,7 +5,7 @@ from layouts import *
 from assets import DETAILED as A
 
 ROOT = sys.argv[1]
-d = Deck(ROOT, 'Mancini Tan · Case studies (detailed)', 'Mancini Tan · Case studies')
+d = Deck(ROOT, 'Mancini Tan · Case studies (detailed)', 'Mancini Tan · Case studies', condensed_src=CONDENSED_SRC['detailed'])
 
 # ------------------------------------------------------------------ Intro
 d.section('intro', 'Who I am, what I do and the cases inside.', '')
