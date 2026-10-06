@@ -741,7 +741,8 @@
   const countUp = root => root.querySelectorAll('b[data-n]').forEach(b => window.rollNumber(b));
   /* Years of experience roll in the first time they're seen; the word stays put */
   const yn = document.querySelector('.yrs .yn');
-  if (yn) new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { ob.disconnect(); setTimeout(() => window.rollNumber(yn), 250); } }), { threshold: .6 }).observe(yn);
+  // Rolls each time the experience strip comes into view
+  if (yn) new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setTimeout(() => window.rollNumber(yn), 150); }), { threshold: .3 }).observe(yn);
 
   let active = -1;
   const setActive = (i) => {

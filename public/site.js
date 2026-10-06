@@ -100,7 +100,7 @@ window.rollNumber = (el) => {
   let d = 0;
   [...text].forEach(ch => {
     if (/\d/.test(ch)) {
-      const n = +ch, loops = 1 + (d % 2);
+      const n = +ch, loops = text.replace(/\D/g, '').length === 1 ? 2 : 1 + (d % 2);
       const col = document.createElement('span'); col.className = 'roll-col'; col.setAttribute('aria-hidden', 'true');
       const strip = document.createElement('span'); strip.className = 'roll-strip';
       const seq = []; for (let i = 0; i < loops * 10 + n + 1; i++) seq.push(i % 10);
