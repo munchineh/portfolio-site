@@ -5,7 +5,11 @@ import json, os, html, math, datetime
 
 INK = '#14281E'; BODY = '#3E4C44'; MUTED = '#5F6E65'; ACCENT = '#1F6B4A'
 LIGHT = '#F4F6EF'; MINT = '#E3EEE3'; CARD = '#FBFCF8'; RULE = '#D3DDD2'
-DARK = '#12251B'; ON_DARK = '#EEF4EE'; ON_DARK_BODY = '#BCD0C2'; BUTTER = '#F2EAC4'
+DARK = '#12251B'; BUTTER = '#F2EAC4'
+# Text on dark slides uses the site's dark-mode pairing (site.css, sage dark): ink, muted, accent. Pale green, never white.
+ON_DARK = '#D4E8DA'; ON_DARK_BODY = '#8AA392'; ON_DARK_ACCENT = '#6FD6A4'
+# The site's light hero: ground, the three glows and the deep-green fourth (site.css body background), ink and muted.
+SITE_GROUND = '#E2EBDD'; SITE_INK = '#0F1812'; SITE_MUTED = '#4F5F55'; SITE_ACCENT = '#1D6A4C'
 BODYF = "'Archivo', Arial, sans-serif"; DISP = "'Archivo Condensed', 'Arial Narrow', Arial, sans-serif"
 # Slides drops font-stretch, so the site's display cut (Archivo, weight 900, 68% width) ships as its own static
 # font file: fonts/ArchivoCondensed-Black.woff2, made with fontTools from the variable Archivo and uploaded per deck.
@@ -74,7 +78,7 @@ class Deck:
 
 # ------------------------------------------------------------------ building blocks
 def eyebrow(t, dark=False):
-    c = '#9FD3B4' if dark else ACCENT
+    c = ON_DARK_ACCENT if dark else ACCENT
     return f'<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{c}">{e(t)}</p>'
 
 def h2(t, dark=False, size=64):
@@ -156,14 +160,14 @@ def tile(label, title, text, width=None, dark=False, img_html=''):
     bg = '#1B3527' if dark else CARD; bd = '#2C4A39' if dark else RULE
     tc = ON_DARK if dark else INK; bc = ON_DARK_BODY if dark else BODY
     w = f'width:{width}px;' if width else 'flex:1;'
-    lab = (f'<p style="font-size:24px;font-weight:600;color:{ACCENT if not dark else "#9FD3B4"};text-transform:uppercase;letter-spacing:1.5px">{e(label)}</p>' if label else '')
+    lab = (f'<p style="font-size:24px;font-weight:600;color:{ACCENT if not dark else ON_DARK_ACCENT};text-transform:uppercase;letter-spacing:1.5px">{e(label)}</p>' if label else '')
     ti = f'<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:{tc}">{e(title)}</h3>' if title else ''
     tx = f'<p style="font-size:24px;line-height:1.45;color:{bc}">{e(text)}</p>' if text else ''
     return (f'<div style="{w}display:flex;flex-direction:column;gap:14px;background:{bg};border:1px solid {bd};border-radius:20px;padding:32px">'
             f'{img_html}{lab}{ti}{tx}</div>')
 
 def stat(num, label, dark=False, size=112, width=None, small=False):
-    nc = '#9FD3B4' if dark else ACCENT; lc = ON_DARK_BODY if dark else BODY
+    nc = ON_DARK_ACCENT if dark else ACCENT; lc = ON_DARK_BODY if dark else BODY
     w = f'width:{width}px;' if width else 'flex:1;'
     ls = 24 if small else 28
     return (f'<div style="{w}display:flex;flex-direction:column;gap:8px">'

@@ -3,14 +3,26 @@ from kit import *
 CONTENT_H = 792   # 1080 - 128 top - 160 bottom
 FULL_W = 1664
 
+def site_glows():
+    """The site's hero background as pinned layers: Slides allows one gradient per box, so each glow is its own
+    full-slide div. Centres and sizes follow site.css; stops are rescaled for farthest-corner ellipses."""
+    W, H = 1920, 1080
+    out = []
+    for col, cx, cy, rx in (('#6FC79A', .06, .04, .60), ('#EED36A', .98, .26, .52), ('#8FBFE8', .48, 1.04, .65), ('rgba(29,106,76,0.22)', .30, .55, .38)):
+        dx = max(cx, 1 - cx) * W * 1.414
+        stop = max(8, min(90, round(68 * rx * W / dx)))
+        out.append(f'<div style="position:absolute;left:0;top:0;width:{W}px;height:{H}px;'
+                   f'background:radial-gradient(ellipse at {round(cx*100)}% {round(min(cy,1)*100)}%, {col} 0%, transparent {stop}%)"></div>')
+    return ''.join(out)
+
 def cover(d, sid, title, sub, small, portrait, notes=None):
-    inner = (f'<div style="position:absolute;left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 18% 20%, #2B6E4C, {DARK} 60%)"></div>'
+    inner = (f'{site_glows()}'
              f'<img src="{portrait}" alt="Portrait of Mancini Tan" style="position:absolute;right:128px;top:160px;width:560px;height:760px;object-fit:cover;border-radius:28px">'
              f'<div style="position:absolute;left:128px;top:160px;width:1000px;display:flex;flex-direction:column;gap:36px">'
-             f'{eyebrow(small, True)}'
-             f'<h1 style="font-family:{DISP};font-size:200px;{DSTYLE};line-height:0.92;text-transform:uppercase;color:{ON_DARK};letter-spacing:-2px">{e(title)}</h1>'
-             f'<p style="font-size:44px;line-height:1.25;color:{ON_DARK_BODY};width:900px">{e(sub)}</p></div>')
-    d.add(sid, inner, bg=DARK, color=ON_DARK, notes=notes, dark=True, footer=False, layout='display:flex', pad='128px')
+             f'<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{SITE_ACCENT}">{e(small)}</p>'
+             f'<h1 style="font-family:{DISP};font-size:200px;{DSTYLE};line-height:0.92;text-transform:uppercase;color:{SITE_INK};letter-spacing:-2px">{e(title)}</h1>'
+             f'<p style="font-size:44px;line-height:1.25;color:{SITE_MUTED};width:900px">{e(sub)}</p></div>')
+    d.add(sid, inner, bg=SITE_GROUND, color=SITE_INK, notes=notes, footer=False, layout='display:flex', pad='128px')
 
 def about(d, sid, head, body, facts, notes=None):
     cards = ''.join(tile(k, None, v) for k, v in facts)
@@ -80,7 +92,7 @@ def tiles_slide(d, sid, blocks, tiles, notes=None, bg=LIGHT, text_w=1300):
     d.add(sid, inner, notes=notes, bg=bg)
 
 def big_statement(d, sid, text, sub=None, notes=None):
-    s = f'<p style="font-size:32px;line-height:1.45;color:{ON_DARK_BODY};width:1300px">{e(sub)}</p>' if sub else ''
+    s = f'<p style="font-size:32px;line-height:1.45;color:{ON_DARK};width:1300px">{e(sub)}</p>' if sub else ''
     inner = (f'<p style="font-family:{DISP};font-size:96px;{DSTYLE};line-height:1.02;color:{ON_DARK};width:1560px">{e(text)}</p>{s}')
     d.add(sid, inner, bg=ACCENT, color=ON_DARK, dark=True, notes=notes, layout='display:flex;flex-direction:column;justify-content:center;gap:40px')
 
