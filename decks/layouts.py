@@ -110,11 +110,13 @@ def stats_slide(d, sid, eb, head, stats, note=None, notes=None, dark=True):
     d.add(sid, inner, bg=DARK if dark else LIGHT, color=ON_DARK if dark else INK, dark=dark, notes=notes)
 
 def closing(d, sid, head, lines_, notes=None):
-    ls = ''.join(f'<p style="font-size:36px;color:{ON_DARK_BODY}">{e(x)}</p>' for x in lines_)
-    inner = (f'<h1 style="font-family:{DISP};font-size:120px;{DSTYLE};line-height:0.95;text-transform:uppercase;color:{ON_DARK};width:1660px">{e(head)}</h1>'
-             f'<div style="display:flex;flex-direction:column;gap:12px">{ls}</div>')
-    d.add(sid, inner, bg=f'radial-gradient(circle at 80% 20%, #2B6E4C, {DARK} 60%)', color=ON_DARK, dark=True, notes=notes,
-          layout='display:flex;flex-direction:column;justify-content:center;gap:56px', footer=False, pad='128px')
+    """Bookends the cover: same site hero glows, ink headline, muted contact lines."""
+    ls = ''.join(f'<p style="font-size:36px;color:{SITE_MUTED}">{e(x)}</p>' for x in lines_)
+    inner = (f'{site_glows()}'
+             f'<div style="position:absolute;left:128px;top:128px;width:1664px;height:824px;display:flex;flex-direction:column;justify-content:center;gap:56px">'
+             f'<h1 style="font-family:{DISP};font-size:120px;{DSTYLE};line-height:0.95;text-transform:uppercase;color:{SITE_INK}">{e(head)}</h1>'
+             f'<div style="display:flex;flex-direction:column;gap:12px">{ls}</div></div>')
+    d.add(sid, inner, bg=SITE_GROUND, color=SITE_INK, notes=notes, footer=False, layout='display:flex', pad='128px')
 
 def wide(src, alt, w, h):
     return img(src, alt, w, h, 'contain', 18, CARD)
