@@ -335,15 +335,15 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 .c-results .big { align-content: start; gap: 6px; }
 
 /* ---------- Name pill ⇄ Home: backspace ---------- */
-.name { position: relative; overflow: hidden; padding: 0 1.1em; justify-content: flex-start; white-space: nowrap; transition: width .14s ease-out, background .25s; }
-.name.home { width: 44px; padding: 0; transition: width .32s cubic-bezier(.3, 1.4, .5, 1), background .25s; }
+.name { position: relative; overflow: hidden; padding: 0 1.1em; justify-content: flex-start; white-space: nowrap; transition: width .08s ease-out, background .25s; }
+.name.home { width: 44px; padding: 0; transition: width .24s cubic-bezier(.3, 1.4, .5, 1), background .25s; }
 .name .nm-t { display: inline-block; }
 .name .nm-c { display: inline-block; width: 2px; height: 1em; margin-left: 2px; border-radius: 1px; background: currentColor; opacity: 0; transform: translateY(-.04em); }
 .name.typing .nm-c { opacity: 1; animation: nmBlink 1s steps(1) infinite; }
 @keyframes nmBlink { 50% { opacity: 0; } }
 .name.home .nm-t, .name.home .nm-c { display: none; }
 .name .nm-h { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; opacity: 0; transform: scale(.3) rotate(-90deg);
-  transition: opacity .2s, transform .42s cubic-bezier(.3, 1.6, .5, 1); }
+  transition: opacity .15s, transform .3s cubic-bezier(.3, 1.6, .5, 1); }
 .name .nm-h path { stroke-dasharray: none; stroke-dashoffset: 0; }
 .name.home .nm-h { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .name, .name .nm-h { transition: none; } .name.typing .nm-c { animation: none; } }

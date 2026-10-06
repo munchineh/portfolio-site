@@ -166,21 +166,21 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   const typing = on => { clearTimeout(idle); el.classList.toggle('typing', on); if (!on) fit(); };
   const go = async h => {
     if (h === home && !run) return; const me = ++run, ok = () => me === run;
-    if (still.matches) { home = h; el.classList.toggle('home', h); show(h ? 0 : NAME.length); run = 0; return; }
+    if (still.matches) { home = h; el.classList.toggle('home', h); el.classList.toggle('typing', !h); show(h ? 0 : NAME.length); run = 0; return; }
     if (h) {
-      typing(true); await wait(140); if (!ok()) return;
-      for (let n = shown - 1; n >= 0; n--) { show(n); await wait(34); if (!ok()) return; }
-      await wait(110); if (!ok()) return;
+      typing(true);
+      for (let n = shown - 1; n >= 0; n--) { show(n); await wait(16); if (!ok()) return; }
+      await wait(40); if (!ok()) return;
       home = true; el.classList.add('home'); typing(false);
     } else {
-      home = false; el.classList.remove('home'); typing(true); fit(); await wait(230); if (!ok()) return;
-      for (let n = shown + 1; n <= NAME.length; n++) { show(n); await wait(42); if (!ok()) return; }
-      idle = setTimeout(() => { if (ok()) typing(false); }, 700);
+      home = false; el.classList.remove('home'); typing(true); fit(); await wait(90); if (!ok()) return;
+      for (let n = shown + 1; n <= NAME.length; n++) { show(n); await wait(20); if (!ok()) return; }
     }
     if (ok()) run = 0;
   };
-  const update = () => go((onHome ? scrollY > 40 : settled) && !hover && !focus);
-  fit(); if (document.fonts) document.fonts.ready.then(fit); addEventListener('resize', fit);
+  const update = () => go((onHome ? scrollY > 0 : settled) && !hover && !focus);
+  // the cursor blinks whenever the name is showing
+  el.classList.add('typing'); fit(); if (document.fonts) document.fonts.ready.then(fit); addEventListener('resize', fit);
   update();
   if (onHome) { let tk = 0; addEventListener('scroll', () => { if (tk) return; tk = requestAnimationFrame(() => { tk = 0; update(); }); }, { passive: true }); }
   else setTimeout(() => { settled = true; update(); }, 1400);
