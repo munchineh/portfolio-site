@@ -145,3 +145,25 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   document.cookie = `lang=${a.dataset.l}; path=/; max-age=31536000; SameSite=Lax`;
   if (location.hash) { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }
 }));
+
+/* Name pill: shows the full name when you land, then shrinks into a Home button.
+   Home page: full name only while at the very top. Case pages: shrinks shortly after landing.
+   With a mouse, hovering the button opens the name back up. */
+(() => {
+  const el = document.querySelector('.top .name'); if (!el) return;
+  const onHome = !!document.querySelector('.hero-head');
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)');
+  let settled = onHome, hover = false, focus = false;
+  const measure = () => { const was = el.classList.contains('home'); el.style.transition = 'none'; el.classList.remove('home'); el.style.width = 'auto';
+    const w = el.offsetWidth; el.style.width = ''; el.style.setProperty('--nm-w', w + 'px'); el.classList.toggle('home', was); el.offsetWidth; el.style.transition = ''; };
+  const update = () => { const want = onHome ? scrollY > 40 : settled; el.classList.toggle('home', want && !hover && !focus); };
+  measure(); update();
+  if (document.fonts) document.fonts.ready.then(() => { measure(); update(); });
+  addEventListener('resize', () => { measure(); update(); });
+  if (onHome) { let t = 0; addEventListener('scroll', () => { if (t) return; t = requestAnimationFrame(() => { t = 0; update(); }); }, { passive: true }); }
+  else setTimeout(() => { settled = true; update(); }, 1400);
+  el.addEventListener('mouseenter', () => { if (canHover.matches) { hover = true; update(); } });
+  el.addEventListener('mouseleave', () => { hover = false; update(); });
+  el.addEventListener('focus', () => { if (el.matches(':focus-visible')) { focus = true; update(); } });
+  el.addEventListener('blur', () => { focus = false; update(); });
+})();

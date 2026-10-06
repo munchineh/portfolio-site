@@ -333,3 +333,14 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 .roll-ch { display: inline-block; height: 1em; line-height: 1em; }
 /* Stats: label sits right under its number, and side-by-side stats start at the same height */
 .c-results .big { align-content: start; gap: 6px; }
+
+/* ---------- Name pill: full name on arrival, then a round Home button ---------- */
+.name { position: relative; overflow: hidden; justify-content: center; white-space: nowrap; width: var(--nm-w, auto);
+  transition: width .55s var(--ease), padding .55s var(--ease), background .25s; }
+.name .nm-t { display: inline-block; transition: opacity .3s, transform .45s var(--ease); }
+.name .nm-h { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; opacity: 0; transform: scale(.5) rotate(-12deg);
+  transition: opacity .3s, transform .45s var(--ease); }
+.name.home { width: 44px; padding: 0; }
+.name.home .nm-t { opacity: 0; transform: translateX(-10px); }
+.name.home .nm-h { opacity: 1; transform: none; transition-delay: .12s; }
+@media (prefers-reduced-motion: reduce) { .name, .name .nm-t, .name .nm-h { transition: none; } }
