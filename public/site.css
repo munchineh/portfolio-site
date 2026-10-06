@@ -334,40 +334,16 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 /* Stats: label sits right under its number, and side-by-side stats start at the same height */
 .c-results .big { align-content: start; gap: 6px; }
 
-/* ---------- Name pill: full name on arrival, then a round Home button ---------- */
-.name { position: relative; overflow: hidden; justify-content: center; white-space: nowrap; width: var(--nm-w, auto);
-  transition: width .55s var(--ease), padding .55s var(--ease), background .25s; }
-.name .nm-t { display: inline-block; transition: opacity .3s, transform .45s var(--ease); }
-.name .nm-h { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; opacity: 0; transform: scale(.5) rotate(-12deg);
-  transition: opacity .3s, transform .45s var(--ease); }
-.name.home { width: 44px; padding: 0; }
-.name.home .nm-t { opacity: 0; transform: translateX(-10px); }
-.name.home .nm-h { opacity: 1; transform: none; transition-delay: .12s; }
-@media (prefers-reduced-motion: reduce) { .name, .name .nm-t, .name .nm-h { transition: none; } }
-
-/* Name ⇄ Home: the letters get pulled into the middle and the house draws itself; on the way back the house undraws and the letters spring out */
-.name .nm-t { transition: none; }
-.name .nm-t .ch { display: inline-block; white-space: pre; transform-origin: 50% 60%;
-  transition: transform .5s cubic-bezier(.34,1.56,.64,1), opacity .35s, filter .35s; transition-delay: calc(.16s + var(--k, 0) * 28ms); }
-.name.home .nm-t { opacity: 1; transform: none; }
-.name.home .nm-t .ch { transform: translateX(var(--dx, 0)) scale(.15) rotate(var(--rot, 0deg)); opacity: 0; filter: blur(1px);
-  transition: transform .38s cubic-bezier(.5,0,.25,1), opacity .25s .1s, filter .25s; transition-delay: calc(var(--o, 0) * 18ms); }
-.name.home { transition: width .6s var(--ease) .1s, padding .6s var(--ease) .1s, background .25s; }
-.name .nm-h { opacity: 1; transform: none; transition: transform .45s var(--ease); }
-.name .nm-h path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .22s ease-in; }
-.name.home .nm-h path.r { stroke-dashoffset: 0; transition: stroke-dashoffset .38s cubic-bezier(.3,.7,.3,1) .32s; }
-.name.home .nm-h path.b { stroke-dashoffset: 0; transition: stroke-dashoffset .5s cubic-bezier(.3,.7,.3,1) .5s; }
-.name.home .nm-h { animation: nmHop .5s cubic-bezier(.34,1.56,.64,1) .85s both; }
-@keyframes nmHop { 0% { transform: translateY(0) scale(1); } 40% { transform: translateY(-2px) scale(1.12); } 100% { transform: none; } }
-.name.home:hover .nm-h path.b { animation: none; }
-@media (prefers-reduced-motion: reduce) {
-  .name .nm-t .ch, .name .nm-h path, .name .nm-h { transition: none !important; animation: none !important; }
-}
-.name:not(.home) .nm-h { opacity: 0; transition: opacity .15s .1s, transform .45s var(--ease); }
-.name.home .nm-h { opacity: 1; }
-
-/* Vector name: the SVG name morphs into the house; width is driven by the same spring in JS */
-.name.nm-vec { padding: 0; width: auto; transition: background .25s; }
-.name.nm-vec .nm-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.name.nm-vec .nm-h { display: none; }
-.name .nm-v { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); fill: currentColor; overflow: visible; will-change: transform; }
+/* ---------- Name pill ⇄ Home: backspace ---------- */
+.name { position: relative; overflow: hidden; padding: 0 1.1em; justify-content: flex-start; white-space: nowrap; transition: width .14s ease-out, background .25s; }
+.name.home { width: 44px; padding: 0; transition: width .32s cubic-bezier(.3, 1.4, .5, 1), background .25s; }
+.name .nm-t { display: inline-block; }
+.name .nm-c { display: inline-block; width: 2px; height: 1em; margin-left: 2px; border-radius: 1px; background: currentColor; opacity: 0; transform: translateY(-.04em); }
+.name.typing .nm-c { opacity: 1; animation: nmBlink 1s steps(1) infinite; }
+@keyframes nmBlink { 50% { opacity: 0; } }
+.name.home .nm-t, .name.home .nm-c { display: none; }
+.name .nm-h { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; opacity: 0; transform: scale(.3) rotate(-90deg);
+  transition: opacity .2s, transform .42s cubic-bezier(.3, 1.6, .5, 1); }
+.name .nm-h path { stroke-dasharray: none; stroke-dashoffset: 0; }
+.name.home .nm-h { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .name, .name .nm-h { transition: none; } .name.typing .nm-c { animation: none; } }
