@@ -142,6 +142,7 @@ window.rollNumber = (el) => {
   const apply = t => {
     pick = t;
     if (t === 'system') delete root.dataset.theme; else root.dataset.theme = t;
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = t === 'system' ? m.dataset.c : (t === 'dark' ? '#122d18' : '#c9e1c1'); });
     try { t === 'system' ? localStorage.removeItem('theme') : localStorage.setItem('theme', t); } catch (e) {}
     groups.forEach(g => { g.style.setProperty('--i', order.indexOf(t));
       g.querySelectorAll('button').forEach(b => { const on = b.dataset.t === t; b.setAttribute('aria-checked', on); b.tabIndex = on ? 0 : -1; }); });

@@ -443,3 +443,13 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 /* Closing: shrink back into the button along the same path it opened, instead of snapping shut.
    (An older closing rule only listed width and height, which dropped the clip-path animation.) */
 body.menu-closing .menu { transition: clip-path .45s cubic-bezier(.5, 0, .2, 1), height .45s cubic-bezier(.5, 0, .2, 1); }
+/* About lead: one sentence per line on wider screens; phones let it flow */
+@media (min-width: 641px) {
+  .about .blurb > p.lines { max-width: none; }
+  .about .blurb > p.lines .s { display: block; }
+}
+/* What phones paint behind the status bar and toolbar: colours taken from the gradient's top and bottom edges, not the flat ground */
+:root { --edge-bottom: #bdd9e4; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --edge-bottom: #0b2735; } }
+:root[data-theme="dark"] { --edge-bottom: #0b2735; }
+html { background-color: var(--edge-bottom); }
