@@ -352,7 +352,8 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 :root { --spring: linear(0, 0.039, 0.136, 0.266, 0.41, 0.553, 0.684, 0.799, 0.892, 0.965, 1.018, 1.053, 1.074, 1.083, 1.083, 1.077, 1.067, 1.055, 1.043, 1.032, 1.021, 1.013, 1.006, 1, 0.997, 0.995, 0.993, 0.993, 0.993, 0.994, 0.995, 0.996, 0.997, 0.998, 0.999, 0.999, 1); --spring-soft: linear(0, 0.039, 0.134, 0.255, 0.383, 0.507, 0.619, 0.716, 0.796, 0.86, 0.91, 0.947, 0.973, 0.991, 1.003, 1.01, 1.014, 1.015, 1.015, 1.013, 1.012, 1.01, 1.008, 1.006, 1.005, 1.003, 1.002, 1.001, 1.001, 1, 1); --mh: min(640px, calc(100svh - 24px)); }
 /* The menu keeps its open size and is revealed with clip-path, so nothing reflows while it moves
    (animating width and height on a blurred panel was what made it stutter) */
-.menu, body.menu-open .menu, body.menu-closing .menu { width: var(--mw); height: var(--mh); border-radius: 18px; }
+/* Corners come from the clip-path alone, so the closed button keeps four equal 12px corners */
+.menu, body.menu-open .menu, body.menu-closing .menu { width: var(--mw); height: var(--mh); border-radius: 0; }
 .menu { clip-path: inset(0 0 calc(100% - 44px) calc(100% - 44px) round 12px); transition: clip-path .4s cubic-bezier(.4, 0, .2, 1); }
 body.menu-open .menu { clip-path: inset(0 0 0 0 round 18px); transition: clip-path .62s cubic-bezier(.16, 1, .3, 1); }
 body.menu-open .menu, body.menu-closing .menu { will-change: clip-path; }
@@ -426,3 +427,9 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
   body.menu-open .menu { transition: clip-path .62s cubic-bezier(.16, 1, .3, 1), height .45s var(--ease); }
   body.menu-open .menu:has(.acc.open) { --mh: min(720px, calc(100svh - 24px)); }
 }
+
+/* Toast for copied email */
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); opacity: 0; pointer-events: none; z-index: 80;
+  background: var(--smoke); color: #f2f2ee; padding: 10px 16px; border-radius: 999px; font-size: 14px; transition: opacity .25s, transform .35s var(--ease);
+  backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 12px 32px -18px rgba(0,0,0,.5); }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }

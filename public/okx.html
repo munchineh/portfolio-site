@@ -461,8 +461,8 @@
   <section class="panel sec">
     <header class="sh"><span class="no">1.2</span><h2>A personal desk for big trades</h2></header>
     <div class="sb">
-      <p class="big-p">Big trades deserve white-glove service. The challenge was offering it at scale.</p>
-      <p>Orders over 50,000 USD carry slippage risk and usually come from high-value customers, so they get a personal service with a preferential rate. The AI assistant takes that service, set by our agents in Greater China, to every market, while the team stays on the conversations that need a human.</p>
+      <p class="big-p">Above 50,000 USD, the assistant steps in with a better rate.</p>
+      <p>Orders that size carry slippage risk and usually come from high-value customers. The assistant gives them the personal service our agents in Greater China built, in every market.</p>
       <div class="phones" id="okPhones">
         <figure><div class="okp" data-k="1"><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"></div><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
         <figure><div class="okp" data-k="2"><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"></div><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
@@ -475,7 +475,7 @@
     <header class="sh"><span class="no">1.3</span><h2>Designing the system prompt</h2></header>
     <div class="sb">
       <p class="big-p">When it's someone's money, the bot doesn't get to improvise.</p>
-      <p>I designed the system prompt in five layers, from persona to guardrails to few-shot examples. With people's money at stake, a hallucinated rate or a misread intent isn't an option.</p>
+      <p>I built it in five layers, from persona down to guardrails and worked examples. Each layer answers a question the model would otherwise guess at.</p>
       <div class="pi" id="pi">
         <div class="pi-tabs" role="tablist" aria-label="Prompt layers">
           <button role="tab" id="pt1" aria-controls="pp1" aria-selected="true"><span>01</span>Persona</button>
@@ -538,8 +538,8 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   <section class="panel sec">
     <header class="sh"><span class="no">1.4</span><h2>A human touch where it counts</h2></header>
     <div class="sb">
-      <p class="big-p">Good conversation design is a mix. AI for speed, and a human hand on the moments that need care.</p>
-      <p>I mapped every touchpoint. The welcome, the intent check and the order card are hand-written for reassurance before a large trade, and the model handles follow-ups and changes of mind inside the guardrails.</p>
+      <p class="big-p">Which lines should a person write, and which can the model handle?</p>
+      <p>I mapped every touchpoint to find out. The moments right before a large trade got hand-written copy. Everything after that, the model handles within its guardrails.</p>
       <div class="demo" id="demo">
         <span class="demo-tag">Live component</span>
         <div class="scene okx" aria-label="The assistant confirms the order, then a quote card arrives with a countdown">
@@ -575,7 +575,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">1.5</span><h2>Then I tried to break it</h2></header>
     <div class="sb">
       <p class="big-p">Testing ran two ways, and the red-teaming taught me more.</p>
-      <p>I benchmarked the prompt against a standard query set, then red-teamed it to test the guardrails. Three rounds of prompt iteration came out of it.</p>
+      <p>First a benchmark against a standard set of queries, then red-teaming to find the cracks. Three rounds of prompt changes later, it held.</p>
       <div class="tbl-wrap">
         <table class="tests">
           <thead><tr><th scope="col">What I saw</th><th scope="col">What changed</th><th scope="col">Result</th></tr></thead>
@@ -605,7 +605,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <div class="sb">
       <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
       <p>Orbiters are our key influencers: high-value customers whose posts, groups and shared trades drive engagement. I designed onboarding, the feed and both profile types.</p>
-      <p>Orbiter profiles lead with a real OKX track record, and upgrading leads with benefits like trade commission. Minimum trading volume and asset balance keep every Orbiter credible.</p>
+      <p>An Orbiter profile opens with a real OKX track record, and you need a minimum trading volume and balance to earn one. The upgrade pitch leads with perks like trade commission.</p>
       <div class="phones four">
         <figure><div class="orb" data-o="follow"><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"></div><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
         <figure><img src="assets/orbit-feed.jpg" alt="The Orbit feed with posts tagged to the coins they discuss" width="600" height="1299" loading="lazy"><figcaption><b>The feed</b>Posts carry the coin they're about.</figcaption></figure>
@@ -639,10 +639,17 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   <section class="panel sec">
     <header class="sh"><span class="no">3.2</span><h2>Playing back your highlights, and highlighting you</h2></header>
     <div class="sb">
-      <p class="big-p">One space narrative tied the story, the tone and the brand together.</p>
-      <p>Rewind plays your year back like a playlist: assets, trading, then a trader persona. One brief aligned Legal, Marketing, writers and translators early.</p>
+      <p class="big-p">We framed the whole year as a trip through space.</p>
+      <p>Rewind plays back like a playlist in three parts. One brief got Legal, Marketing, writers and translators aligned before anyone wrote a line.</p>
+      <div class="card" style="max-width:560px">
+        <span class="tile-k">Rewind in three parts</span>
+        <ol class="layers" style="margin-top:0">
+          <li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>Assets overview</b></li>
+          <li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>How you traded</b></li>
+          <li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>Your trader persona</b></li>
+        </ol>
+      </div>
       <p>Good years are "out of this world". Hard years get "You're only getting ready for your next takeoff", honest without rubbing it in.</p>
-      <p>One consistent space theme across every screen and language turned complex data into one story, and made the brand stronger for it.</p>
       <div class="phones">
         <figure><img src="assets/cr-open.jpg" alt="Part 1 of 3: Let's rewind back to your opening track" width="600" height="1299" loading="lazy"><figcaption><b>The opening</b>Part 1 of 3, like a playlist.</figcaption></figure>
         <figure><img src="assets/cr-earn.jpg" alt="Your earnings were out of this world. A profit of 21,887 USDT" width="600" height="1299" loading="lazy"><figcaption><b>A good year</b>"Talk about astronomical."</figcaption></figure>
@@ -654,16 +661,16 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   <section class="panel sec">
     <header class="sh"><span class="no">3.3</span><h2>Personal, then social</h2></header>
     <div class="sb">
-      <p class="big-p">The end of the journey is where Rewind starts to travel.</p>
-      <p>The persona at the end makes Rewind social: a trader type with a rarity tag and no balances, so it's safe to post. One tap shares to Telegram, WhatsApp or X, and a QR code invites friends to play their own. Shares hit 117K, more than double the 50K goal.</p>
+      <p class="big-p">The last screen was made to leave the app.</p>
+      <p>Your trader persona has a rarity tag and no balances, so it's safe to post. One tap shares it to Telegram, WhatsApp or X, and a QR code invites friends to play their own.</p>
       <div class="phones two">
-        <figure><div class="crs" id="crShare" data-prev="cr-persona.jpg"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>Built for shareability</b>A persona worth posting, a gift for sharing it, and a QR code that invites friends to play their own.</figcaption></figure>
+        <figure><div class="crs" id="crShare" data-prev="cr-persona.jpg"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>The share sheet</b>The last stop in Rewind.</figcaption></figure>
         <div class="card" style="align-self:start">
-          <span class="tile-k">Rewind in three parts</span>
+          <span class="tile-k">Built to share</span>
           <ol class="layers" style="margin-top:0">
-            <li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>Assets overview</b></li>
-            <li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>How you traded</b></li>
-            <li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>Your trader persona</b></li>
+            <li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>A persona worth posting</b></li>
+            <li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>A gift for sharing it</b></li>
+            <li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>A QR code to play your own</b></li>
           </ol>
         </div>
       </div>
@@ -677,7 +684,7 @@ Switch to trading vernacular. Treat them as a peer.</pre>
         </div>
         <p class="gva-note"><i></i>Goal line. Every goal was set against the year before, adjusted for user growth.</p>
       </div>
-      <p>I also worked on the 2025 edition before I left OKX, which went on to win the Red Dot design award in 2026.</p>
+      <p>I also worked on the 2025 edition, which won a Red Dot award in 2026.</p>
     </div>
   </section>
 

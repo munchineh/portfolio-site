@@ -271,3 +271,90 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
   el.addEventListener('focus', () => { if (el.matches(':focus-visible')) { focus = true; update(); } });
   el.addEventListener('blur', () => { focus = false; update(); });
 })();
+
+/* No orphans: when a block of text ends on a stub line, let it run a little wider so the stub folds back in.
+   If there's no room for that, balance the lines instead. Runs again on resize. */
+(() => {
+  const SEL = 'p, figcaption, .stat span, .sec .sh h2';
+  const SKIP = '.menu, .stack, .scrim, [data-no-unorphan]';
+  const STUB = 0.34, GROW = 1.2;
+  const lineWidths = (el) => {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const rows = [];
+    for (const b of r.getClientRects()) {
+      if (b.width < 1 || b.height < 1) continue;
+      const row = rows.find(x => Math.abs(x.top - b.top) < b.height * 0.5);
+      if (row) { row.l = Math.min(row.l, b.left); row.r = Math.max(row.r, b.right); }
+      else rows.push({ top: b.top, l: b.left, r: b.right });
+    }
+    return rows.sort((a, b) => a.top - b.top).map(x => x.r - x.l);
+  };
+  const innerWidth = (el) => { const cs = getComputedStyle(el); return el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight); };
+  const fix = (el) => {
+    el.style.maxWidth = ''; el.style.textWrap = '';
+    const w = el.getBoundingClientRect().width;
+    if (!w) return;
+    const rows = lineWidths(el);
+    if (rows.length < 2 || rows[rows.length - 1] >= w * STUB) return;
+    const room = el.parentElement ? innerWidth(el.parentElement) : w;
+    const cap = Math.min(w * GROW, room);
+    if (cap > w + 4) {
+      el.style.maxWidth = cap + 'px';
+      if (lineWidths(el).length < rows.length) return;
+      el.style.maxWidth = '';
+    }
+    if (rows.length <= 6) el.style.textWrap = 'balance';
+  };
+  const run = () => document.querySelectorAll(SEL).forEach(el => { if (!el.closest(SKIP) && el.textContent.trim()) fix(el); });
+  let t;
+  const later = () => { clearTimeout(t); t = setTimeout(run, 150); };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(run);
+  addEventListener('resize', later);
+  addEventListener('load', run);
+})();
+
+/* Email links: open the mail app if there is one, and always copy the address so the click is never a dead end */
+(() => {
+  let toast, t;
+  const say = (msg) => {
+    if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); document.body.appendChild(toast); }
+    toast.textContent = msg; toast.classList.add('on');
+    clearTimeout(t); t = setTimeout(() => toast.classList.remove('on'), 2600);
+  };
+  const lang = (document.documentElement.lang || 'en').toLowerCase();
+  const copied = { de: 'E-Mail-Adresse kopiert', ko: '이메일 주소를 복사했어요', 'zh-hans': '邮箱地址已复制', 'zh-hant': '電子郵件地址已複製' }[lang] || 'Email address copied';
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="mailto:"]');
+    if (!a) return;
+    const addr = decodeURIComponent(a.getAttribute('href').slice(7).split('?')[0]);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(() => say(`${copied}: ${addr}`), () => {});
+  });
+})();
+
+/* Rotating word in a headline: <em class="swap" data-words="a|b|c">. Pauses off-screen and for reduced motion. */
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.swap[data-words]').forEach(box => {
+    const words = box.dataset.words.split('|');
+    if (words.length < 2 || still.matches) return;
+    box.setAttribute('aria-label', words[0]);
+    box.innerHTML = words.map((w, i) => `<i aria-hidden="true"${i ? '' : ' class="on"'}>${w}</i>`).join('');
+    const items = [...box.children];
+    box.classList.add('live');
+    const size = () => items.map(i => i.getBoundingClientRect().width);
+    let widths = size(), n = 0, seen = true, timer;
+    box.style.width = widths[0] + 'px';
+    const step = () => {
+      if (!seen || document.hidden) return;
+      const prev = items[n]; n = (n + 1) % items.length; const next = items[n];
+      prev.classList.remove('on'); prev.classList.add('out');
+      next.classList.add('on');
+      box.style.width = widths[n] + 'px';
+      setTimeout(() => { prev.style.transition = 'none'; prev.classList.remove('out'); void prev.offsetWidth; prev.style.transition = ''; }, 650);
+    };
+    const start = () => { clearInterval(timer); timer = setInterval(step, 2400); };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { widths = size(); box.style.width = widths[n] + 'px'; start(); });
+    addEventListener('resize', () => { widths = size(); box.style.width = widths[n] + 'px'; });
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(box);
+  });
+})();
