@@ -440,3 +440,6 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 }
 /* Focus ring sits inside the toggle so the panel's clip never cuts it */
 .menu .toggle:focus-visible { outline-offset: -6px; border-radius: 10px; }
+/* Closing: shrink back into the button along the same path it opened, instead of snapping shut.
+   (An older closing rule only listed width and height, which dropped the clip-path animation.) */
+body.menu-closing .menu { transition: clip-path .45s cubic-bezier(.5, 0, .2, 1), height .45s cubic-bezier(.5, 0, .2, 1); }

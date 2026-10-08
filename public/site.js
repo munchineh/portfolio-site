@@ -344,6 +344,24 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
     const size = () => items.map(i => i.getBoundingClientRect().width);
     let widths = size(), n = 0, seen = true, timer;
     box.style.width = widths[0] + 'px';
+    /* Line breaks are decided by the longest word, not the one showing, so a short word never pulls the next words up */
+    const line = box.closest('.line');
+    let tail = null;
+    if (line && box.nextSibling && box.nextSibling.nodeType === 3 && box.nextSibling.textContent.trim()) {
+      tail = document.createElement('span'); tail.className = 'swap-tail';
+      tail.textContent = box.nextSibling.textContent; box.nextSibling.replaceWith(tail);
+    }
+    const fit = () => {
+      if (!tail) return;
+      line.classList.remove('tail-down');
+      const keep = box.style.width;
+      box.style.transition = 'none'; box.style.width = Math.max(...widths) + 'px';
+      const rects = tail.getClientRects(), last = rects[rects.length - 1];
+      const wraps = !!last && last.top > box.getBoundingClientRect().top + 2;
+      box.style.width = keep; void box.offsetWidth; box.style.transition = '';
+      line.classList.toggle('tail-down', wraps);
+    };
+    fit();
     const step = () => {
       if (!seen || document.hidden) return;
       const prev = items[n]; n = (n + 1) % items.length; const next = items[n];
@@ -353,8 +371,8 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
       setTimeout(() => { prev.style.transition = 'none'; prev.classList.remove('out'); void prev.offsetWidth; prev.style.transition = ''; }, 460);
     };
     const start = () => { clearInterval(timer); timer = setInterval(step, 1500); };
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { widths = size(); box.style.width = widths[n] + 'px'; start(); });
-    addEventListener('resize', () => { widths = size(); box.style.width = widths[n] + 'px'; });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { widths = size(); box.style.width = widths[n] + 'px'; fit(); start(); });
+    addEventListener('resize', () => { widths = size(); box.style.width = widths[n] + 'px'; fit(); });
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(box);
   });
 })();

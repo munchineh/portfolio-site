@@ -30,6 +30,9 @@
   .hero-head h1 .swap.live i { position: absolute; left: 0; top: 0; transform: translateY(105%); transition: transform .42s var(--ease); }
   .hero-head h1 .swap.live i.on { transform: none; }
   .hero-head h1 .swap.live i.out { transform: translateY(-105%); }
+  /* The words after the verb. If the longest verb pushes them to the next line, they stay there for every verb, so the headline never reflows mid-swap */
+  .hero-head h1 .line .swap-tail { display: inline; transform: none; animation: none; }
+  .hero-head h1 .line.tail-down .swap-tail::before { content: "\A"; white-space: pre; }
   .hero-sub { margin-top: auto; padding-top: 28px; display: flex; gap: 24px; justify-content: space-between; align-items: end; flex-wrap: wrap; }
   .hero-sub p { max-width: 64ch; color: var(--muted); font-size: 18px; line-height: 1.4; }
   .hero-side { grid-column: 10 / 13; margin-top: 86px; align-self: start; display: grid; gap: 10px; padding: 10px; }
