@@ -433,3 +433,10 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
   background: var(--smoke); color: #f2f2ee; padding: 10px 16px; border-radius: 999px; font-size: 14px; transition: opacity .25s, transform .35s var(--ease);
   backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 12px 32px -18px rgba(0,0,0,.5); }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Desktop: the menu button and its open panel sit flush with the right edge of the page panels */
+@media (min-width: 641px) {
+  .top { padding-right: 0; }
+}
+/* Focus ring sits inside the toggle so the panel's clip never cuts it */
+.menu .toggle:focus-visible { outline-offset: -6px; border-radius: 10px; }

@@ -350,9 +350,9 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
       prev.classList.remove('on'); prev.classList.add('out');
       next.classList.add('on');
       box.style.width = widths[n] + 'px';
-      setTimeout(() => { prev.style.transition = 'none'; prev.classList.remove('out'); void prev.offsetWidth; prev.style.transition = ''; }, 650);
+      setTimeout(() => { prev.style.transition = 'none'; prev.classList.remove('out'); void prev.offsetWidth; prev.style.transition = ''; }, 460);
     };
-    const start = () => { clearInterval(timer); timer = setInterval(step, 2400); };
+    const start = () => { clearInterval(timer); timer = setInterval(step, 1500); };
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { widths = size(); box.style.width = widths[n] + 'px'; start(); });
     addEventListener('resize', () => { widths = size(); box.style.width = widths[n] + 'px'; });
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(box);
