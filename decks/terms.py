@@ -54,6 +54,7 @@ TERMS = {
     'orbit': [
         ('Orbiter', "OKX's name for featured traders in Orbit: high-value customers whose posts and trades drive engagement."),
         ('Engagement', 'How much people interact with a product, such as posting, following, commenting or sharing.'),
+        ('Social network theory', 'The study of how people in a network connect, and how a few well-connected people shape what spreads through it.'),
     ],
     'orbit-result': [
         ('DAU (daily active users)', 'The number of unique people who use a product on a given day.'),

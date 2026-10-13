@@ -26,7 +26,7 @@ contents(d, 'contents', [
     ('03', 'Making trading social', 'OKX · Orbit', 'Content design, social'),
     ('04', 'Personalized content at scale', 'OKX · Crypto Rewind', 'Dynamic content, growth'),
     ('05', 'Simplifying operational tools', 'Buildlr', 'SaaS, complex forms'),
-    ('06', 'Service recovery at scale', 'Ninja Van', 'Research, service design'),
+    ('06', 'Service design for service recovery', 'Ninja Van', 'Research, service design'),
     ('07', 'Shift plans that stick', 'Neuron Mobility', 'Internal tools, research')])
 
 # ------------------------------------------------------------------ EVN
@@ -117,7 +117,7 @@ tiles_grid(d, 'ai-break', [('eyebrow', '2.5'), ('h2', 'Then I tried to break it'
 d.section('okx-orbit', 'Orbit: a social layer for traders, built around credible influencers.', 'OKX · Orbit')
 chapter(d, 'orbit-chapter', '03', 'Making trading social', 'Part of making crypto feel normal is making it social, so OKX wanted traders talking to each other inside the app. That became Orbit, a space to post, follow other traders and share trades.', ['Content design', 'Social', 'Growth'])
 side(d, 'orbit-cred', [('eyebrow', '3.1'), ('h2', 'Credibility you can see'), ('st', 'In a crypto feed, everyone sounds like an expert.'),
-      ('p', 'Orbiters are our key influencers. The idea was to find high-value customers and build social networks and communities around them, so their posts, groups and shared trades drive engagement the way great UGC does. I worked on onboarding, the feed and both versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else.'),
+      ('p', "To grow Orbit's social side, we drew on social network theory and targeted high-value customers as key influencers, called Orbiters. The idea was to build communities around them, so their posts, groups and shared trades drive engagement the way great UGC does. I worked on onboarding, the feed and both versions of a profile: Orbiters, who can post, create groups and share trades, and everyone else."),
       ('p', "An Orbiter's profile puts their track record up front, pulled from what they actually did on OKX. Upgrading is designed to feel empowering, leading with the benefits, from commission on trades to the standing that comes with the title. Behind the invitation sit hard requirements, like a minimum trading volume and asset balance, which keep every Orbiter credible.")],
      phones_framed(A, [('orbit-follow', 'Onboarding'), ('orbit-feed', 'The feed')], 780, 792), 780)
 d.add('orbit-screens', f'{eyebrow("3.2 · Screens")}{h2("Onboarding, feed, profile and upgrade")}' +
@@ -182,7 +182,7 @@ big_statement(d, 'bl-async', 'Everything ran async, on top of the design system.
 
 # ------------------------------------------------------------------ Ninja Van
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
-case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service recovery at scale',
+case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service design for service recovery',
            'When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.',
            [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
            [('70%', 'of case logging automated for delayed pickups and deliveries'), ('66%', 'less time to identify a parcel as missing')],

@@ -41,7 +41,7 @@ cases = [('01', 'Helping shoppers find their fit', 'EVN Archive', 'E-commerce, e
          ('03', 'Making trading social', 'OKX · Orbit', 'Content design, growth'),
          ('04', 'Personalized content at scale', 'OKX · Crypto Rewind', 'Dynamic content'),
          ('05', 'Simplifying operational tools', 'Buildlr', 'SaaS, complex forms'),
-         ('06', 'Service recovery at scale', 'Ninja Van', 'Research, service design'),
+         ('06', 'Service design for service recovery', 'Ninja Van', 'Research, service design'),
          ('07', 'Shift plans that stick', 'Neuron Mobility', 'Internal tools')]
 rows = ''.join(
     f'<div style="display:flex;flex-direction:row;gap:28px;align-items:center;background:{CARD};border:1px solid {RULE};border-radius:18px;padding:16px 28px">'
@@ -129,7 +129,7 @@ big_numbers(d, 'ai-results', 'Testing', 'Benchmarked, then red-teamed',
 # ------------------------------------------------------------------ Orbit
 d.section('okx-orbit', 'Orbit: a social layer for traders, 200% DAU growth.', 'OKX · Orbit')
 media_slide(d, 'orbit', '03 · Content design, social', 'Credibility you can see',
-            [('Orbiters lead the feed', 'High-value traders whose posts drive engagement'),
+            [('Orbiters lead the feed', 'High-value users as key influencers, from social network theory'),
              ('Proof on every profile', 'A real OKX track record, up front'),
              ('A bar to get in', 'Minimum volume and balance keep it credible'),
              ('My scope', 'Onboarding, the feed and both profile types')],
@@ -176,7 +176,7 @@ media_slide(d, 'bl-mobile', 'Mobile', 'Same tree, one thumb',
 
 # ------------------------------------------------------------------ Ninja Van
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
-case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service recovery at scale',
+case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service design for service recovery',
           'I researched how service recovery worked across Southeast Asia, then designed a self-serve portal for merchants and the Salesforce CRM tools agents use behind it.',
           [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
           [('60%', 'faster case resolution'), ('70%', 'of case logging automated for delays')],
