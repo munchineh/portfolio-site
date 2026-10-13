@@ -105,7 +105,7 @@ TERMS = {
         ('Close the loop', 'Following up after feedback so the customer sees it was acted on.'),
     ],
     'nv-results': [
-        ('Design system', 'Shared components, styles and rules that keep products consistent. Akira is Ninja Van\'s.'),
+        ('Design system', 'Shared components, styles and rules that keep products consistent.'),
         ('Design library', 'A shared file of reusable components that designers pull from, for example in Figma.'),
     ],
     'nr-title': [

@@ -201,8 +201,8 @@ media_slide(d, 'nv-portal', 'Self-serve portal', 'Issues live where orders live'
              ('Closing the loop', 'A low survey score reopens the case')],
             framed(A, 'm-nv-issues', 'Open issues in the merchant portal', 940, 700, pad=40), 940, None)
 big_numbers(d, 'nv-results', 'Results', 'Faster recovery, one design language',
-            [('66%', 'less time to identify a parcel as missing'), ('9', 'design libraries merged into one'), ('27', 'active products across the portfolio')],
-            "I also documented Akira, Ninja Van's design system, and built content standards into its components.", None)
+            [('66%', 'less time to identify a parcel as missing'), ('9', 'design libraries merged into one'), ('27', 'products audited across the portfolio')],
+            "I also audited all 27 products with two other designers and rebuilt the components once, in a single documented library.", None)
 
 # ------------------------------------------------------------------ Neuron
 d.section('neuron', 'Neuron: tasks managers can track, 90%+ less Slack, and two platforms merged.', 'Neuron')

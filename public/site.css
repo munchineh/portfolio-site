@@ -474,9 +474,16 @@ html { background-color: var(--edge-bottom); }
 :root:lang(zh) .shots p { max-width: 30em; }
 :root:lang(zh) .c-results .big > span { max-width: 16em; }
 /* Short labels break at punctuation (、，) instead of mid-phrase */
-:root:lang(zh) :is(dd, .c-results .big > span, .callouts span, .label span) { word-break: keep-all; line-break: strict; }
+:root:lang(zh) :is(dd, .callouts span, .label span) { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+/* Stat labels wrap normally (some phrases are longer than a phone column), without leaving one character alone on the last line */
+:root:lang(zh) .c-results .big > span { text-wrap: pretty; line-break: strict; }
 /* Chinese section titles: the label tag sits above the title, and titles carry more weight */
 :root:lang(zh) .sec .sh { flex-direction: column; align-items: flex-start; gap: 12px; }
 :root:lang(zh) .sec .sh h2 { font-weight: 700; text-wrap: pretty; }
 /* Chinese case titles run on one line where the screen allows, so they come down a size */
 :root:lang(zh) .c-head h1 { font-size: clamp(32px, 4.6vw, 72px); }
+/* Results card on phones: two stats share a row, so big numbers like 400%+ scale with the screen instead of spilling out */
+@media (max-width: 900px) {
+  :root .c-results .big { min-width: 0; }
+  :root .c-results .big b { font-size: clamp(40px, 11.5vw, 64px); }
+}

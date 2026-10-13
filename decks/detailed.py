@@ -212,9 +212,9 @@ tiles_slide(d, 'nv-emails', [('eyebrow', '04 · Emails and CRM'), ('h2', 'From p
      [('Email template', 'A new pickup has been arranged', 'Apology, the new reservation details and a clear way to reply.'),
       ('Email template', 'New delivery estimates', 'The updated dates, plus a Rate experience button.'),
       ('Designing both sides of the service', 'Salesforce CRM screens', 'Support agents worked in a Salesforce-based CRM, so I also designed the screens they used to log and manage cases. Service recovery only works when both sides are looked after.')])
-stats_slide(d, 'nv-akira', 'Also at Ninja Van: Akira', 'The case for a design system, in numbers',
-            [('27', 'active products across the portfolio'), ('70%', 'of implementation on locally customised components')],
-            note="Akira was Ninja Van's design system initiative. I worked on the documentation and on building content standards into the component library itself. It's a quiet way to keep a product consistent, and it lasts.")
+stats_slide(d, 'nv-akira', 'Also at Ninja Van', 'Nine libraries into one',
+            [('27', 'products audited across the portfolio'), ('9', 'design libraries merged into one'), ('70%', 'of implementation had relied on locally customised code')],
+            note="With two other designers, I audited all 27 products, found the components that had been rebuilt again and again, and rebuilt them once in a single library. Every component got proper documentation, and we worked with engineers to ship tested code for React, Flutter and Kotlin.")
 
 # ------------------------------------------------------------------ Neuron
 d.section('neuron', 'Neuron: shift plans managers can track, and two internal platforms merged into one.', 'Neuron')
