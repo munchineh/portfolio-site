@@ -454,3 +454,29 @@ body.menu-closing .menu { transition: clip-path .45s cubic-bezier(.5, 0, .2, 1),
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --edge-bottom: #0b2735; } }
 :root[data-theme="dark"] { --edge-bottom: #0b2735; }
 html { background-color: var(--edge-bottom); }
+
+/* Three-up callouts (Akira on the Ninja Van case) */
+.callouts.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 520px) { .callouts.three { grid-template-columns: 1fr; } }
+
+/* Section titles: sit at the top of their card and stay put while you scroll through it.
+   Panels clip their rounded corners with overflow: hidden, which also stops sticky; clip keeps the corners without that */
+.panel.sec { overflow: clip; }
+
+/* ---------- Chinese layout ---------- */
+/* Widths are in ch for Latin text; a Chinese character is about two ch wide, so give Chinese lines room to fill */
+:root:lang(zh) .sec .sb > p { max-width: 42em; }
+:root:lang(zh) .sec .sb > p.big-p { max-width: 30em; text-wrap: pretty; font-weight: 500; }
+:root:lang(zh) .lede { max-width: 34em; }
+:root:lang(zh) .index .desc { max-width: 30em; }
+:root:lang(zh) .hero-sub p { max-width: 40em; }
+:root:lang(zh) .chapter p { max-width: 38em; }
+:root:lang(zh) .shots p { max-width: 30em; }
+:root:lang(zh) .c-results .big > span { max-width: 16em; }
+/* Short labels break at punctuation (、，) instead of mid-phrase */
+:root:lang(zh) :is(dd, .c-results .big > span, .callouts span, .label span) { word-break: keep-all; line-break: strict; }
+/* Chinese section titles: the label tag sits above the title, and titles carry more weight */
+:root:lang(zh) .sec .sh { flex-direction: column; align-items: flex-start; gap: 12px; }
+:root:lang(zh) .sec .sh h2 { font-weight: 700; text-wrap: pretty; }
+/* Chinese case titles run on one line where the screen allows, so they come down a size */
+:root:lang(zh) .c-head h1 { font-size: clamp(32px, 4.6vw, 72px); }
