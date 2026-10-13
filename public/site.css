@@ -487,3 +487,11 @@ html { background-color: var(--edge-bottom); }
   :root .c-results .big { min-width: 0; }
   :root .c-results .big b { font-size: clamp(40px, 11.5vw, 64px); }
 }
+/* Chinese chapter banners: the number and chapter label sit vertically centred against the title and intro */
+@media (min-width: 901px) {
+  :root:lang(zh) .chapter { grid-template-rows: 1fr auto auto 1fr; align-items: center; }
+  :root:lang(zh) .chapter .ck { grid-row: 1 / 5; align-self: center; align-content: center; gap: 10px; }
+  :root:lang(zh) .chapter .ch-no { margin-bottom: 6px; }
+  :root:lang(zh) .chapter h2 { grid-row: 2; }
+  :root:lang(zh) .chapter p { grid-row: 3; }
+}
