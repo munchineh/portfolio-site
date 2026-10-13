@@ -495,3 +495,10 @@ html { background-color: var(--edge-bottom); }
   :root:lang(zh) .chapter h2 { grid-row: 2; }
   :root:lang(zh) .chapter p { grid-row: 3; }
 }
+/* Chinese home headline: two lines on wider screens, three on phones */
+:root:lang(zh) .hero-head h1 .br-m { display: none; }
+:root:lang(zh) .hero-head h1 { font-size: clamp(40px, 5.6vw, 92px); }
+@media (max-width: 640px) {
+  :root:lang(zh) .hero-head h1 .br-m { display: inline; }
+  :root:lang(zh) .hero-head h1 { font-size: clamp(34px, 10vw, 48px); }
+}
