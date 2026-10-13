@@ -320,6 +320,7 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 :root:lang(de) h1 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
 /* CJK glyphs are full width, so the condensed-caps headline sizes come down */
 :root:is(:lang(ko), :lang(zh)) .hero-head h1 { font-size: clamp(40px, 6.2vw, 100px); line-height: 1.12; }
+:root:is(:lang(ko), :lang(zh)) .hero-head h1 .swap { height: 1.12em; }
 :root:is(:lang(ko), :lang(zh)) .c-head h1 { font-size: clamp(36px, 5.4vw, 88px); line-height: 1.12; }
 :root:is(:lang(ko), :lang(zh)) .menu .link .t { font-size: 44px; }
 @media (max-width: 640px) {

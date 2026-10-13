@@ -27,6 +27,15 @@
   .hero-head h1 .line:nth-child(3) span { animation-delay: .16s; }
   .hero-head h1 .line:nth-child(4) span { animation-delay: .24s; }
   @keyframes rise { to { transform: none; } }
+  /* Rotating verb: design, write, make. Its box eases to each word's width so the rest of the line glides along */
+  .hero-head h1 .swap { font-style: normal; color: var(--accent); display: inline-block; position: relative; vertical-align: top; height: .86em; overflow: hidden; transition: width .42s var(--spring, cubic-bezier(.3,1.3,.5,1)); }
+  .hero-head h1 .swap i { font-style: normal; display: block; white-space: nowrap; }
+  .hero-head h1 .swap.live i { position: absolute; left: 0; top: 0; transform: translateY(105%); transition: transform .42s var(--ease); }
+  .hero-head h1 .swap.live i.on { transform: none; }
+  .hero-head h1 .swap.live i.out { transform: translateY(-105%); }
+  /* The words after the verb. If the longest verb pushes them to the next line, they stay there for every verb, so the headline never reflows mid-swap */
+  .hero-head h1 .line .swap-tail { display: inline; transform: none; animation: none; }
+  .hero-head h1 .line.tail-down .swap-tail::before { content: "\A"; white-space: pre; }
   .hero-sub { margin-top: auto; padding-top: 28px; display: flex; gap: 24px; justify-content: space-between; align-items: end; flex-wrap: wrap; }
   .hero-sub p { max-width: 64ch; color: var(--muted); font-size: 18px; line-height: 1.4; }
   .hero-side { grid-column: 10 / 13; margin-top: 86px; align-self: start; display: grid; gap: 10px; padding: 10px; }
@@ -362,7 +371,7 @@
 </div>
 <section class="hero">
 <div class="panel hero-head">
-<h1><span class="line"><span>Ich gestalte</span></span>
+<h1><span class="line"><span>Ich <em class="swap" data-words="gestalte|schreibe|baue"><i>gestalte</i></em></span></span>
 <span class="line"><span>Dinge, über</span></span>
 <span class="line"><span>die man nicht</span></span>
 <span class="line"><span>nachdenken muss.</span></span></h1>
