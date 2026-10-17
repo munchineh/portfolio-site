@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c9e1c1" media="(prefers-color-scheme: light)" data-c="#c9e1c1">
+<meta name="theme-color" content="#122d18" media="(prefers-color-scheme: dark)" data-c="#122d18">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Turning flashcards into a podcast · Mancini Tan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-head .btns { margin-top: -4px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; background: #f2f3f7; }
+  .c-media img { display: block; width: 100%; height: auto; }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); background: var(--panel); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .tile p span[lang="ko"], .fix span[lang="ko"] { color: var(--ink); }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; }
+
+  /* ---------- Anki: problem → fix rows ---------- */
+  .fixes { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; }
+  .fixes li { display: grid; grid-template-columns: 1fr 28px 1fr; align-items: stretch; gap: 0; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .fixes .was, .fixes .fix { padding: 14px 16px; }
+  .fixes .was { background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .fixes small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .fixes b { display: block; font-weight: 500; font-size: 15px; line-height: 1.3; }
+  .fixes p { font-size: 14px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .fixes .arr { display: grid; place-items: center; color: var(--accent); border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+  .fixes .fix { border-left: 0; }
+
+  /* ---------- Script: three parts of an episode ---------- */
+  .parts { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .parts { --cols: minmax(0, 100fr) minmax(0, 74fr) minmax(150px, 19fr); }
+  .parts .bar { display: grid; grid-template-columns: var(--cols); height: 44px; }
+  .parts .bar span { display: flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; }
+  .parts .bar span:nth-child(1) { background: var(--accent); color: var(--on-accent); }
+  .parts .bar span:nth-child(2) { background: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .parts .bar span:nth-child(3) { background: var(--accent-soft); }
+  .parts ol { list-style: none; display: grid; grid-template-columns: var(--cols); }
+  .parts li { padding: 14px 12px 16px; border-right: 1px solid var(--rule); min-width: 0; }
+  .parts li:last-child { border-right: 0; }
+  .parts li b { display: block; font-weight: 500; font-size: 15px; }
+  .parts li p { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .parts .foot { padding: 10px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- Voicing pipeline: each stage lights up in turn ---------- */
+  .flow { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 14px; }
+  .flow ol { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); counter-reset: f; position: relative; }
+  .flow li { counter-increment: f; padding: 14px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 55%, transparent); transition: border-color .4s, background .4s, opacity .4s; }
+  .flow li::before { content: counter(f, decimal-leading-zero); display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
+  .flow b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .flow p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .flow .who { display: inline-block; white-space: nowrap; margin-top: 10px; font-size: 11.5px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); }
+  .flow.play li { opacity: .45; }
+  .flow.play li.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+  .flow .prog { height: 4px; border-radius: 4px; background: var(--rule); overflow: hidden; }
+  .flow .prog i { display: block; height: 100%; width: var(--p, 100%); background: var(--accent); border-radius: 4px; transition: width .9s var(--ease); }
+  .flow .note { font-size: 12px; color: var(--muted); }
+
+  /* ---------- Screens ---------- */
+  .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+  .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .phones img { display: block; width: 100%; height: auto; border-radius: 22px; background: #f2f3f7; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .phones figcaption { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .wide-shot { margin: 8px 0 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .wide-shot img { display: block; width: 100%; height: auto; }
+  .duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 14px; align-items: start; }
+  .duo .phones { --n: 1; margin-top: 8px; }
+  .langs-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .langs-row span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .langs-row span:first-child { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 20px 20px 18px; display: grid; gap: 16px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(34px, 3.3vw, 52px); line-height: .92; max-width: 22ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 18px 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  @media (max-width: 1100px) {
+    .flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow li:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .grid3 { grid-template-columns: 1fr; }
+    .fixes li { grid-template-columns: 1fr; }
+    .fixes .arr { height: 26px; border: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .fixes .arr svg { transform: rotate(90deg); }
+    .parts ol { grid-template-columns: 1fr; }
+    .parts li { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .parts li:last-child { border-bottom: 0; }
+    .flow ol { grid-template-columns: 1fr; }
+    .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; }
+    .phones figure { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
+    .duo { grid-template-columns: 1fr; }
+    .duo .phones { display: grid; max-width: 240px; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .callouts { grid-template-columns: 1fr; }
+    .parts .bar span { font-size: 12px; padding: 0 8px; }
+  }
+</style>
+<link rel="alternate" hreflang="en" href="https://mancinitan.com/podcast.html">
+<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/podcast.html">
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="page">
+  <header class="top">
+    <a class="name" href="index.html" aria-label="Home"><span class="nm-t">Mancini Tan</span><svg class="nm-h" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="10" aria-hidden="true"><path d="M12 4 20.2 10.6v9.8h-5.6v-5.8H9.4v5.8H3.8v-9.8z"/></svg></a>
+    <div class="top-right">
+      <a class="pill" href="mailto:mancini.tan@gmail.com">Send an email</a>
+      <div class="menu-slot">
+        <div class="menu" id="menu">
+          <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menunav"><i></i><i></i></button>
+          <nav id="menunav" aria-label="Main">
+            <div class="links">
+              <a class="link item" href="index.html"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service design for service recovery · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div><button class="cat" data-cat="side">Side Projects <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">Turning flashcards into a podcast · Sogang Podcasts</a></div></div></div></div></div>
+              <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+            <div class="foot item"><div class="secondary">
+              <span class="h">Links</span>
+              <a href="Mancini_Tan_Resume.pdf" download>Résumé</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">Email</a>
+            </div><div class="theme" role="radiogroup" aria-label="Colour theme"><span class="thumb" aria-hidden="true"></span><button type="button" role="radio" data-t="light" aria-label="Light" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg></button><button type="button" role="radio" data-t="dark" aria-label="Dark" aria-checked="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"/></svg></button><button type="button" role="radio" data-t="system" aria-label="Match system" aria-checked="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"/></svg></button></div><div class="lang" role="group" aria-label="Language" translate="no"><a href="/podcast.html" hreflang="en" lang="en" data-l="en" title="English" aria-current="true">EN</a><a href="/de/index.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/index.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/index.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/index.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stack" id="stack" aria-hidden="true">
+    <div class="grp"><span id="grpName">Product design</span><span id="grpCount">3</span></div>
+    <a class="scard" data-cat="product" href="buildlr.html"><div><b>Simplifying operational tools</b><span>Buildlr · Construction tech</span></div><div class="thumb logo dark"><img src="assets/logo-buildlr.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service design for service recovery</b><span>Ninja Van · Logistics</span></div><div class="thumb logo"><img src="assets/logo-nv.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="product" href="neuron.html"><div><b>Internal tools for field teams</b><span>Neuron · Micromobility</span></div><div class="thumb logo"><img src="assets/logo-neuron.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Designing an AI trading assistant</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="side" href="podcast.html"><div><b>Turning flashcards into a podcast</b><span>Sogang Podcasts · Side project</span></div><div class="thumb"><img src="assets/logo-podcast.png" alt="" width="52" height="52"></div></a>
+    <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
+  </div>
+
+
+    <!-- ============ Case hero ============ -->
+  <section class="c-hero">
+    <div class="panel c-head">
+      <div class="crumbs">
+        <a class="chip back" href="index.html#side"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4 3 8l4 4"/></svg>All work</a>
+        <span class="chip">Sogang Podcasts</span>
+        <span class="chip ghost">Side project</span>
+      </div>
+      <h1>
+        <span class="line"><span>Turning flashcards</span></span>
+        <span class="line"><span>into a podcast</span></span>
+      </h1>
+      <p class="lede">A Korean listening podcast written from my Sogang syllabus, voiced with AI and played in a web app built for shadowing. Free, translated into ten languages, and shared with a link.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product, UX, content and voice direction</dd></div>
+        <div><dt>Timeline</dt><dd>Oct 2026 to now</dd></div>
+        <div><dt>Built with</dt><dd>Claude, Gemini 3.8 TTS, ElevenLabs</dd></div>
+        <div><dt>Platform</dt><dd>Web app on GitHub Pages</dd></div>
+      </dl>
+      <div class="btns"><a class="btn primary" href="https://munchineh.github.io/sogang-podcasts/" target="_blank" rel="noopener">Listen to an episode <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
+    </div>
+    <aside class="panel c-results">
+      <div class="label"><span>What came of it</span><span>Oct 2026</span></div>
+      <div class="c-results-in">
+        <div class="big"><b data-n="67">67</b><span>episodes written from 2,400+ of my flashcards</span></div>
+        <div class="big"><b data-n="10">10</b><span>subtitle languages, with the interface to match</span></div>
+        <p class="note">Voicing runs on a free tier, about two 20-minute episodes a day.</p>
+      </div>
+    </aside>
+  </section>
+
+  <figure class="panel c-media">
+    <img src="assets/pod-desktop.jpg" alt="The Sogang Podcasts player on desktop: episode list on the left, the script with English subtitles in the middle, the current line raised as a card" width="1800" height="1125">
+    <figcaption>The player on desktop, with the line being spoken lifted out of the script.</figcaption>
+  </figure>
+
+  <!-- ============ 01 ============ -->
+  <section class="panel sec" id="why">
+    <header class="sh"><span class="no">01</span><h2>Listening practice that sticks to the syllabus</h2></header>
+    <div class="sb">
+      <p class="big-p">Each Sogang book packs in hundreds of expressions, and flashcards only ever give me one sentence at a time.</p>
+      <p>I wanted long, natural conversations to train my ear and shadow along to, using only what we're learning in class. I tried NotebookLM first. It improvised its own chat, spoke at native speed and pulled in vocab well outside the books.</p>
+      <div class="grid3">
+        <div class="tile"><span class="tile-k">On syllabus</span><b>Only what's in the books</b><p>Every expression, grammar point and word comes from the Sogang Level 3 and 4 handbooks.</p></div>
+        <div class="tile"><span class="tile-k">Sounds real</span><b>Like a drama, at a pace I can follow</b><p>Real situations and speech levels, read slowly enough to repeat after.</p></div>
+        <div class="tile"><span class="tile-k">Shareable</span><b>For my classmates too</b><p>Subtitles in their languages, nothing to install and no account. Just a link.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section class="panel sec" id="anki">
+    <header class="sh"><span class="no">02</span><h2>It started with voicing my Anki cards</h2></header>
+    <div class="sb">
+      <p class="big-p">Before the podcast, I gave 4,000+ flashcards a voice with ElevenLabs. Getting them to sound like people took a lot of tuning.</p>
+      <ol class="fixes">
+        <li>
+          <div class="was"><small>Problem</small><b>Every line sounded like a listening test</b><p>Calm, polished and a little lifeless.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Cast voices by register</b><p>Younger voices for 반말, older ones for 합쇼체, each with a plain-English direction like "sighing, worn out".</p></div>
+        </li>
+        <li>
+          <div class="was"><small>Problem</small><b>Sound changes came out wrong</b><p><span lang="ko">똑바로</span> was read as <span lang="ko">똑까로</span>.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Respell what the voice reads</b><p>The voice gets <span lang="ko">똑빠로</span>, the card keeps the normal spelling.</p></div>
+        </li>
+        <li>
+          <div class="was"><small>Problem</small><b>Doubled words and directions read aloud</b><p>Small slips that are easy to miss on a review.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Check every clip with speech-to-text</b><p>A clip that doesn't match its card is recorded again automatically.</p></div>
+        </li>
+      </ol>
+      <p>Then the maths caught up with me. One level of podcast scripts came to about 330,000 characters, close to three months of ElevenLabs credits. So the long-form audio moved to Gemini's free tier, and everything I'd learned about voices came along with it.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section class="panel sec" id="scripts">
+    <header class="sh"><span class="no">03</span><h2>Every card has a place in an episode</h2></header>
+    <div class="sb">
+      <p class="big-p">Each card is matched to the situation where people would actually say it, then written into a scene.</p>
+      <p>A planner reporting delays to her team leader, a job interview, a confession over soju. Speech levels follow the relationship, so you hear 합쇼체 to a director and 반말 between friends. The book is the source of truth for every spelling.</p>
+      <div class="parts" aria-label="The three parts of an episode, sized by their share of lines in episode 2">
+        <div class="bar" aria-hidden="true"><span>장면</span><span>해설</span><span>복습</span></div>
+        <ol>
+          <li><b>Scene</b><p>Two hosts act out the situation, using the episode's expressions where they fit.</p></li>
+          <li><b>Breakdown</b><p>They step out and explain the key lines in easy Korean, with "pause and say it" moments.</p></li>
+          <li><b>Recap</b><p>A quick run back through it all.</p></li>
+        </ol>
+        <p class="foot">Roughly to scale: episode 2 has 100 scene lines, 74 in the breakdown and 19 in the recap.</p>
+      </div>
+      <div class="callouts">
+        <div><b data-n="67">67</b><span>episodes across Levels 3 and 4</span></div>
+        <div><b data-n="2,400+">2,400+</b><span>cards woven into scenes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="voicing">
+    <header class="sh"><span class="no">04</span><h2>Voicing it with Gemini 3.8, one test at a time</h2></header>
+    <div class="sb">
+      <p class="big-p">Gemini reads a whole scene in one go, so lines flow like real back and forth. It took some revising, splicing and testing to keep it sounding right for 20 minutes.</p>
+      <div class="flow" id="flow">
+        <ol>
+          <li><b>Prep</b><p>Respell tricky sound changes and numbers, using the same tool as the Anki cards.</p><span class="who">Rules + Claude</span></li>
+          <li><b>Voice</b><p>Two speakers per request. Each episode gets its own cast, and every line carries a "same voice as before" cue.</p><span class="who">Gemini 3.8 TTS</span></li>
+          <li><b>Check</b><p>Time every syllable, and catch a line read in the wrong voice. That chunk gets remade.</p><span class="who">Speech-to-text</span></li>
+          <li><b>Splice</b><p>Re-voice side characters and splice them in at matching levels. Interruptions overlap by a quarter second.</p><span class="who">Audio tooling</span></li>
+          <li><b>Finish</b><p>Layer in sound effects, then publish to the site by itself.</p><span class="who">ElevenLabs effects</span></li>
+        </ol>
+        <div class="prog" aria-hidden="true"><i id="flowProg"></i></div>
+        <p class="note">Every change is tried on a short sample first, then rolled out to the episodes.</p>
+      </div>
+      <div class="callouts">
+        <div><b>$0</b><span>to voice an episode on the free tier</span></div>
+        <div><b data-n="10">10</b><span>requests a day, run on a schedule from my Mac</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section class="panel sec" id="player">
+    <header class="sh"><span class="no">05</span><h2>A player built for shadowing</h2></header>
+    <div class="sb">
+      <p class="big-p">Follow along syllable by syllable, then replay the line and say it back.</p>
+      <p>Grammar is filled purple and vocab is dotted. Tap either to open the card behind it, with notes and every other place it shows up in the episode.</p>
+      <div class="phones">
+        <figure><img src="assets/pod-list.jpg" alt="The episode list in Korean, with episode titles, summaries and running times" width="720" height="1558" loading="lazy"><figcaption><b>Pick a situation</b>Each episode is a scene from daily or office life.</figcaption></figure>
+        <figure><img src="assets/pod-play.jpg" alt="An episode playing, with the current line lifted as a card and English subtitles under each line" width="720" height="1558" loading="lazy"><figcaption><b>Read along</b>The line being spoken lifts out, with subtitles underneath.</figcaption></figure>
+        <figure><img src="assets/pod-sheet.jpg" alt="The sheet for the grammar pattern -았/었어야지요, with meaning, example, notes and its uses in the episode" width="720" height="1558" loading="lazy"><figcaption><b>Tap for the card</b>Meaning, example, notes and a jump to each use.</figcaption></figure>
+      </div>
+      <div class="grid3">
+        <div class="tile"><b>Replay line</b><p>One tap repeats the current line, so shadowing never means scrubbing.</p></div>
+        <div class="tile"><b>Speed control</b><p>0.7× to 1.2×, for first listens and then real pace.</p></div>
+        <div class="tile"><b>Picks up where you left off</b><p>Each episode remembers its place, no sign-in needed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 ============ -->
+  <section class="panel sec" id="shared">
+    <header class="sh"><span class="no">06</span><h2>Localised for a classroom of ten languages</h2></header>
+    <div class="sb">
+      <p class="big-p">My classmates come from all over, so the subtitles and the interface switch together.</p>
+      <div class="duo">
+        <div style="display:grid;gap:16px;align-content:start">
+          <p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">Pick a language once and every label, title and subtitle follows. Traditional Chinese is generated from Simplified, with Taiwanese wording. The whole thing installs to the home screen, and sharing it is just sending the link.</p>
+          <div class="langs-row" aria-label="Subtitle languages"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span></div>
+          <div class="result"><b>67 episodes, ten languages, and no app store or account in the way.</b></div>
+        </div>
+        <div class="phones"><figure><img src="assets/pod-zh.jpg" alt="An episode playing with Simplified Chinese subtitles" width="720" height="1558" loading="lazy"><figcaption><b>Simplified Chinese</b>Same player, subtitles switched.</figcaption></figure></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Next ============ -->
+  <section class="c-next">
+    <div class="panel c-cta action-card">
+      <div class="label"><span>Contact</span><span>Open to work anywhere</span></div>
+      <div class="inner">
+        <h2>Building something with AI voices or language? I'd love to help.</h2>
+        <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Say hello</a><a class="btn" href="Mancini_Tan_Resume.pdf" download>Grab my résumé <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a></div>
+      </div>
+    </div>
+    <a class="panel c-nextcase" href="evn.html" aria-label="Next case: Helping shoppers find their fit">
+      <div class="label"><span>Next case</span><span>01</span></div>
+      <div class="inner">
+        <span class="nlogo"><img src="assets/logo-evn.svg" alt="" width="40" height="40"></span>
+        <div><h3>Helping shoppers find their fit</h3><p>EVN Archive · E-commerce</p></div>
+        <span class="go"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </div>
+    </a>
+  </section>
+
+  <footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber && window.rollNumber(b)), 450);
+
+  /* Voicing pipeline: light each stage in turn while the bar fills */
+  const fl = document.getElementById('flow');
+  if (fl) {
+    const steps = [...fl.querySelectorAll('li')], bar = document.getElementById('flowProg');
+    if (!still.matches) new IntersectionObserver((es, ob) => es.forEach(e => { if (!e.isIntersecting) return; ob.disconnect();
+      fl.classList.add('play'); bar.style.setProperty('--p', '0%');
+      steps.forEach((s, i) => setTimeout(() => { steps.forEach(x => x.classList.remove('on')); s.classList.add('on'); bar.style.setProperty('--p', ((i + 1) / steps.length * 100) + '%'); }, 400 + i * 1100));
+      setTimeout(() => { steps.forEach(x => x.classList.remove('on')); fl.classList.remove('play'); }, 400 + steps.length * 1100 + 600);
+    }), { threshold: .45 }).observe(fl);
+  }
+})();
+</script>
+</body>
+</html>

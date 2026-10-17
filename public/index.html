@@ -254,6 +254,27 @@
   .nv .auto { font-size: 9px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; padding: 2px 5px; background: #1f2329; color: #fff; }
 
   /* ---------- About / CTA ---------- */
+  /* ---------- Side projects ---------- */
+  .side { display: grid; }
+  .side .label { border-bottom: 1px solid var(--rule); }
+  .side-card { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 24px 28px 28px; align-items: center; }
+  .side-txt { grid-column: 1 / 6; display: grid; gap: 14px; align-content: start; padding-right: 12px; }
+  .side-txt h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(36px, 4.2vw, 64px); line-height: .88; letter-spacing: -0.01em; transition: color .35s var(--ease); }
+  .side-card:hover .side-txt h3 { color: var(--accent); }
+  .side-txt .desc { font-size: 16px; line-height: 1.45; max-width: 44ch; }
+  .side-txt .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .side-txt .stats { margin-top: 4px; }
+  .side-txt .more-l { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-top: 4px; }
+  .side-txt .more-l i { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
+  .side-card:hover .more-l i { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .side-pic { grid-column: 6 / 13; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .side-pic img { display: block; width: 100%; height: auto; transition: transform .6s var(--ease); }
+  .side-card:hover .side-pic img { transform: scale(1.02); }
+  @media (max-width: 900px) {
+    .side-card { padding: 18px; gap: 18px; }
+    .side-txt, .side-pic { grid-column: 1 / -1; padding-right: 0; }
+    .side-pic { order: 2; }
+  }
   .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
   .about .blurb { grid-column: 1 / 9; padding: 28px; display: grid; gap: 40px; }
   .about .blurb > p { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; letter-spacing: -0.01em; max-width: 52ch; }
@@ -349,7 +370,7 @@
             <div class="links">
               <a class="link item current" href="index.html" aria-current="page"><span class="t">Home</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
               <button class="link item" id="workLink" aria-expanded="false" aria-controls="workAcc"><span class="t">Work</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service design for service recovery · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div></div></div></div>
+              <div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Product Design <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Simplifying operational tools · Buildlr</a><a href="ninjavan.html">Service design for service recovery · Ninja Van</a><a href="neuron.html">Internal tools for field teams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI trading assistant · OKX</a><a href="okx.html#orbit">Making trading social · OKX</a><a href="okx.html#rewind">Personalized content at scale · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Helping shoppers find their fit · EVN Archive</a></div></div><button class="cat" data-cat="side">Side Projects <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">Turning flashcards into a podcast · Sogang Podcasts</a></div></div></div></div></div>
               <a class="link item" href="index.html#about"><span class="t">About</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
               <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Contact</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
             </div>
@@ -372,6 +393,7 @@
     <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Making trading social</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
     <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalized content at scale</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img src="assets/logo-okx.svg" alt="" width="52" height="52"></div></a>
     <a class="scard" data-cat="ecom" href="evn.html"><div><b>Helping shoppers find their fit</b><span>EVN Archive · Sizing tool</span></div><div class="thumb logo"><img src="assets/logo-evn.svg" alt="" width="52" height="52"></div></a>
+    <a class="scard" data-cat="side" href="podcast.html"><div><b>Turning flashcards into a podcast</b><span>Sogang Podcasts · Side project</span></div><div class="thumb"><img src="assets/logo-podcast.png" alt="" width="52" height="52"></div></a>
     <a class="all" href="index.html#work"><span>All work</span><span>&rarr;</span></a>
   </div>
 
@@ -572,6 +594,20 @@
         </li>
       </ol>
     </div>
+  </section>
+
+  <section class="panel side" id="side">
+    <div class="label"><span>Side projects</span><span>Oct 2026</span></div>
+    <a class="side-card" href="podcast.html">
+      <div class="side-txt">
+        <h3>Turning flashcards into a podcast</h3>
+        <p class="desc">A Korean listening podcast written from my class syllabus, voiced with AI and played in a web app built for shadowing.</p>
+        <div class="tags"><span class="tag">Sogang Podcasts</span><span class="tag">AI voice design</span><span class="tag">Localization</span><span class="tag">Web app</span></div>
+        <div class="stats"><div class="stat"><b>67</b><span>episodes from 2,400+ flashcards</span></div><div class="stat"><b>10</b><span>subtitle languages</span></div></div>
+        <span class="more-l"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></i>Read the case</span>
+      </div>
+      <figure class="side-pic"><img src="assets/pod-desktop.jpg" alt="The Sogang Podcasts player on desktop, with the episode list and a script with English subtitles" width="1800" height="1125" loading="lazy"></figure>
+    </a>
   </section>
 
   <section class="about" id="about">
