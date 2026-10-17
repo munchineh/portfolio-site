@@ -37,7 +37,7 @@
   .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
   .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
   .c-media { margin: 0; background: #f2f3f7; }
-  .c-media img { display: block; width: 100%; height: auto; }
+  .c-media img, .c-media video { display: block; width: 100%; height: auto; }
   .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); background: var(--panel); }
 
   /* ---------- Sections ---------- */
@@ -241,8 +241,8 @@
   </section>
 
   <figure class="panel c-media">
-    <img src="assets/pod-desktop.jpg" alt="The Sogang Podcasts player on desktop: episode list on the left, the script with English subtitles in the middle, the current line raised as a card" width="1800" height="1125">
-    <figcaption>The player on desktop, with the line being spoken lifted out of the script.</figcaption>
+    <video class="demo-vid" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="metadata" aria-label="An episode playing with the script filling in syllable by syllable, then a tap on a grammar point opens its card in a side panel"></video>
+    <figcaption>An episode playing, then a tap on a grammar point to open its card.</figcaption>
   </figure>
 
   <!-- ============ 01 ============ -->
@@ -392,6 +392,12 @@
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)');
   setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber && window.rollNumber(b)), 450);
+
+  /* Demo videos: play only while on screen, and never for reduced motion */
+  document.querySelectorAll('video.demo-vid').forEach(v => {
+    if (still.matches || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
+  });
 
   /* Voicing pipeline: light each stage in turn while the bar fills */
   const fl = document.getElementById('flow');

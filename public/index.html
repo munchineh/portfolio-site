@@ -268,8 +268,7 @@
   .side-txt .more-l i { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
   .side-card:hover .more-l i { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .side-pic { grid-column: 6 / 13; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
-  .side-pic img { display: block; width: 100%; height: auto; transition: transform .6s var(--ease); }
-  .side-card:hover .side-pic img { transform: scale(1.02); }
+  .side-pic video { display: block; width: 100%; height: auto; }
   @media (max-width: 900px) {
     .side-card { padding: 18px; gap: 18px; }
     .side-txt, .side-pic { grid-column: 1 / -1; padding-right: 0; }
@@ -606,7 +605,7 @@
         <div class="stats"><div class="stat"><b>67</b><span>episodes from 2,400+ flashcards</span></div><div class="stat"><b>10</b><span>subtitle languages</span></div></div>
         <span class="more-l"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></i>Read the case</span>
       </div>
-      <figure class="side-pic"><img src="assets/pod-desktop.jpg" alt="The Sogang Podcasts player on desktop, with the episode list and a script with English subtitles" width="1800" height="1125" loading="lazy"></figure>
+      <figure class="side-pic"><video class="demo-vid" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card"></video></figure>
     </a>
   </section>
 
@@ -829,6 +828,14 @@
   fchips.forEach(c => c.addEventListener('click', () => applyFilter(filt === c.dataset.f ? null : c.dataset.f)));
   placeScenes(); okx.stop(); nv.stop(); bl.stop(); pick();
 
+})();
+</script>
+<script>
+/* Side project demo: play only while on screen, and never for reduced motion */
+(() => {
+  const v = document.querySelector('.side-pic video');
+  if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
 })();
 </script>
 </body>
