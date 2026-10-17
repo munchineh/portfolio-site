@@ -31,7 +31,7 @@
  },
  {
   "id": "p006",
-  "en": "A Korean listening podcast written from my Sogang syllabus, voiced with AI and played in a web app built for shadowing. Free, translated into ten languages, and shared with a link.",
+  "en": "A Korean listening podcast built from my class syllabus. AI-voiced, localised into ten languages, and played in a web app designed for shadowing.",
   "kind": "html",
   "where": "c-hero › p.lede"
  },
@@ -43,7 +43,7 @@
  },
  {
   "id": "p008",
-  "en": "Product, UX, content and voice direction",
+  "en": "Product design, content design, AI voice design",
   "kind": "html",
   "where": "c-hero › dd"
  },
@@ -115,7 +115,7 @@
  },
  {
   "id": "p020",
-  "en": "Voicing runs on a free tier, about two 20-minute episodes a day.",
+  "en": "Voiced on a free tier: about two 20-minute episodes a day.",
   "kind": "html",
   "where": "c-hero › p.note"
  },
@@ -139,19 +139,19 @@
  },
  {
   "id": "p024",
-  "en": "Listening practice that sticks to the syllabus",
+  "en": "No app matched the syllabus",
   "kind": "html",
   "where": "why › h2"
  },
  {
   "id": "p025",
-  "en": "There are plenty of great Korean podcasts, language apps and shadowing apps. None of them follow my Sogang syllabus.",
+  "en": "Great Korean podcasts and shadowing apps are everywhere. None follow my Sogang syllabus.",
   "kind": "html",
   "where": "why › p.big-p"
  },
  {
   "id": "p026",
-  "en": "Each book packs in hundreds of expressions, and what I heard outside class rarely lined up with what we were learning in it. Flashcards helped, but only one sentence at a time. I wanted long, natural conversations built from exactly what's in the books, to train my ear and shadow along to. I tried making them with NotebookLM first. It improvised its own chat, spoke at native speed and pulled in vocab well outside the books.",
+  "en": "Flashcards give one sentence at a time, and NotebookLM improvised at native speed with vocab outside the books. So I built my own.",
   "kind": "html",
   "where": "why › p"
  },
@@ -169,7 +169,7 @@
  },
  {
   "id": "p029",
-  "en": "Every expression, grammar point and word comes from the Sogang Level 3 and 4 handbooks.",
+  "en": "Every word and grammar point comes from the Level 3 and 4 books.",
   "kind": "html",
   "where": "why › p"
  },
@@ -187,7 +187,7 @@
  },
  {
   "id": "p032",
-  "en": "Real situations and speech levels, read slowly enough to repeat after.",
+  "en": "Real situations, read slowly enough to repeat.",
   "kind": "html",
   "where": "why › p"
  },
@@ -205,19 +205,19 @@
  },
  {
   "id": "p035",
-  "en": "Subtitles in their languages, nothing to install and no account. Just a link.",
+  "en": "Subtitles in their languages. No install, no account.",
   "kind": "html",
   "where": "why › p"
  },
  {
   "id": "p036",
-  "en": "It started with voicing my Anki cards",
+  "en": "AI voice design, tested on 4,000+ cards",
   "kind": "html",
   "where": "anki › h2"
  },
  {
   "id": "p037",
-  "en": "Before the podcast, I gave 4,000+ flashcards a voice with ElevenLabs. Getting them to sound like people took a lot of tuning.",
+  "en": "I first voiced 4,000+ flashcards with ElevenLabs, and tuned them until they sounded human.",
   "kind": "html",
   "where": "anki › p.big-p"
  },
@@ -229,7 +229,7 @@
  },
  {
   "id": "p039",
-  "en": "The real audio from this card, voiced with ElevenLabs and directed to sound cheerful and casual.",
+  "en": "Real card audio, directed as \"cheerful, casual\".",
   "kind": "html",
   "where": "anki › p"
  },
@@ -241,19 +241,19 @@
  },
  {
   "id": "p041",
-  "en": "So you see it used in a sentence people actually say.",
+  "en": "Used in a sentence people actually say.",
   "kind": "html",
   "where": "anki › p"
  },
  {
   "id": "p042",
-  "en": "A play button you can hit with your thumb",
+  "en": "A thumb-sized play button",
   "kind": "html",
   "where": "anki › b"
  },
  {
   "id": "p043",
-  "en": "A full-width bar in place of Anki's small grey icon.",
+  "en": "A full-width bar in place of Anki's small icon.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -265,7 +265,7 @@
  },
  {
   "id": "p045",
-  "en": "The original characters, the simplified version with pinyin, and what Chinese says instead.",
+  "en": "Original characters, plus simplified Chinese and pinyin.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -277,7 +277,7 @@
  },
  {
   "id": "p047",
-  "en": "The look-alike it gets confused with, and the phrases it usually comes in.",
+  "en": "Look-alike words and common pairings.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -295,7 +295,7 @@
  },
  {
   "id": "p050",
-  "en": "Calm, polished and a little lifeless.",
+  "en": "Polished, but lifeless.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -313,7 +313,7 @@
  },
  {
   "id": "p053",
-  "en": "Younger voices for 반말, older ones for 합쇼체, each with a plain-English direction like \"sighing, worn out\".",
+  "en": "Younger voices for 반말, older ones for 합쇼체, each with an acting direction.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -367,7 +367,7 @@
  },
  {
   "id": "p062",
-  "en": "Small slips that are easy to miss on a review.",
+  "en": "Easy to miss by ear.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -379,19 +379,19 @@
  },
  {
   "id": "p064",
-  "en": "Check every clip with speech-to-text",
+  "en": "Auto-check every clip with speech-to-text",
   "kind": "html",
   "where": "anki › b"
  },
  {
   "id": "p065",
-  "en": "A clip that doesn't match its card is recorded again automatically.",
+  "en": "Clips that don't match their card re-record automatically.",
   "kind": "html",
   "where": "anki › p"
  },
  {
   "id": "p066",
-  "en": "Then the maths caught up with me. One level of podcast scripts came to about 330,000 characters, close to three months of ElevenLabs credits. So the long-form audio moved to Gemini's free tier, and everything I'd learned about voices came along with it.",
+  "en": "Long-form audio would have cost about three months of ElevenLabs credits, so the podcast moved to Gemini's free tier.",
   "kind": "html",
   "where": "anki › p"
  },
@@ -403,19 +403,19 @@
  },
  {
   "id": "p068",
-  "en": "Textbook lines, moved into real life",
+  "en": "Content design: textbook to real life",
   "kind": "html",
   "where": "scripts › h2"
  },
  {
   "id": "p069",
-  "en": "Textbook dialogues are tidy. One speaker at a time, in a quiet room, every word said clearly. Real conversations aren't.",
+  "en": "Textbook dialogues are tidy. Real conversations aren't.",
   "kind": "html",
   "where": "scripts › p.big-p"
  },
  {
   "id": "p070",
-  "en": "Each card gets a situation where people would actually say it: a planner reporting delays to her team leader, a job interview, a confession over soju. Speech levels follow the relationship, so you hear 합쇼체 to a director and 반말 between friends. The words stay exactly as the book teaches them.",
+  "en": "Each card is written into a scene where people would really say it, with speech levels that fit the relationship.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -433,7 +433,7 @@
  },
  {
   "id": "p073",
-  "en": "Interruptions cut in a split second early, the way they do at work and over dinner.",
+  "en": "Interruptions cut in early, like real talk.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -451,7 +451,7 @@
  },
  {
   "id": "p076",
-  "en": "Restaurant chatter and other background sound under the scenes.",
+  "en": "Restaurant chatter and other ambience.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -469,7 +469,7 @@
  },
  {
   "id": "p079",
-  "en": "Lines carry real emotion, laughs and trailing-off words, so your ear gets used to how people really sound.",
+  "en": "Laughs, sighs and trailing-off words.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -481,7 +481,7 @@
  },
  {
   "id": "p081",
-  "en": "Two hosts act out the situation, using the episode's expressions where they fit.",
+  "en": "The hosts act out the scene.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -493,7 +493,7 @@
  },
  {
   "id": "p083",
-  "en": "They step out and explain the key lines in easy Korean, with \"pause and say it\" moments.",
+  "en": "They explain the key lines in easy Korean.",
   "kind": "html",
   "where": "scripts › p"
  },
@@ -505,13 +505,13 @@
  },
  {
   "id": "p085",
-  "en": "A quick run back through it all.",
+  "en": "A quick review.",
   "kind": "html",
   "where": "scripts › p"
  },
  {
   "id": "p086",
-  "en": "Roughly to scale: episode 2 has 100 scene lines, 74 in the breakdown and 19 in the recap.",
+  "en": "Roughly to scale, by lines in episode 2.",
   "kind": "html",
   "where": "scripts › p.foot"
  },
@@ -541,636 +541,630 @@
  },
  {
   "id": "p091",
-  "en": "The right model for each job",
+  "en": "Orchestrating five AI models",
   "kind": "html",
   "where": "voicing › h2"
  },
  {
   "id": "p092",
-  "en": "No single AI did everything well, so each job went to the tool that does it best, or for the least credit.",
+  "en": "Each job went to the model that does it best, or costs the least.",
   "kind": "html",
   "where": "voicing › p.big-p"
  },
  {
   "id": "p093",
-  "en": "ElevenLabs is the better Korean voice, but it charges by the character. Gemini 3.8 is free and reads a whole scene in one go, but it comes with limits I had to design around.",
-  "kind": "html",
-  "where": "voicing › p"
- },
- {
-  "id": "p094",
   "en": "ElevenLabs v4",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p095",
+  "id": "p094",
   "en": "Gemini 3.8 TTS",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p096",
+  "id": "p095",
   "en": "Cost",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p097",
-  "en": "Per character. One level of scripts was about three months of credits",
+  "id": "p096",
+  "en": "Per character, about three months of credits",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p098",
-  "en": "Free tier, 10 requests a day",
+  "id": "p097",
+  "en": "Free, 10 requests a day",
   "kind": "html",
   "where": "voicing › span.win"
  },
  {
-  "id": "p099",
+  "id": "p098",
   "en": "Dialogue",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p100",
+  "id": "p099",
   "en": "One line at a time",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p101",
-  "en": "A whole scene per request, so replies flow naturally",
+  "id": "p100",
+  "en": "Whole scenes, so replies flow naturally",
   "kind": "html",
   "where": "voicing › span.win"
  },
  {
-  "id": "p102",
+  "id": "p101",
   "en": "Korean detail",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p103",
+  "id": "p102",
   "en": "Very reliable",
   "kind": "html",
   "where": "voicing › span.win"
  },
  {
-  "id": "p104",
-  "en": "Good, with the odd slip in long takes",
+  "id": "p103",
+  "en": "Good, with odd slips in long takes",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p105",
+  "id": "p104",
   "en": "Voices",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p106",
-  "en": "A large library, any number per clip",
+  "id": "p105",
+  "en": "A large library",
   "kind": "html",
   "where": "voicing › span.win"
  },
  {
-  "id": "p107",
-  "en": "Two per request, and voices can drift",
+  "id": "p106",
+  "en": "Two per request, and they can drift",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p108",
+  "id": "p107",
   "en": "Best at",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p109",
+  "id": "p108",
   "en": "Short card sentences and sound effects",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p110",
+  "id": "p109",
   "en": "Long, two-person episodes",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p111",
-  "en": "Each of Gemini's limits got its own workaround: side characters are voiced separately and spliced in, every line carries a \"same voice as before\" cue, a voice check catches drift, and runs are scheduled just after the free quota resets.",
+  "id": "p110",
+  "en": "Each of Gemini's limits got a workaround: spliced-in side voices, voice-drift checks, and runs timed to the free quota.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p112",
+  "id": "p111",
   "en": "Prep",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p113",
-  "en": "Respell tricky sound changes and numbers, using the same tool as the Anki cards.",
+  "id": "p112",
+  "en": "Respell tricky sounds and numbers.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p114",
+  "id": "p113",
   "en": "Rules + Claude",
   "kind": "html",
   "where": "voicing › span.who"
  },
  {
-  "id": "p115",
+  "id": "p114",
   "en": "Voice",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p116",
-  "en": "Read a whole scene at a time, two speakers per request, with a cast picked for each episode.",
+  "id": "p115",
+  "en": "Whole scenes, two speakers, a cast per episode.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p117",
+  "id": "p116",
   "en": "Gemini 3.8 TTS",
   "kind": "html",
   "where": "voicing › span.who"
  },
  {
-  "id": "p118",
+  "id": "p117",
   "en": "Check",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p119",
-  "en": "Time every syllable, and catch a line read in the wrong voice. That chunk gets remade.",
+  "id": "p118",
+  "en": "Time each syllable, and remake lines in the wrong voice.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p120",
+  "id": "p119",
   "en": "Speech-to-text",
   "kind": "html",
   "where": "voicing › span.who"
  },
  {
-  "id": "p121",
+  "id": "p120",
   "en": "Splice",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p122",
-  "en": "Re-voice side characters and splice them in at matching levels. Interruptions overlap by a quarter second.",
+  "id": "p121",
+  "en": "Splice in side voices, and overlap interruptions.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p123",
+  "id": "p122",
   "en": "Audio tooling",
   "kind": "html",
   "where": "voicing › span.who"
  },
  {
-  "id": "p124",
+  "id": "p123",
   "en": "Finish",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p125",
-  "en": "Mix in background sound for each scene, like restaurant chatter, and jingles between sections. Then it publishes itself.",
+  "id": "p124",
+  "en": "Add ambience and jingles, then auto-publish.",
   "kind": "html",
   "where": "voicing › p"
  },
  {
-  "id": "p126",
+  "id": "p125",
   "en": "ElevenLabs",
   "kind": "html",
   "where": "voicing › span.who"
  },
  {
-  "id": "p127",
-  "en": "Every change is tried on a short sample first, then rolled out to the episodes.",
+  "id": "p126",
+  "en": "Every change is tested on a short sample first.",
   "kind": "html",
   "where": "voicing › p.note"
  },
  {
-  "id": "p128",
+  "id": "p127",
   "en": "Claude",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p129",
-  "en": "Scripts, the player, the whole pipeline, and a daily pronunciation review",
+  "id": "p128",
+  "en": "Scripts, player, pipeline and daily pronunciation review",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p130",
+  "id": "p129",
   "en": "Gemini 3.8 TTS",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p131",
-  "en": "Voices the episodes, free",
+  "id": "p130",
+  "en": "Episode voices, free",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p132",
+  "id": "p131",
   "en": "ElevenLabs",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p133",
-  "en": "Card voices, sound effects, and speech-to-text checks on the cards",
+  "id": "p132",
+  "en": "Card voices, sound effects and audio QA",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p134",
+  "id": "p133",
   "en": "Gemini in Antigravity",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p135",
-  "en": "Bulk translation, to save Claude usage for the harder work",
+  "id": "p134",
+  "en": "Bulk translation, saving Claude credits",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p136",
+  "id": "p135",
   "en": "Whisper + an aligner",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p137",
-  "en": "Times every syllable for the highlighting, running free on my Mac",
+  "id": "p136",
+  "en": "Syllable timing for the highlighting, free on my Mac",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p138",
+  "id": "p137",
   "en": "Voice match",
   "kind": "html",
   "where": "voicing › b"
  },
  {
-  "id": "p139",
-  "en": "Flags a line read in the wrong character's voice, also on my Mac",
+  "id": "p138",
+  "en": "Catches lines read in the wrong voice",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p140",
+  "id": "p139",
   "en": "to voice an episode on the free tier",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p141",
+  "id": "p140",
   "en": "requests a day, run on a schedule from my Mac",
   "kind": "html",
   "where": "voicing › span"
  },
  {
-  "id": "p142",
-  "en": "Korean is written one way and said another",
+  "id": "p141",
+  "en": "QA for Korean pronunciation",
   "kind": "html",
   "where": "pronunciation › h2"
  },
  {
-  "id": "p143",
-  "en": "Sounds change when they meet the sound next to them. AI voices sometimes read the spelling instead.",
+  "id": "p142",
+  "en": "Korean is written one way and said another. AI voices sometimes read the spelling.",
   "kind": "html",
   "where": "pronunciation › p.big-p"
  },
  {
-  "id": "p144",
-  "en": "Every language does this. In English, \"handbag\" comes out closer to \"hambag\". Korean has clear rules for it, and learners pick them up by ear, so a voice that reads the letters teaches the wrong sound.",
+  "id": "p143",
+  "en": "Every language does this. In English, \"handbag\" sounds like \"hambag\".",
   "kind": "html",
   "where": "pronunciation › p"
  },
  {
-  "id": "p145",
+  "id": "p144",
   "en": "Nasalisation",
   "kind": "html",
   "where": "pronunciation › small"
  },
  {
-  "id": "p146",
+  "id": "p145",
   "en": "<span class=\"w\" lang=\"ko\">국물</span><span class=\"ar\">said as</span><span class=\"s\" lang=\"ko\">궁물</span>",
   "kind": "html",
   "where": "pronunciation › div.pair"
  },
  {
-  "id": "p147",
+  "id": "p146",
   "en": "said as",
   "kind": "html",
   "where": "pronunciation › span.ar"
  },
  {
-  "id": "p148",
-  "en": "A hard ㄱ softens into a nasal ㅇ before ㅁ. \"Soup broth\".",
+  "id": "p147",
+  "en": "ㄱ softens to ㅇ before ㅁ.",
   "kind": "html",
   "where": "pronunciation › p"
  },
  {
-  "id": "p149",
+  "id": "p148",
   "en": "Palatalisation",
   "kind": "html",
   "where": "pronunciation › small"
  },
  {
-  "id": "p150",
+  "id": "p149",
   "en": "<span class=\"w\" lang=\"ko\">같이</span><span class=\"ar\">said as</span><span class=\"s\" lang=\"ko\">가치</span>",
   "kind": "html",
   "where": "pronunciation › div.pair"
  },
  {
-  "id": "p151",
+  "id": "p150",
   "en": "said as",
   "kind": "html",
   "where": "pronunciation › span.ar"
  },
  {
-  "id": "p152",
-  "en": "ㅌ before 이 turns into ㅊ, like \"got you\" becoming \"gotcha\".",
+  "id": "p151",
+  "en": "ㅌ before 이 becomes ㅊ, like \"gotcha\".",
   "kind": "html",
   "where": "pronunciation › p"
  },
  {
-  "id": "p153",
+  "id": "p152",
   "en": "Tensing",
   "kind": "html",
   "where": "pronunciation › small"
  },
  {
-  "id": "p154",
+  "id": "p153",
   "en": "<span class=\"w\" lang=\"ko\">똑바로</span><span class=\"ar\">said as</span><span class=\"s\" lang=\"ko\">똑빠로</span>",
   "kind": "html",
   "where": "pronunciation › div.pair"
  },
  {
-  "id": "p155",
+  "id": "p154",
   "en": "said as",
   "kind": "html",
   "where": "pronunciation › span.ar"
  },
  {
-  "id": "p156",
-  "en": "ㅂ hardens into ㅃ after ㄱ. \"Straight\" or \"properly\".",
+  "id": "p155",
+  "en": "ㅂ hardens to ㅃ after ㄱ.",
   "kind": "html",
   "where": "pronunciation › p"
  },
  {
-  "id": "p157",
+  "id": "p156",
   "en": "Respell what the voice reads",
   "kind": "html",
   "where": "pronunciation › b"
  },
  {
-  "id": "p158",
-  "en": "A set of rules rewrites each sentence the way it's said before it goes to the voice. Learners still see the normal spelling. This fixed most of the misreadings on the Anki cards.",
+  "id": "p157",
+  "en": "Rules rewrite each sentence as it's said before voicing. Learners still see the normal spelling.",
   "kind": "html",
   "where": "pronunciation › p"
+ },
+ {
+  "id": "p158",
+  "en": "Find the gap in QA",
+  "kind": "html",
+  "where": "pronunciation › b"
  },
  {
   "id": "p159",
-  "en": "Find out what the checks can't hear",
+  "en": "Speech-to-text checks spelling, not sound, so pronunciation needed its own check.",
   "kind": "html",
-  "where": "pronunciation › b"
+  "where": "pronunciation › p"
  },
  {
   "id": "p160",
-  "en": "Speech-to-text writes down spelling, so a wrong sound still comes back as the right word. Pronunciation had to be caught before voicing, and by ear.",
+  "en": "Test three ways",
   "kind": "html",
-  "where": "pronunciation › p"
+  "where": "pronunciation › b"
  },
  {
   "id": "p161",
-  "en": "Test the same sentence three ways",
+  "en": "Same sentence, three spellings, two engines. All sounded alike, so the models mostly know the rules.",
   "kind": "html",
-  "where": "pronunciation › b"
+  "where": "pronunciation › p"
  },
  {
   "id": "p162",
-  "en": "One sentence with six tricky spots, read as written, with light fixes, and fully respelled, by both ElevenLabs and Gemini. All three sounded almost the same, so the voices mostly know the rules already.",
+  "en": "Fix what's left",
   "kind": "html",
-  "where": "pronunciation › p"
+  "where": "pronunciation › b"
  },
  {
   "id": "p163",
-  "en": "Fix the few slips that are left",
-  "kind": "html",
-  "where": "pronunciation › b"
- },
- {
-  "id": "p164",
-  "en": "They happened across the gap between two words in long takes, like <span lang=\"ko\">고객 문의</span> in a pointed question. Now those phrases are joined up, numbers are written out in Hangul, and a daily Claude review marks the risky spots before each episode is voiced.",
+  "en": "Slips came across word gaps in long takes, like <span lang=\"ko\">고객 문의</span>. Now risky phrases are joined, numbers are spelled out, and Claude reviews each script before voicing.",
   "kind": "html",
   "where": "pronunciation › p"
  },
  {
-  "id": "p165",
-  "en": "One pronunciation tool shared by the cards and the podcast, with no old audio remade.",
+  "id": "p164",
+  "en": "One shared pronunciation tool for cards and podcast, with zero re-voicing costs.",
   "kind": "html",
   "where": "pronunciation › b"
  },
  {
-  "id": "p166",
+  "id": "p165",
   "en": "The episode list in Korean, with episode titles, summaries and running times",
   "kind": "attr:alt",
   "where": "player › img"
  },
  {
-  "id": "p167",
+  "id": "p166",
   "en": "An episode playing, with the current line lifted as a card and English subtitles under each line",
   "kind": "attr:alt",
   "where": "player › img"
  },
  {
-  "id": "p168",
+  "id": "p167",
   "en": "The sheet for the grammar pattern -았/었어야지요, with meaning, example, notes and its uses in the episode",
   "kind": "attr:alt",
   "where": "player › img"
  },
  {
-  "id": "p169",
-  "en": "A player built for shadowing",
+  "id": "p168",
+  "en": "UX designed for shadowing",
   "kind": "html",
   "where": "player › h2"
  },
  {
-  "id": "p170",
+  "id": "p169",
   "en": "Follow along syllable by syllable, then replay the line and say it back.",
   "kind": "html",
   "where": "player › p.big-p"
  },
  {
-  "id": "p171",
-  "en": "Grammar is filled purple and vocab is dotted. Tap either to open the card behind it, with notes and every other place it shows up in the episode.",
+  "id": "p170",
+  "en": "Grammar is purple, vocab is dotted. Tap either for the full card.",
   "kind": "html",
   "where": "player › p"
  },
  {
-  "id": "p172",
+  "id": "p171",
   "en": "<b>Pick a situation</b>Each episode is a scene from daily or office life.",
   "kind": "html",
   "where": "player › figcaption"
  },
  {
-  "id": "p173",
+  "id": "p172",
   "en": "<b>Read along</b>The line being spoken lifts out, with subtitles underneath.",
   "kind": "html",
   "where": "player › figcaption"
  },
  {
-  "id": "p174",
+  "id": "p173",
   "en": "<b>Tap for the card</b>Meaning, example, notes and a jump to each use.",
   "kind": "html",
   "where": "player › figcaption"
  },
  {
-  "id": "p175",
+  "id": "p174",
   "en": "Replay line",
   "kind": "html",
   "where": "player › b"
  },
  {
-  "id": "p176",
-  "en": "One tap repeats the current line, so shadowing never means scrubbing.",
+  "id": "p175",
+  "en": "Repeat the current line in one tap.",
   "kind": "html",
   "where": "player › p"
  },
  {
-  "id": "p177",
+  "id": "p176",
   "en": "Speed control",
   "kind": "html",
   "where": "player › b"
  },
  {
-  "id": "p178",
-  "en": "0.7× to 1.2×, for first listens and then real pace.",
+  "id": "p177",
+  "en": "0.7× to 1.2×, from first listen to real pace.",
   "kind": "html",
   "where": "player › p"
  },
  {
-  "id": "p179",
+  "id": "p178",
   "en": "Picks up where you left off",
   "kind": "html",
   "where": "player › b"
  },
  {
-  "id": "p180",
-  "en": "Each episode remembers its place, no sign-in needed.",
+  "id": "p179",
+  "en": "Each episode resumes where you stopped, no sign-in.",
   "kind": "html",
   "where": "player › p"
  },
  {
-  "id": "p181",
+  "id": "p180",
   "en": "Subtitle languages",
   "kind": "attr:aria-label",
   "where": "shared › div.langs-row"
  },
  {
-  "id": "p182",
+  "id": "p181",
   "en": "An episode playing with Simplified Chinese subtitles",
   "kind": "attr:alt",
   "where": "shared › img"
  },
  {
-  "id": "p183",
-  "en": "Localised for a classroom of ten languages",
+  "id": "p182",
+  "en": "Localised into ten languages",
   "kind": "html",
   "where": "shared › h2"
  },
  {
-  "id": "p184",
-  "en": "My classmates come from all over, so the subtitles and the interface switch together.",
+  "id": "p183",
+  "en": "Subtitles and interface switch together, for a classroom from all over.",
   "kind": "html",
   "where": "shared › p.big-p"
  },
  {
-  "id": "p185",
-  "en": "Pick a language once and every label, title and subtitle follows. Traditional Chinese is generated from Simplified, with Taiwanese wording. The whole thing installs to the home screen, and sharing it is just sending the link.",
+  "id": "p184",
+  "en": "It installs to the home screen and shares with a link.",
   "kind": "html",
   "where": "shared › p"
  },
  {
-  "id": "p186",
+  "id": "p185",
   "en": "67 episodes, ten languages, and no app store or account in the way.",
   "kind": "html",
   "where": "shared › b"
  },
  {
-  "id": "p187",
+  "id": "p186",
   "en": "<b>Simplified Chinese</b>Same player, subtitles switched.",
   "kind": "html",
   "where": "shared › figcaption"
  },
  {
-  "id": "p188",
+  "id": "p187",
   "en": "Next case: Helping shoppers find their fit",
   "kind": "attr:aria-label",
   "where": "c-next › a.panel.c-nextcase"
  },
  {
-  "id": "p189",
+  "id": "p188",
   "en": "Contact",
   "kind": "html",
   "where": "c-next › span"
  },
  {
-  "id": "p190",
+  "id": "p189",
   "en": "Open to work anywhere",
   "kind": "html",
   "where": "c-next › span"
  },
  {
-  "id": "p191",
+  "id": "p190",
   "en": "Building something with AI voices or language? I'd love to help.",
   "kind": "html",
   "where": "c-next › h2"
  },
  {
-  "id": "p192",
+  "id": "p191",
   "en": "Say hello",
   "kind": "html",
   "where": "c-next › a.btn.primary"
  },
  {
-  "id": "p193",
+  "id": "p192",
   "en": "Grab my résumé",
   "kind": "text",
   "where": "c-next › a.btn"
  },
  {
-  "id": "p194",
+  "id": "p193",
   "en": "Next case",
   "kind": "html",
   "where": "c-next › span"
  },
  {
-  "id": "p195",
+  "id": "p194",
   "en": "Helping shoppers find their fit",
   "kind": "html",
   "where": "c-next › h3"
  },
  {
-  "id": "p196",
+  "id": "p195",
   "en": "EVN Archive · E-commerce",
   "kind": "html",
   "where": "c-next › p"
