@@ -1,0 +1,68 @@
+{
+ "locked": {
+  "de": {
+   "All work": "Alle Projekte",
+   "What came of it": "Was dabei herauskam",
+   "Role": "Rolle",
+   "Timeline": "Zeitraum",
+   "Platform": "Plattform",
+   "Contact": "Kontakt",
+   "Open to work anywhere": "Offen für Jobs weltweit",
+   "Say hello": "Hallo sagen",
+   "Grab my résumé": "Lebenslauf mitnehmen",
+   "Next case": "Nächstes Projekt",
+   "Helping shoppers find their fit": "Die richtige Passform finden",
+   "EVN Archive · E-commerce": "EVN Archive · E-Commerce",
+   "Oct 2026": "Okt. 2026"
+  },
+  "ko": {
+   "All work": "전체 작업",
+   "What came of it": "결과",
+   "Role": "역할",
+   "Timeline": "기간",
+   "Platform": "플랫폼",
+   "Contact": "연락처",
+   "Open to work anywhere": "어디서든 일할 수 있어요",
+   "Say hello": "인사하기",
+   "Grab my résumé": "이력서",
+   "Next case": "다음 사례",
+   "Helping shoppers find their fit": "입어보지 않아도 아는 핏",
+   "EVN Archive · E-commerce": "EVN Archive · 이커머스",
+   "Oct 2026": "2026년 10월"
+  },
+  "zh-hans": {
+   "All work": "全部作品",
+   "What came of it": "成果",
+   "Role": "角色",
+   "Timeline": "时间",
+   "Platform": "平台",
+   "Contact": "联系",
+   "Open to work anywhere": "工作地点不限，欢迎来聊",
+   "Say hello": "打个招呼",
+   "Grab my résumé": "下载简历",
+   "Next case": "下一个案例",
+   "Helping shoppers find their fit": "均码衣服，网购也合身",
+   "EVN Archive · E-commerce": "EVN Archive · 电商",
+   "Oct 2026": "2026 年 10 月"
+  },
+  "zh-hant": {
+   "All work": "所有作品",
+   "What came of it": "成果",
+   "Role": "角色",
+   "Timeline": "期間",
+   "Platform": "平台",
+   "Contact": "聯絡",
+   "Open to work anywhere": "歡迎各地的工作機會",
+   "Say hello": "打聲招呼",
+   "Grab my résumé": "下載履歷",
+   "Next case": "下一個案例",
+   "Helping shoppers find their fit": "Free Size，網購也合身",
+   "EVN Archive · E-commerce": "EVN Archive · 電商",
+   "Oct 2026": "2026 年 10 月"
+  }
+ },
+ "keep_as_is": [
+  "Sogang Podcasts",
+  "Gemini 3.8 TTS"
+ ]
+}
