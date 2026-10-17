@@ -38,7 +38,8 @@ The page is written in Mancini's own voice: first person, conversational, like t
 7. **Short labels stay short.** `home.more` ("Read the case") and `menu.cat` ("Side Projects") must be 4 characters or fewer in Korean and Chinese. Tag pills (`span.tile-k`, `span.who`, `home.tag*`) should be 1–3 words.
 8. **Locked strings** in `glossary.json` are prefilled. Don't change them.
 9. Where the English says "Localization" as a skill (`home.tag2`), use the site's existing word: Lokalisierung, 현지화, 本地化, 在地化.
-10. `p…` strings that are screen-reader labels (`attr:aria-label`) and image descriptions (`attr:alt`) are translated too; keep them plain and descriptive.
+10. The sample Anki card on the page is product UI and stays in English, so its text isn't in `source.json`.
+11. `p…` strings that are screen-reader labels (`attr:aria-label`) and image descriptions (`attr:alt`) are translated too; keep them plain and descriptive.
 
 ## Terms
 
@@ -51,6 +52,9 @@ The page is written in Mancini's own voice: first person, conversational, like t
 | side project | a personal project outside work | 사이드 프로젝트, 个人项目, 個人專案, Nebenprojekt |
 | free tier | the free usage level of Gemini's API | 무료 티어 / 무료 요금제, 免费额度, 免費額度, Gratis-Kontingent |
 | voice direction | casting and directing the AI voices | 보이스 디렉팅, 声音导演 / 配音指导, 配音指導, Stimmregie |
+| nasalisation, palatalisation, tensing | Korean sound changes (비음화, 구개음화, 경음화) | Korean: use these Korean terms. Chinese: 鼻音化, 腭化 / 顎化, 紧音化 / 緊音化. German: Nasalierung, Palatalisierung, Verhärtung (Tensierung) |
+| "handbag" → "hambag" | an English example of a sound change | Swap in a natural example from the target language if one exists (German: "Bahnhof" is fine to keep English); keep it short |
+| speech-to-text | transcribing audio into text | 음성 인식 (STT), 语音转文字, 語音轉文字, Spracherkennung |
 
 ## When you're done
 

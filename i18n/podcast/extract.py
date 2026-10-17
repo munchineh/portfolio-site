@@ -76,6 +76,9 @@ def skip(en, node):
     host = node if getattr(node, "name", None) else node.parent
     if host is not None and host.find_parent(class_="langs-row") is not None:
         return True
+    # the Anki card mock is product UI, which stays in English on every language's page
+    if host is not None and ("ankim" in (host.get("class") or []) or host.find_parent(class_="ankim") is not None):
+        return True
     return False
 
 
