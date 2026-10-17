@@ -269,6 +269,13 @@
   .side-card:hover .more-l i { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .side-pic { grid-column: 6 / 13; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
   .side-pic video { display: block; width: 100%; height: auto; }
+  .side-pic .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .side-pic.has-vid { display: grid; justify-items: center; padding: 18px 0; }
+    .side-pic .vid-d { display: none; }
+    .side-pic .vid-m { display: block; width: min(76%, 280px); border-radius: 24px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  }
+
   @media (max-width: 900px) {
     .side-card { padding: 18px; gap: 18px; }
     .side-txt, .side-pic { grid-column: 1 / -1; padding-right: 0; }
@@ -605,7 +612,7 @@
         <div class="stats"><div class="stat"><b>67</b><span>episodes from 2,400+ flashcards</span></div><div class="stat"><b>10</b><span>subtitle languages</span></div></div>
         <span class="more-l"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></i>Read the case</span>
       </div>
-      <figure class="side-pic"><video class="demo-vid" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card"></video></figure>
+      <figure class="side-pic has-vid"><video class="demo-vid vid-d" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card"></video><video class="demo-vid vid-m" src="assets/pod-demo-m.mp4" poster="assets/pod-demo-m.jpg" width="720" height="1440" muted loop playsinline preload="none" aria-label="An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card"></video></figure>
     </a>
   </section>
 
@@ -833,9 +840,8 @@
 <script>
 /* Side project demo: play only while on screen, and never for reduced motion */
 (() => {
-  const v = document.querySelector('.side-pic video');
-  if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  document.querySelectorAll('.side-pic video').forEach(v => new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v));
 })();
 </script>
 </body>

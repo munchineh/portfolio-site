@@ -38,6 +38,13 @@
   .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
   .c-media { margin: 0; background: #f2f3f7; }
   .c-media img, .c-media video { display: block; width: 100%; height: auto; }
+  .c-media .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .c-media.has-vid { padding: 18px 0; display: grid; justify-items: center; }
+    .c-media .vid-d { display: none; }
+    .c-media .vid-m { display: block; width: min(76%, 300px); height: auto; border-radius: 26px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+    .c-media.has-vid figcaption { justify-self: stretch; margin-top: 16px; margin-bottom: -18px; }
+  }
   .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); background: var(--panel); }
 
   /* ---------- Sections ---------- */
@@ -240,8 +247,9 @@
     </aside>
   </section>
 
-  <figure class="panel c-media">
-    <video class="demo-vid" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="metadata" aria-label="An episode playing with the script filling in syllable by syllable, then a tap on a grammar point opens its card in a side panel"></video>
+  <figure class="panel c-media has-vid">
+    <video class="demo-vid vid-d" src="assets/pod-demo.mp4" poster="assets/pod-demo.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="An episode playing with the script filling in syllable by syllable, then a tap on a grammar point opens its card in a side panel"></video>
+    <video class="demo-vid vid-m" src="assets/pod-demo-m.mp4" poster="assets/pod-demo-m.jpg" width="720" height="1440" muted loop playsinline preload="none" aria-label="An episode playing with the script filling in syllable by syllable, then a tap on a grammar point opens its card in a side panel"></video>
     <figcaption>An episode playing, then a tap on a grammar point to open its card.</figcaption>
   </figure>
 
