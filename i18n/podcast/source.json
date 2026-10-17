@@ -145,13 +145,13 @@
  },
  {
   "id": "p025",
-  "en": "Each Sogang book packs in hundreds of expressions, and flashcards only ever give me one sentence at a time.",
+  "en": "There are plenty of great Korean podcasts, language apps and shadowing apps. None of them follow my Sogang syllabus.",
   "kind": "html",
   "where": "why › p.big-p"
  },
  {
   "id": "p026",
-  "en": "I wanted long, natural conversations to train my ear and shadow along to, using only what we're learning in class. I tried NotebookLM first. It improvised its own chat, spoke at native speed and pulled in vocab well outside the books.",
+  "en": "Each book packs in hundreds of expressions, and what I heard outside class rarely lined up with what we were learning in it. Flashcards helped, but only one sentence at a time. I wanted long, natural conversations built from exactly what's in the books, to train my ear and shadow along to. I tried making them with NotebookLM first. It improvised its own chat, spoke at native speed and pulled in vocab well outside the books.",
   "kind": "html",
   "where": "why › p"
  },
