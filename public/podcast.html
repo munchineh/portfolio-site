@@ -109,6 +109,8 @@
   .ankim .a-panel { margin-top: 16px; padding: 2px 14px 12px; background: var(--pnl); border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
   .ankim .a-panel .a-lbl { margin-top: 10px; }
   .ankim .a-panel p + p { margin-top: 6px; }
+  .ankim .a-hanja { font-size: 15px; }
+  .ankim .a-panel + .a-panel { margin-top: 10px; }
   .cardnotes { list-style: none; display: grid; gap: 10px; counter-reset: c; }
   .cardnotes li { counter-increment: c; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
   .cardnotes li::before { content: counter(c); width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 500; display: grid; place-items: center; }
@@ -345,30 +347,34 @@
       <p class="big-p">Before the podcast, I gave 4,000+ flashcards a voice with ElevenLabs. Getting them to sound like people took a lot of tuning.</p>
       <div class="cardrow">
         <div class="ankim" lang="ko" aria-label="The back of one of my Anki cards">
-          <span class="a-chip">4B.6 Grammar</span>
+          <span class="a-chip">4B.3 읽고 말하기 1</span>
           <div class="a-lbl">Word / Phrase</div>
-          <div class="a-focus">-았/었어야지요</div>
+          <div class="a-focus">조만간</div>
           <hr>
           <div class="a-lbl">Meaning</div>
-          <div class="a-def" lang="en">you should have… (telling someone off)</div>
+          <div class="a-def" lang="en">Before long, one of these days, soon</div>
           <div class="a-lbl">Example</div>
-          <div class="a-sent">마감이 오늘인 줄 알았으면 미리 말<b>했어야지요</b>.</div>
+          <div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
           <div class="a-lbl">Translation</div>
-          <div class="a-tr" lang="en">If you knew the deadline was today, you should've told me sooner.</div>
+          <div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
           <button class="a-play" id="ankiPlay" type="button" aria-label="Play the card's audio"><span class="tri"></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
           <audio id="ankiAudio" src="assets/anki-sample.mp3" preload="none"></audio>
           <div class="a-panel">
+            <div class="a-lbl">Hanja</div>
+            <p class="a-hanja">早晚間<br><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
+          </div>
+          <div class="a-panel">
             <div class="a-lbl">Notes</div>
-            <p>vs -았/었어야 했는데: <span lang="en">했어야 했는데 is regret about yourself; 했어야지(요) is telling someone off.</span></p>
-            <p>미리 말했어야지 = <span lang="en">you should've told me</span> · 조심했어야지 = <span lang="en">you should've been careful</span></p>
-            <p lang="en">Peers or juniors only, never to a senior.</p>
+            <p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
+            <p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
           </div>
         </div>
         <ol class="cardnotes">
-          <li><div><b>Tap to hear it</b><p>The real audio from this card, voiced with ElevenLabs.</p></div></li>
-          <li><div><b>The pattern lights up in the example</b><p>So you see the grammar in use, not just its name.</p></div></li>
+          <li><div><b>Tap to hear it</b><p>The real audio from this card, voiced with ElevenLabs and directed to sound cheerful and casual.</p></div></li>
+          <li><div><b>The word lights up in the example</b><p>So you see it used in a sentence people actually say.</p></div></li>
           <li><div><b>A play button you can hit with your thumb</b><p>A full-width bar in place of Anki's small grey icon.</p></div></li>
-          <li><div><b>Notes that compare</b><p>When to use it, the look-alike it gets confused with, and who you can say it to.</p></div></li>
+          <li><div><b>Hanja, linked to Chinese</b><p>The original characters, the simplified version with pinyin, and what Chinese says instead.</p></div></li>
+          <li><div><b>Notes that compare</b><p>The look-alike it gets confused with, and the phrases it usually comes in.</p></div></li>
         </ol>
       </div>
       <ol class="fixes">
