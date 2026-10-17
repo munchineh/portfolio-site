@@ -78,6 +78,44 @@
   .fixes .arr { display: grid; place-items: center; color: var(--accent); border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
   .fixes .fix { border-left: 0; }
 
+  /* ---------- Anki card mock: the real Korean note type's back, scoped so it can't leak into the page ---------- */
+  .cardrow { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 8px; }
+  .ankim { --bg: #fbfbfd; --ink: #1d1d1f; --muted: #6e6e73; --faint: #a1a1a6; --rule: #e3e3e8; --pnl: #f2f2f6;
+    --acc: #5b4fd6; --acc-bg: #ecebfd; --hl-bg: #e7e5fd;
+    font-family: -apple-system, "SF Pro Text", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; font-weight: 400;
+    font-size: 17px; line-height: 1.5; color: var(--ink); background: var(--bg); padding: 20px 18px 22px; border-radius: 24px; word-break: keep-all; overflow-wrap: anywhere;
+    box-shadow: 0 0 0 1px var(--rule), 0 22px 40px -26px rgba(0,0,0,.45); }
+  :root[data-theme="dark"] .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; } }
+  .ankim .a-chip { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--acc-bg); color: var(--acc); }
+  .ankim .a-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 16px 0 3px; }
+  .ankim .a-focus { font-size: 28px; font-weight: 700; line-height: 1.25; }
+  .ankim hr { border: none; border-top: 1px solid var(--rule); margin: 14px 0 2px; }
+  .ankim .a-def { font-size: 16px; font-weight: 600; color: var(--acc); }
+  .ankim .a-sent { font-size: 18.5px; }
+  .ankim .a-sent b { color: var(--acc); background: var(--hl-bg); font-weight: 600; border-radius: 4px; padding: 0 3px; }
+  .ankim .a-tr { font-size: 14.5px; color: var(--muted); }
+  .ankim .a-play { margin: 18px 0 4px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; height: 52px; border: 0; border-radius: 16px;
+    background: var(--acc-bg); color: var(--acc); font: 600 15.5px -apple-system, "SF Pro Text", sans-serif; cursor: pointer; transition: transform .15s, opacity .2s; }
+  .ankim .a-play:active { transform: scale(.98); }
+  .ankim .a-play:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+  .ankim .a-play .tri { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent var(--acc); }
+  .ankim .a-play.on .tri { width: 12px; height: 14px; border: 0; border-left: 4px solid var(--acc); border-right: 4px solid var(--acc); box-sizing: border-box; }
+  .ankim .a-play .eq { display: none; gap: 2px; align-items: end; height: 14px; }
+  .ankim .a-play.on .eq { display: inline-flex; }
+  .ankim .a-play .eq i { width: 3px; background: var(--acc); border-radius: 2px; animation: eqb .9s ease-in-out infinite; }
+  .ankim .a-play .eq i:nth-child(2) { animation-delay: .15s; } .ankim .a-play .eq i:nth-child(3) { animation-delay: .3s; }
+  @keyframes eqb { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+  .ankim .a-panel { margin-top: 16px; padding: 2px 14px 12px; background: var(--pnl); border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
+  .ankim .a-panel .a-lbl { margin-top: 10px; }
+  .ankim .a-panel p + p { margin-top: 6px; }
+  .cardnotes { list-style: none; display: grid; gap: 10px; counter-reset: c; }
+  .cardnotes li { counter-increment: c; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
+  .cardnotes li::before { content: counter(c); width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 500; display: grid; place-items: center; }
+  .cardnotes b { display: block; font-weight: 500; font-size: 15px; }
+  .cardnotes p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .cardrow { grid-template-columns: 1fr; } .cardrow .ankim { max-width: 360px; } }
+
   /* ---------- Script: three parts of an episode ---------- */
   .parts { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
   .parts { --cols: minmax(0, 100fr) minmax(0, 74fr) minmax(150px, 19fr); }
@@ -93,6 +131,21 @@
   .parts li p { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
   .parts .foot { padding: 10px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); }
 
+  /* ---------- ElevenLabs vs Gemini, and the toolkit ---------- */
+  .vs { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .vs-row { display: grid; grid-template-columns: minmax(96px, .8fr) 1fr 1fr; border-top: 1px solid var(--rule); }
+  .vs-row:first-child { border-top: 0; }
+  .vs-row > span { padding: 11px 14px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .vs-row > span + span { border-left: 1px solid var(--rule); }
+  .vs-row > span:first-child { color: var(--ink); font-weight: 500; }
+  .vs-head > span { font-size: 13px; font-weight: 500; color: var(--ink); background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .vs .win { color: var(--ink); background: var(--accent-soft); }
+  .kit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .kit > div { border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .kit b { display: block; font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+  .kit span { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .kit { grid-template-columns: 1fr 1fr; } .vs-row { grid-template-columns: 84px 1fr 1fr; } .vs-row > span { padding: 10px; font-size: 13px; } }
+  @media (max-width: 520px) { .kit { grid-template-columns: 1fr; } }
   /* ---------- Voicing pipeline: each stage lights up in turn ---------- */
   .flow { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 14px; }
   .flow ol { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); counter-reset: f; position: relative; }
@@ -107,6 +160,24 @@
   .flow .prog i { display: block; height: 100%; width: var(--p, 100%); background: var(--accent); border-radius: 4px; transition: width .9s var(--ease); }
   .flow .note { font-size: 12px; color: var(--muted); }
 
+  /* ---------- Sound changes: written vs said ---------- */
+  .said { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .said > div { border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 8px; align-content: start; }
+  .said, .tries { word-break: keep-all; }
+  .said .pair { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .said .w, .said .s { font-size: 24px; font-weight: 500; line-height: 1.2; }
+  .said .s { color: var(--accent); }
+  .said .ar { color: var(--muted); font-size: 14px; }
+  .said small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .said b { font-weight: 500; font-size: 15px; }
+  .said p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .tries { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; counter-reset: t; }
+  .tries li { counter-increment: t; display: grid; grid-template-columns: 34px 1fr; gap: 12px; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .tries li::before { content: counter(t, decimal-leading-zero); font-size: 12px; font-weight: 500; color: var(--accent); padding-top: 2px; }
+  .tries b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tries p { font-size: 14px; color: var(--muted); line-height: 1.5; max-width: 62ch; }
+  .tries span[lang="ko"], .said span[lang="ko"] { color: var(--ink); }
+  @media (max-width: 900px) { .said { grid-template-columns: 1fr; } }
   /* ---------- Screens ---------- */
   .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
   .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
@@ -272,6 +343,34 @@
     <header class="sh"><span class="no">02</span><h2>It started with voicing my Anki cards</h2></header>
     <div class="sb">
       <p class="big-p">Before the podcast, I gave 4,000+ flashcards a voice with ElevenLabs. Getting them to sound like people took a lot of tuning.</p>
+      <div class="cardrow">
+        <div class="ankim" lang="ko" aria-label="The back of one of my Anki cards">
+          <span class="a-chip">4B.6 Grammar</span>
+          <div class="a-lbl">Word / Phrase</div>
+          <div class="a-focus">-았/었어야지요</div>
+          <hr>
+          <div class="a-lbl">Meaning</div>
+          <div class="a-def" lang="en">you should have… (telling someone off)</div>
+          <div class="a-lbl">Example</div>
+          <div class="a-sent">마감이 오늘인 줄 알았으면 미리 말<b>했어야지요</b>.</div>
+          <div class="a-lbl">Translation</div>
+          <div class="a-tr" lang="en">If you knew the deadline was today, you should've told me sooner.</div>
+          <button class="a-play" id="ankiPlay" type="button" aria-label="Play the card's audio"><span class="tri"></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
+          <audio id="ankiAudio" src="assets/anki-sample.mp3" preload="none"></audio>
+          <div class="a-panel">
+            <div class="a-lbl">Notes</div>
+            <p>vs -았/었어야 했는데: <span lang="en">했어야 했는데 is regret about yourself; 했어야지(요) is telling someone off.</span></p>
+            <p>미리 말했어야지 = <span lang="en">you should've told me</span> · 조심했어야지 = <span lang="en">you should've been careful</span></p>
+            <p lang="en">Peers or juniors only, never to a senior.</p>
+          </div>
+        </div>
+        <ol class="cardnotes">
+          <li><div><b>Tap to hear it</b><p>The real audio from this card, voiced with ElevenLabs.</p></div></li>
+          <li><div><b>The pattern lights up in the example</b><p>So you see the grammar in use, not just its name.</p></div></li>
+          <li><div><b>A play button you can hit with your thumb</b><p>A full-width bar in place of Anki's small grey icon.</p></div></li>
+          <li><div><b>Notes that compare</b><p>When to use it, the look-alike it gets confused with, and who you can say it to.</p></div></li>
+        </ol>
+      </div>
       <ol class="fixes">
         <li>
           <div class="was"><small>Problem</small><b>Every line sounded like a listening test</b><p>Calm, polished and a little lifeless.</p></div>
@@ -295,10 +394,15 @@
 
   <!-- ============ 03 ============ -->
   <section class="panel sec" id="scripts">
-    <header class="sh"><span class="no">03</span><h2>Every card has a place in an episode</h2></header>
+    <header class="sh"><span class="no">03</span><h2>Textbook lines, moved into real life</h2></header>
     <div class="sb">
-      <p class="big-p">Each card is matched to the situation where people would actually say it, then written into a scene.</p>
-      <p>A planner reporting delays to her team leader, a job interview, a confession over soju. Speech levels follow the relationship, so you hear 합쇼체 to a director and 반말 between friends. The book is the source of truth for every spelling.</p>
+      <p class="big-p">Textbook dialogues are tidy. One speaker at a time, in a quiet room, every word said clearly. Real conversations aren't.</p>
+      <p>Each card gets a situation where people would actually say it: a planner reporting delays to her team leader, a job interview, a confession over soju. Speech levels follow the relationship, so you hear 합쇼체 to a director and 반말 between friends. The words stay exactly as the book teaches them.</p>
+      <div class="grid3">
+        <div class="tile"><span class="tile-k">Overlaps</span><b>People talk over each other</b><p>Interruptions cut in a split second early, the way they do at work and over dinner.</p></div>
+        <div class="tile"><span class="tile-k">Noise</span><b>Not every room is quiet</b><p>Restaurant chatter and other background sound under the scenes.</p></div>
+        <div class="tile"><span class="tile-k">Feeling</span><b>Excited, tired, mumbling</b><p>Lines carry real emotion, laughs and trailing-off words, so your ear gets used to how people really sound.</p></div>
+      </div>
       <div class="parts" aria-label="The three parts of an episode, sized by their share of lines in episode 2">
         <div class="bar" aria-hidden="true"><span>장면</span><span>해설</span><span>복습</span></div>
         <ol>
@@ -317,19 +421,37 @@
 
   <!-- ============ 04 ============ -->
   <section class="panel sec" id="voicing">
-    <header class="sh"><span class="no">04</span><h2>Voicing it with Gemini 3.8, one test at a time</h2></header>
+    <header class="sh"><span class="no">04</span><h2>The right model for each job</h2></header>
     <div class="sb">
-      <p class="big-p">Gemini reads a whole scene in one go, so lines flow like real back and forth. It took some revising, splicing and testing to keep it sounding right for 20 minutes.</p>
+      <p class="big-p">No single AI did everything well, so each job went to the tool that does it best, or for the least credit.</p>
+      <p>ElevenLabs is the better Korean voice, but it charges by the character. Gemini 3.8 is free and reads a whole scene in one go, but it comes with limits I had to design around.</p>
+      <div class="vs" role="table" aria-label="ElevenLabs compared with Gemini 3.8 for this project">
+        <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
+        <div class="vs-row" role="row"><span role="rowheader">Cost</span><span role="cell">Per character. One level of scripts was about three months of credits</span><span role="cell" class="win">Free tier, 10 requests a day</span></div>
+        <div class="vs-row" role="row"><span role="rowheader">Dialogue</span><span role="cell">One line at a time</span><span role="cell" class="win">A whole scene per request, so replies flow naturally</span></div>
+        <div class="vs-row" role="row"><span role="rowheader">Korean detail</span><span role="cell" class="win">Very reliable</span><span role="cell">Good, with the odd slip in long takes</span></div>
+        <div class="vs-row" role="row"><span role="rowheader">Voices</span><span role="cell" class="win">A large library, any number per clip</span><span role="cell">Two per request, and voices can drift</span></div>
+        <div class="vs-row" role="row"><span role="rowheader">Best at</span><span role="cell">Short card sentences and sound effects</span><span role="cell">Long, two-person episodes</span></div>
+      </div>
+      <p>Each of Gemini's limits got its own workaround: side characters are voiced separately and spliced in, every line carries a "same voice as before" cue, a voice check catches drift, and runs are scheduled just after the free quota resets.</p>
       <div class="flow" id="flow">
         <ol>
           <li><b>Prep</b><p>Respell tricky sound changes and numbers, using the same tool as the Anki cards.</p><span class="who">Rules + Claude</span></li>
-          <li><b>Voice</b><p>Two speakers per request. Each episode gets its own cast, and every line carries a "same voice as before" cue.</p><span class="who">Gemini 3.8 TTS</span></li>
+          <li><b>Voice</b><p>Read a whole scene at a time, two speakers per request, with a cast picked for each episode.</p><span class="who">Gemini 3.8 TTS</span></li>
           <li><b>Check</b><p>Time every syllable, and catch a line read in the wrong voice. That chunk gets remade.</p><span class="who">Speech-to-text</span></li>
           <li><b>Splice</b><p>Re-voice side characters and splice them in at matching levels. Interruptions overlap by a quarter second.</p><span class="who">Audio tooling</span></li>
-          <li><b>Finish</b><p>Mix in background sound for each scene, like restaurant chatter, and jingles between sections. Then it publishes itself.</p><span class="who">ElevenLabs sound effects</span></li>
+          <li><b>Finish</b><p>Mix in background sound for each scene, like restaurant chatter, and jingles between sections. Then it publishes itself.</p><span class="who">ElevenLabs</span></li>
         </ol>
         <div class="prog" aria-hidden="true"><i id="flowProg"></i></div>
         <p class="note">Every change is tried on a short sample first, then rolled out to the episodes.</p>
+      </div>
+      <div class="kit" aria-label="The tools behind the project and what each one does">
+        <div><b>Claude</b><span>Scripts, the player, the whole pipeline, and a daily pronunciation review</span></div>
+        <div><b>Gemini 3.8 TTS</b><span>Voices the episodes, free</span></div>
+        <div><b>ElevenLabs</b><span>Card voices, sound effects, and speech-to-text checks on the cards</span></div>
+        <div><b>Gemini in Antigravity</b><span>Bulk translation, to save Claude usage for the harder work</span></div>
+        <div><b>Whisper + an aligner</b><span>Times every syllable for the highlighting, running free on my Mac</span></div>
+        <div><b>Voice match</b><span>Flags a line read in the wrong character's voice, also on my Mac</span></div>
       </div>
       <div class="callouts">
         <div><b>$0</b><span>to voice an episode on the free tier</span></div>
@@ -339,8 +461,29 @@
   </section>
 
   <!-- ============ 05 ============ -->
+  <section class="panel sec" id="pronunciation">
+    <header class="sh"><span class="no">05</span><h2>Korean is written one way and said another</h2></header>
+    <div class="sb">
+      <p class="big-p">Sounds change when they meet the sound next to them. AI voices sometimes read the spelling instead.</p>
+      <p>Every language does this. In English, "handbag" comes out closer to "hambag". Korean has clear rules for it, and learners pick them up by ear, so a voice that reads the letters teaches the wrong sound.</p>
+      <div class="said">
+        <div><small>Nasalisation</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">said as</span><span class="s" lang="ko">궁물</span></div><p>A hard ㄱ softens into a nasal ㅇ before ㅁ. "Soup broth".</p></div>
+        <div><small>Palatalisation</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">said as</span><span class="s" lang="ko">가치</span></div><p>ㅌ before 이 turns into ㅊ, like "got you" becoming "gotcha".</p></div>
+        <div><small>Tensing</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">said as</span><span class="s" lang="ko">똑빠로</span></div><p>ㅂ hardens into ㅃ after ㄱ. "Straight" or "properly".</p></div>
+      </div>
+      <ol class="tries">
+        <li><div><b>Respell what the voice reads</b><p>A set of rules rewrites each sentence the way it's said before it goes to the voice. Learners still see the normal spelling. This fixed most of the misreadings on the Anki cards.</p></div></li>
+        <li><div><b>Find out what the checks can't hear</b><p>Speech-to-text writes down spelling, so a wrong sound still comes back as the right word. Pronunciation had to be caught before voicing, and by ear.</p></div></li>
+        <li><div><b>Test the same sentence three ways</b><p>One sentence with six tricky spots, read as written, with light fixes, and fully respelled, by both ElevenLabs and Gemini. All three sounded almost the same, so the voices mostly know the rules already.</p></div></li>
+        <li><div><b>Fix the few slips that are left</b><p>They happened across the gap between two words in long takes, like <span lang="ko">고객 문의</span> in a pointed question. Now those phrases are joined up, numbers are written out in Hangul, and a daily Claude review marks the risky spots before each episode is voiced.</p></div></li>
+      </ol>
+      <div class="result"><b>One pronunciation tool shared by the cards and the podcast, with no old audio remade.</b></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 ============ -->
   <section class="panel sec" id="player">
-    <header class="sh"><span class="no">05</span><h2>A player built for shadowing</h2></header>
+    <header class="sh"><span class="no">06</span><h2>A player built for shadowing</h2></header>
     <div class="sb">
       <p class="big-p">Follow along syllable by syllable, then replay the line and say it back.</p>
       <p>Grammar is filled purple and vocab is dotted. Tap either to open the card behind it, with notes and every other place it shows up in the episode.</p>
@@ -357,9 +500,9 @@
     </div>
   </section>
 
-  <!-- ============ 06 ============ -->
+  <!-- ============ 07 ============ -->
   <section class="panel sec" id="shared">
-    <header class="sh"><span class="no">06</span><h2>Localised for a classroom of ten languages</h2></header>
+    <header class="sh"><span class="no">07</span><h2>Localised for a classroom of ten languages</h2></header>
     <div class="sb">
       <p class="big-p">My classmates come from all over, so the subtitles and the interface switch together.</p>
       <div class="duo">
@@ -406,6 +549,15 @@
     if (still.matches || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
   });
+
+  /* Anki card mock: the play bar plays the card's audio, and shows when it's playing */
+  const ap = document.getElementById('ankiPlay'), aa = document.getElementById('ankiAudio');
+  if (ap && aa) {
+    const lab = ap.querySelector('.pbl');
+    const set = on => { ap.classList.toggle('on', on); lab.textContent = on ? 'Playing' : 'Play audio'; ap.setAttribute('aria-label', on ? 'Pause the audio' : "Play the card's audio"); };
+    ap.addEventListener('click', () => { if (aa.paused) { aa.currentTime = 0; aa.play().catch(() => set(false)); } else aa.pause(); });
+    aa.addEventListener('play', () => set(true)); aa.addEventListener('pause', () => set(false)); aa.addEventListener('ended', () => set(false));
+  }
 
   /* Voicing pipeline: light each stage in turn while the bar fills */
   const fl = document.getElementById('flow');
