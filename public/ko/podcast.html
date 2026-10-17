@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#c9e1c1" media="(prefers-color-scheme: light)" data-c="#c9e1c1">
+<meta name="theme-color" content="#122d18" media="(prefers-color-scheme: dark)" data-c="#122d18">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>플래시카드로 만든 팟캐스트 · 만치니</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-head .btns { margin-top: -4px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; background: #f2f3f7; }
+  .c-media img, .c-media video { display: block; width: 100%; height: auto; }
+  .c-media .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .c-media.has-vid { padding: 18px 0; display: grid; justify-items: center; }
+    .c-media .vid-d { display: none; }
+    .c-media .vid-m { display: block; width: min(76%, 300px); height: auto; border-radius: 26px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+    .c-media.has-vid figcaption { justify-self: stretch; margin-top: 16px; margin-bottom: -18px; }
+  }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); background: var(--panel); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .tile p span[lang="ko"], .fix span[lang="ko"] { color: var(--ink); }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; }
+
+  /* ---------- Anki: problem → fix rows ---------- */
+  .fixes { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; }
+  .fixes li { display: grid; grid-template-columns: 1fr 28px 1fr; align-items: stretch; gap: 0; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .fixes .was, .fixes .fix { padding: 14px 16px; }
+  .fixes .was { background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .fixes small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .fixes b { display: block; font-weight: 500; font-size: 15px; line-height: 1.3; }
+  .fixes p { font-size: 14px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .fixes .arr { display: grid; place-items: center; color: var(--accent); border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+  .fixes .fix { border-left: 0; }
+
+  /* ---------- Anki card mock: the real Korean note type's back, scoped so it can't leak into the page ---------- */
+  .cardrow { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 8px; }
+  .ankim { --bg: #fbfbfd; --ink: #1d1d1f; --muted: #6e6e73; --faint: #a1a1a6; --rule: #e3e3e8; --pnl: #f2f2f6;
+    --acc: #5b4fd6; --acc-bg: #ecebfd; --hl-bg: #e7e5fd;
+    font-family: -apple-system, "SF Pro Text", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; font-weight: 400;
+    font-size: 17px; line-height: 1.5; color: var(--ink); background: var(--bg); padding: 20px 18px 22px; border-radius: 24px; word-break: keep-all; overflow-wrap: anywhere;
+    box-shadow: 0 0 0 1px var(--rule), 0 22px 40px -26px rgba(0,0,0,.45); }
+  :root[data-theme="dark"] .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; } }
+  .ankim .a-chip { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--acc-bg); color: var(--acc); }
+  .ankim .a-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 16px 0 3px; }
+  .ankim .a-focus { font-size: 28px; font-weight: 700; line-height: 1.25; }
+  .ankim hr { border: none; border-top: 1px solid var(--rule); margin: 14px 0 2px; }
+  .ankim .a-def { font-size: 16px; font-weight: 600; color: var(--acc); }
+  .ankim .a-sent { font-size: 18.5px; }
+  .ankim .a-sent b { color: var(--acc); background: var(--hl-bg); font-weight: 600; border-radius: 4px; padding: 0 3px; }
+  .ankim .a-tr { font-size: 14.5px; color: var(--muted); }
+  .ankim .a-play { margin: 18px 0 4px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; height: 52px; border: 0; border-radius: 16px;
+    background: var(--acc-bg); color: var(--acc); font: 600 15.5px -apple-system, "SF Pro Text", sans-serif; cursor: pointer; transition: transform .15s, opacity .2s; }
+  .ankim .a-play:active { transform: scale(.98); }
+  .ankim .a-play:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+  .ankim .a-play .tri { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent var(--acc); }
+  .ankim .a-play.on .tri { width: 12px; height: 14px; border: 0; border-left: 4px solid var(--acc); border-right: 4px solid var(--acc); box-sizing: border-box; }
+  .ankim .a-play .eq { display: none; gap: 2px; align-items: end; height: 14px; }
+  .ankim .a-play.on .eq { display: inline-flex; }
+  .ankim .a-play .eq i { width: 3px; background: var(--acc); border-radius: 2px; animation: eqb .9s ease-in-out infinite; }
+  .ankim .a-play .eq i:nth-child(2) { animation-delay: .15s; } .ankim .a-play .eq i:nth-child(3) { animation-delay: .3s; }
+  @keyframes eqb { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+  .ankim .a-panel { margin-top: 16px; padding: 2px 14px 12px; background: var(--pnl); border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
+  .ankim .a-panel .a-lbl { margin-top: 10px; }
+  .ankim .a-panel p + p { margin-top: 6px; }
+  .ankim .a-hanja { font-size: 15px; }
+  .ankim .a-panel + .a-panel { margin-top: 10px; }
+  .cardnotes { list-style: none; display: grid; gap: 10px; counter-reset: c; }
+  .cardnotes li { counter-increment: c; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
+  .cardnotes li::before { content: counter(c); width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 500; display: grid; place-items: center; }
+  .cardnotes b { display: block; font-weight: 500; font-size: 15px; }
+  .cardnotes p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .cardrow { grid-template-columns: 1fr; } .cardrow .ankim { max-width: 360px; } }
+
+  /* ---------- Script: three parts of an episode ---------- */
+  .parts { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .parts { --cols: minmax(0, 100fr) minmax(0, 74fr) minmax(150px, 19fr); }
+  .parts .bar { display: grid; grid-template-columns: var(--cols); height: 44px; }
+  .parts .bar span { display: flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; }
+  .parts .bar span:nth-child(1) { background: var(--accent); color: var(--on-accent); }
+  .parts .bar span:nth-child(2) { background: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .parts .bar span:nth-child(3) { background: var(--accent-soft); }
+  .parts ol { list-style: none; display: grid; grid-template-columns: var(--cols); }
+  .parts li { padding: 14px 12px 16px; border-right: 1px solid var(--rule); min-width: 0; }
+  .parts li:last-child { border-right: 0; }
+  .parts li b { display: block; font-weight: 500; font-size: 15px; }
+  .parts li p { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .parts .foot { padding: 10px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- ElevenLabs vs Gemini, and the toolkit ---------- */
+  .vs { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .vs-row { display: grid; grid-template-columns: minmax(96px, .8fr) 1fr 1fr; border-top: 1px solid var(--rule); }
+  .vs-row:first-child { border-top: 0; }
+  .vs-row > span { padding: 11px 14px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .vs-row > span + span { border-left: 1px solid var(--rule); }
+  .vs-row > span:first-child { color: var(--ink); font-weight: 500; }
+  .vs-head > span { font-size: 13px; font-weight: 500; color: var(--ink); background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .vs .win { color: var(--ink); background: var(--accent-soft); }
+  .kit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .kit > div { border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .kit b { display: block; font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+  .kit span { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .kit { grid-template-columns: 1fr 1fr; } .vs-row { grid-template-columns: 84px 1fr 1fr; } .vs-row > span { padding: 10px; font-size: 13px; } }
+  @media (max-width: 520px) { .kit { grid-template-columns: 1fr; } }
+  /* ---------- Voicing pipeline: each stage lights up in turn ---------- */
+  .flow { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 14px; }
+  .flow ol { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); counter-reset: f; position: relative; }
+  .flow li { counter-increment: f; padding: 14px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 55%, transparent); transition: border-color .4s, background .4s, opacity .4s; }
+  .flow li::before { content: counter(f, decimal-leading-zero); display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
+  .flow b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .flow p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .flow .who { display: inline-block; white-space: nowrap; margin-top: 10px; font-size: 11.5px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); }
+  .flow.play li { opacity: .45; }
+  .flow.play li.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+  .flow .prog { height: 4px; border-radius: 4px; background: var(--rule); overflow: hidden; }
+  .flow .prog i { display: block; height: 100%; width: var(--p, 100%); background: var(--accent); border-radius: 4px; transition: width .9s var(--ease); }
+  .flow .note { font-size: 12px; color: var(--muted); }
+
+  /* ---------- Sound changes: written vs said ---------- */
+  .said { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .said > div { border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 8px; align-content: start; }
+  .said [lang="ko"], .tries [lang="ko"] { word-break: keep-all; }
+  .said .pair { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .said .w, .said .s { font-size: 24px; font-weight: 500; line-height: 1.2; }
+  .said .s { color: var(--accent); }
+  .said .ar { color: var(--muted); font-size: 14px; }
+  .said small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .said b { font-weight: 500; font-size: 15px; }
+  .said p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .tries { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; counter-reset: t; }
+  .tries li { counter-increment: t; display: grid; grid-template-columns: 34px 1fr; gap: 12px; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .tries li::before { content: counter(t, decimal-leading-zero); font-size: 12px; font-weight: 500; color: var(--accent); padding-top: 2px; }
+  .tries b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tries p { font-size: 14px; color: var(--muted); line-height: 1.5; max-width: 62ch; }
+  .tries span[lang="ko"], .said span[lang="ko"] { color: var(--ink); }
+  @media (max-width: 900px) { .said { grid-template-columns: 1fr; } }
+  /* German title: KARTEIKARTEN is one long word, so the hero type steps down to keep it inside the panel */
+  :root:lang(de) .c-head h1 { font-size: clamp(40px, 6.6vw, 104px); }
+  @media (max-width: 900px) { :root:lang(de) .c-head h1 { font-size: clamp(30px, 9.4vw, 60px); } }
+  /* Long words (German compounds) wrap inside narrow cells instead of spilling out */
+  .flow li, .vs-row > span, .kit > div, .tile, .said > div, .tries li, .fixes .was, .fixes .fix { overflow-wrap: break-word; min-width: 0; }
+  :root:lang(de) :is(.flow b, .flow p, .vs-row > span, .tile b, .tile-k, .kit b) { hyphens: auto; -webkit-hyphens: auto; }
+  /* ---------- Screens ---------- */
+  .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+  .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .phones img { display: block; width: 100%; height: auto; border-radius: 22px; background: #f2f3f7; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .phones figcaption { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .wide-shot { margin: 8px 0 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .wide-shot img { display: block; width: 100%; height: auto; }
+  .duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 14px; align-items: start; }
+  .duo .phones { --n: 1; margin-top: 8px; }
+  .langs-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .langs-row span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .langs-row span:first-child { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 20px 20px 18px; display: grid; gap: 16px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(34px, 3.3vw, 52px); line-height: .92; max-width: 22ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 18px 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  @media (max-width: 1100px) {
+    .flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow li:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .grid3 { grid-template-columns: 1fr; }
+    .fixes li { grid-template-columns: 1fr; }
+    .fixes .arr { height: 26px; border: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .fixes .arr svg { transform: rotate(90deg); }
+    .parts ol { grid-template-columns: 1fr; }
+    .parts li { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .parts li:last-child { border-bottom: 0; }
+    .flow ol { grid-template-columns: 1fr; }
+    .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; }
+    .phones figure { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
+    .duo { grid-template-columns: 1fr; }
+    .duo .phones { display: grid; max-width: 240px; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .callouts { grid-template-columns: 1fr; }
+    .parts .bar span { font-size: 12px; padding: 0 8px; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="en" href="https://mancinitan.com/podcast.html">
+<link rel="alternate" hreflang="de" href="https://mancinitan.com/de/podcast.html">
+<link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/podcast.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://mancinitan.com/zh-hans/podcast.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://mancinitan.com/zh-hant/podcast.html">
+<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/podcast.html">
+</head>
+<body>
+<div class="scrim" id="scrim"></div>
+<div class="page">
+<header class="top">
+<a aria-label="홈" class="name" href="index.html"><span class="nm-t">만치니</span><svg aria-hidden="true" class="nm-h" fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1.6" viewbox="0 0 24 24"><path d="M12 4 20.2 10.6v9.8h-5.6v-5.8H9.4v5.8H3.8v-9.8z"></path></svg></a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">연락하기</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="메뉴 열기" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="메인" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">홈</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">작업</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">프로덕트 디자인 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">운영 툴, 단순하게 · Buildlr</a><a href="ninjavan.html">택배 문제, 접수부터 해결까지 · Ninja Van</a><a href="neuron.html">현장 팀을 위한 운영 툴 · Neuron</a></div></div><button class="cat" data-cat="content">콘텐츠·대화형 디자인 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 트레이딩 어시스턴트 · OKX</a><a href="okx.html#orbit">함께하는 트레이딩 · OKX</a><a href="okx.html#rewind">수백만 명, 저마다의 한 해 · OKX</a></div></div><button class="cat" data-cat="ecom">이커머스 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">입어보지 않아도 아는 핏 · EVN Archive</a></div></div><button class="cat" data-cat="side">사이드 프로젝트 <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">플래시카드로 만든 팟캐스트 · Sogang Podcasts</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">소개</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">연락처</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+</div>
+<div class="foot item"><div class="secondary"><span class="h">링크</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">이력서</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">이메일</a></div><div aria-label="색상 테마" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="라이트" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="다크" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="시스템 설정" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="언어" translate="no"><a href="/podcast.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/podcast.html" hreflang="de" lang="de" data-l="de" title="Deutsch">DE</a><a href="/ko/podcast.html" hreflang="ko" lang="ko" data-l="ko" title="한국어" aria-current="true">한국어</a><a href="/zh-hans/podcast.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/podcast.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">프로덕트 디자인</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>운영 툴, 단순하게</b><span>Buildlr · 건설 테크</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>택배 문제, 접수부터 해결까지</b><span>Ninja Van · 물류</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>현장 팀을 위한 운영 툴</b><span>Neuron · 마이크로모빌리티</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>대화로 거래하는 AI 어시스턴트</b><span>OKX · 핀테크</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>함께하는 트레이딩</b><span>OKX · 오빗</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>수백만 명, 저마다의 한 해</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>입어보지 않아도 아는 핏</b><span>EVN Archive · 사이즈 추천 툴</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="scard" data-cat="side" href="podcast.html"><div><b>플래시카드로 만든 팟캐스트</b><span>Sogang Podcasts · 사이드 프로젝트</span></div><div class="thumb"><img alt="" height="52" src="../assets/logo-podcast.png" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>전체 작업</span><span>→</span></a>
+</div>
+<!-- ============ Case hero ============ -->
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs">
+<a class="chip back" href="index.html#side"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>전체 작업</a>
+<span class="chip">Sogang Podcasts</span>
+<span class="chip ghost">사이드 프로젝트</span>
+</div>
+<h1>
+<span class="line"><span>플래시카드로</span></span>
+<span class="line"><span>만든 팟캐스트</span></span>
+</h1>
+<p class="lede">제 서강 교재로 대본을 쓰고, AI로 목소리를 입히고, 쉐도잉에 맞춘 웹 앱에서 듣는 한국어 리스닝 팟캐스트예요. 무료이고, 10개 언어로 번역돼 있고, 링크 하나로 공유할 수 있어요.</p>
+<dl class="meta">
+<div><dt>역할</dt><dd>프로덕트, UX, 콘텐츠, 보이스 디렉팅</dd></div>
+<div><dt>기간</dt><dd>2026년 10월 ~ 현재</dd></div>
+<div><dt>사용한 툴</dt><dd>Claude, Gemini 3.8 TTS, ElevenLabs</dd></div>
+<div><dt>플랫폼</dt><dd>웹 앱, GitHub Pages</dd></div>
+</dl>
+<div class="btns"><a class="btn primary" href="https://munchineh.github.io/sogang-podcasts/" rel="noopener" target="_blank">에피소드 들어보기 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M4 12 12 4M5 4h7v7"></path></svg></a></div>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>결과</span><span>2026년 10월</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="67">67</b><span>제 플래시카드 2,400+장으로 쓴 에피소드</span></div>
+<div class="big"><b data-n="10">10</b><span>자막 언어, 인터페이스까지 같은 언어로</span></div>
+<p class="note">음성 생성은 무료 티어로 돌려요. 20분짜리 에피소드를 하루에 두 편 정도 만들 수 있어요.</p>
+</div>
+</aside>
+</section>
+<figure class="panel c-media has-vid">
+<video aria-label="에피소드가 재생되면서 대본이 음절 단위로 채워지고, 문법 포인트를 탭하면 사이드 패널에 해당 카드가 열리는 화면" class="demo-vid vid-d" height="1800" loop="" muted="" playsinline="" poster="../assets/pod-demo.jpg" preload="none" src="../assets/pod-demo.mp4" width="2880"></video>
+<video aria-label="에피소드가 재생되면서 대본이 음절 단위로 채워지고, 문법 포인트를 탭하면 사이드 패널에 해당 카드가 열리는 화면" class="demo-vid vid-m" height="2340" loop="" muted="" playsinline="" poster="../assets/pod-demo-m.jpg" preload="none" src="../assets/pod-demo-m.mp4" width="1170"></video>
+<figcaption>에피소드를 듣다가 문법 포인트를 탭하면 카드가 열려요.</figcaption>
+</figure>
+<!-- ============ 01 ============ -->
+<section class="panel sec" id="why">
+<header class="sh"><span class="no">01</span><h2>배운 것만 나오는 듣기 연습</h2></header>
+<div class="sb">
+<p class="big-p">서강 교재 한 권에는 표현이 수백 개인데, 플래시카드는 늘 한 번에 한 문장뿐이에요.</p>
+<p>수업에서 배운 것만으로 길고 자연스러운 대화를 듣고, 귀를 트이게 하고, 따라 말하고 싶었어요. 처음엔 NotebookLM을 써봤어요. 대화를 제멋대로 지어내고, 원어민 속도로 말하고, 교재와 한참 먼 어휘까지 끌어오더라고요.</p>
+<div class="grid3">
+<div class="tile"><span class="tile-k">교재 그대로</span><b>교재에 있는 것만</b><p>모든 표현, 문법, 단어는 서강 3·4급 교재에서 가져와요.</p></div>
+<div class="tile"><span class="tile-k">실감 나게</span><b>드라마처럼, 따라갈 수 있는 속도로</b><p>실제 상황과 말투 그대로, 따라 말할 수 있을 만큼 천천히 읽어요.</p></div>
+<div class="tile"><span class="tile-k">링크로 공유</span><b>반 친구들도 함께</b><p>자막은 각자의 언어로, 설치도 계정도 필요 없어요. 링크 하나면 돼요.</p></div>
+</div>
+</div>
+</section>
+<!-- ============ 02 ============ -->
+<section class="panel sec" id="anki">
+<header class="sh"><span class="no">02</span><h2>시작은 Anki 카드에 목소리를 입히는 일이었어요</h2></header>
+<div class="sb">
+<p class="big-p">팟캐스트 전에, ElevenLabs로 플래시카드 4,000+장에 목소리를 입혔어요. 사람처럼 들리게 하려고 꽤 오래 다듬었어요.</p>
+<div class="cardrow">
+<div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
+<span class="a-chip">4B.3 읽고 말하기 1</span>
+<div class="a-lbl">Word / Phrase</div>
+<div class="a-focus">조만간</div>
+<hr/>
+<div class="a-lbl">Meaning</div>
+<div class="a-def" lang="en">Before long, one of these days, soon</div>
+<div class="a-lbl">Example</div>
+<div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
+<div class="a-lbl">Translation</div>
+<div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
+<button aria-label="Play the card's audio" class="a-play" id="ankiPlay" type="button"><span class="tri"></span><span aria-hidden="true" class="eq"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
+<audio id="ankiAudio" preload="none" src="../assets/anki-sample.mp3"></audio>
+<div class="a-panel">
+<div class="a-lbl">Hanja</div>
+<p class="a-hanja">早晚間<br/><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
+</div>
+<div class="a-panel">
+<div class="a-lbl">Notes</div>
+<p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
+<p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
+</div>
+</div>
+<ol class="cardnotes">
+<li><div><b>탭해서 들어보기</b><p>이 카드의 실제 오디오예요. ElevenLabs로 만들고, 밝고 편한 말투가 나오도록 디렉팅했어요.</p></div></li>
+<li><div><b>예문 속 단어에 하이라이트</b><p>사람들이 실제로 쓰는 문장 속에서 어떻게 쓰이는지 바로 보여요.</p></div></li>
+<li><div><b>엄지로 누르기 쉬운 재생 버튼</b><p>Anki의 작은 회색 아이콘 대신, 가로로 꽉 찬 재생 바.</p></div></li>
+<li><div><b>한자, 중국어와 연결</b><p>원래 한자, 병음이 붙은 간체, 그리고 중국어로는 대신 뭐라고 하는지까지.</p></div></li>
+<li><div><b>비교해 주는 노트</b><p>헷갈리기 쉬운 비슷한 말, 그리고 자주 같이 쓰는 표현.</p></div></li>
+</ol>
+</div>
+<ol class="fixes">
+<li>
+<div class="was"><small>문제</small><b>모든 문장이 듣기 평가 같았어요</b><p>차분하고 깔끔한데, 어딘가 생기가 없었어요.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>해결</small><b>말투에 맞춰 목소리 캐스팅</b><p>반말엔 젊은 목소리, 합쇼체엔 나이 든 목소리를 쓰고, "sighing, worn out"처럼 쉬운 영어 디렉션을 한 줄씩 붙였어요.</p></div>
+</li>
+<li>
+<div class="was"><small>문제</small><b>음운 변동을 잘못 읽었어요</b><p><span lang="ko">똑바로</span>를 <span lang="ko">똑까로</span>로 읽었어요.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>해결</small><b>보이스에겐 발음대로 써 주기</b><p>보이스는 <span lang="ko">똑빠로</span>를 받고, 카드에는 원래 철자가 그대로 남아요.</p></div>
+</li>
+<li>
+<div class="was"><small>문제</small><b>단어를 두 번 읽고, 디렉션까지 소리 내 읽었어요</b><p>검토할 때 놓치기 쉬운 작은 실수들.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>해결</small><b>모든 클립을 음성 인식(STT)으로 검수</b><p>카드와 맞지 않는 클립은 자동으로 다시 녹음돼요.</p></div>
+</li>
+</ol>
+<p>그러다 숫자가 발목을 잡았어요. 한 급의 팟캐스트 대본만 약 33만 자로, ElevenLabs 크레딧 석 달 치에 가까웠어요. 그래서 긴 오디오는 Gemini 무료 티어로 옮겼고, 목소리에 대해 배운 건 전부 그대로 가져갔어요.</p>
+</div>
+</section>
+<!-- ============ 03 ============ -->
+<section class="panel sec" id="scripts">
+<header class="sh"><span class="no">03</span><h2>교재 속 대사, 진짜 일상으로</h2></header>
+<div class="sb">
+<p class="big-p">교재 속 대화는 깔끔해요. 한 번에 한 사람씩, 조용한 방에서, 모든 단어를 또박또박. 진짜 대화는 그렇지 않죠.</p>
+<p>카드마다 사람들이 실제로 그 말을 할 법한 상황을 붙였어요. 팀장에게 일정 지연을 보고하는 기획자, 면접, 소주 한잔하며 하는 고백. 말투는 관계를 따라가서, 이사님께는 합쇼체, 친구끼리는 반말이 들려요. 단어는 교재에서 배운 그대로예요.</p>
+<div class="grid3">
+<div class="tile"><span class="tile-k">끼어들기</span><b>서로 말이 겹쳐요</b><p>회사에서도, 저녁 자리에서도 그렇듯 말을 자를 땐 아주 살짝 먼저 치고 들어와요.</p></div>
+<div class="tile"><span class="tile-k">소음</span><b>모든 곳이 조용하진 않아요</b><p>장면 밑에 깔린 식당의 웅성거림과 여러 배경음.</p></div>
+<div class="tile"><span class="tile-k">감정</span><b>신나고, 지치고, 웅얼대고</b><p>대사에 진짜 감정, 웃음, 흐려지는 말끝이 담겨 있어서, 귀가 사람들의 진짜 말소리에 익숙해져요.</p></div>
+</div>
+<div aria-label="에피소드의 세 파트를 2화 대사 비중에 맞춰 크기로 나타낸 그림" class="parts">
+<div aria-hidden="true" class="bar"><span>장면</span><span>해설</span><span>복습</span></div>
+<ol>
+<li><b>장면</b><p>두 호스트가 상황을 연기하면서, 어울리는 곳마다 이번 화의 표현을 써요.</p></li>
+<li><b>해설</b><p>그다음 상황 밖으로 나와서 핵심 대사를 쉬운 한국어로 설명하고, 중간중간 "멈추고 따라 말해 보세요" 구간을 넣어요.</p></li>
+<li><b>복습</b><p>전체를 빠르게 한 번 더 훑어요.</p></li>
+</ol>
+<p class="foot">대략적인 비율이에요. 2화는 장면 대사 100줄, 해설 74줄, 복습 19줄이에요.</p>
+</div>
+<div class="callouts">
+<div><b data-n="67">67</b><span>3·4급에 걸친 에피소드</span></div>
+<div><b data-n="2,400+">2,400+</b><span>장면 속에 녹여 낸 카드</span></div>
+</div>
+</div>
+</section>
+<!-- ============ 04 ============ -->
+<section class="panel sec" id="voicing">
+<header class="sh"><span class="no">04</span><h2>일마다, 딱 맞는 모델</h2></header>
+<div class="sb">
+<p class="big-p">모든 걸 잘하는 AI는 없어서, 일마다 가장 잘하거나 크레딧이 가장 적게 드는 툴에 맡겼어요.</p>
+<p>한국어 목소리는 ElevenLabs가 더 좋지만, 글자 수로 과금해요. Gemini 3.8은 무료이고 한 장면을 한 번에 읽어 주지만, 제한이 있어서 그걸 피해 가도록 설계해야 했어요.</p>
+<div aria-label="이 프로젝트에서 ElevenLabs와 Gemini 3.8을 비교한 표" class="vs" role="table">
+<div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
+<div class="vs-row" role="row"><span role="rowheader">비용</span><span role="cell">글자 수로 과금. 대본 한 급이 크레딧 석 달 치 정도</span><span class="win" role="cell">무료 티어, 하루 요청 10회</span></div>
+<div class="vs-row" role="row"><span role="rowheader">대화</span><span role="cell">한 번에 한 줄</span><span class="win" role="cell">요청 한 번에 한 장면 전체라서, 주고받는 말이 자연스러워요</span></div>
+<div class="vs-row" role="row"><span role="rowheader">한국어 디테일</span><span class="win" role="cell">매우 안정적</span><span role="cell">좋지만, 긴 테이크에선 가끔 실수</span></div>
+<div class="vs-row" role="row"><span role="rowheader">목소리</span><span class="win" role="cell">방대한 라이브러리, 클립당 목소리 수 제한 없음</span><span role="cell">요청당 두 명, 목소리가 흔들릴 수 있음</span></div>
+<div class="vs-row" role="row"><span role="rowheader">강점</span><span role="cell">짧은 카드 문장과 효과음</span><span role="cell">긴 2인 에피소드</span></div>
+</div>
+<p>Gemini의 제한마다 해결책을 하나씩 만들었어요. 조연은 따로 녹음해서 이어 붙이고, 모든 대사에 "앞과 같은 목소리" 신호를 달고, 보이스 체크로 목소리가 흔들리는 걸 잡아내고, 무료 할당량이 리셋된 직후에 작업이 돌도록 예약했어요.</p>
+<div class="flow" id="flow">
+<ol>
+<li><b>준비</b><p>까다로운 음운 변동과 숫자를 발음대로 고쳐 써요. Anki 카드와 같은 툴로요.</p><span class="who">규칙 + Claude</span></li>
+<li><b>음성 생성</b><p>한 번에 한 장면씩, 요청당 화자 두 명, 에피소드마다 고른 캐스트로 읽어요.</p><span class="who">Gemini 3.8 TTS</span></li>
+<li><b>검수</b><p>모든 음절의 타이밍을 재고, 다른 목소리로 읽은 대사를 잡아내요. 그 부분은 다시 만들어요.</p><span class="who">음성 인식</span></li>
+<li><b>이어 붙이기</b><p>조연은 다시 녹음해서 볼륨을 맞춰 이어 붙여요. 끼어드는 대사는 0.25초씩 겹쳐요.</p><span class="who">오디오 툴</span></li>
+<li><b>마무리</b><p>장면마다 식당 소음 같은 배경음을 깔고, 파트 사이에 징글을 넣어요. 배포는 알아서 돼요.</p><span class="who">ElevenLabs</span></li>
+</ol>
+<div aria-hidden="true" class="prog"><i id="flowProg"></i></div>
+<p class="note">모든 변경은 짧은 샘플로 먼저 시험한 다음, 전체 에피소드에 적용해요.</p>
+</div>
+<div aria-label="프로젝트에 쓴 툴과 각각의 역할" class="kit">
+<div><b>Claude</b><span>대본, 플레이어, 파이프라인 전체, 그리고 매일 하는 발음 검토</span></div>
+<div><b>Gemini 3.8 TTS</b><span>에피소드 음성 생성, 무료</span></div>
+<div><b>ElevenLabs</b><span>카드 음성, 효과음, 카드 음성 인식 검수</span></div>
+<div><b>Antigravity의 Gemini</b><span>대량 번역. 어려운 일에 쓸 Claude 사용량을 아끼려고요</span></div>
+<div><b>Whisper + 정렬 툴</b><span>하이라이트용으로 모든 음절의 타이밍을 재요. 제 Mac에서 무료로 돌아가요</span></div>
+<div><b>목소리 대조</b><span>다른 캐릭터 목소리로 읽은 대사를 표시해요. 이것도 제 Mac에서</span></div>
+</div>
+<div class="callouts">
+<div><b>$0</b><span>무료 티어로 에피소드 한 편을 만드는 비용</span></div>
+<div><b data-n="10">10</b><span>하루 요청 수, 제 Mac에서 예약 실행</span></div>
+</div>
+</div>
+</section>
+<!-- ============ 05 ============ -->
+<section class="panel sec" id="pronunciation">
+<header class="sh"><span class="no">05</span><h2>쓰는 대로 읽지 않는 한국어</h2></header>
+<div class="sb">
+<p class="big-p">소리는 옆 소리를 만나면 바뀌어요. 그런데 AI 목소리는 가끔 철자대로 읽어 버려요.</p>
+<p>어느 언어나 그래요. 영어에서도 handbag이 hambag처럼 들려요. 한국어는 여기에 분명한 규칙이 있고 학습자는 귀로 익히기 때문에, 글자대로 읽는 목소리는 틀린 발음을 가르치게 돼요.</p>
+<div class="said">
+<div><small>비음화</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">실제 발음</span><span class="s" lang="ko">궁물</span></div><p>ㅁ 앞에서 ㄱ이 비음 ㅇ으로 부드러워져요.</p></div>
+<div><small>구개음화</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">실제 발음</span><span class="s" lang="ko">가치</span></div><p>ㅌ이 이 앞에서 ㅊ으로 바뀌어요. 영어에서 got you가 gotcha가 되는 것처럼요.</p></div>
+<div><small>경음화</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">실제 발음</span><span class="s" lang="ko">똑빠로</span></div><p>ㄱ 뒤에서 ㅂ이 ㅃ으로 세게 나요.</p></div>
+</div>
+<ol class="tries">
+<li><div><b>보이스에겐 발음대로 써 주기</b><p>규칙 세트가 문장마다 소리 나는 대로 고쳐 쓴 다음 보이스에 보내요. 학습자 눈에는 원래 철자가 그대로 보여요. Anki 카드에서 잘못 읽던 건 이걸로 대부분 해결됐어요.</p></div></li>
+<li><div><b>검수가 못 듣는 걸 찾아내기</b><p>음성 인식은 철자를 받아 적기 때문에, 발음이 틀려도 맞는 단어로 돌아와요. 발음은 음성을 만들기 전에, 귀로 잡아야 했어요.</p></div></li>
+<li><div><b>같은 문장, 세 가지 방식으로 테스트</b><p>까다로운 부분이 여섯 군데 있는 문장 하나를 원문 그대로, 가볍게 고쳐서, 완전히 발음대로 바꿔서 ElevenLabs와 Gemini에게 각각 읽혔어요. 세 버전 모두 거의 똑같이 들렸어요. 목소리들이 이미 규칙을 대부분 알고 있다는 뜻이죠.</p></div></li>
+<li><div><b>남은 몇 가지 실수 잡기</b><p>실수는 긴 테이크에서 두 단어 사이 경계에서 났어요. 따지듯 묻는 질문 속 <span lang="ko">고객 문의</span>처럼요. 이제 그런 구절은 붙여 쓰고, 숫자는 한글로 풀어 쓰고, 매일 Claude가 검토해서 에피소드 음성을 만들기 전에 위험한 부분을 표시해요.</p></div></li>
+</ol>
+<div class="result"><b>카드와 팟캐스트가 발음 툴 하나를 함께 쓰고, 예전 오디오는 하나도 다시 만들지 않았어요.</b></div>
+</div>
+</section>
+<!-- ============ 06 ============ -->
+<section class="panel sec" id="player">
+<header class="sh"><span class="no">06</span><h2>쉐도잉을 위해 만든 플레이어</h2></header>
+<div class="sb">
+<p class="big-p">음절 하나하나 따라가다가, 그 대사를 다시 듣고 따라 말해요.</p>
+<p>문법은 보라색으로 채우고, 어휘는 점선 밑줄로 표시해요. 어느 쪽이든 탭하면 뒤에 있는 카드가 열리고, 노트와 이번 화에서 나오는 다른 모든 곳까지 볼 수 있어요.</p>
+<div class="phones">
+<figure><img alt="에피소드 제목, 요약, 재생 시간이 보이는 한국어 에피소드 목록" height="1558" loading="lazy" src="../assets/pod-list.jpg" width="720"/><figcaption><b>상황 고르기</b>에피소드마다 일상이나 회사의 한 장면이에요.</figcaption></figure>
+<figure><img alt="지금 나오는 대사가 카드처럼 떠오르고, 대사마다 아래에 영어 자막이 붙은 재생 화면" height="1558" loading="lazy" src="../assets/pod-play.jpg" width="720"/><figcaption><b>따라 읽기</b>지금 말하는 대사가 떠오르고, 아래에 자막이 나와요.</figcaption></figure>
+<figure><img alt="뜻, 예문, 노트와 이번 화의 용례가 담긴 문법 패턴 -았/었어야지요 시트" height="1558" loading="lazy" src="../assets/pod-sheet.jpg" width="720"/><figcaption><b>탭해서 카드 보기</b>뜻, 예문, 노트, 그리고 쓰인 곳마다 바로 이동.</figcaption></figure>
+</div>
+<div class="grid3">
+<div class="tile"><b>한 줄 다시 듣기</b><p>탭 한 번에 지금 대사를 반복해요. 쉐도잉하면서 재생 바를 이리저리 끌 일이 없어요.</p></div>
+<div class="tile"><b>속도 조절</b><p>0.7×에서 1.2×까지. 처음엔 천천히, 익숙해지면 실제 속도로.</p></div>
+<div class="tile"><b>멈춘 곳부터 이어 듣기</b><p>에피소드마다 들은 위치를 기억해요. 로그인은 필요 없어요.</p></div>
+</div>
+</div>
+</section>
+<!-- ============ 07 ============ -->
+<section class="panel sec" id="shared">
+<header class="sh"><span class="no">07</span><h2>10개 언어가 모인 교실을 위한 현지화</h2></header>
+<div class="sb">
+<p class="big-p">반 친구들이 세계 곳곳에서 왔기 때문에, 자막과 인터페이스가 함께 바뀌어요.</p>
+<div class="duo">
+<div style="display:grid;gap:16px;align-content:start">
+<p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">언어를 한 번만 고르면 모든 라벨, 제목, 자막이 따라와요. 번체 중국어는 간체에서 만들고, 대만식 표현으로 바꿔요. 홈 화면에 앱처럼 설치할 수 있고, 공유는 링크만 보내면 끝이에요.</p>
+<div aria-label="자막 언어" class="langs-row"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span></div>
+<div class="result"><b>에피소드 67편, 10개 언어. 앱스토어도 계정도 필요 없어요.</b></div>
+</div>
+<div class="phones"><figure><img alt="간체 중국어 자막으로 재생 중인 에피소드" height="1558" loading="lazy" src="../assets/pod-zh.jpg" width="720"/><figcaption><b>간체 중국어</b>같은 플레이어, 자막만 바꿔서.</figcaption></figure></div>
+</div>
+</div>
+</section>
+<!-- ============ Next ============ -->
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>연락처</span><span>어디서든 일할 수 있어요</span></div>
+<div class="inner">
+<h2>AI 보이스나 언어 관련 제품을 만들고 있나요? 기꺼이 힘을 보탤게요.</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">인사하기</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">이력서 <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="다음 사례: 입어보지 않아도 아는 핏" class="panel c-nextcase" href="evn.html">
+<div class="label"><span>다음 사례</span><span>01</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-evn.svg" width="40"/></span>
+<div><h3>입어보지 않아도 아는 핏</h3><p>EVN Archive · 이커머스</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+<script src="../site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber && window.rollNumber(b)), 450);
+
+  /* Demo videos: play only while on screen, and never for reduced motion */
+  document.querySelectorAll('video.demo-vid').forEach(v => {
+    if (still.matches || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
+  });
+
+  /* Anki card mock: the play bar plays the card's audio, and shows when it's playing */
+  const ap = document.getElementById('ankiPlay'), aa = document.getElementById('ankiAudio');
+  if (ap && aa) {
+    const lab = ap.querySelector('.pbl');
+    const set = on => { ap.classList.toggle('on', on); lab.textContent = on ? 'Playing' : 'Play audio'; ap.setAttribute('aria-label', on ? 'Pause the audio' : "Play the card's audio"); };
+    ap.addEventListener('click', () => { if (aa.paused) { aa.currentTime = 0; aa.play().catch(() => set(false)); } else aa.pause(); });
+    aa.addEventListener('play', () => set(true)); aa.addEventListener('pause', () => set(false)); aa.addEventListener('ended', () => set(false));
+  }
+
+  /* Voicing pipeline: light each stage in turn while the bar fills */
+  const fl = document.getElementById('flow');
+  if (fl) {
+    const steps = [...fl.querySelectorAll('li')], bar = document.getElementById('flowProg');
+    if (!still.matches) new IntersectionObserver((es, ob) => es.forEach(e => { if (!e.isIntersecting) return; ob.disconnect();
+      fl.classList.add('play'); bar.style.setProperty('--p', '0%');
+      steps.forEach((s, i) => setTimeout(() => { steps.forEach(x => x.classList.remove('on')); s.classList.add('on'); bar.style.setProperty('--p', ((i + 1) / steps.length * 100) + '%'); }, 400 + i * 1100));
+      setTimeout(() => { steps.forEach(x => x.classList.remove('on')); fl.classList.remove('play'); }, 400 + steps.length * 1100 + 600);
+    }), { threshold: .45 }).observe(fl);
+  }
+})();
+</script>
+</body>
+</html>

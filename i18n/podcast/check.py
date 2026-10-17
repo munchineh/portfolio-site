@@ -11,7 +11,7 @@ HERE = Path(__file__).parent
 SRC = json.loads((HERE / "source.json").read_text(encoding="utf-8"))
 GLOSS = json.loads((HERE / "glossary.json").read_text(encoding="utf-8"))
 LANGS = ["de", "ko", "zh-hans", "zh-hant"]
-CJK_SHORT = {"home.more", "menu.cat"}          # 4 characters or fewer in zh / ko (buttons and the menu category)
+CJK_SHORT = {"home.more"}          # 4 characters or fewer in zh / ko (buttons and the menu category)
 TAG = re.compile(r"</?[a-z][^>]*>")
 HANGUL_SPAN = re.compile(r'<span lang="ko">([^<]*)</span>')
 

@@ -255,6 +255,33 @@
   .nv .auto { font-size: 9px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; padding: 2px 5px; background: #1f2329; color: #fff; }
 
   /* ---------- About / CTA ---------- */
+  /* ---------- Side projects ---------- */
+  .side { display: grid; }
+  .side .label { border-bottom: 1px solid var(--rule); }
+  .side-card { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 24px 28px 28px; align-items: center; }
+  .side-txt { grid-column: 1 / 6; display: grid; gap: 14px; align-content: start; padding-right: 12px; }
+  .side-txt h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(36px, 4.2vw, 64px); line-height: .88; letter-spacing: -0.01em; transition: color .35s var(--ease); }
+  .side-card:hover .side-txt h3 { color: var(--accent); }
+  .side-txt .desc { font-size: 16px; line-height: 1.45; max-width: 44ch; }
+  .side-txt .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .side-txt .stats { margin-top: 4px; }
+  .side-txt .more-l { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-top: 4px; }
+  .side-txt .more-l i { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
+  .side-card:hover .more-l i { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .side-pic { grid-column: 6 / 13; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .side-pic video { display: block; width: 100%; height: auto; }
+  .side-pic .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .side-pic.has-vid { display: grid; justify-items: center; padding: 18px 0; }
+    .side-pic .vid-d { display: none; }
+    .side-pic .vid-m { display: block; width: min(76%, 280px); border-radius: 24px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  }
+
+  @media (max-width: 900px) {
+    .side-card { padding: 18px; gap: 18px; }
+    .side-txt, .side-pic { grid-column: 1 / -1; padding-right: 0; }
+    .side-pic { order: 2; }
+  }
   .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
   .about .blurb { grid-column: 1 / 9; padding: 28px; display: grid; gap: 40px; }
   .about .blurb > p { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; letter-spacing: -0.01em; max-width: 30ch; }
@@ -347,7 +374,7 @@
 <div class="links">
 <a aria-current="page" class="link item current" href="index.html"><span class="t">Start</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">Projekte</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
-<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Produktdesign <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Operative Tools vereinfachen · Buildlr</a><a href="ninjavan.html">Service Design für Service Recovery · Ninja Van</a><a href="neuron.html">Interne Tools für Außenteams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">KI-Trading-Assistent · OKX</a><a href="okx.html#orbit">Trading wird sozial · OKX</a><a href="okx.html#rewind">Personalisierter Content im großen Stil · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Die richtige Passform finden · EVN Archive</a></div></div></div></div></div>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Produktdesign <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Operative Tools vereinfachen · Buildlr</a><a href="ninjavan.html">Service Design für Service Recovery · Ninja Van</a><a href="neuron.html">Interne Tools für Außenteams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">KI-Trading-Assistent · OKX</a><a href="okx.html#orbit">Trading wird sozial · OKX</a><a href="okx.html#rewind">Personalisierter Content im großen Stil · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Die richtige Passform finden · EVN Archive</a></div></div><button class="cat" data-cat="side">Nebenprojekte <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">Aus Karteikarten wird ein Podcast · Sogang Podcasts</a></div></div></div></div></div>
 <a class="link item" href="index.html#about"><span class="t">Über mich</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Kontakt</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
@@ -367,6 +394,7 @@
 <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Trading wird sozial</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalisierter Content im großen Stil</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="ecom" href="evn.html"><div><b>Die richtige Passform finden</b><span>EVN Archive · Größenberater</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="scard" data-cat="side" href="podcast.html"><div><b>Aus Karteikarten wird ein Podcast</b><span>Sogang Podcasts · Nebenprojekt</span></div><div class="thumb"><img alt="" height="52" src="../assets/logo-podcast.png" width="52"/></div></a>
 <a class="all" href="index.html#work"><span>Alle Projekte</span><span>→</span></a>
 </div>
 <section class="hero">
@@ -559,6 +587,20 @@
 </ol>
 </div>
 </section>
+  <section class="panel side" id="side">
+    <div class="label"><span>Nebenprojekte</span><span>Okt. 2026</span></div>
+    <a class="side-card" href="podcast.html">
+      <div class="side-txt">
+        <h3>Aus Karteikarten wird ein Podcast</h3>
+        <p class="desc">Ein koreanischer Hör-Podcast nach meinem Kurs-Lehrplan, mit KI vertont und in einer Web-App fürs Shadowing abgespielt.</p>
+        <div class="tags"><span class="tag">Sogang Podcasts</span><span class="tag">KI-Stimmdesign</span><span class="tag">Lokalisierung</span><span class="tag">Web-App</span></div>
+        <div class="stats"><div class="stat"><b>67</b><span>Folgen aus 2.400+ Karteikarten</span></div><div class="stat"><b>10</b><span>Untertitelsprachen</span></div></div>
+        <span class="more-l"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></i>Zum Projekt</span>
+      </div>
+      <figure class="side-pic has-vid"><video class="demo-vid vid-d" src="../assets/pod-demo.mp4" poster="../assets/pod-demo.jpg" width="2880" height="1800" muted loop playsinline preload="none" aria-label="Eine Folge von Sogang Podcasts läuft, dann öffnet ein Tipp auf einen Grammatikpunkt die passende Karte"></video><video class="demo-vid vid-m" src="../assets/pod-demo-m.mp4" poster="../assets/pod-demo-m.jpg" width="1170" height="2340" muted loop playsinline preload="none" aria-label="Eine Folge von Sogang Podcasts läuft, dann öffnet ein Tipp auf einen Grammatikpunkt die passende Karte"></video></figure>
+    </a>
+  </section>
+
 <section class="about" id="about">
 <div class="panel blurb">
 <p class="lines"><span class="s">Ich bin Mancini und mache komplizierte Produkte einfacher.</span> <span class="s">Über 5 Jahre in Fintech, Logistik und E-Commerce.</span> <span class="s">Ich komme aus Singapur, lebe in Seoul und bin offen für Stellen überall auf der Welt.</span></p>
@@ -776,6 +818,13 @@
   fchips.forEach(c => c.addEventListener('click', () => applyFilter(filt === c.dataset.f ? null : c.dataset.f)));
   placeScenes(); okx.stop(); nv.stop(); bl.stop(); pick();
 
+})();
+</script>
+<script>
+/* Side project demo: play only while on screen, and never for reduced motion */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  document.querySelectorAll('.side-pic video').forEach(v => new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v));
 })();
 </script>
 </body>

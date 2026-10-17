@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html data-palette="sage" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#c9e1c1" media="(prefers-color-scheme: light)" data-c="#c9e1c1">
+<meta name="theme-color" content="#122d18" media="(prefers-color-scheme: dark)" data-c="#122d18">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Aus Karteikarten wird ein Podcast · Mancini Tan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
+<style>
+  /* ---------- Case hero ---------- */
+  .c-hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-head { grid-column: 1 / 9; margin-top: -86px; padding: 118px 28px 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
+  .crumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; font-size: 13px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
+  .chip.ghost { background: transparent; border-color: var(--rule); color: var(--muted); }
+  .chip.back { background: color-mix(in srgb, var(--panel) 70%, transparent); border-color: var(--rule); transition: background .25s, border-color .25s; }
+  .chip.back:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .c-head h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(52px, 8.4vw, 132px); line-height: .86; letter-spacing: -0.015em; }
+  .c-head h1 .line { display: block; overflow: hidden; }
+  .c-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+  .c-head h1 .line:nth-child(2) span { animation-delay: .08s; }
+  @keyframes rise { to { transform: none; } }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.45; max-width: 46ch; color: var(--muted); }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); gap: 8px 28px; justify-content: start; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .meta dt { font-size: 12px; color: var(--muted); }
+  .meta dd { font-size: 14px; }
+  .c-head .btns { margin-top: -4px; }
+  .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results .big { display: grid; gap: 4px; }
+  .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
+  .c-media { margin: 0; background: #f2f3f7; }
+  .c-media img, .c-media video { display: block; width: 100%; height: auto; }
+  .c-media .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .c-media.has-vid { padding: 18px 0; display: grid; justify-items: center; }
+    .c-media .vid-d { display: none; }
+    .c-media .vid-m { display: block; width: min(76%, 300px); height: auto; border-radius: 26px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+    .c-media.has-vid figcaption { justify-self: stretch; margin-top: 16px; margin-bottom: -18px; }
+  }
+  .c-media figcaption { padding: 12px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); background: var(--panel); }
+
+  /* ---------- Sections ---------- */
+  .sec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 36px 28px 40px; }
+  .sh { grid-column: 1 / 5; display: flex; gap: 14px; align-items: flex-start; position: sticky; top: 96px; align-self: start; padding-right: 24px; }
+  .sh .no { flex: none; font-size: 13px; font-weight: 500; height: 30px; padding: 0 10px; display: grid; place-items: center; border-radius: 8px; background: var(--accent); color: var(--on-accent); margin-top: 2px; }
+  .sh h2 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; }
+  .sb { grid-column: 5 / 13; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .sb > p { font-size: 16px; line-height: 1.6; max-width: 62ch; color: var(--muted); }
+  .sb > p.big-p { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; }
+  .callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; }
+  .callouts div, .tile, .result { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .callouts b { display: block; font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: 48px; line-height: .9; color: var(--accent); }
+  .callouts > div > span { font-size: 14px; color: var(--muted); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 8px; }
+  .tile-k { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); margin-bottom: 12px; }
+  .tile b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tile p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .tile p span[lang="ko"], .fix span[lang="ko"] { color: var(--ink); }
+  .result { border-left: 3px solid var(--accent); }
+  .result b { display: block; font-size: 17px; font-weight: 500; }
+
+  /* ---------- Anki: problem → fix rows ---------- */
+  .fixes { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; }
+  .fixes li { display: grid; grid-template-columns: 1fr 28px 1fr; align-items: stretch; gap: 0; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .fixes .was, .fixes .fix { padding: 14px 16px; }
+  .fixes .was { background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .fixes small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .fixes b { display: block; font-weight: 500; font-size: 15px; line-height: 1.3; }
+  .fixes p { font-size: 14px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .fixes .arr { display: grid; place-items: center; color: var(--accent); border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+  .fixes .fix { border-left: 0; }
+
+  /* ---------- Anki card mock: the real Korean note type's back, scoped so it can't leak into the page ---------- */
+  .cardrow { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 8px; }
+  .ankim { --bg: #fbfbfd; --ink: #1d1d1f; --muted: #6e6e73; --faint: #a1a1a6; --rule: #e3e3e8; --pnl: #f2f2f6;
+    --acc: #5b4fd6; --acc-bg: #ecebfd; --hl-bg: #e7e5fd;
+    font-family: -apple-system, "SF Pro Text", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; font-weight: 400;
+    font-size: 17px; line-height: 1.5; color: var(--ink); background: var(--bg); padding: 20px 18px 22px; border-radius: 24px; word-break: keep-all; overflow-wrap: anywhere;
+    box-shadow: 0 0 0 1px var(--rule), 0 22px 40px -26px rgba(0,0,0,.45); }
+  :root[data-theme="dark"] .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ankim { --bg: #1c1c1e; --ink: #f2f2f7; --muted: #a1a1a6; --faint: #6e6e73; --rule: #38383a; --pnl: #2a2a2d; --acc: #a59cff; --acc-bg: #2c2a4a; --hl-bg: #353160; } }
+  .ankim .a-chip { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--acc-bg); color: var(--acc); }
+  .ankim .a-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 16px 0 3px; }
+  .ankim .a-focus { font-size: 28px; font-weight: 700; line-height: 1.25; }
+  .ankim hr { border: none; border-top: 1px solid var(--rule); margin: 14px 0 2px; }
+  .ankim .a-def { font-size: 16px; font-weight: 600; color: var(--acc); }
+  .ankim .a-sent { font-size: 18.5px; }
+  .ankim .a-sent b { color: var(--acc); background: var(--hl-bg); font-weight: 600; border-radius: 4px; padding: 0 3px; }
+  .ankim .a-tr { font-size: 14.5px; color: var(--muted); }
+  .ankim .a-play { margin: 18px 0 4px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; height: 52px; border: 0; border-radius: 16px;
+    background: var(--acc-bg); color: var(--acc); font: 600 15.5px -apple-system, "SF Pro Text", sans-serif; cursor: pointer; transition: transform .15s, opacity .2s; }
+  .ankim .a-play:active { transform: scale(.98); }
+  .ankim .a-play:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+  .ankim .a-play .tri { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent var(--acc); }
+  .ankim .a-play.on .tri { width: 12px; height: 14px; border: 0; border-left: 4px solid var(--acc); border-right: 4px solid var(--acc); box-sizing: border-box; }
+  .ankim .a-play .eq { display: none; gap: 2px; align-items: end; height: 14px; }
+  .ankim .a-play.on .eq { display: inline-flex; }
+  .ankim .a-play .eq i { width: 3px; background: var(--acc); border-radius: 2px; animation: eqb .9s ease-in-out infinite; }
+  .ankim .a-play .eq i:nth-child(2) { animation-delay: .15s; } .ankim .a-play .eq i:nth-child(3) { animation-delay: .3s; }
+  @keyframes eqb { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+  .ankim .a-panel { margin-top: 16px; padding: 2px 14px 12px; background: var(--pnl); border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
+  .ankim .a-panel .a-lbl { margin-top: 10px; }
+  .ankim .a-panel p + p { margin-top: 6px; }
+  .ankim .a-hanja { font-size: 15px; }
+  .ankim .a-panel + .a-panel { margin-top: 10px; }
+  .cardnotes { list-style: none; display: grid; gap: 10px; counter-reset: c; }
+  .cardnotes li { counter-increment: c; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
+  .cardnotes li::before { content: counter(c); width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 500; display: grid; place-items: center; }
+  .cardnotes b { display: block; font-weight: 500; font-size: 15px; }
+  .cardnotes p { font-size: 14px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .cardrow { grid-template-columns: 1fr; } .cardrow .ankim { max-width: 360px; } }
+
+  /* ---------- Script: three parts of an episode ---------- */
+  .parts { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .parts { --cols: minmax(0, 100fr) minmax(0, 74fr) minmax(150px, 19fr); }
+  .parts .bar { display: grid; grid-template-columns: var(--cols); height: 44px; }
+  .parts .bar span { display: flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; }
+  .parts .bar span:nth-child(1) { background: var(--accent); color: var(--on-accent); }
+  .parts .bar span:nth-child(2) { background: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .parts .bar span:nth-child(3) { background: var(--accent-soft); }
+  .parts ol { list-style: none; display: grid; grid-template-columns: var(--cols); }
+  .parts li { padding: 14px 12px 16px; border-right: 1px solid var(--rule); min-width: 0; }
+  .parts li:last-child { border-right: 0; }
+  .parts li b { display: block; font-weight: 500; font-size: 15px; }
+  .parts li p { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .parts .foot { padding: 10px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  /* ---------- ElevenLabs vs Gemini, and the toolkit ---------- */
+  .vs { margin-top: 8px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .vs-row { display: grid; grid-template-columns: minmax(96px, .8fr) 1fr 1fr; border-top: 1px solid var(--rule); }
+  .vs-row:first-child { border-top: 0; }
+  .vs-row > span { padding: 11px 14px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .vs-row > span + span { border-left: 1px solid var(--rule); }
+  .vs-row > span:first-child { color: var(--ink); font-weight: 500; }
+  .vs-head > span { font-size: 13px; font-weight: 500; color: var(--ink); background: color-mix(in srgb, var(--ground) 55%, transparent); }
+  .vs .win { color: var(--ink); background: var(--accent-soft); }
+  .kit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .kit > div { border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .kit b { display: block; font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+  .kit span { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .kit { grid-template-columns: 1fr 1fr; } .vs-row { grid-template-columns: 84px 1fr 1fr; } .vs-row > span { padding: 10px; font-size: 13px; } }
+  @media (max-width: 520px) { .kit { grid-template-columns: 1fr; } }
+  /* ---------- Voicing pipeline: each stage lights up in turn ---------- */
+  .flow { margin-top: 8px; padding: 18px; border-radius: 14px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 14px; }
+  .flow ol { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); counter-reset: f; position: relative; }
+  .flow li { counter-increment: f; padding: 14px; border-radius: 12px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ground) 55%, transparent); transition: border-color .4s, background .4s, opacity .4s; }
+  .flow li::before { content: counter(f, decimal-leading-zero); display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
+  .flow b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .flow p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .flow .who { display: inline-block; white-space: nowrap; margin-top: 10px; font-size: 11.5px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); }
+  .flow.play li { opacity: .45; }
+  .flow.play li.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+  .flow .prog { height: 4px; border-radius: 4px; background: var(--rule); overflow: hidden; }
+  .flow .prog i { display: block; height: 100%; width: var(--p, 100%); background: var(--accent); border-radius: 4px; transition: width .9s var(--ease); }
+  .flow .note { font-size: 12px; color: var(--muted); }
+
+  /* ---------- Sound changes: written vs said ---------- */
+  .said { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 8px; }
+  .said > div { border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); display: grid; gap: 8px; align-content: start; }
+  .said [lang="ko"], .tries [lang="ko"] { word-break: keep-all; }
+  .said .pair { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .said .w, .said .s { font-size: 24px; font-weight: 500; line-height: 1.2; }
+  .said .s { color: var(--accent); }
+  .said .ar { color: var(--muted); font-size: 14px; }
+  .said small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .said b { font-weight: 500; font-size: 15px; }
+  .said p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+  .tries { list-style: none; display: grid; gap: var(--gap); margin-top: 8px; counter-reset: t; }
+  .tries li { counter-increment: t; display: grid; grid-template-columns: 34px 1fr; gap: 12px; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  .tries li::before { content: counter(t, decimal-leading-zero); font-size: 12px; font-weight: 500; color: var(--accent); padding-top: 2px; }
+  .tries b { display: block; font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+  .tries p { font-size: 14px; color: var(--muted); line-height: 1.5; max-width: 62ch; }
+  .tries span[lang="ko"], .said span[lang="ko"] { color: var(--ink); }
+  @media (max-width: 900px) { .said { grid-template-columns: 1fr; } }
+  /* German title: KARTEIKARTEN is one long word, so the hero type steps down to keep it inside the panel */
+  :root:lang(de) .c-head h1 { font-size: clamp(40px, 6.6vw, 104px); }
+  @media (max-width: 900px) { :root:lang(de) .c-head h1 { font-size: clamp(30px, 9.4vw, 60px); } }
+  /* Long words (German compounds) wrap inside narrow cells instead of spilling out */
+  .flow li, .vs-row > span, .kit > div, .tile, .said > div, .tries li, .fixes .was, .fixes .fix { overflow-wrap: break-word; min-width: 0; }
+  :root:lang(de) :is(.flow b, .flow p, .vs-row > span, .tile b, .tile-k, .kit b) { hyphens: auto; -webkit-hyphens: auto; }
+  /* ---------- Screens ---------- */
+  .phones { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+  .phones figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .phones img { display: block; width: 100%; height: auto; border-radius: 22px; background: #f2f3f7; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  .phones figcaption { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .phones figcaption b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .wide-shot { margin: 8px 0 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .wide-shot img { display: block; width: 100%; height: auto; }
+  .duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 14px; align-items: start; }
+  .duo .phones { --n: 1; margin-top: 8px; }
+  .langs-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .langs-row span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 60%, transparent); }
+  .langs-row span:first-child { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  /* ---------- CTA + next case ---------- */
+  .c-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .c-cta { grid-column: 1 / 8; }
+  .c-cta .inner { padding: 20px 20px 18px; display: grid; gap: 16px; }
+  .c-cta h2 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(34px, 3.3vw, 52px); line-height: .92; max-width: 22ch; }
+  .c-nextcase { grid-column: 8 / 13; display: grid; grid-template-rows: auto 1fr; transition: border-color .25s; }
+  .c-nextcase:hover { border-color: var(--accent); }
+  .c-nextcase .inner { padding: 18px 20px; display: grid; grid-template-columns: 72px 1fr 44px; gap: 16px; align-items: center; }
+  .nlogo { width: 72px; height: 72px; border-radius: 10px; background: #f3f1ea; display: grid; place-items: center; }
+  .c-nextcase .nlogo img { width: 44%; height: 44%; object-fit: contain; }
+  .c-nextcase h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: .9; }
+  .c-nextcase p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .c-nextcase .go { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s; }
+  .c-nextcase:hover .go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  @media (max-width: 1100px) {
+    .flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow li:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 900px) {
+    .c-head { grid-column: 1 / -1; padding: 96px 18px 22px; margin-top: -78px; }
+    .c-head h1 { font-size: clamp(38px, 11.5vw, 72px); }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .c-results { grid-column: 1 / -1; margin-top: 0; }
+    .c-results-in { grid-template-columns: 1fr 1fr; }
+    .c-results .note { grid-column: 1 / -1; }
+    .sec { padding: 24px 18px 28px; }
+    .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
+    .sb { grid-column: 1 / -1; }
+    .grid3 { grid-template-columns: 1fr; }
+    .fixes li { grid-template-columns: 1fr; }
+    .fixes .arr { height: 26px; border: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .fixes .arr svg { transform: rotate(90deg); }
+    .parts ol { grid-template-columns: 1fr; }
+    .parts li { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .parts li:last-child { border-bottom: 0; }
+    .flow ol { grid-template-columns: 1fr; }
+    .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; }
+    .phones figure { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
+    .duo { grid-template-columns: 1fr; }
+    .duo .phones { display: grid; max-width: 240px; }
+    .c-cta, .c-nextcase { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .callouts { grid-template-columns: 1fr; }
+    .parts .bar span { font-size: 12px; padding: 0 8px; }
+  }
+</style>
+<link rel="alternate" hreflang="en" href="https://mancinitan.com/podcast.html">
+<link rel="alternate" hreflang="de" href="https://mancinitan.com/de/podcast.html">
+<link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/podcast.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://mancinitan.com/zh-hans/podcast.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://mancinitan.com/zh-hant/podcast.html">
+<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/podcast.html">
+</head>
+<body>
+<div class="scrim" id="scrim"></div>
+<div class="page">
+<header class="top">
+<a aria-label="Startseite" class="name" href="index.html"><span class="nm-t">Mancini Tan</span><svg aria-hidden="true" class="nm-h" fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1.6" viewbox="0 0 24 24"><path d="M12 4 20.2 10.6v9.8h-5.6v-5.8H9.4v5.8H3.8v-9.8z"></path></svg></a>
+<div class="top-right">
+<a class="pill" href="mailto:mancini.tan@gmail.com">E-Mail schreiben</a>
+<div class="menu-slot">
+<div class="menu" id="menu">
+<button aria-controls="menunav" aria-expanded="false" aria-label="Menü öffnen" class="toggle" id="toggle"><i></i><i></i></button>
+<nav aria-label="Hauptnavigation" id="menunav">
+<div class="links">
+<a class="link item" href="index.html"><span class="t">Start</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">Projekte</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">Produktdesign <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">Operative Tools vereinfachen · Buildlr</a><a href="ninjavan.html">Service Design für Service Recovery · Ninja Van</a><a href="neuron.html">Interne Tools für Außenteams · Neuron</a></div></div><button class="cat" data-cat="content">Content &amp; Conversation Design <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">KI-Trading-Assistent · OKX</a><a href="okx.html#orbit">Trading wird sozial · OKX</a><a href="okx.html#rewind">Personalisierter Content im großen Stil · OKX</a></div></div><button class="cat" data-cat="ecom">E-Commerce <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Die richtige Passform finden · EVN Archive</a></div></div><button class="cat" data-cat="side">Nebenprojekte <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">Aus Karteikarten wird ein Podcast · Sogang Podcasts</a></div></div></div></div></div>
+<a class="link item" href="index.html#about"><span class="t">Über mich</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+<a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">Kontakt</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
+</div>
+<div class="foot item"><div class="secondary"><span class="h">Links</span>
+<a download="" href="../Mancini_Tan_Resume.pdf">Lebenslauf</a><a href="https://www.linkedin.com/in/mancini-tan-37544b114/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:mancini.tan@gmail.com">E-Mail</a></div><div aria-label="Farbschema" class="theme" role="radiogroup"><span aria-hidden="true" class="thumb"></span><button aria-checked="false" aria-label="Hell" data-t="light" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"></path></svg></button><button aria-checked="false" aria-label="Dunkel" data-t="dark" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><path d="M13.5 9.6A5.5 5.5 0 1 1 6.4 2.5a4.5 4.5 0 0 0 7.1 7.1Z"></path></svg></button><button aria-checked="true" aria-label="Wie System" data-t="system" role="radio" type="button"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 16 16"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 2.5v11A5.5 5.5 0 0 0 8 2.5Z" fill="currentColor"></path></svg></button></div><div class="lang" role="group" aria-label="Sprache" translate="no"><a href="/podcast.html" hreflang="en" lang="en" data-l="en" title="English">EN</a><a href="/de/podcast.html" hreflang="de" lang="de" data-l="de" title="Deutsch" aria-current="true">DE</a><a href="/ko/podcast.html" hreflang="ko" lang="ko" data-l="ko" title="한국어">한국어</a><a href="/zh-hans/podcast.html" hreflang="zh-Hans" lang="zh-Hans" data-l="zh-hans" title="简体中文">简体</a><a href="/zh-hant/podcast.html" hreflang="zh-Hant" lang="zh-Hant" data-l="zh-hant" title="繁體中文">繁體</a></div></div>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="stack" id="stack">
+<div class="grp"><span id="grpName">Produktdesign</span><span id="grpCount">3</span></div>
+<a class="scard" data-cat="product" href="buildlr.html"><div><b>Operative Tools vereinfachen</b><span>Buildlr · Construction Tech</span></div><div class="thumb logo dark"><img alt="" height="52" src="../assets/logo-buildlr.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="ninjavan.html"><div><b>Service Design für Service Recovery</b><span>Ninja Van · Logistik</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-nv.svg" width="52"/></div></a>
+<a class="scard" data-cat="product" href="neuron.html"><div><b>Interne Tools für Außenteams</b><span>Neuron · Mikromobilität</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-neuron.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#assistant"><div><b>Einen KI-Trading-Assistenten gestalten</b><span>OKX · Fintech</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#orbit"><div><b>Trading wird sozial</b><span>OKX · Orbit</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="content" href="okx.html#rewind"><div><b>Personalisierter Content im großen Stil</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>Die richtige Passform finden</b><span>EVN Archive · Größenberater</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="scard" data-cat="side" href="podcast.html"><div><b>Aus Karteikarten wird ein Podcast</b><span>Sogang Podcasts · Nebenprojekt</span></div><div class="thumb"><img alt="" height="52" src="../assets/logo-podcast.png" width="52"/></div></a>
+<a class="all" href="index.html#work"><span>Alle Projekte</span><span>→</span></a>
+</div>
+<!-- ============ Case hero ============ -->
+<section class="c-hero">
+<div class="panel c-head">
+<div class="crumbs">
+<a class="chip back" href="index.html#side"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>Alle Projekte</a>
+<span class="chip">Sogang Podcasts</span>
+<span class="chip ghost">Nebenprojekt</span>
+</div>
+<h1>
+<span class="line"><span>Aus Karteikarten</span></span>
+<span class="line"><span>wird ein Podcast</span></span>
+</h1>
+<p class="lede">Ein koreanischer Hör-Podcast, geschrieben nach meinem Sogang-Lehrplan, mit KI vertont und in einer Web-App fürs Shadowing abgespielt. Kostenlos, in zehn Sprachen übersetzt und einfach per Link geteilt.</p>
+<dl class="meta">
+<div><dt>Rolle</dt><dd>Produkt, UX, Content und Stimmregie</dd></div>
+<div><dt>Zeitraum</dt><dd>Seit Okt. 2026</dd></div>
+<div><dt>Gebaut mit</dt><dd>Claude, Gemini 3.8 TTS, ElevenLabs</dd></div>
+<div><dt>Plattform</dt><dd>Web-App auf GitHub Pages</dd></div>
+</dl>
+<div class="btns"><a class="btn primary" href="https://munchineh.github.io/sogang-podcasts/" rel="noopener" target="_blank">Eine Folge anhören <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M4 12 12 4M5 4h7v7"></path></svg></a></div>
+</div>
+<aside class="panel c-results">
+<div class="label"><span>Was dabei herauskam</span><span>Okt. 2026</span></div>
+<div class="c-results-in">
+<div class="big"><b data-n="67">67</b><span>Folgen, geschrieben aus 2.400+ meiner Karteikarten</span></div>
+<div class="big"><b data-n="10">10</b><span>Untertitelsprachen, die Oberfläche gleich mit</span></div>
+<p class="note">Die Vertonung läuft über ein Gratis-Kontingent, etwa zwei 20-minütige Folgen pro Tag.</p>
+</div>
+</aside>
+</section>
+<figure class="panel c-media has-vid">
+<video aria-label="Eine Folge läuft, das Skript füllt sich Silbe für Silbe, dann öffnet ein Tipp auf einen Grammatikpunkt die passende Karte in einer Seitenleiste" class="demo-vid vid-d" height="1800" loop="" muted="" playsinline="" poster="../assets/pod-demo.jpg" preload="none" src="../assets/pod-demo.mp4" width="2880"></video>
+<video aria-label="Eine Folge läuft, das Skript füllt sich Silbe für Silbe, dann öffnet ein Tipp auf einen Grammatikpunkt die passende Karte in einer Seitenleiste" class="demo-vid vid-m" height="2340" loop="" muted="" playsinline="" poster="../assets/pod-demo-m.jpg" preload="none" src="../assets/pod-demo-m.mp4" width="1170"></video>
+<figcaption>Eine Folge läuft, dann öffnet ein Tipp auf einen Grammatikpunkt die passende Karte.</figcaption>
+</figure>
+<!-- ============ 01 ============ -->
+<section class="panel sec" id="why">
+<header class="sh"><span class="no">01</span><h2>Hörtraining, das beim Lehrplan bleibt</h2></header>
+<div class="sb">
+<p class="big-p">In jedem Sogang-Buch stecken Hunderte Ausdrücke, und Karteikarten liefern mir immer nur einen Satz auf einmal.</p>
+<p>Ich wollte lange, natürliche Gespräche, um mein Gehör zu trainieren und per Shadowing mitzusprechen, und zwar nur mit dem, was wir gerade im Unterricht lernen. Zuerst habe ich NotebookLM ausprobiert. Es hat sich sein eigenes Gespräch ausgedacht, in Muttersprachler-Tempo gesprochen und Vokabeln weit außerhalb der Bücher eingebaut.</p>
+<div class="grid3">
+<div class="tile"><span class="tile-k">Nah am Lehrplan</span><b>Nur, was in den Büchern steht</b><p>Jeder Ausdruck, jeder Grammatikpunkt und jedes Wort stammt aus den Sogang-Handbüchern für Level 3 und 4.</p></div>
+<div class="tile"><span class="tile-k">Klingt echt</span><b>Wie ein Drama, in einem Tempo, bei dem ich mitkomme</b><p>Echte Situationen und Sprachebenen, langsam genug gesprochen, um nachzusprechen.</p></div>
+<div class="tile"><span class="tile-k">Zum Teilen</span><b>Auch für meine Klasse</b><p>Untertitel in ihren Sprachen, nichts zu installieren und kein Account. Nur ein Link.</p></div>
+</div>
+</div>
+</section>
+<!-- ============ 02 ============ -->
+<section class="panel sec" id="anki">
+<header class="sh"><span class="no">02</span><h2>Angefangen hat es mit meinen vertonten Anki-Karten</h2></header>
+<div class="sb">
+<p class="big-p">Vor dem Podcast habe ich über ElevenLabs 4.000+ Karteikarten eine Stimme gegeben. Bis sie nach echten Menschen klangen, war eine Menge Feintuning nötig.</p>
+<div class="cardrow">
+<div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
+<span class="a-chip">4B.3 읽고 말하기 1</span>
+<div class="a-lbl">Word / Phrase</div>
+<div class="a-focus">조만간</div>
+<hr/>
+<div class="a-lbl">Meaning</div>
+<div class="a-def" lang="en">Before long, one of these days, soon</div>
+<div class="a-lbl">Example</div>
+<div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
+<div class="a-lbl">Translation</div>
+<div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
+<button aria-label="Play the card's audio" class="a-play" id="ankiPlay" type="button"><span class="tri"></span><span aria-hidden="true" class="eq"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
+<audio id="ankiAudio" preload="none" src="../assets/anki-sample.mp3"></audio>
+<div class="a-panel">
+<div class="a-lbl">Hanja</div>
+<p class="a-hanja">早晚間<br/><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
+</div>
+<div class="a-panel">
+<div class="a-lbl">Notes</div>
+<p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
+<p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
+</div>
+</div>
+<ol class="cardnotes">
+<li><div><b>Antippen und anhören</b><p>Das echte Audio dieser Karte, vertont mit ElevenLabs und so angeleitet, dass es fröhlich und locker klingt.</p></div></li>
+<li><div><b>Das Wort leuchtet im Beispiel auf</b><p>So sieht man es in einem Satz, den Leute wirklich sagen.</p></div></li>
+<li><div><b>Ein Play-Button, den man mit dem Daumen trifft</b><p>Ein Balken über die volle Breite statt Ankis kleinem grauen Icon.</p></div></li>
+<li><div><b>Hanja, verknüpft mit Chinesisch</b><p>Die Originalzeichen, die vereinfachte Version mit Pinyin und was man im Chinesischen stattdessen sagt.</p></div></li>
+<li><div><b>Notizen, die vergleichen</b><p>Das ähnliche Wort, mit dem es oft verwechselt wird, und die Wendungen, in denen es meistens vorkommt.</p></div></li>
+</ol>
+</div>
+<ol class="fixes">
+<li>
+<div class="was"><small>Problem</small><b>Jede Zeile klang wie ein Hörverständnistest</b><p>Ruhig, glatt und ein bisschen leblos.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>Lösung</small><b>Stimmen nach Register besetzen</b><p>Jüngere Stimmen für 반말, ältere für 합쇼체, jeweils mit einer Regieanweisung in einfachem Englisch wie „sighing, worn out“.</p></div>
+</li>
+<li>
+<div class="was"><small>Problem</small><b>Lautveränderungen klangen falsch</b><p><span lang="ko">똑바로</span> wurde als <span lang="ko">똑까로</span> gelesen.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>Lösung</small><b>Für die Stimme so schreiben, wie es klingt</b><p>Die Stimme bekommt <span lang="ko">똑빠로</span>, die Karte behält die normale Schreibweise.</p></div>
+</li>
+<li>
+<div class="was"><small>Problem</small><b>Doppelte Wörter und mitgelesene Regieanweisungen</b><p>Kleine Fehler, die beim Durchhören leicht untergehen.</p></div>
+<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+<div class="fix"><small>Lösung</small><b>Jeden Clip per Spracherkennung prüfen</b><p>Passt ein Clip nicht zu seiner Karte, wird er automatisch neu aufgenommen.</p></div>
+</li>
+</ol>
+<p>Dann holte mich die Rechnung ein. Ein Level an Podcast-Skripten kam auf rund 330.000 Zeichen, fast drei Monate an ElevenLabs-Credits. Also zog das lange Audio auf Geminis Gratis-Kontingent um, und alles, was ich über Stimmen gelernt hatte, kam mit.</p>
+</div>
+</section>
+<!-- ============ 03 ============ -->
+<section class="panel sec" id="scripts">
+<header class="sh"><span class="no">03</span><h2>Lehrbuchsätze, mitten ins echte Leben versetzt</h2></header>
+<div class="sb">
+<p class="big-p">Lehrbuchdialoge sind aufgeräumt. Immer nur eine Person spricht, in einem ruhigen Raum, jedes Wort klar und deutlich. Echte Gespräche sind das nicht.</p>
+<p>Jede Karte bekommt eine Situation, in der Leute sie wirklich sagen würden: eine Planerin, die ihrer Teamleitung Verzögerungen meldet, ein Vorstellungsgespräch, ein Geständnis bei Soju. Die Sprachebene folgt der Beziehung, also hört man 합쇼체 gegenüber der Chefetage und 반말 unter Freunden. Die Wörter bleiben genau so, wie das Buch sie lehrt.</p>
+<div class="grid3">
+<div class="tile"><span class="tile-k">Überlappung</span><b>Alle reden durcheinander</b><p>Unterbrechungen setzen einen Sekundenbruchteil zu früh ein, so wie im Büro und beim Abendessen.</p></div>
+<div class="tile"><span class="tile-k">Geräusche</span><b>Nicht jeder Raum ist still</b><p>Restaurantgemurmel und andere Hintergrundgeräusche unter den Szenen.</p></div>
+<div class="tile"><span class="tile-k">Gefühl</span><b>Aufgeregt, müde, nuschelnd</b><p>Die Zeilen tragen echte Emotionen, Lachen und auslaufende Sätze, damit sich das Ohr daran gewöhnt, wie Menschen wirklich klingen.</p></div>
+</div>
+<div aria-label="Die drei Teile einer Folge, in der Größe nach ihrem Anteil an den Zeilen in Folge 2" class="parts">
+<div aria-hidden="true" class="bar"><span>장면</span><span>해설</span><span>복습</span></div>
+<ol>
+<li><b>Szene</b><p>Zwei Hosts spielen die Situation durch und nutzen dabei die Ausdrücke der Folge, wo sie passen.</p></li>
+<li><b>Erklärung</b><p>Sie treten aus der Szene heraus und erklären die wichtigsten Zeilen in einfachem Koreanisch, mit Momenten zum „Pausieren und Nachsprechen“.</p></li>
+<li><b>Wiederholung</b><p>Ein schneller Durchlauf durch alles.</p></li>
+</ol>
+<p class="foot">Ungefähr maßstabsgetreu: Folge 2 hat 100 Zeilen in der Szene, 74 in der Erklärung und 19 in der Wiederholung.</p>
+</div>
+<div class="callouts">
+<div><b data-n="67">67</b><span>Folgen über Level 3 und 4</span></div>
+<div><b data-n="2.400+">2.400+</b><span>Karten, eingewoben in Szenen</span></div>
+</div>
+</div>
+</section>
+<!-- ============ 04 ============ -->
+<section class="panel sec" id="voicing">
+<header class="sh"><span class="no">04</span><h2>Das richtige Modell für jede Aufgabe</h2></header>
+<div class="sb">
+<p class="big-p">Keine einzelne KI konnte alles gut, also ging jede Aufgabe an das Tool, das sie am besten oder am günstigsten erledigt.</p>
+<p>ElevenLabs hat die bessere koreanische Stimme, rechnet aber pro Zeichen ab. Gemini 3.8 ist kostenlos und liest eine ganze Szene am Stück, hat aber Grenzen, für die ich mir Lösungen überlegen musste.</p>
+<div aria-label="ElevenLabs im Vergleich mit Gemini 3.8 für dieses Projekt" class="vs" role="table">
+<div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
+<div class="vs-row" role="row"><span role="rowheader">Kosten</span><span role="cell">Pro Zeichen. Ein Level an Skripten entsprach etwa drei Monaten an Credits</span><span class="win" role="cell">Gratis-Kontingent, 10 Anfragen pro Tag</span></div>
+<div class="vs-row" role="row"><span role="rowheader">Dialog</span><span role="cell">Eine Zeile nach der anderen</span><span class="win" role="cell">Eine ganze Szene pro Anfrage, dadurch fließen die Antworten natürlich</span></div>
+<div class="vs-row" role="row"><span role="rowheader">Koreanische Details</span><span class="win" role="cell">Sehr zuverlässig</span><span role="cell">Gut, mit gelegentlichen Ausrutschern bei langen Takes</span></div>
+<div class="vs-row" role="row"><span role="rowheader">Stimmen</span><span class="win" role="cell">Große Bibliothek, beliebig viele pro Clip</span><span role="cell">Zwei pro Anfrage, und Stimmen können abdriften</span></div>
+<div class="vs-row" role="row"><span role="rowheader">Am besten für</span><span role="cell">Kurze Kartensätze und Soundeffekte</span><span role="cell">Lange Folgen mit zwei Personen</span></div>
+</div>
+<p>Für jede Grenze von Gemini gab es einen eigenen Workaround: Nebenfiguren werden separat vertont und eingeschnitten, jede Zeile trägt den Hinweis „gleiche Stimme wie vorher“, ein Stimmencheck erkennt Abdriften, und die Läufe starten direkt nach dem Reset des Gratis-Kontingents.</p>
+<div class="flow" id="flow">
+<ol>
+<li><b>Vorbereiten</b><p>Knifflige Lautveränderungen und Zahlen so umschreiben, wie sie klingen, mit demselben Tool wie bei den Anki-Karten.</p><span class="who">Regeln + Claude</span></li>
+<li><b>Vertonen</b><p>Eine ganze Szene auf einmal lesen, zwei Stimmen pro Anfrage, mit einer eigenen Besetzung für jede Folge.</p><span class="who">Gemini 3.8 TTS</span></li>
+<li><b>Prüfen</b><p>Jede Silbe timen und Zeilen in der falschen Stimme erkennen. Dieser Abschnitt wird neu erstellt.</p><span class="who">Spracherkennung</span></li>
+<li><b>Schneiden</b><p>Nebenfiguren neu vertonen und mit passender Lautstärke einschneiden. Unterbrechungen überlappen um eine Viertelsekunde.</p><span class="who">Audio-Tools</span></li>
+<li><b>Fertigstellen</b><p>Hintergrundgeräusche für jede Szene einmischen, etwa Restaurantgemurmel, dazu Jingles zwischen den Abschnitten. Danach veröffentlicht sich die Folge von selbst.</p><span class="who">ElevenLabs</span></li>
+</ol>
+<div aria-hidden="true" class="prog"><i id="flowProg"></i></div>
+<p class="note">Jede Änderung wird zuerst an einem kurzen Sample getestet und dann auf alle Folgen ausgerollt.</p>
+</div>
+<div aria-label="Die Tools hinter dem Projekt und was jedes davon macht" class="kit">
+<div><b>Claude</b><span>Skripte, der Player, die gesamte Pipeline und ein täglicher Aussprache-Check</span></div>
+<div><b>Gemini 3.8 TTS</b><span>Vertont die Folgen, kostenlos</span></div>
+<div><b>ElevenLabs</b><span>Kartenstimmen, Soundeffekte und Spracherkennungs-Checks für die Karten</span></div>
+<div><b>Gemini in Antigravity</b><span>Massenübersetzung, damit Claude für die schwierigere Arbeit frei bleibt</span></div>
+<div><b>Whisper + ein Aligner</b><span>Timt jede Silbe für das Highlighting, läuft kostenlos auf meinem Mac</span></div>
+<div><b>Stimmabgleich</b><span>Markiert Zeilen, die in der Stimme der falschen Figur gelesen wurden, ebenfalls auf meinem Mac</span></div>
+</div>
+<div class="callouts">
+<div><b>$0</b><span>pro vertonter Folge im Gratis-Kontingent</span></div>
+<div><b data-n="10">10</b><span>Anfragen pro Tag, nach Zeitplan von meinem Mac aus</span></div>
+</div>
+</div>
+</section>
+<!-- ============ 05 ============ -->
+<section class="panel sec" id="pronunciation">
+<header class="sh"><span class="no">05</span><h2>Koreanisch schreibt man anders, als man es spricht</h2></header>
+<div class="sb">
+<p class="big-p">Laute verändern sich, wenn sie auf den Laut daneben treffen. KI-Stimmen lesen manchmal stattdessen die Schreibweise vor.</p>
+<p>Das passiert in jeder Sprache. Im Deutschen wird aus „haben“ schnell „ham“. Koreanisch hat dafür klare Regeln, und Lernende schnappen sie über das Gehör auf. Eine Stimme, die nur die Buchstaben liest, bringt ihnen also den falschen Laut bei.</p>
+<div class="said">
+<div><small>Nasalierung</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">klingt wie</span><span class="s" lang="ko">궁물</span></div><p>Ein hartes ㄱ wird vor ㅁ zum nasalen ㅇ. Heißt „Brühe“.</p></div>
+<div><small>Palatalisierung</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">klingt wie</span><span class="s" lang="ko">가치</span></div><p>ㅌ vor 이 wird zu ㅊ, so wie aus „got you“ ein „gotcha“ wird.</p></div>
+<div><small>Verhärtung</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">klingt wie</span><span class="s" lang="ko">똑빠로</span></div><p>ㅂ verhärtet sich nach ㄱ zu ㅃ. Heißt „geradeaus“ oder „richtig“.</p></div>
+</div>
+<ol class="tries">
+<li><div><b>Für die Stimme so schreiben, wie es klingt</b><p>Ein Regelwerk schreibt jeden Satz so um, wie er gesprochen wird, bevor er an die Stimme geht. Lernende sehen weiterhin die normale Schreibweise. Damit waren die meisten Fehllesungen auf den Anki-Karten behoben.</p></div></li>
+<li><div><b>Herausfinden, was die Checks nicht hören</b><p>Spracherkennung schreibt die Schreibweise auf, ein falscher Laut kommt also trotzdem als richtiges Wort zurück. Aussprachefehler mussten vor der Vertonung abgefangen werden, und zwar mit dem Ohr.</p></div></li>
+<li><div><b>Denselben Satz auf drei Arten testen</b><p>Ein Satz mit sechs kniffligen Stellen, einmal wie geschrieben, einmal leicht korrigiert und einmal komplett umgeschrieben, jeweils gelesen von ElevenLabs und Gemini. Alle drei klangen fast gleich, die Stimmen kennen die Regeln also größtenteils schon.</p></div></li>
+<li><div><b>Die wenigen übrigen Ausrutscher beheben</b><p>Sie passierten an der Grenze zwischen zwei Wörtern in langen Takes, etwa bei <span lang="ko">고객 문의</span> in einer spitzen Frage. Jetzt werden solche Wendungen zusammengezogen, Zahlen in Hangul ausgeschrieben, und ein täglicher Check mit Claude markiert die heiklen Stellen, bevor eine Folge vertont wird.</p></div></li>
+</ol>
+<div class="result"><b>Ein Aussprache-Tool für Karten und Podcast, ohne dass altes Audio neu erstellt werden musste.</b></div>
+</div>
+</section>
+<!-- ============ 06 ============ -->
+<section class="panel sec" id="player">
+<header class="sh"><span class="no">06</span><h2>Ein Player fürs Shadowing</h2></header>
+<div class="sb">
+<p class="big-p">Silbe für Silbe mitlesen, dann die Zeile noch einmal abspielen und nachsprechen.</p>
+<p>Grammatik ist lila hinterlegt, Vokabeln sind gepunktet. Ein Tipp auf beides öffnet die Karte dahinter, mit Notizen und allen anderen Stellen, an denen sie in der Folge vorkommen.</p>
+<div class="phones">
+<figure><img alt="Die Folgenliste auf Koreanisch, mit Titeln, Zusammenfassungen und Laufzeiten" height="1558" loading="lazy" src="../assets/pod-list.jpg" width="720"/><figcaption><b>Eine Situation wählen</b>Jede Folge ist eine Szene aus dem Alltag oder dem Büro.</figcaption></figure>
+<figure><img alt="Eine laufende Folge, die aktuelle Zeile als Karte hervorgehoben, mit englischen Untertiteln unter jeder Zeile" height="1558" loading="lazy" src="../assets/pod-play.jpg" width="720"/><figcaption><b>Mitlesen</b>Die gesprochene Zeile hebt sich ab, mit Untertiteln darunter.</figcaption></figure>
+<figure><img alt="Die Detailansicht zum Grammatikmuster -았/었어야지요, mit Bedeutung, Beispiel, Notizen und den Stellen, an denen es in der Folge vorkommt" height="1558" loading="lazy" src="../assets/pod-sheet.jpg" width="720"/><figcaption><b>Antippen für die Karte</b>Bedeutung, Beispiel, Notizen und ein Sprung zu jeder Stelle.</figcaption></figure>
+</div>
+<div class="grid3">
+<div class="tile"><b>Zeile wiederholen</b><p>Ein Tipp wiederholt die aktuelle Zeile, Shadowing also ganz ohne Hin- und Herspulen.</p></div>
+<div class="tile"><b>Tempo einstellen</b><p>0,7× bis 1,2×, erst zum Reinhören, dann im echten Tempo.</p></div>
+<div class="tile"><b>Weiter, wo man aufgehört hat</b><p>Jede Folge merkt sich die Stelle, ganz ohne Anmeldung.</p></div>
+</div>
+</div>
+</section>
+<!-- ============ 07 ============ -->
+<section class="panel sec" id="shared">
+<header class="sh"><span class="no">07</span><h2>Lokalisiert für eine Klasse mit zehn Sprachen</h2></header>
+<div class="sb">
+<p class="big-p">Meine Klasse kommt aus aller Welt, also wechseln Untertitel und Oberfläche zusammen.</p>
+<div class="duo">
+<div style="display:grid;gap:16px;align-content:start">
+<p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">Einmal eine Sprache wählen, und alle Labels, Titel und Untertitel ziehen mit. Traditionelles Chinesisch wird aus dem vereinfachten generiert, mit taiwanischer Wortwahl. Das Ganze lässt sich auf dem Homescreen installieren, und Teilen heißt einfach: Link schicken.</p>
+<div aria-label="Untertitelsprachen" class="langs-row"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span></div>
+<div class="result"><b>67 Folgen, zehn Sprachen und kein App Store oder Account, der im Weg steht.</b></div>
+</div>
+<div class="phones"><figure><img alt="Eine laufende Folge mit Untertiteln in vereinfachtem Chinesisch" height="1558" loading="lazy" src="../assets/pod-zh.jpg" width="720"/><figcaption><b>Vereinfachtes Chinesisch</b>Gleicher Player, andere Untertitel.</figcaption></figure></div>
+</div>
+</div>
+</section>
+<!-- ============ Next ============ -->
+<section class="c-next">
+<div class="panel c-cta action-card">
+<div class="label"><span>Kontakt</span><span>Offen für Jobs weltweit</span></div>
+<div class="inner">
+<h2>Ein Projekt mit KI-Stimmen oder Sprache? Ich helfe sehr gern dabei.</h2>
+<div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com">Hallo sagen</a><a class="btn" download="" href="../Mancini_Tan_Resume.pdf">Lebenslauf mitnehmen <svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M8 2.5v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10"></path></svg></a></div>
+</div>
+</div>
+<a aria-label="Nächstes Projekt: Die richtige Passform finden" class="panel c-nextcase" href="evn.html">
+<div class="label"><span>Nächstes Projekt</span><span>01</span></div>
+<div class="inner">
+<span class="nlogo"><img alt="" height="40" src="../assets/logo-evn.svg" width="40"/></span>
+<div><h3>Die richtige Passform finden</h3><p>EVN Archive · E-Commerce</p></div>
+<span class="go"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+</div>
+</a>
+</section>
+<footer><span>Mancini Tan · Portfolio 2026</span></footer>
+</div>
+<script src="../site.js"></script>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  setTimeout(() => document.querySelectorAll('.c-results b[data-n]').forEach(b => window.rollNumber && window.rollNumber(b)), 450);
+
+  /* Demo videos: play only while on screen, and never for reduced motion */
+  document.querySelectorAll('video.demo-vid').forEach(v => {
+    if (still.matches || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v);
+  });
+
+  /* Anki card mock: the play bar plays the card's audio, and shows when it's playing */
+  const ap = document.getElementById('ankiPlay'), aa = document.getElementById('ankiAudio');
+  if (ap && aa) {
+    const lab = ap.querySelector('.pbl');
+    const set = on => { ap.classList.toggle('on', on); lab.textContent = on ? 'Playing' : 'Play audio'; ap.setAttribute('aria-label', on ? 'Pause the audio' : "Play the card's audio"); };
+    ap.addEventListener('click', () => { if (aa.paused) { aa.currentTime = 0; aa.play().catch(() => set(false)); } else aa.pause(); });
+    aa.addEventListener('play', () => set(true)); aa.addEventListener('pause', () => set(false)); aa.addEventListener('ended', () => set(false));
+  }
+
+  /* Voicing pipeline: light each stage in turn while the bar fills */
+  const fl = document.getElementById('flow');
+  if (fl) {
+    const steps = [...fl.querySelectorAll('li')], bar = document.getElementById('flowProg');
+    if (!still.matches) new IntersectionObserver((es, ob) => es.forEach(e => { if (!e.isIntersecting) return; ob.disconnect();
+      fl.classList.add('play'); bar.style.setProperty('--p', '0%');
+      steps.forEach((s, i) => setTimeout(() => { steps.forEach(x => x.classList.remove('on')); s.classList.add('on'); bar.style.setProperty('--p', ((i + 1) / steps.length * 100) + '%'); }, 400 + i * 1100));
+      setTimeout(() => { steps.forEach(x => x.classList.remove('on')); fl.classList.remove('play'); }, 400 + steps.length * 1100 + 600);
+    }), { threshold: .45 }).observe(fl);
+  }
+})();
+</script>
+</body>
+</html>

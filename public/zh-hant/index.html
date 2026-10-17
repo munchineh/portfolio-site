@@ -255,6 +255,33 @@
   .nv .auto { font-size: 9px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; padding: 2px 5px; background: #1f2329; color: #fff; }
 
   /* ---------- About / CTA ---------- */
+  /* ---------- Side projects ---------- */
+  .side { display: grid; }
+  .side .label { border-bottom: 1px solid var(--rule); }
+  .side-card { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--gap); padding: 24px 28px 28px; align-items: center; }
+  .side-txt { grid-column: 1 / 6; display: grid; gap: 14px; align-content: start; padding-right: 12px; }
+  .side-txt h3 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(36px, 4.2vw, 64px); line-height: .88; letter-spacing: -0.01em; transition: color .35s var(--ease); }
+  .side-card:hover .side-txt h3 { color: var(--accent); }
+  .side-txt .desc { font-size: 16px; line-height: 1.45; max-width: 44ch; }
+  .side-txt .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .side-txt .stats { margin-top: 4px; }
+  .side-txt .more-l { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-top: 4px; }
+  .side-txt .more-l i { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
+  .side-card:hover .more-l i { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .side-pic { grid-column: 6 / 13; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: #f2f3f7; }
+  .side-pic video { display: block; width: 100%; height: auto; }
+  .side-pic .vid-m { display: none; }
+  @media (max-width: 900px) {
+    .side-pic.has-vid { display: grid; justify-items: center; padding: 18px 0; }
+    .side-pic .vid-d { display: none; }
+    .side-pic .vid-m { display: block; width: min(76%, 280px); border-radius: 24px; box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -24px rgba(0,0,0,.45); }
+  }
+
+  @media (max-width: 900px) {
+    .side-card { padding: 18px; gap: 18px; }
+    .side-txt, .side-pic { grid-column: 1 / -1; padding-right: 0; }
+    .side-pic { order: 2; }
+  }
   .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
   .about .blurb { grid-column: 1 / 9; padding: 28px; display: grid; gap: 40px; }
   .about .blurb > p { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; letter-spacing: -0.01em; max-width: 30ch; }
@@ -348,7 +375,7 @@
 <div class="links">
 <a aria-current="page" class="link item current" href="index.html"><span class="t">首頁</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
-<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">產品設計 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">營運工具，化繁為簡 · Buildlr</a><a href="ninjavan.html">問題件，件件有回音 · Ninja Van</a><a href="neuron.html">班表排好，現場做到 · Neuron</a></div></div><button class="cat" data-cat="content">內容與對話設計 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 助理，邊聊邊下單 · OKX</a><a href="okx.html#orbit">交易，不再一個人 · OKX</a><a href="okx.html#rewind">你的一年，專屬重播 · OKX</a></div></div><button class="cat" data-cat="ecom">電商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Free Size，網購也合身 · EVN Archive</a></div></div></div></div></div>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">產品設計 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">營運工具，化繁為簡 · Buildlr</a><a href="ninjavan.html">問題件，件件有回音 · Ninja Van</a><a href="neuron.html">班表排好，現場做到 · Neuron</a></div></div><button class="cat" data-cat="content">內容與對話設計 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 助理，邊聊邊下單 · OKX</a><a href="okx.html#orbit">交易，不再一個人 · OKX</a><a href="okx.html#rewind">你的一年，專屬重播 · OKX</a></div></div><button class="cat" data-cat="ecom">電商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">Free Size，網購也合身 · EVN Archive</a></div></div><button class="cat" data-cat="side">個人專案 <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">一張張字卡，變成一集集 Podcast · Sogang Podcasts</a></div></div></div></div></div>
 <a class="link item" href="index.html#about"><span class="t">關於</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">聯絡</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
@@ -368,6 +395,7 @@
 <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>交易，不再一個人</b><span>OKX · 星球</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>你的一年，專屬重播</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="ecom" href="evn.html"><div><b>Free Size，網購也合身</b><span>EVN Archive · 尺寸推薦工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="scard" data-cat="side" href="podcast.html"><div><b>一張張字卡，變成一集集 Podcast</b><span>Sogang Podcasts · 個人專案</span></div><div class="thumb"><img alt="" height="52" src="../assets/logo-podcast.png" width="52"/></div></a>
 <a class="all" href="index.html#work"><span>所有作品</span><span>→</span></a>
 </div>
 <section class="hero">
@@ -558,6 +586,20 @@
 </ol>
 </div>
 </section>
+  <section class="panel side" id="side">
+    <div class="label"><span>個人專案</span><span>2026 年 10 月</span></div>
+    <a class="side-card" href="podcast.html">
+      <div class="side-txt">
+        <h3>一張張字卡，變成一集集 Podcast</h3>
+        <p class="desc">韓語聽力 Podcast，腳本取自我的課程教材，由 AI 配音，在專為跟讀打造的網頁 App 上播放。</p>
+        <div class="tags"><span class="tag">Sogang Podcasts</span><span class="tag">AI 語音設計</span><span class="tag">在地化</span><span class="tag">網頁 App</span></div>
+        <div class="stats"><div class="stat"><b>67</b><span>集，取材自 2,400+ 張字卡</span></div><div class="stat"><b>10</b><span>種字幕語言</span></div></div>
+        <span class="more-l"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></i>閱讀案例</span>
+      </div>
+      <figure class="side-pic has-vid"><video class="demo-vid vid-d" src="../assets/pod-demo.mp4" poster="../assets/pod-demo.jpg" width="2880" height="1800" muted loop playsinline preload="none" aria-label="Sogang Podcasts 的一集正在播放，點一下文法重點，就會打開對應的字卡"></video><video class="demo-vid vid-m" src="../assets/pod-demo-m.mp4" poster="../assets/pod-demo-m.jpg" width="1170" height="2340" muted loop playsinline preload="none" aria-label="Sogang Podcasts 的一集正在播放，點一下文法重點，就會打開對應的字卡"></video></figure>
+    </a>
+  </section>
+
 <section class="about" id="about">
 <div class="panel blurb">
 <p class="lines"><span class="s">我是奕豪，專把複雜的產品做簡單。</span><span class="s">5 年以上經驗，橫跨金融科技、物流和電商。</span><span class="s">新加坡人，現居首爾，工作地點不限。</span></p>
@@ -775,6 +817,13 @@
   fchips.forEach(c => c.addEventListener('click', () => applyFilter(filt === c.dataset.f ? null : c.dataset.f)));
   placeScenes(); okx.stop(); nv.stop(); bl.stop(); pick();
 
+})();
+</script>
+<script>
+/* Side project demo: play only while on screen, and never for reduced motion */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  document.querySelectorAll('.side-pic video').forEach(v => new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .25 }).observe(v));
 })();
 </script>
 </body>
