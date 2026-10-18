@@ -54,11 +54,11 @@ d.add('contents', f'<div style="display:flex;flex-direction:column;gap:14px">{he
       pad=PAD, layout='display:flex;flex-direction:column;gap:32px')
 
 # ------------------------------------------------------------------ EVN
-d.section('evn', 'EVN Archive: a sizing tool that lifted free-size sales 400%+.', 'EVN Archive')
+d.section('evn', 'EVN Archive: a sizing tool that got free size selling.', 'EVN Archive')
 case_hero(d, 'evn-title', 'Case 01 · E-commerce', 'Helping shoppers find their fit',
           'My own Shopify store for independent Korean menswear, designed and built end to end. This case covers the sizing tool that helps shoppers buy free size with confidence.',
           [('Role', 'Founder and designer'), ('Timeline', 'May 2026 to now'), ('Stack', 'Shopify, Liquid, CSS, JS'), ('Team', 'Just me')],
-          [('400%+', 'increase in free-size sales'), ('4', "free-size sales in the tool's first week")],
+          [('4', "free-size sales in the tool's first week"), ('0', 'free-size sales in the two months before')],
           hero_img(A, 'm-h-evn', "The product page with How it'll fit you"), None)
 media_slide(d, 'evn-problem', 'The problem and the idea', 'Hundreds of visits, almost no carts',
             [('No size chart to lean on', "Shoppers couldn't picture how free size would fit"),

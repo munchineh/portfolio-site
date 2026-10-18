@@ -34,7 +34,7 @@ d.section('evn', 'EVN Archive: a sizing tool that helps shoppers buy free size w
 case_hero(d, 'evn-title', 'Case 01 · E-commerce', 'Helping shoppers find their fit',
            'EVN Archive is a Shopify store for independent Korean menswear, which I design and run. This case covers the sizing tool I built to help people buy free-size clothing online with confidence.',
            [('Role', 'Designer and founder. UX, UI, content and front-end'), ('Timeline', 'May 2026 to now'), ('Platform', 'Shopify, custom theme code'), ('Team', 'Just me')],
-           [('4', "free-size sales in the sizing tool's first week"), ('400%+', 'increase in free-size sales')],
+           [('4', "free-size sales in the sizing tool's first week"), ('0', 'free-size sales in the two months before')],
            hero_img(A, 'm-h-evn', "The Aura Windbreaker product page, with How it'll fit you under the size"), None)
 side(d, 'evn-carts', [('eyebrow', 'The problem'), ('h2', 'Plenty of visits, very few carts'),
       ('st', 'Free size pieces are some of the strongest designs in the archive. They were also the ones that sold the least.'),

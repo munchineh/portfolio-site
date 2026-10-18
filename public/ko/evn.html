@@ -8,6 +8,9 @@
 <meta name="theme-color" content="#122d18" media="(prefers-color-scheme: dark)" data-c="#122d18">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>입어보지 않아도 아는 핏 · 만치니</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="독립 한국 남성복을 소개하는 제 쇼피파이 스토어로, 처음부터 끝까지 직접 디자인하고 만들었어요. 이 사례는 프리 사이즈 옷도 자신 있게 살 수 있게 돕는 사이즈 툴을 다뤄요.">
 <link rel="canonical" href="https://mancinitan.com/ko/evn">
 <link rel="alternate" hreflang="en" href="https://mancinitan.com/evn">
@@ -54,6 +57,7 @@
   .c-results .big { display: grid; gap: 4px; }
   .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
   .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
+  .c-results .big:only-of-type > span { max-width: 34ch; }
   .c-results .note { font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px solid var(--rule); }
   .c-media { margin: 0; }
   .c-media { background: #fff; }
@@ -177,6 +181,7 @@
     .c-results { grid-column: 1 / -1; margin-top: 0; }
     .c-results-in { grid-template-columns: 1fr 1fr; }
     .c-results .note { grid-column: 1 / -1; }
+    .c-results .big:only-of-type { grid-column: 1 / -1; }
     .sec { padding: 24px 18px 28px; }
     .sh { grid-column: 1 / -1; position: static; padding: 0 0 16px; }
     .sb { grid-column: 1 / -1; }
@@ -253,8 +258,8 @@
 <aside class="panel c-results">
 <div class="label"><span>결과</span><span>2026년 9월</span></div>
 <div class="c-results-in">
-<div class="big"><b data-n="4">4</b><span>사이즈 추천 툴 도입 첫 주의 프리사이즈 판매 건수</span></div>
-<div class="big"><b data-n="400%+">400%+</b><span>프리사이즈 판매 증가</span></div>
+<div class="big"><b data-n="4">4</b><span>사이즈 추천 툴 도입 첫 주의 프리사이즈 판매 건수. 직전 두 달은 0건이었어요</span></div>
+<p class="note">같은 주에 프리사이즈 20% 할인도 함께 진행했어요.</p>
 </div>
 </aside>
 </section>
@@ -358,7 +363,7 @@
 <p class="an-note">아이디어를 그림으로 표현해봤어요. 접점을 지날 때마다 고객의 기준점이 조금씩 움직여요.</p>
 </div>
 <p>좋은 솔루션은 한 화면에만 있지 않아요. 기능 주변의 콘텐츠와 혜택이 사람들을 그 기능까지 데려와요.</p>
-<div class="result"><b>프리사이즈 판매 400% 이상, 첫 주에만 4건.</b></div>
+<div class="result"><b>직전 두 달 0건에서, 첫 주에만 프리사이즈 4건.</b></div>
 </div>
 </section>
 <!-- ============ 05 ============ -->
