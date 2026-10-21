@@ -116,8 +116,8 @@ EXTRA = [
     ("home.tag1", "AI voice design", "Tag pill. Short."),
     ("home.tag2", "Localization", "Tag pill. Use the same word as the site's existing skills chip for Localization."),
     ("home.tag3", "Web app", "Tag pill. Short."),
-    ("home.stat1", "episodes from 2,400+ flashcards", "Follows the number 67."),
-    ("home.stat2", "subtitle languages", "Follows the number 10."),
+    ("home.stat1", "episodes from 3,000+ flashcards", "Follows the number 89."),
+    ("home.stat2", "subtitle languages", "Follows the number 11."),
     ("home.more", "Read the case", "Link text with an arrow icon. zh/ko: 4 characters or fewer."),
     ("home.video", "An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card", "Screen-reader label for the home page video."),
 ]

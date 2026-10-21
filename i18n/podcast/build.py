@@ -50,7 +50,7 @@ def page_body(lang, tr):
     style = html[html.index("<style>"): html.index("</style>") + len("</style>")]
     body = re.sub(r'(src|poster|href)="(assets/|Mancini_Tan_Resume\.pdf|site\.js)', r'\1="../\2', body)
     if lang == "de":
-        body = body.replace("2,400+", "2.400+")
+        body = body.replace("2,400+", "2.400+").replace("3,000+", "3.000+")
     return body, style
 
 
@@ -86,7 +86,7 @@ def home_patch(html, tr):
         '<span class="tag">AI voice design</span>': f'<span class="tag">{tr["home.tag1"]}</span>',
         '<span class="tag">Localization</span>': f'<span class="tag">{tr["home.tag2"]}</span>',
         '<span class="tag">Web app</span>': f'<span class="tag">{tr["home.tag3"]}</span>',
-        '<span>episodes from 2,400+ flashcards</span>': f'<span>{tr["home.stat1"]}</span>',
+        '<span>episodes from 3,000+ flashcards</span>': f'<span>{tr["home.stat1"]}</span>',
         '<span>subtitle languages</span>': f'<span>{tr["home.stat2"]}</span>',
         '</i>Read the case</span>': f'</i>{tr["home.more"]}</span>',
         'An episode of Sogang Podcasts playing, then a tap on a grammar point opens its card': tr["home.video"],

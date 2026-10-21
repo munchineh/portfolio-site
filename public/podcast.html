@@ -10,20 +10,14 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="A Korean listening podcast built from my class syllabus. AI-voiced, localised into ten languages, and played in a web app designed for shadowing.">
+<meta name="description" content="A Korean listening podcast built from my class syllabus. AI-voiced, localised into eleven languages, and played in a web app designed for shadowing.">
 <link rel="canonical" href="https://mancinitan.com/podcast">
-<link rel="alternate" hreflang="en" href="https://mancinitan.com/podcast">
-<link rel="alternate" hreflang="de" href="https://mancinitan.com/de/podcast">
-<link rel="alternate" hreflang="ko" href="https://mancinitan.com/ko/podcast">
-<link rel="alternate" hreflang="zh-Hans" href="https://mancinitan.com/zh-hans/podcast">
-<link rel="alternate" hreflang="zh-Hant" href="https://mancinitan.com/zh-hant/podcast">
-<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/podcast">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mancini Tan">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://mancinitan.com/podcast">
 <meta property="og:title" content="Turning flashcards into a podcast · Mancini Tan">
-<meta property="og:description" content="A Korean listening podcast built from my class syllabus. AI-voiced, localised into ten languages, and played in a web app designed for shadowing.">
+<meta property="og:description" content="A Korean listening podcast built from my class syllabus. AI-voiced, localised into eleven languages, and played in a web app designed for shadowing.">
 <meta property="og:image" content="https://mancinitan.com/assets/og/podcast.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -332,21 +326,21 @@
         <span class="line"><span>Turning flashcards</span></span>
         <span class="line"><span>into a podcast</span></span>
       </h1>
-      <p class="lede">A Korean listening podcast built from my class syllabus. AI-voiced, localised into ten languages, and played in a web app designed for shadowing.</p>
+      <p class="lede">A Korean listening podcast built from my class syllabus. AI-voiced, localised into eleven languages, and played in a web app designed for shadowing.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Product design, content design, AI voice design</dd></div>
         <div><dt>Timeline</dt><dd>Oct 2026 to now</dd></div>
         <div><dt>Built with</dt><dd>Claude, Gemini 3.8 TTS, ElevenLabs</dd></div>
-        <div><dt>Platform</dt><dd>Web app on GitHub Pages</dd></div>
+        <div><dt>Platform</dt><dd>Web app on GitHub Pages and Cloudflare R2</dd></div>
       </dl>
       <div class="btns"><a class="btn primary" href="https://munchineh.github.io/sogang-podcasts/" target="_blank" rel="noopener">Listen to an episode <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></a></div>
     </div>
     <aside class="panel c-results">
-      <div class="label"><span>What came of it</span><span>Oct 2026</span></div>
+      <div class="label"><span>What came of it</span><span>Ongoing</span></div>
       <div class="c-results-in">
-        <div class="big"><b data-n="67">67</b><span>episodes written from 2,400+ of my flashcards</span></div>
-        <div class="big"><b data-n="10">10</b><span>subtitle languages, with the interface to match</span></div>
-        <p class="note">Voiced on a free tier: about two 20-minute episodes a day.</p>
+        <div class="big"><b data-n="89">89</b><span>episodes across three levels, from 3,000+ of my flashcards</span></div>
+        <div class="big"><b data-n="11">11</b><span>subtitle languages, with the interface to match</span></div>
+        <p class="note">Still in progress: up to nine episodes voiced a day, with all three levels projected to finish by the end of October 2026.</p>
       </div>
     </aside>
   </section>
@@ -364,7 +358,7 @@
       <p class="big-p">Great Korean podcasts and shadowing apps are everywhere. None follow my Sogang syllabus.</p>
       <p>Flashcards give one sentence at a time, and NotebookLM improvised at native speed with vocab outside the books. So I built my own.</p>
       <div class="grid3">
-        <div class="tile"><span class="tile-k">On syllabus</span><b>Only what's in the books</b><p>Every word and grammar point comes from the Level 3 and 4 books.</p></div>
+        <div class="tile"><span class="tile-k">On syllabus</span><b>Only what's in the books</b><p>Every word and grammar point comes from the Level 2, 3 and 4 books.</p></div>
         <div class="tile"><span class="tile-k">Sounds real</span><b>Like a drama, at a pace I can follow</b><p>Real situations, read slowly enough to repeat.</p></div>
         <div class="tile"><span class="tile-k">Shareable</span><b>For my classmates too</b><p>Subtitles in their languages. No install, no account.</p></div>
       </div>
@@ -450,8 +444,8 @@
         <p class="foot">Roughly to scale, by lines in episode 2.</p>
       </div>
       <div class="callouts">
-        <div><b data-n="67">67</b><span>episodes across Levels 3 and 4</span></div>
-        <div><b data-n="2,400+">2,400+</b><span>cards woven into scenes</span></div>
+        <div><b data-n="89">89</b><span>episodes across Levels 2, 3 and 4</span></div>
+        <div><b data-n="3,000+">3,000+</b><span>cards woven into scenes</span></div>
       </div>
     </div>
   </section>
@@ -497,8 +491,35 @@
   </section>
 
   <!-- ============ 05 ============ -->
+  <section class="panel sec" id="cast">
+    <header class="sh"><span class="no">05</span><h2>AI voice design: a voice for every character</h2></header>
+    <div class="sb">
+      <p class="big-p">A Gemini request holds two voices. My scenes needed grandparents, a taxi driver from Busan and a buyer from Tokyo.</p>
+      <p>So every character got a voice of their own, and kept it across all three levels.</p>
+      <ol class="fixes">
+        <li>
+          <div class="was"><small>Problem</small><b>Older characters sounded thirty</b><p>Gemini's voices skew young.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Age the voice first</b><p>A small shift in formant, pitch and pace makes a voice older. ElevenLabs steps in only when that falls short.</p></div>
+        </li>
+        <li>
+          <div class="was"><small>Problem</small><b>Accents disappeared</b><p>ElevenLabs Multilingual v2 kept them, but the lines came out flat.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Describe the accent in the voice</b><p>Gemini's designed voices take it from the prompt: Busan, Jeolla, Gyeongju, Tokyo, Hanoi, Melbourne.</p></div>
+        </li>
+        <li>
+          <div class="was"><small>Problem</small><b>Short replies sounded read out alone</b><p>A dry <span lang="ko">그건 인정.</span> came out flat every time.</p></div>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <div class="fix"><small>Fix</small><b>Voice the whole exchange</b><p>Then keep only the reply, so it sounds like an answer.</p></div>
+        </li>
+      </ol>
+      <p>Every new voice gets a test line before its episode is voiced.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 ============ -->
   <section class="panel sec" id="pronunciation">
-    <header class="sh"><span class="no">05</span><h2>QA for Korean pronunciation</h2></header>
+    <header class="sh"><span class="no">06</span><h2>QA for Korean pronunciation</h2></header>
     <div class="sb">
       <p class="big-p">Korean is written one way and said another. AI voices sometimes read the spelling.</p>
       <p>Every language does this. In English, "handbag" sounds like "hambag".</p>
@@ -517,9 +538,23 @@
     </div>
   </section>
 
-  <!-- ============ 06 ============ -->
+  <!-- ============ 07 ============ -->
+  <section class="panel sec" id="review">
+    <header class="sh"><span class="no">07</span><h2>Review ops: one sheet, blockers first</h2></header>
+    <div class="sb">
+      <p class="big-p">By Level 3, my reviews lived across three separate pages.</p>
+      <p>I folded them into one sheet, sorted by the day each decision is due. Anything that stops an episode from voicing turns red and moves to the top.</p>
+      <div class="grid3">
+        <div class="tile"><span class="tile-k">Focus</span><b>I review audio only</b><p>Claude settles the script notes. I judge what needs ears.</p></div>
+        <div class="tile"><span class="tile-k">Decisions</span><b>Three answers per voice</b><p>Pass keeps the Gemini voice. Fail means I bring an ElevenLabs voice. Depends gives Gemini one more direction.</p></div>
+        <div class="tile"><span class="tile-k">Checks</span><b>A voice print on every line</b><p>It flags any line read in the wrong voice. The first run caught 11 lines in 20 episodes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 ============ -->
   <section class="panel sec" id="player">
-    <header class="sh"><span class="no">06</span><h2>UX designed for shadowing</h2></header>
+    <header class="sh"><span class="no">08</span><h2>UX designed for shadowing</h2></header>
     <div class="sb">
       <p class="big-p">Follow along syllable by syllable, then replay the line and say it back.</p>
       <p>Grammar is purple, vocab is dotted. Tap either for the full card.</p>
@@ -536,16 +571,16 @@
     </div>
   </section>
 
-  <!-- ============ 07 ============ -->
+  <!-- ============ 09 ============ -->
   <section class="panel sec" id="shared">
-    <header class="sh"><span class="no">07</span><h2>Localised into ten languages</h2></header>
+    <header class="sh"><span class="no">09</span><h2>Localised into eleven languages</h2></header>
     <div class="sb">
       <p class="big-p">Subtitles and interface switch together, for a classroom from all over.</p>
       <div class="duo">
         <div style="display:grid;gap:16px;align-content:start">
           <p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">It installs to the home screen and shares with a link.</p>
-          <div class="langs-row" aria-label="Subtitle languages"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span></div>
-          <div class="result"><b>67 episodes, ten languages, and no app store or account in the way.</b></div>
+          <div class="langs-row" aria-label="Subtitle languages"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span><span>Čeština</span></div>
+          <div class="result"><b>89 episodes, eleven languages, and no app store or account in the way.</b></div>
         </div>
         <div class="phones"><figure><img src="assets/pod-zh.jpg" alt="An episode playing with Simplified Chinese subtitles" width="720" height="1558" loading="lazy"><figcaption><b>Simplified Chinese</b>Same player, subtitles switched.</figcaption></figure></div>
       </div>
