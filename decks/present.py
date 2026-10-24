@@ -21,7 +21,7 @@ d.section('intro', 'Who I am and how I work.', '')
 cover(d, 'cover', 'Mancini Tan', 'Product, content and conversation design', 'Portfolio · 2026', A['portrait'])
 
 ABOUT_HEAD = "I design things people don't have to think about."
-facts = [('Experience', '5+ years: DBS, Ninja Van, Neuron, OKX, Buildlr, plus my own store'),
+facts = [('Experience', '6+ years: DBS, Ninja Van, Neuron, OKX, Buildlr, plus my own store'),
          ('Industries', 'Fintech, logistics, e-commerce, construction tech, mobility'),
          ('Skills', 'UI, conversation and content design, localization'),
          ('Languages', 'English (native), Chinese (proficient), Korean and German (intermediate)')]
@@ -31,7 +31,7 @@ fact_cards = ''.join(
     f'<p style="font-size:30px;font-weight:400;line-height:1.3;color:{INK}">{e(v)}</p></div>' for k, v in facts)
 d.add('about', f'{eyebrow("About")}'
       f'<h2 style="font-family:{DISP};font-size:112px;{DSTYLE};line-height:0.92;text-transform:uppercase;color:{INK};width:1500px">{e(ABOUT_HEAD)}</h2>'
-      f'<p style="font-size:34px;font-weight:400;line-height:1.4;color:{BODY}">5+ years across fintech, logistics and e-commerce. Singaporean, based in Seoul, open to roles anywhere.</p>'
+      f'<p style="font-size:34px;font-weight:400;line-height:1.4;color:{BODY}">6+ years across fintech, logistics and e-commerce. Singaporean, based in Seoul, open to roles anywhere.</p>'
       f'<div style="display:flex;flex-direction:row;gap:20px;align-items:stretch">{fact_cards}</div>',
       pad=PAD, layout='display:flex;flex-direction:column;justify-content:center;gap:36px')
 
