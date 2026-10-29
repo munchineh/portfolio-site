@@ -42,7 +42,7 @@ cases = [('01', 'Helping shoppers find their fit', 'EVN Archive', 'E-commerce, e
          ('04', 'Personalized content at scale', 'OKX · Crypto Rewind', 'Dynamic content'),
          ('05', 'Simplifying operational tools', 'Buildlr', 'SaaS, complex forms'),
          ('06', 'Service design for service recovery', 'Ninja Van', 'Research, service design'),
-         ('07', 'Shift plans that stick', 'Neuron Mobility', 'Internal tools')]
+         ('07', 'Restructuring internal tools', 'Neuron Mobility', 'Internal tools')]
 rows = ''.join(
     f'<div style="display:flex;flex-direction:row;gap:28px;align-items:center;background:{CARD};border:1px solid {RULE};border-radius:18px;padding:16px 28px">'
     f'<p style="font-family:{DISP};font-size:44px;{DSTYLE};line-height:1;color:{ACCENT};width:56px">{n}</p>'
@@ -118,7 +118,7 @@ lrows = ''.join(
     f'<div style="flex:1;display:flex;flex-direction:column;gap:4px"><p style="font-size:32px;font-weight:600;line-height:1.15;color:{INK}">{e(t)}</p>'
     f'<p style="font-size:25px;font-weight:400;line-height:1.35;color:{BODY}">{e(x)}</p></div></div>' for n, t, x in layers)
 d.add('ai-prompt', f'<div style="display:flex;flex-direction:row;gap:56px;align-items:center;height:{CH}px">'
-      f'<div style="width:888px;display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:14px">{head("The system prompt", "Five layers, so the bot never improvises with money", size=48)}</div>'
+      f'<div style="width:888px;display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:14px">{head("The system prompt", "Five layers, because finance leaves no room for error", size=48)}</div>'
       f'<div style="display:flex;flex-direction:column;gap:12px">{lrows}</div></div>'
       f'{framed(A, "m-okx-chat-v", "The assistant hands over an updated quote", 720, 840, pad=40, radius=18, bg="#0B0F0C")}</div>',
       pad=PAD, layout='display:flex;flex-direction:column')
@@ -206,7 +206,7 @@ big_numbers(d, 'nv-results', 'Results', 'Faster recovery, one design language',
 
 # ------------------------------------------------------------------ Neuron
 d.section('neuron', 'Neuron: tasks managers can track, 90%+ less Slack, and two platforms merged.', 'Neuron')
-case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Shift plans that stick',
+case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Restructuring internal tools',
           'Neuron runs shared e-scooters and e-bikes across Australia and beyond. I redesigned how managers and ground operators work together, then merged two internal platforms into one.',
           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA')],
           [('90%+', 'less reliance on Slack for task updates'), ('10%', 'more efficient field operations')],

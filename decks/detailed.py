@@ -27,7 +27,7 @@ contents(d, 'contents', [
     ('04', 'Personalized content at scale', 'OKX · Crypto Rewind', 'Dynamic content, growth'),
     ('05', 'Simplifying operational tools', 'Buildlr', 'SaaS, complex forms'),
     ('06', 'Service design for service recovery', 'Ninja Van', 'Research, service design'),
-    ('07', 'Shift plans that stick', 'Neuron Mobility', 'Internal tools, research')])
+    ('07', 'Restructuring internal tools', 'Neuron Mobility', 'Internal tools, research')])
 
 # ------------------------------------------------------------------ EVN
 d.section('evn', 'EVN Archive: a sizing tool that helps shoppers buy free size with confidence.', 'EVN Archive')
@@ -87,7 +87,7 @@ side(d, 'ai-scale', [('eyebrow', '2.1'), ('h2', "A great service that couldn't s
 side(d, 'ai-desk', [('eyebrow', '2.2'), ('h2', 'A personal desk for big trades'), ('st', 'Big trades deserve white-glove service. The challenge was offering it at scale.'),
       ('p', 'Orders of fifty thousand dollars and up carry a slippage risk, since the price can move before the trade fills, and they usually come from high-value customers who deserve more than an instant quote. So big orders get a personal service with a preferential rate. That service was built by a dedicated team of agents in Greater China, real people who set the standard for how personal it should feel. To take it international, the AI assistant works alongside them, so the same treatment reaches every market the moment an order crosses the threshold, and the team stays on the conversations that need a human.')],
      phones([(A['okx-500'], '500 USD', '500 USD', 'Nothing changes.'), (A['okx-50k'], '50,000 USD with a better rate offered', '50,000 USD', 'A better rate is offered.'), (A['okx-sheet'], 'The handover sheet', 'The handover', 'What happens next.')], 880, 792), 880)
-rows_slide(d, 'ai-prompt', [('eyebrow', '2.3'), ('h2', 'Designing the system prompt'), ('st', "When it's someone's money, the bot doesn't get to improvise."),
+rows_slide(d, 'ai-prompt', [('eyebrow', '2.3'), ('h2', 'Designing the system prompt'), ('st', "When it comes to finance, there's no room for error."),
       ('p', 'A hallucinated rate, a vague phrase or a misread intent could cost someone thousands, so I built the prompt in five layers. Each one answers a different question.')],
      [('01 Persona', 'Who is it, and what is it for?', 'A senior trading consultant: assuring, natural, never "massive", always "substantial". Without one, a model sounds unsure right when someone is moving a lot of money.'),
       ('02 Adaptive tone', 'How should it talk to this person?', "Plain English by default; trading vernacular when the user says \"bps\" or \"fill or kill\". It mirrors the user's own vocabulary."),
@@ -218,7 +218,7 @@ stats_slide(d, 'nv-akira', 'Also at Ninja Van', 'Nine libraries into one',
 
 # ------------------------------------------------------------------ Neuron
 d.section('neuron', 'Neuron: shift plans managers can track, and two internal platforms merged into one.', 'Neuron')
-case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Shift plans that stick',
+case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Restructuring internal tools',
            'Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.',
            [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA, web and mobile')],
            [('60%', 'faster page loads on average, after the merge'), ('10%', 'more actions per operator, per hour')],
