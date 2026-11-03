@@ -33,7 +33,7 @@ contents(d, 'contents', [
 d.section('evn', 'EVN Archive: a sizing tool that helps shoppers buy free size with confidence.', 'EVN Archive')
 case_hero(d, 'evn-title', 'Case 01 · E-commerce', 'Helping shoppers find their fit',
            'EVN Archive is a Shopify store for independent Korean menswear, which I design and run. This case covers the sizing tool I built to help people buy free-size clothing online with confidence.',
-           [('Role', 'Designer and founder. UX, UI, content and front-end'), ('Timeline', 'May 2026 to now'), ('Platform', 'Shopify, custom theme code'), ('Team', 'Just me')],
+           [('Role', 'Designer and founder. UX, UI, content and front-end'), ('Timeline', 'May 2026 to now'), ('Tools', 'Shopify (Liquid, CSS, JavaScript), Claude Design'), ('Team', 'Just me')],
            [('4', "free-size sales in the sizing tool's first week"), ('0', 'free-size sales in the two months before')],
            hero_img(A, 'm-h-evn', "The Aura Windbreaker product page, with How it'll fit you under the size"), None)
 side(d, 'evn-carts', [('eyebrow', 'The problem'), ('h2', 'Selling free size without a size chart'),
@@ -72,7 +72,7 @@ d.add('evn-beyond', f'{eyebrow("Owning the whole store")}{h2("Running my own sto
 d.section('okx', 'OKX overview: three products that made crypto more social.', 'OKX')
 case_hero(d, 'okx-title', 'Cases 02 to 04 · Fintech', 'Making crypto social',
            'Crypto is still young, and part of making it feel normal is making it social. Three products from my time at OKX: an assistant that trades with you in chat, Orbit, a social layer for traders, and Crypto Rewind, a year in review you play back like a playlist.',
-           [('Role', 'Senior content designer. Content and conversation design'), ('Timeline', 'Mar 2024 to Dec 2025'), ('Worked in', 'English and Mandarin'), ('Scope', 'Conversation, social, dynamic content')],
+           [('Role', 'Senior content designer. Content and conversation design'), ('Timeline', 'Mar 2024 to Dec 2025'), ('Worked in', 'English and Mandarin'), ('Tools', 'Figma, Jira, Amplitude')],
            [('3.26M', 'Crypto Rewind click-throughs, against a 1.5M goal'), ('200%', "growth in Orbit's daily active users")],
            hero_phone(A, 'okx-50k', 'Simple Buy with 50,000 USD entered'), None,
            note='Crypto Rewind figures from Amplitude, as of 28 Feb 2025.')
@@ -153,7 +153,7 @@ d.add('rewind-goals', f'{eyebrow("4.4 · Actual vs goal")}{h2("Every target beat
 d.section('buildlr', 'Buildlr: a pre-construction SaaS, from tablet quotes to phone task timers.', 'Buildlr')
 case_hero(d, 'bl-title', 'Case 05 · Construction tech', 'Simplifying operational tools',
            'A pre-construction SaaS for the German market, built from zero, covering quotes, task management, Gantt scheduling and more. One of its key designs is a very deep quote form, made for consultants on a tablet beside their client and contractors on a phone with one hand free.',
-           [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Client', 'Buildlr'), ('Scope', 'SaaS, complex forms, scheduling, IA, design system')],
+           [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Tools', 'Figma'), ('Scope', 'SaaS, complex forms, scheduling, IA, design system')],
            [('140', 'final screens, designed from zero in eight months'), ('167', 'components across 25 sets, in light and dark')],
            hero_img(A, 'm-h-bl', 'Tasks switched on as rows in a new quote'), None, note='One designer, from discovery to launch.')
 side(d, 'bl-days', [('eyebrow', '01'), ('h2', 'From kitchen table to building site'), ('st', 'Two very different jobs run on the same five-tier quote.'),
@@ -184,7 +184,7 @@ big_statement(d, 'bl-async', 'Everything ran async, on top of the design system.
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
 case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service design for service recovery',
            'When a parcel goes wrong, three teams get involved and the merchant usually hears nothing. I researched how that chain really worked across Southeast Asia, then designed a self-serve portal for merchants and the tools support agents use behind it.',
-           [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
+           [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Tools', 'Sketch, Salesforce'), ('Scope', 'Service design, research, UI')],
            [('70%', 'of case logging automated for delayed pickups and deliveries'), ('66%', 'less time to identify a parcel as missing')],
            hero_img(A, 'm-h-nv', 'A case in the merchant portal'), None, note='Both figures are approximate.')
 d.add('nv-handover', f'{eyebrow("01")}{h2("Tracing one case end to end")}{statement("A bit of information went missing at every handover.")}'
@@ -220,7 +220,7 @@ stats_slide(d, 'nv-akira', 'Also at Ninja Van', 'Nine libraries into one',
 d.section('neuron', 'Neuron: shift plans managers can track, and two internal platforms merged into one.', 'Neuron')
 case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Restructuring internal tools',
            'Neuron runs shared e-scooters and e-bikes across Australia and beyond. Managers plan where vehicles should go, and ground operators move them. I redesigned how those two sides work together, then helped merge two internal platforms into one.',
-           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA, web and mobile')],
+           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Tools', 'Figma'), ('Scope', 'Internal tools, research, IA, web and mobile')],
            [('60%', 'faster page loads on average, after the merge'), ('10%', 'more actions per operator, per hour')],
            hero_img(A, 'm-h-nr', 'Assigned tasks beside the task map'), None, note='Both figures are approximate.')
 tiles_slide(d, 'nr-slack', [('eyebrow', '01'), ('h2', 'Getting the plan out of Slack'), ('st', "Managers could make a good plan. They just couldn't tell if anyone followed it."),

@@ -377,3 +377,68 @@ document.querySelectorAll('.lang a[data-l]').forEach(a => a.addEventListener('cl
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(box);
   });
 })();
+
+/* Search: a button in the header opens a search across every case, in the page's language.
+   The engine (search.js) only loads when someone reaches for it. Sections without an id get one (s1, s2…)
+   so results can link straight to them; search.js numbers fetched pages the same way. */
+(() => {
+  const units = window.mtUnits = (doc) => [...doc.querySelectorAll('section')]
+    .filter(s => !s.parentElement.closest('section') && !s.matches('.c-next, #work, #side'));
+  units(document).forEach((s, i) => { if (!s.id) s.id = 's' + (i + 1); });
+
+  const right = document.querySelector('.top-right');
+  const lang = (document.documentElement.lang || 'en').toLowerCase();
+  const T = { en: ['Search', 'Search my work'], de: ['Suchen', 'Meine Arbeit durchsuchen'], ko: ['검색', '작업 검색'],
+              'zh-hans': ['搜索', '搜索作品'], 'zh-hant': ['搜尋', '搜尋作品'] }[lang] || ['Search', 'Search my work'];
+  const src = document.currentScript && document.currentScript.src;
+  const base = src ? new URL('.', src) : new URL('/', location.href);
+  let loading;
+  const load = () => loading || (loading = new Promise((ok, no) => {
+    const s = document.createElement('script'); s.src = new URL('search.js', base).href; s.onload = ok; s.onerror = no;
+    document.head.appendChild(s);
+  }));
+  const open = (q) => load().then(() => window.MTSearch && window.MTSearch.open(q));
+
+  if (right) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'pill srch-btn'; b.setAttribute('aria-label', T[1]); b.setAttribute('aria-haspopup', 'dialog');
+    b.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.75"/><path d="m10.5 10.5 3.5 3.5"/></svg><span>${T[0]}</span><kbd aria-hidden="true">/</kbd>`;
+    right.insertBefore(b, right.firstChild);
+    ['pointerenter', 'focus', 'touchstart'].forEach(ev => b.addEventListener(ev, load, { once: true, passive: true }));
+    b.addEventListener('click', () => open());
+  }
+  /* "/" or Cmd/Ctrl+K opens it from anywhere, unless you're typing in a field */
+  addEventListener('keydown', (e) => {
+    const typing = e.target.closest && e.target.closest('input, textarea, select, [contenteditable="true"]');
+    if ((e.key === '/' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+      e.preventDefault(); open();
+    }
+  });
+
+  /* Arriving from a result: scroll the section in under the header and mark the words that were searched */
+  const arrive = (e) => {
+    let terms = null;
+    try { terms = JSON.parse(sessionStorage.getItem('mt-hl') || 'null'); sessionStorage.removeItem('mt-hl'); } catch (e) {}
+    const id = decodeURIComponent(location.hash.slice(1));
+    const el = id && document.getElementById(id);
+    if (!el || !terms) return;
+    /* Same page: glide there. New page: jump, after the browser's own jump to the anchor (which ignores the header) */
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches, here = e && e.type === 'hashchange';
+    const go = () => scrollTo({ top: el.getBoundingClientRect().top + scrollY - 92, behavior: here && !still ? 'smooth' : 'instant' });
+    if (here || document.readyState === 'complete') requestAnimationFrame(go);
+    else addEventListener('load', () => setTimeout(go, 0), { once: true });
+    if (!window.CSS || !CSS.highlights || !window.Highlight) return;
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').normalize('NFC');
+    const hl = new Highlight(), walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n; (n = walk.nextNode());) {
+      if (n.parentElement.closest('.demo, svg, [aria-hidden="true"]')) continue;
+      const t = norm(n.data);
+      terms.forEach(w => { for (let i = t.indexOf(w); w && i > -1; i = t.indexOf(w, i + w.length)) {
+        const r = new Range(); r.setStart(n, i); r.setEnd(n, i + w.length); hl.add(r);
+      } });
+    }
+    CSS.highlights.set('mt-search', hl);
+  };
+  arrive();
+  addEventListener('hashchange', arrive);
+})();

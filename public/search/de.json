@@ -1,0 +1,467 @@
+{
+ "suggest": [
+  "Figma",
+  "Shopify",
+  "Design-Systeme",
+  "KI",
+  "UX Writing",
+  "Lokalisierung",
+  "User Research",
+  "Jira"
+ ],
+ "tools": [
+  {
+   "name": "Figma",
+   "kind": "Tool",
+   "aka": [
+    "designtool",
+    "design-tool",
+    "figjam",
+    "figma mcp",
+    "design tool",
+    "design tools",
+    "design software"
+   ],
+   "note": "Mein wichtigstes Design-Tool, auf Experten-Niveau. OKX, Buildlr und Neuron habe ich komplett in Figma gestaltet, und ich arbeite mit Figma MCP und Claude.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "buildlr",
+     "label": "Buildlr"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron"
+    },
+    {
+     "to": "resume"
+    }
+   ]
+  },
+  {
+   "name": "Sketch",
+   "kind": "Tool",
+   "aka": [
+    "sketch app",
+    "sketchapp"
+   ],
+   "note": "Das Händlerportal und die Agent-Screens bei Ninja Van habe ich in Sketch gestaltet.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van"
+    }
+   ]
+  },
+  {
+   "name": "Shopify und Liquid",
+   "kind": "Tool",
+   "aka": [
+    "onlineshop",
+    "e-commerce",
+    "shopify and liquid",
+    "shopify",
+    "liquid",
+    "shopify theme",
+    "shopify mcp",
+    "storefront",
+    "ecommerce",
+    "cro",
+    "conversion",
+    "claude design"
+   ],
+   "note": "EVN Archive gestalte ich direkt in Shopify, inzwischen auch mit Claude Design. Den Store habe ich selbst programmiert, vom Komponentensystem bis zum Größentool.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "HTML, CSS und JavaScript",
+   "kind": "Tool",
+   "aka": [
+    "programmieren",
+    "html, css and javascript",
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "front-end",
+    "frontend",
+    "front end",
+    "code",
+    "coding",
+    "developer"
+   ],
+   "note": "Store und Größentool von EVN Archive sind mein eigener Front-End-Code, in Liquid, CSS und JavaScript.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "Salesforce",
+   "kind": "Tool",
+   "aka": [
+    "salesforce crm",
+    "salesforce lightning",
+    "lightning",
+    "crm"
+   ],
+   "note": "Ich habe die Salesforce-CRM-Screens gestaltet, mit denen die Agents bei Ninja Van Fälle erfasst und bearbeitet haben.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Jira",
+   "kind": "Tool",
+   "aka": [
+    "atlassian",
+    "jira software"
+   ],
+   "note": "Gehörte bei OKX zu meinem Werkzeugkasten.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    }
+   ]
+  },
+  {
+   "name": "Amplitude",
+   "kind": "Tool",
+   "aka": [
+    "analyse",
+    "daten",
+    "analytics",
+    "product analytics",
+    "data",
+    "metrics"
+   ],
+   "note": "Die Ergebnisse von Crypto Rewind bei OKX stammen aus Amplitude, gemessen an den Zielen der Kampagne.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    }
+   ]
+  },
+  {
+   "name": "Claude und KI-Tools",
+   "kind": "Tool",
+   "aka": [
+    "ki",
+    "künstliche intelligenz",
+    "ki-tools",
+    "claude and ai tools",
+    "ai",
+    "claude",
+    "llm",
+    "genai",
+    "generative ai",
+    "mcp",
+    "prompt",
+    "prompts",
+    "prompt design",
+    "prompt engineering",
+    "ai tools",
+    "agent",
+    "agents",
+    "claude design"
+   ],
+   "note": "Prompt Design für den KI-Trading-Assistenten bei OKX, Claude Design für EVN Archive und Claude in meinen eigenen Abläufen, von der Prüfung der Podcast-Skripte bis zum Größentool mit Shopify MCP.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX KI-Assistent",
+     "id": "assistant"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Gemini TTS und ElevenLabs",
+   "kind": "Tool",
+   "aka": [
+    "sprachausgabe",
+    "ki-stimme",
+    "stimme",
+    "gemini tts and elevenlabs",
+    "gemini",
+    "elevenlabs",
+    "eleven labs",
+    "tts",
+    "text to speech",
+    "text-to-speech",
+    "voice design",
+    "ai voice",
+    "audio"
+   ],
+   "note": "Die zwei Stimm-Engines hinter meinem Podcast-Projekt, jede für das eingesetzt, was sie am besten kann.",
+   "links": [
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "React und Ant Design",
+   "kind": "Tool",
+   "aka": [
+    "react and ant design",
+    "react",
+    "ant design",
+    "antd",
+    "component library"
+   ],
+   "note": "Die internen Tools von Neuron sind auf React umgezogen, mit einer Komponentenbibliothek auf Basis von Ant Design im Neuron-Stil.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "Design-Systeme",
+   "kind": "Skill",
+   "aka": [
+    "design-system",
+    "designsystem",
+    "komponentenbibliothek",
+    "komponenten",
+    "design systems",
+    "design system",
+    "component library",
+    "components",
+    "ui kit",
+    "library",
+    "libraries",
+    "atomic design"
+   ],
+   "note": "167 Komponenten in 25 Sets bei Buildlr, neun Bibliotheken zu einer zusammengeführt bei Ninja Van und die neue Komponentenbibliothek bei Neuron.",
+   "links": [
+    {
+     "to": "buildlr",
+     "label": "Buildlr",
+     "id": "s1"
+    },
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s6"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "Content Design und UX Writing",
+   "kind": "Skill",
+   "aka": [
+    "texte",
+    "texten",
+    "copywriting",
+    "tonalität",
+    "content design and ux writing",
+    "content design",
+    "ux writing",
+    "ux writer",
+    "microcopy",
+    "copy",
+    "content strategy",
+    "tone of voice",
+    "voice and tone",
+    "style guide",
+    "writing"
+   ],
+   "note": "Microcopy, KI-Chatflows und dynamischer Content bei OKX, dazu die Produkttexte für den ganzen Katalog von EVN Archive.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "Conversation Design",
+   "kind": "Skill",
+   "aka": [
+    "chatbot",
+    "dialogdesign",
+    "ki-assistent",
+    "conversational design",
+    "conversational ai",
+    "chat bot",
+    "chat",
+    "assistant",
+    "ai assistant",
+    "dialogue"
+   ],
+   "note": "Ein KI-Trading-Assistent bei OKX, der im Chat Kurse nennt und handelt, mit klaren Leitplanken für das, was er sagen darf.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX KI-Assistent",
+     "id": "assistant"
+    }
+   ]
+  },
+  {
+   "name": "Lokalisierung",
+   "kind": "Skill",
+   "aka": [
+    "übersetzung",
+    "mehrsprachig",
+    "internationalisierung",
+    "localization",
+    "localisation",
+    "l10n",
+    "i18n",
+    "internationalization",
+    "translation",
+    "multilingual",
+    "multi-language"
+   ],
+   "note": "Bei OKX auf Englisch und Mandarin gearbeitet, EVN Archive für die wichtigsten Märkte in Asien lokalisiert und den Podcast in elf Sprachen.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "User Research",
+   "kind": "Skill",
+   "aka": [
+    "research",
+    "nutzerforschung",
+    "interviews",
+    "usability",
+    "ux research",
+    "user interviews",
+    "usability testing",
+    "survey",
+    "surveys",
+    "sus",
+    "ces",
+    "shadowing",
+    "field research",
+    "discovery"
+   ],
+   "note": "Interviews mit 59 Händlern, Agents und Mitarbeitenden der Fallklärung bei Ninja Van. Bei Neuron erst Remote-Interviews, dann Schichten mit den Teams vor Ort.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s3"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s3"
+    }
+   ]
+  },
+  {
+   "name": "Informationsarchitektur",
+   "kind": "Skill",
+   "aka": [
+    "navigation",
+    "taxonomie",
+    "information architecture",
+    "ia",
+    "taxonomy",
+    "sitemap",
+    "site map",
+    "structure"
+   ],
+   "note": "Die Informationsarchitektur der internen Tools von Neuron neu aufgebaut, dazu Kategorien und Filter von EVN Archive.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "Sprachen",
+   "kind": "Skill",
+   "aka": [
+    "englisch",
+    "chinesisch",
+    "mandarin",
+    "koreanisch",
+    "deutsch",
+    "sprache",
+    "languages",
+    "language",
+    "english",
+    "chinese",
+    "korean",
+    "german",
+    "bilingual"
+   ],
+   "note": "Englisch (Muttersprache), Chinesisch (fließend), Koreanisch und Deutsch (Mittelstufe).",
+   "links": [
+    {
+     "to": "index",
+     "label": "Auf einen Blick",
+     "id": "s2"
+    }
+   ]
+  }
+ ]
+}

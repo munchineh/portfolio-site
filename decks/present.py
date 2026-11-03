@@ -57,7 +57,7 @@ d.add('contents', f'<div style="display:flex;flex-direction:column;gap:14px">{he
 d.section('evn', 'EVN Archive: a sizing tool that got free size selling.', 'EVN Archive')
 case_hero(d, 'evn-title', 'Case 01 · E-commerce', 'Helping shoppers find their fit',
           'My own Shopify store for independent Korean menswear, designed and built end to end. This case covers the sizing tool that helps shoppers buy free size with confidence.',
-          [('Role', 'Founder and designer'), ('Timeline', 'May 2026 to now'), ('Stack', 'Shopify, Liquid, CSS, JS'), ('Team', 'Just me')],
+          [('Role', 'Founder and designer'), ('Timeline', 'May 2026 to now'), ('Tools', 'Shopify (Liquid, CSS, JS), Claude Design'), ('Team', 'Just me')],
           [('4', "free-size sales in the tool's first week"), ('0', 'free-size sales in the two months before')],
           hero_img(A, 'm-h-evn', "The product page with How it'll fit you"), None)
 media_slide(d, 'evn-problem', 'The problem and the idea', 'Hundreds of visits, almost no carts',
@@ -94,7 +94,7 @@ media_slide(d, 'evn-store', 'Beyond the sizing tool', 'Owning the whole experien
 d.section('okx', 'OKX overview: three products that made crypto more social.', 'OKX')
 case_hero(d, 'okx-title', 'Cases 02 to 04 · Fintech', 'Making crypto social',
           'Three products that made crypto more social: an AI assistant that trades in chat, Orbit, a social layer for traders, and Crypto Rewind, a personalised year in review.',
-          [('Role', 'Senior content designer'), ('Timeline', 'Mar 2024 to Dec 2025'), ('Worked in', 'English and Mandarin'), ('Scope', 'Conversation, social, dynamic content')],
+          [('Role', 'Senior content designer'), ('Timeline', 'Mar 2024 to Dec 2025'), ('Worked in', 'English and Mandarin'), ('Tools', 'Figma, Jira, Amplitude')],
           [('3.26M', 'Crypto Rewind click-throughs, against a 1.5M goal'), ('200%', "growth in Orbit's daily active users")],
           hero_phone(A, 'okx-50k', 'Simple Buy at 50,000 USD'), None)
 
@@ -159,7 +159,7 @@ big_numbers(d, 'rewind-goals', 'Actual vs goal', 'Every target beaten',
 d.section('buildlr', 'Buildlr: a five-tier quote form, from tablet to phone.', 'Buildlr')
 case_hero(d, 'bl-title', 'Case 05 · Construction tech', 'Simplifying operational tools',
           'A pre-construction SaaS for the German market, built from zero: quotes, task management and Gantt scheduling. Designed for consultants on tablets and contractors on phones.',
-          [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Team', 'Me and the founder'), ('Scope', 'SaaS, IA, design system')],
+          [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Team', 'Me and the founder'), ('Tools', 'Figma')],
           [('140', 'final screens in eight months'), ('167', 'components across 25 sets, light and dark')],
           hero_img(A, 'm-h-bl', 'Tasks switched on as rows in a quote'), None)
 media_slide(d, 'bl-form', 'Complex forms', 'Only the tier you need',
@@ -178,7 +178,7 @@ media_slide(d, 'bl-mobile', 'Mobile', 'Same tree, one thumb',
 d.section('ninjavan', 'Ninja Van: research with 59 people, then a self-serve portal and CRM tools.', 'Ninja Van')
 case_hero(d, 'nv-title', 'Case 06 · Logistics', 'Service design for service recovery',
           'I researched how service recovery worked across Southeast Asia, then designed a self-serve portal for merchants and the Salesforce CRM tools agents use behind it.',
-          [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Company', 'Ninja Van'), ('Scope', 'Service design, research, UI')],
+          [('Role', 'Product designer II'), ('Timeline', 'Jul 2021 to Jan 2023'), ('Tools', 'Sketch, Salesforce'), ('Scope', 'Service design, research, UI')],
           [('60%', 'faster case resolution'), ('70%', 'of case logging automated for delays')],
           hero_img(A, 'm-h-nv', 'A case in the merchant portal'), None)
 groups = [('24', 'Support agents', 'SUS survey and interviews'), ('18', 'Merchants', 'CES survey and interviews'), ('17', 'Resolution teams', 'Finance, warehouse, drivers')]
@@ -208,7 +208,7 @@ big_numbers(d, 'nv-results', 'Results', 'Faster recovery, one design language',
 d.section('neuron', 'Neuron: tasks managers can track, 90%+ less Slack, and two platforms merged.', 'Neuron')
 case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Restructuring internal tools',
           'Neuron runs shared e-scooters and e-bikes across Australia and beyond. I redesigned how managers and ground operators work together, then merged two internal platforms into one.',
-          [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA')],
+          [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Tools', 'Figma'), ('Scope', 'Internal tools, research, IA')],
           [('90%+', 'less reliance on Slack for task updates'), ('10%', 'more efficient field operations')],
           hero_img(A, 'm-h-nr', 'Assigned tasks beside the map'), None)
 media_slide(d, 'nr-tasks', 'Field research', 'Tasks with a paper trail',

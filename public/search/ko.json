@@ -1,0 +1,490 @@
+{
+ "suggest": [
+  "Figma",
+  "쇼피파이",
+  "디자인 시스템",
+  "AI",
+  "UX 라이팅",
+  "현지화",
+  "리서치",
+  "Jira"
+ ],
+ "tools": [
+  {
+   "name": "Figma",
+   "kind": "툴",
+   "aka": [
+    "피그마",
+    "디자인 툴",
+    "figjam",
+    "figma mcp",
+    "design tool",
+    "design tools",
+    "design software"
+   ],
+   "note": "제 메인 디자인 툴이에요. OKX, Buildlr, Neuron 작업은 모두 Figma로 디자인했고, Claude와 함께 Figma MCP도 써요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "buildlr",
+     "label": "Buildlr"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron"
+    },
+    {
+     "to": "resume"
+    }
+   ]
+  },
+  {
+   "name": "Sketch",
+   "kind": "툴",
+   "aka": [
+    "스케치",
+    "sketch app",
+    "sketchapp"
+   ],
+   "note": "Ninja Van의 판매자 포털과 상담원 화면은 Sketch로 디자인했어요.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van"
+    }
+   ]
+  },
+  {
+   "name": "쇼피파이와 Liquid",
+   "kind": "툴",
+   "aka": [
+    "쇼피파이",
+    "이커머스",
+    "리퀴드",
+    "shopify and liquid",
+    "shopify",
+    "liquid",
+    "shopify theme",
+    "shopify mcp",
+    "storefront",
+    "e-commerce",
+    "ecommerce",
+    "cro",
+    "conversion",
+    "claude design"
+   ],
+   "note": "EVN Archive는 쇼피파이에서 바로 디자인하고, 지금은 Claude Design도 함께 써요. 컴포넌트 시스템부터 사이즈 툴까지 스토어 코드도 직접 짰어요.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "HTML, CSS, JavaScript",
+   "kind": "툴",
+   "aka": [
+    "프론트엔드",
+    "코딩",
+    "자바스크립트",
+    "html, css and javascript",
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "front-end",
+    "frontend",
+    "front end",
+    "code",
+    "coding",
+    "developer"
+   ],
+   "note": "EVN Archive의 스토어와 사이즈 툴은 Liquid, CSS, JavaScript로 제가 직접 짠 프론트엔드 코드예요.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "Salesforce",
+   "kind": "툴",
+   "aka": [
+    "세일즈포스",
+    "salesforce crm",
+    "salesforce lightning",
+    "lightning",
+    "crm"
+   ],
+   "note": "Ninja Van 상담원이 케이스를 등록하고 관리하던 Salesforce CRM 화면을 디자인했어요.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Jira",
+   "kind": "툴",
+   "aka": [
+    "지라",
+    "atlassian",
+    "jira software"
+   ],
+   "note": "OKX에서 쓰던 툴 중 하나예요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    }
+   ]
+  },
+  {
+   "name": "Amplitude",
+   "kind": "툴",
+   "aka": [
+    "앰플리튜드",
+    "데이터",
+    "분석",
+    "analytics",
+    "product analytics",
+    "data",
+    "metrics"
+   ],
+   "note": "OKX Crypto Rewind의 성과는 Amplitude 데이터로, 캠페인 목표와 비교해 측정했어요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    }
+   ]
+  },
+  {
+   "name": "Claude와 AI 툴",
+   "kind": "툴",
+   "aka": [
+    "인공지능",
+    "프롬프트",
+    "클로드",
+    "생성형 ai",
+    "claude and ai tools",
+    "ai",
+    "claude",
+    "llm",
+    "genai",
+    "generative ai",
+    "mcp",
+    "prompt",
+    "prompts",
+    "prompt design",
+    "prompt engineering",
+    "ai tools",
+    "agent",
+    "agents",
+    "claude design"
+   ],
+   "note": "OKX AI 트레이딩 어시스턴트의 프롬프트 디자인, EVN Archive의 Claude Design, 그리고 팟캐스트 대본 검수부터 Shopify MCP로 만든 사이즈 툴까지 제 작업 곳곳에 Claude를 써요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI 어시스턴트",
+     "id": "assistant"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Gemini TTS와 ElevenLabs",
+   "kind": "툴",
+   "aka": [
+    "음성 합성",
+    "ai 보이스",
+    "보이스",
+    "일레븐랩스",
+    "제미나이",
+    "gemini tts and elevenlabs",
+    "gemini",
+    "elevenlabs",
+    "eleven labs",
+    "tts",
+    "text to speech",
+    "text-to-speech",
+    "voice design",
+    "ai voice",
+    "audio"
+   ],
+   "note": "제 팟캐스트 사이드 프로젝트의 두 보이스 엔진이에요. 각자 제일 잘하는 일을 맡겼어요.",
+   "links": [
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "React와 Ant Design",
+   "kind": "툴",
+   "aka": [
+    "리액트",
+    "react and ant design",
+    "react",
+    "ant design",
+    "antd",
+    "component library"
+   ],
+   "note": "Neuron의 내부 툴은 Neuron 스타일로 다듬은 Ant Design 기반 컴포넌트 라이브러리와 함께 React로 옮겼어요.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "디자인 시스템",
+   "kind": "스킬",
+   "aka": [
+    "컴포넌트",
+    "컴포넌트 라이브러리",
+    "ui 키트",
+    "design systems",
+    "design system",
+    "component library",
+    "components",
+    "ui kit",
+    "library",
+    "libraries",
+    "atomic design"
+   ],
+   "note": "Buildlr의 25개 세트, 167개 컴포넌트, Ninja Van에서 하나로 합친 라이브러리 9개, Neuron의 새 컴포넌트 라이브러리까지요.",
+   "links": [
+    {
+     "to": "buildlr",
+     "label": "Buildlr",
+     "id": "s1"
+    },
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s6"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "콘텐츠 디자인과 UX 라이팅",
+   "kind": "스킬",
+   "aka": [
+    "ux 라이팅",
+    "콘텐츠 디자인",
+    "마이크로카피",
+    "카피라이팅",
+    "보이스 앤 톤",
+    "content design and ux writing",
+    "content design",
+    "ux writing",
+    "ux writer",
+    "microcopy",
+    "copywriting",
+    "copy",
+    "content strategy",
+    "tone of voice",
+    "voice and tone",
+    "style guide",
+    "writing"
+   ],
+   "note": "OKX의 마이크로카피, AI 채팅 플로우, 다이내믹 콘텐츠, 그리고 EVN Archive 전체 카탈로그의 상품 카피까지요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "대화형 디자인",
+   "kind": "스킬",
+   "aka": [
+    "챗봇",
+    "대화 디자인",
+    "어시스턴트",
+    "ai 어시스턴트",
+    "conversation design",
+    "conversational design",
+    "conversational ai",
+    "chatbot",
+    "chat bot",
+    "chat",
+    "assistant",
+    "ai assistant",
+    "dialogue"
+   ],
+   "note": "OKX에서 채팅으로 시세를 알려 주고 거래까지 하는 AI 트레이딩 어시스턴트예요. 말할 수 있는 범위는 가드레일로 정했어요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI 어시스턴트",
+     "id": "assistant"
+    }
+   ]
+  },
+  {
+   "name": "현지화",
+   "kind": "스킬",
+   "aka": [
+    "번역",
+    "다국어",
+    "로컬라이제이션",
+    "localization",
+    "localisation",
+    "l10n",
+    "i18n",
+    "internationalization",
+    "translation",
+    "multilingual",
+    "multi-language"
+   ],
+   "note": "OKX에서는 영어와 중국어로 일했고, EVN Archive는 아시아 주요 시장에 맞게, 팟캐스트는 11개 언어로 현지화했어요.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "사용자 리서치",
+   "kind": "스킬",
+   "aka": [
+    "리서치",
+    "인터뷰",
+    "사용성",
+    "유저 리서치",
+    "ux 리서치",
+    "user research",
+    "research",
+    "ux research",
+    "interviews",
+    "user interviews",
+    "usability",
+    "usability testing",
+    "survey",
+    "surveys",
+    "sus",
+    "ces",
+    "shadowing",
+    "field research",
+    "discovery"
+   ],
+   "note": "Ninja Van에서 판매자, 상담원, 해결 담당자 59명을 인터뷰했고, Neuron에서는 원격 인터뷰를 먼저 하고, 현장 직원들과 함께 근무하며 지켜봤어요.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s3"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s3"
+    }
+   ]
+  },
+  {
+   "name": "정보 구조",
+   "kind": "스킬",
+   "aka": [
+    "정보 구조 설계",
+    "내비게이션",
+    "택소노미",
+    "information architecture",
+    "ia",
+    "navigation",
+    "taxonomy",
+    "sitemap",
+    "site map",
+    "structure"
+   ],
+   "note": "Neuron 내부 툴의 정보 구조를 새로 짰고, EVN Archive의 카테고리와 필터도 설계했어요.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "언어",
+   "kind": "스킬",
+   "aka": [
+    "영어",
+    "중국어",
+    "한국어",
+    "독일어",
+    "만다린",
+    "languages",
+    "language",
+    "english",
+    "chinese",
+    "mandarin",
+    "korean",
+    "german",
+    "bilingual"
+   ],
+   "note": "영어(모국어), 중국어(능숙), 한국어와 독일어(중급)예요.",
+   "links": [
+    {
+     "to": "index",
+     "label": "한눈에 보기",
+     "id": "s2"
+    }
+   ]
+  }
+ ]
+}

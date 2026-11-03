@@ -1,0 +1,426 @@
+{
+ "suggest": [
+  "Figma",
+  "Shopify",
+  "Design systems",
+  "AI",
+  "UX writing",
+  "Localization",
+  "User research",
+  "Jira"
+ ],
+ "tools": [
+  {
+   "name": "Figma",
+   "kind": "Tool",
+   "aka": [
+    "figjam",
+    "figma mcp",
+    "design tool",
+    "design tools",
+    "design software"
+   ],
+   "note": "My main design tool, at mastery level. OKX, Buildlr and Neuron were all designed in Figma, and I use Figma MCP with Claude.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "buildlr",
+     "label": "Buildlr"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron"
+    },
+    {
+     "to": "resume"
+    }
+   ]
+  },
+  {
+   "name": "Sketch",
+   "kind": "Tool",
+   "aka": [
+    "sketch app",
+    "sketchapp"
+   ],
+   "note": "Ninja Van's merchant portal and agent screens were designed in Sketch.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van"
+    }
+   ]
+  },
+  {
+   "name": "Shopify and Liquid",
+   "kind": "Tool",
+   "aka": [
+    "shopify",
+    "liquid",
+    "shopify theme",
+    "shopify mcp",
+    "storefront",
+    "e-commerce",
+    "ecommerce",
+    "cro",
+    "conversion",
+    "claude design"
+   ],
+   "note": "EVN Archive is designed directly in Shopify, and now with Claude Design. I coded the storefront myself, from the component system to the sizing tool.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "find": "Liquid, CSS and JavaScript"
+    }
+   ]
+  },
+  {
+   "name": "HTML, CSS and JavaScript",
+   "kind": "Tool",
+   "aka": [
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "front-end",
+    "frontend",
+    "front end",
+    "code",
+    "coding",
+    "developer"
+   ],
+   "note": "EVN Archive's storefront and sizing tool are my own front-end code, in Liquid, CSS and JavaScript.",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "find": "Liquid, CSS and JavaScript"
+    }
+   ]
+  },
+  {
+   "name": "Salesforce",
+   "kind": "Tool",
+   "aka": [
+    "salesforce crm",
+    "salesforce lightning",
+    "lightning",
+    "crm"
+   ],
+   "note": "I designed the Salesforce CRM screens Ninja Van's agents used to log and manage cases.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "find": "Salesforce"
+    }
+   ]
+  },
+  {
+   "name": "Jira",
+   "kind": "Tool",
+   "aka": [
+    "atlassian",
+    "jira software"
+   ],
+   "note": "Part of my toolkit at OKX.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    }
+   ]
+  },
+  {
+   "name": "Amplitude",
+   "kind": "Tool",
+   "aka": [
+    "analytics",
+    "product analytics",
+    "data",
+    "metrics"
+   ],
+   "note": "Crypto Rewind's results at OKX come from Amplitude, measured against the campaign's goals.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    }
+   ]
+  },
+  {
+   "name": "Claude and AI tools",
+   "kind": "Tool",
+   "aka": [
+    "ai",
+    "claude",
+    "llm",
+    "genai",
+    "generative ai",
+    "mcp",
+    "prompt",
+    "prompts",
+    "prompt design",
+    "prompt engineering",
+    "ai tools",
+    "agent",
+    "agents",
+    "claude design"
+   ],
+   "note": "Prompt design for OKX's AI trading assistant, Claude Design for EVN Archive, and Claude in my own workflows, from reviewing podcast scripts to building the sizing tool with Shopify MCP.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI assistant",
+     "id": "assistant"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "find": "Claude"
+    }
+   ]
+  },
+  {
+   "name": "Gemini TTS and ElevenLabs",
+   "kind": "Tool",
+   "aka": [
+    "gemini",
+    "elevenlabs",
+    "eleven labs",
+    "tts",
+    "text to speech",
+    "text-to-speech",
+    "voice design",
+    "ai voice",
+    "audio"
+   ],
+   "note": "The two voice engines behind my podcast side project, each picked for what it does best.",
+   "links": [
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "find": "ElevenLabs"
+    }
+   ]
+  },
+  {
+   "name": "React and Ant Design",
+   "kind": "Tool",
+   "aka": [
+    "react",
+    "ant design",
+    "antd",
+    "component library"
+   ],
+   "note": "Neuron's internal tools moved onto React, with an Ant Design-based component library styled for Neuron.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "find": "Ant Design"
+    }
+   ]
+  },
+  {
+   "name": "Design systems",
+   "kind": "Skill",
+   "aka": [
+    "design system",
+    "component library",
+    "components",
+    "ui kit",
+    "library",
+    "libraries",
+    "atomic design"
+   ],
+   "note": "167 components across 25 sets at Buildlr, nine libraries merged into one at Ninja Van, and Neuron's new component library.",
+   "links": [
+    {
+     "to": "buildlr",
+     "label": "Buildlr",
+     "find": "167 components"
+    },
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "find": "nine libraries into one"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "find": "Ant Design"
+    }
+   ]
+  },
+  {
+   "name": "Content design and UX writing",
+   "kind": "Skill",
+   "aka": [
+    "content design",
+    "ux writing",
+    "ux writer",
+    "microcopy",
+    "copywriting",
+    "copy",
+    "content strategy",
+    "tone of voice",
+    "voice and tone",
+    "style guide",
+    "writing"
+   ],
+   "note": "Microcopy, AI chat flows and dynamic content at OKX, and product copy for EVN Archive's whole catalogue.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "find": "Product copy"
+    }
+   ]
+  },
+  {
+   "name": "Conversation design",
+   "kind": "Skill",
+   "aka": [
+    "conversational design",
+    "conversational ai",
+    "chatbot",
+    "chat bot",
+    "chat",
+    "assistant",
+    "ai assistant",
+    "dialogue"
+   ],
+   "note": "An AI trading assistant at OKX that quotes and trades in chat, with guardrails on what it can say.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI assistant",
+     "id": "assistant"
+    }
+   ]
+  },
+  {
+   "name": "Localization",
+   "kind": "Skill",
+   "aka": [
+    "localisation",
+    "l10n",
+    "i18n",
+    "internationalization",
+    "translation",
+    "multilingual",
+    "multi-language"
+   ],
+   "note": "Worked in English and Mandarin at OKX, localised EVN Archive for its top markets in Asia, and the podcast into eleven languages.",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "find": "Data-driven localisation"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "find": "eleven languages"
+    }
+   ]
+  },
+  {
+   "name": "User research",
+   "kind": "Skill",
+   "aka": [
+    "research",
+    "ux research",
+    "interviews",
+    "user interviews",
+    "usability",
+    "usability testing",
+    "survey",
+    "surveys",
+    "sus",
+    "ces",
+    "shadowing",
+    "field research",
+    "discovery"
+   ],
+   "note": "Interviews with 59 merchants, agents and resolution staff at Ninja Van. At Neuron, remote interviews first, then shifts alongside ground operators.",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "find": "interviewed 59"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "find": "remote interviews"
+    }
+   ]
+  },
+  {
+   "name": "Information architecture",
+   "kind": "Skill",
+   "aka": [
+    "ia",
+    "navigation",
+    "taxonomy",
+    "sitemap",
+    "site map",
+    "structure"
+   ],
+   "note": "Rebuilt the information architecture of Neuron's internal tools, and shaped EVN Archive's categories and filters.",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "find": "information architecture"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "find": "Information architecture"
+    }
+   ]
+  },
+  {
+   "name": "Languages",
+   "kind": "Skill",
+   "aka": [
+    "language",
+    "english",
+    "chinese",
+    "mandarin",
+    "korean",
+    "german",
+    "bilingual"
+   ],
+   "note": "English (native), Chinese (proficient), Korean and German (intermediate).",
+   "links": [
+    {
+     "to": "index",
+     "label": "At a glance",
+     "find": "Languages"
+    }
+   ]
+  }
+ ]
+}

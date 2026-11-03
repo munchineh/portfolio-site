@@ -1,0 +1,477 @@
+{
+ "suggest": [
+  "Figma",
+  "Shopify",
+  "设计系统",
+  "AI",
+  "UX 文案",
+  "本地化",
+  "用户研究",
+  "Jira"
+ ],
+ "tools": [
+  {
+   "name": "Figma",
+   "kind": "工具",
+   "aka": [
+    "设计工具",
+    "figjam",
+    "figma mcp",
+    "design tool",
+    "design tools",
+    "design software"
+   ],
+   "note": "我的主力设计工具，精通级别。OKX、Buildlr 和 Neuron 都在 Figma 里完成设计，也会用 Figma MCP 搭配 Claude。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "buildlr",
+     "label": "Buildlr"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron"
+    },
+    {
+     "to": "resume"
+    }
+   ]
+  },
+  {
+   "name": "Sketch",
+   "kind": "工具",
+   "aka": [
+    "sketch app",
+    "sketchapp"
+   ],
+   "note": "Ninja Van 的商家门户和客服界面，都是用 Sketch 设计的。",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van"
+    }
+   ]
+  },
+  {
+   "name": "Shopify 与 Liquid",
+   "kind": "工具",
+   "aka": [
+    "电商",
+    "独立站",
+    "shopify and liquid",
+    "shopify",
+    "liquid",
+    "shopify theme",
+    "shopify mcp",
+    "storefront",
+    "e-commerce",
+    "ecommerce",
+    "cro",
+    "conversion",
+    "claude design"
+   ],
+   "note": "EVN Archive 直接在 Shopify 里设计，现在也用 Claude Design。店铺代码由我亲手编写，从组件系统到尺码工具。",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "HTML、CSS 与 JavaScript",
+   "kind": "工具",
+   "aka": [
+    "前端",
+    "代码",
+    "编程",
+    "html, css and javascript",
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "front-end",
+    "frontend",
+    "front end",
+    "code",
+    "coding",
+    "developer"
+   ],
+   "note": "EVN Archive 的店铺和尺码工具，都是我用 Liquid、CSS 和 JavaScript 写的前端代码。",
+   "links": [
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "Salesforce",
+   "kind": "工具",
+   "aka": [
+    "salesforce crm",
+    "salesforce lightning",
+    "lightning",
+    "crm"
+   ],
+   "note": "我设计了 Ninja Van 客服用来登记和处理工单的 Salesforce CRM 界面。",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Jira",
+   "kind": "工具",
+   "aka": [
+    "atlassian",
+    "jira software"
+   ],
+   "note": "在 OKX 时常用的工具之一。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    }
+   ]
+  },
+  {
+   "name": "Amplitude",
+   "kind": "工具",
+   "aka": [
+    "数据",
+    "数据分析",
+    "analytics",
+    "product analytics",
+    "data",
+    "metrics"
+   ],
+   "note": "OKX Crypto Rewind 的成果数据来自 Amplitude，并对照活动目标衡量。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    }
+   ]
+  },
+  {
+   "name": "Claude 与 AI 工具",
+   "kind": "工具",
+   "aka": [
+    "人工智能",
+    "提示词",
+    "大模型",
+    "生成式 ai",
+    "claude and ai tools",
+    "ai",
+    "claude",
+    "llm",
+    "genai",
+    "generative ai",
+    "mcp",
+    "prompt",
+    "prompts",
+    "prompt design",
+    "prompt engineering",
+    "ai tools",
+    "agent",
+    "agents",
+    "claude design"
+   ],
+   "note": "为 OKX 的 AI 交易助手做提示词设计，用 Claude Design 设计 EVN Archive，日常工作也离不开 Claude：从审核播客脚本，到用 Shopify MCP 搭建尺码工具。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI 助手",
+     "id": "assistant"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "Gemini TTS 与 ElevenLabs",
+   "kind": "工具",
+   "aka": [
+    "语音合成",
+    "ai 配音",
+    "配音",
+    "gemini tts and elevenlabs",
+    "gemini",
+    "elevenlabs",
+    "eleven labs",
+    "tts",
+    "text to speech",
+    "text-to-speech",
+    "voice design",
+    "ai voice",
+    "audio"
+   ],
+   "note": "我的播客副业项目背后的两个配音引擎，各用其所长。",
+   "links": [
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "React 与 Ant Design",
+   "kind": "工具",
+   "aka": [
+    "react and ant design",
+    "react",
+    "ant design",
+    "antd",
+    "component library"
+   ],
+   "note": "Neuron 的内部工具迁移到了 React，并配上按 Neuron 风格定制的 Ant Design 组件库。",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "设计系统",
+   "kind": "技能",
+   "aka": [
+    "组件库",
+    "组件",
+    "design systems",
+    "design system",
+    "component library",
+    "components",
+    "ui kit",
+    "library",
+    "libraries",
+    "atomic design"
+   ],
+   "note": "Buildlr 的 25 套共 167 个组件，Ninja Van 合九为一的设计库，还有 Neuron 的全新组件库。",
+   "links": [
+    {
+     "to": "buildlr",
+     "label": "Buildlr",
+     "id": "s1"
+    },
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s6"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    }
+   ]
+  },
+  {
+   "name": "内容设计与 UX 文案",
+   "kind": "技能",
+   "aka": [
+    "ux 文案",
+    "文案",
+    "微文案",
+    "内容设计",
+    "语气",
+    "content design and ux writing",
+    "content design",
+    "ux writing",
+    "ux writer",
+    "microcopy",
+    "copywriting",
+    "copy",
+    "content strategy",
+    "tone of voice",
+    "voice and tone",
+    "style guide",
+    "writing"
+   ],
+   "note": "OKX 的界面微文案、AI 对话流程和动态内容，还有 EVN Archive 整个商品目录的文案。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "对话设计",
+   "kind": "技能",
+   "aka": [
+    "聊天机器人",
+    "对话式 ai",
+    "ai 助手",
+    "conversation design",
+    "conversational design",
+    "conversational ai",
+    "chatbot",
+    "chat bot",
+    "chat",
+    "assistant",
+    "ai assistant",
+    "dialogue"
+   ],
+   "note": "OKX 的 AI 交易助手，在聊天里报价、下单，说什么都有护栏把关。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX AI 助手",
+     "id": "assistant"
+    }
+   ]
+  },
+  {
+   "name": "本地化",
+   "kind": "技能",
+   "aka": [
+    "翻译",
+    "多语言",
+    "国际化",
+    "localization",
+    "localisation",
+    "l10n",
+    "i18n",
+    "internationalization",
+    "translation",
+    "multilingual",
+    "multi-language"
+   ],
+   "note": "在 OKX 用英文和中文工作，把 EVN Archive 本地化到亚洲主要市场，播客则覆盖十一种语言。",
+   "links": [
+    {
+     "to": "okx",
+     "label": "OKX",
+     "id": "rewind"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    },
+    {
+     "to": "podcast",
+     "label": "Sogang Podcasts",
+     "id": "s1"
+    }
+   ]
+  },
+  {
+   "name": "用户研究",
+   "kind": "技能",
+   "aka": [
+    "调研",
+    "访谈",
+    "可用性",
+    "用户访谈",
+    "user research",
+    "research",
+    "ux research",
+    "interviews",
+    "user interviews",
+    "usability",
+    "usability testing",
+    "survey",
+    "surveys",
+    "sus",
+    "ces",
+    "shadowing",
+    "field research",
+    "discovery"
+   ],
+   "note": "在 Ninja Van 访谈了 59 位商家、客服和问题处理人员；在 Neuron 先做远程访谈，再跟着地勤人员一起轮班。",
+   "links": [
+    {
+     "to": "ninjavan",
+     "label": "Ninja Van",
+     "id": "s3"
+    },
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s3"
+    }
+   ]
+  },
+  {
+   "name": "信息架构",
+   "kind": "技能",
+   "aka": [
+    "导航",
+    "分类",
+    "information architecture",
+    "ia",
+    "navigation",
+    "taxonomy",
+    "sitemap",
+    "site map",
+    "structure"
+   ],
+   "note": "重建了 Neuron 内部工具的信息架构，也规划了 EVN Archive 的分类与筛选。",
+   "links": [
+    {
+     "to": "neuron",
+     "label": "Neuron",
+     "id": "s5"
+    },
+    {
+     "to": "evn",
+     "label": "EVN Archive",
+     "id": "rest"
+    }
+   ]
+  },
+  {
+   "name": "语言",
+   "kind": "技能",
+   "aka": [
+    "英语",
+    "中文",
+    "普通话",
+    "韩语",
+    "德语",
+    "languages",
+    "language",
+    "english",
+    "chinese",
+    "mandarin",
+    "korean",
+    "german",
+    "bilingual"
+   ],
+   "note": "英语（母语）、中文（熟练）、韩语和德语（中级）。",
+   "links": [
+    {
+     "to": "index",
+     "label": "速览",
+     "id": "s2"
+    }
+   ]
+  }
+ ]
+}
