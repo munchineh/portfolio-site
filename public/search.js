@@ -170,14 +170,15 @@
       <div class="srch-foot" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> ${esc(S.keys[0])}</span><span><kbd>↵</kbd> ${esc(S.keys[1])}</span><span><kbd>Esc</kbd> ${esc(S.keys[2])}</span></div>`;
     document.body.appendChild(dlg);
     input = dlg.querySelector('input'); list = dlg.querySelector('.srch-body'); foot = dlg.querySelector('.srch-foot');
-    dlg.querySelector('.srch-x').addEventListener('click', () => dlg.close());
-    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });   // tap outside the sheet
-    dlg.addEventListener('close', () => { document.documentElement.classList.remove('srch-open'); });
+    dlg.querySelector('.srch-x').addEventListener('click', hide);
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); hide(); });   // Esc folds the sheet back into the button
+    dlg.addEventListener('pointerdown', (e) => { if (e.target === dlg && outside(e)) hide(); });   // tap outside the sheet
+    addEventListener('resize', () => { if (dlg.open && dlg.classList.contains('on')) place(); });
     let t;
     input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 60); });
     input.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); move(e.key === 'ArrowDown' ? 1 : -1); }
-      else if (e.key === 'Escape') { e.preventDefault(); dlg.close(); }   // a search field would only clear itself on Esc
+      else if (e.key === 'Escape') { e.preventDefault(); hide(); }   // a search field would only clear itself on Esc
       else if (e.key === 'Enter') { const o = opts[active] || opts[0]; if (o) { e.preventDefault(); o.click(); } }
     });
     list.addEventListener('click', (e) => {
@@ -189,9 +190,9 @@
       try { sessionStorage.setItem('mt-hl', JSON.stringify(terms)); } catch (er) {}
       const to = new URL(a.href);
       if (to.pathname === location.pathname && to.hash) {       // same page: close and let the hash move us
-        e.preventDefault(); dlg.close();
+        e.preventDefault(); dlg.classList.remove('on'); dlg.close();
         if (location.hash === to.hash) dispatchEvent(new HashChangeEvent('hashchange')); else location.hash = to.hash;
-      } else dlg.close();
+      } else { dlg.classList.remove('on'); dlg.close(); }
     });
     list.addEventListener('pointermove', (e) => { const a = e.target.closest('[role="option"]'); if (a) setActive(opts.indexOf(a), false); });
   };
@@ -241,14 +242,42 @@
     list.scrollTop = 0;
   };
 
+  /* The sheet takes the open menu's box (the menu is always laid out at its open size and revealed with
+     clip-path), so both land on the same spot on the page grid. It unfolds out of the search button. */
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const btn = () => document.querySelector('.srch-btn');
+  const place = () => {
+    const m = document.querySelector('.menu');
+    const r = m ? m.getBoundingClientRect() : { left: 11, top: 11, width: Math.min(innerWidth - 22, 422), height: Math.min(innerHeight - 22, 642) };
+    Object.assign(dlg.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+    const b = btn(), k = b ? b.getBoundingClientRect() : { top: r.top, left: r.left + r.width - 44, right: r.left + r.width, bottom: r.top + 44 };
+    const px = (n) => Math.max(0, Math.round(n)) + 'px';
+    dlg.style.setProperty('--from', `inset(${px(k.top - r.top)} ${px(r.left + r.width - k.right)} ${px(r.top + r.height - k.bottom)} ${px(k.left - r.left)} round 22px)`);
+    return r;
+  };
+  const outside = (e) => { const r = dlg.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+  let closing;
+  function hide() {
+    if (!dlg || !dlg.open || closing) return;
+    place();
+    dlg.classList.remove('on');
+    const done = () => { clearTimeout(closing); closing = null; dlg.close(); };
+    if (still.matches) { done(); return; }
+    closing = setTimeout(done, 420);
+  }
+
   window.MTSearch = {
     open(q) {
       if (!dlg) build();
-      if (dlg.open) { input.focus(); return; }
+      if (closing) { clearTimeout(closing); closing = null; }
+      if (dlg.open) { dlg.classList.add('on'); input.focus(); return; }
       if (typeof q === 'string') input.value = q;
-      document.documentElement.classList.add('srch-open');
+      if (document.body.classList.contains('menu-open')) document.getElementById('toggle').click();
+      place();
       dlg.showModal();
-      input.focus(); input.select();
+      void dlg.offsetWidth;            // start from the button's shape, then unfold
+      dlg.classList.add('on');
+      input.focus({ preventScroll: true }); input.select();
       render();
     },
   };

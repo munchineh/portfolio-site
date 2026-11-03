@@ -360,9 +360,22 @@ body.menu-open .menu .foot { transition-delay: .34s; }
 /* The menu keeps its open size and is revealed with clip-path, so nothing reflows while it moves
    (animating width and height on a blurred panel was what made it stutter) */
 /* Corners come from the clip-path alone, so the closed button keeps four equal 12px corners */
-.menu, body.menu-open .menu, body.menu-closing .menu { width: var(--mw); height: var(--mh); border-radius: 0; }
-.menu { clip-path: inset(0 0 calc(100% - 44px) calc(100% - 44px) round 12px); transition: clip-path .4s cubic-bezier(.4, 0, .2, 1); }
-body.menu-open .menu { clip-path: inset(0 0 0 0 round var(--r)); transition: clip-path .62s cubic-bezier(.16, 1, .3, 1); }
+/* Open sheets (the menu, and search in search.js) land exactly on the page grid: 12px from the top and flush
+   with the right edge of the page panels (phones: 12px in on every side), so they sit on top of the panels
+   behind them instead of floating. --sh-t / --sh-r: how far the sheet's corner is from the button's corner.
+   --sh-bleed: the sheet runs 1px past the panel edges, with a 1px rounder corner, so a panel's anti-aliased
+   edge never shows around it. */
+:root { --sh-t: 16px; --sh-r: 0px; --sh-bleed: 1px; --sh-rad: calc(var(--r) + var(--sh-bleed)); }
+@media (max-width: 640px) { :root { --sh-t: 12px; --sh-r: 12px; } }
+.menu, body.menu-open .menu, body.menu-closing .menu {
+  width: calc(var(--mw) + 2 * var(--sh-bleed)); height: calc(var(--mh) + 2 * var(--sh-bleed)); border-radius: 0;
+  top: calc(-1 * (var(--sh-t) + var(--sh-bleed))); right: calc(-1 * (var(--sh-r) + var(--sh-bleed))); }
+/* Corners come from the clip-path alone, so the closed button keeps four equal 12px corners */
+.menu { --bt: calc(var(--sh-t) + var(--sh-bleed)); --br: calc(var(--sh-r) + var(--sh-bleed));
+  clip-path: inset(var(--bt) var(--br) calc(100% - var(--bt) - 44px) calc(100% - var(--br) - 44px) round 12px); transition: clip-path .4s cubic-bezier(.4, 0, .2, 1); }
+body.menu-open .menu { clip-path: inset(0 0 0 0 round var(--sh-rad)); transition: clip-path .62s cubic-bezier(.16, 1, .3, 1); }
+.toggle, body.menu-open .menu .toggle, body.menu-closing .menu .toggle { top: var(--bt); right: var(--br); transition: none; }
+.menu nav { width: auto; padding-top: calc(var(--bt) + 56px); }
 body.menu-open .menu, body.menu-closing .menu { will-change: clip-path; }
 body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s var(--spring); }
 .toggle i { transition: transform .5s var(--spring); }
@@ -371,10 +384,7 @@ body.menu-open .menu .item { transition: opacity .4s var(--ease), transform .7s 
 .menu .acc.open .cat { transition: color .2s, padding .3s var(--ease), opacity .35s var(--ease), transform .6s var(--spring); }
 @media (max-width: 640px) {
   :root { --mh: calc(100svh - 24px); }
-  .menu, body.menu-open .menu, body.menu-closing .menu { right: -12px; top: -12px; }
-  .menu { clip-path: inset(12px 12px calc(100% - 56px) calc(100% - 56px) round 12px); transition: clip-path .4s cubic-bezier(.4, 0, .2, 1); }
-  body.menu-open .menu { clip-path: inset(0 0 0 0 round var(--r)); transition: clip-path .62s cubic-bezier(.16, 1, .3, 1); }
-  .toggle, body.menu-open .menu .toggle, body.menu-closing .menu .toggle { top: 12px; right: 12px; transition: none; }
+  .menu nav { padding-top: calc(var(--bt) + 44px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .menu, body.menu-open .menu, .menu .item, .toggle i, .theme .thumb, .scard, .all { transition-duration: .01s !important; transition-delay: 0s !important; }
@@ -516,20 +526,26 @@ html { background-color: var(--edge-bottom); }
 @media (max-width: 640px) { .srch-btn { width: 44px; padding: 0; justify-content: center; } .srch-btn span { display: none; } }
 .srch-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-html.srch-open { overflow: hidden; }
+/* The sheet takes the open menu's exact box (search.js copies it), so it lands on the page grid the same way,
+   and unfolds out of the search button with the menu's clip-path motion */
 dialog.srch {
   --s-ink: #f2f2ee; --s-muted: rgba(242,242,238,.62); --s-rule: rgba(242,242,238,.12); --s-hover: rgba(242,242,238,.08); --s-mint: #8fe3b9;
-  position: fixed; inset: 88px 0 auto; margin: 0 auto; width: min(680px, calc(100vw - 24px)); max-height: min(620px, calc(100svh - 112px));
-  display: none; flex-direction: column; padding: 0; border: 0; border-radius: var(--r); overflow: hidden;   /* same corners as the page panels */
+  position: fixed; inset: auto; margin: 0; max-width: none; max-height: none;
+  display: none; flex-direction: column; padding: 0; border: 0; border-radius: 0; overflow: hidden;
   background: var(--smoke); color: var(--s-ink); font-family: var(--text);
   backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 1px 0 0 rgba(255,255,255,.06), 0 24px 64px -24px rgba(0,0,0,.6);
-  opacity: 1; transform: none; transition: opacity .28s var(--ease), transform .5s var(--spring, var(--ease)), display .28s allow-discrete, overlay .28s allow-discrete;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 1px 0 0 rgba(255,255,255,.06);
+  clip-path: var(--from); transition: clip-path .4s cubic-bezier(.4, 0, .2, 1);
 }
 dialog.srch[open] { display: flex; }
-@starting-style { dialog.srch[open] { opacity: 0; transform: translateY(-10px) scale(.985); } }
-dialog.srch::backdrop { background: rgba(10,10,10,.28); transition: background .3s, display .3s allow-discrete, overlay .3s allow-discrete; }
-@starting-style { dialog.srch[open]::backdrop { background: rgba(10,10,10,0); } }
+dialog.srch.on { clip-path: inset(0 0 0 0 round var(--sh-rad)); transition: clip-path .62s cubic-bezier(.16, 1, .3, 1); will-change: clip-path; }
+dialog.srch > * { opacity: 0; transform: translateY(-14px); transition: opacity .2s var(--ease), transform .3s var(--ease); }
+dialog.srch.on > * { opacity: 1; transform: none; transition: opacity .4s var(--ease) .12s, transform .7s var(--spring) .12s; }
+dialog.srch.on > .srch-body { transition-delay: .17s; }
+dialog.srch.on > .srch-foot { transition-delay: .22s; }
+dialog.srch::backdrop { background: rgba(10,10,10,0); transition: background .4s var(--ease); }
+dialog.srch.on::backdrop { background: rgba(10,10,10,.28); }
+@media (prefers-reduced-motion: reduce) { dialog.srch, dialog.srch > *, dialog.srch::backdrop { transition-duration: .01s !important; transition-delay: 0s !important; } }
 
 .srch-bar { display: flex; align-items: center; gap: 12px; padding: 0 10px 0 18px; height: 64px; border-bottom: 1px solid var(--s-rule); flex: none; }
 .srch-bar > svg { color: var(--s-muted); flex: none; }
@@ -578,7 +594,6 @@ dialog.srch::backdrop { background: rgba(10,10,10,.28); transition: background .
 .srch :focus-visible { outline: 2px solid var(--s-mint); outline-offset: 2px; }
 
 @media (max-width: 640px) {
-  dialog.srch { inset: 12px; width: auto; max-height: none; height: auto; }
   .srch-foot { display: none; }
   .srch-x kbd { display: none; }
   .srch-x svg { display: block; }
