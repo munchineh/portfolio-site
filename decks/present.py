@@ -146,8 +146,8 @@ media_slide(d, 'rewind-story', '04 · Dynamic content', 'Your year, played back 
              ('One space theme', 'Across every screen and language'),
              ('Kind to hard years', 'Good years are "out of this world"')],
             phones_framed(A, [('cr-open', 'Part 1 of 3'), ('cr-earn', 'A good year'), ('cr-loss', 'A hard year')], 1000, 840, gap=20), 1000, None, head_size=48)
-media_slide(d, 'rewind-share', 'Built for shareability', 'Personal, then social',
-            [('Safe to post', 'A trader persona with a rarity tag, no balances'),
+media_slide(d, 'rewind-share', 'Built for shareability', 'Safe to share',
+            [('A persona worth posting', 'A trader persona with a rarity tag, no balances'),
              ('Worth sharing', 'A gift for sharing, one tap to Telegram, WhatsApp or X'),
              ('Built to spread', 'A QR code invites friends to play their own')],
             phones_framed(A, [('cr-persona', "The persona reveal: You're a Comet"), ('cr-share', 'The share sheet')], 860, 840), 860, None)
@@ -211,13 +211,13 @@ case_hero(d, 'nr-title', 'Case 07 · Mobility', 'Restructuring internal tools',
           [('Role', 'Senior product designer'), ('Timeline', 'Jan 2023 to Dec 2023'), ('Company', 'Neuron Mobility'), ('Scope', 'Internal tools, research, IA')],
           [('90%+', 'less reliance on Slack for task updates'), ('10%', 'more efficient field operations')],
           hero_img(A, 'm-h-nr', 'Assigned tasks beside the map'), None)
-media_slide(d, 'nr-tasks', 'Field research', 'Tasks you can assign, and see done',
+media_slide(d, 'nr-tasks', 'Field research', 'Tasks with a paper trail',
             [('Remote interviews', 'Ops managers across markets'),
              ('Shadowing on shift', 'Ground operators in Melbourne and Perth'),
              ('Assign on the map', "Tasks land straight in the operator's list"),
              ('A real measure', 'Recorded assignments show how a shift went')],
             framed(A, 'm-nr-live', 'Assigning tasks on the map', 940, 660, pad=40), 940, None, head_size=48)
-big_numbers(d, 'nr-merge', 'Two platforms, one stack', 'Merged onto React, ahead of schedule',
+big_numbers(d, 'nr-merge', 'Streamlining two platforms into one', 'Merged onto React, ahead of schedule',
             [('60%', 'faster page loads on average'), ('2', 'front ends merged into one'), ('3', 'markets localised: AU, NZ and UK')],
             'An Ant Design-based component library, styled for Neuron. Several tools moved from developers to city teams.', None)
 

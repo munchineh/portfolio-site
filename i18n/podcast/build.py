@@ -4,7 +4,8 @@
 
 For each language:
   1. public/<lang>/podcast.html: the English page's content with every string from <lang>.json put back in place
-     (same walk as extract.py), inside the head and nav shell of that language's evn.html.
+     (same walk as extract.py), inside the page's existing head and nav (the first build borrows them from that
+     language's evn.html).
   2. Side Projects added to the menu and card stack of every page in public/<lang>/ (idempotent).
   3. The Side projects section added to public/<lang>/index.html (idempotent).
 Then the language switcher and hreflang links on all podcast pages are pointed at the languages that exist.
@@ -105,7 +106,10 @@ def home_patch(html, tr):
 
 def build(lang):
     tr = json.loads((HERE / f"{lang}.json").read_text(encoding="utf-8"))
-    shell = (PUB / lang / "evn.html").read_text(encoding="utf-8")
+    # Keep the podcast page's own head (meta description, canonical, hreflang, og tags) once it exists;
+    # only a first build borrows the head and nav shell from that language's evn.html (fixed 3 Nov 2026).
+    own = PUB / lang / "podcast.html"
+    shell = (own if own.exists() else PUB / lang / "evn.html").read_text(encoding="utf-8")
     body, style = page_body(lang, tr)
     head = shell[: shell.index("<!-- ============ Case hero")]
     head = head[: head.index("<style>")] + style + head[head.index("</style>") + len("</style>"):]
@@ -130,7 +134,8 @@ def relink():
         for l in ALL:
             want = ("/podcast.html" if l == "en" else f"/{l}/podcast.html") if l in have else ("/index.html" if l == "en" else f"/{l}/index.html")
             s = re.sub(rf'href="/(?:{l}/)?(?:evn|podcast|index)\.html"(?= hreflang="{HREFLANG[l]}")' if l != "en" else r'href="/(?:evn|podcast|index)\.html"(?= hreflang="en")', f'href="{want}"', s)
-        s = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="https://mancinitan\.com/[^"]*">\n?', "", s)
+        # replace only this script's own .html alternates; the clean-URL alternates at the top of the head stay
+        s = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="https://mancinitan\.com/[^"]*\.html">\n?', "", s)
         alts = "".join(f'<link rel="alternate" hreflang="{HREFLANG[l]}" href="https://mancinitan.com/{"" if l == "en" else l + "/"}podcast.html">\n' for l in have)
         alts += '<link rel="alternate" hreflang="x-default" href="https://mancinitan.com/podcast.html">\n'
         s = s.replace("</head>", alts + "</head>", 1)

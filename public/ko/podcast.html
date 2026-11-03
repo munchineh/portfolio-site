@@ -352,7 +352,7 @@
 </figure>
 <!-- ============ 01 ============ -->
 <section class="panel sec" id="why">
-<header class="sh"><span class="no">01</span><h2>교재 진도에 맞는 앱이 없었어요</h2></header>
+<header class="sh"><span class="no">01</span><h2>없어서 직접 만든 앱</h2></header>
 <div class="sb">
 <p class="big-p">좋은 한국어 팟캐스트와 쉐도잉 앱은 많아요. 그런데 서강 교재 진도를 따라가는 건 없었어요.</p>
 <p>플래시카드는 한 번에 한 문장뿐이고, NotebookLM은 교재에 없는 어휘까지 섞어 원어민 속도로 즉흥 대화를 만들었어요. 그래서 직접 만들었어요.</p>
@@ -367,7 +367,8 @@
 <section class="panel sec" id="anki">
 <header class="sh"><span class="no">02</span><h2>AI 보이스 디자인, 카드 4,000+장으로 검증</h2></header>
 <div class="sb">
-<p class="big-p">먼저 ElevenLabs로 플래시카드 4,000+장에 목소리를 입히고, 사람처럼 들릴 때까지 다듬었어요.</p>
+<p class="big-p">기본 설정 그대로면 AI 보이스는 플래시카드를 듣기 평가처럼 읽어요.</p>
+<p>먼저 ElevenLabs로 플래시카드 4,000+장에 목소리를 입히고, 사람처럼 들릴 때까지 다듬었어요.</p>
 <div class="cardrow">
 <div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
 <span class="a-chip">4B.3 읽고 말하기 1</span>
@@ -450,7 +451,8 @@
 <section class="panel sec" id="voicing">
 <header class="sh"><span class="no">04</span><h2>여러 AI 모델 오케스트레이션</h2></header>
 <div class="sb">
-<p class="big-p">일마다 가장 잘하거나, 가장 저렴한 모델에 맡겼어요.</p>
+<p class="big-p">대본 쓰기, 녹음, 검수를 한 모델이 다 잘하거나 싸게 해내진 못했어요.</p>
+<p>그래서 일마다 가장 잘하거나, 가장 저렴한 모델에 맡겼어요.</p>
 <div aria-label="이 프로젝트에서 ElevenLabs와 Gemini 3.8을 비교한 표" class="vs" role="table">
 <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
 <div class="vs-row" role="row"><span role="rowheader">비용</span><span role="cell">글자 수 과금, 크레딧 석 달 치 정도</span><span class="win" role="cell">무료, 하루 요청 10회</span></div>
@@ -548,8 +550,8 @@
 <section class="panel sec" id="player">
 <header class="sh"><span class="no">08</span><h2>쉐도잉을 위해 설계한 UX</h2></header>
 <div class="sb">
-<p class="big-p">음절 하나하나 따라가다가, 그 대사를 다시 듣고 따라 말해요.</p>
-<p>문법은 보라색, 어휘는 점선. 탭하면 전체 카드가 열려요.</p>
+<p class="big-p">쉐도잉은 같은 대사를 몇 번이고 다시 들어야 하는데, 매번 되감기는 금방 지쳐요.</p>
+<p>음절 하나하나 따라가다가, 그 대사를 다시 듣고 따라 말해요. 문법은 보라색, 어휘는 점선. 탭하면 전체 카드가 열려요.</p>
 <div class="phones">
 <figure><img alt="한국어·영어 제목, 요약, 재생 시간이 보이는 에피소드 목록" height="1558" loading="lazy" src="../assets/pod-list.jpg" width="720"/><figcaption><b>상황 고르기</b>에피소드마다 일상이나 회사의 한 장면이에요.</figcaption></figure>
 <figure><img alt="지금 나오는 대사가 카드처럼 떠오르고, 대사마다 아래에 영어 자막이 붙은 재생 화면" height="1558" loading="lazy" src="../assets/pod-play.jpg" width="720"/><figcaption><b>따라 읽기</b>지금 말하는 대사가 떠오르고, 아래에 자막이 나와요.</figcaption></figure>
@@ -566,10 +568,10 @@
 <section class="panel sec" id="shared">
 <header class="sh"><span class="no">09</span><h2>11개 언어로 현지화</h2></header>
 <div class="sb">
-<p class="big-p">자막과 인터페이스가 함께 바뀌어요. 세계 곳곳에서 온 반 친구들을 위해서요.</p>
+<p class="big-p">반 친구들은 세계 곳곳에서 왔는데, 영어 자막으로는 일부에게만 닿아요.</p>
 <div class="duo">
 <div style="display:grid;gap:16px;align-content:start">
-<p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">홈 화면에 설치하고, 링크로 공유해요.</p>
+<p style="font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch">자막과 인터페이스가 함께 바뀌어요. 홈 화면에 설치하고, 링크로 공유해요.</p>
 <div aria-label="자막 언어" class="langs-row"><span>English</span><span>简体中文</span><span>繁體中文</span><span>日本語</span><span>Deutsch</span><span>Français</span><span>Русский</span><span>Türkçe</span><span>Tiếng Việt</span><span>ไทย</span><span>Čeština</span></div>
 <div class="result"><b>에피소드 89편, 11개 언어. 앱스토어도 계정도 필요 없어요.</b></div>
 </div>
