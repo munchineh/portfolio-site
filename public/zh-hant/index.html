@@ -42,6 +42,10 @@
     font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase;
     font-size: clamp(56px, 9.4vw, 150px); line-height: .86; letter-spacing: -0.015em;
   }
+  /* Chinese hero: two short lines, so the type runs larger to fill the panel the way the four-line English headline does */
+  :root:lang(zh) .hero .hero-head h1 { font-size: clamp(54px, 10.4vw, 168px); line-height: 1.08; }
+  :root:lang(zh) .hero .hero-head h1 .swap { height: 1.08em; }
+  @media (max-width: 900px) { :root:lang(zh) .hero .hero-head h1 { font-size: clamp(44px, 14vw, 60px); } }
   .hero-head h1 .line { display: block; overflow: hidden; }
   .hero-head h1 .line span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
   .hero-head h1 .line:nth-child(2) span { animation-delay: .08s; }
@@ -421,8 +425,8 @@
 </div>
 <section class="hero">
 <div class="panel hero-head">
-<h1><span class="line"><span>我<em class="swap" data-words="設計|寫|做"><i>設計</i></em>的，</span></span>
-<span class="line"><span>一看就懂，<br class="br-m">一用就會。</span></span></h1>
+<h1><span class="line"><span><em class="swap" data-words="設計|寫|做"><i>設計</i></em>得用心，</span></span>
+<span class="line"><span>用得省心</span></span></h1>
 <div class="hero-sub">
 <p>我是奕豪，體驗設計師，現居首爾。6 年以上經驗，橫跨加密貨幣、銀行與物流，也親手經營男裝店 EVN&nbsp;Archive。</p>
 </div>
@@ -639,8 +643,8 @@
 <p class="lines"><span class="s">我是奕豪，專把複雜的產品做簡單。</span><span class="s">6 年以上經驗，橫跨金融科技、物流和電商。</span><span class="s">新加坡人，現居首爾，工作地點不限。</span></p>
 <div class="strengths">
 <div><b>內容設計與對話設計</b><p>從微文案到 AI 對話，字字推敲。介面好看，也要說得明白。</p></div>
-<div><b>難事，做輕鬆</b><p>交易 App、客服後台、外勤工具。再複雜的金融與營運產品，也能讓人放心上手。</p></div>
-<div><b>從 0 到 1，一手包辦</b><p>當過新創公司的創始設計師，也從零做起自己的店 EVN Archive。研究、設計、上線，上線後接著打磨。</p></div>
+<div><b>再複雜，也好上手</b><p>交易 App、客服後台、外勤工具。再複雜的金融與營運產品，也能讓人放心上手。</p></div>
+<div><b>從 0 到 1，一手打造</b><p>當過新創公司的創始設計師，也從零做起自己的店 EVN Archive。研究、設計、上線，上線後接著打磨。</p></div>
 </div>
 </div>
 <div class="panel cta action-card">
