@@ -357,126 +357,16 @@
     <div class="sb">
       <p class="big-p">Great Korean podcasts and shadowing apps are everywhere. None follow my Sogang syllabus.</p>
       <p>Flashcards give one sentence at a time, and NotebookLM improvised at native speed with vocab outside the books. So I built my own.</p>
-      <div class="grid3">
-        <div class="tile"><span class="tile-k">On syllabus</span><b>Only what's in the books</b><p>Every word and grammar point comes from the Level 2, 3 and 4 books.</p></div>
-        <div class="tile"><span class="tile-k">Sounds real</span><b>Like a drama, at a pace I can follow</b><p>Real situations, read slowly enough to repeat.</p></div>
-        <div class="tile"><span class="tile-k">Shareable</span><b>For my classmates too</b><p>Subtitles in their languages. No install, no account.</p></div>
-      </div>
     </div>
   </section>
+
 
   <!-- ============ 02 ============ -->
-  <section class="panel sec" id="anki">
-    <header class="sh"><span class="no">02</span><h2>AI voice design, tested on 4,000+ cards</h2></header>
-    <div class="sb">
-      <p class="big-p">Out of the box, AI voices read flashcards like a listening test.</p>
-      <p>I voiced 4,000+ flashcards with ElevenLabs first, and tuned them until they sounded human.</p>
-      <div class="cardrow">
-        <div class="ankim" lang="ko" aria-label="The back of one of my Anki cards">
-          <span class="a-chip">4B.3 읽고 말하기 1</span>
-          <div class="a-lbl">Word / Phrase</div>
-          <div class="a-focus">조만간</div>
-          <hr>
-          <div class="a-lbl">Meaning</div>
-          <div class="a-def" lang="en">Before long, one of these days, soon</div>
-          <div class="a-lbl">Example</div>
-          <div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
-          <div class="a-lbl">Translation</div>
-          <div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
-          <button class="a-play" id="ankiPlay" type="button" aria-label="Play the card's audio"><span class="tri"></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
-          <audio id="ankiAudio" src="assets/anki-sample.mp3" preload="none"></audio>
-          <div class="a-panel">
-            <div class="a-lbl">Hanja</div>
-            <p class="a-hanja">早晚間<br><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
-          </div>
-          <div class="a-panel">
-            <div class="a-lbl">Notes</div>
-            <p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
-            <p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
-          </div>
-        </div>
-        <ol class="cardnotes">
-          <li><div><b>Tap to hear it</b><p>Real card audio, directed as "cheerful, casual".</p></div></li>
-          <li><div><b>The word lights up in the example</b><p>Used in a sentence people actually say.</p></div></li>
-          <li><div><b>A thumb-sized play button</b><p>A full-width bar in place of Anki's small icon.</p></div></li>
-          <li><div><b>Hanja, linked to Chinese</b><p>Original characters, plus simplified Chinese and pinyin.</p></div></li>
-          <li><div><b>Notes that compare</b><p>Look-alike words and common pairings.</p></div></li>
-        </ol>
-      </div>
-      <ol class="fixes">
-        <li>
-          <div class="was"><small>Problem</small><b>Every line sounded like a listening test</b><p>Polished, but lifeless.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Cast voices by register</b><p>Younger voices for 반말, older ones for 합쇼체, each with an acting direction.</p></div>
-        </li>
-        <li>
-          <div class="was"><small>Problem</small><b>Sound changes came out wrong</b><p><span lang="ko">똑바로</span> was read as <span lang="ko">똑까로</span>.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Respell what the voice reads</b><p>The voice gets <span lang="ko">똑빠로</span>, the card keeps the normal spelling.</p></div>
-        </li>
-        <li>
-          <div class="was"><small>Problem</small><b>Doubled words and directions read aloud</b><p>Easy to miss by ear.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Auto-check every clip with speech-to-text</b><p>Clips that don't match their card re-record automatically.</p></div>
-        </li>
-      </ol>
-      <p>Long-form audio would have cost about three months of ElevenLabs credits, so the podcast moved to Gemini's free tier.</p>
-    </div>
-  </section>
-
-  <!-- ============ 03 ============ -->
-  <section class="panel sec" id="scripts">
-    <header class="sh"><span class="no">03</span><h2>Content design: textbook to real life</h2></header>
-    <div class="sb">
-      <p class="big-p">Textbook dialogues are tidy. Real conversations aren't.</p>
-      <p>Each card is written into a scene where people would really say it, with speech levels that fit the relationship.</p>
-      <div class="grid3">
-        <div class="tile"><span class="tile-k">Overlaps</span><b>People talk over each other</b><p>Interruptions cut in early, like real talk.</p></div>
-        <div class="tile"><span class="tile-k">Noise</span><b>Not every room is quiet</b><p>Restaurant chatter and other ambience.</p></div>
-        <div class="tile"><span class="tile-k">Feeling</span><b>Excited, tired, mumbling</b><p>Laughs, sighs and trailing-off words.</p></div>
-      </div>
-      <div class="parts" aria-label="The three parts of an episode, sized by their share of lines in episode 2">
-        <div class="bar" aria-hidden="true"><span>장면</span><span>해설</span><span>복습</span></div>
-        <ol>
-          <li><b>Scene</b><p>The hosts act out the scene.</p></li>
-          <li><b>Breakdown</b><p>They explain the key lines in easy Korean.</p></li>
-          <li><b>Recap</b><p>A quick review.</p></li>
-        </ol>
-        <p class="foot">Roughly to scale, by lines in episode 2.</p>
-      </div>
-      <div class="callouts">
-        <div><b data-n="89">89</b><span>episodes across Levels 2, 3 and 4</span></div>
-        <div><b data-n="3,000+">3,000+</b><span>cards woven into scenes</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 04 ============ -->
   <section class="panel sec" id="voicing">
-    <header class="sh"><span class="no">04</span><h2>Orchestrating multiple AI models</h2></header>
+    <header class="sh"><span class="no">02</span><h2>Orchestrating multiple AI models</h2></header>
     <div class="sb">
       <p class="big-p">No single model could write, voice and check an episode well, or cheaply.</p>
       <p>So each job went to the model that does it best, or costs the least.</p>
-      <div class="vs" role="table" aria-label="ElevenLabs compared with Gemini 3.8 for this project">
-        <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
-        <div class="vs-row" role="row"><span role="rowheader">Cost</span><span role="cell">Per character, about three months of credits</span><span role="cell" class="win">Free, 10 requests a day</span></div>
-        <div class="vs-row" role="row"><span role="rowheader">Dialogue</span><span role="cell">One line at a time</span><span role="cell" class="win">Whole scenes, so replies flow naturally</span></div>
-        <div class="vs-row" role="row"><span role="rowheader">Korean detail</span><span role="cell" class="win">Very reliable</span><span role="cell">Good, with odd slips in long takes</span></div>
-        <div class="vs-row" role="row"><span role="rowheader">Voices</span><span role="cell" class="win">A large library</span><span role="cell">Two per request, and they can drift</span></div>
-        <div class="vs-row" role="row"><span role="rowheader">Best at</span><span role="cell">Short card sentences and sound effects</span><span role="cell">Long, two-person episodes</span></div>
-      </div>
-      <p>Each of Gemini's limits got a workaround: spliced-in side voices, voice-drift checks, and runs timed to the free quota.</p>
-      <div class="flow" id="flow">
-        <ol>
-          <li><b>Prep</b><p>Respell tricky sounds and numbers.</p><span class="who">Rules + Claude</span></li>
-          <li><b>Voice</b><p>Whole scenes, two speakers, a cast per episode.</p><span class="who">Gemini 3.8 TTS</span></li>
-          <li><b>Check</b><p>Time each syllable, and remake lines in the wrong voice.</p><span class="who">Speech-to-text</span></li>
-          <li><b>Splice</b><p>Splice in side voices, and overlap interruptions.</p><span class="who">Audio tooling</span></li>
-          <li><b>Finish</b><p>Add ambience and jingles, then auto-publish.</p><span class="who">ElevenLabs</span></li>
-        </ol>
-        <div class="prog" aria-hidden="true"><i id="flowProg"></i></div>
-        <p class="note">Every change is tested on a short sample first.</p>
-      </div>
       <div class="kit" aria-label="The tools behind the project and what each one does">
         <div><b>Claude</b><span>Scripts, player, pipeline and daily pronunciation review</span></div>
         <div><b>Gemini 3.8 TTS</b><span>Episode voices, free</span></div>
@@ -492,74 +382,12 @@
     </div>
   </section>
 
-  <!-- ============ 05 ============ -->
-  <section class="panel sec" id="cast">
-    <header class="sh"><span class="no">05</span><h2>AI voice design: a voice for every character</h2></header>
-    <div class="sb">
-      <p class="big-p">A Gemini request holds two voices. My scenes needed grandparents, a taxi driver from Busan and a buyer from Tokyo.</p>
-      <p>So every character got a voice of their own, and kept it across all three levels.</p>
-      <ol class="fixes">
-        <li>
-          <div class="was"><small>Problem</small><b>Older characters sounded thirty</b><p>Gemini's voices skew young.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Age the voice first</b><p>A small shift in formant, pitch and pace makes a voice older. ElevenLabs steps in only when that falls short.</p></div>
-        </li>
-        <li>
-          <div class="was"><small>Problem</small><b>Accents disappeared</b><p>ElevenLabs Multilingual v2 kept them, but the lines came out flat.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Describe the accent in the voice</b><p>Gemini's designed voices take it from the prompt: Busan, Jeolla, Gyeongju, Tokyo, Hanoi, Melbourne.</p></div>
-        </li>
-        <li>
-          <div class="was"><small>Problem</small><b>Short replies sounded read out alone</b><p>A dry <span lang="ko">그건 인정.</span> came out flat every time.</p></div>
-          <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <div class="fix"><small>Fix</small><b>Voice the whole exchange</b><p>Then keep only the reply, so it sounds like an answer.</p></div>
-        </li>
-      </ol>
-      <p>Every new voice gets a test line before its episode is voiced.</p>
-    </div>
-  </section>
 
-  <!-- ============ 06 ============ -->
-  <section class="panel sec" id="pronunciation">
-    <header class="sh"><span class="no">06</span><h2>QA for Korean pronunciation</h2></header>
-    <div class="sb">
-      <p class="big-p">Korean is written one way and said another. AI voices sometimes read the spelling.</p>
-      <p>Every language does this. In English, "handbag" sounds like "hambag".</p>
-      <div class="said">
-        <div><small>Nasalisation</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">said as</span><span class="s" lang="ko">궁물</span></div><p>ㄱ softens to ㅇ before ㅁ.</p></div>
-        <div><small>Palatalisation</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">said as</span><span class="s" lang="ko">가치</span></div><p>ㅌ before 이 becomes ㅊ, like "gotcha".</p></div>
-        <div><small>Tensing</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">said as</span><span class="s" lang="ko">똑빠로</span></div><p>ㅂ hardens to ㅃ after ㄱ.</p></div>
-      </div>
-      <ol class="tries">
-        <li><div><b>Respell what the voice reads</b><p>Rules rewrite each sentence as it's said before voicing. Learners still see the normal spelling.</p></div></li>
-        <li><div><b>Find the gap in QA</b><p>Speech-to-text checks spelling, not sound, so pronunciation needed its own check.</p></div></li>
-        <li><div><b>Test three ways</b><p>Same sentence, three spellings, two engines. All sounded alike, so the models mostly know the rules.</p></div></li>
-        <li><div><b>Fix what's left</b><p>Slips came across word gaps in long takes, like <span lang="ko">고객 문의</span>. Now risky phrases are joined, numbers are spelled out, and Claude reviews each script before voicing.</p></div></li>
-      </ol>
-      <div class="result"><b>One shared pronunciation tool for cards and podcast, with zero re-voicing costs.</b></div>
-    </div>
-  </section>
-
-  <!-- ============ 07 ============ -->
-  <section class="panel sec" id="review">
-    <header class="sh"><span class="no">07</span><h2>Review ops: one sheet, blockers first</h2></header>
-    <div class="sb">
-      <p class="big-p">By Level 3, my reviews lived across three separate pages.</p>
-      <p>I folded them into one sheet, sorted by the day each decision is due. Anything that stops an episode from voicing turns red and moves to the top.</p>
-      <div class="grid3">
-        <div class="tile"><span class="tile-k">Focus</span><b>I review audio only</b><p>Claude settles the script notes. I judge what needs ears.</p></div>
-        <div class="tile"><span class="tile-k">Decisions</span><b>Three answers per voice</b><p>Pass keeps the Gemini voice. Fail means I bring an ElevenLabs voice. Depends gives Gemini one more direction.</p></div>
-        <div class="tile"><span class="tile-k">Checks</span><b>A voice print on every line</b><p>It flags any line read in the wrong voice. The first run caught 11 lines in 20 episodes.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 08 ============ -->
+  <!-- ============ 03 ============ -->
   <section class="panel sec" id="player">
-    <header class="sh"><span class="no">08</span><h2>UX designed for shadowing</h2></header>
+    <header class="sh"><span class="no">03</span><h2>UX designed for shadowing</h2></header>
     <div class="sb">
       <p class="big-p">Shadowing means hearing the same line over and over, and scrubbing back for it gets old fast.</p>
-      <p>Follow along syllable by syllable, then replay the line and say it back. Grammar is purple, vocab is dotted. Tap either for the full card.</p>
       <div class="phones">
         <figure><img src="assets/pod-list.jpg" alt="The episode list, with Korean and English titles, summaries and running times" width="720" height="1558" loading="lazy"><figcaption><b>Pick a situation</b>Each episode is a scene from daily or office life.</figcaption></figure>
         <figure><img src="assets/pod-play.jpg" alt="An episode playing, with the current line lifted as a card and English subtitles under each line" width="720" height="1558" loading="lazy"><figcaption><b>Read along</b>The line being spoken lifts out, with subtitles underneath.</figcaption></figure>
@@ -573,9 +401,23 @@
     </div>
   </section>
 
-  <!-- ============ 09 ============ -->
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="screens">
+    <header class="sh"><span class="no">04</span><h2>Responsive PWA design, from phone to widescreen</h2></header>
+    <div class="sb">
+      <p class="big-p">A study app gets opened on whatever screen is nearest: a phone on the subway, a foldable on the sofa, a monitor at a desk.</p>
+      <div class="sizes">
+        <figure><img src="assets/pod-size-fold.jpg" alt="Sogang Podcasts on an unfolded foldable, with the episode list on the left half and the script on the right" width="1400" height="1058" loading="lazy"><figcaption><b>Foldables</b>Unfolded on an iPhone Duo or a Galaxy Z Fold, each half of the screen holds one panel: the episode list beside the script, or the script beside its grammar and vocab.</figcaption></figure>
+        <figure><img src="assets/pod-size-desktop.jpg" alt="Sogang Podcasts on a desktop, with the episode list in a left panel and the script on the right" width="1800" height="1125" loading="lazy"><figcaption><b>Tablet and desktop</b>From 1024px, the episode list stays on the left and the script scrolls on the right. Cards float in from the side.</figcaption></figure>
+        <figure class="full"><img src="assets/pod-size-wide.jpg" alt="Sogang Podcasts on a wide screen, with three panels: episodes, the script, and grammar and vocab" width="2200" height="1238" loading="lazy"><figcaption><b>Widescreen</b>From 1600px, a third panel holds the grammar and vocab list. A card opens there and the audio keeps playing.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 05 ============ -->
   <section class="panel sec" id="shared">
-    <header class="sh"><span class="no">09</span><h2>Localised into eleven languages</h2></header>
+    <header class="sh"><span class="no">05</span><h2>Localised into eleven languages</h2></header>
     <div class="sb">
       <p class="big-p">My classmates come from all over, and English subtitles only reach some of them.</p>
       <div class="duo">
@@ -586,6 +428,17 @@
         </div>
         <div class="phones"><figure><img src="assets/pod-zh.jpg" alt="An episode playing with Simplified Chinese subtitles" width="720" height="1558" loading="lazy"><figcaption><b>Simplified Chinese</b>Same player, subtitles switched.</figcaption></figure></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>The full story</h2></header>
+    <div class="sb">
+      <p class="big-p">This is the short version.</p>
+      <p>The full case, with the thinking behind each decision, is in my case book. I'd be happy to send it over or walk you through it.</p>
+      <div class="more-list"><span class="more-k">Also in the case book</span><ul><li>AI voice design, tested on 4,000+ cards</li><li>Content design: textbook to real life</li><li>AI voice design: a voice for every character</li><li>QA for Korean pronunciation</li><li>Review ops: one sheet, blockers first</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=Case%20book%20request">Ask for the case book</a></div>
     </div>
   </section>
 

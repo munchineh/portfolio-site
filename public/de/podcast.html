@@ -355,123 +355,14 @@
 <div class="sb">
 <p class="big-p">Gute koreanische Podcasts und Shadowing-Apps gibt es überall. Keine folgt meinem Sogang-Lehrplan.</p>
 <p>Karteikarten liefern immer nur einen Satz, und NotebookLM improvisierte im Muttersprachler-Tempo, mit Vokabeln außerhalb der Bücher. Also habe ich selbst einen gebaut.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">Nah am Lehrplan</span><b>Nur, was in den Büchern steht</b><p>Jedes Wort und jeder Grammatikpunkt stammt aus den Büchern für Level 2, 3 und 4.</p></div>
-<div class="tile"><span class="tile-k">Klingt echt</span><b>Wie ein Drama, in einem Tempo, bei dem ich mitkomme</b><p>Echte Situationen, langsam genug zum Nachsprechen.</p></div>
-<div class="tile"><span class="tile-k">Zum Teilen</span><b>Auch für meine Klasse</b><p>Untertitel in ihren Sprachen. Keine Installation, kein Account.</p></div>
-</div>
 </div>
 </section>
 <!-- ============ 02 ============ -->
-<section class="panel sec" id="anki">
-<header class="sh"><span class="no">02</span><h2>KI-Voice-Design, getestet an 4.000+ Karten</h2></header>
-<div class="sb">
-<p class="big-p">Ab Werk lesen KI-Stimmen Karteikarten vor wie bei einem Hörtest.</p>
-<p>Zuerst habe ich 4.000+ Karteikarten mit ElevenLabs vertont und so lange feinjustiert, bis sie menschlich klangen.</p>
-<div class="cardrow">
-<div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
-<span class="a-chip">4B.3 읽고 말하기 1</span>
-<div class="a-lbl">Word / Phrase</div>
-<div class="a-focus">조만간</div>
-<hr/>
-<div class="a-lbl">Meaning</div>
-<div class="a-def" lang="en">Before long, one of these days, soon</div>
-<div class="a-lbl">Example</div>
-<div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
-<div class="a-lbl">Translation</div>
-<div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
-<button aria-label="Play the card's audio" class="a-play" id="ankiPlay" type="button"><span class="tri"></span><span aria-hidden="true" class="eq"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
-<audio id="ankiAudio" preload="none" src="../assets/anki-sample.mp3"></audio>
-<div class="a-panel">
-<div class="a-lbl">Hanja</div>
-<p class="a-hanja">早晚間<br/><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
-</div>
-<div class="a-panel">
-<div class="a-lbl">Notes</div>
-<p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
-<p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
-</div>
-</div>
-<ol class="cardnotes">
-<li><div><b>Antippen und anhören</b><p>Echtes Karten-Audio, mit der Regieanweisung „cheerful, casual“.</p></div></li>
-<li><div><b>Das Wort leuchtet im Beispiel auf</b><p>In einem Satz, den Leute wirklich sagen.</p></div></li>
-<li><div><b>Ein Play-Button in Daumengröße</b><p>Ein Balken über die volle Breite statt Ankis kleinem Icon.</p></div></li>
-<li><div><b>Hanja, verknüpft mit Chinesisch</b><p>Originalzeichen, dazu vereinfachtes Chinesisch und Pinyin.</p></div></li>
-<li><div><b>Notizen, die vergleichen</b><p>Leicht verwechselbare Wörter und gängige Kombinationen.</p></div></li>
-</ol>
-</div>
-<ol class="fixes">
-<li>
-<div class="was"><small>Problem</small><b>Jede Zeile klang wie ein Hörverständnistest</b><p>Sauber, aber leblos.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Stimmen nach Register besetzen</b><p>Jüngere Stimmen für 반말, ältere für 합쇼체, jeweils mit Regieanweisung.</p></div>
-</li>
-<li>
-<div class="was"><small>Problem</small><b>Lautveränderungen klangen falsch</b><p><span lang="ko">똑바로</span> wurde als <span lang="ko">똑까로</span> gelesen.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Für die Stimme so schreiben, wie es klingt</b><p>Die Stimme bekommt <span lang="ko">똑빠로</span>, die Karte behält die normale Schreibweise.</p></div>
-</li>
-<li>
-<div class="was"><small>Problem</small><b>Doppelte Wörter und mitgelesene Regieanweisungen</b><p>Beim Durchhören leicht zu übersehen.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Jeden Clip automatisch per Spracherkennung prüfen</b><p>Clips, die nicht zu ihrer Karte passen, werden automatisch neu aufgenommen.</p></div>
-</li>
-</ol>
-<p>Langes Audio hätte rund drei Monate an ElevenLabs-Credits gekostet, also zog der Podcast auf Geminis Gratis-Kontingent um.</p>
-</div>
-</section>
-<!-- ============ 03 ============ -->
-<section class="panel sec" id="scripts">
-<header class="sh"><span class="no">03</span><h2>Content Design: vom Lehrbuch ins echte Leben</h2></header>
-<div class="sb">
-<p class="big-p">Lehrbuchdialoge sind aufgeräumt. Echte Gespräche nicht.</p>
-<p>Jede Karte landet in einer Szene, in der Leute sie wirklich sagen würden, mit der Sprachebene, die zur Beziehung passt.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">Überlappung</span><b>Alle reden durcheinander</b><p>Unterbrechungen setzen zu früh ein, wie im echten Gespräch.</p></div>
-<div class="tile"><span class="tile-k">Geräusche</span><b>Nicht jeder Raum ist still</b><p>Restaurantgemurmel und andere Hintergrundgeräusche.</p></div>
-<div class="tile"><span class="tile-k">Gefühl</span><b>Aufgeregt, müde, nuschelnd</b><p>Lachen, Seufzer und auslaufende Sätze.</p></div>
-</div>
-<div aria-label="Die drei Teile einer Folge, in der Größe nach ihrem Anteil an den Zeilen in Folge 2" class="parts">
-<div aria-hidden="true" class="bar"><span>장면</span><span>해설</span><span>복습</span></div>
-<ol>
-<li><b>Szene</b><p>Die Hosts spielen die Szene durch.</p></li>
-<li><b>Erklärung</b><p>Sie erklären die wichtigsten Zeilen in einfachem Koreanisch.</p></li>
-<li><b>Wiederholung</b><p>Ein kurzer Durchlauf.</p></li>
-</ol>
-<p class="foot">Ungefähr maßstabsgetreu, nach Zeilen in Folge 2.</p>
-</div>
-<div class="callouts">
-<div><b data-n="89">89</b><span>Folgen über Level 2, 3 und 4</span></div>
-<div><b data-n="3.000+">3.000+</b><span>Karten, eingewoben in Szenen</span></div>
-</div>
-</div>
-</section>
-<!-- ============ 04 ============ -->
 <section class="panel sec" id="voicing">
-<header class="sh"><span class="no">04</span><h2>Mehrere KI-Modelle orchestrieren</h2></header>
+<header class="sh"><span class="no">02</span><h2>Mehrere KI-Modelle orchestrieren</h2></header>
 <div class="sb">
 <p class="big-p">Kein einzelnes Modell konnte eine Folge gut oder günstig schreiben, vertonen und prüfen.</p>
 <p>Also ging jede Aufgabe an das Modell, das sie am besten oder am günstigsten erledigt.</p>
-<div aria-label="ElevenLabs im Vergleich mit Gemini 3.8 für dieses Projekt" class="vs" role="table">
-<div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
-<div class="vs-row" role="row"><span role="rowheader">Kosten</span><span role="cell">Pro Zeichen, etwa drei Monate an Credits</span><span class="win" role="cell">Gratis, 10 Anfragen pro Tag</span></div>
-<div class="vs-row" role="row"><span role="rowheader">Dialog</span><span role="cell">Eine Zeile nach der anderen</span><span class="win" role="cell">Ganze Szenen, dadurch fließen die Antworten natürlich</span></div>
-<div class="vs-row" role="row"><span role="rowheader">Koreanische Details</span><span class="win" role="cell">Sehr zuverlässig</span><span role="cell">Gut, mit gelegentlichen Ausrutschern bei langen Takes</span></div>
-<div class="vs-row" role="row"><span role="rowheader">Stimmen</span><span class="win" role="cell">Große Bibliothek</span><span role="cell">Zwei pro Anfrage, und sie können abdriften</span></div>
-<div class="vs-row" role="row"><span role="rowheader">Am besten für</span><span role="cell">Kurze Kartensätze und Soundeffekte</span><span role="cell">Lange Folgen mit zwei Personen</span></div>
-</div>
-<p>Für jede Grenze von Gemini gab es einen Workaround: eingeschnittene Nebenstimmen, Checks gegen Stimmdrift und Läufe im Takt des Gratis-Kontingents.</p>
-<div class="flow" id="flow">
-<ol>
-<li><b>Vorbereiten</b><p>Knifflige Laute und Zahlen umschreiben.</p><span class="who">Regeln + Claude</span></li>
-<li><b>Vertonen</b><p>Ganze Szenen, zwei Stimmen, eine eigene Besetzung pro Folge.</p><span class="who">Gemini 3.8 TTS</span></li>
-<li><b>Prüfen</b><p>Jede Silbe timen und Zeilen in der falschen Stimme neu erstellen.</p><span class="who">Spracherkennung</span></li>
-<li><b>Schneiden</b><p>Nebenstimmen einschneiden und Unterbrechungen überlappen lassen.</p><span class="who">Audio-Tools</span></li>
-<li><b>Fertigstellen</b><p>Hintergrundgeräusche und Jingles dazu, dann automatisch veröffentlichen.</p><span class="who">ElevenLabs</span></li>
-</ol>
-<div aria-hidden="true" class="prog"><i id="flowProg"></i></div>
-<p class="note">Jede Änderung wird zuerst an einem kurzen Sample getestet.</p>
-</div>
 <div aria-label="Die Tools hinter dem Projekt und was jedes davon macht" class="kit">
 <div><b>Claude</b><span>Skripte, Player, Pipeline und täglicher Aussprache-Check</span></div>
 <div><b>Gemini 3.8 TTS</b><span>Stimmen für die Folgen, kostenlos</span></div>
@@ -486,71 +377,11 @@
 </div>
 </div>
 </section>
-<!-- ============ 05 ============ -->
-<section class="panel sec" id="cast">
-<header class="sh"><span class="no">05</span><h2>KI-Stimmdesign: eine Stimme für jede Figur</h2></header>
-<div class="sb">
-<p class="big-p">Eine Gemini-Anfrage fasst zwei Stimmen. Meine Szenen brauchten Großeltern, einen Taxifahrer aus Busan und eine Einkäuferin aus Tokio.</p>
-<p>Also bekam jede Figur ihre eigene Stimme und behält sie über alle drei Level.</p>
-<ol class="fixes">
-<li>
-<div class="was"><small>Problem</small><b>Ältere Figuren klangen wie dreißig</b><p>Die Stimmen von Gemini klingen eher jung.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Erst die Stimme altern lassen</b><p>Eine kleine Verschiebung bei Formanten, Tonhöhe und Tempo macht eine Stimme älter. ElevenLabs kommt erst dran, wenn das nicht reicht.</p></div>
-</li>
-<li>
-<div class="was"><small>Problem</small><b>Akzente gingen verloren</b><p>ElevenLabs Multilingual v2 hielt sie, aber die Zeilen klangen flach.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Den Akzent in die Stimme schreiben</b><p>Die Voice-Designs von Gemini übernehmen ihn aus dem Prompt: Busan, Jeolla, Gyeongju, Tokio, Hanoi, Melbourne.</p></div>
-</li>
-<li>
-<div class="was"><small>Problem</small><b>Kurze Antworten klangen wie allein vorgelesen</b><p>Ein trockenes <span lang="ko">그건 인정.</span> kam jedes Mal flach heraus.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>Lösung</small><b>Den ganzen Wortwechsel vertonen</b><p>Dann bleibt nur die Antwort, und sie klingt auch wie eine.</p></div>
-</li>
-</ol>
-<p>Jede neue Stimme bekommt eine Testzeile, bevor ihre Folge vertont wird.</p>
-</div>
-</section>
-<!-- ============ 06 ============ -->
-<section class="panel sec" id="pronunciation">
-<header class="sh"><span class="no">06</span><h2>QA für koreanische Aussprache</h2></header>
-<div class="sb">
-<p class="big-p">Koreanisch schreibt man anders, als man es spricht. KI-Stimmen lesen manchmal die Schreibweise vor.</p>
-<p>Das gibt es in jeder Sprache. Im Deutschen wird aus „haben“ schnell „ham“.</p>
-<div class="said">
-<div><small>Nasalierung</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">klingt wie</span><span class="s" lang="ko">궁물</span></div><p>ㄱ wird vor ㅁ zum weichen ㅇ.</p></div>
-<div><small>Palatalisierung</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">klingt wie</span><span class="s" lang="ko">가치</span></div><p>ㅌ vor 이 wird zu ㅊ, wie bei „gotcha“.</p></div>
-<div><small>Verhärtung</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">klingt wie</span><span class="s" lang="ko">똑빠로</span></div><p>ㅂ verhärtet sich nach ㄱ zu ㅃ.</p></div>
-</div>
-<ol class="tries">
-<li><div><b>Für die Stimme so schreiben, wie es klingt</b><p>Regeln schreiben jeden Satz vor der Vertonung so um, wie er gesprochen wird. Lernende sehen weiterhin die normale Schreibweise.</p></div></li>
-<li><div><b>Die Lücke in der QA finden</b><p>Spracherkennung prüft nur die Schreibweise. Für die Aussprache brauchte es einen eigenen Check.</p></div></li>
-<li><div><b>Auf drei Arten testen</b><p>Gleicher Satz, drei Schreibweisen, zwei Engines. Alles klang gleich, die Modelle kennen die Regeln also größtenteils.</p></div></li>
-<li><div><b>Den Rest beheben</b><p>Ausrutscher gab es an Wortgrenzen in langen Takes, etwa bei <span lang="ko">고객 문의</span>. Jetzt werden heikle Wendungen zusammengezogen, Zahlen ausgeschrieben, und Claude prüft jedes Skript vor der Vertonung.</p></div></li>
-</ol>
-<div class="result"><b>Ein gemeinsames Aussprache-Tool für Karten und Podcast, ganz ohne Kosten für Neuvertonung.</b></div>
-</div>
-</section>
-<!-- ============ 07 ============ -->
-<section class="panel sec" id="review">
-<header class="sh"><span class="no">07</span><h2>Review-Ops: ein Sheet, Blocker zuerst</h2></header>
-<div class="sb">
-<p class="big-p">Bei Level 3 waren meine Reviews auf drei Seiten verteilt.</p>
-<p>Ich habe sie in ein Sheet zusammengelegt, sortiert nach dem Tag, an dem jede Entscheidung fällig ist. Alles, was die Vertonung einer Folge aufhält, wird rot und rückt nach oben.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">Fokus</span><b>Ich prüfe nur das Audio</b><p>Claude klärt die Skriptnotizen. Ich beurteile, was Ohren braucht.</p></div>
-<div class="tile"><span class="tile-k">Entscheidungen</span><b>Drei Antworten pro Stimme</b><p>Pass behält die Gemini-Stimme. Fail heißt, ich bringe eine ElevenLabs-Stimme. Depends gibt Gemini noch eine Regieanweisung.</p></div>
-<div class="tile"><span class="tile-k">Checks</span><b>Ein Stimmabdruck für jede Zeile</b><p>Er markiert jede Zeile in der falschen Stimme. Der erste Durchlauf fand 11 Zeilen in 20 Folgen.</p></div>
-</div>
-</div>
-</section>
-<!-- ============ 08 ============ -->
+<!-- ============ 03 ============ -->
 <section class="panel sec" id="player">
-<header class="sh"><span class="no">08</span><h2>UX-Design fürs Shadowing</h2></header>
+<header class="sh"><span class="no">03</span><h2>UX-Design fürs Shadowing</h2></header>
 <div class="sb">
 <p class="big-p">Beim Shadowing hört man dieselbe Zeile immer wieder, und das ständige Zurückspulen nervt schnell.</p>
-<p>Silbe für Silbe mitlesen, dann die Zeile noch einmal abspielen und nachsprechen. Grammatik ist lila, Vokabeln sind gepunktet. Ein Tipp öffnet jeweils die ganze Karte.</p>
 <div class="phones">
 <figure><img alt="Die Folgenliste mit koreanischen und deutschen Titeln, Zusammenfassungen und Laufzeiten" height="1558" loading="lazy" src="../assets/pod-list-de.jpg" width="720"/><figcaption><b>Eine Situation wählen</b>Jede Folge ist eine Szene aus dem Alltag oder dem Büro.</figcaption></figure>
 <figure><img alt="Eine laufende Folge, die aktuelle Zeile als Karte hervorgehoben, mit deutschen Untertiteln unter jeder Zeile" height="1558" loading="lazy" src="../assets/pod-play-de.jpg" width="720"/><figcaption><b>Mitlesen</b>Die gesprochene Zeile hebt sich ab, mit Untertiteln darunter.</figcaption></figure>
@@ -563,9 +394,23 @@
 </div>
 </div>
 </section>
-<!-- ============ 09 ============ -->
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="screens">
+    <header class="sh"><span class="no">04</span><h2>Responsives PWA-Design, vom Handy bis zum Widescreen</h2></header>
+    <div class="sb">
+      <p class="big-p">Eine Lern-App öffnet man auf dem Bildschirm, der gerade da ist: das Handy in der U-Bahn, das Foldable auf dem Sofa, der Monitor am Schreibtisch.</p>
+      <div class="sizes">
+        <figure><img src="../assets/pod-size-fold-de.jpg" alt="Sogang Podcasts auf einem aufgeklappten Foldable, links die Folgenliste, rechts das Skript" width="1400" height="1058" loading="lazy"><figcaption><b>Foldables</b>Aufgeklappt auf einem iPhone Duo oder Galaxy Z Fold zeigt jede Bildschirmhälfte ein Panel: die Folgenliste neben dem Skript oder das Skript neben Grammatik und Vokabeln.</figcaption></figure>
+        <figure><img src="../assets/pod-size-desktop-de.jpg" alt="Sogang Podcasts auf dem Desktop, links die Folgenliste, rechts das Skript" width="1800" height="1125" loading="lazy"><figcaption><b>Tablet und Desktop</b>Ab 1024 px bleibt die Folgenliste links, das Skript scrollt rechts. Karten gleiten von der Seite herein.</figcaption></figure>
+        <figure class="full"><img src="../assets/pod-size-wide-de.jpg" alt="Sogang Podcasts auf einem breiten Bildschirm mit drei Panels: Folgen, Skript, Grammatik und Vokabeln" width="2200" height="1238" loading="lazy"><figcaption><b>Widescreen</b>Ab 1600 px zeigt ein drittes Panel die Grammatik- und Vokabelliste. Karten öffnen sich dort, und das Audio läuft weiter.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 05 ============ -->
 <section class="panel sec" id="shared">
-<header class="sh"><span class="no">09</span><h2>In elf Sprachen lokalisiert</h2></header>
+<header class="sh"><span class="no">05</span><h2>In elf Sprachen lokalisiert</h2></header>
 <div class="sb">
 <p class="big-p">Meine Klasse kommt aus aller Welt, und englische Untertitel erreichen nur einen Teil davon.</p>
 <div class="duo">
@@ -578,6 +423,17 @@
 </div>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>Die ganze Geschichte</h2></header>
+    <div class="sb">
+      <p class="big-p">Das hier ist die Kurzfassung.</p>
+      <p>Das ganze Projekt, mit den Überlegungen hinter jeder Entscheidung, steht in meinem Case Book. Ich schicke es gern zu oder gehe es gemeinsam durch.</p>
+      <div class="more-list"><span class="more-k">Außerdem im Case Book</span><ul><li>KI-Voice-Design, getestet an 4.000+ Karten</li><li>Content Design: vom Lehrbuch ins echte Leben</li><li>KI-Stimmdesign: eine Stimme für jede Figur</li><li>QA für koreanische Aussprache</li><li>Review-Ops: ein Sheet, Blocker zuerst</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=Case%20Book">Case Book anfragen</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

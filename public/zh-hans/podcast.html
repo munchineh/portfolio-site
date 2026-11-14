@@ -356,123 +356,14 @@
 <div class="sb">
 <p class="big-p">好用的韩语播客和跟读 App 到处都是，却没有一个跟着我的西江课程走</p>
 <p>记忆卡一次只给一句话；NotebookLM 则用母语语速即兴发挥，还扯进教材以外的词汇。所以我自己做了一个。</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">紧扣教材</span><b>只用书里有的</b><p>每个单词和语法点，都出自西江 2 级、3 级和 4 级教材。</p></div>
-<div class="tile"><span class="tile-k">像真人</span><b>像看韩剧，语速刚好跟得上</b><p>真实的情境，语速放慢到能跟着说。</p></div>
-<div class="tile"><span class="tile-k">方便分享</span><b>同学也能用</b><p>字幕有他们的母语。不用安装，也不用注册。</p></div>
-</div>
 </div>
 </section>
 <!-- ============ 02 ============ -->
-<section class="panel sec" id="anki">
-<header class="sh"><span class="no">02</span><h2>AI 配音设计，4,000+ 张卡片实测</h2></header>
-<div class="sb">
-<p class="big-p">直接拿来用，AI 语音念起记忆卡就像听力考试</p>
-<p>我先用 ElevenLabs 给 4,000+ 张记忆卡配音，一路调到听起来像真人。</p>
-<div class="cardrow">
-<div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
-<span class="a-chip">4B.3 읽고 말하기 1</span>
-<div class="a-lbl">Word / Phrase</div>
-<div class="a-focus">조만간</div>
-<hr/>
-<div class="a-lbl">Meaning</div>
-<div class="a-def" lang="en">Before long, one of these days, soon</div>
-<div class="a-lbl">Example</div>
-<div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
-<div class="a-lbl">Translation</div>
-<div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
-<button aria-label="Play the card's audio" class="a-play" id="ankiPlay" type="button"><span class="tri"></span><span aria-hidden="true" class="eq"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
-<audio id="ankiAudio" preload="none" src="../assets/anki-sample.mp3"></audio>
-<div class="a-panel">
-<div class="a-lbl">Hanja</div>
-<p class="a-hanja">早晚間<br/><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
-</div>
-<div class="a-panel">
-<div class="a-lbl">Notes</div>
-<p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
-<p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
-</div>
-</div>
-<ol class="cardnotes">
-<li><div><b>点一下就能听</b><p>卡片的真实音频，语气指导为“开朗、随意”。</p></div></li>
-<li><div><b>例句里，单词会高亮</b><p>放在人们日常真会说的句子里。</p></div></li>
-<li><div><b>拇指一按就能播放</b><p>一整行宽的播放条，取代 Anki 的小图标。</p></div></li>
-<li><div><b>汉字词，连上中文</b><p>原本的汉字，加上简体中文和拼音。</p></div></li>
-<li><div><b>会做对比的笔记</b><p>易混词和常见搭配。</p></div></li>
-</ol>
-</div>
-<ol class="fixes">
-<li>
-<div class="was"><small>问题</small><b>每句都像听力考试</b><p>字正腔圆，却毫无生气。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>按语体挑声音</b><p>年轻的声音念 반말，年长的念 합쇼체，每句再配一条表演指导。</p></div>
-</li>
-<li>
-<div class="was"><small>问题</small><b>音变读错了</b><p><span lang="ko">똑바로</span> 被读成了 <span lang="ko">똑까로</span>。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>配音稿按读音改写</b><p>配音拿到的是 <span lang="ko">똑빠로</span>，卡片上仍是标准拼写。</p></div>
-</li>
-<li>
-<div class="was"><small>问题</small><b>重复词，还把指导语念了出来</b><p>光靠耳朵，很容易漏掉。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>语音转文字，自动核对每段音频</b><p>和卡片对不上的音频，会自动重新录制。</p></div>
-</li>
-</ol>
-<p>长音频差不多要用掉三个月的 ElevenLabs 额度，所以播客改用了 Gemini 的免费额度。</p>
-</div>
-</section>
-<!-- ============ 03 ============ -->
-<section class="panel sec" id="scripts">
-<header class="sh"><span class="no">03</span><h2>内容设计：课本台词，搬进真实生活</h2></header>
-<div class="sb">
-<p class="big-p">课本里的对话很整齐，真实的对话可没这么规矩</p>
-<p>每张卡片都写进一个人们真会这么说的场景，语体跟着人物关系走。</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">抢话</span><b>说着说着就抢话</b><p>打断总会提早切进来，就像真实的聊天。</p></div>
-<div class="tile"><span class="tile-k">噪音</span><b>不是每个地方都安静</b><p>餐厅的嘈杂声和其他背景音。</p></div>
-<div class="tile"><span class="tile-k">情绪</span><b>兴奋、疲惫、含糊嘟囔</b><p>笑声、叹气，还有说到一半的尾音。</p></div>
-</div>
-<div aria-label="一集节目的三个部分，按第 2 集各部分的台词占比绘制" class="parts">
-<div aria-hidden="true" class="bar"><span>장면</span><span>해설</span><span>복습</span></div>
-<ol>
-<li><b>场景</b><p>两位主持人演出情境。</p></li>
-<li><b>讲解</b><p>用简单的韩语讲解重点台词。</p></li>
-<li><b>复习</b><p>快速过一遍。</p></li>
-</ol>
-<p class="foot">大致按比例，依据第 2 集的台词数。</p>
-</div>
-<div class="callouts">
-<div><b data-n="89">89</b><span>集节目，覆盖 2 级到 4 级</span></div>
-<div><b data-n="3,000+">3,000+</b><span>张卡片，融进各个场景</span></div>
-</div>
-</div>
-</section>
-<!-- ============ 04 ============ -->
 <section class="panel sec" id="voicing">
-<header class="sh"><span class="no">04</span><h2>多模型协作，各司其职</h2></header>
+<header class="sh"><span class="no">02</span><h2>多模型协作，各司其职</h2></header>
 <div class="sb">
 <p class="big-p">写稿、配音、质检，没有一个模型能又好又省地全包</p>
 <p>所以每件事，都交给做得最好或最省钱的模型。</p>
-<div aria-label="本项目中 ElevenLabs 与 Gemini 3.8 的对比" class="vs" role="table">
-<div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
-<div class="vs-row" role="row"><span role="rowheader">费用</span><span role="cell">按字符计费，约要三个月的额度</span><span class="win" role="cell">免费，每天 10 次请求</span></div>
-<div class="vs-row" role="row"><span role="rowheader">对话</span><span role="cell">一次一句</span><span class="win" role="cell">一次一整个场景，对答更自然</span></div>
-<div class="vs-row" role="row"><span role="rowheader">韩语细节</span><span class="win" role="cell">非常可靠</span><span role="cell">不错，长段落偶尔出错</span></div>
-<div class="vs-row" role="row"><span role="rowheader">声音</span><span class="win" role="cell">声音库很大</span><span role="cell">每次请求两个声音，还会跑偏</span></div>
-<div class="vs-row" role="row"><span role="rowheader">最擅长</span><span role="cell">卡片短句和音效</span><span role="cell">双人长篇节目</span></div>
-</div>
-<p>Gemini 的每个限制都有解法：配角单独配音再剪进去，检查声音跑偏，任务卡着免费额度定时运行。</p>
-<div class="flow" id="flow">
-<ol>
-<li><b>准备</b><p>改写难读的音变和数字。</p><span class="who">规则 + Claude</span></li>
-<li><b>配音</b><p>一次读完整个场景，两位说话人，每集单独选角。</p><span class="who">Gemini 3.8 TTS</span></li>
-<li><b>检查</b><p>给每个音节计时，用错声音的台词就重做。</p><span class="who">语音转文字</span></li>
-<li><b>剪接</b><p>剪进配角声音，让打断处的台词重叠。</p><span class="who">音频工具</span></li>
-<li><b>收尾</b><p>混入背景音和过场音乐，然后自动发布。</p><span class="who">ElevenLabs</span></li>
-</ol>
-<div aria-hidden="true" class="prog"><i id="flowProg"></i></div>
-<p class="note">每次改动，都先在短样本上测试。</p>
-</div>
 <div aria-label="项目背后的工具，以及各自的分工" class="kit">
 <div><b>Claude</b><span>脚本、播放器、整条流程，以及每日发音审查</span></div>
 <div><b>Gemini 3.8 TTS</b><span>节目配音，免费</span></div>
@@ -487,71 +378,11 @@
 </div>
 </div>
 </section>
-<!-- ============ 05 ============ -->
-<section class="panel sec" id="cast">
-<header class="sh"><span class="no">05</span><h2>AI 声音设计：每个角色一副嗓音</h2></header>
-<div class="sb">
-<p class="big-p">Gemini 一次请求只能放两种声音。我的场景里却有爷爷奶奶、釜山的出租车司机，还有东京来的采购</p>
-<p>所以每个角色都有自己的声音，三个级别从头到尾不换人。</p>
-<ol class="fixes">
-<li>
-<div class="was"><small>问题</small><b>老人家听起来像三十岁</b><p>Gemini 的声音普遍偏年轻。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>先把声音调老</b><p>共振峰、音高和语速稍微一调，声音就老了。调不够，才换 ElevenLabs。</p></div>
-</li>
-<li>
-<div class="was"><small>问题</small><b>口音不见了</b><p>ElevenLabs Multilingual v2 保住了口音，台词却平淡无味。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>把口音写进声音设计</b><p>Gemini 的定制声音直接按提示词生成口音：釜山、全罗道、庆州、东京、河内、墨尔本。</p></div>
-</li>
-<li>
-<div class="was"><small>问题</small><b>短短一句回应，像在自言自语</b><p>一句淡淡的 <span lang="ko">그건 인정.</span>，每次都念得干巴巴。</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>解法</small><b>整段对话一起配</b><p>再只留下那句回应，听起来才像在接话。</p></div>
-</li>
-</ol>
-<p>每个新声音，都先试配一句，再正式配整集。</p>
-</div>
-</section>
-<!-- ============ 06 ============ -->
-<section class="panel sec" id="pronunciation">
-<header class="sh"><span class="no">06</span><h2>韩语发音 QA</h2></header>
-<div class="sb">
-<p class="big-p">韩语写一套、读一套，AI 配音有时却照着拼写念</p>
-<p>每种语言都有这种现象，比如中文的“你好”，实际读作“ní hǎo”。</p>
-<div class="said">
-<div><small>鼻音化</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">读作</span><span class="s" lang="ko">궁물</span></div><p>ㄱ 遇到 ㅁ，软化成 ㅇ。</p></div>
-<div><small>腭化</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">读作</span><span class="s" lang="ko">가치</span></div><p>ㅌ 后面接 이，就变成 ㅊ，就像英语的“gotcha”。</p></div>
-<div><small>紧音化</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">读作</span><span class="s" lang="ko">똑빠로</span></div><p>ㅂ 跟在 ㄱ 后面，会变紧读成 ㅃ。</p></div>
-</div>
-<ol class="tries">
-<li><div><b>配音稿按读音改写</b><p>配音前，规则先把每句话改写成实际读音。学习者看到的仍是标准拼写。</p></div></li>
-<li><div><b>找出 QA 的盲区</b><p>语音转文字核对的是拼写，听不出读音，所以发音得单独检查。</p></div></li>
-<li><div><b>分三种写法测试</b><p>同一句话，三种写法，两个引擎。听起来都差不多，可见模型大多懂这些规则。</p></div></li>
-<li><div><b>修好剩下的小错</b><p>长段落里，词与词的交界处偶尔出错，比如 <span lang="ko">고객 문의</span>。现在高风险短语会连写，数字改用韩文写出，每份脚本配音前还有 Claude 审查。</p></div></li>
-</ol>
-<div class="result"><b>卡片和播客共用一套发音工具，零重配成本。</b></div>
-</div>
-</section>
-<!-- ============ 07 ============ -->
-<section class="panel sec" id="review">
-<header class="sh"><span class="no">07</span><h2>审核流程：一张表，卡点优先</h2></header>
-<div class="sb">
-<p class="big-p">做到 3 级时，我要审核的东西散落在三个页面</p>
-<p>我把它们并成一张表，按每项决定的截止日期排序。会卡住配音的项目标红，自动置顶。</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">专注</span><b>我只审音频</b><p>脚本意见交给 Claude 处理，我只判断要靠耳朵听的部分。</p></div>
-<div class="tile"><span class="tile-k">决定</span><b>每个声音三种答案</b><p>Pass 就沿用 Gemini 的声音。Fail 由我挑一个 ElevenLabs 声音。Depends 再给 Gemini 一次表演指示。</p></div>
-<div class="tile"><span class="tile-k">检查</span><b>每句都比对声纹</b><p>用错声音的台词会被标出来。第一轮在 20 集里抓到 11 句。</p></div>
-</div>
-</div>
-</section>
-<!-- ============ 08 ============ -->
+<!-- ============ 03 ============ -->
 <section class="panel sec" id="player">
-<header class="sh"><span class="no">08</span><h2>专为跟读设计的 UX</h2></header>
+<header class="sh"><span class="no">03</span><h2>专为跟读设计的 UX</h2></header>
 <div class="sb">
 <p class="big-p">跟读要一句听上好几遍，每次都往回拖，很快就烦了</p>
-<p>逐个音节跟着看，再重播这一句，跟着说一遍。语法点标紫色，词汇加点状下划线。点任意一个，就能打开完整卡片。</p>
 <div class="phones">
 <figure><img alt="节目列表，包含每集的韩文和中文标题、简介和时长" height="1558" loading="lazy" src="../assets/pod-list-zh-hans.jpg" width="720"/><figcaption><b>选一个情境</b>每集都是日常或职场里的一个场景。</figcaption></figure>
 <figure><img alt="一集节目正在播放，当前台词以卡片形式浮起，每句下方配有简体中文字幕" height="1558" loading="lazy" src="../assets/pod-play-zh-hans.jpg" width="720"/><figcaption><b>跟着读</b>正在说的台词会浮起，下方配有字幕。</figcaption></figure>
@@ -564,9 +395,23 @@
 </div>
 </div>
 </section>
-<!-- ============ 09 ============ -->
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="screens">
+    <header class="sh"><span class="no">04</span><h2>响应式 PWA 设计，从手机到宽屏</h2></header>
+    <div class="sb">
+      <p class="big-p">学习应用总在手边的屏幕上打开：地铁上用手机，沙发上用折叠屏，书桌前用显示器</p>
+      <div class="sizes">
+        <figure><img src="../assets/pod-size-fold-zh-hans.jpg" alt="展开的折叠屏上的 Sogang Podcasts，左半屏是节目列表，右半屏是台词" width="1400" height="1058" loading="lazy"><figcaption><b>折叠屏</b>在 iPhone Duo 或 Galaxy Z Fold 上展开后，左右半屏各放一个面板：节目列表配台词，或台词配语法和词汇。</figcaption></figure>
+        <figure><img src="../assets/pod-size-desktop-zh-hans.jpg" alt="桌面上的 Sogang Podcasts，左侧面板是节目列表，右侧是台词" width="1800" height="1125" loading="lazy"><figcaption><b>平板和桌面</b>1024px 起，节目列表固定在左，台词在右侧滚动，卡片从侧边浮出。</figcaption></figure>
+        <figure class="full"><img src="../assets/pod-size-wide-zh-hans.jpg" alt="宽屏上的 Sogang Podcasts，三个面板分别是节目、台词、语法和词汇" width="2200" height="1238" loading="lazy"><figcaption><b>宽屏</b>1600px 起，多出第三个面板放语法和词汇列表。卡片就在那里打开，音频照常播放。</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 05 ============ -->
 <section class="panel sec" id="shared">
-<header class="sh"><span class="no">09</span><h2>十一种语言，全面本地化</h2></header>
+<header class="sh"><span class="no">05</span><h2>十一种语言，全面本地化</h2></header>
 <div class="sb">
 <p class="big-p">同学来自世界各地，英文字幕只照顾得到一部分人</p>
 <div class="duo">
@@ -579,6 +424,17 @@
 </div>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">案例集</span><h2>完整案例</h2></header>
+    <div class="sb">
+      <p class="big-p">这里是精简版</p>
+      <p>每个决定背后的思考，都写在完整的案例集里。欢迎来信索取，我也很乐意当面讲解。</p>
+      <div class="more-list"><span class="more-k">案例集里还有</span><ul><li>AI 配音设计，4,000+ 张卡片实测</li><li>内容设计：课本台词，搬进真实生活</li><li>AI 声音设计：每个角色一副嗓音</li><li>韩语发音 QA</li><li>审核流程：一张表，卡点优先</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=%E7%B4%A2%E5%8F%96%E6%A1%88%E4%BE%8B%E9%9B%86">索取全文</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

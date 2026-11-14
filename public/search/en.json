@@ -74,7 +74,7 @@
     {
      "to": "evn",
      "label": "EVN Archive",
-     "find": "Liquid, CSS and JavaScript"
+     "find": "Liquid, CSS, JavaScript"
     }
    ]
   },
@@ -98,7 +98,7 @@
     {
      "to": "evn",
      "label": "EVN Archive",
-     "find": "Liquid, CSS and JavaScript"
+     "find": "Liquid, CSS, JavaScript"
     }
    ]
   },
@@ -287,7 +287,7 @@
     {
      "to": "evn",
      "label": "EVN Archive",
-     "find": "Product copy"
+     "find": "Owning the whole store"
     }
    ]
   },
@@ -335,7 +335,7 @@
     {
      "to": "evn",
      "label": "EVN Archive",
-     "find": "Data-driven localisation"
+     "find": "Owning the whole store"
     },
     {
      "to": "podcast",
@@ -367,7 +367,7 @@
     {
      "to": "ninjavan",
      "label": "Ninja Van",
-     "find": "interviewed 59"
+     "find": "Who I interviewed"
     },
     {
      "to": "neuron",
@@ -392,12 +392,12 @@
     {
      "to": "neuron",
      "label": "Neuron",
-     "find": "information architecture"
+     "find": "Streamlining two platforms into one"
     },
     {
      "to": "evn",
      "label": "EVN Archive",
-     "find": "Information architecture"
+     "find": "Owning the whole store"
     }
    ]
   },

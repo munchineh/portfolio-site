@@ -547,26 +547,6 @@
     <div class="sb">
       <p class="big-p">Merchants could raise an issue in seconds, then wait days to hear anything back.</p>
       <p>Each case took five steps across three teams, from support to resolution and back, and some detail slipped away each time. Disputing an outcome meant starting from scratch.</p>
-      <div class="relay" id="relay">
-        <div class="rl-grid">
-          <span class="rl-lane" style="grid-row:1">Merchant</span>
-          <span class="rl-lane" style="grid-row:2">Support agent</span>
-          <span class="rl-lane" style="grid-row:3">Resolution team</span>
-          <div class="rl-step" data-s="0" data-lane="Merchant" style="grid-row:1;grid-column:2"><b>1</b>Raises the issue</div>
-          <div class="rl-step" data-s="1" data-lane="Support agent" style="grid-row:2;grid-column:3"><b>2</b>Logs it in the CRM</div>
-          <div class="rl-step" data-s="2" data-lane="Resolution team" style="grid-row:3;grid-column:4"><b>3</b>Investigates</div>
-          <div class="rl-step" data-s="3" data-lane="Support agent" style="grid-row:2;grid-column:5"><b>4</b>Gets the outcome</div>
-          <div class="rl-step" data-s="4" data-lane="Merchant" style="grid-row:1;grid-column:6"><b>5</b>Hears back</div>
-          <svg class="rl-path" aria-hidden="true"><path class="base"/><path class="run"/></svg>
-          <span class="rl-dot" aria-hidden="true"></span>
-        </div>
-        <div class="rl-msg">
-          <span class="rl-k">What the merchant said</span>
-          <span class="rl-chip">Parcel NV…3940</span><span class="rl-chip">Box arrived wet and torn</span><span class="rl-chip">Photos attached</span><span class="rl-chip">Wants a refund</span>
-        </div>
-        <p class="rl-heard"><span class="rl-k">What the merchant heard back</span>"Your case is under investigation."</p>
-      </div>
-      <p class="an-note">The path we mapped, simplified. Watch what the merchant actually hears at the end.</p>
     </div>
   </section>
 
@@ -574,7 +554,6 @@
     <header class="sh"><span class="no">02</span><h2>Mapping the whole ecosystem</h2></header>
     <div class="sb">
       <p class="big-p">Fix it for merchants alone, and the problem just moves over to the agents.</p>
-      <p>I interviewed 59 merchants, agents and resolution staff across Southeast Asia, backed by an agent usability (SUS) survey and a merchant Customer Effort Score (CES) survey. Then I prioritised themes by case volume and response time.</p>
       <div class="card" style="padding:0">
         <div class="label" style="border-bottom:1px solid var(--rule)"><span>Who I interviewed</span><span>59 people · SEA</span></div>
         <div class="bars">
@@ -590,7 +569,6 @@
     <header class="sh"><span class="no">03</span><h2>Issues live where orders live</h2></header>
     <div class="sb">
       <p class="big-p">A late pickup only came to light once a merchant chased it.</p>
-      <p>The place you book a pickup is now the place you chase it. Merchants raise issues in the portal they already use, in the order agents need the details. Late pickups and deliveries open a case on their own, covering 70% of logging for those issues.</p>
       <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
         <span class="demo-tag">Live component</span>
         <div class="scene nv" data-scene="nv" aria-label="Ninja Van shipper portal with issues opening automatically">
@@ -613,36 +591,27 @@
     </div>
   </section>
 
-  <section class="panel sec">
-    <header class="sh"><span class="no">04</span><h2>A bad score reopens the case</h2></header>
-    <div class="sb">
-      <p class="big-p">Rating the experience used to mean picking up a cold call.</p>
-      <p>Now the Customer Effort Score survey sits one tap from every case, in the portal and in new branded emails. If the score is low, the merchant can reopen the case right there.</p>
-      <div class="trio">
-        <div class="tile"><span class="tile-k">Before</span><b>Cold calls and email</b><p>Generic text-only emails, with no way to leave a score.</p></div>
-        <div class="tile"><span class="tile-k">After</span><b>Next to the case</b><p>One tap to rate, from the portal or any email.</p></div>
-        <div class="tile"><span class="tile-k">Closing the loop</span><b>A low score reopens it</b><p>Merchants can question an outcome without starting over.</p></div>
-      </div>
-      <figure class="shot emails">
-        <div class="em-row" role="img" aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button">
-          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
-          <div class="em"><span class="em-logo"><svg viewBox="10 57.5 48 63" aria-hidden="true"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"/><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"/></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br>30 Jalan Kilang Barat 159363<br><u>www.ninjavan.co</u></div></div>
-        </div>
-        <figcaption><b>From plain text to on-brand emails.</b> Each case type gets its own branded template, ending in a one-tap rating that keeps the recovery journey going.</figcaption></figure>
-      <div class="result"><b>Designing both sides of the service.</b><p>I also designed the Salesforce CRM screens agents used to log and manage cases. Service recovery only works when both sides are looked after.</p></div>
-    </div>
-  </section>
 
   <section class="panel sec">
     <header class="sh"><span class="no">+</span><h2>Also at Ninja Van: nine libraries into one</h2></header>
     <div class="sb">
       <p class="big-p">Product teams were building their own components faster than anyone could keep track.</p>
-      <p>With two other designers, I audited all 27 products, found the components that had been rebuilt again and again, and rebuilt them once in a single library. Every component got proper documentation (anatomy, states, behaviour, dos and don'ts), and we worked with engineers to ship tested code for React, Flutter and Kotlin.</p>
       <div class="callouts three">
         <div><b data-n="27">27</b><span>products audited across the portfolio</span></div>
         <div><b data-n="9">9</b><span>design libraries merged into one</span></div>
         <div><b data-n="70%">70%</b><span>of implementation had relied on locally customised code</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>The full story</h2></header>
+    <div class="sb">
+      <p class="big-p">This is the short version.</p>
+      <p>The full case, with the thinking behind each decision, is in my case book. I'd be happy to send it over or walk you through it.</p>
+      <div class="more-list"><span class="more-k">Also in the case book</span><ul><li>A bad score reopens the case</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=Case%20book%20request">Ask for the case book</a></div>
     </div>
   </section>
 

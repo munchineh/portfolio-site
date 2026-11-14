@@ -473,20 +473,11 @@
     <p>A live agent service for big orders, extended with AI so it reaches every market.</p>
   </section>
 
-  <section class="panel sec">
-    <header class="sh"><span class="no">1.1</span><h2>Scaling a personal trading desk</h2></header>
-    <div class="sb">
-      <p class="big-p">Big orders were paying a worse rate than they needed to.</p>
-      <p>Simple Buy locks in a quote in seconds, but at a worse rate than spot. On large orders, that gets expensive.</p>
-      <p>Live agents already offered some users a better rate over chat. It worked beautifully, but a small team can only be in so many markets at once.</p>
-    </div>
-  </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">1.2</span><h2>A personal desk for big trades</h2></header>
+    <header class="sh"><span class="no">1.1</span><h2>A personal desk for big trades</h2></header>
     <div class="sb">
       <p class="big-p">Outside the markets our agents covered, big orders still went through at the Simple Buy rate.</p>
-      <p>Above 50,000 USD, the assistant steps in with a better rate. Orders that size carry slippage risk and usually come from high-value customers, so they get the personal service our agents in Greater China built, in every market.</p>
       <div class="phones" id="okPhones">
         <figure><div class="okp" data-k="1"><img src="assets/okx-500.jpg" alt="Simple Buy with 500 USD entered and nothing extra offered" width="600" height="1299" loading="lazy"></div><figcaption><b>500 USD</b>Nothing changes.</figcaption></figure>
         <figure><div class="okp" data-k="2"><img src="assets/okx-50k.jpg" alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" width="600" height="1299" loading="lazy"></div><figcaption><b>50,000 USD</b>A better rate is offered, with a large order quote button.</figcaption></figure>
@@ -496,7 +487,7 @@
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">1.3</span><h2>Designing the system prompt</h2></header>
+    <header class="sh"><span class="no">1.2</span><h2>Designing the system prompt</h2></header>
     <div class="sb">
       <p class="big-p">When it comes to finance, there's no room for error.</p>
       <p>I built it in five layers, from persona down to guardrails and worked examples. Each layer answers a question the model would otherwise guess at.</p>
@@ -515,7 +506,6 @@
             <pre class="pi-code"><b>Role:</b> Senior trading consultant
 <b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
 <b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
-            <p class="pi-why">Without a persona, a model falls back to a generic assistant voice. That sounds unsure at exactly the moment someone is moving a lot of money.</p>
             <div class="pi-tags"><span>Persona</span><span>Tone of voice</span></div>
           </div>
           <div class="pi-p" role="tabpanel" id="pp2" aria-labelledby="pt2" hidden>
@@ -525,7 +515,6 @@ Plain English. "Shall I lock in a preferential rate for you now?"
 
 <b>Expert state</b> (user says "bps", "fill or kill")
 Switch to trading vernacular. Treat them as a peer.</pre>
-            <p class="pi-why">The assistant mirrors the user's own vocabulary. Beginners don't get buried in jargon, and experienced traders don't get talked down to.</p>
             <div class="pi-tags"><span>Mirroring</span><span>Register switching</span></div>
           </div>
           <div class="pi-p" role="tabpanel" id="pp3" aria-labelledby="pt3" hidden>
@@ -534,14 +523,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
 <b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
 <b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
-            <p class="pi-why">This is the safety layer. It keeps the assistant inside what the product can actually execute, and stops a confident guess from turning into a costly trade.</p>
             <div class="pi-tags"><span>Guardrails</span><span>Intent disambiguation</span><span>Slot filling</span></div>
           </div>
           <div class="pi-p" role="tabpanel" id="pp4" aria-labelledby="pt4" hidden>
             <p class="pi-q">What happens off the happy path?</p>
             <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
 <b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
-            <p class="pi-why">Models are weakest with emotion. This override changes the assistant's whole register in a service recovery moment, so it helps first and sounds polished second.</p>
             <div class="pi-tags"><span>Edge cases</span><span>Fallback behaviour</span></div>
           </div>
           <div class="pi-p" role="tabpanel" id="pp5" aria-labelledby="pt5" hidden>
@@ -551,7 +538,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
               <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
               <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
             </div>
-            <p class="pi-why">Few-shot examples give the model ground truth to copy before it meets a real user. One per persona, so every layer above has a worked example.</p>
             <div class="pi-tags"><span>Few-shot prompting</span><span>Calibration</span></div>
           </div>
         </div>
@@ -560,10 +546,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">1.4</span><h2>A human touch where it counts</h2></header>
+    <header class="sh"><span class="no">1.3</span><h2>A human touch where it counts</h2></header>
     <div class="sb">
       <p class="big-p">Some lines matter too much to leave to a model.</p>
-      <p>I mapped every touchpoint to decide which. The moments right before a large trade got hand-written copy. Everything after that, the model handles within its guardrails.</p>
       <div class="demo" id="demo">
         <span class="demo-tag">Live component</span>
         <div class="scene okx" aria-label="The assistant confirms the order, then a quote card arrives with a countdown">
@@ -596,20 +581,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">1.5</span><h2>Then I tried to break it</h2></header>
+    <header class="sh"><span class="no">1.4</span><h2>Then I tried to break it</h2></header>
     <div class="sb">
       <p class="big-p">A model that handles the standard questions can still slip on the odd ones.</p>
       <p>First a benchmark against a standard set of queries, then red-teaming to find the cracks. The red-teaming taught me more. Three rounds of prompt changes later, it held.</p>
-      <div class="tbl-wrap">
-        <table class="tests">
-          <thead><tr><th scope="col">What I saw</th><th scope="col">What changed</th><th scope="col">Result</th></tr></thead>
-          <tbody>
-            <tr><td>It kept calling large orders "massive", which makes people nervous.</td><td>Alarmist adjectives banned. It now mirrors the user's own register.</td><td>Consistent persona</td></tr>
-            <tr><td>Vague amounts slipped through. "$50k", no currency.</td><td>The no-assumptions rule became a hard stop: USD, SGD or USDT?</td><td>Always asks</td></tr>
-            <tr><td>It offered order types we hadn't built, like limit orders.</td><td>What it can execute is hard-coded. Anything else gets a polite redirect to a quote.</td><td>Market orders only</td></tr>
-          </tbody>
-        </table>
-      </div>
       <div class="callouts">
         <div><b data-n="100%">100%</b><span>persona consistency through benchmarking, high-value requests included</span></div>
         <div><b data-n="100%">100%</b><span>of generic amounts triggered the currency question</span></div>
@@ -628,8 +603,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <header class="sh"><span class="no">2.1</span><h2>Credibility you can see</h2></header>
     <div class="sb">
       <p class="big-p">In a crypto feed, everyone sounds like an expert.</p>
-      <p>To grow Orbit's social side, we leaned on social network theory and targeted high-value users as key influencers, called Orbiters. Their posts, groups and shared trades drive engagement for everyone else. I designed onboarding, the feed and both profile types.</p>
-      <p>To become an Orbiter, you need a minimum trading volume and balance, so every Orbiter has a real OKX track record behind them. Their profile opens with that record, and the upgrade pitch leads with perks like trade commission.</p>
       <div class="phones four">
         <figure><div class="orb" data-o="follow"><img src="assets/orbit-follow.jpg" alt="Onboarding screen: Follow top Orbiters, with two selected" width="600" height="1299" loading="lazy"></div><figcaption><b>Onboarding</b>Start with people worth following.</figcaption></figure>
         <figure><img src="assets/orbit-feed.jpg" alt="The Orbit feed with posts tagged to the coins they discuss" width="600" height="1299" loading="lazy"><figcaption><b>The feed</b>Posts carry the coin they're about.</figcaption></figure>
@@ -647,33 +620,11 @@ Switch to trading vernacular. Treat them as a peer.</pre>
     <p>Every year end, OKX runs a growth campaign that looks back on each user's year of trading. In 2024 it was <b>Crypto Rewind</b>, your year played back in three parts.</p>
   </section>
 
-  <section class="panel sec">
-    <header class="sh"><span class="no">3.1</span><h2>Auditing the last two campaigns</h2></header>
-    <div class="sb">
-      <p class="big-p">People liked seeing their own data. They just didn't finish, and they didn't share.</p>
-      <p>I audited the 2022 and 2023 campaigns and user feedback, and interviewed the teams behind them. Three problems kept coming up.</p>
-      <div class="trio">
-        <div class="tile"><span class="tile-k">Drop-off</span><b>Too many numbers</b><p>Page after page of figures got repetitive, and people left halfway.</p></div>
-        <div class="tile"><span class="tile-k">Sharing</span><b>Too personal</b><p>Many didn't want their trading performance on social media.</p></div>
-        <div class="tile"><span class="tile-k">Process</span><b>Late changes</b><p>Legal and Marketing feedback landed late, so copy churned until launch.</p></div>
-      </div>
-    </div>
-  </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">3.2</span><h2>A trip through your trading year</h2></header>
+    <header class="sh"><span class="no">3.1</span><h2>A trip through your trading year</h2></header>
     <div class="sb">
       <p class="big-p">Page after page of figures lost people halfway.</p>
-      <p>We framed the whole year as a trip through space. Rewind plays back like a playlist in three parts. One brief got Legal, Marketing, writers and translators aligned before anyone wrote a line.</p>
-      <div class="card" style="max-width:560px">
-        <span class="tile-k">Rewind in three parts</span>
-        <ol class="layers" style="margin-top:0">
-          <li style="grid-template-columns:28px 1fr"><span class="n">01</span><b>Assets overview</b></li>
-          <li style="grid-template-columns:28px 1fr"><span class="n">02</span><b>How you traded</b></li>
-          <li style="grid-template-columns:28px 1fr"><span class="n">03</span><b>Your trader persona</b></li>
-        </ol>
-      </div>
-      <p>Good years are "out of this world". Hard years get "You're only getting ready for your next takeoff", honest without rubbing it in.</p>
       <div class="phones">
         <figure><img src="assets/cr-open.jpg" alt="Part 1 of 3: Let's rewind back to your opening track" width="600" height="1299" loading="lazy"><figcaption><b>The opening</b>Part 1 of 3, like a playlist.</figcaption></figure>
         <figure><img src="assets/cr-earn.jpg" alt="Your earnings were out of this world. A profit of 21,887 USDT" width="600" height="1299" loading="lazy"><figcaption><b>A good year</b>"Talk about astronomical."</figcaption></figure>
@@ -683,10 +634,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
   </section>
 
   <section class="panel sec">
-    <header class="sh"><span class="no">3.3</span><h2>Safe to share</h2></header>
+    <header class="sh"><span class="no">3.2</span><h2>Safe to share</h2></header>
     <div class="sb">
       <p class="big-p">Many people didn't want their trading performance on social media.</p>
-      <p>So the last screen was made to leave the app. Your trader persona has a rarity tag and no balances, so it's safe to post. One tap shares it to Telegram, WhatsApp or X, and a QR code invites friends to play their own.</p>
       <div class="phones two">
         <figure><div class="crs" id="crShare" data-prev="cr-persona.jpg"><img src="assets/cr-share.jpg" alt="Share your Crypto Rewind: a sample user, Jamie, is a Crypto Comet, with a Rare tag" width="600" height="1301" loading="lazy"></div><figcaption><b>The share sheet</b>The last stop in Rewind.</figcaption></figure>
         <div class="card" style="align-self:start">
@@ -709,6 +659,17 @@ Switch to trading vernacular. Treat them as a peer.</pre>
         <p class="gva-note"><i></i>Goal line. Every goal was set against the year before, adjusted for user growth.</p>
       </div>
       <p>I also worked on the 2025 edition, which won a Red Dot award in 2026.</p>
+    </div>
+  </section>
+
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>The full story</h2></header>
+    <div class="sb">
+      <p class="big-p">This is the short version.</p>
+      <p>The full case, with the thinking behind each decision, is in my case book. I'd be happy to send it over or walk you through it.</p>
+      <div class="more-list"><span class="more-k">Also in the case book</span><ul><li>Scaling a personal trading desk</li><li>Auditing the last two campaigns</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=Case%20book%20request">Ask for the case book</a></div>
     </div>
   </section>
 

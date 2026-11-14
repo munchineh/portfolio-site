@@ -154,7 +154,7 @@ d.section('buildlr', 'Buildlr: a pre-construction SaaS, from tablet quotes to ph
 case_hero(d, 'bl-title', 'Case 05 · Construction tech', 'Simplifying operational tools',
            'A pre-construction SaaS for the German market, built from zero, covering quotes, task management, Gantt scheduling and more. One of its key designs is a very deep quote form, made for consultants on a tablet beside their client and contractors on a phone with one hand free.',
            [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Tools', 'Figma'), ('Scope', 'SaaS, complex forms, scheduling, IA, design system')],
-           [('140', 'final screens, designed from zero in eight months'), ('167', 'components across 25 sets, in light and dark')],
+           [('167', 'components across 25 sets'), ('2', 'products on one system, in light and dark')],
            hero_img(A, 'm-h-bl', 'Tasks switched on as rows in a new quote'), None, note='One designer, from discovery to launch.')
 side(d, 'bl-days', [('eyebrow', '01'), ('h2', 'From kitchen table to building site'), ('st', 'Two very different jobs run on the same five-tier quote.'),
       ('p', "Consultants sit down with homeowners, usually with a tablet, and build the quote room by room as they talk. Once it's signed, contractors pick up that same quote on their phones to see what's next and log their hours. Every quote runs five tiers deep, from project to room, section, category, task and sub-task, and each carries its own quantities and prices."),

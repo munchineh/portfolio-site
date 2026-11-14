@@ -356,123 +356,14 @@
 <div class="sb">
 <p class="big-p">좋은 한국어 팟캐스트와 쉐도잉 앱은 많아요. 그런데 서강 교재 진도를 따라가는 건 없었어요.</p>
 <p>플래시카드는 한 번에 한 문장뿐이고, NotebookLM은 교재에 없는 어휘까지 섞어 원어민 속도로 즉흥 대화를 만들었어요. 그래서 직접 만들었어요.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">교재 그대로</span><b>교재에 있는 것만</b><p>모든 단어와 문법은 서강 2·3·4급 교재에서 가져와요.</p></div>
-<div class="tile"><span class="tile-k">실감 나게</span><b>드라마처럼, 따라갈 수 있는 속도로</b><p>실제 상황을, 따라 말할 수 있을 만큼 천천히 읽어요.</p></div>
-<div class="tile"><span class="tile-k">링크로 공유</span><b>반 친구들도 함께</b><p>자막은 각자의 언어로. 설치도 계정도 필요 없어요.</p></div>
-</div>
 </div>
 </section>
 <!-- ============ 02 ============ -->
-<section class="panel sec" id="anki">
-<header class="sh"><span class="no">02</span><h2>AI 보이스 디자인, 카드 4,000+장으로 검증</h2></header>
-<div class="sb">
-<p class="big-p">기본 설정 그대로면 AI 보이스는 플래시카드를 듣기 평가처럼 읽어요.</p>
-<p>먼저 ElevenLabs로 플래시카드 4,000+장에 목소리를 입히고, 사람처럼 들릴 때까지 다듬었어요.</p>
-<div class="cardrow">
-<div aria-label="The back of one of my Anki cards" class="ankim" lang="ko">
-<span class="a-chip">4B.3 읽고 말하기 1</span>
-<div class="a-lbl">Word / Phrase</div>
-<div class="a-focus">조만간</div>
-<hr/>
-<div class="a-lbl">Meaning</div>
-<div class="a-def" lang="en">Before long, one of these days, soon</div>
-<div class="a-lbl">Example</div>
-<div class="a-sent"><b>조만간</b> 밥 한번 먹자! 진짜로, 빈말 아니야.</div>
-<div class="a-lbl">Translation</div>
-<div class="a-tr" lang="en">Let's grab a meal soon! For real, I'm not just saying it.</div>
-<button aria-label="Play the card's audio" class="a-play" id="ankiPlay" type="button"><span class="tri"></span><span aria-hidden="true" class="eq"><i></i><i></i><i></i></span><span class="pbl" lang="en">Play audio</span></button>
-<audio id="ankiAudio" preload="none" src="../assets/anki-sample.mp3"></audio>
-<div class="a-panel">
-<div class="a-lbl">Hanja</div>
-<p class="a-hanja">早晚間<br/><span lang="zh-Hans">早晚间</span> zǎowǎnjiān · <span lang="en">Chinese says</span> <span lang="zh-Hans">不久</span> bùjiǔ</p>
-</div>
-<div class="a-panel">
-<div class="a-lbl">Notes</div>
-<p>vs 곧: <span lang="en">곧 is soon with a clear near time (곧 도착해요); 조만간 is a vaguer "one of these days".</span></p>
-<p>조만간 한번 보자 = <span lang="en">let's meet up soon</span> · 조만간 연락할게 = <span lang="en">I'll be in touch soon</span></p>
-</div>
-</div>
-<ol class="cardnotes">
-<li><div><b>탭해서 들어보기</b><p>"cheerful, casual"로 디렉팅한 실제 카드 오디오예요.</p></div></li>
-<li><div><b>예문 속 단어에 하이라이트</b><p>사람들이 실제로 말하는 문장 속에서 보여 줘요.</p></div></li>
-<li><div><b>엄지로 누르기 쉬운 재생 버튼</b><p>Anki의 작은 아이콘 대신, 가로로 꽉 찬 재생 바.</p></div></li>
-<li><div><b>한자, 중국어와 연결</b><p>원래 한자에 간체와 병음까지.</p></div></li>
-<li><div><b>비교해 주는 노트</b><p>헷갈리기 쉬운 단어와 자주 같이 쓰는 표현.</p></div></li>
-</ol>
-</div>
-<ol class="fixes">
-<li>
-<div class="was"><small>문제</small><b>모든 문장이 듣기 평가 같았어요</b><p>깔끔한데, 생기가 없었어요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>말투에 맞춰 목소리 캐스팅</b><p>반말엔 젊은 목소리, 합쇼체엔 나이 든 목소리. 대사마다 연기 디렉션을 붙였어요.</p></div>
-</li>
-<li>
-<div class="was"><small>문제</small><b>음운 변동을 잘못 읽었어요</b><p><span lang="ko">똑바로</span>를 <span lang="ko">똑까로</span>로 읽었어요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>보이스에겐 발음대로 써 주기</b><p>보이스는 <span lang="ko">똑빠로</span>를 받고, 카드에는 원래 철자가 그대로 남아요.</p></div>
-</li>
-<li>
-<div class="was"><small>문제</small><b>단어를 두 번 읽고, 디렉션까지 소리 내 읽었어요</b><p>귀로는 놓치기 쉬워요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>모든 클립을 음성 인식(STT)으로 자동 검수</b><p>카드와 맞지 않는 클립은 자동으로 다시 녹음돼요.</p></div>
-</li>
-</ol>
-<p>긴 오디오는 ElevenLabs 크레딧이 석 달 치 정도 들어서, 팟캐스트는 Gemini 무료 티어로 옮겼어요.</p>
-</div>
-</section>
-<!-- ============ 03 ============ -->
-<section class="panel sec" id="scripts">
-<header class="sh"><span class="no">03</span><h2>콘텐츠 디자인: 교재에서 실생활로</h2></header>
-<div class="sb">
-<p class="big-p">교재 속 대화는 깔끔해요. 진짜 대화는 그렇지 않죠.</p>
-<p>카드마다 사람들이 실제로 그 말을 할 법한 장면을 만들고, 말투는 관계에 맞췄어요.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">끼어들기</span><b>서로 말이 겹쳐요</b><p>실제 대화처럼, 말을 자를 땐 살짝 먼저 끼어들어요.</p></div>
-<div class="tile"><span class="tile-k">소음</span><b>모든 곳이 조용하진 않아요</b><p>식당의 웅성거림과 여러 배경음.</p></div>
-<div class="tile"><span class="tile-k">감정</span><b>신나고, 지치고, 웅얼대고</b><p>웃음, 한숨, 흐려지는 말끝.</p></div>
-</div>
-<div aria-label="에피소드의 세 파트를 2화 대사 비중에 맞춰 크기로 나타낸 그림" class="parts">
-<div aria-hidden="true" class="bar"><span>장면</span><span>해설</span><span>복습</span></div>
-<ol>
-<li><b>장면</b><p>호스트들이 상황을 연기해요.</p></li>
-<li><b>해설</b><p>핵심 대사를 쉬운 한국어로 설명해요.</p></li>
-<li><b>복습</b><p>짧게 한 번 더 훑어요.</p></li>
-</ol>
-<p class="foot">2화 대사 수 기준, 대략적인 비율이에요.</p>
-</div>
-<div class="callouts">
-<div><b data-n="89">89</b><span>2·3·4급에 걸친 에피소드</span></div>
-<div><b data-n="3,000+">3,000+</b><span>장면 속에 녹여 낸 카드</span></div>
-</div>
-</div>
-</section>
-<!-- ============ 04 ============ -->
 <section class="panel sec" id="voicing">
-<header class="sh"><span class="no">04</span><h2>여러 AI 모델 오케스트레이션</h2></header>
+<header class="sh"><span class="no">02</span><h2>여러 AI 모델 오케스트레이션</h2></header>
 <div class="sb">
 <p class="big-p">대본 쓰기, 녹음, 검수를 한 모델이 다 잘하거나 싸게 해내진 못했어요.</p>
 <p>그래서 일마다 가장 잘하거나, 가장 저렴한 모델에 맡겼어요.</p>
-<div aria-label="이 프로젝트에서 ElevenLabs와 Gemini 3.8을 비교한 표" class="vs" role="table">
-<div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">ElevenLabs v4</span><span role="columnheader">Gemini 3.8 TTS</span></div>
-<div class="vs-row" role="row"><span role="rowheader">비용</span><span role="cell">글자 수 과금, 크레딧 석 달 치 정도</span><span class="win" role="cell">무료, 하루 요청 10회</span></div>
-<div class="vs-row" role="row"><span role="rowheader">대화</span><span role="cell">한 번에 한 줄</span><span class="win" role="cell">장면 전체를 한 번에 읽어서, 주고받는 말이 자연스러워요</span></div>
-<div class="vs-row" role="row"><span role="rowheader">한국어 디테일</span><span class="win" role="cell">매우 안정적</span><span role="cell">좋지만, 긴 테이크에선 가끔 실수</span></div>
-<div class="vs-row" role="row"><span role="rowheader">목소리</span><span class="win" role="cell">방대한 라이브러리</span><span role="cell">요청당 두 명, 목소리가 흔들릴 수 있음</span></div>
-<div class="vs-row" role="row"><span role="rowheader">강점</span><span role="cell">짧은 카드 문장과 효과음</span><span role="cell">긴 2인 에피소드</span></div>
-</div>
-<p>Gemini의 제한마다 우회책을 만들었어요. 조연 목소리는 따로 이어 붙이고, 목소리 흔들림을 체크하고, 무료 할당량에 맞춰 작업을 예약했어요.</p>
-<div class="flow" id="flow">
-<ol>
-<li><b>준비</b><p>까다로운 발음과 숫자를 소리 나는 대로 고쳐 써요.</p><span class="who">규칙 + Claude</span></li>
-<li><b>음성 생성</b><p>장면 단위로, 화자 두 명, 에피소드마다 다른 캐스트.</p><span class="who">Gemini 3.8 TTS</span></li>
-<li><b>검수</b><p>음절마다 타이밍을 재고, 다른 목소리로 읽은 대사는 다시 만들어요.</p><span class="who">음성 인식</span></li>
-<li><b>이어 붙이기</b><p>조연 목소리를 이어 붙이고, 끼어드는 대사는 겹쳐요.</p><span class="who">오디오 툴</span></li>
-<li><b>마무리</b><p>배경음과 징글을 넣고, 자동으로 배포해요.</p><span class="who">ElevenLabs</span></li>
-</ol>
-<div aria-hidden="true" class="prog"><i id="flowProg"></i></div>
-<p class="note">모든 변경은 짧은 샘플로 먼저 테스트해요.</p>
-</div>
 <div aria-label="프로젝트에 쓴 툴과 각각의 역할" class="kit">
 <div><b>Claude</b><span>대본, 플레이어, 파이프라인, 매일 하는 발음 검토</span></div>
 <div><b>Gemini 3.8 TTS</b><span>에피소드 음성, 무료</span></div>
@@ -487,71 +378,11 @@
 </div>
 </div>
 </section>
-<!-- ============ 05 ============ -->
-<section class="panel sec" id="cast">
-<header class="sh"><span class="no">05</span><h2>AI 보이스 디자인: 인물마다 다른 목소리</h2></header>
-<div class="sb">
-<p class="big-p">Gemini는 요청 한 번에 목소리 두 개만 담을 수 있어요. 그런데 제 장면에는 할머니, 할아버지, 부산 택시 기사님, 도쿄에서 온 바이어까지 나와요.</p>
-<p>그래서 인물마다 자기 목소리를 주고, 세 급 내내 같은 목소리를 유지했어요.</p>
-<ol class="fixes">
-<li>
-<div class="was"><small>문제</small><b>어르신이 서른 살처럼 들렸어요</b><p>Gemini 목소리는 대체로 젊게 들려요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>먼저 목소리 나이를 올려요</b><p>포먼트, 음높이, 속도를 살짝만 바꿔도 목소리가 나이 들어 보여요. 그걸로 부족할 때만 ElevenLabs를 써요.</p></div>
-</li>
-<li>
-<div class="was"><small>문제</small><b>사투리와 억양이 사라졌어요</b><p>ElevenLabs Multilingual v2는 억양을 살렸지만, 대사가 밋밋했어요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>억양을 목소리 설계에 담아요</b><p>Gemini의 디자인 보이스는 프롬프트에서 억양을 가져와요. 부산, 전라도, 경주, 도쿄, 하노이, 멜버른까지요.</p></div>
-</li>
-<li>
-<div class="was"><small>문제</small><b>짧은 대답이 혼자 읽는 것처럼 들렸어요</b><p>시큰둥한 <span lang="ko">그건 인정.</span>이 매번 밋밋하게 나왔어요.</p></div>
-<span aria-hidden="true" class="arr"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-<div class="fix"><small>해결</small><b>대화를 통째로 녹음해요</b><p>그다음 대답만 남겨요. 그래야 진짜 대답처럼 들려요.</p></div>
-</li>
-</ol>
-<p>새 목소리는 에피소드를 녹음하기 전에 꼭 테스트 대사로 먼저 들어봐요.</p>
-</div>
-</section>
-<!-- ============ 06 ============ -->
-<section class="panel sec" id="pronunciation">
-<header class="sh"><span class="no">06</span><h2>한국어 발음 QA</h2></header>
-<div class="sb">
-<p class="big-p">한국어는 쓰는 대로 읽지 않아요. AI 보이스는 가끔 철자대로 읽어요.</p>
-<p>어느 언어나 그래요. 영어에서도 handbag이 hambag처럼 들려요.</p>
-<div class="said">
-<div><small>비음화</small><div class="pair"><span class="w" lang="ko">국물</span><span class="ar">실제 발음</span><span class="s" lang="ko">궁물</span></div><p>ㅁ 앞에서 ㄱ이 ㅇ으로 부드러워져요.</p></div>
-<div><small>구개음화</small><div class="pair"><span class="w" lang="ko">같이</span><span class="ar">실제 발음</span><span class="s" lang="ko">가치</span></div><p>ㅌ이 이 앞에서 ㅊ으로 바뀌어요. 영어 gotcha처럼요.</p></div>
-<div><small>경음화</small><div class="pair"><span class="w" lang="ko">똑바로</span><span class="ar">실제 발음</span><span class="s" lang="ko">똑빠로</span></div><p>ㄱ 뒤에서 ㅂ이 ㅃ으로 세게 나요.</p></div>
-</div>
-<ol class="tries">
-<li><div><b>보이스에겐 발음대로 써 주기</b><p>음성을 만들기 전에 규칙이 문장을 소리 나는 대로 고쳐 써요. 학습자에겐 원래 철자가 보여요.</p></div></li>
-<li><div><b>QA의 빈틈 찾기</b><p>음성 인식은 소리 대신 철자를 확인해요. 그래서 발음은 따로 검수해야 했어요.</p></div></li>
-<li><div><b>세 가지 방식으로 테스트</b><p>같은 문장, 철자 세 가지, 엔진 두 개. 모두 비슷하게 들렸어요. 모델이 규칙을 대부분 알고 있다는 뜻이죠.</p></div></li>
-<li><div><b>남은 실수 잡기</b><p>실수는 긴 테이크에서 <span lang="ko">고객 문의</span>처럼 단어 사이 경계에서 났어요. 이제 위험한 구절은 붙여 쓰고, 숫자는 한글로 풀어 쓰고, 음성을 만들기 전에 Claude가 대본을 하나하나 검토해요.</p></div></li>
-</ol>
-<div class="result"><b>카드와 팟캐스트가 발음 툴 하나를 함께 써요. 다시 녹음하는 비용은 0원이에요.</b></div>
-</div>
-</section>
-<!-- ============ 07 ============ -->
-<section class="panel sec" id="review">
-<header class="sh"><span class="no">07</span><h2>리뷰 운영: 시트 하나, 막힌 것부터</h2></header>
-<div class="sb">
-<p class="big-p">3급에 이르자 제가 검토할 항목이 페이지 세 곳에 흩어져 있었어요.</p>
-<p>이걸 시트 하나로 모으고, 결정이 필요한 날짜순으로 정렬했어요. 에피소드 녹음을 막는 항목은 빨간색으로 표시되고 맨 위로 올라와요.</p>
-<div class="grid3">
-<div class="tile"><span class="tile-k">집중</span><b>저는 오디오만 검토해요</b><p>대본 메모는 Claude가 정리해요. 저는 귀로 판단할 것만 봐요.</p></div>
-<div class="tile"><span class="tile-k">결정</span><b>목소리마다 세 가지 답</b><p>Pass면 Gemini 목소리를 그대로 써요. Fail이면 제가 ElevenLabs 목소리를 골라요. Depends면 Gemini에 디렉션을 한 번 더 줘요.</p></div>
-<div class="tile"><span class="tile-k">검사</span><b>대사마다 성문 확인</b><p>다른 목소리로 읽은 대사를 표시해요. 첫 실행에서 20편 중 11개 대사를 잡아냈어요.</p></div>
-</div>
-</div>
-</section>
-<!-- ============ 08 ============ -->
+<!-- ============ 03 ============ -->
 <section class="panel sec" id="player">
-<header class="sh"><span class="no">08</span><h2>쉐도잉을 위해 설계한 UX</h2></header>
+<header class="sh"><span class="no">03</span><h2>쉐도잉을 위해 설계한 UX</h2></header>
 <div class="sb">
 <p class="big-p">쉐도잉은 같은 대사를 몇 번이고 다시 들어야 하는데, 매번 되감기는 금방 지쳐요.</p>
-<p>음절 하나하나 따라가다가, 그 대사를 다시 듣고 따라 말해요. 문법은 보라색, 어휘는 점선. 탭하면 전체 카드가 열려요.</p>
 <div class="phones">
 <figure><img alt="한국어 제목, 요약, 재생 시간이 보이는 에피소드 목록" height="1558" loading="lazy" src="../assets/pod-list-ko.jpg" width="720"/><figcaption><b>상황 고르기</b>에피소드마다 일상이나 회사의 한 장면이에요.</figcaption></figure>
 <figure><img alt="지금 나오는 대사가 카드처럼 떠오르고, 대사마다 아래에 영어 자막이 붙은 재생 화면" height="1558" loading="lazy" src="../assets/pod-play.jpg" width="720"/><figcaption><b>따라 읽기</b>지금 말하는 대사가 떠오르고, 아래에 자막이 나와요.</figcaption></figure>
@@ -564,9 +395,23 @@
 </div>
 </div>
 </section>
-<!-- ============ 09 ============ -->
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="screens">
+    <header class="sh"><span class="no">04</span><h2>반응형 PWA 디자인, 폰부터 와이드스크린까지</h2></header>
+    <div class="sb">
+      <p class="big-p">공부 앱은 그때그때 가까이 있는 화면에서 열게 돼요. 지하철에서는 폰, 소파에서는 폴더블, 책상에서는 모니터로요.</p>
+      <div class="sizes">
+        <figure><img src="../assets/pod-size-fold-ko.jpg" alt="펼친 폴더블에서 본 Sogang Podcasts. 왼쪽 절반은 에피소드 목록, 오른쪽 절반은 대본" width="1400" height="1058" loading="lazy"><figcaption><b>폴더블</b>iPhone Duo나 Galaxy Z Fold를 펼치면 화면 절반마다 패널이 하나씩 들어가요. 에피소드 목록 옆에 대본, 또는 대본 옆에 문법과 어휘가 나란히 보여요.</figcaption></figure>
+        <figure><img src="../assets/pod-size-desktop-ko.jpg" alt="데스크톱에서 본 Sogang Podcasts. 왼쪽 패널은 에피소드 목록, 오른쪽은 대본" width="1800" height="1125" loading="lazy"><figcaption><b>태블릿과 데스크톱</b>1024px부터는 에피소드 목록이 왼쪽에 고정되고, 대본은 오른쪽에서 스크롤돼요. 카드는 옆에서 떠올라요.</figcaption></figure>
+        <figure class="full"><img src="../assets/pod-size-wide-ko.jpg" alt="와이드스크린에서 본 Sogang Podcasts. 에피소드, 대본, 문법과 어휘까지 패널 세 개" width="2200" height="1238" loading="lazy"><figcaption><b>와이드스크린</b>1600px부터는 세 번째 패널에 문법과 어휘 목록이 들어가요. 카드를 그 자리에서 열어도 오디오는 계속 재생돼요.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 05 ============ -->
 <section class="panel sec" id="shared">
-<header class="sh"><span class="no">09</span><h2>11개 언어로 현지화</h2></header>
+<header class="sh"><span class="no">05</span><h2>11개 언어로 현지화</h2></header>
 <div class="sb">
 <p class="big-p">반 친구들은 세계 곳곳에서 왔는데, 영어 자막으로는 일부에게만 닿아요.</p>
 <div class="duo">
@@ -579,6 +424,17 @@
 </div>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>전체 이야기</h2></header>
+    <div class="sb">
+      <p class="big-p">여기까지는 요약본이에요.</p>
+      <p>결정마다 어떤 고민이 있었는지, 전체 사례는 케이스북에 담았어요. 메일 주시면 보내 드리고, 직접 설명드릴 수도 있어요.</p>
+      <div class="more-list"><span class="more-k">케이스북에 더 담긴 내용</span><ul><li>AI 보이스 디자인, 카드 4,000+장으로 검증</li><li>콘텐츠 디자인: 교재에서 실생활로</li><li>AI 보이스 디자인: 인물마다 다른 목소리</li><li>한국어 발음 QA</li><li>리뷰 운영: 시트 하나, 막힌 것부터</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=%EC%BC%80%EC%9D%B4%EC%8A%A4%EB%B6%81%20%EC%9A%94%EC%B2%AD">케이스북 요청</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

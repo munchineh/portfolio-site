@@ -459,18 +459,9 @@
 <p>为大额订单打造的真人客服服务，借助 AI 覆盖每个市场。</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.1 · 项目背景</span><h2>专属交易服务，规模化</h2></header>
-<div class="sb">
-<p class="big-p">大额订单，一直在多花冤枉钱</p>
-<p>Simple Buy 几秒就能锁定报价，但价格比现货差。订单一大，成本就高了。</p>
-<p>部分用户本来就有真人客服在聊天里给更优价格。效果很好，但小团队能同时顾及的市场有限。</p>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">1.2 · 设计目标</span><h2>大额交易，专属礼遇</h2></header>
+<header class="sh"><span class="no">1.1</span><h2>大额交易，专属礼遇</h2></header>
 <div class="sb">
 <p class="big-p">客服覆盖不到的市场，大额订单仍按 Simple Buy 价格成交</p>
-<p>超过 5 万美元，AI 助手就会出面，给出更优价格。这类订单有滑点风险，通常也来自高价值客户，所以享有专属服务和优惠价格。这项由大中华区客服团队定下标准的服务，由 AI 助手带到每个市场，团队则专注于需要真人的对话。</p>
 <div class="phones" id="okPhones">
 <figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>一切照旧。</figcaption></figure>
 <figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50,000 USD</b>提供更优价格，并显示大额订单报价按钮。</figcaption></figure>
@@ -479,7 +470,7 @@
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.3 · 提示词设计</span><h2>系统提示词，层层设防</h2></header>
+<header class="sh"><span class="no">1.2</span><h2>系统提示词，层层设防</h2></header>
 <div class="sb">
 <p class="big-p">事关金融，容不得半点差错</p>
 <p>我把系统提示词设计成五层，从人设到护栏，再到少样本示例。涉及用户的钱，编造的价格或误读的意图都不能有。</p>
@@ -498,7 +489,6 @@
 <pre class="pi-code"><b>Role:</b> Senior trading consultant
 <b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
 <b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
-<p class="pi-why">没有人设，模型就会退回千篇一律的通用助手腔。偏偏在别人要动一大笔钱的时候，这种语气听起来最没底气。</p>
 <div class="pi-tags"><span>人设</span><span>语气语调</span></div>
 </div>
 <div aria-labelledby="pt2" class="pi-p" hidden="" id="pp2" role="tabpanel">
@@ -508,7 +498,6 @@ Plain English. "Shall I lock in a preferential rate for you now?"
 
 <b>Expert state</b> (user says "bps", "fill or kill")
 Switch to trading vernacular. Treat them as a peer.</pre>
-<p class="pi-why">助手会沿用用户自己的说法。新手不会被术语淹没，老手也不会被当成小白。</p>
 <div class="pi-tags"><span>措辞镜像</span><span>语域切换</span></div>
 </div>
 <div aria-labelledby="pt3" class="pi-p" hidden="" id="pp3" role="tabpanel">
@@ -517,14 +506,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
 <b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
 <b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
-<p class="pi-why">这是安全层。它把助手限定在产品真正能执行的范围内，也防止一次自信的猜测变成一笔代价高昂的交易。</p>
 <div class="pi-tags"><span>护栏</span><span>意图消歧</span><span>槽位填充</span></div>
 </div>
 <div aria-labelledby="pt4" class="pi-p" hidden="" id="pp4" role="tabpanel">
 <p class="pi-q">偏离主流程时怎么办？</p>
 <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
 <b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
-<p class="pi-why">模型最不擅长应对情绪。在需要服务补救的时刻，这条覆盖规则会彻底切换助手的语域：先把忙帮上，再谈措辞体面。</p>
 <div class="pi-tags"><span>边界情况</span><span>兜底行为</span></div>
 </div>
 <div aria-labelledby="pt5" class="pi-p" hidden="" id="pp5" role="tabpanel">
@@ -534,7 +521,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
 <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
 </div>
-<p class="pi-why">少样本示例让模型在见到真实用户之前，先有标准答案可以照着学。每个人设配一个，上面的每一层都有现成的范例。</p>
 <div class="pi-tags"><span>少样本提示</span><span>校准</span></div>
 </div>
 </div>
@@ -542,10 +528,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.4 · 人机分工</span><h2>关键时刻，人来执笔</h2></header>
+<header class="sh"><span class="no">1.3</span><h2>关键时刻，人来执笔</h2></header>
 <div class="sb">
 <p class="big-p">有些话太关键，不能全交给模型</p>
-<p>我梳理了每个触点，逐一判断。欢迎语、意图确认和订单卡片由人工撰写，让大额交易前更安心；后续追问和改主意，则由模型在护栏内处理。</p>
 <div class="demo" id="demo">
 <span class="demo-tag">实时组件</span>
 <div aria-label="The assistant confirms the order, then a quote card arrives with a countdown" class="scene okx">
@@ -577,20 +562,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.5 · 测试验证</span><h2>上线之前，先自己拆台</h2></header>
+<header class="sh"><span class="no">1.4</span><h2>上线之前，先自己拆台</h2></header>
 <div class="sb">
 <p class="big-p">标准问题答得好，刁钻问题仍可能出错</p>
 <p>我先用标准问题集做基准测试，再做红队测试检验护栏，后者收获更多。前后迭代了三轮提示词。</p>
-<div class="tbl-wrap">
-<table class="tests">
-<thead><tr><th scope="col">我发现的问题</th><th scope="col">我做的调整</th><th scope="col">结果</th></tr></thead>
-<tbody>
-<tr><td>它总把大额订单说成“巨额”，让人心里发慌。</td><td>禁用制造焦虑的形容词。现在它会沿用用户自己的说法。</td><td>人设始终如一</td></tr>
-<tr><td>含糊的金额会被放过。比如“$50k”，没写币种。</td><td>“不做假设”规则升级为硬性拦截：USD、SGD 还是 USDT？</td><td>一定会问清楚</td></tr>
-<tr><td>它会推荐我们还没做的订单类型，比如限价单。</td><td>能执行什么，直接写死。其他请求一律礼貌地引导回报价。</td><td>仅支持市价单</td></tr>
-</tbody>
-</table>
-</div>
 <div class="callouts">
 <div><b data-n="100%">100%</b><span>基准测试中人设保持一致，高价值请求也不例外</span></div>
 <div><b data-n="100%">100%</b><span>的模糊金额都触发了币种追问</span></div>
@@ -604,11 +579,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>OKX 希望交易者在 App 里互相交流，于是有了<b>星球</b>：发帖、关注交易者、分享交易的空间。</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">2.1 · 设计策略</span><h2>实力，看得见</h2></header>
+<header class="sh"><span class="no">2.1</span><h2>实力，看得见</h2></header>
 <div class="sb">
 <p class="big-p">加密信息流里，人人都像专家</p>
-<p>为了做大星球的社交属性，我们借鉴社会网络理论，把高价值用户定位为核心意见领袖，也就是航天员。他们发帖、建群、分享交易，带动其他用户的互动。我负责引导流程、信息流和两种个人主页。</p>
-<p>成为航天员需要达到最低交易量和资产门槛，所以每位航天员背后都有真实的 OKX 战绩。主页先展示这份战绩，升级页先讲佣金等权益。</p>
 <div class="phones four">
 <figure><div class="orb" data-o="follow"><img alt="新手引导页：关注热门航天员，已选中两位" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/></div><figcaption><b>新手引导</b>先从值得关注的人开始。</figcaption></figure>
 <figure><img alt="星球信息流，每条帖子都标注了所聊的币种" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>信息流</b>每条帖子都带上所聊的币种。</figcaption></figure>
@@ -625,24 +598,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>每到年底，OKX 都会做一场增长活动，回顾每位用户这一年的交易。2024 年的活动叫 <b>Crypto Rewind</b>，把你的一年分成三段回放。</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.1 · 问题复盘</span><h2>复盘前两届活动</h2></header>
-<div class="sb">
-<p class="big-p">爱看自己的数据，却没看完，也没分享</p>
-<p>我复盘了 2022 和 2023 年的活动和用户反馈，并访谈了负责团队。三个问题反复出现。</p>
-<div class="trio">
-<div class="tile"><span class="tile-k">中途流失</span><b>数字刷屏</b><p>一页接一页的数据看得人发腻，很多人看到一半就走了。</p></div>
-<div class="tile"><span class="tile-k">分享</span><b>不想晒</b><p>很多人不想把自己的交易表现晒到社交媒体上。</p></div>
-<div class="tile"><span class="tile-k">流程</span><b>改到最后一刻</b><p>法务和市场的反馈来得太晚，文案一直改到上线前。</p></div>
-</div>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">3.2 · 内容策略</span><h2>一年交易，一趟太空旅程</h2></header>
+<header class="sh"><span class="no">3.1</span><h2>一年交易，一趟太空旅程</h2></header>
 <div class="sb">
 <p class="big-p">一页接一页的数据，看到一半人就走了</p>
-<p>我们把一整年包装成一趟太空旅程。Rewind 把一年像歌单一样播放：资产、交易，最后是交易者人格。一份简报让法务、市场、文案和译者早早对齐。</p>
-<p>好年份是“收益超出这个世界”。难熬的年份是“你只是在为下一次起飞做准备”，坦诚，但不往伤口上撒盐。</p>
-<p>所有页面、所有语言都保持同一个太空主题，把复杂数据串成一个故事，品牌也更鲜明。</p>
 <div class="phones">
 <figure><img alt="第 1 段，共 3 段：一起倒带，回到你的开场曲" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>开场</b>第 1 段，共 3 段，像一张歌单。</figcaption></figure>
 <figure><img alt="你的收益飞出天际。盈利 21,887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>好的一年</b>“简直是天文数字。”</figcaption></figure>
@@ -651,10 +609,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3 · 传播设计</span><h2>晒得放心</h2></header>
+<header class="sh"><span class="no">3.2</span><h2>晒得放心</h2></header>
 <div class="sb">
 <p class="big-p">很多人不想把自己的交易成绩晒到社交媒体上</p>
-<p>所以最后一屏，就是为了分享出去而设计的。结尾的人格卡让 Rewind 变得社交：带稀有度标签的交易者类型，不显示余额，晒得放心。一键分享到 Telegram、WhatsApp 或 X，二维码邀请朋友也来玩。分享次数达到 11.7 万，是 5 万目标的两倍多。</p>
 <div class="phones two">
 <figure><div class="crs" data-prev="cr-persona.jpg" id="crShare"><img alt="分享你的 Crypto Rewind：示例用户 Jamie 是一颗 Crypto Comet，带有 Rare 标签" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>为分享而生</b>值得晒的人格卡，分享就送的礼物，再加一个邀请朋友也来玩的二维码。</figcaption></figure>
 <div class="card" style="align-self:start">
@@ -679,6 +636,17 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>离开 OKX 之前，我也参与了 2025 年版，它在 2026 年拿下了 Red Dot 设计奖。</p>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">案例集</span><h2>完整案例</h2></header>
+    <div class="sb">
+      <p class="big-p">这里是精简版</p>
+      <p>每个决定背后的思考，都写在完整的案例集里。欢迎来信索取，我也很乐意当面讲解。</p>
+      <div class="more-list"><span class="more-k">案例集里还有</span><ul><li>专属交易服务，规模化</li><li>复盘前两届活动</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=%E7%B4%A2%E5%8F%96%E6%A1%88%E4%BE%8B%E9%9B%86">索取全文</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

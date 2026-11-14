@@ -460,18 +460,9 @@
 <p>큰 주문을 위한 상담원 서비스를, AI로 넓혀 모든 시장에 닿게 했어요.</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.1</span><h2>1:1 트레이딩 데스크의 확장</h2></header>
-<div class="sb">
-<p class="big-p">큰 주문일수록, 필요 이상으로 손해를 보고 있었어요.</p>
-<p>Simple Buy는 몇 초 만에 견적을 확정해 주지만, 현물보다 가격이 불리해요. 주문이 크면 그만큼 비싸져요.</p>
-<p>일부 고객에게는 이미 상담원이 채팅으로 더 좋은 가격을 제안하고 있었어요. 아주 잘 됐지만, 작은 팀이 동시에 챙길 수 있는 시장은 한정돼 있었죠.</p>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">1.2</span><h2>큰 거래엔, 나만을 위한 전담 데스크</h2></header>
+<header class="sh"><span class="no">1.1</span><h2>큰 거래엔, 나만을 위한 전담 데스크</h2></header>
 <div class="sb">
 <p class="big-p">상담원이 없는 시장에선 큰 주문도 Simple Buy 가격으로 체결됐어요.</p>
-<p>5만 달러가 넘으면 어시스턴트가 더 좋은 가격을 제안해요. 이 정도 주문은 슬리피지 위험이 있고 대개 고액 고객이라, 우대 가격과 1:1 서비스를 제공해요. 중화권 상담팀이 세운 이 서비스를 AI 어시스턴트가 모든 시장으로 넓히고, 팀은 사람이 필요한 대화에 집중해요.</p>
 <div class="phones" id="okPhones">
 <figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>달라지는 것 없음.</figcaption></figure>
 <figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50,000 USD</b>더 좋은 가격을 제안하고, 대량 주문 견적 버튼이 나타나요.</figcaption></figure>
@@ -480,7 +471,7 @@
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.3</span><h2>흔들림 없는 시스템 프롬프트</h2></header>
+<header class="sh"><span class="no">1.2</span><h2>흔들림 없는 시스템 프롬프트</h2></header>
 <div class="sb">
 <p class="big-p">금융에서는 실수할 여지가 없어요.</p>
 <p>시스템 프롬프트를 페르소나부터 가드레일, 퓨샷 예시까지 다섯 레이어로 설계했어요. 고객의 돈이 걸린 만큼, 지어낸 가격이나 잘못 읽은 의도는 용납되지 않아요.</p>
@@ -499,7 +490,6 @@
 <pre class="pi-code"><b>Role:</b> Senior trading consultant
 <b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
 <b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
-<p class="pi-why">페르소나가 없으면 모델은 무난한 어시스턴트 말투로 돌아가요. 누군가 큰돈을 옮기는 바로 그 순간에 자신 없게 들리는 말투로요.</p>
 <div class="pi-tags"><span>페르소나</span><span>보이스 톤</span></div>
 </div>
 <div aria-labelledby="pt2" class="pi-p" hidden="" id="pp2" role="tabpanel">
@@ -509,7 +499,6 @@ Plain English. "Shall I lock in a preferential rate for you now?"
 
 <b>Expert state</b> (user says "bps", "fill or kill")
 Switch to trading vernacular. Treat them as a peer.</pre>
-<p class="pi-why">어시스턴트는 사용자가 쓰는 어휘를 그대로 따라가요. 초보자는 전문 용어에 파묻히지 않고, 숙련된 트레이더는 가르치려 드는 말을 듣지 않아요.</p>
 <div class="pi-tags"><span>미러링</span><span>말투 전환</span></div>
 </div>
 <div aria-labelledby="pt3" class="pi-p" hidden="" id="pp3" role="tabpanel">
@@ -518,14 +507,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
 <b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
 <b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
-<p class="pi-why">안전을 담당하는 레이어예요. 어시스턴트가 프로덕트에서 실제로 실행할 수 있는 범위 안에 머물게 하고, 자신만만한 추측이 값비싼 거래로 이어지지 않게 막아요.</p>
 <div class="pi-tags"><span>가드레일</span><span>의도 명확화</span><span>슬롯 필링</span></div>
 </div>
 <div aria-labelledby="pt4" class="pi-p" hidden="" id="pp4" role="tabpanel">
 <p class="pi-q">해피 패스를 벗어나면요?</p>
 <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
 <b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
-<p class="pi-why">모델은 감정 앞에서 가장 약해요. 이 오버라이드는 서비스 리커버리 순간에 어시스턴트의 말투를 통째로 바꿔요. 매끄럽게 말하는 것보다 돕는 게 먼저가 되도록요.</p>
 <div class="pi-tags"><span>엣지 케이스</span><span>폴백 동작</span></div>
 </div>
 <div aria-labelledby="pt5" class="pi-p" hidden="" id="pp5" role="tabpanel">
@@ -535,7 +522,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
 <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
 </div>
-<p class="pi-why">퓨샷 예시는 모델이 실제 사용자를 만나기 전에 따라 할 정답을 줘요. 페르소나마다 하나씩 두어서, 위의 모든 레이어에 실제 예시가 붙어 있어요.</p>
 <div class="pi-tags"><span>퓨샷 프롬프팅</span><span>캘리브레이션</span></div>
 </div>
 </div>
@@ -543,10 +529,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.4</span><h2>중요한 순간엔, 사람의 손길</h2></header>
+<header class="sh"><span class="no">1.3</span><h2>중요한 순간엔, 사람의 손길</h2></header>
 <div class="sb">
 <p class="big-p">모델에게 맡기기엔 너무 중요한 문장이 있어요.</p>
-<p>어떤 문장인지 가리려고 모든 접점을 매핑했어요. 환영 메시지, 의도 확인, 주문 카드는 큰 거래 전 안심할 수 있게 사람이 직접 썼고, 후속 질문이나 마음이 바뀌는 순간은 모델이 가드레일 안에서 처리해요.</p>
 <div class="demo" id="demo">
 <span class="demo-tag">라이브 컴포넌트</span>
 <div aria-label="The assistant confirms the order, then a quote card arrives with a countdown" class="scene okx">
@@ -578,20 +563,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.5</span><h2>만들고, 일부러 깨뜨려 보기</h2></header>
+<header class="sh"><span class="no">1.4</span><h2>만들고, 일부러 깨뜨려 보기</h2></header>
 <div class="sb">
 <p class="big-p">표준 질문엔 잘 답해도, 엉뚱한 질문에선 미끄러질 수 있어요.</p>
 <p>표준 질문 세트로 프롬프트를 벤치마크하고, 레드팀으로 가드레일을 시험했어요. 더 많이 배운 건 레드팀 쪽이었어요. 그 결과 프롬프트를 세 차례 개선했어요.</p>
-<div class="tbl-wrap">
-<table class="tests">
-<thead><tr><th scope="col">발견한 것</th><th scope="col">바꾼 것</th><th scope="col">결과</th></tr></thead>
-<tbody>
-<tr><td>대량 주문을 계속 "어마어마한" 주문이라고 불러서 사람들을 불안하게 했어요.</td><td>불안을 주는 형용사는 금지. 이제는 사용자의 말투를 그대로 따라가요.</td><td>일관된 페르소나</td></tr>
-<tr><td>모호한 금액이 그냥 통과됐어요. 통화 없이 "$50k"만.</td><td>'추측하지 않기' 규칙을 반드시 멈추는 조건으로 바꿨어요. USD, SGD, USDT 중 어떤 건가요?</td><td>항상 확인</td></tr>
-<tr><td>지정가 주문처럼 아직 만들지 않은 주문 유형을 제안했어요.</td><td>실행할 수 있는 건 하드코딩했어요. 그 밖의 요청은 정중하게 견적으로 안내해요.</td><td>시장가 주문만</td></tr>
-</tbody>
-</table>
-</div>
 <div class="callouts">
 <div><b data-n="100%">100%</b><span>고액 요청을 포함한 벤치마크 전반의 페르소나 일관성</span></div>
 <div><b data-n="100%">100%</b><span>통화 없는 금액에 통화 확인 질문이 나온 비율</span></div>
@@ -608,8 +583,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <header class="sh"><span class="no">2.1</span><h2>믿을 만한 사람, 한눈에</h2></header>
 <div class="sb">
 <p class="big-p">크립토 피드에선 누구나 전문가처럼 말하죠.</p>
-<p>오빗의 소셜 요소를 키우기 위해 소셜 네트워크 이론을 바탕으로 고액 고객을 핵심 인플루언서, 즉 오비터로 삼았어요. 이들의 게시글, 그룹, 공유한 거래가 다른 사용자들의 참여를 이끌죠. 온보딩, 피드, 두 가지 프로필을 디자인했어요.</p>
-<p>오비터가 되려면 최소 거래량과 자산 기준을 넘어야 해서, 모든 오비터 뒤에는 OKX에서 쌓은 실제 실적이 있어요. 프로필은 그 실적을 먼저 보여주고, 업그레이드는 거래 수수료 같은 혜택부터 보여줘요.</p>
 <div class="phones four">
 <figure><div class="orb" data-o="follow"><img alt="온보딩 화면: 인기 오비터 팔로우하기, 두 명 선택됨" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/></div><figcaption><b>온보딩</b>팔로우할 만한 사람부터.</figcaption></figure>
 <figure><img alt="게시물마다 다루는 코인이 태그된 오빗 피드" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>피드</b>게시물마다 다루는 코인이 붙어요.</figcaption></figure>
@@ -626,24 +599,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>OKX는 매년 연말, 사용자마다 한 해의 거래를 돌아보는 그로스 캠페인을 열어요. 2024년에는 한 해를 세 파트로 재생하는 <b>Crypto Rewind</b>였어요.</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.1</span><h2>지난 두 캠페인 분석</h2></header>
-<div class="sb">
-<p class="big-p">내 데이터는 좋아했지만, 끝까지 보지도 공유하지도 않았어요.</p>
-<p>2022년과 2023년 캠페인, 사용자 피드백을 분석하고 담당 팀을 인터뷰했어요. 세 가지 문제가 반복해서 나왔어요.</p>
-<div class="trio">
-<div class="tile"><span class="tile-k">이탈</span><b>숫자가 너무 많음</b><p>숫자만 이어지는 페이지가 지루해져서, 중간에 나가는 사람이 많았어요.</p></div>
-<div class="tile"><span class="tile-k">공유</span><b>너무 개인적임</b><p>자기 거래 성과를 SNS에 올리고 싶지 않은 사람이 많았어요.</p></div>
-<div class="tile"><span class="tile-k">프로세스</span><b>뒤늦은 수정</b><p>법무팀과 마케팅팀 피드백이 늦게 들어와서, 출시 직전까지 문구가 계속 바뀌었어요.</p></div>
-</div>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">3.2</span><h2>우주로 떠나는 나의 트레이딩 1년</h2></header>
+<header class="sh"><span class="no">3.1</span><h2>우주로 떠나는 나의 트레이딩 1년</h2></header>
 <div class="sb">
 <p class="big-p">숫자만 이어지는 페이지에, 사람들은 중간에 나갔어요.</p>
-<p>우주라는 하나의 내러티브로 스토리, 톤, 브랜드를 한데 묶었어요. Rewind는 한 해를 플레이리스트처럼 들려줘요. 자산, 거래, 그리고 트레이더 페르소나. 하나의 브리프로 법무, 마케팅, 작가, 번역가가 일찍 같은 방향을 봤어요.</p>
-<p>좋은 해는 "이 세상 수익이 아니에요". 힘든 해에는 "다음 이륙을 준비하는 중이에요". 솔직하지만 아프게 찌르지 않게요.</p>
-<p>모든 화면과 언어에 걸친 일관된 우주 테마가 복잡한 데이터를 하나의 이야기로 묶었고, 브랜드도 더 단단해졌어요.</p>
 <div class="phones">
 <figure><img alt="파트 1/3: 오프닝 트랙으로 되감아 볼까요" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>오프닝</b>플레이리스트처럼, 파트 1/3.</figcaption></figure>
 <figure><img alt="올해 수익은 그야말로 우주급이었어요. 수익 21,887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>좋은 해</b>"말 그대로 천문학적이네요."</figcaption></figure>
@@ -652,10 +610,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3</span><h2>부담 없는 공유</h2></header>
+<header class="sh"><span class="no">3.2</span><h2>부담 없는 공유</h2></header>
 <div class="sb">
 <p class="big-p">자기 거래 성과를 SNS에 올리고 싶지 않은 사람이 많았어요.</p>
-<p>그래서 마지막 화면은 앱 밖으로 나가도록 만들었어요. 희귀도 태그가 붙은 트레이더 유형에 잔고는 없어서 부담 없이 올릴 수 있죠. 한 번 탭으로 텔레그램, 왓츠앱, X에 공유하고, QR 코드로 친구도 직접 해볼 수 있어요. 공유 수는 목표 5만 건의 두 배가 넘는 11만 7천 건이었어요.</p>
 <div class="phones two">
 <figure><div class="crs" data-prev="cr-persona.jpg" id="crShare"><img alt="Crypto Rewind 공유하기: 샘플 사용자 Jamie는 Rare 태그가 붙은 Crypto Comet" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>공유하고 싶게, 처음부터</b>자랑하고 싶은 페르소나, 공유하면 받는 선물, 그리고 친구도 직접 해보게 만드는 QR 코드.</figcaption></figure>
 <div class="card" style="align-self:start">
@@ -680,6 +637,17 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>OKX를 떠나기 전 2025년 에디션 작업에도 참여했는데, 이 에디션은 2026년 Red Dot 디자인 어워드를 받았어요.</p>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>전체 이야기</h2></header>
+    <div class="sb">
+      <p class="big-p">여기까지는 요약본이에요.</p>
+      <p>결정마다 어떤 고민이 있었는지, 전체 사례는 케이스북에 담았어요. 메일 주시면 보내 드리고, 직접 설명드릴 수도 있어요.</p>
+      <div class="more-list"><span class="more-k">케이스북에 더 담긴 내용</span><ul><li>1:1 트레이딩 데스크의 확장</li><li>지난 두 캠페인 분석</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=%EC%BC%80%EC%9D%B4%EC%8A%A4%EB%B6%81%20%EC%9A%94%EC%B2%AD">케이스북 요청</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

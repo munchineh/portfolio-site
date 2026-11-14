@@ -459,18 +459,9 @@
 <p>Ein Live-Agent-Service für große Orders, mit KI erweitert, damit er jeden Markt erreicht.</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.1</span><h2>Einen persönlichen Trading-Desk skalieren</h2></header>
-<div class="sb">
-<p class="big-p">Große Orders bekamen einen schlechteren Kurs als nötig.</p>
-<p>Simple Buy sichert ein Angebot in Sekunden, aber zu einem schlechteren Kurs als Spot. Bei großen Orders wird das teuer.</p>
-<p>Für manche Kundschaft gab es schon Live-Agents mit besserem Kurs im Chat. Das funktionierte wunderbar, aber ein kleines Team kann nur in so vielen Märkten gleichzeitig sein.</p>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">1.2</span><h2>Großer Trade, persönlicher Service</h2></header>
+<header class="sh"><span class="no">1.1</span><h2>Großer Trade, persönlicher Service</h2></header>
 <div class="sb">
 <p class="big-p">Außerhalb der Märkte unseres Teams liefen große Orders weiter zum Simple-Buy-Kurs.</p>
-<p>Ab 50.000 USD springt der Assistent mit einem besseren Kurs ein. Orders dieser Größe bergen Slippage-Risiko und kommen meist von High-Value-Kundschaft. Deshalb bekommen sie den persönlichen Service, den unser Team in Greater China geprägt hat, in jedem Markt.</p>
 <div class="phones" id="okPhones">
 <figure><div class="okp" data-k="1"><img alt="Simple Buy with 500 USD entered and nothing extra offered" height="1299" loading="lazy" src="../assets/okx-500.jpg" width="600"/></div><figcaption><b>500 USD</b>Es ändert sich nichts.</figcaption></figure>
 <figure><div class="okp" data-k="2"><img alt="Simple Buy with 50,000 USD entered, showing Get preferential rate via chat" height="1299" loading="lazy" src="../assets/okx-50k.jpg" width="600"/></div><figcaption><b>50.000 USD</b>Ein besserer Kurs wird angeboten, mit einem Button für ein Angebot zur Großorder.</figcaption></figure>
@@ -479,7 +470,7 @@
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.3</span><h2>Den System Prompt gestalten</h2></header>
+<header class="sh"><span class="no">1.2</span><h2>Den System Prompt gestalten</h2></header>
 <div class="sb">
 <p class="big-p">Bei Finanzen gibt es keinen Spielraum für Fehler.</p>
 <p>Ich habe den System-Prompt in fünf Ebenen gestaltet, von der Persona über Guardrails bis zu Few-Shot-Beispielen. Wenn es um Geld geht, sind halluzinierte Kurse oder falsch verstandene Absichten keine Option.</p>
@@ -498,7 +489,6 @@
 <pre class="pi-code"><b>Role:</b> Senior trading consultant
 <b>Goal:</b> Execute high-value trades securely, with a premium experience that builds confidence.
 <b>Tone:</b> Assuring and natural. Use contractions. Large orders are normal here, so never say "massive", "extreme" or "huge". Say "substantial" instead.</pre>
-<p class="pi-why">Ohne Persona fällt ein Modell in eine generische Assistentenstimme zurück. Die klingt unsicher, und zwar genau dann, wenn jemand viel Geld bewegt.</p>
 <div class="pi-tags"><span>Persona</span><span>Tone of Voice</span></div>
 </div>
 <div aria-labelledby="pt2" class="pi-p" hidden="" id="pp2" role="tabpanel">
@@ -508,7 +498,6 @@ Plain English. "Shall I lock in a preferential rate for you now?"
 
 <b>Expert state</b> (user says "bps", "fill or kill")
 Switch to trading vernacular. Treat them as a peer.</pre>
-<p class="pi-why">Der Assistent übernimmt das Vokabular der Nutzer. Einsteiger werden nicht mit Fachjargon zugeschüttet, und erfahrene Trader werden nicht von oben herab behandelt.</p>
 <div class="pi-tags"><span>Mirroring</span><span>Registerwechsel</span></div>
 </div>
 <div aria-labelledby="pt3" class="pi-p" hidden="" id="pp3" role="tabpanel">
@@ -517,14 +506,12 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <b>2.</b> Never assume a currency. If they type "$50k", ask: "Is that 50,000 USD, SGD or USDT?"
 <b>3.</b> Confirm instead of guessing: "To confirm, you'd like X?"
 <b>4.</b> Market orders only. Redirect anything else to a firm quote.</pre>
-<p class="pi-why">Das ist die Sicherheitsebene. Sie hält den Assistenten innerhalb dessen, was das Produkt tatsächlich ausführen kann, und verhindert, dass aus einer selbstbewussten Vermutung ein teurer Trade wird.</p>
 <div class="pi-tags"><span>Guardrails</span><span>Intent-Disambiguierung</span><span>Slot Filling</span></div>
 </div>
 <div aria-labelledby="pt4" class="pi-p" hidden="" id="pp4" role="tabpanel">
 <p class="pi-q">Was passiert abseits des Happy Path?</p>
 <pre class="pi-code"><b>Trigger:</b> urgent or fearful language ("stuck", "lost money", "!!")
 <b>Action:</b> Stay human. Drop all jargon. No empty apologies. Acknowledge the urgency and ask for the order ID.</pre>
-<p class="pi-why">Bei Emotionen sind Modelle am schwächsten. Dieser Override ändert in einer Service-Recovery-Situation das komplette Register des Assistenten, damit er zuerst hilft und erst danach elegant klingt.</p>
 <div class="pi-tags"><span>Edge Cases</span><span>Fallback-Verhalten</span></div>
 </div>
 <div aria-labelledby="pt5" class="pi-p" hidden="" id="pp5" role="tabpanel">
@@ -534,7 +521,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <div><small>Experienced trader</small><p class="u">Offloading 50k USDT to ETH. Slippage?</p><p class="a">Liquidity is deep. I can fill the full amount with minimal slippage, likely under 10bps. Want a firm price?</p></div>
 <div><small>Distressed</small><p class="u">Transfer stuck!! I'm losing money!!</p><p class="a">I understand the urgency. Please send the order ID and I'll check what's holding it up right now.</p></div>
 </div>
-<p class="pi-why">Few-Shot-Beispiele geben dem Modell eine Ground Truth zum Nachahmen, bevor es auf echte Nutzer trifft. Eins pro Persona, damit jede Schicht darüber ein ausgearbeitetes Beispiel hat.</p>
 <div class="pi-tags"><span>Few-Shot Prompting</span><span>Kalibrierung</span></div>
 </div>
 </div>
@@ -542,10 +528,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.4</span><h2>Menschlich, wo es zählt</h2></header>
+<header class="sh"><span class="no">1.3</span><h2>Menschlich, wo es zählt</h2></header>
 <div class="sb">
 <p class="big-p">Manche Zeilen sind zu wichtig, um sie einem Modell zu überlassen.</p>
-<p>Ich habe jeden Touchpoint gemappt, um zu entscheiden, welche. Begrüßung, Absichtsabfrage und Order-Karte sind von Hand geschrieben, damit vor einem großen Trade Vertrauen entsteht, und das Modell übernimmt Rückfragen und Meinungswechsel innerhalb der Guardrails.</p>
 <div class="demo" id="demo">
 <span class="demo-tag">Live-Komponente</span>
 <div aria-label="The assistant confirms the order, then a quote card arrives with a countdown" class="scene okx">
@@ -577,20 +562,10 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">1.5</span><h2>Dann habe ich versucht, ihn zu knacken</h2></header>
+<header class="sh"><span class="no">1.4</span><h2>Dann habe ich versucht, ihn zu knacken</h2></header>
 <div class="sb">
 <p class="big-p">Ein Modell, das Standardfragen meistert, kann bei ungewöhnlichen trotzdem patzen.</p>
 <p>Ich habe den Prompt gegen ein Standard-Set an Anfragen gebenchmarkt und ihn dann per Red Teaming auf die Guardrails getestet. Das Red Teaming hat mir mehr beigebracht. Nach drei Iterationsrunden hielt er.</p>
-<div class="tbl-wrap">
-<table class="tests">
-<thead><tr><th scope="col">Beobachtung</th><th scope="col">Änderung</th><th scope="col">Ergebnis</th></tr></thead>
-<tbody>
-<tr><td>Er nannte große Orders ständig „massiv“, und das macht Leute nervös.</td><td>Alarmierende Adjektive gestrichen. Jetzt spiegelt er das Register der Nutzer.</td><td>Konsistente Persona</td></tr>
-<tr><td>Vage Beträge rutschten durch. „$50k“, ohne Währung.</td><td>Die Regel „keine Annahmen“ wurde zum harten Stopp: USD, SGD oder USDT?</td><td>Fragt immer nach</td></tr>
-<tr><td>Er bot Order-Typen an, die wir gar nicht gebaut hatten, etwa Limit-Orders.</td><td>Was er ausführen kann, ist fest einprogrammiert. Alles andere wird höflich zu einem Angebot umgeleitet.</td><td>Nur Market-Orders</td></tr>
-</tbody>
-</table>
-</div>
 <div class="callouts">
 <div><b data-n="100%">100%</b><span>Persona-Konsistenz im Benchmarking, auch bei hohen Beträgen</span></div>
 <div><b data-n="100%">100%</b><span>der unklaren Beträge lösten die Frage nach der Währung aus</span></div>
@@ -607,8 +582,6 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <header class="sh"><span class="no">2.1</span><h2>Glaubwürdigkeit, die man sieht</h2></header>
 <div class="sb">
 <p class="big-p">In einem Krypto-Feed klingt jeder wie ein Experte.</p>
-<p>Um die soziale Seite von Orbit auszubauen, haben wir uns an der Theorie sozialer Netzwerke orientiert und High-Value-Nutzer gezielt als zentrale Influencer angesprochen, die Orbiter. Ihre Posts, Gruppen und geteilten Trades bringen Engagement für alle anderen. Ich habe Onboarding, Feed und beide Profiltypen gestaltet.</p>
-<p>Orbiter wird man erst ab einem Mindest-Handelsvolumen und -Guthaben, also steht hinter jedem Orbiter eine echte Bilanz auf OKX. Das Profil zeigt diese Bilanz zuerst, das Upgrade wirbt mit Vorteilen wie Provisionen.</p>
 <div class="phones four">
 <figure><div class="orb" data-o="follow"><img alt="Onboarding-Screen: „Follow top Orbiters“, zwei davon ausgewählt" height="1299" loading="lazy" src="../assets/orbit-follow.jpg" width="600"/></div><figcaption><b>Onboarding</b>Mit Leuten starten, denen es sich zu folgen lohnt.</figcaption></figure>
 <figure><img alt="Der Orbit-Feed mit Posts, die mit den besprochenen Coins getaggt sind" height="1299" loading="lazy" src="../assets/orbit-feed.jpg" width="600"/><figcaption><b>Der Feed</b>Jeder Post zeigt den Coin, um den es geht.</figcaption></figure>
@@ -625,24 +598,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>Zum Jahresende fährt OKX jedes Mal eine Growth-Kampagne, die auf das Trading-Jahr jedes einzelnen Nutzers zurückblickt. 2024 hieß sie <b>Crypto Rewind</b>: das eigene Jahr, abgespielt in drei Teilen.</p>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.1</span><h2>Zwei Kampagnen auf dem Prüfstand</h2></header>
-<div class="sb">
-<p class="big-p">Die Leute sahen gern ihre eigenen Daten. Sie schauten nur nicht bis zum Ende, und geteilt haben sie auch nichts.</p>
-<p>Ich habe die Kampagnen von 2022 und 2023 samt Nutzerfeedback analysiert und mit den Teams dahinter gesprochen. Drei Probleme kamen immer wieder.</p>
-<div class="trio">
-<div class="tile"><span class="tile-k">Absprünge</span><b>Zu viele Zahlen</b><p>Seite um Seite voller Zahlen wurde eintönig, und viele stiegen auf halber Strecke aus.</p></div>
-<div class="tile"><span class="tile-k">Teilen</span><b>Zu persönlich</b><p>Viele wollten ihre Trading-Performance nicht in den sozialen Medien zeigen.</p></div>
-<div class="tile"><span class="tile-k">Prozess</span><b>Späte Änderungen</b><p>Feedback von Legal und Marketing kam spät, also wurden die Texte bis zum Launch immer wieder umgeschrieben.</p></div>
-</div>
-</div>
-</section>
-<section class="panel sec">
-<header class="sh"><span class="no">3.2</span><h2>Eine Reise durchs Trading-Jahr</h2></header>
+<header class="sh"><span class="no">3.1</span><h2>Eine Reise durchs Trading-Jahr</h2></header>
 <div class="sb">
 <p class="big-p">Seite um Seite voller Zahlen verlor die Leute auf halber Strecke.</p>
-<p>Wir haben das ganze Jahr als Reise durchs All erzählt. Rewind spielt dein Jahr ab wie eine Playlist: Assets, Trading, dann eine Trader-Persona. Ein gemeinsames Briefing brachte Legal, Marketing, Texter und Übersetzer früh auf eine Linie.</p>
-<p>Gute Jahre sind "nicht von dieser Welt". Schwere Jahre bekommen "Du machst dich nur bereit für den nächsten Start", ehrlich, ohne nachzutreten.</p>
-<p>Ein durchgängiges Weltraum-Thema über alle Screens und Sprachen machte aus komplexen Daten eine Geschichte und stärkte die Marke.</p>
 <div class="phones">
 <figure><img alt="Teil 1 von 3: Zurückspulen zum ersten Track des Jahres" height="1299" loading="lazy" src="../assets/cr-open.jpg" width="600"/><figcaption><b>Der Opener</b>Teil 1 von 3, wie bei einer Playlist.</figcaption></figure>
 <figure><img alt="Die Gewinne waren nicht von dieser Welt. Ein Gewinn von 21.887 USDT" height="1299" loading="lazy" src="../assets/cr-earn.jpg" width="600"/><figcaption><b>Ein gutes Jahr</b>„Einfach astronomisch.“</figcaption></figure>
@@ -651,10 +609,9 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">3.3</span><h2>Sicher teilbar</h2></header>
+<header class="sh"><span class="no">3.2</span><h2>Sicher teilbar</h2></header>
 <div class="sb">
 <p class="big-p">Viele wollten ihre Trading-Performance nicht in den sozialen Medien zeigen.</p>
-<p>Also war der letzte Screen dafür gemacht, die App zu verlassen. Die Persona ist ein Tradertyp mit Seltenheits-Tag und ohne Kontostände, also unbedenklich zu posten. Ein Tipp teilt sie auf Telegram, WhatsApp oder X, und ein QR-Code lädt Freunde zum eigenen Rewind ein. Geteilt wurde 117.000 Mal, mehr als doppelt so oft wie die angepeilten 50.000.</p>
 <div class="phones two">
 <figure><div class="crs" data-prev="cr-persona.jpg" id="crShare"><img alt="Crypto Rewind teilen: Ein Beispielprofil, Jamie, ist ein Crypto Comet mit dem Tag „Rare“" height="1301" loading="lazy" src="../assets/cr-share.jpg" width="600"/></div><figcaption><b>Gemacht zum Teilen</b>Eine Persona, die man gern postet, ein Geschenk fürs Teilen und ein QR-Code, der Freunde einlädt, ihr eigenes zu spielen.</figcaption></figure>
 <div class="card" style="align-self:start">
@@ -679,6 +636,17 @@ Switch to trading vernacular. Treat them as a peer.</pre>
 <p>An der Ausgabe 2025 habe ich vor meinem Abschied von OKX ebenfalls mitgearbeitet. Sie hat 2026 den Red Dot Design Award gewonnen.</p>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">→</span><h2>Die ganze Geschichte</h2></header>
+    <div class="sb">
+      <p class="big-p">Das hier ist die Kurzfassung.</p>
+      <p>Das ganze Projekt, mit den Überlegungen hinter jeder Entscheidung, steht in meinem Case Book. Ich schicke es gern zu oder gehe es gemeinsam durch.</p>
+      <div class="more-list"><span class="more-k">Außerdem im Case Book</span><ul><li>Einen persönlichen Trading-Desk skalieren</li><li>Zwei Kampagnen auf dem Prüfstand</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=Case%20Book">Case Book anfragen</a></div>
+    </div>
+  </section>
+
 <!-- ============ Next ============ -->
 <section class="c-next">
 <div class="panel c-cta action-card">

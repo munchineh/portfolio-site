@@ -160,7 +160,7 @@ d.section('buildlr', 'Buildlr: a five-tier quote form, from tablet to phone.', '
 case_hero(d, 'bl-title', 'Case 05 · Construction tech', 'Simplifying operational tools',
           'A pre-construction SaaS for the German market, built from zero: quotes, task management and Gantt scheduling. Designed for consultants on tablets and contractors on phones.',
           [('Role', 'Founding designer, freelance'), ('Timeline', 'Jun 2025 to Feb 2026'), ('Team', 'Me and the founder'), ('Tools', 'Figma')],
-          [('140', 'final screens in eight months'), ('167', 'components across 25 sets, light and dark')],
+          [('167', 'components across 25 sets'), ('2', 'products on one system, in light and dark')],
           hero_img(A, 'm-h-bl', 'Tasks switched on as rows in a quote'), None)
 media_slide(d, 'bl-form', 'Complex forms', 'Only the tier you need',
             [('Five tiers deep', 'From project down to sub-task'),

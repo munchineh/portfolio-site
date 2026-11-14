@@ -535,31 +535,12 @@
 <div class="sb">
 <p class="big-p">每經一手，資訊就少一截</p>
 <p>每個案件要經過五個環節、三個團隊，在客服和處理團隊之間來回流轉，每交接一次就漏一點資訊。商家很少知道有沒有人在跟進，想對結果提出異議還得從頭再來。</p>
-<div class="relay" id="relay">
-<div class="rl-grid">
-<span class="rl-lane" style="grid-row:1">商家</span>
-<span class="rl-lane" style="grid-row:2">客服人員</span>
-<span class="rl-lane" style="grid-row:3">處理團隊</span>
-<div class="rl-step" data-lane="商家" data-s="0" style="grid-row:1;grid-column:2"><b>1</b>提出問題</div>
-<div class="rl-step" data-lane="客服人員" data-s="1" style="grid-row:2;grid-column:3"><b>2</b>登記到系統</div>
-<div class="rl-step" data-lane="處理團隊" data-s="2" style="grid-row:3;grid-column:4"><b>3</b>展開調查</div>
-<div class="rl-step" data-lane="客服人員" data-s="3" style="grid-row:2;grid-column:5"><b>4</b>取得結果</div>
-<div class="rl-step" data-lane="商家" data-s="4" style="grid-row:1;grid-column:6"><b>5</b>收到回覆</div>
-<svg aria-hidden="true" class="rl-path"><path class="base"></path><path class="run"></path></svg>
-<span aria-hidden="true" class="rl-dot"></span>
-</div>
-<div class="rl-msg"><span class="rl-k">商家說的</span>
-<span class="rl-chip">包裹 NV…3940</span><span class="rl-chip">箱子送到時又濕又破</span><span class="rl-chip">已附照片</span><span class="rl-chip">希望退款</span></div>
-<p class="rl-heard"><span class="rl-k">商家收到的回覆</span>「您的案件正在調查中。」</p>
-</div>
-<p class="an-note">我們梳理出的交接流程示意圖。四次交接，每次都流失一點。</p>
 </div>
 </section>
 <section class="panel sec">
 <header class="sh"><span class="no">02 · 使用者研究</span><h2>先看全貌，再動手</h2></header>
 <div class="sb">
 <p class="big-p">三方各有各的體驗和痛點，只修一處，問題只會搬家</p>
-<p>我訪談了東南亞 59 位商家、客服和處理人員，並輔以客服可用性問卷和商家費力度問卷，再依案件量和回應時間排出優先順序。</p>
 <div class="card" style="padding:0">
 <div class="label" style="border-bottom:1px solid var(--rule)"><span>受訪對象</span><span>59 人 · 東南亞</span></div>
 <div class="bars">
@@ -574,7 +555,6 @@
 <header class="sh"><span class="no">03 · 設計方案</span><h2>訂單在哪，問題就在哪解決</h2></header>
 <div class="sb">
 <p class="big-p">延遲取件，總要等商家追問才被發現</p>
-<p>在哪預約取件，就在哪追進度。現在商家直接在常用的包裹入口提交問題，欄位順序和客服輸入一致。延遲取件和派送會自動開案，相關案件登記 70% 自動化。</p>
 <div class="demo live" id="nvDemo" style="--ar: 3 / 2; --cw: 560px; --ch: 373px; background:#f3f5f8">
 <span class="demo-tag">互動元件</span>
 <div aria-label="Ninja Van shipper portal with issues opening automatically" class="scene nv" data-scene="nv">
@@ -596,29 +576,9 @@
 </div>
 </section>
 <section class="panel sec">
-<header class="sh"><span class="no">04 · 服務閉環</span><h2>給個低分，案件重開</h2></header>
-<div class="sb">
-<p class="big-p">以前要評價服務，得先接一通陌生來電</p>
-<p>費力度問卷從電話回訪搬進了入口和全新的品牌電郵，在案件旁一按就能評分。低分還能讓用戶重新開啟案件，體驗更圓滿。</p>
-<div class="trio">
-<div class="tile"><span class="tile-k">改版前</span><b>電話加 Email</b><p>制式的純文字 Email，沒辦法直接評分。</p></div>
-<div class="tile"><span class="tile-k">改版後</span><b>就在案件旁</b><p>在入口網站或任何一封 Email 裡，點一下就能評分。</p></div>
-<div class="tile"><span class="tile-k">有始有終</span><b>低分即重開</b><p>商家可以對結果提出疑問，不必從頭來過。</p></div>
-</div>
-<figure class="shot emails">
-<div aria-label="Two HTML email templates: a rearranged pickup, and new delivery estimates with a Rate experience button" class="em-row" role="img">
-<div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>A new pickup has been arranged</h4><p>Hi Mancini,</p><p>We apologise for the missed pickup and have arranged a new one for you. Please find the details of the new pickup reservation below:</p><div class="em-box"><p><b>Reservation ID:</b> TESTVALUE123</p><p><b>Pickup address:</b> Test Address #01-23</p><p><b>Pickup date:</b> 8/17/2021</p><p><b>Pickup timeslot:</b> 9AM–12PM</p></div><p>If you have any questions regarding the parcel, please reply to this email and we'll get back to you as soon as we can.</p></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
-<div class="em"><span class="em-logo"><svg aria-hidden="true" viewbox="10 57.5 48 63"><path d="M33.7416 59.0254C25.0139 59.0254 19.1484 64.8191 19.1484 73.4092C19.1484 79.3035 22.2928 84.3529 25.6186 89.7041C27.2916 92.3998 29.0048 95.1357 30.4158 98.1131L33.7416 105.335L37.1278 97.6102C38.7202 94.2506 40.9575 91.5348 42.5297 89.0402C45.6337 84.0914 48.3347 79.8064 48.3347 73.0873C48.3347 65.0807 42.0661 59.0254 33.7416 59.0254Z" fill="#C52033"></path><path d="M26.7272 110.948L33.4997 114.891V108.453L26.8078 104.551L26.7272 110.948Z" fill="#1D1D1B"></path></svg><b>ninja</b>van</span><div class="em-card"><h4>New delivery estimates for your parcels</h4><p>Hi Mancini,</p><p>We're sorry that your parcels are delayed.</p><p>We are working to get them back on track as soon as possible. Please refer to the attached file for the updated delivery dates estimated for your parcels.</p><p>Otherwise, please rate your experience with Ninja Van so that we can continue to serve you better.</p><span class="em-btn">Rate Experience</span></div><div class="em-foot"><b>Ninja Van Singapore</b><br/>30 Jalan Kilang Barat 159363<br/><u>www.ninjavan.co</u></div></div>
-</div>
-<figcaption><b>從純文字到品牌電郵</b>每種案件都有專屬品牌範本，結尾一按評分，讓補救流程延續下去。</figcaption></figure>
-<div class="result"><b>服務兩端，一起設計</b><p>我也設計了客服用來登記和管理案件的 Salesforce 客服系統介面。服務補救要兩邊都照顧好才行得通。</p></div>
-</div>
-</section>
-<section class="panel sec">
 <header class="sh"><span class="no">延伸專案</span><h2>九套元件庫，合而為一</h2></header>
 <div class="sb">
 <p class="big-p">各產品線自建元件，越做越亂</p>
-<p>我和另外兩位設計師一起，盤點了全部 27 款產品，揪出被反覆重做的元件，統一重建到同一個元件庫。每個元件都附上完整規範（結構、狀態、互動、用法），並和工程師一起交付經過測試的 React、Flutter 和 Kotlin 程式碼。</p>
 <div class="callouts three">
         <div><b data-n="27">27</b><span>款產品，逐一盤點</span></div>
         <div><b data-n="9">9</b><span>套設計庫，合而為一</span></div>
@@ -626,6 +586,17 @@
       </div>
 </div>
 </section>
+  <!-- ============ Full story ============ -->
+  <section class="panel sec more-case" id="full">
+    <header class="sh"><span class="no">案例集</span><h2>完整案例</h2></header>
+    <div class="sb">
+      <p class="big-p">這裡是精簡版</p>
+      <p>每個決定背後的思考，都寫在完整的案例集裡。歡迎來信索取，我也很樂意當面說明。</p>
+      <div class="more-list"><span class="more-k">案例集裡還有</span><ul><li>給個低分，案件重開</li></ul></div>
+      <div class="btns"><a class="btn primary" href="mailto:mancini.tan@gmail.com?subject=%E7%B4%A2%E5%8F%96%E6%A1%88%E4%BE%8B%E9%9B%86">索取全文</a></div>
+    </div>
+  </section>
+
 <section class="c-next">
 <div class="panel c-cta action-card">
 <div class="label"><span>聯絡</span><span>歡迎各地的工作機會</span></div>
