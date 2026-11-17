@@ -53,7 +53,7 @@
   .meta dt { font-size: 12px; color: var(--muted); }
   .meta dd { font-size: 14px; }
   .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
-  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
+  .c-results-in { padding: 16px 16px 18px; display: grid; gap: 14px; align-content: end; }
   .c-results .big { display: grid; gap: 4px; }
   .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
   .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
@@ -133,6 +133,45 @@
   .shots li > div p { margin-top: 0; max-width: none; }
   .took { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
   .took b { display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+
+  /* Component deck in the results panel (17 Nov 2026): real store components, stacked and cycling */
+  .c-results { grid-template-rows: auto 1fr auto; }
+  .deck { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 14px 16px 0; min-height: 0; }
+  .dk-stack { position: relative; display: block; width: 100%; min-height: 210px; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; color: inherit; font: inherit; -webkit-tap-highlight-color: transparent; }
+  .dk-stack:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--r-in); }
+  .dk { position: absolute; left: 0; top: 10px; bottom: 0; aspect-ratio: 4 / 3; max-width: 84%; margin: 0; border-radius: var(--r-in); overflow: hidden; background: #f2f2f0; box-shadow: 0 22px 40px -22px rgba(15,24,18,.45), 0 0 0 1px rgba(15,24,18,.08); transform-origin: 50% 100%; transition: transform .7s var(--ease), opacity .5s var(--ease); will-change: transform; }
+  .dk img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 4%; box-sizing: border-box; }
+  .dk[data-k="tile"] { background: #fff; }
+  .dk[data-k="tile"] img { padding: 2% 16%; }
+  .dk[data-pos="0"] { z-index: 4; transform: none; }
+  .dk[data-pos="1"] { z-index: 3; transform: translate(8%, -2%) rotate(2.5deg) scale(.96); }
+  .dk[data-pos="2"] { z-index: 2; transform: translate(15%, -4%) rotate(5deg) scale(.92); }
+  .dk[data-pos="3"] { z-index: 1; transform: translate(23%, -8%) rotate(8deg) scale(.86); opacity: .0; }
+  .dk.leave { animation: dk-leave .8s var(--ease) both; }
+  @keyframes dk-leave {
+    0% { z-index: 5; transform: none; opacity: 1; }
+    42% { z-index: 5; transform: translate(-42%, 4%) rotate(-9deg); opacity: 1; }
+    43% { z-index: 0; }
+    100% { z-index: 0; transform: translate(23%, -8%) rotate(8deg) scale(.86); opacity: 0; }
+  }
+  .dk-foot { display: flex; align-items: end; justify-content: space-between; gap: 12px; }
+  .dk-cap { display: grid; gap: 2px; min-width: 0; transition: opacity .25s; }
+  .dk-cap.swap { opacity: 0; }
+  .dk-cap b { font-weight: 500; font-size: 15px; }
+  .dk-cap span { font-size: 13px; color: var(--muted); }
+  .dk-ctl { display: flex; align-items: center; gap: 8px; flex: none; }
+  .dk-dots { display: flex; gap: 6px; padding: 10px 12px; border-radius: 999px; background: var(--accent-soft); }
+  .dk-dots i { position: relative; width: 6px; height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 28%, transparent); overflow: hidden; transition: width .4s var(--ease); }
+  .dk-dots i.on { width: 26px; }
+  .dk-dots i.on::after { content: ""; position: absolute; inset: 0; background: var(--ink); transform-origin: left; animation: dk-fill var(--dk-t, 3.2s) linear both; }
+  .deck.paused .dk-dots i.on::after { animation-play-state: paused; }
+  .deck.still .dk-dots i.on::after { animation: none; transform: none; }
+  @keyframes dk-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .dk-play { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 0; padding: 0; background: var(--accent-soft); color: var(--ink); cursor: pointer; }
+  .dk-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dk-play .i-play { display: none; } .deck.paused .dk-play .i-play { display: block; } .deck.paused .dk-play .i-pause { display: none; }
+  @media (max-width: 900px) { .deck { padding-top: 16px; } .dk-stack { min-height: 0; height: clamp(220px, 68vw, 340px); } }
+  @media (prefers-reduced-motion: reduce) { .dk, .dk-cap { transition: none; } .dk.leave { animation: none; } }
 
   .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
   .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: var(--r-in); overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
@@ -281,6 +320,21 @@
 </div>
 <aside class="panel c-results">
 <div class="label"><span>결과</span><span>2026년 9월</span></div>
+      <div class="deck" id="deck" role="group" aria-roledescription="carousel" aria-label="사이즈 툴이 쓰이는 스토어의 네 곳">
+        <button class="dk-stack" type="button" aria-label="다음 카드">
+        <figure class="dk" data-k="fit" data-pos="0" data-t="내 핏" data-s="모든 상품 페이지에서"><img src="../assets/evn-dk-fit.jpg" alt="M이 추천된 사이즈 버튼과 Size M을 보여주는 Your fit 카드" width="800" height="682"></figure>
+        <figure class="dk" data-k="tile" data-pos="1" data-t="상품 카드마다 핏" data-s="스토어 어디서나"><img src="../assets/evn-dk-tile.jpg" alt="가격 아래에 Your size M이 표시된 상품 카드" width="595" height="790"></figure>
+        <figure class="dk" data-k="form" data-pos="2" data-t="사이즈 입력 폼" data-s="키와 몸무게는 한 번만"><img src="../assets/evn-dk-form.jpg" alt="EVN Archive 홈페이지의 사이즈 입력 폼" width="790" height="735" loading="lazy"></figure>
+        <figure class="dk" data-k="table" data-pos="3" data-t="실측표" data-s="사이즈마다 단면 실측"><img src="../assets/evn-dk-table.jpg" alt="M과 L의 어깨, 가슴, 소매, 총장이 담긴 Size and fit 표" width="800" height="391" loading="lazy"></figure>
+        </button>
+        <div class="dk-foot">
+          <p class="dk-cap"><b>내 핏</b><span>모든 상품 페이지에서</span></p>
+          <div class="dk-ctl">
+            <span class="dk-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <button class="dk-play" type="button" data-pause="일시정지" data-play="재생" aria-label="일시정지"><svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="3.5" y="3" width="3" height="10" rx="1"/><rect x="9.5" y="3" width="3" height="10" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6c0 .5.5.8.9.5l7-4.8c.4-.3.4-.8 0-1L5.9 2.7c-.4-.3-.9 0-.9.5Z"/></svg></button>
+          </div>
+        </div>
+      </div>
 <div class="c-results-in">
 <div class="big"><b data-n="4">4</b><span>사이즈 추천 툴 도입 첫 주의 프리사이즈 판매 건수. 직전 두 달은 0건이었어요</span></div>
 <p class="note">사이즈 툴, 프리 사이즈 20% 할인, 옷을 하나씩 소개한 SNS 콘텐츠를 같은 주에 함께 시작했어요. 그래서 이 결과는 세 가지가 함께 만든 거예요.</p>
@@ -454,6 +508,43 @@
       if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
+  /* Component deck: the front card slides out and tucks behind. Pauses off-screen, when the tab is hidden, and on Pause.
+     Reduced motion: starts paused and swaps cards without movement. */
+  (() => {
+    const deck = document.getElementById('deck'); if (!deck) return;
+    const cards = [...deck.querySelectorAll('.dk')], dots = [...deck.querySelectorAll('.dk-dots i')];
+    const cap = deck.querySelector('.dk-cap'), capT = cap.querySelector('b'), capS = cap.querySelector('span');
+    const btn = deck.querySelector('.dk-play'), stack = deck.querySelector('.dk-stack'), n = cards.length, T = 3200;
+    let front = 0, timer = null, busy = false, seen = false, userPaused = still.matches;
+    const show = () => {
+      cards.forEach((c, i) => c.dataset.pos = (i - front + n) % n);
+      dots.forEach((d, i) => { d.classList.toggle('on', i === front); });
+      const c = cards[front]; cap.classList.add('swap');
+      setTimeout(() => { capT.textContent = c.dataset.t; capS.textContent = c.dataset.s; cap.classList.remove('swap'); }, still.matches ? 0 : 220);
+      dots.forEach(d => { const a = d; a.style.animation = 'none'; a.offsetWidth; a.style.animation = ''; });
+    };
+    const advance = () => {
+      if (busy) return;
+      const out = cards[front]; front = (front + 1) % n;
+      if (still.matches) { show(); return; }
+      busy = true; out.classList.add('leave'); show();
+      out.addEventListener('animationend', () => { out.classList.remove('leave'); busy = false; }, { once: true });
+    };
+    const running = () => !userPaused && seen && !document.hidden;
+    const sync = () => {
+      clearInterval(timer); timer = null;
+      deck.classList.toggle('paused', !running());
+      if (running()) timer = setInterval(advance, T);
+      btn.setAttribute('aria-label', userPaused ? btn.dataset.play : btn.dataset.pause);
+    };
+    deck.style.setProperty('--dk-t', T + 'ms');
+    deck.classList.toggle('still', still.matches);
+    stack.addEventListener('click', () => { advance(); sync(); });
+    btn.addEventListener('click', () => { userPaused = !userPaused; sync(); });
+    document.addEventListener('visibilitychange', sync);
+    new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; sync(); }), { threshold: 0.4 }).observe(deck);
+    show(); sync();
+  })();
 })();
 </script>
 </body>
