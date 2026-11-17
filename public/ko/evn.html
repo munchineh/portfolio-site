@@ -110,6 +110,30 @@
   .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
 
   /* ---------- Touchpoints ---------- */
+  /* fit card, restyled to the redesigned store (Nov 2026) */
+  .evn-card.v2 { background: #f2f2f0; color: #121212; border-radius: 0; padding: 22px; gap: 12px; }
+  .fc-tag, .fc-head { font: 500 11px/14px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; color: #686864; }
+  .fc-title { font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+  .fc-size { display: flex; gap: 16px; font-size: 14px; }
+  .fc-fit { background: #fff; padding: 16px; display: grid; gap: 6px; }
+  .fc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .fc-head u { font: 400 13px/1 "Archivo", sans-serif; letter-spacing: 0; text-transform: none; color: #121212; text-underline-offset: 3px; }
+  .fc-word { font-weight: 400; font-size: 26px; line-height: 1.15; letter-spacing: -.01em; }
+  .fc-line { font-size: 14px; line-height: 1.35; color: #686864; min-height: 2.7em; }
+  .fc-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 4px; }
+  .fc-scale i { height: 4px; background: #e2e2df; transition: background .3s; }
+  .fc-scale[data-zone="1"] i:nth-child(1), .fc-scale[data-zone="2"] i:nth-child(2), .fc-scale[data-zone="3"] i:nth-child(3), .fc-scale[data-zone="4"] i:nth-child(4), .fc-scale[data-zone="5"] i:nth-child(5) { background: #121212; }
+  .fc-lab { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 2px; font-size: 12px; color: #686864; }
+  .fc-lab span { grid-row: 1; grid-column: 1 / -1; justify-self: start; white-space: nowrap; }
+  .fc-lab[data-zone="2"] span { grid-column: 1 / span 3; justify-self: center; }
+  .fc-lab[data-zone="3"] span { justify-self: center; }
+  .fc-lab[data-zone="4"] span { grid-column: 3 / span 3; justify-self: center; }
+  .fc-lab[data-zone="5"] span { justify-self: end; }
+  .fc-btn { background: #121212; color: #fff; text-align: center; padding: 14px; font-size: 14px; }
+  .shots li > div p { margin-top: 0; max-width: none; }
+  .took { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .took b { display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+
   .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
   .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: var(--r-in); overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
   .shots li.wide { grid-column: 1 / -1; }
@@ -247,7 +271,7 @@
 <span class="chip ghost">이커머스</span></div>
 <h1><span class="line"><span>입어보지 않아도</span></span>
 <span class="line"><span>아는 핏</span></span></h1>
-<p class="lede">독립 한국 남성복을 소개하는 제 쇼피파이 스토어로, 처음부터 끝까지 직접 디자인하고 만들었어요. 이 사례는 프리 사이즈 옷도 자신 있게 살 수 있게 돕는 사이즈 툴을 다뤄요.</p>
+<p class="lede">한국 독립 브랜드의 남성복을 해외에 판매하는 쇼피파이 스토어, EVN Archive를 운영하고 있어요. 한 가지 사이즈로만 나오는 프리 사이즈 옷이 많은데, 이 옷들이 팔리지 않았어요. 그 이유를 어떻게 찾았고 무엇을 바꿨는지 정리했어요.</p>
 <dl class="meta">
 <div><dt>역할</dt><dd>디자이너 겸 창업자. UX, UI, 콘텐츠, 프론트엔드</dd></div>
 <div><dt>기간</dt><dd>2026년 5월 ~ 현재</dd></div>
@@ -259,28 +283,28 @@
 <div class="label"><span>결과</span><span>2026년 9월</span></div>
 <div class="c-results-in">
 <div class="big"><b data-n="4">4</b><span>사이즈 추천 툴 도입 첫 주의 프리사이즈 판매 건수. 직전 두 달은 0건이었어요</span></div>
-<p class="note">같은 주에 프리사이즈 20% 할인도 함께 진행했어요.</p>
+<p class="note">사이즈 툴, 프리 사이즈 20% 할인, 옷을 하나씩 소개한 SNS 콘텐츠를 같은 주에 함께 시작했어요. 그래서 이 결과는 세 가지가 함께 만든 거예요.</p>
 </div>
 </aside>
 </section>
 <figure class="panel c-media">
-<img alt="사이즈 아래에 How it'll fit you 섹션이 있는 evn-archive.com의 Aura Windbreaker 상품 페이지" height="850" src="../assets/evn-pdp.jpg" width="1560"/>
-<figcaption>모든 사이즈 아래에 핏 안내가 붙은 상품 페이지.</figcaption>
+<img alt="evn-archive.com의 Aura Windbreaker 상품 페이지. 사이즈 아래에 Your fit 카드가 보여요" height="1178" src="../assets/evn-pdp.jpg" width="2200"/>
+<figcaption>장바구니 버튼 위에 내 핏이 표시되는 상품 페이지.</figcaption>
 </figure>
 <!-- ============ 01 ============ -->
 <section class="panel sec" id="problem">
-<header class="sh"><span class="no">01</span><h2>사이즈표 없이 프리 사이즈 팔기</h2></header>
+<header class="sh"><span class="no">01</span><h2>프리 사이즈가 안 팔리는 이유 찾기</h2></header>
 <div class="sb">
 <p class="big-p">아카이브에서 가장 멋진 옷이, 가장 안 팔리는 옷이었어요.</p>
-<p>프리 사이즈 재킷 세 벌에 방문은 수백 건이었지만 장바구니 담기는 거의 없었어요. 기댈 사이즈표가 없으니 핏을 상상하기 어려웠던 거죠.</p>
+<p>프리 사이즈 재킷 세 벌에 방문은 수백 건이었지만 장바구니 담기는 거의 없었어요. 해외 고객은 여러 사이즈 중에서 고르는 데 익숙해요. 프리 사이즈를 처음 보는 분이 많아서, 옷이 자기 몸에 어떻게 맞을지 가늠하기 어려웠던 거예요.</p>
 </div>
 </section>
 <!-- ============ 02 ============ -->
 <section class="panel sec" id="engine">
-<header class="sh"><span class="no">02</span><h2>옷의 실측으로 읽는 내 핏</h2></header>
+<header class="sh"><span class="no">02</span><h2>옷의 실측을 바탕으로 사이즈 툴 만들기</h2></header>
 <div class="sb">
-<p class="big-p">옷은 보여도, 내가 입은 모습은 그려지지 않았어요.</p>
-<p>키와 몸무게를 입력하면 툴이 옷마다 실측과 비교해 핏을 알려줘요. 타이트, 추천, 여유 중 하나로요.</p>
+<p class="big-p">사이즈가 하나뿐이면 사이즈표는 도움이 되지 않아요.</p>
+<p>고객이 키와 몸무게를 입력하면 툴이 그 옷의 실측과 비교해 쉬운 말로 알려줘요. 타이트, 추천, 여유 중 하나로요. 상품마다 이미 있는 Size &amp; Fit 정보를 그대로 읽기 때문에, 새 상품을 올릴 때 따로 설정할 게 없어요.</p>
 <div aria-label="사이즈 추천 툴 간단 데모" class="demo" id="demo">
 <div class="demo-in">
 <div class="controls">
@@ -293,51 +317,55 @@
 </label>
 <p class="demo-note">프리사이즈 재킷 한 벌로 간단하게 만든 사이즈 추천 툴 데모예요.</p>
 </div>
-<div class="evn-card">
-<div class="evn-title">Aura Windbreaker</div>
-<div class="evn-price">Size · Free</div>
-<div class="evn-fit">
-<b>How it'll fit you</b>
-<div aria-hidden="true" class="scale">
-<i class="z"></i><i class="z mid"></i><i class="z rec"></i><i class="z mid"></i><i class="z"></i>
-<span class="dot" id="dot"></span>
-</div>
-<div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
-<span class="read" id="fitRead">Relaxed fit</span>
-<span class="fit-line" id="fitLine">This is your recommended size.</span>
-<span class="fit-est">Estimated given your measurements. <u>Edit</u></span>
-</div>
-<div class="evn-btn">Add to cart</div>
-</div>
+<div class="evn-card v2">
+            <div class="fc-tag">[ URBAN ] OUTER</div>
+            <div class="fc-title">Aura Windbreaker</div>
+            <div class="fc-size"><span>Size</span><span>Free</span></div>
+            <div class="fc-fit">
+              <div class="fc-head"><span id="fitMeta">YOUR FIT · 160 CM, 55 KG</span><u>Edit</u></div>
+              <b class="fc-word" id="fitRead">Relaxed</b>
+              <span class="fc-line" id="fitLine">It will drape with room to spare, as intended.</span>
+              <div class="fc-scale" id="fitScale" data-zone="4" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="fc-lab" id="fitLab" data-zone="4"><span>Relaxed</span></div>
+            </div>
+            <div class="fc-btn">Add to cart</div>
+          </div>
 </div>
 </div>
 </div>
 </section>
 <!-- ============ 03 ============ -->
 <section class="panel sec" id="touchpoints">
-<header class="sh"><span class="no">03</span><h2>어디서 보든, 같은 추천</h2></header>
-<div class="sb">
-<p class="big-p">상품 페이지마다 치수를 다시 입력하고 싶은 사람은 없어요.</p>
-<ol class="shots">
-<li class="wide">
-<figure><img alt="EVN Archive 홈페이지의 Free Size Edit" height="879" loading="lazy" src="../assets/evn-home.jpg" width="2258"/></figure>
-<div><b>고객이 처음 도착하는 곳에서</b><p>홈페이지 상단의 프리 사이즈 에디트와 핏 찾기 안내.</p></div>
-</li>
-<li class="wide">
-<figure class="stage"><img alt="키, 몸무게, 체형을 묻는 Find your fit 팝업" height="1064" loading="lazy" src="../assets/evn-finder.jpg" width="1129"/></figure>
-<div><b>원하는 만큼만 알려주기</b><p>키와 몸무게면 바로 추천받고, 체형과 신체 치수는 선택이에요. 한 번 저장하면 끝이에요.</p></div>
-</li>
-<li class="wide">
-<figure class="zoom"><img alt="나에게 추천하는 옷만 필터링한 숍 화면과 Clear 링크" height="550" loading="lazy" src="../assets/evn-collection-z.jpg" width="1120"/></figure>
-<div><b>내 몸에 맞춘 숍</b><p>나에게 추천된 옷만 골라 보고, 한 번에 해제할 수 있어요.</p></div>
-</li>
-<li class="wide">
-<figure class="zoom"><img alt="사이즈 아래에 How it'll fit you가 있는 Aura Windbreaker 상품 페이지" height="830" loading="lazy" src="../assets/evn-pdp-z.jpg" width="1210"/></figure>
-<div><b>모든 상품에 답이 있도록</b><p>모든 사이즈 아래에 "추천 사이즈예요"처럼 쉬운 말로 핏을 알려줘요.</p></div>
-</li>
-</ol>
-</div>
-</section>
+    <header class="sh"><span class="no">03</span><h2>한 번의 입력을 스토어 전체에서 쓰기</h2></header>
+    <div class="sb">
+      <p class="big-p">상품 페이지마다 치수를 다시 입력하고 싶은 사람은 없어요.</p>
+      <p>홈페이지나 Find your fit 페이지에서 한 번만 입력하면 돼요. 그다음부터는 모든 상품 카드와 상품 페이지에 그 옷이 어떻게 맞을지 표시되고, 잘 맞는 옷만 골라 볼 수도 있어요.</p>
+      <ol class="shots">
+        <li class="wide">
+          <figure class="stage"><img src="../assets/evn-home.jpg" alt="EVN Archive 홈페이지의 사이즈 입력 폼. 키와 몸무게 입력란이 있어요" width="1700" height="1084" loading="lazy"></figure>
+          <div><p>홈페이지의 사이즈 입력 폼.</p></div>
+        </li>
+        <li class="wide">
+          <figure><img src="../assets/evn-tiles.jpg" alt="상품 카드 네 개. 가격 아래에 핏 안내가 한 줄씩 있어요" width="2200" height="829" loading="lazy"></figure>
+          <div><p>상품 카드마다 옷이 어떻게 맞을지 표시돼요.</p></div>
+        </li>
+        <li class="wide">
+          <figure><img src="../assets/evn-finder.jpg" alt="Find your fit 페이지. 왼쪽에 입력 폼, 오른쪽에 옷별 핏 목록이 있어요" width="2200" height="1120" loading="lazy"></figure>
+          <div><p>Find your fit 페이지에서는 모든 옷의 핏을 한눈에 볼 수 있어요.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="hurdle">
+    <header class="sh"><span class="no">04</span><h2>어려웠던 점</h2></header>
+    <div class="sb">
+      <p class="big-p">가장 어려웠던 건 사이즈 로직이었어요.</p>
+      <p>모든 옷을 직접 재고 하나씩 입어 본 다음, AI 모델과 시행착오를 거치며 규칙을 만들었어요. AI가 공식을 제안하면, 제가 실제로 입었을 때의 느낌과 맞는지 확인했어요. 바꾼 것도 툴 하나만은 아니었어요. 20% 할인, SNS 콘텐츠와 같은 주에 시작했고, 세 가지가 함께여서 숫자가 움직였다고 생각해요.</p>
+      <p class="took"><b>배운 점</b>좋은 디자인은 여러 접점이 함께 맞물릴 때 효과를 내는 경우가 많아요.</p>
+    </div>
+  </section>
   <!-- ============ Full story ============ -->
   <section class="panel sec more-case" id="full">
     <header class="sh"><span class="no">→</span><h2>전체 이야기</h2></header>
@@ -394,23 +422,22 @@
      The garment has a fixed amount of room; bigger bodies use more of it. */
   const h = document.getElementById('h'), w = document.getElementById('w');
   const hOut = document.getElementById('hOut'), wOut = document.getElementById('wOut');
-  const dot = document.getElementById('dot'), read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const meta = document.getElementById('fitMeta'), scale = document.getElementById('fitScale'), lab = document.getElementById('fitLab');
   const zones = [
     { max: -9, label: 'Too small', line: 'This will likely feel tight on you.' },
-    { max: -3, label: 'Snug fit', line: 'It will sit close, with little room to layer.' },
-    { max: 3, label: 'Recommended', line: 'This is your recommended size.' },
-    { max: 10, label: 'Relaxed fit', line: 'It will drape with room to spare, as intended.' },
-    { max: Infinity, label: 'Very roomy', line: 'Expect a very oversized look on you.' },
+    { max: -3, label: 'Snug', line: 'It will sit close, with little room to layer.' },
+    { max: 3, label: 'Recommended', line: 'Sits on you the way it was cut.' },
+    { max: 10, label: 'Relaxed', line: 'It will drape with room to spare, as intended.' },
+    { max: Infinity, label: 'Too big', line: 'Expect a very oversized look on you.' },
   ];
   const update = () => {
     const H = +h.value, W = +w.value;
     hOut.textContent = Math.round(H) + ' cm'; wOut.textContent = Math.round(W) + ' kg';
+    meta.textContent = 'YOUR FIT · ' + Math.round(H) + ' CM, ' + Math.round(W) + ' KG';
     const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
-    const z = zones.find(z => room <= z.max);
-    const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
-    dot.style.setProperty('--x', pos + '%');
-    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; }
-    read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
+    const i = zones.findIndex(z => room <= z.max), z = zones[i];
+    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; lab.firstElementChild.textContent = z.label; scale.dataset.zone = lab.dataset.zone = i + 1; }
   };
   h.addEventListener('input', update); w.addEventListener('input', update);
   update();
@@ -422,11 +449,9 @@
     if (!e.isIntersecting || played) return; played = true; ob.disconnect();
     if (still.matches) { h.value = 175; w.value = 68; update(); return; }
     const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
-    // unrounded values every frame, and no CSS transition on the dot while JS drives it, so nothing steps or lags
-    dot.classList.add('glide');
     const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
       h.value = from[0] + (to[0] - from[0]) * e2; w.value = from[1] + (to[1] - from[1]) * e2; update();
-      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); dot.classList.remove('glide'); } };
+      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
 })();

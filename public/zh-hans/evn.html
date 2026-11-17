@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#c9e1c1" media="(prefers-color-scheme: light)" data-c="#c9e1c1">
 <meta name="theme-color" content="#122d18" media="(prefers-color-scheme: dark)" data-c="#122d18">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>均码衣服，网购也合身 · 陈奕豪</title>
+<title>帮顾客判断合不合身 · 陈奕豪</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="陈奕豪">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:url" content="https://mancinitan.com/zh-hans/evn">
-<meta property="og:title" content="均码衣服，网购也合身 · 陈奕豪">
+<meta property="og:title" content="帮顾客判断合不合身 · 陈奕豪">
 <meta property="og:description" content="自营独立韩国男装 Shopify 店，从设计到开发，都是自己来。本案聚焦尺码工具：让均码，也能放心买。">
 <meta property="og:image" content="https://mancinitan.com/assets/og/evn.jpg">
 <meta property="og:image:width" content="1200">
@@ -110,6 +110,30 @@
   .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
 
   /* ---------- Touchpoints ---------- */
+  /* fit card, restyled to the redesigned store (Nov 2026) */
+  .evn-card.v2 { background: #f2f2f0; color: #121212; border-radius: 0; padding: 22px; gap: 12px; }
+  .fc-tag, .fc-head { font: 500 11px/14px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; color: #686864; }
+  .fc-title { font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+  .fc-size { display: flex; gap: 16px; font-size: 14px; }
+  .fc-fit { background: #fff; padding: 16px; display: grid; gap: 6px; }
+  .fc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .fc-head u { font: 400 13px/1 "Archivo", sans-serif; letter-spacing: 0; text-transform: none; color: #121212; text-underline-offset: 3px; }
+  .fc-word { font-weight: 400; font-size: 26px; line-height: 1.15; letter-spacing: -.01em; }
+  .fc-line { font-size: 14px; line-height: 1.35; color: #686864; min-height: 2.7em; }
+  .fc-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 4px; }
+  .fc-scale i { height: 4px; background: #e2e2df; transition: background .3s; }
+  .fc-scale[data-zone="1"] i:nth-child(1), .fc-scale[data-zone="2"] i:nth-child(2), .fc-scale[data-zone="3"] i:nth-child(3), .fc-scale[data-zone="4"] i:nth-child(4), .fc-scale[data-zone="5"] i:nth-child(5) { background: #121212; }
+  .fc-lab { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 2px; font-size: 12px; color: #686864; }
+  .fc-lab span { grid-row: 1; grid-column: 1 / -1; justify-self: start; white-space: nowrap; }
+  .fc-lab[data-zone="2"] span { grid-column: 1 / span 3; justify-self: center; }
+  .fc-lab[data-zone="3"] span { justify-self: center; }
+  .fc-lab[data-zone="4"] span { grid-column: 3 / span 3; justify-self: center; }
+  .fc-lab[data-zone="5"] span { justify-self: end; }
+  .fc-btn { background: #121212; color: #fff; text-align: center; padding: 14px; font-size: 14px; }
+  .shots li > div p { margin-top: 0; max-width: none; }
+  .took { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .took b { display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+
   .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
   .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: var(--r-in); overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
   .shots li.wide { grid-column: 1 / -1; }
@@ -216,7 +240,7 @@
 <div class="links">
 <a class="link item" href="index.html"><span class="t">首页</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <button aria-controls="workAcc" aria-expanded="false" class="link item" id="workLink"><span class="t">作品</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
-<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">产品设计 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">运营工具，化繁为简 · Buildlr</a><a href="ninjavan.html">问题件，件件有回音 · Ninja Van</a><a href="neuron.html">内部工具，重新整合 · Neuron</a></div></div><button class="cat" data-cat="content">内容与对话设计 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 助手，边聊边下单 · OKX</a><a href="okx.html#orbit">交易，有圈子 · OKX</a><a href="okx.html#rewind">你的一年，独家回放 · OKX</a></div></div><button class="cat" data-cat="ecom">电商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">均码衣服，网购也合身 · EVN Archive</a></div></div><button class="cat" data-cat="side">个人项目 <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">记忆卡，变成播客 · Sogang Podcasts</a></div></div></div></div></div>
+<div class="acc" id="workAcc"><div><div class="acc-inner"><button class="cat" data-cat="product">产品设计 <small>3</small></button><div class="cases" data-for="product"><div><a href="buildlr.html">运营工具，化繁为简 · Buildlr</a><a href="ninjavan.html">问题件，件件有回音 · Ninja Van</a><a href="neuron.html">内部工具，重新整合 · Neuron</a></div></div><button class="cat" data-cat="content">内容与对话设计 <small>3</small></button><div class="cases" data-for="content"><div><a href="okx.html#assistant">AI 助手，边聊边下单 · OKX</a><a href="okx.html#orbit">交易，有圈子 · OKX</a><a href="okx.html#rewind">你的一年，独家回放 · OKX</a></div></div><button class="cat" data-cat="ecom">电商 <small>1</small></button><div class="cases" data-for="ecom"><div><a href="evn.html">帮顾客判断合不合身 · EVN Archive</a></div></div><button class="cat" data-cat="side">个人项目 <small>1</small></button><div class="cases" data-for="side"><div><a href="podcast.html">记忆卡，变成播客 · Sogang Podcasts</a></div></div></div></div></div>
 <a class="link item" href="index.html#about"><span class="t">关于</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 <a class="link item" href="mailto:mancini.tan@gmail.com"><span class="t">联系</span><svg class="arr" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
@@ -235,7 +259,7 @@
 <a class="scard" data-cat="content" href="okx.html#assistant"><div><b>AI 助手，边聊边下单</b><span>OKX · 金融科技</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="content" href="okx.html#orbit"><div><b>交易，有圈子</b><span>OKX · 星球</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
 <a class="scard" data-cat="content" href="okx.html#rewind"><div><b>你的一年，独家回放</b><span>OKX · Crypto Rewind</span></div><div class="thumb logo sm"><img alt="" height="52" src="../assets/logo-okx.svg" width="52"/></div></a>
-<a class="scard" data-cat="ecom" href="evn.html"><div><b>均码衣服，网购也合身</b><span>EVN Archive · 尺码工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
+<a class="scard" data-cat="ecom" href="evn.html"><div><b>帮顾客判断合不合身</b><span>EVN Archive · 尺码工具</span></div><div class="thumb logo"><img alt="" height="52" src="../assets/logo-evn.svg" width="52"/></div></a>
 <a class="scard" data-cat="side" href="podcast.html"><div><b>记忆卡，变成播客</b><span>Sogang Podcasts · 个人项目</span></div><div class="thumb"><img alt="" height="52" src="../assets/logo-podcast.png" width="52"/></div></a>
 <a class="all" href="index.html#work"><span>全部作品</span><span>→</span></a>
 </div>
@@ -245,8 +269,8 @@
 <div class="crumbs"><a class="chip back" href="index.html#work"><svg fill="none" height="14" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="14"><path d="M13 8H3M7 4 3 8l4 4"></path></svg>全部作品</a>
 <span class="chip">EVN Archive</span>
 <span class="chip ghost">电商</span></div>
-<h1><span class="line"><span>均码衣服，网购也合身</span></span></h1>
-<p class="lede">自营独立韩国男装 Shopify 店，从设计到开发，都是自己来。本案聚焦尺码工具：让均码，也能放心买。</p>
+<h1><span class="line"><span>帮顾客判断合不合身</span></span></h1>
+<p class="lede">我经营 EVN Archive，一家把韩国独立男装卖到海外的 Shopify 店。店里不少单品只有均码，一直卖不动。这个案例讲的是我怎么找到原因，又做了哪些改动。</p>
 <dl class="meta">
 <div><dt>角色</dt><dd>设计师兼创始人。负责 UX、UI、内容和前端</dd></div>
 <div><dt>时间</dt><dd>2026 年 5 月至今</dd></div>
@@ -258,28 +282,28 @@
 <div class="label"><span>成果</span><span>2026 年 9 月</span></div>
 <div class="c-results-in">
 <div class="big"><b data-n="4">4</b><span>件均码单品，工具上线首周售出（此前两个月为零）</span></div>
-<p class="note">同一周还推出了均码 8 折优惠。</p>
+<p class="note">尺码工具、均码 8 折优惠和介绍单品做工的社交内容在同一周上线，这个结果是三者共同带来的。</p>
 </div>
 </aside>
 </section>
 <figure class="panel c-media">
-<img alt="evn-archive.com 上 Aura Windbreaker 的商品页，尺码下方是 How it'll fit you 板块" height="850" src="../assets/evn-pdp.jpg" width="1560"/>
-<figcaption>商品页上，每个尺码下面都有一条合身提示。</figcaption>
+<img alt="evn-archive.com 上 Aura Windbreaker 的商品页，尺码下方是 Your fit 卡片" height="1178" src="../assets/evn-pdp.jpg" width="2200"/>
+<figcaption>商品页上，加入购物车按钮上方显示顾客的合身度。</figcaption>
 </figure>
 <!-- ============ 01 ============ -->
 <section class="panel sec" id="problem">
-<header class="sh"><span class="no">01 · 用户痛点</span><h2>没有尺码表，也卖得动均码</h2></header>
+<header class="sh"><span class="no">01 · 用户痛点</span><h2>找出均码卖不动的原因</h2></header>
 <div class="sb">
-<p class="big-p">均码单品设计最出彩，销量却垫底</p>
-<p>三件均码夹克有几百次访问，却几乎没人加购。没有尺码表可参考，顾客想象不出穿上身的样子。</p>
+<p class="big-p">我最喜欢的几件单品，偏偏最难卖</p>
+<p>三件均码夹克有几百次访问，却几乎没人加购。海外顾客习惯从几个尺码里挑，大多没见过均码，看不出衣服穿在自己身上会是什么样。</p>
 </div>
 </section>
 <!-- ============ 02 ============ -->
 <section class="panel sec" id="engine">
-<header class="sh"><span class="no">02 · 设计方案</span><h2>读懂衣服，再读懂你</h2></header>
+<header class="sh"><span class="no">02 · 设计方案</span><h2>根据衣服尺寸设计尺码工具</h2></header>
 <div class="sb">
-<p class="big-p">衣服看得见，穿上身什么样却想象不出</p>
-<p>顾客输入身高体重，工具对照每件衣服的尺寸，给出合身度：偏紧、推荐或宽松。</p>
+<p class="big-p">只有一个尺码时，尺码表帮不上忙</p>
+<p>顾客输入身高和体重，工具拿它和这件衣服的实际尺寸比对，用一句白话告诉顾客：偏紧、推荐或宽松。工具直接读取商品页上已有的尺寸说明，新品上架不用另外设置。</p>
 <div aria-label="尺码工具简化演示" class="demo" id="demo">
 <div class="demo-in">
 <div class="controls">
@@ -292,51 +316,55 @@
 </label>
 <p class="demo-note">尺码工具的简化版，以一件均码夹克为例。</p>
 </div>
-<div class="evn-card">
-<div class="evn-title">Aura Windbreaker</div>
-<div class="evn-price">Size · Free</div>
-<div class="evn-fit">
-<b>How it'll fit you</b>
-<div aria-hidden="true" class="scale">
-<i class="z"></i><i class="z mid"></i><i class="z rec"></i><i class="z mid"></i><i class="z"></i>
-<span class="dot" id="dot"></span>
-</div>
-<div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
-<span class="read" id="fitRead">Relaxed fit</span>
-<span class="fit-line" id="fitLine">This is your recommended size.</span>
-<span class="fit-est">Estimated given your measurements. <u>Edit</u></span>
-</div>
-<div class="evn-btn">Add to cart</div>
-</div>
+<div class="evn-card v2">
+            <div class="fc-tag">[ URBAN ] OUTER</div>
+            <div class="fc-title">Aura Windbreaker</div>
+            <div class="fc-size"><span>Size</span><span>Free</span></div>
+            <div class="fc-fit">
+              <div class="fc-head"><span id="fitMeta">YOUR FIT · 160 CM, 55 KG</span><u>Edit</u></div>
+              <b class="fc-word" id="fitRead">Relaxed</b>
+              <span class="fc-line" id="fitLine">It will drape with room to spare, as intended.</span>
+              <div class="fc-scale" id="fitScale" data-zone="4" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="fc-lab" id="fitLab" data-zone="4"><span>Relaxed</span></div>
+            </div>
+            <div class="fc-btn">Add to cart</div>
+          </div>
 </div>
 </div>
 </div>
 </section>
 <!-- ============ 03 ============ -->
 <section class="panel sec" id="touchpoints">
-<header class="sh"><span class="no">03 · 体验链路</span><h2>一个推荐，一路随行</h2></header>
-<div class="sb">
-<p class="big-p">谁都不想每个商品页都重填一遍尺寸</p>
-<ol class="shots">
-<li class="wide">
-<figure><img alt="EVN Archive 首页上的 Free Size Edit 专区" height="879" loading="lazy" src="../assets/evn-home.jpg" width="2258"/></figure>
-<div><b>从顾客进门的地方开始</b><p>首页顶部的均码精选，以及找合身尺码的提示。</p></div>
-</li>
-<li class="wide">
-<figure class="stage"><img alt="Find your fit 弹窗，询问身高、体重和体型" height="1064" loading="lazy" src="../assets/evn-finder.jpg" width="1129"/></figure>
-<div><b>想填多少，你说了算</b><p>身高体重就能快速推荐，体型和身体尺寸可选填。保存一次就好。</p></div>
-</li>
-<li class="wide">
-<figure class="zoom"><img alt="筛选出推荐单品的店铺页面，带有 Clear 链接" height="550" loading="lazy" src="../assets/evn-collection-z.jpg" width="1120"/></figure>
-<div><b>一家合你身的店</b><p>一键筛出推荐给你的单品，也一键清除。</p></div>
-</li>
-<li class="wide">
-<figure class="zoom"><img alt="Aura Windbreaker 商品页，尺码下方是 How it'll fit you" height="830" loading="lazy" src="../assets/evn-pdp-z.jpg" width="1210"/></figure>
-<div><b>每件商品，都有答案</b><p>每个尺码下都有一句白话说明，比如“这是你的推荐尺码”。</p></div>
-</li>
-</ol>
-</div>
-</section>
+    <header class="sh"><span class="no">03 · 体验链路</span><h2>让一次输入在全店生效</h2></header>
+    <div class="sb">
+      <p class="big-p">谁都不想每个商品页都重填一遍尺寸</p>
+      <p>顾客在首页或 Find your fit 页面填一次。之后，每个商品卡片和商品页都会显示这件衣服穿在他身上的效果，还能筛出最合身的单品。</p>
+      <ol class="shots">
+        <li class="wide">
+          <figure class="stage"><img src="../assets/evn-home.jpg" alt="EVN Archive 首页上的尺码表单，可填写身高和体重" width="1700" height="1084" loading="lazy"></figure>
+          <div><p>首页上的尺码表单</p></div>
+        </li>
+        <li class="wide">
+          <figure><img src="../assets/evn-tiles.jpg" alt="四个商品卡片，价格下方各有一行合身提示" width="2200" height="829" loading="lazy"></figure>
+          <div><p>每个商品卡片都显示这件衣服的合身度</p></div>
+        </li>
+        <li class="wide">
+          <figure><img src="../assets/evn-finder.jpg" alt="Find your fit 页面，左侧是表单，右侧列出每件单品的合身度" width="2200" height="1120" loading="lazy"></figure>
+          <div><p>Find your fit 页面按顾客的尺寸列出每件单品</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="hurdle">
+    <header class="sh"><span class="no">04 · 难点</span><h2>遇到的问题</h2></header>
+    <div class="sb">
+      <p class="big-p">最难的是尺码逻辑</p>
+      <p>我量了每一件衣服，自己逐件试穿，再和 AI 模型反复试错：它提出公式，我对照实际上身的感受来验证。另外，尺码工具也不是唯一的改动。它和均码 8 折优惠、介绍单品做工的社交内容在同一周上线，我认为是三者一起才带来了这个结果。</p>
+      <p class="took"><b>我的收获</b>有效的设计，往往是多个因素、多个触点互相配合的结果。</p>
+    </div>
+  </section>
   <!-- ============ Full story ============ -->
   <section class="panel sec more-case" id="full">
     <header class="sh"><span class="no">案例集</span><h2>完整案例</h2></header>
@@ -393,23 +421,22 @@
      The garment has a fixed amount of room; bigger bodies use more of it. */
   const h = document.getElementById('h'), w = document.getElementById('w');
   const hOut = document.getElementById('hOut'), wOut = document.getElementById('wOut');
-  const dot = document.getElementById('dot'), read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const meta = document.getElementById('fitMeta'), scale = document.getElementById('fitScale'), lab = document.getElementById('fitLab');
   const zones = [
     { max: -9, label: 'Too small', line: 'This will likely feel tight on you.' },
-    { max: -3, label: 'Snug fit', line: 'It will sit close, with little room to layer.' },
-    { max: 3, label: 'Recommended', line: 'This is your recommended size.' },
-    { max: 10, label: 'Relaxed fit', line: 'It will drape with room to spare, as intended.' },
-    { max: Infinity, label: 'Very roomy', line: 'Expect a very oversized look on you.' },
+    { max: -3, label: 'Snug', line: 'It will sit close, with little room to layer.' },
+    { max: 3, label: 'Recommended', line: 'Sits on you the way it was cut.' },
+    { max: 10, label: 'Relaxed', line: 'It will drape with room to spare, as intended.' },
+    { max: Infinity, label: 'Too big', line: 'Expect a very oversized look on you.' },
   ];
   const update = () => {
     const H = +h.value, W = +w.value;
     hOut.textContent = Math.round(H) + ' cm'; wOut.textContent = Math.round(W) + ' kg';
+    meta.textContent = 'YOUR FIT · ' + Math.round(H) + ' CM, ' + Math.round(W) + ' KG';
     const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
-    const z = zones.find(z => room <= z.max);
-    const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
-    dot.style.setProperty('--x', pos + '%');
-    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; }
-    read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
+    const i = zones.findIndex(z => room <= z.max), z = zones[i];
+    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; lab.firstElementChild.textContent = z.label; scale.dataset.zone = lab.dataset.zone = i + 1; }
   };
   h.addEventListener('input', update); w.addEventListener('input', update);
   update();
@@ -421,11 +448,9 @@
     if (!e.isIntersecting || played) return; played = true; ob.disconnect();
     if (still.matches) { h.value = 175; w.value = 68; update(); return; }
     const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
-    // unrounded values every frame, and no CSS transition on the dot while JS drives it, so nothing steps or lags
-    dot.classList.add('glide');
     const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
       h.value = from[0] + (to[0] - from[0]) * e2; w.value = from[1] + (to[1] - from[1]) * e2; update();
-      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); dot.classList.remove('glide'); } };
+      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
 })();

@@ -109,6 +109,30 @@
   .evn-btn { background: #000; color: #fff; text-align: center; padding: 12px; font-stretch: 75%; text-transform: uppercase; font-size: 13px; letter-spacing: .02em; }
 
   /* ---------- Touchpoints ---------- */
+  /* fit card, restyled to the redesigned store (Nov 2026) */
+  .evn-card.v2 { background: #f2f2f0; color: #121212; border-radius: 0; padding: 22px; gap: 12px; }
+  .fc-tag, .fc-head { font: 500 11px/14px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; color: #686864; }
+  .fc-title { font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+  .fc-size { display: flex; gap: 16px; font-size: 14px; }
+  .fc-fit { background: #fff; padding: 16px; display: grid; gap: 6px; }
+  .fc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .fc-head u { font: 400 13px/1 "Archivo", sans-serif; letter-spacing: 0; text-transform: none; color: #121212; text-underline-offset: 3px; }
+  .fc-word { font-weight: 400; font-size: 26px; line-height: 1.15; letter-spacing: -.01em; }
+  .fc-line { font-size: 14px; line-height: 1.35; color: #686864; min-height: 2.7em; }
+  .fc-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 4px; }
+  .fc-scale i { height: 4px; background: #e2e2df; transition: background .3s; }
+  .fc-scale[data-zone="1"] i:nth-child(1), .fc-scale[data-zone="2"] i:nth-child(2), .fc-scale[data-zone="3"] i:nth-child(3), .fc-scale[data-zone="4"] i:nth-child(4), .fc-scale[data-zone="5"] i:nth-child(5) { background: #121212; }
+  .fc-lab { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 2px; font-size: 12px; color: #686864; }
+  .fc-lab span { grid-row: 1; grid-column: 1 / -1; justify-self: start; white-space: nowrap; }
+  .fc-lab[data-zone="2"] span { grid-column: 1 / span 3; justify-self: center; }
+  .fc-lab[data-zone="3"] span { justify-self: center; }
+  .fc-lab[data-zone="4"] span { grid-column: 3 / span 3; justify-self: center; }
+  .fc-lab[data-zone="5"] span { justify-self: end; }
+  .fc-btn { background: #121212; color: #fff; text-align: center; padding: 14px; font-size: 14px; }
+  .shots li > div p { margin-top: 0; max-width: none; }
+  .took { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .took b { display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+
   .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
   .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: var(--r-in); overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
   .shots li.wide { grid-column: 1 / -1; }
@@ -256,7 +280,7 @@
         <span class="line"><span>Helping shoppers</span></span>
         <span class="line"><span>find their fit</span></span>
       </h1>
-      <p class="lede">My own Shopify store for independent Korean menswear, designed and built end to end. This case covers the sizing tool that helps shoppers buy free size with confidence.</p>
+      <p class="lede">I run EVN Archive, a Shopify store that sells independent Korean menswear overseas. Many of its pieces come in one size only, known in Korea as free size, and they weren't selling. This case covers how I found out why, and what I changed.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Designer and founder. UX, UI, content and front-end</dd></div>
         <div><dt>Timeline</dt><dd>May 2026 to now</dd></div>
@@ -268,31 +292,31 @@
       <div class="label"><span>What came of it</span><span>Sept 2026</span></div>
       <div class="c-results-in">
         <div class="big"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week, after none in the two months before</span></div>
-        <p class="note">A 20% free-size offer ran the same week, as part of the same push.</p>
+        <p class="note">The sizing tool, a 20% free-size offer and social posts about each piece all went out that week, so the result belongs to all three.</p>
       </div>
     </aside>
   </section>
 
   <figure class="panel c-media">
-    <img src="assets/evn-pdp.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the How it'll fit you section under the size" width="1560" height="850">
-    <figcaption>The product page, with a fit read under every size.</figcaption>
+    <img src="assets/evn-pdp.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the Your fit card under the size" width="2200" height="1178">
+    <figcaption>The product page, with the shopper's fit shown above Add to cart.</figcaption>
   </figure>
 
   <!-- ============ 01 ============ -->
   <section class="panel sec" id="problem">
-    <header class="sh"><span class="no">01</span><h2>Selling free size without a size chart</h2></header>
+    <header class="sh"><span class="no">01</span><h2>Finding out why free size wasn't selling</h2></header>
     <div class="sb">
       <p class="big-p">Some of my favourite pieces in the archive were also the hardest to sell.</p>
-      <p>Three free-size jackets drew hundreds of visits and almost no add-to-carts. Without a size chart, shoppers couldn't picture how they'd fit.</p>
+      <p>Three free-size jackets drew hundreds of visits and almost no add-to-carts. Shoppers outside Korea are used to choosing from several sizes. Most had never seen free size, so they couldn't tell how a piece would sit on them.</p>
     </div>
   </section>
 
   <!-- ============ 02 ============ -->
   <section class="panel sec" id="engine">
-    <header class="sh"><span class="no">02</span><h2>A sizing tool that reads the garment</h2></header>
+    <header class="sh"><span class="no">02</span><h2>Building a sizing tool from each garment's measurements</h2></header>
     <div class="sb">
-      <p class="big-p">Shoppers could see the jacket. They couldn't picture it on themselves.</p>
-      <p>You tell it your height and weight. Behind the scenes, it compares you with each garment's measurements and returns a fit read: snug, recommended or relaxed.</p>
+      <p class="big-p">A size chart doesn't help when there's only one size.</p>
+      <p>Shoppers enter their height and weight. The tool compares them with the garment's own measurements and answers in plain words: snug, recommended or relaxed. It reads the Size &amp; Fit copy already on each product, so a new piece needs no extra set-up.</p>
 
       <div class="demo" id="demo" aria-label="Simplified demo of the sizing tool">
         <div class="demo-in">
@@ -306,21 +330,18 @@
             </label>
             <p class="demo-note">A simplified version of the sizing tool, using one free-size jacket.</p>
           </div>
-          <div class="evn-card">
-            <div class="evn-title">Aura Windbreaker</div>
-            <div class="evn-price">Size · Free</div>
-            <div class="evn-fit">
-              <b>How it'll fit you</b>
-              <div class="scale" aria-hidden="true">
-                <i class="z"></i><i class="z mid"></i><i class="z rec"></i><i class="z mid"></i><i class="z"></i>
-                <span class="dot" id="dot"></span>
-              </div>
-              <div class="scale-labels"><span>Snug</span><span>Recommended</span><span>Relaxed</span></div>
-              <span class="read" id="fitRead">Relaxed fit</span>
-              <span id="fitLine" class="fit-line">This is your recommended size.</span>
-              <span class="fit-est">Estimated given your measurements. <u>Edit</u></span>
+          <div class="evn-card v2">
+            <div class="fc-tag">[ URBAN ] OUTER</div>
+            <div class="fc-title">Aura Windbreaker</div>
+            <div class="fc-size"><span>Size</span><span>Free</span></div>
+            <div class="fc-fit">
+              <div class="fc-head"><span id="fitMeta">YOUR FIT · 160 CM, 55 KG</span><u>Edit</u></div>
+              <b class="fc-word" id="fitRead">Relaxed</b>
+              <span class="fc-line" id="fitLine">It will drape with room to spare, as intended.</span>
+              <div class="fc-scale" id="fitScale" data-zone="4" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="fc-lab" id="fitLab" data-zone="4"><span>Relaxed</span></div>
             </div>
-            <div class="evn-btn">Add to cart</div>
+            <div class="fc-btn">Add to cart</div>
           </div>
         </div>
       </div>
@@ -329,27 +350,34 @@
 
   <!-- ============ 03 ============ -->
   <section class="panel sec" id="touchpoints">
-    <header class="sh"><span class="no">03</span><h2>One recommendation, everywhere you shop</h2></header>
+    <header class="sh"><span class="no">03</span><h2>Carrying one answer through the whole shop</h2></header>
     <div class="sb">
       <p class="big-p">Nobody wants to enter their measurements on every product page.</p>
+      <p>Shoppers enter their details once, on the homepage or the Find your fit page. After that, every product tile and product page shows how that piece will sit on them, and the shop can filter down to their best fits.</p>
       <ol class="shots">
         <li class="wide">
-          <figure><img src="assets/evn-home.jpg" alt="The Free Size Edit on the EVN Archive homepage" width="2258" height="879" loading="lazy"></figure>
-          <div><b>Start where shoppers land</b><p>A Free Size Edit and a fit prompt near the top of the homepage.</p></div>
+          <figure class="stage"><img src="assets/evn-home.jpg" alt="The sizing form on the EVN Archive homepage, with height and weight fields" width="1700" height="1084" loading="lazy"></figure>
+          <div><p>The sizing form on the homepage.</p></div>
         </li>
         <li class="wide">
-          <figure class="stage"><img src="assets/evn-finder.jpg" alt="The Find your fit pop-up asking for height, weight and build" width="1129" height="1064" loading="lazy"></figure>
-          <div><b>Share as much or as little as you like</b><p>Height and weight for a quick read, with optional build and body measurements. Saved, so it's a one-time step.</p></div>
+          <figure><img src="assets/evn-tiles.jpg" alt="Four product tiles, each with a fit line under the price" width="2200" height="829" loading="lazy"></figure>
+          <div><p>Every product tile shows how the piece will sit.</p></div>
         </li>
         <li class="wide">
-          <figure class="zoom"><img src="assets/evn-collection-z.jpg" alt="The shop filtered to pieces recommended for you, with a Clear link" width="1120" height="550" loading="lazy"></figure>
-          <div><b>A shop that fits you</b><p>Filter the shop to pieces recommended for you, and clear it in one tap.</p></div>
-        </li>
-        <li class="wide">
-          <figure class="zoom"><img src="assets/evn-pdp-z.jpg" alt="The Aura Windbreaker product page, with How it'll fit you under the size" width="1210" height="830" loading="lazy"></figure>
-          <div><b>An answer on every product</b><p>A plain-words fit read under every size, like "This is your recommended size".</p></div>
+          <figure><img src="assets/evn-finder.jpg" alt="The Find your fit page, with the form on the left and a list of how pieces sit on the right" width="2200" height="1120" loading="lazy"></figure>
+          <div><p>The Find your fit page lists every piece against the shopper's measurements.</p></div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel sec" id="hurdle">
+    <header class="sh"><span class="no">04</span><h2>What got in the way</h2></header>
+    <div class="sb">
+      <p class="big-p">The hardest part was the sizing logic.</p>
+      <p>I measured every piece, tried each one on myself, and worked out the rules through trial and error with an AI model: it suggested a formula, and I checked it against how the piece actually fit. The tool wasn't the only change either. It launched in the same week as the 20% offer and the social posts, and I think it took all three to move the number.</p>
+      <p class="took"><b>What I took from it</b>Effective design is often several touchpoints working together.</p>
     </div>
   </section>
 
@@ -412,23 +440,22 @@
      The garment has a fixed amount of room; bigger bodies use more of it. */
   const h = document.getElementById('h'), w = document.getElementById('w');
   const hOut = document.getElementById('hOut'), wOut = document.getElementById('wOut');
-  const dot = document.getElementById('dot'), read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const read = document.getElementById('fitRead'), line = document.getElementById('fitLine');
+  const meta = document.getElementById('fitMeta'), scale = document.getElementById('fitScale'), lab = document.getElementById('fitLab');
   const zones = [
     { max: -9, label: 'Too small', line: 'This will likely feel tight on you.' },
-    { max: -3, label: 'Snug fit', line: 'It will sit close, with little room to layer.' },
-    { max: 3, label: 'Recommended', line: 'This is your recommended size.' },
-    { max: 10, label: 'Relaxed fit', line: 'It will drape with room to spare, as intended.' },
-    { max: Infinity, label: 'Very roomy', line: 'Expect a very oversized look on you.' },
+    { max: -3, label: 'Snug', line: 'It will sit close, with little room to layer.' },
+    { max: 3, label: 'Recommended', line: 'Sits on you the way it was cut.' },
+    { max: 10, label: 'Relaxed', line: 'It will drape with room to spare, as intended.' },
+    { max: Infinity, label: 'Too big', line: 'Expect a very oversized look on you.' },
   ];
   const update = () => {
     const H = +h.value, W = +w.value;
     hOut.textContent = Math.round(H) + ' cm'; wOut.textContent = Math.round(W) + ' kg';
+    meta.textContent = 'YOUR FIT · ' + Math.round(H) + ' CM, ' + Math.round(W) + ' KG';
     const room = (178 - H) * 0.42 + (70 - W) * 0.3;   // positive = more room left in the garment
-    const z = zones.find(z => room <= z.max);
-    const pos = Math.max(4, Math.min(96, 50 + room * 3.2));
-    dot.style.setProperty('--x', pos + '%');
-    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; }
-    read.style.background = z.label === 'Recommended' ? '#1d6a4c' : '#111';
+    const i = zones.findIndex(z => room <= z.max), z = zones[i];
+    if (read.textContent !== z.label) { read.textContent = z.label; line.textContent = z.line; lab.firstElementChild.textContent = z.label; scale.dataset.zone = lab.dataset.zone = i + 1; }
   };
   h.addEventListener('input', update); w.addEventListener('input', update);
   update();
@@ -440,11 +467,9 @@
     if (!e.isIntersecting || played) return; played = true; ob.disconnect();
     if (still.matches) { h.value = 175; w.value = 68; update(); return; }
     const from = [+h.value, +w.value], to = [175, 68], t0 = performance.now();
-    // unrounded values every frame, and no CSS transition on the dot while JS drives it, so nothing steps or lags
-    dot.classList.add('glide');
     const step = t => { const k = Math.min((t - t0) / 1600, 1), e2 = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
       h.value = from[0] + (to[0] - from[0]) * e2; w.value = from[1] + (to[1] - from[1]) * e2; update();
-      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); dot.classList.remove('glide'); } };
+      if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
 })();
