@@ -52,7 +52,7 @@
   .meta dt { font-size: 12px; color: var(--muted); }
   .meta dd { font-size: 14px; }
   .c-results { grid-column: 9 / 13; margin-top: 86px; display: grid; grid-template-rows: auto 1fr; }
-  .c-results-in { padding: 16px 16px 18px; display: grid; gap: 14px; align-content: end; }
+  .c-results-in { padding: 20px 16px; display: grid; gap: 18px; align-content: end; }
   .c-results .big { display: grid; gap: 4px; }
   .c-results .big b { font-family: var(--display); font-weight: 900; font-stretch: 70%; font-size: clamp(64px, 6vw, 96px); line-height: .85; color: var(--accent); font-variant-numeric: tabular-nums; }
   .c-results .big > span { font-size: 14px; color: var(--muted); max-width: 26ch; }
@@ -133,44 +133,22 @@
   .took { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
   .took b { display: block; font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
 
-  /* Component deck in the results panel (17 Nov 2026): real store components, stacked and cycling */
-  .c-results { grid-template-rows: auto 1fr auto; }
-  .deck { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 14px 16px 0; min-height: 0; }
-  .dk-stack { position: relative; display: block; width: 100%; min-height: 210px; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; color: inherit; font: inherit; -webkit-tap-highlight-color: transparent; }
-  .dk-stack:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--r-in); }
-  .dk { position: absolute; left: 0; top: 10px; bottom: 0; aspect-ratio: 4 / 3; max-width: 84%; margin: 0; border-radius: var(--r-in); overflow: hidden; background: #f2f2f0; box-shadow: 0 22px 40px -22px rgba(15,24,18,.45), 0 0 0 1px rgba(15,24,18,.08); transform-origin: 50% 100%; transition: transform .7s var(--ease), opacity .5s var(--ease); will-change: transform; }
-  .dk img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 4%; box-sizing: border-box; }
-  .dk[data-k="tile"] { background: #fff; }
-  .dk[data-k="tile"] img { padding: 2% 16%; }
-  .dk[data-pos="0"] { z-index: 4; transform: none; }
-  .dk[data-pos="1"] { z-index: 3; transform: translate(8%, -2%) rotate(2.5deg) scale(.96); }
-  .dk[data-pos="2"] { z-index: 2; transform: translate(15%, -4%) rotate(5deg) scale(.92); }
-  .dk[data-pos="3"] { z-index: 1; transform: translate(23%, -8%) rotate(8deg) scale(.86); opacity: .0; }
-  .dk.leave { animation: dk-leave .8s var(--ease) both; }
-  @keyframes dk-leave {
-    0% { z-index: 5; transform: none; opacity: 1; }
-    42% { z-index: 5; transform: translate(-42%, 4%) rotate(-9deg); opacity: 1; }
-    43% { z-index: 0; }
-    100% { z-index: 0; transform: translate(23%, -8%) rotate(8deg) scale(.86); opacity: 0; }
-  }
-  .dk-foot { display: flex; align-items: end; justify-content: space-between; gap: 12px; }
-  .dk-cap { display: grid; gap: 2px; min-width: 0; transition: opacity .25s; }
-  .dk-cap.swap { opacity: 0; }
-  .dk-cap b { font-weight: 500; font-size: 15px; }
-  .dk-cap span { font-size: 13px; color: var(--muted); }
-  .dk-ctl { display: flex; align-items: center; gap: 8px; flex: none; }
-  .dk-dots { display: flex; gap: 6px; padding: 10px 12px; border-radius: 999px; background: var(--accent-soft); }
-  .dk-dots i { position: relative; width: 6px; height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 28%, transparent); overflow: hidden; transition: width .4s var(--ease); }
-  .dk-dots i.on { width: 26px; }
-  .dk-dots i.on::after { content: ""; position: absolute; inset: 0; background: var(--ink); transform-origin: left; animation: dk-fill var(--dk-t, 3.2s) linear both; }
-  .deck.paused .dk-dots i.on::after { animation-play-state: paused; }
-  .deck.still .dk-dots i.on::after { animation: none; transform: none; }
-  @keyframes dk-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  .dk-play { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 0; padding: 0; background: var(--accent-soft); color: var(--ink); cursor: pointer; }
-  .dk-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .dk-play .i-play { display: none; } .deck.paused .dk-play .i-play { display: block; } .deck.paused .dk-play .i-pause { display: none; }
-  @media (max-width: 900px) { .deck { padding-top: 16px; } .dk-stack { min-height: 0; height: clamp(220px, 68vw, 340px); } }
-  @media (prefers-reduced-motion: reduce) { .dk, .dk-cap { transition: none; } .dk.leave { animation: none; } }
+  /* Store screens row (17 Nov 2026): Apple-style horizontal gallery, 4:3 crops of real store screens */
+  .c-results { align-self: end; }
+  .c-gal { padding: 22px 0 20px; overflow: hidden; }
+  .gal-track { display: grid; grid-auto-flow: column; grid-auto-columns: min(560px, 80%); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 22px; padding: 0 22px 4px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .gal-track::-webkit-scrollbar { display: none; }
+  .gal-track:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .gal-item { margin: 0; scroll-snap-align: start; display: grid; gap: 14px; align-content: start; }
+  .gal-shot { aspect-ratio: 4 / 3; border-radius: var(--r); overflow: hidden; background: #f2f2f0; box-shadow: 0 0 0 1px var(--rule); }
+  .gal-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
+  .gal-item figcaption { font-size: 15px; line-height: 1.45; color: var(--muted); max-width: 44ch; padding: 0 4px; }
+  .gal-item figcaption b { font-weight: 500; color: var(--ink); }
+  .gal-nav { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 22px 0; }
+  .gal-nav button { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; background: var(--accent-soft); color: var(--ink); cursor: pointer; transition: opacity .2s; }
+  .gal-nav button:disabled { opacity: .35; cursor: default; }
+  .gal-nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 900px) { .c-results { align-self: auto; } .c-gal { padding-top: 16px; } .gal-track { grid-auto-columns: 84%; gap: 12px; padding: 0 16px 4px; scroll-padding-inline: 16px; } .gal-nav { padding: 12px 16px 0; } .gal-item figcaption { font-size: 14px; } }
 
   .shots { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 8px; counter-reset: s; }
   .shots li { background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid var(--rule); border-radius: var(--r-in); overflow: hidden; display: grid; grid-template-rows: auto 1fr; counter-increment: s; }
@@ -329,21 +307,6 @@
     </div>
     <aside class="panel c-results">
       <div class="label"><span>What came of it</span><span>Sept 2026</span></div>
-      <div class="deck" id="deck" role="group" aria-roledescription="carousel" aria-label="Four parts of the store that use the sizing tool">
-        <button class="dk-stack" type="button" aria-label="Next card">
-        <figure class="dk" data-k="fit" data-pos="0" data-t="Your fit" data-s="On every product page"><img src="assets/evn-dk-fit.jpg" alt="Size buttons with M recommended, and the Your fit card reading Size M" width="800" height="682"></figure>
-        <figure class="dk" data-k="tile" data-pos="1" data-t="Fit on every tile" data-s="Across the whole shop"><img src="assets/evn-dk-tile.jpg" alt="A product tile with "Your size M" under the price" width="595" height="790"></figure>
-        <figure class="dk" data-k="form" data-pos="2" data-t="The sizing form" data-s="Height and weight, entered once"><img src="assets/evn-dk-form.jpg" alt="The sizing form on the EVN Archive homepage" width="790" height="735" loading="lazy"></figure>
-        <figure class="dk" data-k="table" data-pos="3" data-t="Measurements" data-s="Every size, measured flat"><img src="assets/evn-dk-table.jpg" alt="The Size and fit table with shoulder, chest, sleeve and length for M and L" width="800" height="391" loading="lazy"></figure>
-        </button>
-        <div class="dk-foot">
-          <p class="dk-cap"><b>Your fit</b><span>On every product page</span></p>
-          <div class="dk-ctl">
-            <span class="dk-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-            <button class="dk-play" type="button" data-pause="Pause" data-play="Play" aria-label="Pause"><svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="3.5" y="3" width="3" height="10" rx="1"/><rect x="9.5" y="3" width="3" height="10" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6c0 .5.5.8.9.5l7-4.8c.4-.3.4-.8 0-1L5.9 2.7c-.4-.3-.9 0-.9.5Z"/></svg></button>
-          </div>
-        </div>
-      </div>
       <div class="c-results-in">
         <div class="big"><b data-n="4">4</b><span>free-size sales in the sizing tool's first week, after none in the two months before</span></div>
         <p class="note">The sizing tool, a 20% free-size offer and social posts about each piece all went out that week, so the result belongs to all three.</p>
@@ -351,10 +314,31 @@
     </aside>
   </section>
 
-  <figure class="panel c-media">
-    <img src="assets/evn-pdp.jpg" alt="The Aura Windbreaker product page on evn-archive.com, with the Your fit card under the size" width="2200" height="1178">
-    <figcaption>The product page, with the shopper's fit shown above Add to cart.</figcaption>
-  </figure>
+  <section class="panel c-gal" id="gal" aria-label="Screens from the store">
+    <div class="gal-track" tabindex="0">
+      <figure class="gal-item">
+        <div class="gal-shot"><img src="assets/evn-g-pdp.jpg" alt="Product page with the fit card" width="1200" height="900"></div>
+        <figcaption><b>Your fit, on every product page.</b> The fit card sits between the size and Add to cart, in plain words.</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <div class="gal-shot"><img src="assets/evn-g-size.jpg" alt="Size buttons with M marked as recommended" width="802" height="602"></div>
+        <figcaption><b>A size for pieces that come in sizes.</b> The tool picks one and marks it on the size buttons.</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <div class="gal-shot"><img src="assets/evn-g-tiles.jpg" alt="Product tiles with a fit line under each price" width="1192" height="894" loading="lazy"></div>
+        <figcaption><b>Fit on every tile.</b> Each product tile says how that piece will sit, across the whole shop.</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <div class="gal-shot"><img src="assets/evn-g-form.jpg" alt="The sizing form on the homepage" width="1200" height="900" loading="lazy"></div>
+        <figcaption><b>Entered once, on the homepage.</b> Height and weight are all it needs, and they stay on the shopper's device.</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <div class="gal-shot"><img src="assets/evn-g-list.jpg" alt="The Find your fit page" width="1200" height="900" loading="lazy"></div>
+        <figcaption><b>The whole shop, at a glance.</b> The Find your fit page lists every piece against the shopper's measurements.</figcaption>
+      </figure>
+    </div>
+    <div class="gal-nav"><button type="button" aria-label="Previous"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button><button type="button" aria-label="Next"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button></div>
+  </section>
 
   <!-- ============ 01 ============ -->
   <section class="panel sec" id="problem">
@@ -408,20 +392,6 @@
     <div class="sb">
       <p class="big-p">Nobody wants to enter their measurements on every product page.</p>
       <p>Shoppers enter their details once, on the homepage or the Find your fit page. After that, every product tile and product page shows how that piece will sit on them, and the shop can filter down to their best fits.</p>
-      <ol class="shots">
-        <li class="wide">
-          <figure class="stage"><img src="assets/evn-home.jpg" alt="The sizing form on the EVN Archive homepage, with height and weight fields" width="1700" height="1084" loading="lazy"></figure>
-          <div><p>The sizing form on the homepage.</p></div>
-        </li>
-        <li class="wide">
-          <figure><img src="assets/evn-tiles.jpg" alt="Four product tiles, each with a fit line under the price" width="2200" height="829" loading="lazy"></figure>
-          <div><p>Every product tile shows how the piece will sit.</p></div>
-        </li>
-        <li class="wide">
-          <figure><img src="assets/evn-finder.jpg" alt="The Find your fit page, with the form on the left and a list of how pieces sit on the right" width="2200" height="1120" loading="lazy"></figure>
-          <div><p>The Find your fit page lists every piece against the shopper's measurements.</p></div>
-        </li>
-      </ol>
     </div>
   </section>
 
@@ -526,42 +496,15 @@
       if (k < 1) requestAnimationFrame(step); else { h.value = to[0]; w.value = to[1]; update(); } };
     setTimeout(() => requestAnimationFrame(step), 300);
   }), { threshold: 0.5 }).observe(demo);
-  /* Component deck: the front card slides out and tucks behind. Pauses off-screen, when the tab is hidden, and on Pause.
-     Reduced motion: starts paused and swaps cards without movement. */
+  /* Store screens row: arrows scroll one card; disabled at either end */
   (() => {
-    const deck = document.getElementById('deck'); if (!deck) return;
-    const cards = [...deck.querySelectorAll('.dk')], dots = [...deck.querySelectorAll('.dk-dots i')];
-    const cap = deck.querySelector('.dk-cap'), capT = cap.querySelector('b'), capS = cap.querySelector('span');
-    const btn = deck.querySelector('.dk-play'), stack = deck.querySelector('.dk-stack'), n = cards.length, T = 3200;
-    let front = 0, timer = null, busy = false, seen = false, userPaused = still.matches;
-    const show = () => {
-      cards.forEach((c, i) => c.dataset.pos = (i - front + n) % n);
-      dots.forEach((d, i) => { d.classList.toggle('on', i === front); });
-      const c = cards[front]; cap.classList.add('swap');
-      setTimeout(() => { capT.textContent = c.dataset.t; capS.textContent = c.dataset.s; cap.classList.remove('swap'); }, still.matches ? 0 : 220);
-      dots.forEach(d => { const a = d; a.style.animation = 'none'; a.offsetWidth; a.style.animation = ''; });
-    };
-    const advance = () => {
-      if (busy) return;
-      const out = cards[front]; front = (front + 1) % n;
-      if (still.matches) { show(); return; }
-      busy = true; out.classList.add('leave'); show();
-      out.addEventListener('animationend', () => { out.classList.remove('leave'); busy = false; }, { once: true });
-    };
-    const running = () => !userPaused && seen && !document.hidden;
-    const sync = () => {
-      clearInterval(timer); timer = null;
-      deck.classList.toggle('paused', !running());
-      if (running()) timer = setInterval(advance, T);
-      btn.setAttribute('aria-label', userPaused ? btn.dataset.play : btn.dataset.pause);
-    };
-    deck.style.setProperty('--dk-t', T + 'ms');
-    deck.classList.toggle('still', still.matches);
-    stack.addEventListener('click', () => { advance(); sync(); });
-    btn.addEventListener('click', () => { userPaused = !userPaused; sync(); });
-    document.addEventListener('visibilitychange', sync);
-    new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; sync(); }), { threshold: 0.4 }).observe(deck);
-    show(); sync();
+    const gal = document.getElementById('gal'); if (!gal) return;
+    const track = gal.querySelector('.gal-track'), [prev, next] = gal.querySelectorAll('.gal-nav button');
+    const step = () => { const it = track.querySelector('.gal-item'); return it.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0); };
+    const go = d => track.scrollBy({ left: d * step(), behavior: still.matches ? 'auto' : 'smooth' });
+    const sync = () => { prev.disabled = track.scrollLeft < 4; next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4; };
+    prev.addEventListener('click', () => go(-1)); next.addEventListener('click', () => go(1));
+    track.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync); sync();
   })();
 })();
 </script>
